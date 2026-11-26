@@ -105,29 +105,59 @@ tr.plan td{background:var(--accent-soft)}
 .win{box-shadow:inset 0 0 0 2px var(--good)}
 .pkg td{min-width:15em}.pk{padding-block:6px}.pk+.pk{border-top:1px dashed var(--line)}td.plancol{background:var(--accent-soft)}
 .callout{padding:12px 16px;border-radius:10px;background:var(--tint);margin:0 0 16px}
+
+/* Bố cục 3 cột kiểu W02: menu trái | nội dung | PDF bằng chứng bên phải */
+.app{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}
+.app.pdf-open{grid-template-columns:232px minmax(0,1fr) clamp(380px,38vw,820px)}
+.side{position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--tint);border-right:1px solid var(--line);padding:16px 10px 20px}
+.brand{font-weight:800;font-size:15px;line-height:1.3;padding:2px 8px 12px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.side-title{font-size:12.5px;font-weight:700;color:var(--muted);padding:12px 8px 4px}
+.navl{display:flex;flex-direction:column;gap:2px}
+.navl button{font:inherit;font-size:14.5px;text-align:left;padding:7px 8px;border:0;border-left:3px solid transparent;border-radius:6px;background:transparent;color:var(--muted);cursor:pointer;min-height:36px}
+.navl button:hover{background:var(--surface);color:var(--ink)}
+.navl button[aria-pressed="true"],.navl button[aria-selected="true"]{background:var(--surface);color:var(--ink);border-left-color:var(--accent);font-weight:600}
+.navl button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.side input[type=range]{width:100%;padding:0 6px}
+.side .btn{width:calc(100% - 8px);margin:14px 4px 0}
+.side-note{font-size:12.5px;color:var(--muted);padding:10px 8px 0;line-height:1.45}
+.main{min-width:0}
+.pdfpane{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;border-left:1px solid var(--line);background:var(--surface)}
+.pdfpane[hidden]{display:none!important}
+.pdfbar{display:flex;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid var(--line);background:var(--tint)}
+.pdfbar .t{flex:1;font-size:14px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pdfbar a,.pdfbar button{font:inherit;font-size:13.5px;padding:5px 10px;border-radius:7px;border:1px solid var(--line);background:var(--surface);color:var(--ink);text-decoration:none;cursor:pointer;white-space:nowrap}
+.pdfpane iframe{flex:1;width:100%;border:0;background:#525659}
+@media (max-width:980px){
+  .app,.app.pdf-open{grid-template-columns:minmax(0,1fr)}
+  .side{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:10px 16px}
+  .navl{flex-direction:row;flex-wrap:wrap}
+  .navl button{border-left:0;border-bottom:3px solid transparent;border-radius:6px}
+  .navl button[aria-pressed="true"],.navl button[aria-selected="true"]{border-bottom-color:var(--accent)}
+  .side .btn{width:auto}
+  .pdfpane{position:fixed;inset:0;z-index:50;height:100%}
+}
 footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1px solid var(--line);margin-top:24px}
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="app" id="app">
+<aside class="side" aria-label="Điều hướng">
+  <div class="brand">Chiến lược thu nhập đại lý · Bước 1</div>
+  <div class="side-title">Phương án</div>
+  <div class="navl" id="planSeg"></div>
+  <div class="side-title"><label for="k2">Kịch bản K2: <span class="k2v" id="k2v"></span></label></div>
+  <input type="range" id="k2" min="50" max="95" step="1" value="82" aria-label="Kịch bản K2">
+  <div class="side-title">Trang</div>
+  <nav class="navl" id="tabs" role="tablist"></nav>
+  <button type="button" class="btn" id="resetAll">↺ Về mặc định</button>
+  <div class="side-note" id="sideNote"></div>
+</aside>
+<main class="main"><div class="wrap">
 <header class="top">
   <h1>Chính sách thu nhập đại lý: trả ngang thị trường, chi phí thấp hơn</h1>
   <p class="sub">So sánh chính sách 2026 của AIA (kênh Alpha), Chubb Life và Manulife (tầng lãnh đạo vùng), và đề xuất phương án Song Hành cho thị trường Việt Nam.</p>
   <div class="req"><b>Đề bài:</b> “Phân tích các chính sách thu nhập giữa các công ty, và đề xuất chính sách phù hợp tại thị trường VN, nhằm thúc đẩy gia tăng doanh số, chất lượng kinh doanh và hiệu quả về mặt chi phí (ROI).”</div>
 </header>
-</div>
-
-<div class="controls"><div class="wrap">
-  <div class="ctl-row">
-    <div class="ctl"><span class="lbl">Phương án</span><div class="seg" id="planSeg"></div></div>
-    <div class="ctl"><label for="k2">Kịch bản K2 (tỷ lệ duy trì hợp đồng năm 2): <span class="k2v" id="k2v"></span></label>
-      <input type="range" id="k2" min="50" max="95" step="1" value="82"></div>
-    <button type="button" class="btn reset" id="resetAll">↺ Về mặc định</button>
-  </div>
-  <nav class="tabs" id="tabs" role="tablist"></nav>
-</div></div>
-
-<div class="wrap">
 <section class="panel on" id="p-overview"></section>
 <section class="panel" id="p-package"></section>
 <section class="panel" id="p-tiers"></section>
@@ -139,6 +169,11 @@ footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1p
 <section class="panel" id="p-method"></section>
 <section class="panel" id="p-assume"></section>
 <footer id="foot"></footer>
+</div></main>
+<aside class="pdfpane" id="pdfpane" hidden aria-label="Tài liệu bằng chứng">
+  <div class="pdfbar"><span class="t" id="pdfTitle"></span><a id="pdfNew" target="_blank" rel="noopener">Mở tab mới</a><button type="button" id="pdfClose" aria-label="Đóng tài liệu">✕</button></div>
+  <iframe id="pdfFrame" title="Tài liệu bằng chứng"></iframe>
+</aside>
 </div>
 
 <script>/* W24 proposal engine — bản JS của các hàm Python sau, để trang HTML tính trực tiếp khi kéo thông số:
@@ -794,7 +829,8 @@ function renderAll() {
   document.querySelectorAll("#planSeg button").forEach(b => b.onclick = () => { state.plan = b.dataset.plan; renderAll(); });
   $("k2").value = state.k2;
   $("tabs").innerHTML = TABS.map(([k, n]) => `<button type="button" role="tab" data-tab="${k}" aria-selected="${state.tab === k}">${n}</button>`).join("");
-  document.querySelectorAll("#tabs button").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; showTab(); });
+  $("sideNote").textContent = PLAN_META[state.plan].star ? "Song Hành là phương án đề xuất. Bấm 📄 ở bất kỳ đâu để xem trang tài liệu gốc bên phải." : "Đang xem: " + PLAN_META[state.plan].name + ".";
+  document.querySelectorAll("#tabs button").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; showTab(); window.scrollTo(0, 0); });
   renderOverview(); renderPackage(); renderTiers(); renderCost(); renderRubric(); renderTune(); renderCompare(); renderMethod(); renderAssume();
   showTab();
 }
@@ -806,6 +842,27 @@ function showTab() {
 }
 $("k2").oninput = ev => { state.k2 = +ev.target.value; renderAll(); };
 const st = selfTest();
+
+/* ---------- Xem PDF bên phải ---------- */
+const SRC_NAME = Object.fromEntries(DATA.knowledge.sources.map(x => [x.id, x.company + " — " + x.scheme]));
+function openPdf(url) {
+  const m = url.match(/evidence\/(SRC-[A-Z0-9-]+)\.pdf(?:#page=(\d+))?/);
+  const sid = m ? m[1] : "", page = m && m[2] ? m[2] : "";
+  $("pdfTitle").textContent = (SRC_NAME[sid] || sid) + (page ? " · trang " + page : "");
+  $("pdfNew").href = url;
+  $("pdfFrame").src = "about:blank";
+  const view = url + (url.includes("#") ? "&" : "#") + "navpanes=0&view=FitH";
+  setTimeout(() => { $("pdfFrame").src = view; }, 30);
+  $("pdfpane").hidden = false; $("app").classList.add("pdf-open");
+}
+function closePdf() { $("pdfpane").hidden = true; $("app").classList.remove("pdf-open"); $("pdfFrame").src = "about:blank"; }
+$("pdfClose").onclick = closePdf;
+document.addEventListener("keydown", ev => { if (ev.key === "Escape" && !$("pdfpane").hidden) closePdf(); });
+document.addEventListener("click", ev => {
+  const a = ev.target.closest && ev.target.closest('a[href*="/evidence/"]');
+  if (!a || a.id === "pdfNew" || ev.ctrlKey || ev.metaKey || ev.shiftKey || ev.button !== 0) return;
+  ev.preventDefault(); openPdf(a.href);
+});
 $("resetAll").onclick = () => {
   Object.assign(state, {plan: "song_hanh", k2: 82, tier: "agent", weightsPreset: "ttbv", weights: Object.assign({}, PRESETS.ttbv.w),
     custom: JSON.parse(JSON.stringify(DATA.plans.song_hanh)), margin: 85, opex: 20});
