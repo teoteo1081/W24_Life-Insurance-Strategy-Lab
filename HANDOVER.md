@@ -1,7 +1,9 @@
 # HANDOVER.md — Điểm Bàn giao & Single Source of Truth (Trạng thái Hiện hành)
 
-**Cập nhật lần cuối:** 2026-11-26 *(Post-Independent-Audit Hardening & Level 2 Maturity Sprint — Sau Codex Independent Audit lần 2 tại `5cb7a21`)*  
-**Business Owner:** TJ | **Implementation Agent:** AGY | **Independent Auditor:** Codex (`W24_Independent_Audit_5cb7a21.md`, lưu ngoài repo PUBLIC)
+**Cập nhật lần cuối:** 2026-11-26 *(Level 2 Targeted Closure — Sau Codex Independent Audit Đợt 3 tại `a308f0f`)*  
+**Business Owner:** TJ | **Implementation Agent:** AGY | **Independent Auditor:** Codex
+
+> **Cập nhật Targeted Closure (2026-11-26):** Xem báo cáo đầy đủ tại `qa/level2-targeted-closure-report.md` (tổng hợp khôi phục `F-01..F-05` có bản chi tiết lưu ngoài repo PUBLIC tại `%LOCALAPPDATA%\W24\Hardening-Private\W24_Findings_F01_F05_Recovery_a308f0f.md`; chẩn đoán gốc lỗi Excel COM `0x80080005` do `HKCU` WPS Office `et.exe` ghi đè `HKLM` MS Excel `16.0`; kết quả live recalc tạm thời trên WPS COM `12.0`; đối soát đủ `40` Golden sub-cases cũ trong `31` unittest methods / `120` assertions; và Level 2 Closure Matrix ở trạng thái `PARTIAL`). Không tự nâng Level 2 lên PASS toàn diện trước khi TJ duyệt vá `F-01..F-05` và chốt xử lý COM.
 
 ---
 
