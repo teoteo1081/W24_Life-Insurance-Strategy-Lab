@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w24-life-insurance-strategy-lab.local/schemas/compensation-scheme.schema.json",
+  "title": "W24 Configurable Life Insurance Compensation Scheme Schema",
+  "description": "Chuẩn hóa cấu trúc dữ liệu chính sách thu nhập đại lý & quản lý BHNT để tái sử dụng xuyên suốt Excel Reference Model, MAPA, Recruitment/Customer Marketing, Financial Model và HTML Simulator mà không cần hard-code chính sách vào công thức.",
+  "type": "object",
+  "required": [
+    "scheme_id",
+    "company",
+    "channel",
+    "target_tier",
+    "version",
+    "effective_date",
+    "verification_status",
+    "source_ids",
+    "income_components"
+  ],
+  "properties": {
+    "scheme_id": {
+      "type": "string",
+      "description": "Mã định danh duy nhất của scheme (VD: AIA-ALPHA-CVTV-2026, CHUBB-AGENCY-2026, PROP-BALANCED-V1)"
+    },
+    "company": { "type": "string" },
+    "channel": {
+      "type": "string",
+      "description": "Kênh phân phối (VD: Alpha, Agency, Exchange, Champion Hubb, Proposal)"
+    },
+    "target_tier": {
+      "type": "string",
+      "enum": ["Individual_Agent", "Mid_Management", "Senior_Executive_Leader", "Hybrid_Multi_Tier"]
+    },
+    "rank_codes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Danh sách mã cấp bậc áp dụng (VD: SA, UM, SUM, DM, SDM, PAF+, PSM+, HKD, AR, AL, BD, RD)"
+    },
+    "document_type": {
+      "type": "string",
+      "enum": ["Official_Policy", "Proposal", "Synthetic_Scenario"]
+    },
+    "version": { "type": "string" },
+    "effective_date": { "type": "string", "format": "date" },
+    "expiry_date": { "type": ["string", "null"] },
+    "verification_status": {
+      "type": "string",
+      "enum": ["VERIFIED_FACT", "SOURCE_CLAIM", "ASSUMPTION", "PROPOSAL", "CONFLICTING_EVIDENCE"]
+    },
+    "source_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "metric_definitions": {
+      "type": "object",
+      "description": "Chuẩn hóa định nghĩa chỉ số để quy đổi về cùng hệ quy chiếu giữa các công ty",
+      "properties": {
+        "fyp_includes_topup_pct": { "type": "number", "minimum": 0, "maximum": 1 },
+        "fyp_single_premium_weight": { "type": "number", "minimum": 0, "maximum": 1 },
+        "fyc_credit_ratio_note": { "type": "string" },
+        "active_agent_definition": {
+          "type": "object",
+          "properties": {
+            "metric_name": { "type": "string", "description": "VD: 1mAA, 1mAA_4mFYC, EHC, 3MAA" },
+            "min_policies_per_month": { "type": "number" },
+            "min_fyc_vnd_per_month": { "type": ["number", "null"] },
+            "min_fyp_vnd_per_policy": { "type": ["number", "null"] }
+          }
+        },
+        "persistency_definition": {
+          "type": "object",
+          "properties": {
+            "metric_name": { "type": "string", "description": "VD: AIA FY (14M), AIA TOT, Manulife TLDTHD (K2), Chubb K2 / P13" },
+            "window_months": { "type": ["integer", "null"] },
+            "rounding_decimals": { "type": "integer" }
+          }
+        }
+      }
+    },
+    "commission_schedule": {
+      "type": "array",
+      "description": "Biểu tỷ lệ FYC/RYC theo dòng sản phẩm và năm hợp đồng (chịu ràng buộc trần pháp lý)",
+      "items": {
+        "type": "object",
+        "required": ["product_group", "y1_rate_pct", "legal_cap_rule_id"],
+        "properties": {
+          "product_group": { "type": "string" },
+          "y1_rate_pct": { "type": "number", "minimum": 0, "maximum": 0.4 },
+          "y2_rate_pct": { "type": ["number", "null"] },
+          "y3_rate_pct": { "type": ["number", "null"] },
+          "y4_5_rate_pct": { "type": ["number", "null"] },
+          "y6_plus_rate_pct": { "type": ["number", "null"] },
+          "topup_y1_rate_pct": { "type": ["number", "null"] },
+          "legal_cap_rule_id": { "type": "string" }
+        }
+      }
+    },
+    "income_components": {
+      "type": "array",
+      "description": "Danh sách các khoản thu nhập / thưởng / trợ cấp / override cấu hình được",
+      "items": {
+        "type": "object",
+        "required": ["rule_id", "income_type", "calc_mode", "calculation_base", "period", "source_page"],
+        "properties": {
+          "rule_id": { "type": "string" },
+          "income_type": {
+            "type": "string",
+            "enum": [
+              "FYC", "RYC", "Allowance", "Recruitment_Incentive", "Activation_Bonus",
+              "Production_Bonus", "Performance_Bonus", "Quality_Bonus", "Leadership_Bonus",
+              "Direct_Override", "Indirect_Override", "Promotion_Bonus", "Retention_Deferred", "Contest"
+            ]
+          },
+          "calc_mode": {
+            "type": "string",
+            "enum": ["flat_rate", "marginal_tiered", "retroactive_tiered", "fixed_amount", "multiplier_on_component", "excess_over_target", "max_of_components"]
+          },
+          "calculation_base": { "type": "string" },
+          "period": { "type": "string", "enum": ["Monthly", "Quarterly", "Annual", "Milestone", "Multi_Year_Deferred"] },
+          "tiers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "min_inclusive": { "type": "number" },
+                "max_exclusive": { "type": ["number", "null"] },
+                "rate_pct": { "type": ["number", "null"] },
+                "fixed_vnd": { "type": ["number", "null"] }
+              }
+            }
+          },
+          "quality_multiplier_id": { "type": ["string", "null"] },
+          "attendance_or_sop_gate": { "type": ["object", "null"] },
+          "cap_vnd": { "type": ["number", "null"] },
+          "vesting_schedule": {
+            "type": ["array", "null"],
+            "description": "Lịch trả chậm nhiều năm (VD: [0.15, 0.25, 0.60] hoặc [0.30, 0.30, 0.40])",
+            "items": {
+              "type": "object",
+              "properties": {
+                "year_offset": { "type": "integer" },
+                "payout_share": { "type": "number" },
+                "min_persistency_gate": { "type": ["number", "null"] }
+              }
+            }
+          },
+          "clawback_months": { "type": ["integer", "null"] },
+          "stacking_group": { "type": "string" },
+          "source_page": { "type": "string" },
+          "po_editable": { "type": "boolean", "default": false }
+        }
+      }
+    },
+    "planning_linkages": {
+      "type": "object",
+      "description": "Khai báo liên kết sang MAPA, Tuyển dụng, Khách hàng và Tài chính",
+      "properties": {
+        "mapa_drivers_targeted": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["Manpower", "Active_Ratio", "Productivity", "Average_Case_Size", "Persistency_K2"] }
+        },
+        "fixed_cost_exposure": { "type": "string", "enum": ["Low", "Medium", "High"] },
+        "cashflow_timing_risk": { "type": "string", "enum": ["Low", "Medium", "High"] }
+      }
+    }
+  }
+}

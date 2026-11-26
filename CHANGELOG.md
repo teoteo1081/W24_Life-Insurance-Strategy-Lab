@@ -2,6 +2,18 @@
 
 Tất cả thay đổi quan trọng của dự án `W24_Life-Insurance-Strategy-Lab` được ghi nhận tại đây.
 
+## [0.2.0] - 2026-11-26 (Checkpoint G1)
+
+### Added
+- Tiếp nhận, kiểm kê (CRC32 phát hiện `.7z` trùng lặp 100%) và tổ chức 7 tài liệu PDF chính sách gốc vào `private/sources/{AIA-Alpha,Manulife,Chubb-Life}/` (đã xác minh SHA-256 và chặn tuyệt đối khỏi Git qua `.gitignore`).
+- Đọc trọn vẹn 116/116 trang (bao gồm đọc trực quan 15/15 trang scan PDF Chubb Life `CHH0DCEB260003V`) và trích xuất 50 quy tắc nghiệp vụ `VERIFIED_FACT` (+ 3 trần pháp lý `SOURCE_CLAIM`) vào `knowledge/business-rules/business-rules-catalog.csv`.
+- Xây dựng Competitor Comparison Matrix v1.0 (`outputs/working/competitor-comparison-v1.0.md`) so sánh chuẩn hóa theo 3 tầng bậc (Đại lý, Quản lý trực tiếp, Quản lý cấp cao) bám sát 3 mục tiêu của chị Nhi.
+- Thiết kế Schema cấu hình tái sử dụng (`schemas/compensation-scheme.schema.json` & `docs/architecture/reusable-model-schema.md`) cho Excel, MAPA, Marketing, Financial Model và HTML Simulator.
+- Hoàn tất báo cáo kiểm soát chất lượng & kiểm toán G1 (`qa/g1-extraction-qa-audit.md`) phát hiện 4 nhóm lỗi/bất nhất trong tài liệu gốc và phân tích rủi ro trục lợi L4.
+
+### Changed
+- Nâng cấp `knowledge/sources/source-registry.csv` đủ 16 cột quản trị nguồn và cập nhật `ANCHOR_SPEC.md` (`REQ-01` -> `DONE_G1`) cùng `HANDOVER.md`.
+
 ## [0.1.1] - 2026-11-26
 
 ### Changed
