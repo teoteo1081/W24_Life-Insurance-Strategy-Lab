@@ -10,7 +10,7 @@
 - **Audited Baseline (`5cb7a21` — Codex):** **Level 1 (Organized)** với năng lực Level 2 giới hạn trong Python; `Repository Reproducibility = FAIL`, `Architecture Extensibility = FAIL`, `Public Portfolio Readiness = FAIL`.
 - **Sau Sprint Hardening (Local Commit — `SELF_VERIFIED`, CHƯA phải `INDEPENDENTLY_VERIFIED`):**
   - **Level 2 Technical Reproducibility (Windows / Python 3.12 + openpyxl + MS Excel 12.0 COM):** Đã triển khai và tự kiểm chứng đầy đủ (`unittest discover`, `NaN/±Inf/UNKNOWN` validation, reproducible workbook build + Excel COM perturbation, automated quality gates, clean-clone verification).
-  - **Tổng thể Repository:** **`Level 2 PARTIALLY DEMONSTRATED (SELF_VERIFIED)`** vì: (1) chưa có Codex Independent Audit đợt 3, (2) vấn đề quyền tái phân phối 7 PDF công khai (`DEC-08`: `SRC-POL-MNL-001` là `RESTRICTED_INTERNAL`, 6 PDF AIA/Chubb là `PERMISSION_UNKNOWN`) đang `OPEN`, và (3) chưa kiểm chứng trên hệ điều hành thứ hai (Linux/macOS).
+  - **Tổng thể Repository:** **`Level 2 PARTIALLY DEMONSTRATED (SELF_VERIFIED)`** vì: (1) chưa có Codex Independent Audit đợt 3, (2) 7 PDF bên thứ ba trên repo `PUBLIC` tuy đã được Business Owner (TJ) chấp nhận giữ công khai kèm phân loại quyền (`DEC-08` Option C) nhưng vẫn mang trạng thái `RESTRICTED_INTERNAL` / `PERMISSION_UNKNOWN` về mặt quyền tái phân phối bên thứ ba, và (3) chưa kiểm chứng trên hệ điều hành thứ hai (Linux/macOS).
   - **Level 3 (Configurable) & Level 4 (Extensible):** **CHƯA ĐẠT** (xem bản đồ phụ thuộc & lộ trình đề xuất tại `docs/architecture/level3-level4-architecture-advisory.md`).
 
 ---
@@ -37,19 +37,18 @@
 
 ## 4. Trạng thái Git & Quyết định Mở Cần TJ (`docs/decisions/decision-register.md`)
 
-- **Repository GitHub:** `https://github.com/teoteo1081/W24_Life-Insurance-Strategy-Lab` (`PUBLIC` theo `DEC-07`).
-- **Nhánh & Sync:** Nhánh `main` có **local commit Hardening mới (`ahead 1` so với `origin/main` tại `5cb7a21`)** — **CHƯA PUSH lên GitHub** theo đúng giới hạn thẩm quyền (`DEC-09`).
-- **8 Quyết định Mở Cần TJ:**
-  - **`DEC-08` (Ưu tiên P0):** Xử lý quyền tái phân phối 7 PDF nguồn trên repo PUBLIC (`SRC-POL-MNL-001` = `RESTRICTED_INTERNAL`, 6 PDF AIA/Chubb = `PERMISSION_UNKNOWN`) — khuyến nghị Dual-Track Public Portfolio sạch dùng synthetic data.
-  - **`DEC-09` (Ưu tiên P0):** Phê duyệt push commit Hardening lên `origin/main` hoặc chạy Codex Independent Audit Đợt 3 trên bản local trước.
+- **Repository GitHub:** `https://github.com/teoteo1081/W24_Life-Insurance-Strategy-Lab` (`PUBLIC` theo `DEC-07` & `DEC-08` Option C).
+- **Nhánh & Sync:** Nhánh `main` đã đồng bộ lên `origin/main` theo phê duyệt tường minh của TJ (`DEC-09` Option B: giữ nguyên nội dung kỹ thuật `eda2564`, chỉ bổ sung commit ghi nhận `DEC-08`/`DEC-09` và push công khai ngay; 5 điểm tự kiểm toán nhỏ `[F-01..F-05]` được chủ động giữ để gom xử lý sau Codex Independent Audit Đợt 3).
+- **6 Quyết định Mở Còn lại (`DEC-01..06`):**
   - **`DEC-03` (P0 trước ban hành):** Đối chiếu toàn văn Văn bản hợp nhất `44/2026/VBHN-TT-BTC` & `NĐ 97/2026` với Pháp chế/Kế toán.
   - **`DEC-01` & `DEC-02`:** Phân xử 2 xung đột nguồn gốc (`ERR-DOC-01` Chubb `W1`, `ERR-DOC-02` AIA làm tròn).
   - **`DEC-04`, `DEC-05`, `DEC-06`:** Thu thập tài liệu thiếu (Manulife FA/UM, AIA Exchange/HH, Chubb `260005V`/BD), chốt trọng số/biến thể, và nạp VNB/OpEx nội bộ cho Bước 2.
+- **3 Quyết định Đã Đóng:** `DEC-07` (`CLOSED — OPTION D`), `DEC-08` (`CLOSED — OPTION C: PUBLIC WITH DISCLOSURE`), `DEC-09` (`CLOSED — OPTION B: PUSH NOW`).
 
 ---
 
-## 5. Hành động Tiếp theo (Sau Điểm Dừng Level 2 Hardening)
+## 5. Hành động Tiếp theo (Sau khi Đồng bộ `origin/main`)
 
-1. TJ rà soát báo cáo Confidentiality & Rights Review ngoài repo và chốt `DEC-08` & `DEC-09`.
-2. Mời Independent Auditor (Codex) kiểm toán Đợt 3 trên checkpoint Hardening này để xác nhận độc lập các tiêu chí Level 2.
+1. Mời Independent Auditor (**Codex**) kiểm toán **Đợt 3** trên nhánh `main` đã đồng bộ (`origin/main`) để xác nhận độc lập các năng lực Level 2.
+2. Sau báo cáo Codex Đợt 3, gom xử lý 1 lần các phát hiện mới (nếu có) cùng 5 điểm tự kiểm toán đã ghi nhận (`[F-01..F-05]`).
 3. Chỉ sau khi TJ duyệt: triển khai **Level 3 Vertical Slice** theo `docs/architecture/level3-level4-architecture-advisory.md`.
