@@ -1,13 +1,13 @@
 # HANDOVER.md — Điểm Bàn giao & Checkpoint Dự án
 
-**Cập nhật lần cuối:** 2026-11-26 (Checkpoint 1 — Ngày 1)  
+**Cập nhật lần cuối:** 2026-11-26 (Checkpoint 1.1 — Cập nhật Primary Business Anchor nguyên văn)  
 **Người thực hiện:** AGY  
 **Business Owner:** TJ  
 
 ---
 
 ## 1. Mục tiêu hiện tại
-Hoàn thành nền móng Ngày 1 (repo Level 1, Domain Discovery, Wheel Check, khung pháp lý VN, cấu trúc Ground Truth & bảng so sánh đối thủ v0.1) để sẵn sàng nạp tài liệu policy gốc và chuyển sang xây Excel Reference Model + Thiết kế Scheme + MAPA ở Ngày 2.
+Bám sát **Primary Business Anchor (`SRC-REQ-001` — Bước 1 của chị Nhi)** về phân tích chính sách thu nhập giữa các công ty và đề xuất chính sách phù hợp tại thị trường VN (tăng doanh số, chất lượng kinh doanh, hiệu quả chi phí & ROI), tách bạch rõ với tầm nhìn mở rộng của TJ (P1/P2). Sẵn sàng nạp tài liệu policy gốc hoặc chuyển sang xây Excel Reference Model MVP + 3 hướng Scheme ở Ngày 2.
 
 ## 2. Công việc đã hoàn thành
 - Kiểm tra workspace sạch (không có repo cha, không tạo repo lồng) và khởi tạo Git local (`main`).
@@ -50,22 +50,21 @@ Hoàn thành nền móng Ngày 1 (repo Level 1, Domain Discovery, Wheel Check, k
 - Đề bài gốc chính xác của chị Nhi.
 
 ## 8. Blocker
-- **BLOCKER P0 (Thiếu dữ liệu đầu vào gốc):** Workspace hiện chưa có:
-  1. Đề bài gốc của chị Nhi (`SRC-REQ-001`).
-  2. Tài liệu policy gốc (PDF/Excel/ảnh) của AIA, Kênh Alpha, Manulife, Chubb Life (`SRC-POL-AIA-001`, `SRC-POL-ALP-001`, `SRC-POL-MNL-001`, `SRC-POL-CHB-001`).
-- *Lưu ý:* Dự án **không bị dừng** vì blocker này — AGY vẫn có thể chuyển sang xây Excel Reference Model tham số hóa + 3 hướng Compensation Scheme + MAPA xuôi/ngược trên dữ liệu giả lập có nhãn rõ ràng nếu TJ chưa kịp cung cấp tài liệu.
+- **BLOCKER P0 (Thiếu tài liệu policy gốc):** Đề bài gốc của chị Nhi (`SRC-REQ-001`) **đã được xác nhận nguyên văn**. Hiện workspace chỉ còn thiếu:
+  - Tài liệu policy gốc (PDF/Excel/ảnh) của AIA, Kênh Alpha, Manulife, Chubb Life (`SRC-POL-AIA-001`, `SRC-POL-ALP-001`, `SRC-POL-MNL-001`, `SRC-POL-CHB-001`).
+- *Lưu ý:* Dự án **không bị dừng** vì blocker này — AGY vẫn có thể chuyển sang xây Excel Reference Model tham số hóa + 3 hướng Compensation Scheme trên dữ liệu giả lập có nhãn rõ ràng nếu TJ chưa kịp cung cấp tài liệu.
 
 ## 9. Quyết định cần TJ
-1. Cung cấp **đề bài gốc của chị Nhi** và **tài liệu policy đối thủ** (nếu có — đề xuất đặt vào thư mục `private/`, đã có trong `.gitignore`).
+1. Cung cấp **tài liệu policy đối thủ** (nếu có — đề xuất đặt vào thư mục `private/`, đã có trong `.gitignore`).
 2. Xác nhận **bối cảnh doanh nghiệp đích** (công ty cụ thể hay giả định công ty tầm trung/lớn; ưu tiên kênh truyền thống hay kênh toàn thời gian) và **định dạng Gói A** (Slide deck 5–7 slides hay tài liệu Markdown/Word/PDF).
-3. Nếu chưa có tài liệu policy gốc ngay hôm nay, xác nhận cho AGY tiến hành xây luôn **Excel Reference Model MVP + 3 hướng Scheme + MAPA xuôi/ngược** bằng tham số cấu hình (có nhãn `[SYNTHETIC_ASSUMPTION]`) để sẵn sàng lắp số thật khi có tài liệu.
+3. Nếu chưa có tài liệu policy gốc ngay hôm nay, xác nhận cho AGY tiến hành xây luôn **Excel Reference Model MVP + 3 hướng Scheme (Growth / Quality / Balanced-Hybrid) + Golden Test Cases** phục vụ trực tiếp `REQ-01..REQ-05` bằng tham số cấu hình (có nhãn `[SYNTHETIC_ASSUMPTION]`), sẵn sàng lắp số thật khi có tài liệu.
 
 ## 10. Trạng thái Git
-- Local repository khởi tạo mới tại `C:\Users\User\Desktop\TJ\Project\W24_Life-Insurance-Strategy-Lab`, nhánh `main`.
+- Local repository tại `C:\Users\User\Desktop\TJ\Project\W24_Life-Insurance-Strategy-Lab`, nhánh `main`.
 - Không có remote, chưa push GitHub.
 
 ## 11. Commit SHA
-- Đang chuẩn bị tạo commit khởi tạo đầu tiên (`chore: initialize W24 foundation, discovery, wheel check, and comparison v0.1`). Xem `git log -n 1` sau checkpoint.
+- Commit khởi tạo: `a5a6d13`. Commit cập nhật Business Anchor & Traceability Matrix: xem `git log -n 1`.
 
 ## 12. Các sản phẩm P0 còn thiếu
 - [ ] Danh mục Business Rules đã trích xuất từ policy gốc (có số trang nguồn).
