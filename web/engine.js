@@ -96,7 +96,9 @@
       role_mgr_direct_earned: (mgDirect + mgDeferred) / 4,
       role_mgr_indirect_extra: mgIndirect / 2,
       role_leader_earned: rdCash + rdDeferred,
-      deferred_share_pct: total > 0 ? deferred / total * 100 : 0
+      deferred_share_pct: total > 0 ? deferred / total * 100 : 0,
+      layers: {a_commission: annualFyc, b_agent_bonus: ag, c_mgr_direct: mgDirect, d_mgr_indirect: mgIndirect,
+        e_mgr_deferred: mgDeferred, f_rd_base: rdBase, g_rd_variable: rdVar, h_rd_deferred: rdDeferred, k2_factor: kf}
     };
   }
 

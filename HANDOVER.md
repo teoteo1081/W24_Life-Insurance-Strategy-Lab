@@ -1,8 +1,25 @@
 # HANDOVER.md — Điểm Bàn giao & Single Source of Truth (Trạng thái Hiện hành)
 
-**Cập nhật lần cuối** 2026-11-26 — Bản vá cục bộ F-01–F-05
+**Cập nhật lần cuối** 2026-11-26 (đêm) — Trang HTML tương tác, phương án Song Hành, bằng chứng trên R2
 
 ## Trạng thái hiện hành
+
+**Sản phẩm trình bày cho chị Nhi:** `outputs/interactive/W24_Strategy_Lab.html` (1 file, mở trực tiếp hoặc qua localhost; dựng lại bằng `py -3 scripts/build_html.py`).
+- Slicer phương án (Song Hành ⭐ / Cân bằng / Thưởng Theo Chất / Tự chỉnh), thanh K2 50–95%, 9 tab: Tổng quan, Thu nhập theo tầng, Chi phí & ROI, Chấm điểm, Tự chỉnh thông số, So sánh cơ chế, Cách tính, Bằng chứng, Giả định & giới hạn.
+- Phương án đề xuất tính trực tiếp bằng `web/engine.js`; `tests/test_web_parity.py` so 240 ca với Python (đạt, lệch < 0,02tr do làm tròn). Trang tự kiểm 60 ca mẫu khi mở.
+- Bằng chứng: 7 PDF trên R2 qua Worker chỉ-đọc `tj-w24-evidence` (DEC-11), link mở đúng trang `#page=N`. Kiểm mẫu độc lập 14/112 quy tắc: 14/14 khớp (`qa/spot-check-14-rules.md`).
+
+**Mô hình (PROPOSAL / MODEL_OUTPUT, không phải ROI thực tế):**
+- Thu nhập đại lý 3 năm có tái tục (`scripts/agent_income_multiyear.py`, giả định chung 20%/10%). Phương án Cân bằng cũ trả thấp nhất thị trường ở mọi tầng.
+- Song Hành (`scripts/calibrate_song_hanh.py`): Cân bằng + thưởng tái tục 50% + trả chậm nhiều hơn, rồi nâng tối thiểu để không tầng nào thấp nhất thị trường ở K2 82%. Kết quả K2 82%: chi phí 66,6% FYP (AIA 73,4%, Chubb 99,2%). Giới hạn: mức "không thấp nhất" chỉ giữ ở K2 ~75–90%.
+- Rubric v2 (14 tiêu chí, tính trực tiếp): ở K2 82% Thưởng Theo Chất dẫn 3/4 góc nhìn (3,57 so với Song Hành 3,45), Chubb dẫn góc "Ưu tiên tuyển dụng". Phép thử tách nguyên nhân: phần dẫn đến từ sàn K2 65% (vách đá); với sàn 60% Song Hành dẫn cả 4. Đã thêm Q3 (sốc thu nhập khi K2 giảm) theo căn cứ có từ trước; không chỉnh thêm.
+
+**TJ cần quyết (sáng 2026-11-27):**
+1. Khuyến nghị chính: Song Hành (không vách đá, an toàn cho lực lượng) hay Thưởng Theo Chất (điểm rubric cao hơn nhưng có vách đá 65%)?
+2. Push 4 commit local lên GitHub (PUBLIC) — cần TJ xác nhận.
+3. Token Cloudflare `CF_W24_TOKEN` hết hạn 2026-12-26.
+
+## Bản vá F-01–F-05 (trước đó cùng ngày)
 
 - **F-01/F-02** — Đồng bộ cách diễn đạt pháp lý thành `CONDITIONAL` / `SOURCE_NOT_VERIFIED`, sửa thông tin chế độ PUBLIC của repo và dẫn chiếu chính sách quyền tài liệu.
 - **F-03/F-04** — Kiểm tra đầu vào tùy chọn và thứ tự ngưỡng. Python và workbook áp trần hiệu dụng Direct Override 36% của phương án W24. Validator kiểm SHA-256, PDF thiếu hoặc chưa đăng ký, Source_ID, trạng thái rule và hygiene của file chưa stage. Validator chạy được trên bản xuất thiếu metadata Git.

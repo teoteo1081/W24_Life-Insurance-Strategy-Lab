@@ -27,13 +27,15 @@ from model.compensation.compensation_engine import (  # noqa: E402
 from agent_income_multiyear import agent_income_3y  # noqa: E402
 
 K2 = 82.0
-BASE = ProposalParams()
+# Khởi điểm của Song Hành = phương án Cân bằng + 2 cải tiến đã chứng minh bằng rubric (2026-11-26, phép thử tách nguyên nhân):
+# thưởng tái tục đại lý 50% (ngang AIA AIA-CV-010) và trả chậm 3 năm nhiều hơn (quản lý 15%, lãnh đạo vùng 70%).
+# Sàn K2 giữ 60% (không tạo "vách đá" như AIA 2027).
+BASE = replace(ProposalParams(), agent_ryc_bonus_rate=0.50, mgr_deferred_3y_rate=0.15, rd_deferred_3y_share=0.70)
 
 
 def agent_params(a: float) -> ProposalParams:
     return replace(BASE, name="Song_Hanh",
-                   agent_m_tier_rates=tuple(min(1.0, r * a) for r in BASE.agent_m_tier_rates),
-                   agent_ryc_bonus_rate=min(1.0, BASE.agent_ryc_bonus_rate * a))
+                   agent_m_tier_rates=tuple(min(1.0, r * a) for r in BASE.agent_m_tier_rates))
 
 
 def find_min(fn, lo=1.0, hi=4.0, step=0.01):

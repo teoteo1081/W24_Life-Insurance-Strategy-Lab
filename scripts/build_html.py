@@ -41,10 +41,9 @@ def params_dict(p: ProposalParams) -> dict:
 def plan_params() -> dict:
     base = ProposalParams()
     sh = ProposalParams(**{k: (tuple(v) if isinstance(v, list) else v) for k, v in calibrate_song_hanh()["params"].items()})
+    # Biến thể siết chất lượng: sàn K2 65% (dưới mức này thưởng = 0), giữ T+1 dưới 70%, bậc thưởng tháng ×0.92.
     quality = replace(sh, name="Thuong_Theo_Chat", k2_hard_floor_pct=65.0, k2_holdback_t1_threshold=70.0,
-                      agent_m_tier_rates=tuple(round(r * 0.92, 4) for r in sh.agent_m_tier_rates),
-                      agent_ryc_bonus_rate=0.50, mgr_deferred_3y_rate=round(sh.mgr_deferred_3y_rate * 1.25, 4),
-                      rd_deferred_3y_share=0.70)
+                      agent_m_tier_rates=tuple(round(r * 0.92, 4) for r in sh.agent_m_tier_rates))
     return {"song_hanh": params_dict(replace(sh, name="Song_Hanh")),
             "can_bang": params_dict(base),
             "theo_chat": params_dict(quality)}
@@ -60,6 +59,8 @@ def competitor_data() -> dict:
                                        "breakeven_gross_margin_pct", "total_earned_vnd_m", "role_agent_earned",
                                        "role_mgr_direct_earned", "role_mgr_indirect_extra", "role_leader_earned")}
             keep["deferred_share_pct"] = round(r["layer_f_deferred_3y"] / r["total_earned_vnd_m"] * 100, 2)
+            keep["layers"] = {k: r[k] for k in ("layer_a_commission", "layer_b_agent_bonuses", "layer_c_mgr_direct",
+                                                 "layer_d_mgr_indirect", "layer_e_rd_cash", "layer_f_deferred_3y")}
             ent[s][str(k2)] = keep
     agent = {"AIA": {}, "CHUBB": {}}
     for k2 in K2_RANGE:

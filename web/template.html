@@ -120,6 +120,7 @@ footer{color:var(--muted);font-size:12.5px;padding:20px 0 40px;border-top:1px so
 <section class="panel" id="p-rubric"></section>
 <section class="panel" id="p-tune"></section>
 <section class="panel" id="p-compare"></section>
+<section class="panel" id="p-method"></section>
 <section class="panel" id="p-evidence"></section>
 <section class="panel" id="p-assume"></section>
 <footer id="foot"></footer>
@@ -138,9 +139,9 @@ const $ = id => document.getElementById(id);
 
 /* ---------- Trạng thái ---------- */
 const PLAN_META = {
-  song_hanh: {name: "Song Hành", star: true, desc: "Khuyến nghị: không tầng nào bị trả thấp nhất thị trường, chi phí vẫn thấp hơn AIA và Chubb nhờ cấu trúc."},
+  song_hanh: {name: "Song Hành", star: true, desc: "Khuyến nghị: ở K2 tốt (~75–90%) không tầng nào bị trả thấp nhất thị trường; thưởng tái tục 50% (ngang AIA), trả chậm 3 năm ở tầng quản lý và vùng; chi phí vẫn thấp hơn AIA và Chubb nhờ cấu trúc (gắn K2, cắt chuỗi gián tiếp, không phí cố định cao)."},
   can_bang: {name: "Cân bằng (tiết kiệm)", desc: "Chi phí thấp nhất, nhưng mọi tầng đều bị trả thấp hơn đối thủ: rủi ro mất đại lý và quản lý giỏi."},
-  theo_chat: {name: "Thưởng Theo Chất", desc: "Biến thể của Song Hành: sàn K2 65%, thưởng tái tục +50% (ngang AIA), trả chậm nhiều hơn."},
+  theo_chat: {name: "Thưởng Theo Chất", desc: "Biến thể của Song Hành siết chất lượng: sàn K2 65% (dưới mức này thưởng = 0), giữ T+1 dưới 70%, thưởng tháng thấp hơn 8%. Rẻ hơn khi K2 xấu nhưng có “vách đá” thu nhập."},
   custom: {name: "Tự chỉnh", desc: "Bắt đầu từ Song Hành; kéo thông số ở tab “Tự chỉnh thông số”."}
 };
 const state = {plan: "song_hanh", k2: 82, tab: "overview", tier: "agent",
@@ -223,6 +224,10 @@ function criteria(k2) {
       v: e => e.plan ? planAgent(e.key, 85, 15).total_3y - planAgent(e.key, 60, 15).total_3y
                      : agentComp(e.key === "aia" ? "AIA" : "CHUBB", 85, 15).total_3y - agentComp(e.key === "aia" ? "AIA" : "CHUBB", 60, 15).total_3y},
     {id: "Q2", p: "Q", name: "Chống trục lợi & hủy sớm (định tính, có bằng chứng)", up: true, qual: "anti"},
+    {id: "Q3", p: "Q", name: "Sốc thu nhập lớn nhất khi K2 giảm 1 điểm (55–90%) — tránh “vách đá”", up: false, unit: "tr",
+      note: "Căn cứ có từ trước khi chấm: bản đề xuất (Trang 3) coi vách đá FY <70% → 0% của AIA 2027 là rủi ro gãy lực lượng; tham số sàn K2 60% được đặt để tránh vách đá.",
+      v: e => { let worst = 0; for (let k = 56; k <= 90; k++) { const a = e.plan ? planAgent(e.key, k, 15).total_3y : agentComp(e.key === "aia" ? "AIA" : "CHUBB", k, 15).total_3y;
+        const b = e.plan ? planAgent(e.key, k - 1, 15).total_3y : agentComp(e.key === "aia" ? "AIA" : "CHUBB", k - 1, 15).total_3y; worst = Math.max(worst, a - b); } return worst; }},
     {id: "R1", p: "R", name: "Tổng chi phí phân phối (% FYP)", up: false, unit: "%", v: e => e.ent.earned_pct_fyp},
     {id: "R2", p: "R", name: "Chi phí trên mỗi đồng phí còn sống năm 2 (%)", up: false, unit: "%", v: e => e.ent.cost_per_persisted_y2_pct},
     {id: "R3", p: "R", name: "Tiền mặt chi năm 1 (% FYP)", up: false, unit: "%", v: e => e.ent.cash_y1_pct_fyp},
@@ -234,8 +239,8 @@ function criteria(k2) {
     {id: "I1", p: "I", name: "Độ đơn giản, dễ truyền thông (định tính)", up: true, qual: "simple"}
   ];
 }
-function scoreAll(k2) {
-  const ents = entities(k2), cr = criteria(k2), w = state.weights;
+function scoreAll(k2, opts) {
+  const ents = entities(k2), cr = criteria(k2).filter(c => !(opts && opts.skip && opts.skip.includes(c.id))), w = state.weights;
   const rows = cr.map(c => {
     const vals = ents.map(e => {
       if (c.qual) { const q = QUAL[c.qual][e.plan ? "plan" : e.key]; return {raw: q[0], note: q[1], rules: q[2]}; }
@@ -276,7 +281,7 @@ function lineChart(series, opt) {
 
 /* ---------- Các tab ---------- */
 const TABS = [["overview", "Tổng quan"], ["tiers", "Thu nhập theo tầng"], ["cost", "Chi phí & ROI"], ["rubric", "Chấm điểm"],
-  ["tune", "Tự chỉnh thông số"], ["compare", "So sánh cơ chế"], ["evidence", "Bằng chứng"], ["assume", "Giả định & giới hạn"]];
+  ["tune", "Tự chỉnh thông số"], ["compare", "So sánh cơ chế"], ["method", "Cách tính"], ["evidence", "Bằng chứng"], ["assume", "Giả định & giới hạn"]];
 
 function renderOverview() {
   const k2 = state.k2, key = state.plan, e = planEnt(key, k2), aia = comp("AIA_Alpha_2026", k2), chb = comp("Chubb_Agency_2026", k2);
@@ -288,6 +293,7 @@ function renderOverview() {
   <div class="card" style="margin-bottom:12px"><div class="lbl">Phương án đang xem</div>
     <h2 style="margin:4px 0">${esc(PLAN_META[key].name)}${PLAN_META[key].star ? " ⭐ <span class='badge warn'>Khuyến nghị — chờ TJ duyệt</span>" : ""}</h2>
     <div class="muted">${esc(PLAN_META[key].desc)}</div></div>
+  ${rank[0].e.key !== key ? `<div class="card" style="margin-bottom:12px;border-color:var(--warn)"><b>⚠️ Theo rubric ở góc nhìn “${esc(PRESETS[state.weightsPreset].name)}”, phương án dẫn đầu là ${esc(rank[0].e.name)} (${fmt(rank[0].total, 2)} điểm), ${esc(PLAN_META[key].name)} xếp ${rank.findIndex(t => t.e.key === key) + 1} (${fmt(me.total, 2)}).</b><div class="small muted">Chênh lệch nhỏ và phụ thuộc trọng số — xem tab Chấm điểm để thấy phương án nào thắng ở tiêu chí nào.</div></div>` : ""}
   <h2>Trả lời 3 vế của đề bài (K2 = ${k2}%)</h2>
   <div class="grid g3">
     ${v(ag >= Math.min(agA, agC), "Doanh số: thu nhập đại lý", `Đại lý trung bình nhận ${fmt(ag)}tr trong 3 năm — AIA ${fmt(agA)}tr, Chubb ${fmt(agC)}tr. Thu nhập không thấp hơn đối thủ thì mới giữ và tuyển được đại lý.`)}
@@ -375,9 +381,9 @@ function renderRubric() {
   const k2 = state.k2, sc = scoreAll(k2), w = state.weights;
   const best = sc.totals.reduce((a, b) => b.total > a.total ? b : a);
   const sens = Object.entries(PRESETS).filter(([k]) => k !== "custom").map(([k, p]) => {
-    const keep = state.weights; state.weights = p.w; const s = scoreAll(k2); state.weights = keep;
-    const r = s.totals.slice().sort((a, b) => b.total - a.total);
-    return {name: p.name, win: r[0].e.name, list: r};
+    const keep = state.weights; state.weights = p.w; const s = scoreAll(k2), s2 = scoreAll(k2, {skip: ["Q3"]}); state.weights = keep;
+    const r = s.totals.slice().sort((a, b) => b.total - a.total), r2 = s2.totals.slice().sort((a, b) => b.total - a.total);
+    return {name: p.name, win: r[0].e.name, list: r, win2: r2[0].e.name};
   });
   $("p-rubric").innerHTML = `
   <h2>Chấm điểm 5 chính sách (K2 = ${k2}%)</h2>
@@ -389,14 +395,14 @@ function renderRubric() {
   <div class="tbl-wrap"><table><thead><tr><th>Tiêu chí</th>${sc.ents.map(e => `<th class="n"><span class="dot" style="background:${e.color}"></span>${esc(e.name)}</th>`).join("")}</tr></thead><tbody>
   ${Object.entries(PILLARS).map(([p, n]) => `<tr><th colspan="${sc.ents.length + 1}">${n} — trọng số ${w[p]}%</th></tr>` + sc.rows.filter(r => r.c.p === p).map(r => {
     const top = Math.max(...r.vals.map(v => v.score));
-    return `<tr><td>${esc(r.c.id)} · ${esc(r.c.name)}</td>${r.vals.map(v => `<td class="n ${Math.abs(v.score - top) < 1e-9 ? "win" : ""}" title="${esc(v.note || "")}"><span class="score">${fmt(v.score, 1)}</span><div class="small muted">${r.c.qual ? esc(v.note) : fmt(v.raw, r.c.unit === "%" ? 1 : 0) + (r.c.unit === "%" ? "%" : r.c.unit === "/3" ? "/3" : "tr")}</div>${v.rules ? v.rules.map(ruleChip).join("") : ""}</td>`).join("")}</tr>`;
+    return `<tr><td>${esc(r.c.id)} · ${esc(r.c.name)}${r.c.note ? `<div class="small muted">${esc(r.c.note)}</div>` : ""}</td>${r.vals.map(v => `<td class="n ${Math.abs(v.score - top) < 1e-9 ? "win" : ""}" title="${esc(v.note || "")}"><span class="score">${fmt(v.score, 1)}</span><div class="small muted">${r.c.qual ? esc(v.note) : fmt(v.raw, r.c.unit === "%" ? 1 : 0) + (r.c.unit === "%" ? "%" : r.c.unit === "/3" ? "/3" : "tr")}</div>${v.rules ? v.rules.map(ruleChip).join("") : ""}</td>`).join("")}</tr>`;
   }).join("")).join("")}
   <tr><th>Tổng điểm</th>${sc.totals.map(t => `<th class="n ${t === best ? "win" : ""}">${fmt(t.total, 2)}</th>`).join("")}</tr>
   </tbody></table></div>
   <h3>Độ nhạy: phương án dẫn đầu ở từng góc nhìn</h3>
-  <div class="tbl-wrap"><table><thead><tr><th>Góc nhìn</th><th>Dẫn đầu</th><th>Thứ tự</th></tr></thead><tbody>
-  ${sens.map(s => `<tr><td>${esc(s.name)}</td><td><b>${esc(s.win)}</b></td><td class="small">${s.list.map(t => esc(t.e.name) + " " + fmt(t.total, 2)).join(" · ")}</td></tr>`).join("")}</tbody></table></div>
-  <p class="note">Rubric do người làm bài thiết kế (chưa được hiệu chỉnh độc lập). Điểm tương đối thay đổi khi thêm/bớt phương án. Tiêu chí định tính (Q2, I1) có nêu căn cứ để người đọc tự đánh giá lại.</p>`;
+  <div class="tbl-wrap"><table><thead><tr><th>Góc nhìn</th><th>Dẫn đầu</th><th>Dẫn đầu nếu bỏ Q3</th><th>Thứ tự</th></tr></thead><tbody>
+  ${sens.map(s => `<tr><td>${esc(s.name)}</td><td><b>${esc(s.win)}</b></td><td>${esc(s.win2)}</td><td class="small">${s.list.map(t => esc(t.e.name) + " " + fmt(t.total, 2)).join(" · ")}</td></tr>`).join("")}</tbody></table></div>
+  <p class="note">Rubric do người làm bài thiết kế (chưa được hiệu chỉnh độc lập). Điểm tương đối thay đổi khi thêm/bớt phương án. Tiêu chí định tính (Q2, I1) có nêu căn cứ để người đọc tự đánh giá lại. Q1 và R4 thưởng cho việc cắt thưởng mạnh khi K2 thấp; Q3 đo mặt trái của cơ chế đó (cú sốc thu nhập). Cột “nếu bỏ Q3” cho thấy kết luận phụ thuộc Q3 đến đâu.</p>`;
   document.querySelectorAll("#wSeg button").forEach(b => b.onclick = () => {
     state.weightsPreset = b.dataset.w; if (PRESETS[b.dataset.w].w) state.weights = Object.assign({}, PRESETS[b.dataset.w].w); renderAll(); });
   document.querySelectorAll("#p-rubric input[data-p]").forEach(i => i.oninput = () => {
@@ -454,6 +460,51 @@ function renderCompare() {
   <div class="tbl-wrap"><table><thead><tr><th>#</th><th>Cơ chế</th><th>Quyết định</th><th>Lý do</th><th>Bằng chứng</th></tr></thead><tbody>
   ${m.map(x => `<tr><td>${x.no}</td><td><b>${esc(x.mechanism)}</b><div class="small muted">${esc(x.company)}</div></td><td><span class="tag ${x.decision}">${x.decision}</span></td><td class="small">${esc(x.why)}</td><td>${x.rules.map(ruleChip).join("") || "<span class='muted small'>chưa có tài liệu</span>"}</td></tr>`).join("")}
   </tbody></table></div>`;
+}
+
+
+function renderMethod() {
+  const k2 = state.k2, key = state.plan, p = JSON.parse(JSON.stringify(params(key))), f = 15;
+  const kf = E.k2Factor(k2, p.k2_hard_floor_pct), syc = E.renewalByYear(f, k2);
+  let tier = -1; for (let i = 4; i >= 0; i--) if (f >= p.agent_m_tier_thresholds[i]) { tier = i; break; }
+  const yrs = [0, 1, 2].map(y => ({y, b: E.agentBonuses12m(f, syc[y], k2, p), syc: syc[y] * 12}));
+  const e = planEnt(key, k2), L = e.layers, a = comp("AIA_Alpha_2026", k2), c = comp("Chubb_Agency_2026", k2);
+  const tr = (label, formula, v) => `<tr><td>${label}</td><td class="small muted">${formula}</td><td class="n">${fmt(v, 1)}</td></tr>`;
+  const lay = x => x.layers ? [x.layers.layer_a_commission, x.layers.layer_b_agent_bonuses, x.layers.layer_c_mgr_direct, x.layers.layer_d_mgr_indirect, x.layers.layer_e_rd_cash, x.layers.layer_f_deferred_3y] : [];
+  const mine = [L.a_commission, L.b_agent_bonus, L.c_mgr_direct, L.d_mgr_indirect, L.f_rd_base + L.g_rd_variable, L.e_mgr_deferred + L.h_rd_deferred];
+  const layerNames = ["A. Hoa hồng FYC (30% × 12.000tr FYP)", "B. Thưởng 20 đại lý", "C. Quản lý trực tiếp (4 người)", "D. Gián tiếp (2 quản lý cấp cao)", "E. Lãnh đạo vùng — tiền mặt", "F. Trả chậm 3 năm (quản lý + vùng)"];
+  $("p-method").innerHTML = `
+  <h2>Các con số được tính thế nào — ${esc(PLAN_META[key].name)}, K2 = ${k2}%</h2>
+  <p class="muted small">Mọi bảng dưới đây tính lại ngay khi đổi phương án, K2 hay thông số. Đơn vị: triệu VND.</p>
+  <h3>1. Thu nhập 3 năm của một đại lý trung bình (15tr FYC/tháng)</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>Khoản</th><th>Công thức</th><th class="n">Năm 1</th><th class="n">Năm 2</th><th class="n">Năm 3</th></tr></thead><tbody>
+    <tr><td>Hoa hồng FYC</td><td class="small muted">15 × 12 tháng</td>${yrs.map(() => `<td class="n">180,0</td>`).join("")}</tr>
+    <tr><td>Hoa hồng tái tục</td><td class="small muted">FYP năm cũ × K2 × 20% (năm 3 cộng thêm × 92% × 10%) — giả định chung mọi hãng</td>${yrs.map(r => `<td class="n">${fmt(r.syc, 1)}</td>`).join("")}</tr>
+    <tr><td>Thưởng tháng</td><td class="small muted">15 × ${tier >= 0 ? fmt(p.agent_m_tier_rates[tier] * 100, 2) + "% (bậc " + (tier + 1) + ", ≥ " + p.agent_m_tier_thresholds[tier] + "tr)" : "0%"} × hệ số K2 ${fmt(kf, 2)} × 12</td>${yrs.map(r => `<td class="n">${fmt(r.b.monthly, 1)}</td>`).join("")}</tr>
+    <tr><td>Thưởng đều đặn quý</td><td class="small muted">thưởng tháng × ${fmt(p.agent_q_consistency_3m * 100, 0)}% nếu cả 3 tháng ≥ 4tr FYC</td>${yrs.map(r => `<td class="n">${fmt(r.b.q_consistency, 1)}</td>`).join("")}</tr>
+    <tr><td>Thưởng MDRT</td><td class="small muted">FYC năm × ${fmt(p.agent_annual_mdrt_rate * 100, 0)}% × hệ số K2 nếu FYC năm ≥ 400tr</td>${yrs.map(r => `<td class="n">${fmt(r.b.mdrt, 1)}</td>`).join("")}</tr>
+    <tr><td>Thưởng tái tục</td><td class="small muted">hoa hồng tái tục × ${fmt(p.agent_ryc_bonus_rate * 100, 0)}% nếu K2 ≥ 75%</td>${yrs.map(r => `<td class="n">${fmt(r.b.ryc, 1)}</td>`).join("")}</tr>
+    <tr><th>Tổng</th><th></th>${yrs.map(r => `<th class="n">${fmt(180 + r.syc + r.b.total, 1)}</th>`).join("")}</tr>
+  </tbody></table></div>
+  <p class="small muted">Hệ số K2 của phương án: ≥ 85% → 1,20 · ≥ 80% → 1,10 · ≥ 75% → 1,00 · ≥ 70% → 0,85 · ≥ sàn ${p.k2_hard_floor_pct}% → 0,60 · dưới sàn → 0. Đối thủ dùng đúng công thức trong tài liệu của họ (engine Python, mỗi hàm gắn mã quy tắc — xem tab Bằng chứng).</p>
+  <h3>2. Tổng chi phí toàn hệ thống — 1 vùng 12.000tr FYP/năm</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>Lớp chi phí</th><th class="n">${esc(PLAN_META[key].name)}</th><th class="n">AIA Alpha 2026</th><th class="n">Chubb Life 2026</th></tr></thead><tbody>
+    ${layerNames.map((n, i) => `<tr><td>${n}</td><td class="n">${fmt(mine[i], 1)}</td><td class="n">${fmt(lay(a)[i], 1)}</td><td class="n">${fmt(lay(c)[i], 1)}</td></tr>`).join("")}
+    <tr><th>Tổng chi phí</th><th class="n">${fmt(e.total_earned, 1)}</th><th class="n">${fmt(a.total_earned_vnd_m, 1)}</th><th class="n">${fmt(c.total_earned_vnd_m, 1)}</th></tr>
+    <tr><td>÷ 12.000tr FYP</td><td class="n">${pct(e.earned_pct_fyp)}</td><td class="n">${pct(a.earned_pct_fyp)}</td><td class="n">${pct(c.earned_pct_fyp)}</td></tr>
+  </tbody></table></div>
+  <p class="small muted">Phương án ${esc(PLAN_META[key].name)}: C = 3.600 × min(trần ${fmt(p.mgr_direct_max_rate * 100, 1)}%, ${fmt(p.mgr_direct_base_rate * 100, 1)}% × ${fmt(kf, 2)}); D = C × 50% × ${fmt(p.mgr_indirect_l1_rate * 100, 0)}%; E = ${fmt(p.rd_base_monthly, 2)}tr × 12 × 131,25% + 3.600 × ${fmt(p.rd_direct_fyc_rate * 100, 2)}% × ${fmt(kf, 2)}; F (chỉ khi K2 ≥ 75%) = 3.600 × ${fmt(p.mgr_deferred_3y_rate * 100, 2)}% + phần override vùng × ${fmt(p.rd_deferred_3y_share * 100, 0)}%. Doanh thu chỉ tính một lần, không cộng trùng giữa các tầng.</p>
+  <h3>3. Các chỉ số khác</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>Chỉ số</th><th>Công thức</th><th class="n">Giá trị</th></tr></thead><tbody>
+    ${tr("Tiền mặt năm 1 (% FYP)", "(tổng chi phí − lớp F trả chậm) ÷ 12.000", e.cash_y1_pct_fyp)}
+    ${tr("Chi phí / phí còn sống năm 2 (%)", "tổng chi phí ÷ (12.000 × K2)", e.cost_per_persisted_y2_pct)}
+    ${tr("Thưởng đại lý (% FYP)", "lớp B ÷ 12.000 — so ngưỡng tham chiếu 30% Điều 52 (CONDITIONAL)", e.art52_bonus_pct_fyp)}
+    ${tr("Biên gộp hòa vốn (%)", "tổng chi phí % FYP + OpEx " + state.opex + "%", e.breakeven_gross_margin_pct)}
+  </tbody></table></div>
+  <h3>4. Điểm rubric</h3>
+  <p class="small">Mỗi tiêu chí: điểm = 1 + 4 × (giá trị − kém nhất) ÷ (tốt nhất − kém nhất) trong nhóm 5 chính sách đang so (tiêu chí “thấp hơn tốt hơn” thì đảo chiều). Điểm trụ = trung bình các tiêu chí của trụ. Tổng = Σ (điểm trụ × trọng số) ÷ Σ trọng số. Hai tiêu chí định tính chấm 1–5 kèm lý do và mã quy tắc.</p>
+  <h3>5. “Cần bán thêm bao nhiêu”</h3>
+  <p class="small">Lợi nhuận = (biên đóng góp − OpEx) × FYP − chi phí phân phối. Khi FYP tăng (1 + u) nhờ thêm đại lý cùng năng suất, mọi chi phí tăng theo tỷ lệ trừ phí cơ bản lãnh đạo vùng. Giải u sao cho lợi nhuận phương án đang xem = lợi nhuận phương án Cân bằng ở FYP hiện tại.</p>`;
 }
 
 function renderEvidence() {
@@ -525,7 +576,7 @@ function renderAll() {
   document.querySelectorAll("#planSeg button").forEach(b => b.onclick = () => { state.plan = b.dataset.plan; renderAll(); });
   $("tabs").innerHTML = TABS.map(([k, n]) => `<button type="button" role="tab" data-tab="${k}" aria-selected="${state.tab === k}">${n}</button>`).join("");
   document.querySelectorAll("#tabs button").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; showTab(); });
-  renderOverview(); renderTiers(); renderCost(); renderRubric(); renderTune(); renderCompare(); renderAssume();
+  renderOverview(); renderTiers(); renderCost(); renderRubric(); renderTune(); renderCompare(); renderMethod(); renderAssume();
   showTab();
 }
 function showTab() {
