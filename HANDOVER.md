@@ -7,6 +7,19 @@
 
 ---
 
+## Kết quả Targeted Level 2 mới nhất — Codex (2026-11-26)
+
+- **VERIFIED FACT:** Codex kiểm chứng độc lập snapshot `a308f0f` bằng Microsoft Excel **16.0**, đối chiếu executable Office16 trong phiên tương tác: full recalculation, lưu và đọc lại thành công; **0** lỗi công thức, **20/20** Golden, **12/12** Python/Excel parity, **2/2** perturbations đạt. Workbook dựng lại có **14 sheets / 915 công thức**.
+- **Phạm vi equivalence:** cùng tên sheet, 20 Golden values và 12 enterprise scenario outputs so với `v1.xlsx`; không khẳng định tương đương mọi ô hoặc mọi miền đầu vào.
+- **VERIFIED FACT:** Đã khôi phục F-01…F-05; các findings vẫn **OPEN**. Codex tái lập các lỗi trọng yếu về optional-input `NaN/Inf`, thresholds đảo thứ tự và validator. Tổng thể Level 2 vẫn **PARTIAL**.
+- **COM:** Đăng ký theo người dùng trỏ WPS, cấp máy trỏ Microsoft Excel. Khởi động trực tiếp Office16 và giữ cùng COM instance đã cho phép kiểm chứng Microsoft Excel 16.0. Nguyên nhân chính xác của lỗi `80080005` trước đây vẫn **UNKNOWN**; chưa chứng minh do sandbox. Bằng chứng AGY COM 12.0 trước đây giữ trạng thái `SELF_VERIFIED`, không dùng thay cho lượt Codex 16.0.
+- **Bằng chứng:** Báo cáo `Codex_Targeted_Level2_Closure_a308f0f.md`, `codex-ms-excel-results.json`, transcript COM và probes được giữ ngoài repository PUBLIC; không đưa bằng chứng chi tiết vào commit.
+- **Tiếp theo:** TJ duyệt riêng việc vá F-01…F-05 bởi AGY, sau đó kiểm chứng độc lập; Level 3 chưa được triển khai. Phê duyệt commit/push tài liệu hiện tại được ghi tại **DEC-10**.
+
+Các mục dưới giữ kết quả bàn giao trước targeted verification để đối chiếu; trạng thái mới nhất là phần này.
+
+---
+
 ## 1. Trạng thái Trưởng thành & Kiểm chứng Hiện tại (Trung thực — Không Thổi phồng)
 
 - **Audited Baseline (`5cb7a21` — Codex):** **Level 1 (Organized)** với năng lực Level 2 giới hạn trong Python; `Repository Reproducibility = FAIL`, `Architecture Extensibility = FAIL`, `Public Portfolio Readiness = FAIL`.
