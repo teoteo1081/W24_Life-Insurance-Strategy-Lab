@@ -70,7 +70,6 @@ Hoàn tất toàn bộ **Execution Contract: Post-Audit Remediation, Comprehensi
 ---
 
 ## 5. Trạng thái Git & Quyết định Cần TJ
-- **Repository GitHub:** `https://github.com/teoteo1081/W24_Life-Insurance-Strategy-Lab` — Đã xác minh **`PRIVATE`** (`gh repo view`).
-- **Baseline đã đồng bộ trên `origin/main`:** `5c2d13bbe060bee03e9dc4a9391b2df8c2e84cf9` (chứa 7 PDF nguồn `private/sources/` đã được TJ duyệt trước đó).
-- **Trạng thái Local Commit mới:** AGY chỉ tạo **LOCAL commit trên nhánh `main`**, **TUYỆT ĐỐI KHÔNG tự ý push lên GitHub** theo đúng lệnh quản trị (`DEC-07`).
-- **7 Quyết định Mở đang chờ TJ tại `docs/decisions/decision-register.md`:** `DEC-01` (`ERR-DOC-01`), `DEC-02` (`ERR-DOC-02`), `DEC-03` (Công báo pháp lý), `DEC-04` (Bổ sung PDF thiếu), `DEC-05` (Trọng số & Biến thể Đề xuất), `DEC-06` (Tham số VNB/OpEx nội bộ), và **`DEC-07` (Phê duyệt push local commit lên GitHub PRIVATE hoặc chạy Codex Independent Audit đợt 2 trước)**.
+- **Repository GitHub:** `https://github.com/teoteo1081/W24_Life-Insurance-Strategy-Lab` — Đã chuyển sang chế độ **`PUBLIC`** và đồng bộ nhánh `main` với `origin/main` theo **phê duyệt tường minh (Lựa chọn D) của Business Owner TJ ngày 2026-11-26** sau khi đã tiếp nhận đầy đủ cảnh báo về 7 file PDF nguồn tại `private/sources/`.
+- **Các mốc Commit chính trên `main`:** `7bcf70e` (G1 Deep — Codex audited) → `5c2d13b` (Track 7 PDFs) → `852ca87` (Post-Audit Remediation, 12-Method Benchmarking, Excel 12.0 COM Verified Model & Package A) → commit ghi nhận quyết định `DEC-07`.
+- **6 Quyết định Mở còn lại đang chờ TJ tại `docs/decisions/decision-register.md`:** `DEC-01` (`ERR-DOC-01`), `DEC-02` (`ERR-DOC-02`), `DEC-03` (Công báo pháp lý), `DEC-04` (Bổ sung PDF thiếu), `DEC-05` (Trọng số & Biến thể Đề xuất), `DEC-06` (Tham số VNB/OpEx nội bộ). `DEC-07` đã đóng (`APPROVED — OPTION D`).

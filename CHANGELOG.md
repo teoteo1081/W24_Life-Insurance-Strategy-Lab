@@ -2,6 +2,12 @@
 
 Tất cả thay đổi quan trọng của dự án `W24_Life-Insurance-Strategy-Lab` được ghi nhận tại đây.
 
+## [0.4.1] - 2026-11-26 (BO-Approved Public Visibility & Remote Sync)
+
+### Changed
+- Theo phê duyệt tường minh của Business Owner (TJ — Lựa chọn D sau khi tiếp nhận cảnh báo bảo mật về `private/sources/`): đồng bộ nhánh `main` (bao gồm `852ca87`) lên `origin/main` và chuyển repository GitHub `teoteo1081/W24_Life-Insurance-Strategy-Lab` sang chế độ **`PUBLIC`**.
+- Cập nhật trạng thái đóng cho `DEC-07` tại `docs/decisions/decision-register.md` và đồng bộ `HANDOVER.md`.
+
 ## [0.4.0] - 2026-11-26 (Post-Audit Remediation, 12-Method Benchmarking, Excel 12.0 COM Verified Model & Package A)
 
 ### Added
