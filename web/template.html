@@ -19,10 +19,10 @@
   --bg:light-dark(#ffffff,#0d1416);--surface:light-dark(#ffffff,#121c1f);--tint:light-dark(#f3f6f6,#172327);
   --ink:light-dark(#14161a,#e8eeee);--muted:light-dark(#4f5862,#a7b3b6);--line:light-dark(#dfe4e6,#26353a);
   --accent:light-dark(#0b5d63,#4fc1c4);--accent-ink:light-dark(#ffffff,#0d1416);--accent-soft:light-dark(#e3f1f1,#123236);
-  --comp:light-dark(#5c6670,#8d9aa0);--alt:light-dark(#b9c2c7,#4a585d);
+  --comp:light-dark(#5c6670,#8d9aa0);--alt:light-dark(#79838a,#7b8a90);
   --good:light-dark(#1b7a3d,#5fd08a);--good-soft:light-dark(#e6f4ea,#14301f);--bad:light-dark(#b42318,#f97066);--bad-soft:light-dark(#fdecea,#3a1714);
   --warn:light-dark(#8a5a00,#e6b450);--warn-soft:light-dark(#fff4d6,#33280f);
-  --s-plan:var(--accent);--s-aia:light-dark(#b42318,#f97066);--s-aia27:light-dark(#e08a83,#f4a8a1);--s-chubb:light-dark(#5b3fb0,#a996f5);--s-mnl:light-dark(#8a5a00,#e6b450);--s-alt:var(--alt)}
+  --s-plan:var(--accent);--s-aia:light-dark(#b42318,#f97066);--s-aia27:light-dark(#e08a83,#f4a8a1);--s-chubb:light-dark(#5b3fb0,#a996f5);--s-mnl:light-dark(#8a5a00,#e6b450);--s-alt:var(--alt);--field:light-dark(#8a949b,#6f7f85)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Be Vietnam Pro",system-ui,"Segoe UI",Roboto,Arial,sans-serif;overflow-x:clip}
@@ -39,7 +39,7 @@ h3{font-size:16px;font-weight:600;margin:18px 0 8px}
 .ctl{display:flex;flex-direction:column;gap:5px}
 .ctl label,.lbl{font-size:13px;color:var(--muted);font-weight:500}
 .seg{display:flex;flex-wrap:wrap;gap:4px}
-.seg button,.btn{font:inherit;font-size:14px;min-height:38px;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.seg button,.btn{font:inherit;font-size:14px;min-height:38px;padding:6px 12px;border-radius:8px;border:1px solid var(--field);background:var(--surface);color:var(--ink);cursor:pointer}
 .seg button:hover,.btn:hover{border-color:var(--accent)}
 .seg button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
 .btn:focus-visible,.seg button:focus-visible,nav.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -87,7 +87,7 @@ tr.plan td{background:var(--accent-soft)}
 .ev{display:inline-block;font-size:13px;padding:2px 8px;border-radius:6px;background:var(--tint);border:1px solid var(--line);text-decoration:none;color:var(--ink);margin:2px 4px 2px 0;white-space:nowrap}
 .ev:hover{border-color:var(--accent)}
 .muted{color:var(--muted)}.small{font-size:13.5px}
-.tag{font-size:12px;font-weight:700;padding:2px 7px;border-radius:5px}
+.tag{font-size:13px;font-weight:700;padding:2px 7px;border-radius:5px}
 .tag.ADOPT{background:var(--good-soft);color:var(--good)}.tag.ADAPT{background:var(--accent-soft);color:var(--accent)}
 .tag.AVOID{background:var(--bad-soft);color:var(--bad)}.tag.INVESTIGATE,.tag.UNKNOWN{background:var(--warn-soft);color:var(--warn)}
 .chart{width:100%;height:auto;display:block}
@@ -98,7 +98,7 @@ tr.plan td{background:var(--accent-soft)}
 .sl input{width:100%}
 .note{font-size:14px;color:var(--muted);border-top:1px solid var(--line);margin-top:14px;padding-top:10px;max-width:100ch}
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
-.filters input,.filters select,input[type=number]{font:inherit;font-size:16px;padding:7px 10px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.filters input,.filters select,input[type=number]{font:inherit;font-size:16px;padding:7px 10px;border-radius:8px;border:1px solid var(--field);background:var(--surface);color:var(--ink)}
 .bar{height:6px;border-radius:3px;background:var(--tint);overflow:hidden;margin-top:4px}
 .bar>i{display:block;height:100%;background:var(--accent)}
 .score{font-weight:700;font-variant-numeric:tabular-nums}
@@ -111,15 +111,15 @@ tr.plan td{background:var(--accent-soft)}
 .app.pdf-open{grid-template-columns:232px minmax(0,1fr) clamp(380px,38vw,820px)}
 .side{position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--tint);border-right:1px solid var(--line);padding:16px 10px 20px}
 .brand{font-weight:800;font-size:15px;line-height:1.3;padding:2px 8px 12px;border-bottom:1px solid var(--line);margin-bottom:6px}
-.side-title{font-size:12.5px;font-weight:700;color:var(--muted);padding:12px 8px 4px}
+.side-title{font-size:13px;font-weight:700;color:var(--muted);padding:12px 8px 4px}
 .navl{display:flex;flex-direction:column;gap:2px}
 .navl button{font:inherit;font-size:14.5px;text-align:left;padding:7px 8px;border:0;border-left:3px solid transparent;border-radius:6px;background:transparent;color:var(--muted);cursor:pointer;min-height:36px}
 .navl button:hover{background:var(--surface);color:var(--ink)}
-.navl button[aria-pressed="true"],.navl button[aria-selected="true"]{background:var(--surface);color:var(--ink);border-left-color:var(--accent);font-weight:600}
+.navl button[aria-pressed="true"],.navl button[aria-current="page"]{background:var(--surface);color:var(--ink);border-left-color:var(--accent);font-weight:600}
 .navl button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .side input[type=range]{width:100%;padding:0 6px}
 .side .btn{width:calc(100% - 8px);margin:14px 4px 0}
-.side-note{font-size:12.5px;color:var(--muted);padding:10px 8px 0;line-height:1.45}
+.side-note{font-size:13px;color:var(--muted);padding:10px 8px 0;line-height:1.45}
 .main{min-width:0}
 .pdfpane{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;border-left:1px solid var(--line);background:var(--surface)}
 .pdfpane[hidden]{display:none!important}
@@ -132,14 +132,38 @@ tr.plan td{background:var(--accent-soft)}
   .side{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:10px 16px}
   .navl{flex-direction:row;flex-wrap:wrap}
   .navl button{border-left:0;border-bottom:3px solid transparent;border-radius:6px}
-  .navl button[aria-pressed="true"],.navl button[aria-selected="true"]{border-bottom-color:var(--accent)}
+  .navl button[aria-pressed="true"],.navl button[aria-current="page"]{border-bottom-color:var(--accent)}
   .side .btn{width:auto}
   .pdfpane{position:fixed;inset:0;z-index:50;height:100%}
+}
+
+.skip{position:absolute;left:-999px;top:8px;z-index:100;background:var(--accent);color:var(--accent-ink);padding:8px 12px;border-radius:8px}
+.skip:focus{left:8px}
+.stepn{display:inline-block;min-width:1.6em;color:var(--muted);font-variant-numeric:tabular-nums;font-weight:600}
+.navl button[aria-current="page"] .stepn{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+/* Chế độ trình bày: chữ lớn để chiếu, ẩn phần thử nghiệm */
+body.present .main{zoom:1.16}
+body.present .side{font-size:15px}
+body.present #tabs button[data-tab="tune"],body.present #planSeg button[data-plan="custom"],body.present .side-note{display:none}
+/* Điện thoại: menu gọn thành các hàng cuộn ngang, nội dung lên màn hình đầu */
+@media (max-width:980px){
+  .side{padding:8px 12px;position:sticky;top:0;z-index:20}
+  .brand,.side-note,#presentBtn{display:none}
+  .side-title{display:none}
+  .side-title:has(#k2v){display:block;padding:2px 0 0}
+  .navl{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:4px}
+  .navl::-webkit-scrollbar{display:none}
+  .navl button{white-space:nowrap;min-height:36px;padding:6px 10px;flex:0 0 auto}
+  .side input[type=range]{margin:2px 0}
+  .side .btn{display:none}
+  #k2v::before{content:"K2 "}
 }
 footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1px solid var(--line);margin-top:24px}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Bỏ qua menu, tới nội dung</a>
 <div class="app" id="app">
 <aside class="side" aria-label="Điều hướng">
   <div class="brand">Chiến lược thu nhập đại lý · Bước 1</div>
@@ -148,11 +172,12 @@ footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1p
   <div class="side-title"><label for="k2">Kịch bản K2: <span class="k2v" id="k2v"></span></label></div>
   <input type="range" id="k2" min="50" max="95" step="1" value="82" aria-label="Kịch bản K2">
   <div class="side-title">Trang</div>
-  <nav class="navl" id="tabs" role="tablist"></nav>
-  <button type="button" class="btn" id="resetAll">↺ Về mặc định</button>
+  <nav class="navl" id="tabs" aria-label="Các trang"></nav>
+  <button type="button" class="btn" id="presentBtn" aria-pressed="false">Chế độ trình bày</button>
+  <button type="button" class="btn" id="resetAll">Về mặc định</button>
   <div class="side-note" id="sideNote"></div>
 </aside>
-<main class="main"><div class="wrap">
+<main class="main" id="main" tabindex="-1"><div class="wrap">
 <header class="top">
   <h1>Chính sách thu nhập đại lý: trả ngang thị trường, chi phí thấp hơn</h1>
   <p class="sub">So sánh chính sách 2026 của AIA (kênh Alpha), Chubb Life và Manulife (tầng lãnh đạo vùng), và đề xuất phương án Song Hành cho thị trường Việt Nam.</p>
@@ -183,6 +208,7 @@ const DATA = /*__DATA_JSON__*/null;
 const GOLDEN = /*__GOLDEN_JSON__*/null;
 const E = window.W24Engine;
 const fmt = (x, d = 0) => (x == null || !isFinite(x)) ? "—" : x.toLocaleString("vi-VN", {minimumFractionDigits: d, maximumFractionDigits: d});
+const DOC = '<svg aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" style="vertical-align:-2px;margin-right:4px"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M4 1.75h5.5L12.5 5v9.25H4zM9.5 1.75V5h3M6 8.5h4.5M6 11h4.5"/></svg>';
 const pct = (x, d = 1) => fmt(x, d) + "%";
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
 const $ = id => document.getElementById(id);
@@ -209,7 +235,7 @@ function ruleChip(id) {
   const r = RULES[base];
   if (!r || !r.refs.length) return `<span class="ev" title="${esc(r ? r.ref : "")}">${esc(id)}</span>`;
   const f = r.refs[0];
-  return `<a class="ev" target="_blank" rel="noopener" href="${evUrl(f.sid, f.page)}" title="${esc(r.type)} — ${esc(r.ref)}">📄 ${esc(id)}${f.page ? " · tr." + f.page : ""}</a>`;
+  return `<a class="ev" target="_blank" rel="noopener" href="${evUrl(f.sid, f.page)}" title="${esc(r.type)} — ${esc(r.ref)}">${DOC}${esc(id)}${f.page ? " · tr." + f.page : ""}</a>`;
 }
 
 /* ---------- Số liệu cho một kịch bản ---------- */
@@ -319,19 +345,20 @@ function lineChart(series, opt) {
   const X = x => L + (x - x0) / (x1 - x0) * (W - L - R), Y = y => H - B - (y - y0) / (y1 - y0) * (H - T - B);
   let g = "";
   for (let i = 0; i <= 4; i++) { const yv = y0 + (y1 - y0) * i / 4;
-    g += `<line x1="${L}" x2="${W - R}" y1="${Y(yv)}" y2="${Y(yv)}" stroke="var(--line)"/><text x="${L - 6}" y="${Y(yv) + 4}" text-anchor="end" font-size="11" fill="var(--muted)">${fmt(yv, opt.yd || 0)}</text>`; }
-  (opt.xticks || []).forEach(xv => { g += `<text x="${X(xv)}" y="${H - B + 16}" text-anchor="middle" font-size="11" fill="var(--muted)">${xv}</text>`; });
+    g += `<line x1="${L}" x2="${W - R}" y1="${Y(yv)}" y2="${Y(yv)}" stroke="var(--line)"/><text x="${L - 6}" y="${Y(yv) + 4}" text-anchor="end" font-size="13" fill="var(--muted)">${fmt(yv, opt.yd || 0)}</text>`; }
+  (opt.xticks || []).forEach(xv => { g += `<text x="${X(xv)}" y="${H - B + 16}" text-anchor="middle" font-size="13" fill="var(--muted)">${xv}</text>`; });
   if (opt.marker != null) g += `<line x1="${X(opt.marker)}" x2="${X(opt.marker)}" y1="${T}" y2="${H - B}" stroke="var(--muted)" stroke-dasharray="3 3"/>`;
   series.forEach(s => { g += `<polyline fill="none" stroke="${s.color}" stroke-width="${s.w || 2}" ${s.dash ? 'stroke-dasharray="5 4"' : ""} points="${s.pts.map(p => X(p[0]) + "," + Y(p[1])).join(" ")}"><title>${esc(s.name)}</title></polyline>`; });
-  g += `<text x="${(L + W - R) / 2}" y="${H - 4}" text-anchor="middle" font-size="11.5" fill="var(--muted)">${esc(opt.xlabel || "")}</text>`;
+  g += `<text x="${(L + W - R) / 2}" y="${H - 4}" text-anchor="middle" font-size="13" fill="var(--muted)">${esc(opt.xlabel || "")}</text>`;
   return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(opt.label || "")}">${g}</svg>` +
     `<div class="legend">${series.map(s => `<span><span class="dot" style="background:${s.color}"></span>${esc(s.name)}</span>`).join("")}</div>`;
 }
 
 /* ---------- Các tab ---------- */
-const TABS = [["overview", "Tổng quan", ["p-overview"]], ["package", "Gói thu nhập theo cấp", ["p-package"]], ["money", "Thu nhập & chi phí", ["p-tiers", "p-cost"]],
-  ["rubric", "Chấm điểm", ["p-rubric"]], ["tune", "Tự chỉnh", ["p-tune"]],
-  ["evidence", "Cơ chế & bằng chứng", ["p-compare", "p-evidence"]], ["method", "Cách tính & giả định", ["p-method", "p-assume"]]];
+const TABS = [["overview", "Tổng quan", ["p-overview"]], ["package", "Gói thu nhập theo cấp", ["p-package"]],
+  ["learn", "Học từ đối thủ", ["p-compare"]], ["money", "Thu nhập & chi phí", ["p-tiers", "p-cost"]],
+  ["rubric", "Chấm điểm", ["p-rubric"]], ["evidence", "Bằng chứng", ["p-evidence"]],
+  ["method", "Cách tính & giả định", ["p-method", "p-assume"]], ["tune", "Tự chỉnh thông số", ["p-tune"]]];
 
 function barRows(items, unit, digits) {
   const max = Math.max(...items.map(i => i.v)) || 1;
@@ -351,7 +378,7 @@ function renderOverview() {
   const close = rank[0].e.key !== key
     ? `<p class="small muted">Theo rubric (góc nhìn “${esc(PRESETS[state.weightsPreset].name)}”), ${esc(rank[0].e.name)} được ${fmt(rank[0].total, 2)} điểm, ${esc(PLAN_META[key].name)} được ${fmt(me.total, 2)}. Chênh lệch nhỏ, chủ yếu do sàn K2 — xem tab Chấm điểm.</p>` : "";
   $("p-overview").innerHTML = `
-  <p class="finding">${esc(PLAN_META[key].name)}: chi phí ${pct(e.earned_pct_fyp)} FYP, ${dA >= 0 ? "thấp hơn AIA " + fmt(dA, 1) : "cao hơn AIA " + fmt(-dA, 1)} điểm; đại lý trung bình nhận ${fmt(ag)} triệu trong 3 năm (AIA ${fmt(agA)}, Chubb ${fmt(agC)}).</p>
+  <p class="finding" aria-live="polite">${esc(PLAN_META[key].name)}: chi phí ${pct(e.earned_pct_fyp)} FYP, ${dA >= 0 ? "thấp hơn AIA " + fmt(dA, 1) : "cao hơn AIA " + fmt(-dA, 1)} điểm; đại lý trung bình nhận ${fmt(ag)} triệu trong 3 năm (AIA ${fmt(agA)}, Chubb ${fmt(agC)}).</p>
   <p class="muted" style="max-width:90ch;margin:0 0 18px">${esc(PLAN_META[key].desc)}</p>
   <div class="grid g2">
     <div class="card"><h3 style="margin-top:0">Tổng chi phí phân phối, % FYP (K2 ${k2}%)</h3>${barRows(costItems, "%", 1)}<p class="small muted" style="margin-bottom:0">Thấp hơn là tốt hơn. AIA chưa gồm gói Exchange/Exchange Pro.</p></div>
@@ -498,8 +525,8 @@ function renderCost() {
       <p class="small muted">K2 là <b>kịch bản</b>, không phải kết quả mô hình dự báo. Chi phí giảm khi K2 thấp vì thưởng bị cắt theo K2.</p></div>
     <div class="card"><h3 style="margin-top:0">Đánh đổi: ${esc(PLAN_META[state.plan].name)} phải bán thêm bao nhiêu?</h3>
       <div class="sliders">
-        <div class="sl"><div class="row"><span>Biên đóng góp trước chi phí phân phối</span><b>${state.margin}% FYP</b></div><input type="range" id="mg" min="40" max="150" value="${state.margin}"></div>
-        <div class="sl"><div class="row"><span>OpEx văn phòng</span><b>${state.opex}% FYP</b></div><input type="range" id="ox" min="5" max="40" value="${state.opex}"></div>
+        <div class="sl"><div class="row"><span>Biên đóng góp trước chi phí phân phối</span><b>${state.margin}% FYP</b></div><input type="range" id="mg" aria-label="Biên đóng góp trước chi phí phân phối" min="40" max="150" value="${state.margin}"></div>
+        <div class="sl"><div class="row"><span>OpEx văn phòng</span><b>${state.opex}% FYP</b></div><input type="range" id="ox" aria-label="OpEx văn phòng" min="5" max="40" value="${state.opex}"></div>
       </div>
       <p>So với phương án <b>Cân bằng</b>, phương án này tốn ${extra >= 0 ? "thêm" : "ít hơn"} <b>${fmt(Math.abs(extra), 2)} tỷ/năm</b> trên vùng 12 tỷ FYP.</p>
       <p style="font-size:17px">${state.plan === "can_bang" ? "Đây là phương án gốc để so sánh." : up == null ? "⚠️ Ở biên này, phương án <b>không thể hòa vốn</b> dù bán thêm bao nhiêu." : `Cần FYP tăng <b>${fmt(up, 1)}%</b> để lợi nhuận bằng phương án Cân bằng.`}</p>
@@ -522,7 +549,7 @@ function renderRubric() {
   <p class="muted small">Mỗi tiêu chí đo bằng số từ mô hình (hoặc định tính có bằng chứng), quy về thang 1–5 <b>tương đối trong nhóm so sánh</b>: tốt nhất = 5, kém nhất = 1. Trụ = trung bình tiêu chí; tổng = trung bình trụ theo trọng số. Pháp lý là <b>cổng bắt buộc</b>, không cộng điểm: mọi phương án đang ở trạng thái <span class="badge warn">CONDITIONAL</span> chờ đối chiếu toàn văn 44/2026/VBHN-TT-BTC.</p>
   <div class="card" style="margin:10px 0">
     <div class="ctl"><span class="lbl">Góc nhìn chấm điểm</span><div class="seg" id="wSeg">${Object.entries(PRESETS).map(([k, p]) => `<button type="button" data-w="${k}" aria-pressed="${state.weightsPreset === k}">${esc(p.name)}</button>`).join("")}</div></div>
-    <div class="sliders" style="margin-top:10px">${Object.entries(PILLARS).map(([p, n]) => `<div class="sl"><div class="row"><span>${n}</span><b>${w[p]}%</b></div><input type="range" data-p="${p}" min="0" max="60" value="${w[p]}"></div>`).join("")}</div>
+    <div class="sliders" style="margin-top:10px">${Object.entries(PILLARS).map(([p, n]) => `<div class="sl"><div class="row"><span>${n}</span><b>${w[p]}%</b></div><input type="range" data-p="${p}" aria-label="Trọng số ${n}" min="0" max="60" value="${w[p]}"></div>`).join("")}</div>
   </div>
   <div class="tbl-wrap"><table><thead><tr><th>Tiêu chí</th>${sc.ents.map(e => `<th class="n"><span class="dot" style="background:${e.color}"></span>${esc(e.name)}</th>`).join("")}</tr></thead><tbody>
   ${Object.entries(PILLARS).map(([p, n]) => `<tr><th colspan="${sc.ents.length + 1}">${n} — trọng số ${w[p]}%</th></tr>` + sc.rows.filter(r => r.c.p === p).map(r => {
@@ -561,8 +588,8 @@ function renderTune() {
   <h2>Tự chỉnh thông số (bắt đầu từ Song Hành)</h2>
   <p class="muted small">Kéo thanh trượt: trang tính lại ngay bằng engine JS đã kiểm khớp Python. Huy hiệu đỏ = vi phạm điều kiện. ${state.plan !== "custom" ? "<b>Chọn “Tự chỉnh” ở thanh Phương án để xem kết quả này ở mọi tab.</b>" : ""}</p>
   <div class="grid g2">
-    <div class="card"><div class="sliders">${TUNE.map((t, i) => `<div class="sl"><div class="row"><span>${esc(t[2])}</span><b>${show(t, get(t))}</b></div><input type="range" data-i="${i}" min="${t[3]}" max="${t[4]}" step="${t[5]}" value="${get(t)}"></div>`).join("")}</div>
-      <div style="margin-top:10px"><button type="button" class="ev" id="resetTune">↺ Về Song Hành</button></div></div>
+    <div class="card"><div class="sliders">${TUNE.map((t, i) => `<div class="sl"><div class="row"><span>${esc(t[2])}</span><b>${show(t, get(t))}</b></div><input type="range" data-i="${i}" aria-label="${esc(t[2])}" min="${t[3]}" max="${t[4]}" step="${t[5]}" value="${get(t)}"></div>`).join("")}</div>
+      <div style="margin-top:10px"><button type="button" class="ev" id="resetTune">Về Song Hành</button></div></div>
     <div class="card">${ok ? `
       <div class="badges">${cons.map(c => `<span class="badge ${c.ok ? (c.cond ? "warn" : "good") : "bad"}">${c.ok ? "✓" : "✗"} ${esc(c.txt)}</span>`).join("")}</div>
       <div class="tbl-wrap" style="margin-top:10px"><table><thead><tr><th>Chỉ số (K2 ${k2}%)</th><th class="n">Tự chỉnh</th><th class="n">so với Song Hành</th></tr></thead><tbody>
@@ -588,7 +615,7 @@ function renderCompare() {
   const m = DATA.knowledge.adopt_matrix;
   $("p-compare").innerHTML = `
   <h2>Học gì từ đối thủ: Áp dụng / Cải tiến / Tránh</h2>
-  <p class="muted small">Mỗi cơ chế dẫn về quy tắc gốc; bấm 📄 để mở đúng trang tài liệu.</p>
+  <p class="muted small">Mỗi cơ chế dẫn về quy tắc gốc; bấm mã quy tắc để mở đúng trang tài liệu.</p>
   <div class="tbl-wrap"><table><thead><tr><th>#</th><th>Cơ chế</th><th>Quyết định</th><th>Lý do</th><th>Bằng chứng</th></tr></thead><tbody>
   ${m.map(x => `<tr><td>${x.no}</td><td><b>${esc(x.mechanism)}</b><div class="small muted">${esc(x.company)}</div></td><td><span class="tag ${x.decision}">${x.decision}</span></td><td class="small">${esc(x.why)}</td><td>${x.rules.map(ruleChip).join("") || "<span class='muted small'>chưa có tài liệu</span>"}</td></tr>`).join("")}
   </tbody></table></div>`;
@@ -648,7 +675,7 @@ function renderEvidence() {
   ${pdfs.map(s => { const n = cnt(s.id, () => true), im = cnt(s.id, r => r.impl === "IMPLEMENTED"), tp = cnt(s.id, r => r.calc === "TESTED_PASS");
     return `<tr><td><b>${esc(s.company)}</b> — ${esc(s.scheme)}<div class="small muted">${esc(s.id)} · ${esc(s.audience)}</div></td><td class="n">${esc(s.pages)}</td><td class="n">${n}</td>
     <td class="n">${im}<div class="bar"><i style="width:${n ? im / n * 100 : 0}%"></i></div></td><td class="n">${tp}<div class="bar"><i style="width:${n ? tp / n * 100 : 0}%"></i></div></td>
-    <td class="small">${esc(s.confidentiality)} · ${esc(s.rights)}</td><td><a class="ev" target="_blank" rel="noopener" href="${evUrl(s.id)}">📄 Xem toàn văn</a></td></tr>`; }).join("")}
+    <td class="small">${esc(s.confidentiality)} · ${esc(s.rights)}</td><td><a class="ev" target="_blank" rel="noopener" href="${evUrl(s.id)}">${DOC}Xem toàn văn</a></td></tr>`; }).join("")}
   </tbody></table></div>
   <p class="note">Độ phủ: 116/116 trang đã đọc và phân loại (tự kiểm của người trích xuất). Một số quy tắc phụ thuộc văn bản chưa có (ví dụ Chubb 260005V, biểu hoa hồng AIA) nên chưa lập trình được — hiển thị đúng trạng thái, không giấu.</p>
   <h2 style="margin-top:20px">Kiểm mẫu độc lập 14 quy tắc ↔ trang PDF</h2>
@@ -688,7 +715,7 @@ function renderAssume() {
     <div class="card"><h3 style="margin-top:0">Thuế & bối cảnh thu nhập</h3>
       <p class="small">Thuế TNCN áp gần như giống nhau cho mọi hãng nên <b>không đổi thứ hạng</b>; chỉ ảnh hưởng thu nhập thực nhận. Bằng chứng duy nhất trong bộ tài liệu: AIA tạm khấu trừ 10% thuế trên phí giới thiệu chuyên viên mới ${ruleChip("AIA-CV-013")} (trang 8). Mức thuế chung cho thu nhập đại lý: <b>chưa đối chiếu văn bản</b>.</p>
       <div class="sl"><div class="row"><span>Thu nhập bình quân tham chiếu (triệu/tháng) — nhập từ nguồn chính thức</span></div>
-        <input type="number" id="avgInc" min="1" step="0.1" placeholder="ví dụ: số GSO mới nhất" value="${state.avgIncome || ""}" style="font:inherit;padding:6px;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--text)"></div>
+        <input type="number" id="avgInc" aria-label="Thu nhập bình quân tham chiếu, triệu đồng mỗi tháng" min="1" step="0.1" placeholder="ví dụ: số GSO mới nhất" value="${state.avgIncome || ""}" style="font:inherit;padding:6px;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--text)"></div>
       <p class="small" id="avgOut">${state.avgIncome ? `Đại lý trung bình (15tr FYC) năm 1 theo ${esc(PLAN_META[state.plan].name)}: ${fmt(ag15 / 12, 1)}tr/tháng ≈ <b>${fmt(ag15 / 12 / state.avgIncome, 1)} lần</b> mức tham chiếu.` : "Chưa nhập số tham chiếu."}</p></div>
   </div>`;
   $("avgInc").oninput = ev => { const v = parseFloat(ev.target.value); state.avgIncome = v > 0 ? v : null; renderAssume(); $("avgInc").focus(); };
@@ -704,11 +731,11 @@ function selfTest() {
 }
 function renderAll() {
   $("k2v").textContent = state.k2 + "%";
-  $("planSeg").innerHTML = Object.entries(PLAN_META).map(([k, m]) => `<button type="button" data-plan="${k}" aria-pressed="${state.plan === k}">${esc(m.name)}${m.star ? " ⭐" : ""}</button>`).join("");
+  $("planSeg").innerHTML = Object.entries(PLAN_META).map(([k, m]) => `<button type="button" data-plan="${k}" aria-pressed="${state.plan === k}">${esc(m.name)}${m.star ? ' <span class="tag ADAPT">đề xuất</span>' : ""}</button>`).join("");
   document.querySelectorAll("#planSeg button").forEach(b => b.onclick = () => { state.plan = b.dataset.plan; renderAll(); });
   $("k2").value = state.k2;
-  $("tabs").innerHTML = TABS.map(([k, n]) => `<button type="button" role="tab" data-tab="${k}" aria-selected="${state.tab === k}">${n}</button>`).join("");
-  $("sideNote").textContent = PLAN_META[state.plan].star ? "Song Hành là phương án đề xuất. Bấm 📄 ở bất kỳ đâu để xem trang tài liệu gốc bên phải." : "Đang xem: " + PLAN_META[state.plan].name + ".";
+  $("tabs").innerHTML = TABS.map(([k, n], i) => `<button type="button" data-tab="${k}" ${state.tab === k ? 'aria-current="page"' : ""}><span class="stepn">${i + 1}</span>${n}</button>`).join("");
+  $("sideNote").textContent = PLAN_META[state.plan].star ? "Song Hành là phương án đề xuất. Bấm vào mã quy tắc ở bất kỳ đâu để xem trang tài liệu gốc bên phải." : "Đang xem: " + PLAN_META[state.plan].name + ".";
   document.querySelectorAll("#tabs button").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; showTab(); window.scrollTo(0, 0); });
   renderOverview(); renderPackage(); renderTiers(); renderCost(); renderRubric(); renderTune(); renderCompare(); renderMethod(); renderAssume();
   showTab();
@@ -717,7 +744,7 @@ function showTab() {
   const t = TABS.find(x => x[0] === state.tab) || TABS[0];
   if (t[2].includes("p-evidence") && !$("rtb")) renderEvidence();
   document.querySelectorAll("section.panel").forEach(sec => sec.classList.toggle("on", t[2].includes(sec.id)));
-  document.querySelectorAll("#tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === state.tab));
+  document.querySelectorAll("#tabs button").forEach(b => b.dataset.tab === state.tab ? b.setAttribute("aria-current", "page") : b.removeAttribute("aria-current"));
 }
 $("k2").oninput = ev => { state.k2 = +ev.target.value; renderAll(); };
 const st = selfTest();
@@ -742,6 +769,11 @@ document.addEventListener("click", ev => {
   if (!a || a.id === "pdfNew" || ev.ctrlKey || ev.metaKey || ev.shiftKey || ev.button !== 0) return;
   ev.preventDefault(); openPdf(a.href);
 });
+$("presentBtn").onclick = () => {
+  const on = document.body.classList.toggle("present");
+  $("presentBtn").setAttribute("aria-pressed", on); $("presentBtn").textContent = on ? "Thoát chế độ trình bày" : "Chế độ trình bày";
+  if (on && state.tab === "tune") { state.tab = "overview"; showTab(); }
+};
 $("resetAll").onclick = () => {
   Object.assign(state, {plan: "song_hanh", k2: 82, tier: "agent", weightsPreset: "ttbv", weights: Object.assign({}, PRESETS.ttbv.w),
     custom: JSON.parse(JSON.stringify(DATA.plans.song_hanh)), margin: 85, opex: 20});
