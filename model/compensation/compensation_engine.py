@@ -1212,6 +1212,7 @@ class ProposalParams:
     agent_q_consistency_3m: float = 0.12   # +12% on monthly bonus when 3M active
     agent_annual_mdrt_rate: float = 0.10   # +10% on annual FYC >= 400M (MDRT tier)
     agent_ryc_bonus_rate: float = 0.25     # +25% on Y2 SYC/RYC when K2 >= 75%
+    mgr_direct_base_rate: float = 0.30     # Direct override base rate before K2 multiplier
     mgr_direct_max_rate: float = 0.36      # Direct override max 36% FYC NTT (vs Chubb 108%!)
     mgr_indirect_gate_fyc: float = 15.0    # Learned from Chubb: 0% indirect if NTT < 15M/M
     mgr_indirect_l1_rate: float = 0.35     # Max 3 gens (35/17.5/8.75%), NO infinite chain
@@ -1235,6 +1236,7 @@ def _validate_proposal_params(p: ProposalParams) -> None:
     _require_rate_0_to_1(p.agent_q_consistency_3m, "ProposalParams.agent_q_consistency_3m")
     _require_rate_0_to_1(p.agent_annual_mdrt_rate, "ProposalParams.agent_annual_mdrt_rate")
     _require_rate_0_to_1(p.agent_ryc_bonus_rate, "ProposalParams.agent_ryc_bonus_rate")
+    _require_rate_0_to_1(p.mgr_direct_base_rate, "ProposalParams.mgr_direct_base_rate")
     _require_rate_0_to_1(p.mgr_direct_max_rate, "ProposalParams.mgr_direct_max_rate")
     _require_non_negative_float(p.mgr_indirect_gate_fyc, "ProposalParams.mgr_indirect_gate_fyc")
     _require_rate_0_to_1(p.mgr_indirect_l1_rate, "ProposalParams.mgr_indirect_l1_rate")
@@ -1349,6 +1351,7 @@ def calc_enterprise_hierarchy_cost(
     k2_pct: float = 82.0,
     ul_fyc_rate: float = 0.30,
     home_office_opex_pct_fyp: float = 0.20,
+    params: Optional["ProposalParams"] = None,
 ) -> Dict[str, float]:
     """
     Standard Regional Hierarchy (1 Region = 12,000M FYP/year = 3,600M FYC/year):
@@ -1394,11 +1397,11 @@ def calc_enterprise_hierarchy_cost(
         art52_newbiz_bonuses = ag_bonuses_all
 
     elif scheme == "W24_Proposed_Balanced":
-        p = ProposalParams()
+        p = params or ProposalParams()
         ag = calc_proposal_agent_12m(agent_m_fyc, agent_m_syc, k2_pct=k2_pct, params=p)
         ag_bonuses_all = ag["total_bonuses_earned"] * 20.0
         k2_fac = proposal_k2_factor(k2_pct, p.k2_hard_floor_pct)
-        mg_direct_all = annual_fyc * min(p.mgr_direct_max_rate, 0.30 * k2_fac)
+        mg_direct_all = annual_fyc * min(p.mgr_direct_max_rate, p.mgr_direct_base_rate * k2_fac)
         mg_indirect_all = (mg_direct_all * 0.50) * p.mgr_indirect_l1_rate  # 2 sub-managers
         mg_deferred_all = annual_fyc * p.mgr_deferred_3y_rate if k2_pct >= 75.0 else 0.0
         rd_base = p.rd_base_monthly * 12.0 * min(1.40, 1.05 * 1.25)  # 105% FYP ach -> 131.25%
@@ -1438,6 +1441,13 @@ def calc_enterprise_hierarchy_cost(
         "art52_pass_30pct_cap": art52_bonus_pct_fyp <= 0.30,
         "cost_per_persisted_y2_pct": round(cost_per_persisted_y2_fyp * 100.0, 2),
         "breakeven_gross_margin_pct": round(breakeven_gross_margin_pct, 2),
+        # Per-role income on the same standard tree (Earned incl. deferred; VND million / person / year).
+        # Agent: 15M FYC/M (commission + bonuses). Direct manager: own override layer only (1 of 4).
+        # Indirect: extra indirect override for each of the 2 senior managers. Leader: RD/PAF+ tier.
+        "role_agent_earned": round((annual_fyc + ag_bonuses_all) / 20.0, 2),
+        "role_mgr_direct_earned": round((mg_direct_all + mg_deferred_all) / 4.0, 2),
+        "role_mgr_indirect_extra": round(mg_indirect_all / 2.0, 2),
+        "role_leader_earned": round(rd_cash + rd_deferred, 2),
     }
 
 
