@@ -161,9 +161,15 @@ def knowledge(manifest: dict) -> dict:
             "Training_Compliance_Gate", "Measurement_Period", "Payment_Timing", "Vesting_Schedule", "Clawback_Recovery_Rule",
             "Holdback_Forfeiture_Rule", "Rule_ID_Link", "Source_ID_And_Page", "Evidence_Status")
     rewards = []
+    vi_path = REPO / "knowledge/compensation/total-rewards-inventory-vi.csv"  # bản có dấu (scripts/vietnamize_rewards.py)
+    vi = {}
+    if vi_path.is_file():
+        with vi_path.open(encoding="utf-8") as f:
+            vi = {r["Component_ID"]: r for r in csv.DictReader(f)}
     with (REPO / "knowledge/compensation/total-rewards-inventory.csv").open(encoding="utf-8") as f:
         for r in csv.DictReader(f):
             d = {k: r[k] for k in keep}
+            d.update({k: v for k, v in vi.get(r["Component_ID"], {}).items() if k in d and k != "Component_ID"})
             d["tier"] = tier_of.get(r["Component_ID"], "agent")
             rewards.append(d)
     with (REPO / "knowledge/policies/role-organization-mapping.csv").open(encoding="utf-8") as f:
