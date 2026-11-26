@@ -22,36 +22,48 @@
 
 ---
 
-## 2. Tổng hợp Khung Pháp lý Việt Nam về Hoa hồng Đại lý BHNT (Nhóm E — Trọng tâm P0)
+## 2. Tổng hợp Khung Pháp lý Việt Nam về Hoa hồng, Thưởng & Chi phí Đại lý BHNT (Nhóm E — Trọng tâm P0 — Đã Khắc phục sau Kiểm toán)
 
-> **Lưu ý kiểm chứng:** Thông tin dưới đây tổng hợp từ nguồn công khai (`SOURCE CLAIM` từ chinhphu.vn, thuvienphapluat.vn, luatvietnam.vn, thoibaotaichinhvietnam.vn tra cứu ngày 26/11/2026). Cần đối chiếu trực tiếp toàn văn văn bản pháp luật khi trình phê duyệt chính thức.
+> **Cảnh báo Kiểm chứng Pháp lý (`SOURCE_CLAIM` / `SOURCE_NOT_VERIFIED`):** Thông tin pháp lý dưới đây được tổng hợp từ nguồn tóm tắt công khai (chinhphu.vn, thuvienphapluat.vn, luatvietnam.vn, thoibaotaichinhvietnam.vn). Chưa tải/đối chiếu trực tiếp bản PDF toàn văn Công báo chính thức trong repository nên toàn bộ quy tắc pháp lý được gắn nhãn `SOURCE_NOT_VERIFIED` cho đến khi đối chiếu bản gốc Công báo trước khi ban hành chính sách thật.
 
-### 2.1. Các văn bản nền tảng & cập nhật mới nhất (2023–2026)
-1. **Luật Kinh doanh bảo hiểm số 08/2022/QH15** (hiệu lực từ 01/01/2023): Nguyên tắc chi trả hoa hồng minh bạch, gắn với hiệu quả, không vượt quá mức tối đa do Bộ trưởng Bộ Tài chính quy định.
-2. **Nghị định 46/2023/NĐ-CP** (ngày 01/07/2023) & **Nghị định 97/2026/NĐ-CP** (năm 2026): Quy định chi tiết thi hành Luật KDBH (NĐ 97/2026 tập trung cập nhật tiêu chuẩn nhân sự cấp cao, chuyên gia tính toán, chi nhánh/VPĐD và dịch vụ phụ trợ).
-3. **Thông tư 67/2023/TT-BTC** (ban hành 02/11/2023): Quy định trần tỷ lệ hoa hồng đại lý bảo hiểm nhân thọ tối đa tính trên **phí bảo hiểm thực tế thu được của từng hợp đồng**.
-4. **Thông tư 96/2026/TT-BTC** (ban hành 02/07/2026, quy định hoa hồng mới áp dụng cho hợp đồng phát hành từ **01/01/2027**):
-   - Tiếp tục chuẩn hóa khung trần hoa hồng đại lý BHNT cá nhân.
-   - **Điểm siết mới rất quan trọng:** Hoa hồng đại lý đối với **phí bảo hiểm đóng thêm (Top-up)** của hợp đồng liên kết chung (UL) / liên kết đơn vị (ILP) **không được vượt quá tỷ lệ phí ban đầu** đối với phần phí đóng thêm đó (nhằm chặn hành vi đẩy top-up trục lợi hoa hồng năm đầu).
-   - Các khoản chi hỗ trợ, thù lao ngoài hoa hồng phải tuân thủ quy chế nội bộ, khung pháp luật và gắn với **chất lượng duy trì hợp đồng (persistency)**.
+### 2.1. Các văn bản nền tảng & 3 lớp trần chi phí riêng biệt (2023–2026)
+1. **Luật Kinh doanh bảo hiểm số 08/2022/QH15** (hiệu lực 01/01/2023): Yêu cầu chi trả hoa hồng minh bạch, gắn với hiệu quả, không vượt trần của Bộ Tài chính.
+2. **Nghị định 46/2023/NĐ-CP** & **Nghị định 97/2026/NĐ-CP (ban hành 31/03/2026):** Bên cạnh quy định quản trị, NĐ 97/2026 làm rõ nhóm **chi phí đào tạo ban đầu/nâng cao, tuyển dụng, quản lý đại lý cá nhân, kiểm tra giám sát chất lượng đại lý** là khoản chi nghiệp vụ/quản lý tách biệt với hoa hồng đại lý (Điều 51) và thưởng/hỗ trợ đại lý (Điều 52), nhưng phải có hợp đồng, biên bản nghiệm thu dịch vụ thực tế và tuân thủ quy định thuế/tài chính. *(Giải thích vì sao AIA, Manulife và Chubb Life đều cấu trúc thu nhập CQL/PSM+/AL/RD thành "Phí dịch vụ" kèm biên bản nghiệm thu).*
+3. **Thông tư 67/2023/TT-BTC** (ban hành 02/11/2023): Quy định **HAI TRẦN RIÊNG BIỆT** bắt buộc phải tách bạch trong mọi mô hình chi phí:
+   - **Lớp 1 — Điều 51 (Trần Hoa hồng Đại lý theo từng hợp đồng):** Có phân tách mốc chuyển tiếp **trước 01/07/2024** (UL >10 năm Y1 tối đa 40%, Y2 10%, Y3+ 7%; Hỗn hợp >10 năm Y1 40%) và **từ 01/07/2024** (UL/ILP & Hỗn hợp >10 năm hạ Y1 xuống **30%**, đẩy Y2 lên **20%** để tăng lực duy trì tái tục). Bao gồm cả **Bảo hiểm Nhóm (= 50% trần cá nhân, Khoản 3.2 Điều 51)** và **Bảo hiểm Hưu trí (= 3% tổng phí thu được)**.
+   - **Lớp 2 — Điều 52 (Trần Thưởng, Hỗ trợ Đại lý & Quyền lợi khác ở mức danh mục công ty trong năm tài chính — BỔ SUNG SAU KIỂM TOÁN):**
+     - **Khai thác mới (hết lộ trình chuyển tiếp vào 31/12/2025 → áp dụng đầy đủ năm 2026!):** Tổng chi thưởng, hỗ trợ đại lý và quyền lợi khác cho đại lý khai thác mới trong năm tài chính **≤ 20% phí bảo hiểm thực thu** (đối với hợp đồng ≤ 1 năm / tái tục hàng năm) **+ ≤ 30% phí bảo hiểm thực thu năm thứ nhất** (đối với hợp đồng > 1 năm).
+     - **Chăm sóc tái tục:** Tổng chi thưởng, hỗ trợ cho đại lý chăm sóc hợp đồng tái tục (> 1 năm) **≤ 7% phí bảo hiểm tái tục thực thu** trong năm tài chính.
+4. **Thông tư 96/2026/TT-BTC** (ban hành 02/07/2026, áp dụng khung hoa hồng mới cho hợp đồng phát hành từ **01/01/2027**):
+   - Chuẩn hóa khung trần hoa hồng sửa đổi Điều 51 TT 67/2023.
+   - **Siết chặt hoa hồng phí đóng thêm (Top-up):** Hoa hồng đại lý trên phí đóng thêm của hợp đồng UL/ILP/Hưu trí **không được vượt quá tỷ lệ phí ban đầu** áp dụng cho phần phí đóng thêm đó (đồng thời chịu trần phí ban đầu tối đa theo Điều 22 TT 67/2023 — lưu ý mức tham chiếu 1.5% cần đối chiếu toàn văn).
 
-### 2.2. Bảng Trần Tỷ lệ Hoa hồng Tối đa (Nộp phí định kỳ — Hợp đồng cá nhân)
+### 2.2. Bảng Trần Hoa hồng Tối đa (Điều 51 TT 67/2023 từ 01/07/2024 & TT 96/2026 từ 01/01/2027)
 
-*(Theo nguồn công khai về TT 67/2023/TT-BTC và TT 96/2026/TT-BTC áp dụng từ 01/01/2027)*
+*(Trạng thái: `SOURCE_CLAIM` / `SOURCE_NOT_VERIFIED` — Cần đối chiếu toàn văn Công báo trước khi ban hành chính sách thật)*
 
-| Nghiệp vụ bảo hiểm nhân thọ cá nhân | Nộp phí 1 lần | Năm thứ 1 (FYC tối đa) | Năm thứ 2 (RYC tối đa) | Năm thứ 3+ (RYC tối đa) |
-|---|---|---|---|---|
-| **Hợp đồng ≤ 1 năm / tái tục hàng năm** | — | 20% | — | — |
-| **Bảo hiểm tử kỳ, trọn đời** | 15% | **40%** | **20%** | **15%** |
-| **Sinh kỳ, trả tiền định kỳ, hỗn hợp (≤ 10 năm)** | 5% | **25%** | **7%** | **5%** |
-| **Sinh kỳ, trả tiền định kỳ, hỗn hợp (> 10 năm)** | 3% | **30%** | **20%** | **10%** (Năm 3) / **3%–7%** (Năm 4+) |
-| **Liên kết chung (UL), Liên kết đơn vị (ILP)** *(trên phí cơ bản)* | — | **30%** | **20%** | **10%** (Năm 3) / **7%** (Năm 4+) |
+| Nghiệp vụ bảo hiểm nhân thọ | Nộp phí 1 lần | Năm thứ 1 (FYC tối đa) | Năm thứ 2 (RYC tối đa) | Năm thứ 3+ (RYC tối đa) | Ghi chú kiểm chứng & Ngoại lệ |
+|---|---|---|---|---|---|
+| **Hợp đồng ≤ 1 năm / tái tục hàng năm** | — | **20%** | — | — | Áp dụng cho từng kỳ đóng phí thực thu. |
+| **Bảo hiểm tử kỳ, trọn đời (cá nhân)** | **15%** | **40%** | **20%** | **15%** | Không bị hạ trần như UL/ILP. |
+| **Sinh kỳ, trả tiền định kỳ, hỗn hợp (≤ 10 năm)** | **5%** | **25%** | **7%** | **5%** | — |
+| **Sinh kỳ, trả tiền định kỳ, hỗn hợp (> 10 năm)** | **3%–7%** *(xem ghi chú)* | **30%** | **20%** | **10%** (Y3) / **7%–10%** (Y4+) | Trước 01/07/2024: Y1 40%/Y2 10%/Y3+ 10%. Các bản tóm tắt công khai có chênh lệch nhỏ ở phí 1 lần (3% vs 7%) & Y4+ — **cần kiểm tra Công báo**. |
+| **Liên kết chung (UL), Liên kết đơn vị (ILP)** *(trên PCB)* | **≤ 7%** | **30%** | **20%** | **10%** (Y3) / **7%–10%** (Y4+) | Trước 01/07/2024: Y1 40%/Y2 10%/Y3+ 7%. **Phí đóng thêm (Top-up):** ≤ tỷ lệ phí ban đầu (TT 96/2026). Có chênh lệch bản tóm tắt về Y4+ (10% vs 7%) — **cần kiểm tra Công báo**. |
+| **Bảo hiểm Hưu trí** | — | **≤ 3%** tổng phí thực thu | **≤ 3%** tổng phí thực thu | **≤ 3%** tổng phí thực thu | Phí đóng thêm hưu trí ≤ phí ban đầu (TT 96/2026). |
+| **Bảo hiểm Nhân thọ Nhóm (Group Life)** | **50% trần cá nhân** | **50% trần cá nhân** | **50% trần cá nhân** | **50% trần cá nhân** | Khoản 3.2 Điều 51 TT 67/2023. |
 
-### 2.3. Hàm ý Chiến lược cho Bài tư vấn W24
-- **Trần FYC cho sản phẩm chủ lực (UL/ILP) là 30% trên phí cơ bản thực thu** — điều này có nghĩa là **không doanh nghiệp nào có thể cạnh tranh bằng cách đẩy tỷ lệ FYC thuần vượt trần 30%**.
-- Cuộc đua chính sách thu nhập giữa AIA, Manulife, Chubb Life và các mô hình toàn thời gian (AIA Exchange, AIA Alpha...) thực chất nằm ở:
-  1. **Cấu trúc thưởng hiệu suất (Thưởng tháng/quý/năm, thưởng kích hoạt, thưởng MDRT)** và điều kiện mở khóa (Persistency gate).
-  2. **Trợ cấp cố định / gói hỗ trợ chuyển đổi (Allowance / Transition package)** cho đại lý toàn thời gian hoặc thu hút đội ngũ.
-  3. **Cơ chế Override & thưởng phát triển cấp quản lý** gắn với chất lượng duy trì (K2/13M) thay vì chỉ gắn với doanh số năm 1.
-  4. **Cơ chế thu hồi (Clawback)** và thời điểm chi trả (trả ngay vs. trả chậm theo kỳ đóng phí năm 2) để kiểm soát rủi ro hủy hợp đồng sớm và dòng tiền.
-- Với thời điểm hiện tại (cuối 11/2026), việc đề xuất chính sách phải **tính sẵn hiệu lực của Thông tư 96/2026/TT-BTC từ 01/01/2027** — đây sẽ là một điểm cộng rất lớn về tính thời sự và tuân thủ khi trình bày với chị Nhi.
+### 2.3. Bảng Trần Thưởng & Hỗ trợ Đại lý Riêng biệt (Điều 52 TT 67/2023 — Hiệu lực đầy đủ từ 01/01/2026)
+
+| Hạng mục chi phí ngoài Hoa hồng (Điều 52 TT 67/2023) | Cơ sở tính trần (Cấp toàn danh mục DN trong năm tài chính) | Trần tối đa bắt buộc | Ghi chú áp dụng vào mô hình W24 |
+|---|---|---|---|
+| **Thưởng, hỗ trợ & quyền lợi khác — Khai thác mới (≤ 1 năm)** | Phí bảo hiểm thực thu năm tài chính (HĐ ≤ 1 năm / tái tục năm) | **≤ 20%** | Kiểm tra bắt buộc ở tầng **Enterprise Distribution Cost** (không nhầm với trần 30% hoa hồng cá nhân). |
+| **Thưởng, hỗ trợ & quyền lợi khác — Khai thác mới (> 1 năm)** | Phí bảo hiểm thực thu **Năm 1** trong năm tài chính (HĐ > 1 năm) | **≤ 30%** | **Rất quan trọng:** Nếu công ty có nhiều đại lý đạt thưởng 85%–109% FYC (tương đương 25%–33% FYP), tổng thưởng toàn công ty có nguy cơ tiệm cận hoặc chạm trần 30% FYP Điều 52 nếu không cân bằng bằng đại lý năng suất trung bình/cơ chế giữ lại! |
+| **Thưởng, hỗ trợ — Chăm sóc hợp đồng tái tục (> 1 năm)** | Phí bảo hiểm **tái tục thực thu** trong năm tài chính | **≤ 7%** | Bao phủ các khoản thưởng SYC/RYC (như AIA 30–50% SYC, Chubb 10–15% RYC). |
+| **Chi phí Quản lý, Đào tạo, Tuyển dụng & Giám sát Đại lý (NĐ 97/2026)** | Hợp đồng dịch vụ & chứng từ nghiệm thu hợp lệ | Theo quy chế tài chính & luật thuế *(không gom chung trần Điều 52 nếu có dịch vụ quản lý thực)* | Phải kiểm soát rủi ro thanh tra thuế/BTC: không được ngụy trang thưởng bán cá nhân thành phí dịch vụ quản lý. |
+
+### 2.4. Hàm ý Chiến lược cho Bài tư vấn W24
+- **Hai gọng kìm pháp lý năm 2026–2027:** Doanh nghiệp BHNT tại Việt Nam chịu đồng thời **(1) Trần Hoa hồng cá nhân theo hợp đồng (Điều 51: 30% FYC cho UL/ILP)** và **(2) Trần Tổng Thưởng & Hỗ trợ Đại lý khai thác mới theo danh mục công ty (Điều 52: 30% FYP năm 1, hết lộ trình chuyển tiếp từ 01/01/2026)**.
+- **Hệ quả thiết kế trực tiếp:**
+  1. Không doanh nghiệp nào có thể cạnh tranh bằng đẩy FYC UL/ILP vượt 30% hoặc trả hoa hồng cao cho phí đóng thêm (Top-up bị khóa theo TT 96/2026).
+  2. Thiết kế thưởng cá nhân cực cao như Chubb Life (AR đỉnh 85.8% FYC ≈ 25.7% FYP; AL cá nhân đỉnh 109.2% FYC ≈ 32.8% FYP) **chỉ khả thi dưới trần 30% Điều 52 ở cấp toàn danh mục** khi phần lớn đại lý ở bậc thấp hơn hoặc một phần được hạch toán sang phí dịch vụ quản lý hợp lệ (theo NĐ 97/2026).
+  3. Do đó, mọi đề xuất chính sách trong W24 phải tích hợp **Mandatory Regulatory Gate** kiểm tra cả **Điều 51 (Hoa hồng theo sản phẩm)**, **Điều 52 (Tổng thưởng đại lý ≤ 30% FYP Y1 / ≤ 7% RYP)** và **TT 96/2026 (Top-up)** ngay trong Excel Reference Model.

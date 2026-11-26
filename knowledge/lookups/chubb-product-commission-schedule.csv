@@ -1,0 +1,114 @@
+Product_Rule_ID,Scheme_ID,Category,Product_Name,Applicable_Condition,Premium_Component,Y1_Pct,Y2_Pct,Y3_Pct,Y4_Pct,Y5_Pct,Y6_Pct,Y7_10_Pct,Y11_Plus_Pct,Effective_Date,Source_ID,Page,Notes
+CHB-PRD-001,CHUBB-AGENCY-2026,Individual_Main,Bao hiem Dau tu giao duc,Thoi han duoi 10 nam,PCB,20.0,7.0,5.0,5.0,2.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.13,
+CHB-PRD-002,CHUBB-AGENCY-2026,Individual_Main,Bao hiem Dau tu giao duc,Thoi han 10-15 nam,PCB,25.0,10.0,7.5,5.0,2.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.13,
+CHB-PRD-003,CHUBB-AGENCY-2026,Individual_Main,Bao hiem Dau tu giao duc,Thoi han tren 15 nam,PCB,30.0,10.0,7.5,5.0,2.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.13,
+CHB-PRD-004,CHUBB-AGENCY-2026,Individual_Main,Bao hiem tich luy 10 nam,10 nam,PCB,20.0,5.0,2.0,2.0,2.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.13,
+CHB-PRD-005,CHUBB-AGENCY-2026,Individual_Main,Bao hiem tich luy 15 nam,15 nam,PCB,25.0,7.5,5.0,5.0,2.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.13,
+CHB-PRD-006,CHUBB-AGENCY-2026,Individual_Main,Bao hiem tich luy 20 nam,20 nam,PCB,30.0,10.0,7.5,5.0,2.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.13,
+CHB-PRD-007,CHUBB-AGENCY-2026,Individual_Main,Bao hiem Tu ky 10 nam,10 nam,PCB,20.0,7.5,5.0,2.0,2.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.13,
+CHB-PRD-008,CHUBB-AGENCY-2026,Individual_Main,Bao hiem Tu ky 15 nam,15 nam,PCB,25.0,10.0,7.5,5.0,2.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.13,
+CHB-PRD-009,CHUBB-AGENCY-2026,Individual_Main,Bao hiem Tu ky 20 nam,20 nam,PCB,30.0,10.0,7.5,5.0,2.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.13,
+CHB-PRD-010,CHUBB-AGENCY-2026,Individual_Main,Bao hiem Tron doi dong phi den tuoi 55/60/65,10-15 nam,PCB,25.0,10.0,7.5,5.0,2.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.13,
+CHB-PRD-011,CHUBB-AGENCY-2026,Individual_Main,Bao hiem Tron doi dong phi den tuoi 55/60/65,16-19 nam,PCB,30.0,10.0,7.5,5.0,2.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.13,
+CHB-PRD-012,CHUBB-AGENCY-2026,Individual_Main,Bao hiem Tron doi dong phi den tuoi 55/60/65,Tren 20 nam,PCB,30.0,10.0,10.0,5.0,2.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.13,
+CHB-PRD-013,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach Tai chinh Tron doi - QL Pho thong / Uu viet,All,PCB,30.0,10.0,10.0,4.5,4.5,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.13,
+CHB-PRD-014,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach Tai chinh Tron doi - QL Pho thong / Uu viet,All,Phi_Troi_Topup,7.0,4.5,4.5,4.5,4.5,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.13,Legacy UL top-up rate; verify vs TT 96/2026
+CHB-PRD-015,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach tai chinh tron doi - Quyen loi cao nien,All,PCB,20.0,4.5,4.5,4.5,4.5,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.13,
+CHB-PRD-016,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach tai chinh tron doi - Quyen loi cao nien,All,Phi_Troi_Topup,4.5,4.5,4.5,4.5,4.5,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.13,
+CHB-PRD-017,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach TC tron doi - QL toan dien A1-A2-B2,NDBH <= 60 tuoi,PCB,30.0,10.0,10.0,5.0,4.0,3.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-018,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach TC tron doi - QL toan dien A1-A2-B2,NDBH <= 60 tuoi,Phi_Troi_Topup,7.0,5.0,5.0,5.0,4.0,3.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-019,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach TC tron doi - QL toan dien A1-A2-B2,NDBH > 60 tuoi,PCB,30.0,8.0,8.0,5.0,4.0,3.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-020,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach TC tron doi - QL toan dien A1-A2-B2,NDBH > 60 tuoi,Phi_Troi_Topup,5.0,5.0,5.0,5.0,4.0,3.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-021,CHUBB-AGENCY-2026,Individual_Main_Short,Bao hiem Tai nan Toan cau,Ngan han / Tai tuc hang nam,PCB,20.0,,,,,,,,2025-01-01,SRC-POL-CHB-001,p.14,1Y/Annual renewable
+CHB-PRD-022,CHUBB-AGENCY-2026,Individual_Main_Short,Bao hiem tu ky thoi han 1 nam - 2010,1 nam,PCB,15.0,,,,,,,,2025-01-01,SRC-POL-CHB-001,p.14,1Y term
+CHB-PRD-023,CHUBB-AGENCY-2026,Individual_Main,Bao hiem tu ky thoi han 10 nam - 2010,10 nam,PCB,25.0,10.0,8.0,7.0,6.0,5.0,5.0,5.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-024,CHUBB-AGENCY-2026,Individual_Main,Bao hiem tu ky thoi han 15 nam - 2010,15 nam,PCB,30.0,10.0,8.0,7.0,6.0,5.0,5.0,5.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-025,CHUBB-AGENCY-2026,Individual_Main,Bao hiem tu ky thoi han 20 nam - 2010,20 nam,PCB,35.0,10.0,8.0,7.0,6.0,5.0,5.0,5.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-026,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach tai chinh cho Benh Nan Y - Lua chon A/B,All,PCB,30.0,7.0,7.0,5.0,4.0,3.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-027,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach tai chinh cho Benh Nan Y - Lua chon A/B,All,Phi_Troi_Topup,7.0,7.0,5.0,5.0,4.0,3.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-028,CHUBB-AGENCY-2026,Individual_Main_UL,Ke Hoach TC Tron Doi - QL Pho thong 2013 / Uu viet 2013,All,PCB,30.0,7.0,7.0,5.0,4.0,3.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-029,CHUBB-AGENCY-2026,Individual_Main_UL,Ke Hoach TC Tron Doi - QL Pho thong 2013 / Uu viet 2013,All,Phi_Troi_Topup,7.0,7.0,5.0,5.0,4.0,3.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-030,CHUBB-AGENCY-2026,Individual_Main_UL,Ke Hoach TC Tron Doi - QL Toan dien 2013 - A/B,All,PCB,30.0,7.0,7.0,5.0,4.0,3.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-031,CHUBB-AGENCY-2026,Individual_Main_UL,Ke Hoach TC Tron Doi - QL Toan dien 2013 - A/B,All,Phi_Troi_Topup,7.0,7.0,5.0,4.0,3.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.14,"Note: Table p.14 shows Y4=4.0%, Y5=3.0%, Y6=2.0% while text OCR line had 5.0/4.0; verified against pdfplumber table cell!"
+CHB-PRD-032,CHUBB-AGENCY-2026,Individual_Main,Bao hiem Hon hop - Bao hiem Tich luy 20 nam - 2013,20 nam,PCB,30.0,10.0,7.0,5.0,5.0,2.5,2.5,2.5,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-033,CHUBB-AGENCY-2026,Individual_Main_UL,Ke Hoach TC Tron Doi - QL Cao cap 2015 - A/B,All,PCB,30.0,7.0,7.0,5.0,5.0,3.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-034,CHUBB-AGENCY-2026,Individual_Main_UL,Ke Hoach TC Tron Doi - QL Cao cap 2015 - A/B,All,Phi_Troi_Topup,7.0,7.0,5.0,4.0,3.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-035,CHUBB-AGENCY-2026,Individual_Main_Single,Ke hoach Tai chinh Dai han 20 nam - Dong phi 1 lan,Single Premium,PCB,7.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-036,CHUBB-AGENCY-2026,Individual_Main_Single,Ke hoach Tai chinh Dai han 20 nam - Dong phi 1 lan,Single Premium,Phi_Troi_Topup,7.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-037,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach Tai chinh Dai han 20 nam - Dong phi 3 nam,NDBH <= 20 tuoi,PCB,20.0,5.0,3.0,0.0,0.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-038,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach Tai chinh Dai han 20 nam - Dong phi 3 nam,NDBH <= 20 tuoi,Phi_Troi_Topup,5.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-039,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach Tai chinh Dai han 20 nam - Dong phi 3 nam,NDBH > 20 tuoi,PCB,25.0,5.0,3.0,0.0,0.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-040,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach Tai chinh Dai han 20 nam - Dong phi 3 nam,NDBH > 20 tuoi,Phi_Troi_Topup,5.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-041,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach Tai chinh Dai han 20 nam - Dong phi 5 nam,NDBH <= 20 tuoi,PCB,30.0,7.0,3.0,3.0,3.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-042,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach Tai chinh Dai han 20 nam - Dong phi 5 nam,NDBH <= 20 tuoi,Phi_Troi_Topup,7.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-043,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach Tai chinh Dai han 20 nam - Dong phi 5 nam,NDBH > 20 tuoi,PCB,30.0,7.0,3.0,3.0,3.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-044,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach Tai chinh Dai han 20 nam - Dong phi 5 nam,NDBH > 20 tuoi,Phi_Troi_Topup,7.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,2025-01-01,SRC-POL-CHB-001,p.14,
+CHB-PRD-045,CHUBB-AGENCY-2026,Individual_Main,Bao Hiem Tich Luy Den Tuoi 75,Thoi han dong phi 10 nam,PCB,30.0,13.0,8.0,6.0,4.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-046,CHUBB-AGENCY-2026,Individual_Main,Bao Hiem Tich Luy Den Tuoi 75,Thoi han dong phi 15 nam,PCB,30.0,15.0,8.0,6.0,4.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-047,CHUBB-AGENCY-2026,Individual_Main_UL,Hoach Dinh Tai Chinh Tuong Lai - Ben vung / Gia tang,NDBH <= 20 tuoi,PCB,25.0,10.0,10.0,8.0,6.0,4.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-048,CHUBB-AGENCY-2026,Individual_Main_UL,Hoach Dinh Tai Chinh Tuong Lai - Ben vung / Gia tang,NDBH <= 20 tuoi,Phi_Troi_Topup,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-049,CHUBB-AGENCY-2026,Individual_Main_UL,Hoach Dinh Tai Chinh Tuong Lai - Ben vung / Gia tang,NDBH > 20 tuoi,PCB,30.0,10.0,10.0,8.0,6.0,4.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-050,CHUBB-AGENCY-2026,Individual_Main_UL,Hoach Dinh Tai Chinh Tuong Lai - Ben vung / Gia tang,NDBH > 20 tuoi,Phi_Troi_Topup,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-051,CHUBB-AGENCY-2026,Individual_Main,Chubb Life - Tuong lai Hoan hao,Thoi han BH <= 15 nam,PCB,30.0,4.0,4.0,1.5,1.5,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-052,CHUBB-AGENCY-2026,Individual_Main,Chubb Life - Tuong lai Hoan hao,Thoi han BH 16 nam,PCB,30.0,6.0,6.0,1.5,1.5,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-053,CHUBB-AGENCY-2026,Individual_Main,Chubb Life - Tuong lai Hoan hao,Thoi han BH 17 nam,PCB,30.0,9.0,6.0,1.5,1.5,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-054,CHUBB-AGENCY-2026,Individual_Main,Chubb Life - Tuong lai Hoan hao,Thoi han BH 18-19 nam,PCB,30.0,11.0,6.0,1.5,1.5,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-055,CHUBB-AGENCY-2026,Individual_Main,Chubb Life - Tuong lai Hoan hao,Thoi han BH 20 nam,PCB,30.0,13.0,8.0,1.5,1.5,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-056,CHUBB-AGENCY-2026,Individual_Main,Chubb Life - Tuong lai Hoan hao,Thoi han BH 21-23 nam,PCB,30.0,15.0,8.0,1.5,1.5,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-057,CHUBB-AGENCY-2026,Individual_Main,Chubb Life - Tuong lai Hoan hao,Thoi han BH 24-27 nam,PCB,30.0,15.0,10.0,1.5,1.5,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-058,CHUBB-AGENCY-2026,Individual_Main_Health,Bao hiem ho tro dieu tri ung thu C Care,Lua chon A,PCB,7.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-059,CHUBB-AGENCY-2026,Individual_Main_Health,Bao hiem ho tro dieu tri ung thu C Care,Lua chon B,PCB,20.0,7.0,5.0,5.0,5.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-060,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach TC Tron doi - QL Cao nien Toan dien A/B,NDBH 55-64 tuoi,PCB,30.0,6.0,6.0,3.0,3.0,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-061,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach TC Tron doi - QL Cao nien Toan dien A/B,NDBH 55-64 tuoi,Phi_Troi_Topup,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-062,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach TC Tron doi - QL Cao nien Toan dien A/B,NDBH 65-80 tuoi,PCB,27.0,6.0,6.0,3.0,3.0,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-063,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach TC Tron doi - QL Cao nien Toan dien A/B,NDBH 65-80 tuoi,Phi_Troi_Topup,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-064,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach TC ca nhan voi QLBH Benh Nan Y,NDBH <55t VA dong Nua nam/Nam,PCB,30.0,15.0,8.0,6.0,6.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-065,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach TC ca nhan voi QLBH Benh Nan Y,NDBH >=55t HOAC dong Quy/Thang,PCB,30.0,13.0,8.0,6.0,6.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.15,
+CHB-PRD-066,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach TC ca nhan voi QLBH Benh Nan Y,All,Phi_Troi_Topup,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.15,0% Top-up
+CHB-PRD-067,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach TC gia dinh voi QLBH Benh Nan Y,NDBH <55t VA dong Nua nam/Nam,PCB,30.0,15.0,8.0,6.0,6.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.16,
+CHB-PRD-068,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach TC gia dinh voi QLBH Benh Nan Y,NDBH >=55t HOAC dong Quy/Thang,PCB,30.0,13.0,8.0,6.0,6.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.16,
+CHB-PRD-069,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach TC gia dinh voi QLBH Benh Nan Y,All,Phi_Troi_Topup,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.16,0% Top-up
+CHB-PRD-070,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach Tai chinh Linh hoat,All,PCB,30.0,15.0,8.0,6.0,6.0,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.16,Flagship UL
+CHB-PRD-071,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach Tai chinh Linh hoat,All,Phi_Troi_Topup,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.16,0% Top-up
+CHB-PRD-072,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach Tai chinh Tuong lai (Co QL Nguoi giam ho tu vong),Thoi han > 20 nam,PCB,30.0,15.0,8.0,6.0,6.0,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.16,
+CHB-PRD-073,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach Tai chinh Tuong lai (Co QL Nguoi giam ho tu vong),Thoi han <= 20 nam,PCB,30.0,12.0,7.0,5.0,5.0,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.16,
+CHB-PRD-074,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach Tai chinh Tuong lai (Khong co QL Nguoi giam ho TV),Thoi han > 20 nam,PCB,27.0,15.0,8.0,6.0,6.0,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.16,27% Y1 (NOT 30%!)
+CHB-PRD-075,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach Tai chinh Tuong lai (Khong co QL Nguoi giam ho TV),Thoi han <= 20 nam,PCB,27.0,12.0,7.0,5.0,5.0,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.16,27% Y1 (NOT 30%!)
+CHB-PRD-076,CHUBB-AGENCY-2026,Individual_Main_UL,Ke hoach Tai chinh Tuong lai,All,Phi_Troi_Topup,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.16,0% Top-up
+CHB-PRD-077,CHUBB-AGENCY-2026,Individual_Main_ILP,SPBH Lien ket don vi - Ke hoach Tai chinh Chu dong,Tuoi NDBH >= 18,PCB,30.0,15.0,8.0,6.0,6.0,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.16,Flagship ILP
+CHB-PRD-078,CHUBB-AGENCY-2026,Individual_Main_ILP,SPBH Lien ket don vi - Ke hoach Tai chinh Chu dong,Tuoi NDBH < 18,PCB,30.0,13.0,8.0,6.0,6.0,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.16,
+CHB-PRD-079,CHUBB-AGENCY-2026,Individual_Main_ILP,SPBH Lien ket don vi - Ke hoach Tai chinh Chu dong,All,Phi_Troi_Topup,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.16,0% Top-up
+CHB-PRD-080,CHUBB-AGENCY-2026,Individual_Main_UL_HSBH,Chubb - Tu Do An Phuc (Tuoi NDBH >= 18),HSBH >= Muc 2,PCB,30.0,10.0,6.0,4.0,4.0,1.0,1.0,0.0,2025-01-01,SRC-POL-CHB-001,p.16,Lookup HSBH in chubb-hsbh-tiers.csv
+CHB-PRD-081,CHUBB-AGENCY-2026,Individual_Main_UL_HSBH,Chubb - Tu Do An Phuc (Tuoi NDBH >= 18),Muc 1 <= HSBH < Muc 2,PCB,27.0,10.0,6.0,4.0,4.0,1.0,1.0,0.0,2025-01-01,SRC-POL-CHB-001,p.16,
+CHB-PRD-082,CHUBB-AGENCY-2026,Individual_Main_UL_HSBH,Chubb - Tu Do An Phuc (Tuoi NDBH >= 18),HSBH < Muc 1,PCB,25.0,10.0,6.0,4.0,4.0,1.0,1.0,0.0,2025-01-01,SRC-POL-CHB-001,p.16,
+CHB-PRD-083,CHUBB-AGENCY-2026,Individual_Main_UL_HSBH,Chubb - Tu Do An Phuc (Tuoi NDBH < 18),HSBH >= Muc 2,PCB,25.0,10.0,6.0,4.0,4.0,1.0,1.0,0.0,2025-01-01,SRC-POL-CHB-001,p.16,
+CHB-PRD-084,CHUBB-AGENCY-2026,Individual_Main_UL_HSBH,Chubb - Tu Do An Phuc (Tuoi NDBH < 18),Muc 1 <= HSBH < Muc 2,PCB,22.0,10.0,6.0,4.0,4.0,1.0,1.0,0.0,2025-01-01,SRC-POL-CHB-001,p.16,
+CHB-PRD-085,CHUBB-AGENCY-2026,Individual_Main_UL_HSBH,Chubb - Tu Do An Phuc (Tuoi NDBH < 18),HSBH < Muc 1,PCB,20.0,10.0,6.0,4.0,4.0,1.0,1.0,0.0,2025-01-01,SRC-POL-CHB-001,p.16,
+CHB-PRD-086,CHUBB-AGENCY-2026,Individual_Main_UL_HSBH,Chubb - Tu Do An Phuc,All,Phi_Troi_Topup,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.16,0% Top-up
+CHB-PRD-087,CHUBB-AGENCY-2026,Individual_Main_Health,Chubb - Tu Do An Lanh: SPBH Suc khoe (Tai nan / Nam vien / BHN Mo rong),Co ban & Nang cao,PCB,10.0,10.0,10.0,10.0,10.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.17,10% flat Y1-Y5
+CHB-PRD-088,CHUBB-AGENCY-2026,Individual_Main_Term,Chubb - Tu Do An Lanh: SPBH Tu ky tai tuc hang nam mo rong,All,PCB,20.0,15.0,15.0,15.0,15.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.17,
+CHB-RDR-001,CHUBB-AGENCY-2026,Individual_Rider,BHBS bao hiem tu ky den tuoi 55/60/65,Thoi han dong phi 10-15 nam,Rider,20.0,7.5,5.0,2.0,2.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.17,
+CHB-RDR-002,CHUBB-AGENCY-2026,Individual_Rider,BHBS bao hiem tu ky den tuoi 55/60/65,Thoi han dong phi 16-19 / >=20 nam,Rider,20.0,10.0,7.5,5.0,2.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.17,
+CHB-RDR-003,CHUBB-AGENCY-2026,Individual_Rider,BHBS ban kem Tich Luy Den Tuoi 75 (10 nam) - 4 riders,Mien dong phi BNY / Nam vien MR / BNY muc do / TV-TT tai nan MR,Rider,20.0,8.0,8.0,6.0,4.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.17,
+CHB-RDR-004,CHUBB-AGENCY-2026,Individual_Rider,BHBS ban kem Tich Luy Den Tuoi 75 (15 nam) - 4 riders,Mien dong phi BNY / Nam vien MR / BNY muc do / TV-TT tai nan MR,Rider,20.0,9.0,8.0,6.0,4.0,2.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.17,
+CHB-RDR-005,CHUBB-AGENCY-2026,Individual_Rider,Bao hiem Ho tro nam vien,Short-term / 1Y,Rider,12.0,,,,,,,,2025-01-01,SRC-POL-CHB-001,p.17,12% Y1
+CHB-RDR-006,CHUBB-AGENCY-2026,Individual_Rider,Bao hiem mien dong phi,Short-term / 1Y,Rider,20.0,,,,,,,,2025-01-01,SRC-POL-CHB-001,p.17,
+CHB-RDR-007,CHUBB-AGENCY-2026,Individual_Rider,BH tu vong & BHN / BHNT cho con tre / Tu ky dieu chinh lam phat 65,3 riders,Rider,15.0,,,,,,,,2025-01-01,SRC-POL-CHB-001,p.17,15% Y1
+CHB-RDR-008,CHUBB-AGENCY-2026,Individual_Rider,BHBS ban kem Tu ky 1 nam - 2010 (TV tai nan / TV-TT tai nan),1 nam,Rider,15.0,,,,,,,,2025-01-01,SRC-POL-CHB-001,p.17,
+CHB-RDR-009,CHUBB-AGENCY-2026,Individual_Rider,BHBS ban kem Tu ky 10/15/20 nam - 2010 (TV/TT tai nan),10/15/20 nam,Rider,20.0,10.0,8.0,7.0,6.0,5.0,5.0,5.0,2025-01-01,SRC-POL-CHB-001,p.18,
+CHB-RDR-010,CHUBB-AGENCY-2026,Individual_Rider,BHBS KHONG ban kem Tu ky 10/15/20 nam - 2010 (TV/TT tai nan),Y2+ follows main product rate,Rider,20.0,MAIN_RATE,MAIN_RATE,MAIN_RATE,MAIN_RATE,MAIN_RATE,MAIN_RATE,MAIN_RATE,2025-01-01,SRC-POL-CHB-001,p.18,Y2+ follows main product
+CHB-RDR-011,CHUBB-AGENCY-2026,Individual_Rider,QLBHGT cua KHTC Tron doi Toan dien 2013 - A/B,All,Rider,20.0,7.0,7.0,5.0,4.0,3.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.18,
+CHB-RDR-012,CHUBB-AGENCY-2026,Individual_Rider,QLBHGT cua KHTC Tron doi Cao cap 2015 - A/B,All,Rider,20.0,7.0,7.0,5.0,5.0,3.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.18,
+CHB-RDR-013,CHUBB-AGENCY-2026,Individual_Rider,QLBHGT cua KHTC Dai han 20 nam - Dong phi 1 lan,Single,Rider,7.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.18,
+CHB-RDR-014,CHUBB-AGENCY-2026,Individual_Rider,QLBHGT cua KHTC Dai han 20 nam - Dong phi 3 nam,3 nam,Rider,20.0,5.0,3.0,0.0,0.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.18,
+CHB-RDR-015,CHUBB-AGENCY-2026,Individual_Rider,QLBHGT cua KHTC Dai han 20 nam - Dong phi 5 nam,5 nam,Rider,20.0,7.0,3.0,3.0,3.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.18,
+CHB-RDR-016,CHUBB-AGENCY-2026,Individual_Rider,QLBHGT cua Hoach Dinh TC Tuong Lai - Ben vung / Gia tang,All,Rider,20.0,10.0,10.0,8.0,6.0,4.0,2.0,2.0,2025-01-01,SRC-POL-CHB-001,p.18,
+CHB-RDR-017,CHUBB-AGENCY-2026,Individual_Rider,QLBHGT cua KHTC Linh hoat / KHTC Tuong lai / SPBH Bo tro Nhom 1,3 rider groups,Rider,20.0,8.0,8.0,6.0,6.0,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.18,
+CHB-RDR-018,CHUBB-AGENCY-2026,Individual_Rider,BH cham soc suc khoe - Chubb Care (Tuoi NDBH >= 6),NDBH >= 6 tuoi,Rider,20.0,8.0,8.0,6.0,6.0,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.18,
+CHB-RDR-019,CHUBB-AGENCY-2026,Individual_Rider,BH cham soc suc khoe - Chubb Care (Tuoi NDBH < 6),NDBH < 6 tuoi,Rider,10.0,5.0,5.0,5.0,5.0,1.5,1.5,1.5,2025-01-01,SRC-POL-CHB-001,p.18,
+CHB-RDR-020,CHUBB-AGENCY-2026,Individual_Rider,SPBH Suc khoe Mo rong (Tai nan / Nam vien / BHN Co ban & Nang cao),3 extended health riders,Rider,20.0,10.0,10.0,10.0,10.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.18,
+CHB-RDR-021,CHUBB-AGENCY-2026,Individual_Rider,SPBH Cham soc Suc khoe Toan cau - Chubb Care Plus,All,Rider,10.0,10.0,10.0,10.0,10.0,0.0,0.0,0.0,2025-01-01,SRC-POL-CHB-001,p.18,10% flat Y1-Y5
+CHB-GRP-001,CHUBB-AGENCY-2026,Group_Main,Ke hoach TC tron doi - Quyen loi nhan su cap cao,Group,PCB,15.0,5.0,5.0,2.5,2.0,1.5,1.0,1.0,2025-01-01,SRC-POL-CHB-001,p.19,Col 7+ = 1.0%
+CHB-GRP-002,CHUBB-AGENCY-2026,Group_Main,Ke hoach TC tron doi - Quyen loi nhan su cap cao,Group,Phi_Troi_Topup,3.5,2.5,2.5,2.5,2.0,1.5,1.0,1.0,2025-01-01,SRC-POL-CHB-001,p.19,Col 7+ = 1.0%
+CHB-GRP-003,CHUBB-AGENCY-2026,Group_Term,SPBH Tu ky nhom 2015 (<= 250 nguoi),<= 250 people,PCB,15.0,,,,,,,,2025-01-01,SRC-POL-CHB-001,p.19,
+CHB-GRP-004,CHUBB-AGENCY-2026,Group_Term,SPBH Tu ky nhom 2015 (> 250 nguoi),> 250 people,PCB,12.5,,,,,,,,2025-01-01,SRC-POL-CHB-001,p.19,

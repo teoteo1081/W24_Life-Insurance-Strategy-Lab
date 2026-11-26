@@ -19,15 +19,15 @@ flowchart LR
     L1 --> L2 --> L3 --> L4
 ```
 
-1. **Lớp 1 — Ground Truth (`private/sources/` + `source-registry.csv`):** Bất biến (read-only), kiểm soát bằng SHA-256 hash, không commit PDF nội bộ vào Git.
-2. **Lớp 2 — Cấu hình Chuẩn hóa (`business-rules-catalog.csv` + `schemas/compensation-scheme.schema.json`):** Mọi chính sách đối thủ và proposal đều mô tả bằng cùng 1 ngôn ngữ dữ liệu:
+1. **Lớp 1 — Ground Truth (`private/sources/` + `source-registry.csv`):** Bất biến (read-only), kiểm soát toàn vẹn bằng SHA-256 hash. *(Cập nhật sau checkpoint `5c2d13b`: theo phê duyệt rõ ràng của Business Owner TJ, 7 PDF nguồn trong `private/sources/` được theo dõi trong Git và đồng bộ duy nhất lên repository GitHub **PRIVATE** của dự án; tuyệt đối không chia sẻ public, không đưa vào Gói A bàn giao phỏng vấn/tư vấn, và không upload ra dịch vụ ngoài).*
+2. **Lớp 2 — Cấu hình Chuẩn hóa (`business-rules-catalog.csv` + `knowledge/lookups/` + `schemas/compensation-scheme.schema.json`):** Mọi chính sách đối thủ và proposal đều mô tả bằng cùng 1 ngôn ngữ dữ liệu:
    - **Tầng bậc chuẩn (`target_tier`):** Tách rõ `Individual_Agent` (Tầng 1), `Mid_Management` (Tầng 2), `Senior_Executive_Leader` (Tầng 3) để tránh lỗi so sánh lệch tầng (ví dụ: không so Manulife `PSM+` với AIA `CVTV`).
    - **Quy đổi chỉ số (`metric_definitions`):** Khai báo rõ từng hãng định nghĩa `FYP` thế nào (Top-up 0% như AIA/Chubb mới vs. 6% như Manulife PSM+), `Active` thế nào (`1mAA ≥ 4tr FYC` vs. `EHC`), và `Persistency` tính theo khung nào (`AIA FY 14M`, `AIA TOT`, `Manulife K2`, `Chubb K2/P13`).
    - **Cơ chế tính chuẩn (`calc_mode`):** Thay vì hard-code từng công ty vào công thức, mọi khoản thu nhập đều thuộc 1 trong 7 kiểu toán học chuẩn: `flat_rate`, `marginal_tiered`, `retroactive_tiered`, `fixed_amount`, `multiplier_on_component`, `excess_over_target`, `max_of_components`.
    - **Cờ quyền chỉnh sửa (`po_editable`):** Phân tách rõ theo **PO Decision Bridge**: tham số của đối thủ (`po_editable = false`, khóa Ground Truth) vs. tham số của Proposal đề xuất (`po_editable = true`, PO được chỉnh trong khoảng hợp lệ).
-3. **Lớp 3 — Calculation Engines (Excel Reference Model & Parity Engine):**
-   - Trong Excel (Ngày 2), các sheet tính toán (`Calc_Agent`, `Calc_Manager`, `Calc_Senior`, `MAPA`, `Financial_ROI`) đọc tham số từ bảng `Parameters` & `Scheme_Config` qua `INDEX/MATCH` / `IFS` / `SUMIFS` — **không hard-code tỷ lệ đối thủ vào ô công thức**.
-   - Golden Test Cases (`tests/`) kiểm chứng công thức Excel độc lập bằng Python, và sau này dùng chính bộ JSON/CSV cấu hình + Golden Test Cases đó để chạy **Parity Test** với HTML/JavaScript Simulator.
+3. **Lớp 3 — Calculation Engines (Excel Reference Model & Python Parity Engine):**
+   - Trong Excel (`outputs/working/W24_Compensation_Reference_Model_v1.xlsx`), mọi sheet tính toán đọc tham số từ `04_Policy_Parameters` và các bảng chuẩn hóa `05_Lookup_PAF_5Y` / `06_Lookup_Chubb_Comm` bằng hàm tương thích **Excel 2007 (v12.0)** (`INDEX/MATCH`, `VLOOKUP`, `IF`, `SUMIF`, `SUMPRODUCT`, `MAX`, `MIN`, `ROUND`, `ROUNDUP`, `IFERROR`) — **không hard-code tỷ lệ đối thủ vào ô công thức và không dùng hàm không tương thích Excel 12.0 (`XLOOKUP`, `IFS`, `LET`)**.
+   - Golden Test Cases (`tests/test_compensation_golden.py`) kiểm chứng độc lập bằng Python VÀ đối soát ngang bằng với giá trị tính toán lại thực tế bởi **Microsoft Excel COM (`CalculateFullRebuild`)**. Sau này dùng chính bộ cấu hình + Golden Test Cases đó cho HTML/JS Simulator (P1).
 4. **Lớp 4 — Liên kết sang Tầm nhìn Mở rộng của TJ (P1/P2):**
    - **MAPA (Xuôi & Ngược):** Kết nối trực tiếp qua `planning_linkages.mapa_drivers_targeted` (`Manpower`, `Active_Ratio`, `Productivity`, `Average_Case_Size`, `Persistency_K2`).
    - **Marketing Tuyển Sales → Manpower & Active Ratio:** Đầu ra chi phí tuyển/đại lý hoạt động cộng với chi phí `Activation / Onboarding` trong chính sách thu nhập để tính **Total Acquisition Cost per Productive Agent**.

@@ -48,7 +48,10 @@ flowchart LR
     SDM --> PAF
 ```
 
-- **Quy tắc chống phụ thuộc 1 nhánh (`70% Concentration Cap`):** Khi xét thăng cấp hoặc duy trì chức danh (từ `SUM` trở lên đến `VP`), không một nhóm trực tiếp hay nhánh con nào được đóng góp quá **70%** tổng chỉ tiêu yêu cầu (`2601-034 p.9`, `2601-035 p.6-7`).
+- **Quy tắc chống phụ thuộc 1 nhánh (`70% Concentration Cap` — Đã phân biệt chính xác CQL vs. PAF+ sau kiểm toán):**
+  - **Ở Cấp Quản Lý (`2601-034 p.9–10`):** Áp dụng khi UM+ có ít nhất 1 UM+ báo cáo trực tiếp. Cả **Nhóm trực tiếp của chính UM+** LẪN **toàn nhánh của từng UM+ báo cáo trực tiếp** đều bị chặn trần tối đa bằng **70% của MỨC CHỈ TIÊU YÊU CẦU** *(ví dụ p.9: chỉ tiêu 400tr → tối đa ghi nhận 280tr từ 1 nhánh; lưu ý lỗi in ấn trong ví dụ p.9 ghi tỷ trọng 100/400/100 là `18%/72.3%/18%`, thực tế là `16.7%/66.7%/16.7%`)*.
+  - **Ở Nhà Sáng Lập Khối `PAF+` (`2601-035 p.6–7`):** **Khối trực tiếp của chính PAF+ được tính 100% (KHÔNG bị chặn 70%)**; chỉ các nhánh `PAF+` con báo cáo trực tiếp mới bị chặn tối đa 70% chỉ tiêu yêu cầu.
+- **Mâu thuẫn làm tròn `AIA FY` (`ERR-DOC-02` — `CONFLICTING_EVIDENCE`):** File CVTV (`2604-069 p.14`) ghi *"làm tròn lên đến 0 chữ số thập phân"*, còn file CQL (`2601-034 p.21`) & PAF+ (`2601-035 p.18`) ghi rõ làm tròn chuẩn `≥0.5` (`74.49% → 74%`, `74.50% → 75%`). **Không tự phán xử** — mô hình mở 2 chế độ (`HalfUp` vs `RoundUp`) và chờ BO/AIA xác minh.
 - **Quy định báo cáo đồng cấp:** Quản lý mẹ đồng cấp với quản lý con chỉ được bảo lưu quyền lợi trong **12 tháng** (UM / PAF–SAF), **18 tháng** (SUM / DRF–SRF), hoặc **24 tháng** (DM/SDM / PVP–VP). Quá hạn sẽ tách nhánh lên cấp trên. Riêng PAF+ từ Q2/2026: nếu mẹ **thấp cấp hơn** con (vượt cấp), tách nhánh **ngay lập tức** (`2601-035 p.8`).
 
 ---
@@ -61,7 +64,7 @@ flowchart LR
 |---|---|---|---|
 | **Hoa hồng (FYC / RYC / SYC)** | Theo Phụ lục hoa hồng sản phẩm *(thiếu phụ lục trong bộ file)*. | Tính trên phí thực thu; không bị chặn bởi "xét trả" kỷ luật nhưng vẫn bị thu hồi 6 tháng nếu hủy HĐ. | `001 p.12,18` |
 | **Thưởng 1/72H (Kích hoạt siêu tốc)** | **1.5 triệu VND** cố định. | Trong **4 ngày làm việc đầu** từ ngày cấp mã: nộp ≥1 HĐ & ≥4tr FYC Tín Chỉ; duyệt ≤30 ngày. Loại trừ: HĐ tự mua/bán cho CVTV khác, Exchange/Pro (không tính trùng hỗ trợ), AFF, PAF+, SP loại trừ. | `001 p.4` |
-| **Đồng hành 3 tháng đầu (SA mới T1–T6/2026)** | **1.5 triệu/M** (≥5tr FYC TC) hoặc **3 triệu/M** (≥10tr FYC TC). | Chấm công **≥50%**, có **ACK hợp lệ trong 15 ngày** và **qua 21 ngày cân nhắc**. Loại trừ Exchange/Pro/AFF/PAF+ và HĐ đã nhận 1/72H. | `001 p.22-23` |
+| **Đồng hành 3 tháng đầu (SA mới T1–T6/2026)** | **1.5 triệu/M** (≥5tr FYC TC) hoặc **3 triệu/M** (≥10tr FYC TC). | Chấm công **≥50%**, có **ACK hợp lệ trong 15 ngày** *(NGOẠI LỆ p.22: HĐ duyệt trong **tháng 01/2026** được nhận ACK hợp lệ đến hết **28/02/2026**!)* và **qua 21 ngày cân nhắc**. Loại trừ Exchange/Pro/AFF/PAF+ và HĐ đã nhận 1/72H. | `001 p.22-23` |
 | **Chuyến Huấn luyện Đặc biệt (3M đầu)** | 1 vé (không quy đổi tiền, không thu hồi). | Trong 3M đầu (duyệt ≤3M+5 ngày): ≥40tr FYC TC thuần + ≥5 HĐ thuần + 3/6 khóa SB1–SB6. Loại trừ PAF+. | `001 p.4-5` |
 | **Thưởng Doanh Số Cá Nhân Quý** | `FYC TC Quý × Tỷ lệ (4% → 40%) × Hệ số FY Quý` (8 bậc: `16tr:4%, 20tr:10%, 35tr:15%, 50tr:20%, 70tr:25%, 90tr:30%, 120tr:35%, ≥150tr:40%`). | Nếu chưa tròn quý: quy đổi lên mức tròn quý (Q1 theo ngày; từ Q2 nhân `3 / số tháng từ tháng gia nhập`) để tìm % thưởng, rồi nhân với FYC thực đạt. | `001 p.5-6` |
 | **Thưởng Chuyên Viên Ngoại Hạng Quý** | `FYC TC Quý × (5% [3S] / 10% [4S] / 15% [5S]) × Hệ số FY Quý`. | 3S: ≥20tr & ≥2M active; 4S: ≥35tr & 3M active; 5S: ≥70tr & 3M active. Cổng FY 2026: 65%(3-4S)/75%(5S) → **2027 tăng lên 70%/80%**. | `001 p.3,6` |

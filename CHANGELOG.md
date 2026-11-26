@@ -2,6 +2,20 @@
 
 Tất cả thay đổi quan trọng của dự án `W24_Life-Insurance-Strategy-Lab` được ghi nhận tại đây.
 
+## [0.4.0] - 2026-11-26 (Post-Audit Remediation, 12-Method Benchmarking, Excel 12.0 COM Verified Model & Package A)
+
+### Added
+- **Normalized Lookup Tables (`knowledge/lookups/`):** `aia-paf-5y-targets.csv` (1,300 dòng, 0 sai lệch tổng), `chubb-product-commission-schedule.csv` (113 dòng), `chubb-hsbh-tiers.csv` (10 khung tuổi HSBH).
+- **Complete Role Mapping & Total Rewards Inventory:** `knowledge/policies/role-organization-mapping.{csv,md}` (36 chức danh × 16 cột) và `knowledge/compensation/total-rewards-inventory.{csv,md}` (44 cấu phần × 33 metadata chuẩn Section 14, tách bạch tiền mặt vs phúc lợi phi tiền mặt chưa định giá).
+- **Comprehensive Benchmarking & Evaluation Rubric:** `outputs/working/competitor-benchmarking-12-methods.md` (12 phương pháp Benchmarking + Entitlement & Scenario Payout Matrix) và `docs/specifications/evaluation-framework-and-rubric.md` (Mandatory Regulatory Gate G1–G3 + 15 tiêu chí + 6 Calibration Cases + 4 Weight Sensitivity Scenarios — `DRAFT`).
+- **Market Suitability & Strategic Proposals:** `docs/research/vietnam-market-suitability.md` (IAV/MOF 2024–2026) và `outputs/working/strategic-recommendations-and-schemes.md` (`ADOPT/ADAPT/AVOID`, kiến trúc `W24 Balanced Hybrid` + 2 biến thể, Break-Even Margin Sensitivity).
+- **12M Python Engine, Golden Tests & Excel 2007 Reference Model:** `model/compensation/compensation_engine.py`, `tests/test_compensation_golden.py` (`40/40 PASSED`), và `outputs/working/W24_Compensation_Reference_Model_v1.xlsx` (14 sheets, tính toán thực tế qua Microsoft Excel 12.0 COM: `0` lỗi công thức, `20/20` Live Excel Golden Tests `PASS`, `12/12` Enterprise Cost Parity khớp `0.00%` với Python).
+- **Executive Delivery (Package A) & Governance Registers:** `outputs/interview/W24_Executive_Recommendation_Step1.md` (7 trang sạch), `qa/post-audit-remediation-register.md`, `qa/repository-maturity-assessment.md` (12+1 tiêu chuẩn), `docs/decisions/decision-register.md` (`DEC-01..07`), `docs/research/knowledge-backlog.md`.
+
+### Changed
+- Khắc phục toàn bộ 10 phát hiện sau Independent Audit của Codex (`7bcf70e`): bổ sung Điều 52 TT 67/2023 (trần thưởng 20%/30%/7%) & NĐ 97/2026 vào `wheel-check.md` và `business-rules-catalog.csv` (112 rules × 25 cột, tách 3 cột trạng thái Section 32, 0 tham chiếu gãy), thêm `Revision_Class` vào `source-registry.csv`, bổ sung ngoại lệ ACK T01/2026 (`28/02/2026`), tách biệt luật 70% cap CQL vs PAF+, lập trình công thức bù trừ Champion Hubb M7–M12 p.10, chấm dứt tự phán xử `ERR-DOC-01/02` (mở toggle + leo thang Decision Register), và dọn sạch documentation drift trên `reusable-model-schema.md`, `g1-coverage-audit-matrix.md`, `g1-extraction-qa-audit.md`, `competitor-comparison-v1.0.md`, `ANCHOR_SPEC.md`, `HANDOVER.md`.
+- Chỉ tạo **local Git commit** trên nhánh `main` — chưa push lên `origin/main` (chờ phê duyệt của TJ tại `DEC-07`).
+
 ## [0.3.1] - 2026-11-26 (GitHub Private Sync)
 
 ### Changed

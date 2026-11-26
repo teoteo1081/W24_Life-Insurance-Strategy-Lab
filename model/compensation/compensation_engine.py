@@ -1,0 +1,1225 @@
+"""
+W24 Life Insurance Strategy Lab — 12-Month Compensation, Total Distribution Cost,
+Earned/Paid/Obligation Ledger, MAPA & Financial Break-Even Engine (v2.0 Post-Audit).
+
+Design Principles:
+- Zero hard-coded competitor logic hidden inside opaque paths; every threshold & rate
+  comes from explicit policy parameter dictionaries or normalized CSV lookup tables.
+- Conflict toggles for unresolved source conflicts (ERR-DOC-01 Chubb W1; ERR-DOC-02 AIA rounding).
+- Full separation of Earned, Cash Paid Year 1 (T / T+1), Deferred Post-Y1, Holdback,
+  Clawback/Recovery, and Forfeiture.
+- Enterprise Hierarchy Total Distribution Cost counts FYP revenue ONCE (zero double counting)
+  and validates TT 67/2023 Art. 52 (<=30% Y1 new-business bonus portfolio ceiling).
+"""
+
+from __future__ import annotations
+
+import csv
+import math
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
+LOOKUPS_DIR = REPO_ROOT / "knowledge" / "lookups"
+
+
+# =============================================================================
+# 1. NORMALIZED LOOKUP LOADERS (PAF+ 1,300 rows & Chubb 113 rows + 10 HSBH)
+# =============================================================================
+
+def load_aia_paf_targets() -> Dict[Tuple[str, int, str], Tuple[float, float]]:
+    """Return {(Rank, Year_No, Period): (FYP_Million_VND, 1mAA_Count)}."""
+    path = LOOKUPS_DIR / "aia-paf-5y-targets.csv"
+    out: Dict[Tuple[str, int, str], Tuple[float, float]] = {}
+    with open(path, encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            rank = r["Role_Code"]
+            yr = int(r["Tenure_Year"].replace("Year_", ""))
+            period = "Annual" if r["Period_Key"] == "ANNUAL_TOTAL" else r["Period_Key"]
+            metric = r["Metric"]
+            val = float(r["Target_Value"])
+            prev_fyp, prev_aa = out.get((rank, yr, period), (0.0, 0.0))
+            if metric == "FYP_Million_VND":
+                out[(rank, yr, period)] = (val, prev_aa)
+            else:
+                out[(rank, yr, period)] = (prev_fyp, val)
+    return out
+
+
+def load_chubb_commissions() -> Dict[str, Dict[str, str]]:
+    """Return {Product_Rule_ID: row_dict} from 113-row normalized schedule."""
+    path = LOOKUPS_DIR / "chubb-product-commission-schedule.csv"
+    with open(path, encoding="utf-8") as f:
+        return {r["Product_Rule_ID"]: r for r in csv.DictReader(f)}
+
+
+def load_chubb_hsbh() -> List[Dict[str, str]]:
+    """Return 10 age-band rows for Chubb Tu Do An Phuc HSBH tiers."""
+    path = LOOKUPS_DIR / "chubb-hsbh-tiers.csv"
+    with open(path, encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
+def lookup_chubb_tudo_anphuc_y1_rate(age: int, gender: str, hsbh: float, hsbh_rows: Optional[List[Dict[str, str]]] = None) -> float:
+    """
+    Exact Chubb Tu Do An Phuc Y1 FYC rate from SRC-POL-CHB-001 p.16 & p.19.
+    Age < 18: Tier0 (<T1)=20%, Tier1 (T1-<T2)=22%, Tier2 (>=T2)=25%.
+    Age >= 18: Tier0 (<T1)=25%, Tier1 (T1-<T2)=27%, Tier2 (>=T2)=30%.
+    """
+    rows = hsbh_rows if hsbh_rows is not None else load_chubb_hsbh()
+    g = gender.strip().upper()
+    t1_col = "Male_Tier1_HSBH" if g in ("M", "MALE", "NAM") else "Female_Tier1_HSBH"
+    t2_col = "Male_Tier2_HSBH" if g in ("M", "MALE", "NAM") else "Female_Tier2_HSBH"
+    t1 = t2 = None
+    for r in rows:
+        lo, hi = int(r["Min_Age"]), int(r["Max_Age"])
+        if lo <= age <= hi:
+            t1 = float(r[t1_col])
+            t2 = float(r[t2_col])
+            break
+    if t1 is None or t2 is None:
+        raise ValueError(f"Age {age} out of Chubb HSBH range 0-65")
+    if age < 18:
+        if hsbh >= t2:
+            return 0.25
+        return 0.22 if hsbh >= t1 else 0.20
+    else:
+        if hsbh >= t2:
+            return 0.30
+        return 0.27 if hsbh >= t1 else 0.25
+
+
+# =============================================================================
+# 2. ROUNDING & CONFLICT-SAFE HELPERS
+# =============================================================================
+
+def round_aia_fy(fy_pct: float, mode: str = "HalfUp") -> int:
+    """
+    ERR-DOC-02 Conflict Toggle:
+    - 'HalfUp': Standard half-up rounding (>=0.5 up) per AIA CQL p.21 & PAF+ p.18
+      (74.49 -> 74, 74.50 -> 75).
+    - 'RoundUp': Ceiling rounding per AIA CVTV p.14 wording ('lam tron len den 0 so thap phan')
+      (74.01 -> 75, 74.00 -> 74).
+    """
+    if mode == "HalfUp":
+        return int(math.floor(fy_pct + 0.5))
+    elif mode == "RoundUp":
+        return int(math.ceil(fy_pct - 1e-12))
+    raise ValueError(f"Unknown AIA rounding mode: {mode}")
+
+
+def apply_aia_70pct_cap(
+    target_req: float,
+    direct_val: float,
+    sub_branch_vals: List[float],
+    level: str = "CQL",
+) -> float:
+    """
+    Codex Finding #6 fix:
+    - CQL (2601-034 p.9-10): When sub_branch_vals is non-empty, BOTH direct_val AND each
+      sub-UM+ branch are capped at 70% of target_req!
+    - PAF+ (2601-035 p.6-7): Direct block counts 100% (uncapped); ONLY each direct sub-PAF+
+      branch is capped at 70% of target_req!
+    """
+    cap = 0.70 * target_req
+    if level == "CQL":
+        if not sub_branch_vals:
+            return direct_val
+        return min(direct_val, cap) + sum(min(v, cap) for v in sub_branch_vals)
+    elif level == "PAF+":
+        return direct_val + sum(min(v, cap) for v in sub_branch_vals)
+    raise ValueError(f"Unknown level for 70% cap: {level}")
+
+
+# =============================================================================
+# 3. AIA ALPHA ENGINE (CVTV 2026/2027, CQL, PAF+)
+# =============================================================================
+
+def aia_cvtv_fy_factor(fy_pct_raw: float, policy_year: int = 2026, rounding_mode: str = "HalfUp") -> float:
+    fy = round_aia_fy(fy_pct_raw, rounding_mode)
+    if policy_year == 2026:
+        if fy >= 85:
+            return 1.20
+        if fy >= 80:
+            return 1.10
+        if fy >= 75:
+            return 1.00
+        if fy >= 70:
+            return 0.90
+        if fy >= 65:
+            return 0.80
+        return fy / 100.0  # Soft floor in 2026
+    else:  # 2027 hard cliff
+        if fy >= 90:
+            return 1.20
+        if fy >= 85:
+            return 1.15
+        if fy >= 80:
+            return 1.05
+        if fy >= 75:
+            return 1.00
+        if fy >= 70:
+            return 0.85
+        return 0.0  # Hard cliff <70% -> 0%
+
+
+def aia_cvtv_quarterly_rate(fyc_q_annualized: float) -> float:
+    """8 tiers on quarterly FYC TC (Million VND) — SRC-POL-AIA-ALP-001 p.5."""
+    tiers = [
+        (150.0, 0.40), (120.0, 0.35), (90.0, 0.30), (70.0, 0.25),
+        (50.0, 0.20), (35.0, 0.15), (20.0, 0.10), (16.0, 0.04),
+    ]
+    for th, rate in tiers:
+        if fyc_q_annualized >= th:
+            return rate
+    return 0.0
+
+
+def aia_cvtv_premier_tier(
+    fyc_q: float, active_months_in_q: int, fy_pct_raw: float,
+    policy_year: int = 2026, rounding_mode: str = "HalfUp"
+) -> Tuple[str, float, float]:
+    """Return (TierLabel, PremierRate_on_FYC, SYC_Bonus_Rate)."""
+    fy = round_aia_fy(fy_pct_raw, rounding_mode)
+    gate_34 = 65 if policy_year == 2026 else 70
+    gate_5 = 75 if policy_year == 2026 else 80
+    if fyc_q >= 70.0 and active_months_in_q >= 3 and fy >= gate_5:
+        return ("5S", 0.15, 0.50)
+    if fyc_q >= 35.0 and active_months_in_q >= 3 and fy >= gate_34:
+        return ("4S", 0.10, 0.30)
+    if fyc_q >= 20.0 and active_months_in_q >= 2 and fy >= gate_34:
+        return ("3S", 0.05, 0.00)
+    return ("None", 0.00, 0.00)
+
+
+def aia_cvtv_annual_rate(fyc_annual: float) -> float:
+    for th, rate in [(1600.0, 0.20), (800.0, 0.14), (300.0, 0.10), (150.0, 0.06)]:
+        if fyc_annual >= th:
+            return rate
+    return 0.0
+
+
+def aia_ack_eligible_for_3m_bonus(
+    approval_date_ym: str, ack_days_from_approval: int, ack_received_on_or_before_feb28: bool = False
+) -> bool:
+    """
+    Codex Finding #5 fix (SRC-POL-AIA-ALP-001 p.22):
+    Normally ACK must be valid within 15 days of approval, EXCEPT policies approved in
+    2026-01 have until 2026-02-28!
+    """
+    if approval_date_ym == "2026-01" and ack_received_on_or_before_feb28:
+        return True
+    return ack_days_from_approval <= 15
+
+
+def calc_aia_cvtv_12m(
+    monthly_fyc: List[float],
+    monthly_syc: List[float],
+    fy_pct: float,
+    policy_year: int = 2026,
+    is_new_sa: bool = False,
+    fast_72h_qualified: bool = False,
+    attendance_ok_m1_3: bool = True,
+    ack_ok_m1_3: bool = True,
+    freelook_ok_m1_3: bool = True,
+    partial_q1_months: int = 3,
+    disciplinary_final_warning: bool = False,
+    clawback_6m_fyc: float = 0.0,
+    rounding_mode: str = "HalfUp",
+    assumed_fyc_to_fyp_rate: float = 0.30,
+) -> Dict[str, float]:
+    """Full 12-month AIA Alpha CVTV simulation (in Million VND)."""
+    assert len(monthly_fyc) == 12 and len(monthly_syc) == 12
+    fy_fac = aia_cvtv_fy_factor(fy_pct, policy_year, rounding_mode)
+    disc_mult = 0.70 if disciplinary_final_warning else 1.00
+
+    # Activation: 1/72H & Onboarding 3M (for new standard SA only)
+    b_72h = 1.5 if (is_new_sa and fast_72h_qualified) else 0.0
+    b_3m = 0.0
+    if is_new_sa and attendance_ok_m1_3 and ack_ok_m1_3 and freelook_ok_m1_3:
+        for m in range(3):
+            # Exclude 4M minimum 1/72H policy from M1 if 1/72H paid
+            eff_fyc = max(0.0, monthly_fyc[m] - (4.0 if (m == 0 and b_72h > 0) else 0.0))
+            if eff_fyc >= 10.0:
+                b_3m += 3.0
+            elif eff_fyc >= 5.0:
+                b_3m += 1.5
+
+    q_prod_total = 0.0
+    q_prem_total = 0.0
+    q_syc_total = 0.0
+    q_4s_count = 0
+    q_5s_count = 0
+
+    for q in range(4):
+        sl = monthly_fyc[q * 3 : (q + 1) * 3]
+        sl_syc = monthly_syc[q * 3 : (q + 1) * 3]
+        q_fyc = sum(sl)
+        q_syc = sum(sl_syc)
+        act_m = sum(1 for x in sl if x >= 4.0)
+        ann_fyc = q_fyc * (3.0 / partial_q1_months) if (q == 0 and partial_q1_months < 3) else q_fyc
+        q_rate = aia_cvtv_quarterly_rate(ann_fyc)
+        q_prod_total += q_fyc * q_rate * fy_fac
+
+        tier, p_rate, syc_rate = aia_cvtv_premier_tier(q_fyc, act_m, fy_pct, policy_year, rounding_mode)
+        if tier in ("4S", "5S"):
+            q_4s_count += 1
+        if tier == "5S":
+            q_5s_count += 1
+        q_prem_total += q_fyc * p_rate * fy_fac
+        q_syc_total += q_syc * syc_rate
+
+    fyc_total = sum(monthly_fyc)
+    syc_total = sum(monthly_syc)
+    ann_bonus = fyc_total * aia_cvtv_annual_rate(fyc_total) * fy_fac
+
+    gross_bonuses = (b_72h + b_3m + q_prod_total + q_prem_total + q_syc_total + ann_bonus) * disc_mult
+    # 6M clawback proportional recovery on canceled FYC
+    clawback_ratio = min(1.0, clawback_6m_fyc / fyc_total) if fyc_total > 0 else 0.0
+    clawback_amount = (fyc_total + gross_bonuses) * clawback_ratio
+
+    earned_total = fyc_total + syc_total + gross_bonuses
+    cash_paid_y1 = earned_total - clawback_amount
+    implied_fyp = fyc_total / assumed_fyc_to_fyp_rate if assumed_fyc_to_fyp_rate > 0 else 0.0
+
+    # Unpriced non-cash flags (NEVER guess cost!)
+    non_cash_health_tier = 2 if (q_5s_count >= 3 and round_aia_fy(fy_pct, rounding_mode) >= 75) else (
+        1 if (q_4s_count >= 3 and round_aia_fy(fy_pct, rounding_mode) >= 65) else 0
+    )
+
+    return {
+        "fyc_total": round(fyc_total, 4),
+        "syc_total": round(syc_total, 4),
+        "implied_fyp": round(implied_fyp, 4),
+        "bonus_72h": round(b_72h * disc_mult, 4),
+        "bonus_3m": round(b_3m * disc_mult, 4),
+        "bonus_quarterly_prod": round(q_prod_total * disc_mult, 4),
+        "bonus_quarterly_premier": round(q_prem_total * disc_mult, 4),
+        "bonus_syc": round(q_syc_total * disc_mult, 4),
+        "bonus_annual": round(ann_bonus * disc_mult, 4),
+        "total_bonuses_earned": round(gross_bonuses, 4),
+        "total_earned": round(earned_total, 4),
+        "cash_paid_y1": round(cash_paid_y1, 4),
+        "deferred_post_y1": 0.0,
+        "clawback_recovery": round(clawback_amount, 4),
+        "pct_of_fyc": round((earned_total / fyc_total) * 100.0, 2) if fyc_total > 0 else 0.0,
+        "bonus_pct_of_fyp": round((gross_bonuses / implied_fyp) * 100.0, 2) if implied_fyp > 0 else 0.0,
+        "non_cash_health_tier_flag": float(non_cash_health_tier),
+    }
+
+
+def calc_aia_cql_12m(
+    monthly_team_fyc: List[float],
+    monthly_active_count: List[int],
+    fy_pct: float,
+    tot_pct: float = 86.0,
+    attendance_ok: bool = True,
+    quarterly_new_recruits: Optional[List[int]] = None,
+    new_agent_fyc_12m: float = 0.0,
+    new_agent_type: str = "SA",  # SA=10%, Exchange=20%, ExchangePro=40%
+    indirect_gen2_base_12m: float = 0.0,
+    new_um_base_monthly: float = 0.0,
+    rounding_mode: str = "HalfUp",
+) -> Dict[str, float]:
+    """Full 12-month AIA Alpha CQL Manager calculation (Million VND)."""
+    fy = round_aia_fy(fy_pct, rounding_mode)
+    recruits = quarterly_new_recruits or [2, 2, 2, 2]
+
+    direct_m_total = 0.0
+    activity_m_total = 0.0
+    for m in range(12):
+        f = monthly_team_fyc[m]
+        a = monthly_active_count[m]
+        if fy >= 80:
+            rate = 0.24 if f >= 50 else (0.18 if f >= 20 else (0.15 if f >= 7 else 0.10))
+        else:
+            rate = 0.20 if f >= 50 else (0.15 if f >= 20 else (0.12 if f >= 7 else 0.08))
+        direct_m_total += f * rate
+
+        if attendance_ok:
+            act_rate = 0.12 if a >= 6 else (0.08 if a >= 4 else (0.05 if a >= 2 else 0.0))
+            fy_act_fac = 1.0 if fy >= 70 else (fy / 100.0)
+            activity_m_total += f * act_rate * fy_act_fac
+
+    premier_q_total = 0.0
+    q_4s_plus = 0
+    q_5s = 0
+    for q in range(4):
+        qf = sum(monthly_team_fyc[q * 3 : (q + 1) * 3])
+        qa = sum(monthly_active_count[q * 3 : (q + 1) * 3])
+        qr = recruits[q]
+        req_r = 1 if q == 0 else 2
+        if attendance_ok and fy >= 75:
+            if qf >= 170 and qa >= 14 and qr >= req_r:
+                premier_q_total += qf * 0.15
+                q_4s_plus += 1
+                q_5s += 1
+            elif qf >= 80 and qa >= 9 and qr >= req_r:
+                premier_q_total += qf * 0.08
+                q_4s_plus += 1
+            elif qf >= 50 and qa >= 6 and qr >= 1:
+                premier_q_total += qf * 0.05
+
+    team_fyc_y = sum(monthly_team_fyc)
+    # Annual deferred 3Y (15% Y+2, 25% Y+3, 60% Y+4) requires FY>=75% & >=3Q; payout requires TOT>=85%
+    ann_rate = 0.10 if (fy >= 75 and q_5s >= 3) else (0.05 if (fy >= 75 and q_4s_plus >= 3) else 0.0)
+    deferred_3y_earned = team_fyc_y * ann_rate
+    deferred_vested_if_tot_ok = deferred_3y_earned if tot_pct >= 85.0 else 0.0
+
+    coach_rate = {"SA": 0.10, "Exchange": 0.20, "ExchangePro": 0.40}.get(new_agent_type, 0.10)
+    coaching_fee = new_agent_fyc_12m * coach_rate
+    indirect_fee = indirect_gen2_base_12m * 0.50
+    new_um_promo_fee = min(30.0, new_um_base_monthly * 1.50) * 12.0 if (fy >= 75 and new_um_base_monthly > 0) else 0.0
+
+    cash_y1 = direct_m_total + activity_m_total + premier_q_total + coaching_fee + indirect_fee + new_um_promo_fee
+    total_earned = cash_y1 + deferred_3y_earned
+    return {
+        "team_fyc_12m": round(team_fyc_y, 4),
+        "direct_monthly": round(direct_m_total, 4),
+        "activity_monthly": round(activity_m_total, 4),
+        "premier_quarterly": round(premier_q_total, 4),
+        "annual_deferred_3y": round(deferred_3y_earned, 4),
+        "deferred_vesting_y2_15pct": round(deferred_vested_if_tot_ok * 0.15, 4),
+        "deferred_vesting_y3_25pct": round(deferred_vested_if_tot_ok * 0.25, 4),
+        "deferred_vesting_y4_60pct": round(deferred_vested_if_tot_ok * 0.60, 4),
+        "coaching_fee": round(coaching_fee, 4),
+        "indirect_fee": round(indirect_fee, 4),
+        "new_um_promo_fee": round(new_um_promo_fee, 4),
+        "cash_paid_y1": round(cash_y1, 4),
+        "total_earned": round(total_earned, 4),
+        "direct_override_pct_fyc": round(((direct_m_total + activity_m_total + premier_q_total + deferred_3y_earned) / team_fyc_y) * 100.0, 2) if team_fyc_y > 0 else 0.0,
+    }
+
+
+PAF_BASE_FEES = {
+    "PAF": 20.0, "AF": 35.0, "PSAF": 40.0, "SAF": 50.0, "DRF": 60.0,
+    "RF": 70.0, "DSRF": 80.0, "SRF": 90.0, "PVP": 110.0, "SPVP": 130.0,
+}
+
+
+def calc_aia_paf_12m(
+    rank: str,
+    year_no: int,
+    monthly_fyp: List[float],
+    monthly_fyc: List[float],
+    monthly_1maa: List[float],
+    fy_pct: float,
+    attendance_pct: float = 80.0,
+    sub_paf_prof_fees_12m: float = 0.0,
+    targets: Optional[Dict[Tuple[str, int, str], Tuple[float, float]]] = None,
+    rounding_mode: str = "HalfUp",
+) -> Dict[str, float]:
+    """Full 12-month AIA Alpha PAF+ calculation reading normalized 1,300-row lookup."""
+    t_map = targets if targets is not None else load_aia_paf_targets()
+    base_m = PAF_BASE_FEES[rank]
+    fy = round_aia_fy(fy_pct, rounding_mode)
+    att_mult = 1.0 if attendance_pct >= 70.0 else 0.70
+
+    # PAF+ FY factor (2601-035 p.4)
+    if fy >= 75:
+        fy_fac = 1.20
+    elif fy >= 70:
+        fy_fac = 1.10
+    elif fy >= 65:
+        fy_fac = 1.00
+    elif fy >= 60:
+        fy_fac = 0.80
+    elif fy >= 50:
+        fy_fac = 0.60
+    else:
+        fy_fac = 0.00
+
+    base_total = 0.0
+    prof_m_total = 0.0
+    for m in range(12):
+        tgt_fyp, tgt_aa = t_map[(rank, year_no, f"M{m+1:02d}")]
+        ach_fyp = monthly_fyp[m] / tgt_fyp if tgt_fyp > 0 else 0.0
+        ach_aa = monthly_1maa[m] / tgt_aa if tgt_aa > 0 else 0.0
+
+        b_pct = 1.20 if ach_fyp >= 1.15 else (1.00 if ach_fyp >= 0.55 else (0.50 if ach_fyp >= 0.35 else 0.0))
+        base_total += base_m * b_pct * att_mult
+
+        r_fyp = 0.06 if ach_fyp >= 1.15 else (0.045 if ach_fyp >= 0.90 else (0.03 if ach_fyp >= 0.55 else 0.0))
+        r_aa = 0.035 if ach_aa >= 1.15 else (0.025 if ach_aa >= 0.90 else (0.015 if ach_aa >= 0.55 else 0.0))
+        prof_m_total += monthly_fyc[m] * (r_fyp * fy_fac + r_aa)
+
+    prof_q_total = 0.0
+    for q in range(4):
+        q_fyp = sum(monthly_fyp[q * 3 : (q + 1) * 3])
+        q_fyc = sum(monthly_fyc[q * 3 : (q + 1) * 3])
+        q_aa = sum(monthly_1maa[q * 3 : (q + 1) * 3])
+        q_tgt_fyp = sum(t_map[(rank, year_no, f"M{q*3+i+1:02d}")][0] for i in range(3))
+        q_tgt_aa = sum(t_map[(rank, year_no, f"M{q*3+i+1:02d}")][1] for i in range(3))
+        ach_qf = q_fyp / q_tgt_fyp if q_tgt_fyp > 0 else 0.0
+        ach_qa = q_aa / q_tgt_aa if q_tgt_aa > 0 else 0.0
+
+        rq_f = 0.05 if ach_qf >= 1.30 else (0.035 if ach_qf >= 1.15 else (0.02 if ach_qf >= 1.00 else (0.005 if ach_qf >= 0.90 else 0.0)))
+        rq_a = 0.035 if ach_qa >= 1.30 else (0.025 if ach_qa >= 1.15 else (0.015 if ach_qa >= 1.00 else (0.005 if ach_qa >= 0.90 else 0.0)))
+        prof_q_total += q_fyc * (rq_f * fy_fac + rq_a)
+
+    ann_tgt_fyp = t_map[(rank, year_no, "Annual")][0]
+    excess_fyp = max(0.0, sum(monthly_fyp) - ann_tgt_fyp)
+    if year_no == 1:
+        sen_rate = 0.05
+    else:
+        sen_rate = 0.06 if fy >= 70 else (0.05 if fy >= 65 else (0.04 if fy >= 55 else 0.0))
+    seniority_fee = min(base_total, excess_fyp * sen_rate)
+    indirect_50 = sub_paf_prof_fees_12m * 0.50
+
+    total = base_total + prof_m_total + prof_q_total + seniority_fee + indirect_50
+    return {
+        "rank": rank,
+        "annual_target_fyp": round(ann_tgt_fyp, 4),
+        "actual_fyp": round(sum(monthly_fyp), 4),
+        "base_fee_12m": round(base_total, 4),
+        "prof_monthly_12m": round(prof_m_total, 4),
+        "prof_quarterly_12m": round(prof_q_total, 4),
+        "seniority_fee_clawback12m": round(seniority_fee, 4),
+        "indirect_50pct": round(indirect_50, 4),
+        "total_earned": round(total, 4),
+        "cash_paid_y1": round(total, 4),
+    }
+
+
+# =============================================================================
+# 4. CHUBB LIFE AGENCY ENGINE (AR, CHAMPION HUBB, AL, RD)
+# =============================================================================
+
+def chubb_k2_factor(k2_pct: Optional[float]) -> float:
+    """Chubb AR & AL K2 factor (SRC-POL-CHB-001 p.5 & 002 p.5): <50% still gets 25%!"""
+    if k2_pct is None:
+        return 1.00
+    if k2_pct >= 80.0:
+        return 1.20
+    if k2_pct >= 70.0:
+        return 1.00
+    if k2_pct >= 60.0:
+        return 0.75
+    if k2_pct >= 50.0:
+        return 0.50
+    return 0.25
+
+
+def chubb_ch_w1_factor(sop_pct: float, conflict_mode: str = "Table_80") -> float:
+    """
+    ERR-DOC-01 Conflict Toggle (SRC-POL-CHB-001 p.9 vs p.10):
+    - 'Table_80': Per official table p.9 (80-<90% -> 80%, 70-<80% -> 50%).
+    - 'Example_50': Per p.10 M11-M12 worked example (85% -> 50%).
+    """
+    if sop_pct >= 90.0:
+        return 1.00
+    if sop_pct >= 80.0:
+        return 0.80 if conflict_mode == "Table_80" else 0.50
+    if sop_pct >= 70.0:
+        return 0.50
+    return 0.00
+
+
+def chubb_ch_w2_factor(k2_pct: float) -> float:
+    if k2_pct >= 85.0:
+        return 1.25
+    if k2_pct >= 75.0:
+        return 1.00
+    if k2_pct >= 65.0:
+        return 0.50
+    if k2_pct >= 50.0:
+        return 0.30
+    return 0.00
+
+
+def calc_chubb_ch_m1_12_offset(
+    month_idx: int,
+    cc_count: int,
+    sop_pct: float,
+    kpi_pct: float,
+    new_agent_bonus_paid_in_month: float = 0.0,
+    conflict_mode: str = "Table_80",
+) -> Dict[str, float]:
+    """
+    Codex Finding #7 exact fix (SRC-POL-CHB-001 p.9-10):
+    Deducts NewAgentBonus from CH_Month cash first; any excess deducts from CH_M12 deferred tranche!
+    Verified directly against p.10 M7 (5.0+2.4 vs 6.0 -> 0.0 month, 1.4 M12) & M12 (2.5+1.2 vs 1.5 -> 1.0 month, 1.2 M12).
+    """
+    w1 = chubb_ch_w1_factor(sop_pct, conflict_mode)
+    if kpi_pct < 70.0 or cc_count < 1 or w1 == 0.0:
+        return {"w1": w1, "ch_month_gross": 0.0, "ch_m12_gross": 0.0, "ch_month_net": 0.0, "ch_m12_net": 0.0}
+
+    if 1 <= month_idx <= 6:
+        gross_m = 7.0 if cc_count >= 3 else (5.0 if cc_count == 2 else 3.0)
+        gross_m12 = 0.0
+    else:  # M7-M12
+        gross_m = 5.0 if cc_count >= 3 else (3.0 if cc_count == 2 else 2.0)
+        gross_m12 = 2.4 if cc_count >= 2 else 1.2
+
+    adj_m = gross_m * w1
+    adj_m12 = gross_m12 * w1
+    net_m = max(0.0, adj_m - new_agent_bonus_paid_in_month)
+    excess_offset = max(0.0, new_agent_bonus_paid_in_month - adj_m)
+    net_m12 = max(0.0, adj_m12 - excess_offset)
+    return {
+        "w1": w1,
+        "ch_month_gross": round(adj_m, 4),
+        "ch_m12_gross": round(adj_m12, 4),
+        "ch_month_net": round(net_m, 4),
+        "ch_m12_net": round(net_m12, 4),
+    }
+
+
+def calc_chubb_ar_12m(
+    monthly_fyc: List[float],
+    monthly_ryc: List[float],
+    monthly_ehc: List[bool],
+    k2_pct: Optional[float],
+    tenure_months_start: int = 13,
+    is_al_role: bool = False,
+    new_agent_cc_m3_6_12: Tuple[int, int, int] = (0, 0, 0),
+    new_agent_courses_ok: bool = True,
+    join_ch: bool = False,
+    monthly_cc_ch: Optional[List[int]] = None,
+    sop_pct: float = 92.0,
+    kpi_ch_pct: float = 80.0,
+    remain_in_ch_at_m12: bool = True,
+    conflict_mode: str = "Table_80",
+    assumed_fyc_to_fyp_rate: float = 0.30,
+) -> Dict[str, float]:
+    """Full 12-month Chubb Life Individual Agent (AR or AL personal sales) calculation."""
+    assert len(monthly_fyc) == 12
+    k2_fac = chubb_k2_factor(k2_pct)
+    hold_t_plus_1 = (k2_pct is None) or (k2_pct < 60.0)
+
+    monthly_hqkd: List[float] = []
+    # For seasoned agents (tenure>=13), prior 2 months assumed at steady-state M1 rate unless new agent
+    pre_m = [monthly_fyc[0], monthly_fyc[0]] if tenure_months_start >= 13 else [0.0, 0.0]
+
+    for m in range(12):
+        tenure_m = tenure_months_start + m
+        hist = pre_m + monthly_fyc[: m + 1]
+        rolling_3m = sum(hist[-3:])
+        capped = (tenure_m < 13) or (k2_pct is None)
+        if not is_al_role:
+            if rolling_3m >= 60.0:
+                rate = 0.45 if capped else 0.55
+            elif rolling_3m >= 40.0:
+                rate = 0.45
+            elif rolling_3m >= 20.0:
+                rate = 0.35
+            elif rolling_3m >= 10.0:
+                rate = 0.25
+            elif rolling_3m >= 5.0:
+                rate = 0.075
+            else:
+                rate = 0.0
+        else:
+            if rolling_3m >= 60.0:
+                rate = 0.60 if capped else 0.70
+            elif rolling_3m >= 40.0:
+                rate = 0.60
+            elif rolling_3m >= 20.0:
+                rate = 0.50
+            elif rolling_3m >= 10.0:
+                rate = 0.40
+            elif rolling_3m >= 5.0:
+                rate = 0.15
+            else:
+                rate = 0.0
+        monthly_hqkd.append(monthly_fyc[m] * rate * k2_fac)
+
+    q_mult_total = 0.0
+    q_ryc_bonus = 0.0
+    for q in range(4):
+        ehc_q = sum(1 for x in monthly_ehc[q * 3 : (q + 1) * 3] if x)
+        q_m_sum = sum(monthly_hqkd[q * 3 : (q + 1) * 3])
+        q_mult = 0.30 if ehc_q >= 3 else (0.15 if ehc_q == 2 else 0.0)
+        q_mult_total += q_m_sum * q_mult
+
+        if (tenure_months_start + q * 3 + 2) >= 13 and (k2_pct is not None and k2_pct >= 65.0):
+            ryc_rate = 0.15 if ehc_q >= 3 else (0.10 if ehc_q == 2 else 0.0)
+            q_ryc_bonus += sum(monthly_ryc[q * 3 : (q + 1) * 3]) * ryc_rate
+
+    # New Agent Bonus M3 / M6 / M12 (only for M1 starters)
+    new_ag_by_month = [0.0] * 12
+    if tenure_months_start == 1:
+        cc3, cc6, cc12 = new_agent_cc_m3_6_12
+        course_mult = 1.0 if new_agent_courses_ok else 0.50
+        if cc3 >= 6:
+            new_ag_by_month[2] = min(6.0, sum(monthly_fyc[0:3]) * 0.20)
+        if cc6 >= 6:
+            new_ag_by_month[5] = min(10.0, sum(monthly_fyc[3:6]) * 0.20) * course_mult
+        if cc12 >= 12:
+            new_ag_by_month[11] = min(20.0, sum(monthly_fyc[6:12]) * 0.20) * course_mult
+    new_ag_total = sum(new_ag_by_month)
+
+    # Champion Hubb M1-M12 add-on with exact offset
+    ch_m_net_total = 0.0
+    ch_m12_net_total = 0.0
+    if join_ch and tenure_months_start == 1:
+        ccs = monthly_cc_ch or [2] * 12
+        for m in range(12):
+            res = calc_chubb_ch_m1_12_offset(
+                month_idx=m + 1, cc_count=ccs[m], sop_pct=sop_pct, kpi_pct=kpi_ch_pct,
+                new_agent_bonus_paid_in_month=new_ag_by_month[m], conflict_mode=conflict_mode
+            )
+            ch_m_net_total += res["ch_month_net"]
+            ch_m12_net_total += res["ch_m12_net"]
+    ch_m12_vested = ch_m12_net_total if remain_in_ch_at_m12 else 0.0
+    ch_m12_forfeited = ch_m12_net_total - ch_m12_vested
+
+    fyc_total = sum(monthly_fyc)
+    ryc_total = sum(monthly_ryc)
+    hqkd_m_total = sum(monthly_hqkd)
+    total_bonuses = hqkd_m_total + q_mult_total + q_ryc_bonus + new_ag_total + ch_m_net_total + ch_m12_vested
+    total_earned = fyc_total + ryc_total + total_bonuses
+    # If hold_t_plus_1 is True, M12 monthly bonus settles in Jan Y+1 (1 month lag)
+    accrued_t_plus_1_m12 = monthly_hqkd[11] if hold_t_plus_1 else 0.0
+    cash_paid_in_y1 = total_earned - accrued_t_plus_1_m12
+    implied_fyp = fyc_total / assumed_fyc_to_fyp_rate if assumed_fyc_to_fyp_rate > 0 else 0.0
+
+    return {
+        "fyc_total": round(fyc_total, 4),
+        "ryc_total": round(ryc_total, 4),
+        "implied_fyp": round(implied_fyp, 4),
+        "bonus_hqkd_monthly": round(hqkd_m_total, 4),
+        "bonus_hqkd_quarterly": round(q_mult_total, 4),
+        "bonus_ryc_quarterly": round(q_ryc_bonus, 4),
+        "bonus_new_agent": round(new_ag_total, 4),
+        "bonus_ch_month_addon": round(ch_m_net_total, 4),
+        "bonus_ch_m12_vested": round(ch_m12_vested, 4),
+        "bonus_ch_m12_forfeited": round(ch_m12_forfeited, 4),
+        "total_bonuses_earned": round(total_bonuses, 4),
+        "total_earned": round(total_earned, 4),
+        "cash_paid_y1": round(cash_paid_in_y1, 4),
+        "accrued_t_plus_1_unpaid": round(accrued_t_plus_1_m12, 4),
+        "pct_of_fyc": round((total_earned / fyc_total) * 100.0, 2) if fyc_total > 0 else 0.0,
+        "bonus_pct_of_fyp": round((total_bonuses / implied_fyp) * 100.0, 2) if implied_fyp > 0 else 0.0,
+    }
+
+
+def calc_chubb_al_htktn_month(fyc_ntt: float, ehc_ntt: int, k2_ntt: Optional[float], al_tenure_months: int = 15) -> float:
+    """
+    Chubb AL Monthly HT KTN (SRC-POL-CHB-002 p.5-6) INCLUDING symmetric negative FYC clawback!
+    If fyc_ntt < 0, lookup tier on abs(fyc_ntt) and return negative fee!
+    """
+    abs_f = abs(fyc_ntt)
+    high_ehc = ehc_ntt >= 4
+    k2_fac = chubb_k2_factor(k2_ntt)
+    if al_tenure_months >= 15:
+        if abs_f >= 40.0:
+            rate = 0.60 if high_ehc else 0.50
+        elif abs_f >= 30.0:
+            rate = 0.50 if high_ehc else 0.40
+        elif abs_f >= 20.0:
+            rate = 0.40 if high_ehc else 0.30
+        elif abs_f >= 10.0:
+            rate = 0.30 if high_ehc else 0.20
+        elif abs_f >= 5.0:
+            rate = 0.20 if high_ehc else 0.10
+        else:
+            rate = 0.0
+    else:
+        if abs_f >= 20.0:
+            rate = 0.35 if high_ehc else 0.25
+        elif abs_f >= 10.0:
+            rate = 0.30 if high_ehc else 0.20
+        elif abs_f >= 5.0:
+            rate = 0.20 if high_ehc else 0.10
+        else:
+            rate = 0.0
+    return fyc_ntt * rate * k2_fac
+
+
+def calc_chubb_al_12m(
+    monthly_fyc_ntt: List[float],
+    monthly_ehc_ntt: List[int],
+    k2_ntt: Optional[float],
+    al_tenure_start: int = 15,
+    sub_l1_htktn_monthly: Optional[List[float]] = None,
+    sub_l2_htktn_monthly: Optional[List[float]] = None,
+    sub_l3_htktn_monthly: Optional[List[float]] = None,
+    rank: str = "DM",
+    new_ar_fyc_m1_6: float = 0.0,
+    new_ar_fyc_m7_12: float = 0.0,
+    still_um_al_at_m12: bool = True,
+    new_um_indirect_monthly: float = 0.0,
+    ch_mgt_gross_12m: float = 0.0,
+    new_unit_fee_260009v_12m: float = 0.0,
+) -> Dict[str, float]:
+    """Full 12-month Chubb AL Manager calculation (excl. AL personal sales!)."""
+    ht_m = [calc_chubb_al_htktn_month(monthly_fyc_ntt[m], monthly_ehc_ntt[m], k2_ntt, al_tenure_start + m) for m in range(12)]
+    ht_q_total = 0.0
+    for q in range(4):
+        qf = sum(monthly_fyc_ntt[q * 3 : (q + 1) * 3])
+        qm_fee = sum(ht_m[q * 3 : (q + 1) * 3])
+        if qf >= 100.0:
+            qr = 0.50
+        elif qf >= 75.0:
+            qr = 0.45
+        elif qf >= 55.0:
+            qr = 0.40
+        elif qf >= 35.0:
+            qr = 0.35
+        elif qf >= 15.0:
+            qr = 0.30
+        else:
+            qr = 0.0
+        ht_q_total += qm_fee * qr
+
+    l1_arr = sub_l1_htktn_monthly or [0.0] * 12
+    l2_arr = sub_l2_htktn_monthly or [0.0] * 12
+    l3_arr = sub_l3_htktn_monthly or [0.0] * 12
+    ind_total = 0.0
+    for m in range(12):
+        f_ntt = monthly_fyc_ntt[m]
+        if f_ntt < 15.0:
+            r1 = r2 = r3 = 0.0
+        elif f_ntt < 30.0:
+            r1, r2, r3 = 0.30, 0.15, 0.075
+        else:
+            r1, r2, r3 = 0.50, 0.25, 0.125
+        if rank == "UM":
+            r2 = r3 = 0.0
+        elif rank == "SM":
+            r3 = 0.0
+        ind_total += l1_arr[m] * r1 + l2_arr[m] * r2 + l3_arr[m] * r3
+
+    recruit_m1_6 = new_ar_fyc_m1_6 * 0.10
+    recruit_m7_12 = (new_ar_fyc_m7_12 * 0.10) if still_um_al_at_m12 else 0.0
+    promo_dev_fee = min(15.0, new_um_indirect_monthly) * 12.0 if new_um_indirect_monthly > 0 else 0.0
+    # CH Manager Add-On per 0008V p.12
+    ch_mgt_addon = max(0.0, ch_mgt_gross_12m - (new_unit_fee_260009v_12m + promo_dev_fee))
+
+    ht_m_sum = sum(ht_m)
+    total_direct = ht_m_sum + ht_q_total
+    total_all = total_direct + ind_total + recruit_m1_6 + recruit_m7_12 + promo_dev_fee + ch_mgt_addon
+    ntt_sum = sum(monthly_fyc_ntt)
+    return {
+        "ntt_fyc_12m": round(ntt_sum, 4),
+        "ht_ktn_monthly": round(ht_m_sum, 4),
+        "ht_ktn_quarterly": round(ht_q_total, 4),
+        "indirect_l1_l3": round(ind_total, 4),
+        "recruit_m1_6": round(recruit_m1_6, 4),
+        "recruit_m7_12_vested": round(recruit_m7_12, 4),
+        "promo_dev_fee": round(promo_dev_fee, 4),
+        "ch_mgt_addon": round(ch_mgt_addon, 4),
+        "total_earned": round(total_all, 4),
+        "cash_paid_y1": round(total_all, 4),
+        "direct_override_pct_fyc": round((total_direct / ntt_sum) * 100.0, 2) if ntt_sum > 0 else 0.0,
+    }
+
+
+def calc_chubb_rd_12m(
+    monthly_direct_fyp: List[float],
+    monthly_direct_fyc: List[float],
+    monthly_direct_ehc: List[int],
+    monthly_3maa: List[int],
+    monthly_ryc: List[float],
+    k2_pct: float,
+    weighted_reported_fyp_monthly: float = 500.0,
+    training_classes_monthly: int = 4,
+    prior_year_q_fyp: Optional[List[float]] = None,
+    legacy_holdback_2025: float = 0.0,
+) -> Dict[str, float]:
+    """Full 12-month Chubb RD calculation with Q1-Q2 (50%) vs Q3-Q4 (60%) K2 Binary Cliff!"""
+    base_q_fyp = prior_year_q_fyp or [sum(monthly_direct_fyp[0:3]) / 1.15] * 4
+    train_total = act_total = biz_total = qual_m_total = 0.0
+
+    for m in range(12):
+        # II.1 Training
+        t_base = 25.0 if weighted_reported_fyp_monthly >= 400.0 else 12.5
+        t_mult = 1.0 if training_classes_monthly >= 4 else (0.75 if training_classes_monthly == 3 else (0.50 if training_classes_monthly == 2 else 0.0))
+        train_total += t_base * t_mult
+
+        # II.2 Activity (EHC)
+        e = monthly_direct_ehc[m]
+        act_total += 8.0 if e >= 20 else (6.0 if e >= 16 else (4.5 if e >= 12 else (3.0 if e >= 8 else (1.5 if e >= 4 else 0.0))))
+
+        # II.3 Business (FYP)
+        f = monthly_direct_fyp[m]
+        biz_total += 12.0 if f >= 600 else (9.5 if f >= 480 else (7.0 if f >= 360 else (4.5 if f >= 240 else (2.5 if f >= 120 else 0.0))))
+
+        # II.4 Quality 3MAA x K2 Binary Cliff (50% Q1-Q2 -> 60% Q3-Q4!)
+        k2_gate = 1.0 if (k2_pct >= (50.0 if m < 6 else 60.0)) else 0.0
+        a3 = monthly_3maa[m]
+        r3 = 0.12 if a3 >= 12 else (0.10 if a3 >= 10 else (0.08 if a3 >= 8 else (0.06 if a3 >= 6 else (0.04 if a3 >= 4 else (0.02 if a3 >= 2 else 0.0)))))
+        qual_m_total += monthly_direct_fyc[m] * r3 * k2_gate
+
+    growth_q_total = 0.0
+    ryc_q_total = 0.0
+    for q in range(4):
+        qf = sum(monthly_direct_fyp[q * 3 : (q + 1) * 3])
+        qc = sum(monthly_direct_fyc[q * 3 : (q + 1) * 3])
+        qr = sum(monthly_ryc[q * 3 : (q + 1) * 3])
+        k2_gate = 1.0 if (k2_pct >= (50.0 if q < 2 else 60.0)) else 0.0
+
+        prev_f = base_q_fyp[q]
+        if qf < 360.0:
+            gr_rate = 0.025
+        elif prev_f <= 0.0:
+            gr_rate = 0.10
+        else:
+            g = (qf - prev_f) / prev_f
+            if g >= 0.50:
+                gr_rate = 0.275
+            elif g >= 0.40:
+                gr_rate = 0.225
+            elif g >= 0.30:
+                gr_rate = 0.175
+            elif g >= 0.20:
+                gr_rate = 0.125
+            elif g >= 0.10:
+                gr_rate = 0.075
+            elif g >= 0.0:
+                gr_rate = 0.05
+            else:
+                gr_rate = 0.025
+        growth_q_total += qc * gr_rate * k2_gate
+
+        ryc_r = 0.30 if k2_pct >= 70 else (0.25 if k2_pct >= 60 else (0.20 if k2_pct >= 55 else (0.15 if k2_pct >= 50 else 0.10)))
+        ryc_q_total += qr * ryc_r
+
+    legacy_release = legacy_holdback_2025 * (1.0 if k2_pct >= 60 else (0.60 if k2_pct >= 50 else 0.0))
+    total = train_total + act_total + biz_total + qual_m_total + growth_q_total + ryc_q_total
+    return {
+        "training_12m": round(train_total, 4),
+        "activity_12m": round(act_total, 4),
+        "business_12m": round(biz_total, 4),
+        "quality_3maa_12m": round(qual_m_total, 4),
+        "growth_quarterly_12m": round(growth_q_total, 4),
+        "ryc_quarterly_12m": round(ryc_q_total, 4),
+        "legacy_holdback_release": round(legacy_release, 4),
+        "total_earned": round(total, 4),
+        "cash_paid_y1": round(total + legacy_release, 4),
+    }
+
+
+# =============================================================================
+# 5. MANULIFE PSM+ / HKD ENGINE (DUAL-PHASE APR 2026 + 3Y VESTING 30/30/40%)
+# =============================================================================
+
+def manulife_k2_factor(k2_pct: Optional[float], month_idx_1_to_12: int) -> float:
+    """Dual-phase K2 switch on 2026-04-01 (SRC-POL-MNL-001 p.2-3)."""
+    if k2_pct is None:
+        return 1.00
+    if month_idx_1_to_12 <= 3:  # Pre-Apr 2026
+        if k2_pct >= 75.0:
+            return 1.15
+        if k2_pct >= 70.0:
+            return 1.10
+        if k2_pct >= 65.0:
+            return 1.05
+        if k2_pct >= 60.0:
+            return 1.00
+        if k2_pct >= 55.0:
+            return 0.90
+        if k2_pct >= 50.0:
+            return 0.75
+        return k2_pct / 100.0
+    else:  # Post-Apr 2026 (tightened!)
+        if k2_pct >= 80.0:
+            return 1.10
+        if k2_pct >= 75.0:
+            return 1.05
+        if k2_pct >= 70.0:
+            return 1.00
+        if k2_pct >= 65.0:
+            return 0.90
+        if k2_pct >= 60.0:
+            return 0.70
+        if k2_pct >= 50.0:
+            return 0.50
+        return (k2_pct / 100.0) / 2.0  # K2 / 2!
+
+
+def calc_manulife_psm_12m(
+    base_fee_monthly: float,  # 35.0 (PSM/SM/HKD1-2) or 45.0 (PSSM/SSM/HKD3-4)
+    monthly_fyp_ach_pct: List[float],  # e.g. 1.15 = 115%
+    monthly_direct_fyc: List[float],
+    quarterly_1maa_ach_pct: List[float],
+    k2_pct: float,
+    indirect_prod_act_12m: float = 0.0,
+    is_top15_national: bool = False,
+) -> Dict[str, float]:
+    """Full 12-month Manulife PSM+/HKD engine with Apr-2026 switch & 3Y 30/30/40% deferral."""
+    base_total = 0.0
+    prod_total = 0.0
+    for m in range(12):
+        ach = monthly_fyp_ach_pct[m]
+        b = 0.0 if ach < 0.30 else min(base_fee_monthly * 1.50, base_fee_monthly * ach * 1.30)
+        base_total += b
+
+        rate = 0.08 if ach >= 1.15 else 0.06
+        prod_total += monthly_direct_fyc[m] * rate * manulife_k2_factor(k2_pct, m + 1)
+
+    act_q_total = 0.0
+    for q in range(4):
+        a_ach = quarterly_1maa_ach_pct[q]
+        r_a = 0.05 if a_ach >= 1.20 else (0.035 if a_ach >= 1.10 else (0.025 if a_ach >= 1.00 else (0.01 if a_ach >= 0.90 else 0.0)))
+        qfyc = sum(monthly_direct_fyc[q * 3 : (q + 1) * 3])
+        k2_end_q = manulife_k2_factor(k2_pct, (q + 1) * 3)
+        act_q_total += qfyc * r_a * k2_end_q
+
+    ind_50 = indirect_prod_act_12m * 0.50
+    avg_fyp_ach = sum(monthly_fyp_ach_pct) / 12.0
+    qualifies_lt = (k2_pct >= 70.0) and (avg_fyp_ach >= 0.85 or is_top15_national)
+    lt_raw = 0.75 * (prod_total + act_q_total) + 0.25 * ind_50
+    lt_deferred = min(12.0 * base_fee_monthly, lt_raw) if qualifies_lt else 0.0
+
+    cash_y1 = base_total + prod_total + act_q_total + ind_50
+    total_earned = cash_y1 + lt_deferred
+    return {
+        "base_fee_12m": round(base_total, 4),
+        "productivity_12m": round(prod_total, 4),
+        "activity_quarterly_12m": round(act_q_total, 4),
+        "indirect_50pct": round(ind_50, 4),
+        "long_term_deferred_3y": round(lt_deferred, 4),
+        "vest_y1_30pct": round(lt_deferred * 0.30, 4),
+        "vest_y2_30pct": round(lt_deferred * 0.30, 4),
+        "vest_y3_40pct": round(lt_deferred * 0.40, 4),
+        "cash_paid_y1": round(cash_y1, 4),
+        "total_earned": round(total_earned, 4),
+    }
+
+
+# =============================================================================
+# 6. PROPOSED BALANCED / HYBRID SCHEME (PROPOSAL — SYNTHETIC ASSUMPTION)
+# =============================================================================
+
+@dataclass
+class ProposalParams:
+    """PO-configurable parameters for W24 Proposed Balanced/Hybrid Scheme."""
+    name: str = "W24_Balanced_Hybrid_Primary"
+    ul_y1_fyc_rate: float = 0.30           # Compliant with Art.51 TT67/TT96
+    topup_commission_rate: float = 0.00    # Compliant with TT96/2026
+    k2_hard_floor_pct: float = 60.0        # Below 60% -> 0% bonus (avoids Chubb soft 25% & AIA 70% cliff shock)
+    k2_holdback_t1_threshold: float = 65.0 # Below 65% or New -> T+1 cash settlement
+    agent_m_tier_rates: Tuple[float, float, float, float, float] = (0.08, 0.16, 0.24, 0.32, 0.38)
+    agent_m_tier_thresholds: Tuple[float, float, float, float, float] = (5.0, 12.0, 22.0, 35.0, 55.0)
+    agent_q_consistency_3m: float = 0.12   # +12% on monthly bonus when 3M active
+    agent_annual_mdrt_rate: float = 0.10   # +10% on annual FYC >= 400M (MDRT tier)
+    agent_ryc_bonus_rate: float = 0.25     # +25% on Y2 SYC/RYC when K2 >= 75%
+    mgr_direct_max_rate: float = 0.36      # Direct override max 36% FYC NTT (vs Chubb 108%!)
+    mgr_indirect_gate_fyc: float = 15.0    # Learned from Chubb: 0% indirect if NTT < 15M/M
+    mgr_indirect_l1_rate: float = 0.35     # Max 3 gens (35/17.5/8.75%), NO infinite chain
+    mgr_deferred_3y_rate: float = 0.12     # 12% of direct FYC deferred 30/30/40% gated K2 >= 75%
+    rd_base_monthly: float = 35.0          # KPI-linked 30% floor / 140% cap (learned from Manulife)
+    rd_direct_fyc_rate: float = 0.07       # Monthly override x K2
+    rd_deferred_3y_share: float = 0.60     # 60% of variable RD override deferred 30/30/40% (K2>=75%)
+
+
+def proposal_k2_factor(k2_pct: Optional[float], hard_floor: float = 60.0) -> float:
+    if k2_pct is None:
+        return 1.00
+    if k2_pct >= 85.0:
+        return 1.20
+    if k2_pct >= 80.0:
+        return 1.10
+    if k2_pct >= 75.0:
+        return 1.00
+    if k2_pct >= 70.0:
+        return 0.85
+    if k2_pct >= hard_floor:
+        return 0.60
+    return 0.00
+
+
+def calc_proposal_agent_12m(
+    monthly_fyc: List[float],
+    monthly_syc: List[float],
+    k2_pct: Optional[float],
+    is_new_agent: bool = False,
+    params: Optional[ProposalParams] = None,
+) -> Dict[str, float]:
+    p = params or ProposalParams()
+    k2_fac = proposal_k2_factor(k2_pct, p.k2_hard_floor_pct)
+    m_bonuses = []
+    for m in range(12):
+        f = monthly_fyc[m]
+        rate = 0.0
+        for th, r in zip(reversed(p.agent_m_tier_thresholds), reversed(p.agent_m_tier_rates)):
+            if f >= th:
+                rate = r
+                break
+        m_bonuses.append(f * rate * k2_fac)
+
+    # Onboarding structured bonus M1-M6 (2M/M if >=8M FYC, 50% held to M12)
+    onb_cash = 0.0
+    onb_m12 = 0.0
+    if is_new_agent:
+        for m in range(6):
+            if monthly_fyc[m] >= 8.0:
+                onb_cash += 1.5
+                onb_m12 += 1.5
+
+    q_cons = 0.0
+    for q in range(4):
+        sl = monthly_fyc[q * 3 : (q + 1) * 3]
+        if all(x >= 4.0 for x in sl):
+            q_cons += sum(m_bonuses[q * 3 : (q + 1) * 3]) * p.agent_q_consistency_3m
+
+    fyc_y = sum(monthly_fyc)
+    syc_y = sum(monthly_syc)
+    mdrt_b = (fyc_y * p.agent_annual_mdrt_rate * k2_fac) if fyc_y >= 400.0 else 0.0
+    ryc_b = (syc_y * p.agent_ryc_bonus_rate) if (k2_pct is not None and k2_pct >= 75.0) else 0.0
+
+    # Defer 30% of annual MDRT bonus into Y2 gated on K2 >= 75%
+    deferred_post_y1 = mdrt_b * 0.30
+    hold_t1 = (k2_pct is None) or (k2_pct < p.k2_holdback_t1_threshold)
+    accrued_t1 = m_bonuses[11] if hold_t1 else 0.0
+
+    total_bonuses = sum(m_bonuses) + onb_cash + onb_m12 + q_cons + mdrt_b + ryc_b
+    total_earned = fyc_y + syc_y + total_bonuses
+    cash_paid_y1 = total_earned - deferred_post_y1 - accrued_t1
+    implied_fyp = fyc_y / p.ul_y1_fyc_rate
+
+    return {
+        "fyc_total": round(fyc_y, 4),
+        "syc_total": round(syc_y, 4),
+        "implied_fyp": round(implied_fyp, 4),
+        "bonus_monthly": round(sum(m_bonuses), 4),
+        "bonus_onboarding_cash": round(onb_cash, 4),
+        "bonus_onboarding_m12": round(onb_m12, 4),
+        "bonus_q_consistency": round(q_cons, 4),
+        "bonus_annual_mdrt": round(mdrt_b, 4),
+        "bonus_ryc": round(ryc_b, 4),
+        "total_bonuses_earned": round(total_bonuses, 4),
+        "total_earned": round(total_earned, 4),
+        "cash_paid_y1": round(cash_paid_y1, 4),
+        "deferred_post_y1": round(deferred_post_y1, 4),
+        "accrued_t_plus_1_unpaid": round(accrued_t1, 4),
+        "pct_of_fyc": round((total_earned / fyc_y) * 100.0, 2) if fyc_y > 0 else 0.0,
+        "bonus_pct_of_fyp": round((total_bonuses / implied_fyp) * 100.0, 2) if implied_fyp > 0 else 0.0,
+    }
+
+
+# =============================================================================
+# 7. ENTERPRISE TOTAL DISTRIBUTION COST (ZERO DOUBLE COUNTING + ART. 52 CHECK)
+# =============================================================================
+
+def calc_enterprise_hierarchy_cost(
+    scheme: str,
+    k2_pct: float = 82.0,
+    ul_fyc_rate: float = 0.30,
+    home_office_opex_pct_fyp: float = 0.20,
+) -> Dict[str, float]:
+    """
+    Standard Regional Hierarchy (1 Region = 12,000M FYP/year = 3,600M FYC/year):
+    - Revenue counted ONCE: 12,000M FYP (1,000M/month)
+    - Org: 1 Regional Leader -> 4 Direct Managers (each 75M FYC/M = 900M/Y)
+           -> 20 Active Agents (5 per manager, each 15M FYC/M = 180M/Y, 3M active/Q)
+    All payouts stacked across tiers without double-counting revenue!
+    """
+    annual_fyp = 12000.0
+    annual_fyc = annual_fyp * ul_fyc_rate  # 3,600M
+    agent_m_fyc = [15.0] * 12  # 20 agents * 15M = 300M/M = 3,600M/Y
+    agent_m_syc = [0.0] * 12   # Isolate Y1 new-business acquisition cost cleanly
+    mgr_m_fyc = [75.0] * 12    # 4 managers * 75M = 300M/M
+
+    if scheme == "AIA_Alpha_2026" or scheme == "AIA_Alpha_2027":
+        yr = 2026 if scheme == "AIA_Alpha_2026" else 2027
+        ag = calc_aia_cvtv_12m(agent_m_fyc, agent_m_syc, fy_pct=k2_pct, policy_year=yr, assumed_fyc_to_fyp_rate=ul_fyc_rate)
+        ag_bonuses_all = ag["total_bonuses_earned"] * 20.0
+        mg = calc_aia_cql_12m(mgr_m_fyc, [5] * 12, fy_pct=k2_pct, tot_pct=max(85.0, k2_pct))
+        # 2 senior managers also get 50% Gen2 indirect on 2 peer/sub managers' direct monthly base
+        mg_direct_all = (mg["direct_monthly"] + mg["activity_monthly"] + mg["premier_quarterly"]) * 4.0
+        mg_deferred_all = mg["annual_deferred_3y"] * 4.0
+        mg_indirect_all = (mg["direct_monthly"] * 0.50) * 2.0
+        # 1 PAF+ leader (SAF rank, Year 1 target = 6,600M -> 12,000M exceeds target)
+        paf = calc_aia_paf_12m("SAF", 1, [1000.0] * 12, [300.0] * 12, [20.0] * 12, fy_pct=k2_pct)
+        rd_cash = paf["cash_paid_y1"]
+        rd_deferred = 0.0
+        art52_newbiz_bonuses = ag_bonuses_all
+
+    elif scheme == "Chubb_Agency_2026":
+        ag = calc_chubb_ar_12m(agent_m_fyc, agent_m_syc, [True] * 12, k2_pct=k2_pct, tenure_months_start=13, assumed_fyc_to_fyp_rate=ul_fyc_rate)
+        ag_bonuses_all = ag["total_bonuses_earned"] * 20.0
+        mg = calc_chubb_al_12m(mgr_m_fyc, [5] * 12, k2_ntt=k2_pct, al_tenure_start=15)
+        mg_direct_all = (mg["ht_ktn_monthly"] + mg["ht_ktn_quarterly"]) * 4.0
+        mg_deferred_all = 0.0
+        mg_indirect_all = (mg["ht_ktn_monthly"] * 0.50) * 2.0
+        rd = calc_chubb_rd_12m([1000.0] * 12, [300.0] * 12, [20] * 12, [20] * 12, [0.0] * 12, k2_pct=k2_pct)
+        rd_cash = rd["total_earned"]
+        rd_deferred = 0.0
+        art52_newbiz_bonuses = ag_bonuses_all
+
+    elif scheme == "W24_Proposed_Balanced":
+        p = ProposalParams()
+        ag = calc_proposal_agent_12m(agent_m_fyc, agent_m_syc, k2_pct=k2_pct, params=p)
+        ag_bonuses_all = ag["total_bonuses_earned"] * 20.0
+        k2_fac = proposal_k2_factor(k2_pct, p.k2_hard_floor_pct)
+        mg_direct_all = annual_fyc * 0.30 * k2_fac  # 30% direct override x K2
+        mg_indirect_all = (mg_direct_all * 0.50) * p.mgr_indirect_l1_rate  # 2 sub-managers
+        mg_deferred_all = annual_fyc * p.mgr_deferred_3y_rate if k2_pct >= 75.0 else 0.0
+        rd_base = p.rd_base_monthly * 12.0 * min(1.40, 1.05 * 1.25)  # 105% FYP ach -> 131.25%
+        rd_var = annual_fyc * p.rd_direct_fyc_rate * k2_fac
+        rd_deferred = rd_var * p.rd_deferred_3y_share if k2_pct >= 75.0 else 0.0
+        rd_cash = rd_base + rd_var
+        art52_newbiz_bonuses = ag_bonuses_all
+    else:
+        raise ValueError(f"Unsupported enterprise scheme: {scheme}")
+
+    total_earned = annual_fyc + ag_bonuses_all + mg_direct_all + mg_indirect_all + mg_deferred_all + rd_cash + rd_deferred
+    total_deferred = mg_deferred_all + rd_deferred
+    total_cash_y1 = total_earned - total_deferred
+
+    cost_pct_fyp = total_earned / annual_fyp
+    cash_y1_pct_fyp = total_cash_y1 / annual_fyp
+    art52_bonus_pct_fyp = art52_newbiz_bonuses / annual_fyp
+    persisted_y2_fyp = annual_fyp * (k2_pct / 100.0)
+    cost_per_persisted_y2_fyp = total_earned / persisted_y2_fyp if persisted_y2_fyp > 0 else 0.0
+    breakeven_gross_margin_pct = (cost_pct_fyp + home_office_opex_pct_fyp) * 100.0
+
+    return {
+        "scheme": scheme,
+        "k2_pct": k2_pct,
+        "annual_fyp": annual_fyp,
+        "layer_a_commission": round(annual_fyc, 2),
+        "layer_b_agent_bonuses": round(ag_bonuses_all, 2),
+        "layer_c_mgr_direct": round(mg_direct_all, 2),
+        "layer_d_mgr_indirect": round(mg_indirect_all, 2),
+        "layer_e_rd_cash": round(rd_cash, 2),
+        "layer_f_deferred_3y": round(total_deferred, 2),
+        "total_earned_vnd_m": round(total_earned, 2),
+        "total_cash_y1_vnd_m": round(total_cash_y1, 2),
+        "earned_pct_fyp": round(cost_pct_fyp * 100.0, 2),
+        "cash_y1_pct_fyp": round(cash_y1_pct_fyp * 100.0, 2),
+        "art52_bonus_pct_fyp": round(art52_bonus_pct_fyp * 100.0, 2),
+        "art52_pass_30pct_cap": art52_bonus_pct_fyp <= 0.30,
+        "cost_per_persisted_y2_pct": round(cost_per_persisted_y2_fyp * 100.0, 2),
+        "breakeven_gross_margin_pct": round(breakeven_gross_margin_pct, 2),
+    }
+
+
+# =============================================================================
+# 8. MAPA FORWARD & REVERSE ENGINE
+# =============================================================================
+
+def mapa_forward(manpower: float, active_ratio: float, cases_per_active_per_month: float, avg_case_size_fyp: float, months: int = 12) -> Dict[str, float]:
+    """FYP = Manpower * Active_Ratio * Productivity(Cases/M) * Avg_Case_Size * Months."""
+    active_agents = manpower * active_ratio
+    total_cases = active_agents * cases_per_active_per_month * months
+    total_fyp = total_cases * avg_case_size_fyp
+    return {
+        "active_agents_avg": round(active_agents, 2),
+        "total_cases": round(total_cases, 2),
+        "total_fyp_vnd_m": round(total_fyp, 2),
+    }
+
+
+def mapa_reverse_required_manpower(target_fyp_vnd_m: float, active_ratio: float, cases_per_active_per_month: float, avg_case_size_fyp: float, months: int = 12) -> float:
+    denom = active_ratio * cases_per_active_per_month * avg_case_size_fyp * months
+    if denom <= 0:
+        raise ValueError("MAPA denominator must be positive")
+    return round(target_fyp_vnd_m / denom, 2)
+
+
+if __name__ == "__main__":
+    print("=== W24 ENTERPRISE TOTAL DISTRIBUTION COST SNAPSHOT (12B FYP Region) ===")
+    for k2 in (82.0, 72.0, 62.0):
+        print(f"\n--- Persistency K2 / FY = {k2}% ---")
+        for sc in ("AIA_Alpha_2026", "AIA_Alpha_2027", "Chubb_Agency_2026", "W24_Proposed_Balanced"):
+            res = calc_enterprise_hierarchy_cost(sc, k2_pct=k2)
+            print(
+                f"  {sc:22s} | Earned: {res['earned_pct_fyp']:6.2f}% FYP | CashY1: {res['cash_y1_pct_fyp']:6.2f}% "
+                f"| Art52: {res['art52_bonus_pct_fyp']:5.2f}% ({'PASS' if res['art52_pass_30pct_cap'] else 'FAIL'}) "
+                f"| Cost/PersistedY2: {res['cost_per_persisted_y2_pct']:6.2f}% | BE Margin: {res['breakeven_gross_margin_pct']:6.2f}%"
+            )

@@ -1,7 +1,12 @@
-# Competitor Comparison Matrix — Bản v1.0 (Dựa trên 7 Tài liệu Policy Thực tế 2026)
+# Competitor Comparison Matrix — Bản v1.0 (Historical G1 Snapshot — Đã được kế thừa bởi v2.0)
+
+> **[HISTORICAL G1 SNAPSHOT — SUPERSEDED BY v2.0]:** Tài liệu này là bản so sánh ban đầu tại checkpoint G1 (khi catalog mới có 53 quy tắc). Sau Independent Audit của Codex và đợt khắc phục Post-Audit Remediation, vui lòng xem phiên bản đầy đủ và chính xác hơn tại:
+> - [competitor-benchmarking-12-methods.md](file:///C:/Users/User/Desktop/TJ/Project/W24_Life-Insurance-Strategy-Lab/outputs/working/competitor-benchmarking-12-methods.md) (12 phương pháp Benchmarking + Ma trận tổng thu nhập theo chức danh + Chuẩn hóa toàn bộ 112 quy tắc & 113 dòng hoa hồng Chubb / 1,300 dòng PAF+).
+> - [post-audit-remediation-register.md](file:///C:/Users/User/Desktop/TJ/Project/W24_Life-Insurance-Strategy-Lab/qa/post-audit-remediation-register.md) (Toàn bộ điểm đã hiệu chỉnh, bao gồm lưu ý biểu hoa hồng Chubb không đồng nhất 30% UL và trần Điều 52 TT 67/2023).
+> Nội dung gốc bên dưới được giữ nguyên để đảm bảo lịch sử truy vết (audit trail).
 
 **Ngày lập:** 2026-11-26  
-**Cơ sở Ground Truth:** 7 tài liệu chính sách chính thức (116 trang đã đọc trọn vẹn 100%, gồm 6 PDF text và 1 PDF scan 15 trang đã đọc trực quan) tại `knowledge/sources/source-registry.csv` và 50 business rules `VERIFIED_FACT` (+ 3 trần pháp lý `SOURCE_CLAIM`) tại `knowledge/business-rules/business-rules-catalog.csv`.  
+**Cơ sở Ground Truth (tại thời điểm G1):** 7 tài liệu chính sách chính thức (116 trang đã đọc trọn vẹn 100%, gồm 6 PDF text và 1 PDF scan 15 trang đã đọc trực quan) tại `knowledge/sources/source-registry.csv` và 50 business rules `VERIFIED_FACT` (+ 3 trần pháp lý `SOURCE_CLAIM`) tại phiên bản G1 của `knowledge/business-rules/business-rules-catalog.csv` *(hiện đã nâng cấp lên 112 rules và 3 bảng lookup chuẩn hóa)*.  
 **Truy vết Yêu cầu Gốc (`SRC-REQ-001` — Chị Nhi):** Phục vụ trực tiếp `REQ-01` (Phân tích chính sách thu nhập giữa các công ty) và làm đầu vào bằng chứng cho `REQ-02..REQ-05` (Đề xuất chính sách thúc đẩy Doanh số, Chất lượng kinh doanh, Hiệu quả chi phí & ROI).
 
 > **QUY TẮC BẮT BUỘC VỀ PHẠM VI BẰNG CHỨNG:**

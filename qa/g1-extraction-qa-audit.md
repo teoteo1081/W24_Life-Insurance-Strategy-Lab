@@ -1,7 +1,13 @@
-# Báo cáo Kiểm soát Chất lượng & Kiểm toán G1 (Extraction QA & Risk-Adaptive Audit)
+# Báo cáo Kiểm soát Chất lượng & Kiểm toán G1 (Historical G1 Snapshot — Superseded Post-Audit)
 
-**Ngày thực hiện:** 2026-11-26  
-**Phạm vi:** 7 tài liệu chính sách gốc (`116 trang`) đã tiếp nhận trong G1, `knowledge/sources/source-registry.csv`, `knowledge/business-rules/business-rules-catalog.csv` (53 rules), `schemas/compensation-scheme.schema.json`, và `outputs/working/competitor-comparison-v1.0.md`.  
+> **[HISTORICAL G1 SNAPSHOT — SUPERSEDED BY POST-AUDIT REMEDIATION]:** Đây là báo cáo tự kiểm G1 ban đầu khi catalog có 53 rules và trước khi Independent Auditor (Codex) kiểm toán checkpoint `7bcf70e` cũng như trước commit `5c2d13b` (theo dõi 7 PDF vào repo PRIVATE). Ba điểm trong bản G1 này đã được **hiệu chỉnh chính thức** tại [post-audit-remediation-register.md](file:///C:/Users/User/Desktop/TJ/Project/W24_Life-Insurance-Strategy-Lab/qa/post-audit-remediation-register.md):
+> 1. **Chấm dứt tự phán xử mâu thuẫn (`ERR-DOC-01` & `ERR-DOC-02`):** Không còn áp đặt một cách hiểu duy nhất; cả 2 xung đột được gắn `CONFLICTING_EVIDENCE`, mô hình hóa 2 chế độ (toggle) và đưa vào [decision-register.md](file:///C:/Users/User/Desktop/TJ/Project/W24_Life-Insurance-Strategy-Lab/docs/decisions/decision-register.md).
+> 2. **Trạng thái Git cho `private/sources/`:** Tại commit `5c2d13b` (theo phê duyệt của TJ), 7 PDF nguồn đã được track trong Git trên repo **PRIVATE** (thay vì bị `.gitignore` chặn như thời điểm G1).
+> 3. **Quy mô Catalog & Lookup:** Đã mở rộng từ 53 rules lên 112 rules (3 cột trạng thái chuẩn Section 32) và chuẩn hóa 100% bảng PAF+ (1,300 dòng) & Hoa hồng Chubb (113 dòng + 10 dòng HSBH).
+> Nội dung gốc bên dưới được giữ nguyên làm lịch sử G1.
+
+**Ngày thực hiện (G1):** 2026-11-26  
+**Phạm vi (G1):** 7 tài liệu chính sách gốc (`116 trang`) đã tiếp nhận trong G1, `knowledge/sources/source-registry.csv`, phiên bản G1 của `knowledge/business-rules/business-rules-catalog.csv` (53 rules), `schemas/compensation-scheme.schema.json`, và `outputs/working/competitor-comparison-v1.0.md`.  
 **Người thực hiện:** AGY (tự kiểm tra chất lượng nội bộ — **KHÔNG** tuyên bố là kiểm toán độc lập vì cùng một agent trích xuất và kiểm tra).  
 **Trạng thái tổng thể:** `INSPECTED` (L1 Logic, L2 Evidence, L4 Adversarial Design Review) | `NOT RUN` (L3 Independent Reproducibility trên Excel — sẽ chạy ở Ngày 2 bằng Golden Test Cases).
 
