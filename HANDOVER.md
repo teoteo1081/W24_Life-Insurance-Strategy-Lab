@@ -65,10 +65,11 @@ Hoàn tất tuyệt đối nền tảng hiểu sâu chính sách thực tế (**
 2. Khi TJ hài lòng với mức độ hiểu sâu G1, xác nhận để AGY chuyển sang **G2** (Thiết kế 3 Scheme đề xuất + xây **Excel Reference Model** theo đúng Bottom-up Model Spec + **Golden Test Cases**) và xác nhận định dạng **Gói A** (Slide deck 5–7 slides hay Executive Brief).
 
 ## 10. Trạng thái Git
-- Nhánh `main` (local only, không remote, không push), `private/` được `.gitignore` chặn hoàn toàn.
+- Nhánh `main`, remote `origin` trỏ tới **PRIVATE repository** `https://github.com/teoteo1081/W24_Life-Insurance-Strategy-Lab` (tài khoản `teoteo1081`).
+- Theo xác nhận tường minh của Business Owner (TJ) ngày 2026-11-26, 7 file PDF nguồn trong `private/sources/` đã được commit & push lên repo **PRIVATE** này. **Cảnh báo bảo mật:** tuyệt đối giữ repo ở chế độ `PRIVATE`, không chuyển sang Public và không chia sẻ ra bên ngoài.
 
 ## 11. Commit SHA
-- Checkpoint trước: `f404c84`. Commit G1 Deep: xem `git log -n 1` ngay sau thao tác commit cuối lượt.
+- Checkpoint G1 Deep: `7bcf70e`. Commit bật tracking `private/sources/` & đồng bộ GitHub Private: xem `git log -n 1`.
 
 ## 12. Các sản phẩm P0 còn thiếu (G2 & G3)
 - [ ] Thiết kế 3 phương án Compensation Scheme đề xuất (A: Growth, B: Quality, C: Balanced/Hybrid) tuân thủ TT 96/2026.

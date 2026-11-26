@@ -2,6 +2,12 @@
 
 Tất cả thay đổi quan trọng của dự án `W24_Life-Insurance-Strategy-Lab` được ghi nhận tại đây.
 
+## [0.3.1] - 2026-11-26 (GitHub Private Sync)
+
+### Changed
+- Theo xác nhận tường minh của Business Owner (TJ): cập nhật `.gitignore` cho phép theo dõi riêng `private/sources/` (7 file PDF policy gốc) trong **PRIVATE** GitHub repository `teoteo1081/W24_Life-Insurance-Strategy-Lab`, vẫn chặn mọi file khác trong `private/` và credentials/secrets.
+- Khởi tạo remote `origin` (PRIVATE) và đồng bộ toàn bộ nhánh `main` lên GitHub.
+
 ## [0.3.0] - 2026-11-26 (Checkpoint G1 Deep Policy Understanding & Coverage Audit)
 
 ### Added

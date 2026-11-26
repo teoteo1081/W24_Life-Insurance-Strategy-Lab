@@ -1,5 +1,10 @@
-# Private & confidential documents (NEVER commit)
-private/
+# Private & confidential documents
+# Per Business Owner (TJ) explicit authorization (2026-11-26), private/sources/ (7 policy PDFs)
+# is tracked ONLY inside the PRIVATE GitHub repository teoteo1081/W24_Life-Insurance-Strategy-Lab.
+# WARNING: NEVER switch this repository to Public while private/sources/ is tracked!
+private/*
+!private/sources/
+!private/sources/**
 *.secret
 *.key
 *.pem
