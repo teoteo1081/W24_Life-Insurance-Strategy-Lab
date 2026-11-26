@@ -75,8 +75,10 @@ PHRASES = {
     "dien bien": "diễn biến", "binh quan": "bình quân", "nhac": "nhắc", "trach": "trách", "vien": "viên", "sao": "sao", "hiem": "hiểm",
     "suc": "sức", "khoe": "khỏe", "chuan": "chuẩn", "khung": "khung", "tuyen": "tuyển", "quan": "quản", "hieu": "hiệu", "nghi": "nghỉ",
     "viec": "việc", "hoan": "hoàn", "cham": "chậm", "giai": "giải", "ngan": "ngân", "dao": "đào", "gioi": "giới", }
-ENGLISH = {"immediate": "Ngay", "none": "Không", "monthly": "Hàng tháng", "quarterly": "Hàng quý", "annual": "Hàng năm",
-           "unknown": "Chưa có tài liệu", "per policy": "Theo hợp đồng", "no cap": "Không trần", "n/a": "—"}
+# None / N/A / Immediate được GIỮ NGUYÊN: template dùng chúng để ẩn ô rỗng (audit 64b9a5a, P2).
+ENGLISH = {"monthly": "Hàng tháng", "quarterly": "Hàng quý", "annual": "Hàng năm",
+           "unknown": "Chưa có tài liệu", "per policy": "Theo hợp đồng", "no cap": "Không trần"}
+STATUS_KEEP = {"none", "n/a", "immediate", "0"}
 KEEP = {"tr", "fyc", "fyp", "fy", "syc", "ryc", "ntt", "ehc", "um", "al", "rd", "cql", "paf", "ar", "sa", "ul", "tt", "kpi",
         "jfw", "ack", "fna", "sop", "tc", "cl", "bd", "sm", "dm", "vnd", "aia", "hkd", "psm", "amd", "ilp", "hsbh", "tncn", "btc", "aff"}
 
@@ -93,9 +95,12 @@ def vietnamize(text: str) -> str:
     if not text:
         return text
     t = text.strip()
+    if t.lower() in STATUS_KEEP:
+        return t
     if t.lower() in ENGLISH:
         return ENGLISH[t.lower()]
-    t = re.sub(r"\bCap\b(?=\s*\d)", "Trần", t)          # "Cap 30tr" là trần (tiếng Anh), không phải "cấp"
+    # "cap" tiếng Anh = trần khi đi kèm "=" hoặc con số tính bằng tr/% (cap 6tr, Cap = 12x, cap 45%); còn lại là "cấp" (audit 64b9a5a, P1).
+    t = re.sub(r"\b(cap)\b(?=\s*(?:=|\d+(?:[.,]\d+)?\s*(?:tr|%)))", lambda m: "Trần" if m.group(1)[0].isupper() else "trần", t, flags=re.I)
     t = re.sub(r"(?<=\d)d\b", "đ", t)                    # "0d" -> "0đ"
     keys = sorted((k for k in PHRASES if k.strip().lower() not in KEEP), key=len, reverse=True)
     pat = re.compile(r"(?<![A-Za-zÀ-ỹ])(" + "|".join(re.escape(k.strip()) for k in keys) + r")(?![A-Za-zÀ-ỹ])", re.I)
@@ -108,7 +113,8 @@ def vietnamize(text: str) -> str:
 
 
 # Sửa các từ đa nghĩa sau khi rà tay toàn bộ 44 dòng.
-FIXUPS = [("1,300 đồng", "1.300 dòng"), ("113 đồng", "113 dòng"), ("CQL còn", "CQL con"), ("hiệu lực ngày khi", "hiệu lực ngay khi"),
+FIXUPS = [("None (", "Không ("), ("pending C.1 from 02/2026", "chờ quy định C.1 từ 02/2026"), ("pending C.1", "chờ quy định C.1"),
+          ("deferred prevents payout", "trả chậm, chưa chi"), ("1,300 đồng", "1.300 dòng"), ("113 đồng", "113 dòng"), ("CQL còn", "CQL con"), ("hiệu lực ngày khi", "hiệu lực ngay khi"),
           ("cấp trùng", "cấp trung"), ("trưởng hợp", "trường hợp"), ("Biến bản", "Biên bản"), ("gian lần", "gian lận"),
           ("Boi hoàn", "Bồi hoàn"), ("boi hoàn", "bồi hoàn"), ("chỉ tiết", "chi tiết"), ("Tương lại", "Tương lai"),
           ("Từ Do An Phúc", "Tự Do An Phúc"), ("từ vòng", "tử vong"), ("bao cao", "báo cáo"), ("bao lưu", "bảo lưu"),
@@ -116,13 +122,15 @@ FIXUPS = [("1,300 đồng", "1.300 dòng"), ("113 đồng", "113 dòng"), ("CQL 
           ("KPI 4 trừ", "KPI 4 trụ"), ("đối con thâm gia", "đối với người còn tham gia"), ("an bám he thông dưới", "ăn bám hệ thống dưới"),
           ("Để nhận cực", "Để nhận cục"), ("Chọn 1 vài tro duy nhất", "Chọn 1 vai trò duy nhất"), ("Chuyen khoan", "Chuyển khoản"),
           ("TANG LÊN", "TĂNG LÊN"), ("PHU THUỘC", "PHỤ THUỘC"), ("Chuyen tiếp", "Chuyển tiếp"), ("cổng tỷ", "công ty"),
-          ("KHÔNG ĐƯỢC ĐOẠN", "KHÔNG ĐƯỢC ĐOÁN"), ("TẠI LIỆU", "TÀI LIỆU"), ("toàn LẦN", "toàn LẠI"), ("cấp = tổng", "trần = tổng"),
-          ("Cấp = 12x", "Trần = 12x"), ("(cấp 6tr)", "(trần 6tr)"), ("cấp 10tr", "trần 10tr"), ("cấp 20tr", "trần 20tr"),
-          ("(cấp 15tr/M)", "(trần 15tr/M)"), ("(cấp 30tr/M)", "(trần 30tr/M)"), ("<360tr cấp 2.5%", "<360tr trần 2.5%"),
-          ("AL<15M cấp 25%/35%", "AL<15M trần 25%/35%"), ("<13M cấp 45%/60%", "<13M trần 45%/60%")]
+          ("KHÔNG ĐƯỢC ĐOẠN", "KHÔNG ĐƯỢC ĐOÁN"), ("TẠI LIỆU", "TÀI LIỆU"), ]
 
 
-OVERRIDES: dict[tuple[str, str], str] = {}
+OVERRIDES: dict[tuple[str, str], str] = {
+    # Đối chiếu SRC-POL-MNL-001 tr.5: TLDTHD (K2) >= 70% xét riêng cho từng năm chi trả Y1/Y2/Y3,
+    # xác định tại cuối tháng 12 năm liền trước năm chi trả (audit 64b9a5a, P3).
+    ("TR-MNL-04", "Quality_Persistency_Gate"):
+        "K2 (TLDTHD) >= 70%, xét lại cho từng năm chi trả Y1–Y3, đo tại cuối tháng 12 năm liền trước năm chi trả",
+}
 
 
 def main() -> int:

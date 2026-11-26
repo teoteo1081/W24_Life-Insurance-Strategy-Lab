@@ -426,6 +426,8 @@ function proposalComponents(tier, p) {
     C("F_Management_Override_Recruit", "Override vùng", pctx(p.rd_direct_fyc_rate) + " FYC vùng × hệ số K2 (+ gián tiếp 40%, tối đa 2 cấp)", "K2 vùng", "Hàng tháng"),
     C("G_Long_Term_Deferred", "Hợp tác dài hạn 3 năm", pctx(p.rd_deferred_3y_share) + " phần override, thêm vào gói", "K2 vùng ≥ 75% ở mỗi kỳ trả; cho chuyển đổi cá nhân ↔ hộ kinh doanh", "Trả 30% / 30% / 40%")];
 }
+/* Ô trạng thái rỗng: giữ giá trị gốc tiếng Anh trong dữ liệu để lọc; chấp nhận cả bản tiếng Việt cho chắc. */
+const blank = v => !v || /^(none|n\/a|0|immediate|—|-|không|ngay)$/i.test(String(v).trim());
 function renderPackage() {
   const k2 = state.k2, key = state.plan, tier = state.pkgTier || "agent", p = params(key), K = DATA.knowledge;
   const cos = [["AIA", "AIA Alpha 2026"], ["Chubb", "Chubb Life 2026"], ["Manulife", "Manulife (PSM+/HKD)"], ["PLAN", PLAN_META[key].name]];
@@ -440,13 +442,13 @@ function renderPackage() {
     if (!xs.length) return co === "Manulife" && tier !== "leader" ? "<span class='muted small'>❓ chưa có tài liệu</span>" : "<span class='muted small'>—</span>";
     return xs.map(r => {
       const gates = [["K2/chất lượng", r.Quality_Persistency_Gate], ["Chấm công", r.Activity_Attendance_Gate], ["Đào tạo", r.Training_Compliance_Gate]]
-        .filter(g => g[1] && !/^(none|n\/a)$/i.test(g[1].trim())).map(g => g[0] + ": " + g[1]).join(" · ");
+        .filter(g => !blank(g[1])).map(g => g[0] + ": " + g[1]).join(" · ");
       const ids = (r.Rule_ID_Link || "").split(/[|,;\s]+/).filter(x => /^[A-Z]{3}-[A-Z]{2}-\d{3}/.test(x));
       return `<div class="pk"><b>${esc(r.Component_Name_VN)}</b><div>${esc(r.Rate_Or_Amount_Summary)}</div>
-        <div class="small muted">Điều kiện: ${esc(r.Eligibility_Conditions)}${r.Threshold_Minimum && r.Threshold_Minimum !== "0" ? " · Ngưỡng: " + esc(r.Threshold_Minimum) : ""}${r.Cap_Maximum && r.Cap_Maximum !== "N/A" ? " · Trần: " + esc(r.Cap_Maximum) : ""}</div>
+        <div class="small muted">Điều kiện: ${esc(r.Eligibility_Conditions)}${!blank(r.Threshold_Minimum) ? " · Ngưỡng: " + esc(r.Threshold_Minimum) : ""}${!blank(r.Cap_Maximum) ? " · Trần: " + esc(r.Cap_Maximum) : ""}</div>
         ${gates ? `<div class="small muted">${esc(gates)}</div>` : ""}
-        <div class="small muted">Kỳ xét: ${esc(r.Measurement_Period)} · Trả: ${esc(r.Payment_Timing)}${r.Vesting_Schedule && !/^immediate$/i.test(r.Vesting_Schedule) ? " · " + esc(r.Vesting_Schedule) : ""}</div>
-        ${r.Clawback_Recovery_Rule && !/^none$/i.test(r.Clawback_Recovery_Rule) ? `<div class="small muted">Thu hồi: ${esc(r.Clawback_Recovery_Rule)}</div>` : ""}
+        <div class="small muted">Kỳ xét: ${esc(r.Measurement_Period)} · Trả: ${esc(r.Payment_Timing)}${!blank(r.Vesting_Schedule) ? " · Lịch trả / trả chậm: " + esc(r.Vesting_Schedule) : ""}</div>
+        ${!blank(r.Clawback_Recovery_Rule) ? `<div class="small muted">Thu hồi: ${esc(r.Clawback_Recovery_Rule)}</div>` : ""}
         <div>${ids.map(ruleChip).join("")}</div></div>`;
     }).join("");
   };
