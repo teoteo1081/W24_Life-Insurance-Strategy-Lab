@@ -1,12 +1,9 @@
 # Private, confidential & generated artifacts
 # NOTE: .gitignore ONLY blocks untracked files; it does NOT protect files already tracked in Git.
-# Per BO decisions DEC-07/DEC-08 (see docs/decisions/decision-register.md &
-# docs/governance/confidentiality-and-rights-policy.md), private/sources/ (7 issuer PDFs) is
-# currently tracked; redistribution rights are tracked per-file in knowledge/sources/source-registry.csv.
-# All other files under private/ remain ignored and must NEVER be staged into this PUBLIC repository.
-private/*
-!private/sources/
-!private/sources/**
+# DEC-11 (2026-11-26): the 7 issuer PDFs in private/sources/ are no longer tracked. They stay on
+# TJ's machine for local analysis and are served for evidence links from Cloudflare R2 via the
+# read-only Worker in infra/evidence-worker/ (see manifest.json). Earlier Git history still contains them.
+private/
 *.secret
 *.key
 *.pem

@@ -1,0 +1,40 @@
+{
+  "base_url": "https://tj-w24-evidence.tj-wordloop.workers.dev",
+  "files": {
+    "SRC-POL-AIA-ALP-001": {
+      "url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
+      "size": 780683,
+      "sha256": "3773c807701730e74bbde1487d5cb35f03dcad4da13abded180964352e9bf1ee"
+    },
+    "SRC-POL-AIA-ALP-002": {
+      "url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+      "size": 540931,
+      "sha256": "b0e404407a4ba127cc05d483e048bedc3a9fa520aec4c922caa080921b84a83f"
+    },
+    "SRC-POL-AIA-ALP-003": {
+      "url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
+      "size": 670266,
+      "sha256": "ee375cb1c4baabaa10b41ed69e1efdff4e6995f1929174bb07fd8fe8bc4b0141"
+    },
+    "SRC-POL-MNL-001": {
+      "url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-MNL-001.pdf",
+      "size": 2066110,
+      "sha256": "294b52ebc9532573135288bf9b56b52c43d78c4e43d3a8d554be592b49d4beb4"
+    },
+    "SRC-POL-CHB-001": {
+      "url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
+      "size": 870358,
+      "sha256": "b900e10e305c8deed36ce93d2a8d8bf98257b0b74d96f6b98fadc90956443f4f"
+    },
+    "SRC-POL-CHB-002": {
+      "url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
+      "size": 786655,
+      "sha256": "7216d41eb0009755ef183970f6cfd58363ce946a95095c0d5c335e53a6babd4d"
+    },
+    "SRC-POL-CHB-003": {
+      "url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+      "size": 11562223,
+      "sha256": "1863877ebbd6ea2579f8c409f23db56bce0e9e2fd5bfc19a46a09e0f25b29755"
+    }
+  }
+}
