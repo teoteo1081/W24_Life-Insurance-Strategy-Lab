@@ -1,7 +1,7 @@
 # Role & Organization Mapping — Bản đồ Chức danh, Cấp bậc & Tương đương Chức năng
 
 **Ngày lập:** 2026-11-26  
-**Dữ liệu chuẩn hóa (36 chức danh × 16 thuộc tính):** [role-organization-mapping.csv](file:///C:/Users/User/Desktop/TJ/Project/W24_Life-Insurance-Strategy-Lab/knowledge/policies/role-organization-mapping.csv)  
+**Dữ liệu chuẩn hóa (36 chức danh × 16 thuộc tính):** [role-organization-mapping.csv](./role-organization-mapping.csv)  
 **Cơ sở bằng chứng:** Toàn văn 7 PDF chính sách gốc (`116 trang`) — `BASED ON AVAILABLE POLICY DOCUMENTS`.
 
 > **Nguyên tắc chống so sánh lệch tầng (No False Equivalence):** Không bao giờ đặt một chức danh Quản lý Cấp cao/Hộ Kinh Doanh (như Manulife `PSM+/HKD`) ngang hàng với Đại lý cá nhân (`AIA SA` hay `Chubb AR`) hoặc Quản lý cấp trung (`UM/SM/DM`). Mọi phép so sánh phải quy chiếu về **7 nhóm Tương đương Chức năng (Functional Tiers)** bên dưới.
@@ -40,4 +40,4 @@
 
 ## 3. Danh sách Đầy đủ 36 Chức danh (Truy vết 100% về File CSV)
 
-Toàn bộ 16 thuộc tính chi tiết (Role_ID, Company, Channel, Scheme, Role_Code, Role_Title, Functional_Tier, Contract_Type, Tax_Status, Entry/Promotion, Maintenance/Demotion, Dual Career, Managed Scope, Peer Rule, Mandatory Training/Compliance, Source & Status) được lưu trữ chuẩn hóa tại [role-organization-mapping.csv](file:///C:/Users/User/Desktop/TJ/Project/W24_Life-Insurance-Strategy-Lab/knowledge/policies/role-organization-mapping.csv).
+Toàn bộ 16 thuộc tính chi tiết (Role_ID, Company, Channel, Scheme, Role_Code, Role_Title, Functional_Tier, Contract_Type, Tax_Status, Entry/Promotion, Maintenance/Demotion, Dual Career, Managed Scope, Peer Rule, Mandatory Training/Compliance, Source & Status) được lưu trữ chuẩn hóa tại [role-organization-mapping.csv](./role-organization-mapping.csv).

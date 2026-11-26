@@ -1,36 +1,42 @@
-# AGENTS.md — Quy tắc làm việc cho AI Agent
+# AGENTS.md — Quy tắc Làm việc & Phân định Thẩm quyền cho AI Agent
 
 Áp dụng cho mọi AI agent làm việc trong repository `W24_Life-Insurance-Strategy-Lab`.
 
-## 1. Vai trò & Giới hạn quyền hạn
+## 1. Phân định Vai trò & Giới hạn Thẩm quyền
 
-- **AGY** là tác nhân thực thi duy nhất trong phiên làm việc hiện tại. **Không tự ý khởi chạy hoặc giao việc cho AI agent khác.**
-- **TJ** là Business Owner của dự án nghiên cứu. Các quyết định về thay đổi phạm vi, phát sinh chi phí, chia sẻ dữ liệu ra ngoài, thay đổi quy tắc nghiệp vụ chính thức hoặc thao tác không thể phục hồi phải xin xác nhận của TJ.
+- **Business Owner (`TJ`):** Chủ sở hữu dự án. Mọi quyết định về thay đổi phạm vi, phát sinh chi phí, quyền công bố/tái phân phối tài liệu bên thứ ba, chuyển chế độ hiển thị repository, thay đổi quy tắc nghiệp vụ chính thức, push GitHub, hoặc thao tác không thể phục hồi đều phải có xác nhận tường minh của TJ (lưu tại `docs/decisions/decision-register.md`).
+- **Implementation Agent (`AGY`):** Tác nhân thực thi kỹ thuật trong phiên triển khai; không tự ý khởi chạy hay ủy quyền cho AI agent khác, không tự cấp nhãn `INDEPENDENTLY_VERIFIED` cho công việc mình thực hiện.
+- **Independent Auditor (`Codex`):** Tác nhân kiểm toán độc lập tách biệt, chỉ đọc và đánh giá bằng chứng thực tế; báo cáo kiểm toán chứa thông tin hạn chế chia sẻ được lưu ngoài repository PUBLIC.
 - Không sửa đổi bất kỳ repository nào khác ngoài `W24_Life-Insurance-Strategy-Lab`.
-- Không tự ý thêm remote, push GitHub, chạy lệnh Git phá hủy, upload tài liệu nội bộ lên dịch vụ bên ngoài, hay dùng API trả phí.
+- Không tự ý sửa PDF nguồn gốc, thêm remote, push GitHub, đổi visibility, chạy lệnh Git phá hủy (reset/force-push/clean/rewrite history), cài phần mềm chưa duyệt, hay dùng API trả phí.
 
-## 2. Nguyên tắc Bằng chứng & Ground Truth
+## 2. Nguyên tắc Bảo mật, Bản quyền & Đóng gói Công khai
 
-Mọi thông tin phải được gắn nhãn phân loại rõ ràng:
-- `VERIFIED FACT` — Dữ kiện đã kiểm chứng trực tiếp từ tài liệu gốc/văn bản pháp luật.
-- `SOURCE CLAIM` — Thông tin do một nguồn công khai/báo chí/tài liệu công bố nhưng chưa kiểm chứng bản gốc nội bộ.
-- `ASSUMPTION` — Giả định mô phỏng có ghi rõ phạm vi.
-- `HYPOTHESIS` — Giả thuyết cần kiểm chứng.
-- `PROPOSAL` — Đề xuất thiết kế, không phải chính sách đã duyệt.
-- `UNKNOWN` — Chưa có dữ liệu. Không tự điền 0 hoặc bịa số.
-- `CONFLICTING EVIDENCE` — Có mâu thuẫn giữa các nguồn, cần ghi nhận để người có thẩm quyền phân xử.
+Tuân thủ nghiêm túc [docs/governance/confidentiality-and-rights-policy.md](docs/governance/confidentiality-and-rights-policy.md):
+- Không nhầm lẫn giữa **chế độ PUBLIC của repository** với **quyền tái phân phối hợp pháp tài liệu bên thứ ba**.
+- Tuyệt đối không đưa vào repository PUBLIC: skill gốc hoặc tài liệu phương pháp độc quyền của bên thứ ba, prompt chia sẻ riêng, nội dung trao đổi cá nhân, khóa bí mật/token, PII khách hàng, hay đường dẫn cục bộ máy cá nhân (`file://` trỏ ổ đĩa cục bộ / thư mục user hệ điều hành).
+- Luôn chạy `python scripts/run_checks.py` để kiểm tra quality gates và staging hygiene trước mỗi commit.
 
-## 3. Nguyên tắc Nghiệp vụ & Kỹ thuật
+## 3. Nguyên tắc Bằng chứng & Ground Truth
 
-- Không đánh đồng `APE`, `FYP`, `FYC`, `RYP`, `RYC`, phí thực thu, thu nhập được hưởng và thu nhập thực trả.
-- Không mặc định mỗi công ty chỉ có một chính sách; luôn tách rõ: Công ty → Kênh → Scheme → Đối tượng/Cấp bậc → Phiên bản → Hiệu lực.
-- Không biến thông tin truyền miệng (đặc biệt về kênh Alpha) thành kết luận.
-- Không nhầm tỷ lệ chi phí trên APE với ROI.
-- Không tuyên bố đã kiểm thử hoặc đã audit độc lập nếu chưa thực hiện hoặc tự viết tự kiểm.
-- Ưu tiên tuyệt đối **P0** trong deadline 3 ngày; không hy sinh P0 cho P1/P2.
+Mọi thông tin phải gắn nhãn phân loại rõ ràng:
+- `VERIFIED FACT` — Quan sát trực tiếp trong tài liệu gốc, runtime hoặc metadata công bố chính thức.
+- `SOURCE CLAIM` — Thông tin từ nguồn công khai/tóm tắt nhưng chưa đối chiếu toàn văn bản gốc.
+- `ASSUMPTION` — Giả định mô phỏng có ghi rõ phạm vi và mẫu số.
+- `HYPOTHESIS` — Giả thuyết cần kiểm chứng thực nghiệm.
+- `PROPOSAL` — Đề xuất thiết kế minh họa, không phải chính sách đã phê duyệt.
+- `UNKNOWN` — Chưa có dữ liệu. **Tuyệt đối không tự chuyển `UNKNOWN` thành `0` hoặc hệ số mặc định `1.0` nếu không có điều khoản chính sách minh bạch.**
+- `CONFLICTING EVIDENCE` — Mâu thuẫn nội tại giữa các nguồn; không tự phán xử mà leo thang vào `docs/decisions/decision-register.md`.
 
-## 4. Giao tiếp với TJ
+## 4. Nguyên tắc Nghiệp vụ, Tài chính & Kiểm thử
+
+- Không đánh đồng `APE`, `FYP`, `FYC`, `RYP`, `RYC`, phí thực thu, thu nhập được hưởng (`Earned`), thu nhập thực trả (`Cash Paid Y1`), trả chậm (`Deferred`) và thu hồi (`Clawback`).
+- Không đánh đồng **chi phí mô phỏng / ngưỡng hòa vốn biên gộp (`Modeled Break-Even Gross Margin`)** với **ROI thực tế đã chứng minh (`Actual ROI`)** hay kết quả kinh doanh thực tế.
+- Không suy diễn ngày hiệu lực từng điều khoản pháp lý chỉ từ metadata ngày ban hành văn bản; giữ `SOURCE_NOT_VERIFIED` / `CONDITIONAL` cho đến khi đối chiếu toàn văn hợp nhất (`44/2026/VBHN-TT-BTC`).
+- Mọi kiểm thử số phải chặn `NaN`, `±Inf` và sai kiểu; không báo `PASS` khi 0 test chạy.
+
+## 5. Single Source of Truth & Giao tiếp với TJ
 
 - Dùng tiếng Việt, giữ thuật ngữ tiếng Anh chuyên ngành cần thiết.
-- Giải thích ngắn gọn bản chất khi ra quyết định quan trọng: Vấn đề → Vì sao → Lựa chọn → Lý do chọn → Bằng chứng → Rủi ro → Điểm TJ cần quyết định.
-- Cập nhật `HANDOVER.md` tại mỗi mốc checkpoint quan trọng.
+- Giải thích ngắn gọn khi trình quyết định: Vấn đề → Vì sao → Lựa chọn → Lý do chọn → Bằng chứng → Rủi ro → Điểm TJ cần quyết định.
+- Trạng thái hiện hành duy nhất được cập nhật tại `HANDOVER.md`; không tạo thêm nhiều file theo dõi trùng lặp cùng một trạng thái.

@@ -2,8 +2,11 @@
 ## Gói Bàn giao Điều hành — Bước 1 (`Executive Advisory Deck — 7 Trang`)
 
 > **Đề bài gốc (Chị Nhi):** *"Bước 1: Phân tích các chính sách thu nhập giữa các công ty, và đề xuất chính sách phù hợp tại thị trường VN, nhằm thúc đẩy gia tăng doanh số, chất lượng kinh doanh và hiệu quả về mặt chi phí (ROI)."*  
-> **Cơ sở bằng chứng:** Phân tích trực tiếp **7 văn bản chính sách chính thức hiệu lực 2026** của **AIA Việt Nam (Kênh Alpha)**, **Chubb Life Việt Nam (Kênh Đại lý)** và **Manulife Việt Nam (Tầng Quản lý Cấp cao `PSM+/HKD`)** cùng bối cảnh thị trường IAV/MOF 2024–2026 và khung pháp lý Việt Nam (TT 67/2023/TT-BTC, NĐ 97/2026/NĐ-CP, TT 96/2026/TT-BTC).  
-> **Lưu ý minh bạch phạm vi (`BASED ON AVAILABLE POLICY DOCUMENTS`):** Bộ dữ liệu đối thủ hiện đủ 3 tầng cho AIA Alpha & Chubb Life và Tầng 3 (`PSM+/HKD`) cho Manulife (chưa có chính sách Đại lý cá nhân/Quản lý cấp trung Manulife, gói trợ cấp Exchange/Pro AIA, hay biên lợi nhuận VNB nội bộ). Các đề xuất là kiến trúc tư vấn (`PROPOSAL`) phục vụ quyết định chiến lược, cần hiệu chỉnh với dữ liệu tài chính thực tế của doanh nghiệp trước khi ban hành.
+> **Cơ sở bằng chứng:** Phân tích trực tiếp **7 văn bản chính sách hiệu lực 2026** của **AIA Việt Nam (Kênh Alpha)**, **Chubb Life Việt Nam (Kênh Đại lý)** và **Manulife Việt Nam (Tầng Quản lý Cấp cao `PSM+/HKD`)**, bối cảnh thị trường IAV/MOF 2024–2026 (`SOURCE_CLAIM`), và tham chiếu khung pháp lý Việt Nam (TT 67/2023/TT-BTC, NĐ 97/2026/NĐ-CP, TT 96/2026/TT-BTC, Văn bản hợp nhất `44/2026/VBHN-TT-BTC` — `SOURCE_NOT_VERIFIED` ở mức toàn văn từng điều khoản).  
+> **Ranh giới Kết luận & Minh bạch Phạm vi (`BASED ON AVAILABLE POLICY DOCUMENTS`):**
+> - Bộ tài liệu chỉ đại diện cho **thiết kế chính sách (Policy Design)** của các tầng có văn bản (chưa có Đại lý cá nhân/Quản lý cấp trung Manulife, gói trợ cấp Exchange/Pro & biểu HH AIA, hay quy định chung `260005V`/BD Chubb).
+> - Toàn bộ con số tài chính trong tài liệu là **Chi phí & Điểm hòa vốn mô phỏng theo kịch bản chuẩn (`Modeled Payout / Modeled Distribution Cost / Modeled Break-Even Gross Margin`)**, **KHÔNG phải ROI thực tế đã chứng minh** hay bằng chứng tăng trưởng doanh số/chất lượng thực tế (`Observed Performance & Actual ROI = UNKNOWN` do chưa có `VNB Margin`, `OpEx` và dữ liệu cohort của doanh nghiệp đích).
+> - Đề xuất là **kiến trúc tư vấn minh họa (`PROPOSAL / SYNTHETIC ASSUMPTION`)**, chỉ có giá trị định hướng thảo luận; mọi điều kiện tuân thủ pháp lý ở trạng thái **`CONDITIONAL`** cho đến khi Pháp chế & Kế toán đối chiếu toàn văn `44/2026/VBHN-TT-BTC`.
 
 ---
 
@@ -17,7 +20,7 @@
 
 ### Khuyến nghị Trung tâm: Kiến trúc `Balanced Hybrid` (Cân bằng Doanh số — Chất lượng — Dòng tiền)
 - **Định vị:** Kết hợp các cơ chế chứng minh xuất sắc nhất từ cả 3 hãng (Bảo vệ thực chất + Chặn T+1 + Khóa gián tiếp từ Chubb; Kỷ luật tái tục & SYC cao từ AIA; Trả chậm 3 năm `30/30/40%` + Sàn/Trần định phí + Chuyển đổi HKD từ Manulife), đồng thời **loại bỏ 3 nguồn gây vỡ chi phí lớn nhất thị trường** (Direct Override >100% FYC, Phí cố định quá cao kèm chuỗi gián tiếp vô hạn tầng, và thưởng tăng trưởng thuần QoQ).
-- **Tác động mô phỏng trên 1 Vùng chuẩn (`12 tỷ FYP/năm`, `K2 = 82%`):** Hạ tổng chi phí phân phối toàn hệ thống xuống **`~59.4% FYP`** (và **tiền mặt chi ra Năm 1 chỉ `~54.5% FYP`** — tiết kiệm **~16 điểm % so với AIA Alpha** và **~45 điểm % so với Chubb Life** trong cùng kịch bản chuẩn!), giữ quỹ thưởng đại lý ở **`~5.9%–19% FYP`** (an toàn tuyệt đối dưới trần **30% Điều 52**).
+- **Tác động mô phỏng trên kịch bản 1 Vùng chuẩn (`12 tỷ FYP/năm`, `K2 = 82%`, `MODEL_OUTPUT — KHÔNG PHẢI ROI THỰC TẾ`):** Hạ tổng chi phí phân phối toàn hệ thống mô phỏng xuống **`59.44% FYP`** (chi tiền mặt Năm 1 mô phỏng `54.45% FYP`, thấp hơn `15.99` điểm % so với kịch bản AIA Alpha chưa gồm Exchange/Pro và `44.76` điểm % so với kịch bản Chubb Life trong cùng giả định sản lượng). Rổ thưởng đại lý mô phỏng đạt `5.91% FYP` ở kịch bản năng suất trung bình (`15tr FYC/M`, và dưới `~19% FYP` ở nhóm năng suất cao), giữ biên đệm rộng dưới ngưỡng tham chiếu `30%` của Điều 52 *(cần Pháp chế & Kế toán kiểm chứng phạm vi tính rổ pháp định theo toàn văn `44/2026/VBHN-TT-BTC`)*.
 
 ---
 
@@ -65,11 +68,11 @@
 
 ## TRANG 5 — KIẾN TRÚC CHÍNH SÁCH ĐỀ XUẤT (`W24 BALANCED HYBRID — PROPOSAL`)
 
-### Thiết kế 3 Tầng Đồng bộ (100% Tham số hóa — Tuân thủ TT 67/2023, NĐ 97/2026 & TT 96/2026)
+### Thiết kế 3 Tầng Đồng bộ (100% Tham số hóa — Định hướng Thiết kế Theo Khung TT 67/2023, NĐ 97/2026 & `44/2026/VBHN-TT-BTC` — `CONDITIONAL` Chờ Đối chiếu Toàn văn Pháp lý)
 
-| Tầng | Cơ chế Thu nhập Đề xuất (`PROPOSAL / SYNTHETIC ASSUMPTION`) | Rổ Pháp lý & Điểm Kiểm soát |
+| Tầng | Cơ chế Thu nhập Đề xuất (`PROPOSAL / SYNTHETIC ASSUMPTION`) | Rổ Pháp lý Tham chiếu & Điểm Kiểm soát |
 |---|---|---|
-| **Tầng 1: Đại lý Cá nhân** | • **Hoa hồng:** UL/ILP **25%–30%** theo HSBH (Y2: **20%**, Y3+: **10%**); **Top-up = 0%**; Tử kỳ/Riders bảo vệ trả cạnh tranh.<br>• **Kích hoạt M1–M6:** `1.5tr` tiền mặt + `1.5tr` **giữ đến M12** khi đạt `≥8tr FYC/M`, ACK ≤15d & qua 21 ngày (tối đa 18tr).<br>• **Thưởng Tháng mượt (5 bậc):** `5/12/22/35/≥55tr FYC` → **`8% / 16% / 24% / 32% / 38%`** × **`K2`** (`<60%: 0%` → `≥85%: 120%`).<br>• **Đều đặn Quý:** `+12%` thưởng tháng khi đạt `3/3` tháng hoạt động (`≥4tr FYC/M`).<br>• **Thưởng MDRT Năm (`≥400tr FYC`):** `+10% FYC` (**30% trả chậm sang Năm 2** khi `K2 ≥75%`).<br>• **Thưởng Tái tục:** **`+25% SYC`** khi `K2 ≥75%`. **Giữ T+1** nếu mới / `K2 <65%`; **Clawback 6M**. | **Điều 51 & Điều 52:** Quỹ thưởng đại lý luôn giữ trong vùng **`6%–19% FYP`** — có biên an toàn **>10 điểm %** dưới trần 30% Điều 52! |
+| **Tầng 1: Đại lý Cá nhân** | • **Hoa hồng:** UL/ILP **25%–30%** theo HSBH (Y2: **20%**, Y3+: **10%**); **Top-up = 0%**; Tử kỳ/Riders bảo vệ trả cạnh tranh.<br>• **Kích hoạt M1–M6:** `1.5tr` tiền mặt + `1.5tr` **giữ đến M12** khi đạt `≥8tr FYC/M`, ACK ≤15d & qua 21 ngày (tối đa 18tr).<br>• **Thưởng Tháng mượt (5 bậc):** `5/12/22/35/≥55tr FYC` → **`8% / 16% / 24% / 32% / 38%`** × **`K2`** (`<60%: 0%` → `≥85%: 120%`).<br>• **Đều đặn Quý:** `+12%` thưởng tháng khi đạt `3/3` tháng hoạt động (`≥4tr FYC/M`).<br>• **Thưởng MDRT Năm (`≥400tr FYC`):** `+10% FYC` (**30% trả chậm sang Năm 2** khi `K2 ≥75%`).<br>• **Thưởng Tái tục:** **`+25% SYC`** khi `K2 ≥75%`. **Giữ T+1** nếu mới / `K2 <65%`; **Clawback 6M**. | **Tham chiếu Điều 51 & Điều 52 (`CONDITIONAL`):** Rổ thưởng đại lý mô phỏng giữ trong vùng `~5.9%–19% FYP`, tạo biên đệm rộng so với mốc `30%` Điều 52; cần xác nhận phân loại kế toán pháp định trước khi ban hành. |
 | **Tầng 2: Quản lý Trực tiếp** | • **Direct Override:** Đỉnh **`30%–36% FYC NTT`** × `K2` + **Phí âm đối xứng khi hủy HĐ**.<br>• **Indirect Override (Tối đa 3 tầng: `35% / 17.5% / 8.75%`):** **Khóa `0%` nếu `FYC NTT < 15tr/M`** + **70% Cap**.<br>• **Tuyển dụng & Nhân bản UM:** `10% FYC` người mới (50% trả tại M12) + `+100%` UM mới 12M (cap 15tr/M, `K2 ≥75%`).<br>• **Thưởng Giữ chân 3 Năm (Deferred):** **`12% FYC NTT/năm`**, trả rải **`30% (Y+1) – 30% (Y+2) – 40% (Y+3)`** gắn `K2 ≥75%`.<br>• **Thưởng RYC Nhóm:** `+15% RYC NTT` (`K2 ≥70%`). | **NĐ 97/2026:** HĐDV Quản lý có nghiệm thu KPI; chặn quản lý ăn bám và khóa giữ chân 3 năm. |
 | **Tầng 3: Lãnh đạo Vùng / HKD** | • **Cơ bản KPI Nghiệm thu:** `35tr / 45tr` × `%FYP` × `125%` (**Sàn 30% / Trần 140%**) + nghiệm thu `≥3 lớp đào tạo/M`.<br>• **Override Vùng:** `7% FYC` trực tiếp × `K2` + `40%` gián tiếp (tối đa 2 tầng) + `15%–30% RYC`.<br>• **Hợp tác Dài hạn 3 Năm:** `60%` Override Vùng biến đổi (cap 12×), trả **`30/30/40%`** gắn `K2 ≥75%` + **Linh hoạt chuyển đổi `Cá nhân ↔ HKD`**. | **NĐ 97/2026:** Chi tiền mặt Năm 1 thấp, không phình định phí, tối ưu pháp nhân thuế. |
 
@@ -90,10 +93,10 @@
 | **AIA Alpha 2027 (Vách đá `<70%`)** | **62%** | `51.98%` | `51.98%` | `0.00%` | `83.84%` | `71.98%` |
 | **W24 Proposed Balanced (`PROPOSAL`)** | **62%** | **`45.42%`** | **`45.42%`** | **`3.23%` (PASS)** | **`73.27%`** *(siêu ổn định!)* | **`65.42%`** |
 
-### 3 Kết luận Tài chính Sắc bén cho Ban Lãnh đạo
-1. **Không nhầm `% Chi phí / APE` với `ROI`:** Khi `K2` tụt từ 82% xuống 62%, chi phí trên mỗi đồng phí còn sống đến Năm 2 ở mô hình đáy mềm (Chubb) bị **đẩy vọt lên 124.4%**, phá hủy ROI dù chi phí danh nghĩa Năm 1 giảm. Ngược lại, **W24 Proposed Balanced** giữ chi phí trên mỗi đồng phí còn sống ổn định trong dải hẹp **`69.4% – 73.3%`** qua mọi kịch bản chất lượng!
-2. **Giải phóng dòng tiền Năm 1:** Nhờ cơ chế trả chậm 3 năm (`30/30/40%`), tiền mặt chi ra Năm 1 chỉ ở mức **`54.5% FYP`** (thấp hơn **16 điểm %** so với AIA và **45 điểm %** so với Chubb), giảm căng thẳng vốn lưu động ngay từ quý đầu triển khai.
-3. **Điểm đánh giá đa tiêu chí (15 tiêu chí, bộ trọng số 30/25/25/10/10 — `DRAFT`):** **W24 Proposed Balanced đạt `4.41 / 5.0` (PASS sạch cổng pháp lý)** so với AIA Alpha (`3.54 / 5.0`) và Chubb Life (`3.39 / 5.0`), và duy trì vị trí số 1 trên cả 4 kịch bản độ nhạy trọng số (Growth-First, Quality-First, ROI-First).
+### 3 Kết luận Tài chính Mô phỏng & Giới hạn ROI cho Ban Lãnh đạo
+1. **Phân biệt rạch ròi `Modeled Distribution Cost / Break-Even` với `Actual ROI (UNKNOWN)`:** Mô hình hiện chứng minh **ngưỡng hòa vốn biên gộp cần thiết (`Modeled Break-Even Gross Margin`)** và **chi phí trên mỗi đồng phí còn sống đến Năm 2** trên kịch bản chuẩn, **chưa phải ROI thực tế đã chứng minh** (vì chưa có `VNB Margin`, `OpEx` và tỷ lệ thực tế của doanh nghiệp đích). Khi `K2` tụt từ 82% xuống 62%, chi phí mô phỏng trên mỗi đồng phí còn sống đến Năm 2 ở mô hình đáy mềm (Chubb) tăng lên `124.42%`, trong khi **W24 Proposed Balanced** giữ ổn định trong dải hẹp `69.36% – 73.27%`.
+2. **Tác động Dòng tiền Năm 1 mô phỏng:** Nhờ cơ chế trả chậm 3 năm (`30/30/40%`), chi tiền mặt Năm 1 mô phỏng giảm xuống **`54.45% FYP`** (thấp hơn `15.99` điểm % so với kịch bản AIA và `44.76` điểm % so với kịch bản Chubb ở cùng giả định), giúp giảm áp lực vốn lưu động đầu kỳ.
+3. **Điểm đánh giá thiết kế đa tiêu chí (15 tiêu chí, bộ trọng số 30/25/25/10/10 — `DRAFT, NOT INDEPENDENTLY CALIBRATED`):** **W24 Proposed Balanced đạt `4.41 / 5.0`** (cổng pháp lý `CONDITIONAL` chờ đối chiếu toàn văn `44/2026/VBHN-TT-BTC`) so với AIA Alpha (`3.54 / 5.0`) và Chubb Life (`3.39 / 5.0`), dẫn đầu ổn định trên cả 4 kịch bản độ nhạy trọng số.
 
 ---
 

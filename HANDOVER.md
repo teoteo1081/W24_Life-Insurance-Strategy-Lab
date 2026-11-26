@@ -1,75 +1,55 @@
-# HANDOVER.md — Điểm Bàn giao & Checkpoint Dự án
+# HANDOVER.md — Điểm Bàn giao & Single Source of Truth (Trạng thái Hiện hành)
 
-**Cập nhật lần cuối:** 2026-11-26 (Checkpoint Post-Audit Remediation + Full Benchmarking, 12M Engine, Excel 12.0 COM Verified Model & Package A Executive Delivery)  
-**Người thực hiện:** AGY (Sole Execution Agent)  
-**Business Owner:** TJ  
-**Independent Auditor:** Codex (đã kiểm toán G1 tại `7bcf70e342a4baff34b50c215c010c6d5c544b70` — chờ kiểm toán độc lập đợt 2 cho gói Remediation & G2 này)
+**Cập nhật lần cuối:** 2026-11-26 *(Post-Independent-Audit Hardening & Level 2 Maturity Sprint — Sau Codex Independent Audit lần 2 tại `5cb7a21`)*  
+**Business Owner:** TJ | **Implementation Agent:** AGY | **Independent Auditor:** Codex (`W24_Independent_Audit_5cb7a21.md`, lưu ngoài repo PUBLIC)
 
 ---
 
-## 1. Mục tiêu & Phạm vi Hoàn tất
-Hoàn tất toàn bộ **Execution Contract: Post-Audit Remediation, Comprehensive Compensation Benchmarking & Business Strategy** bám sát nguyên văn yêu cầu gốc của chị Nhi (`SRC-REQ-001`) tại `ANCHOR_SPEC.md`:
-1. Khắc phục trọn vẹn **10 nhóm phát hiện của Independent Auditor (Codex)** + dọn sạch **Documentation Drift** trên toàn repo.
-2. Chuẩn hóa 100% 3 bảng lookup lớn (`1,300` dòng AIA PAF+, `113` dòng Hoa hồng Chubb, `10` khung tuổi HSBH), bản đồ **36 chức danh** và **44 cấu phần Total Rewards** (33 metadata, tách bạch tiền mặt vs phi tiền mặt chưa định giá).
-3. Hoàn thiện **12 Phương pháp Benchmarking**, **Khung Đánh giá & Rubric 15 tiêu chí** (tách Cổng Pháp lý bắt buộc + 6 Calibration Cases + Weight Sensitivity — `DRAFT`), **Phân tích Thị trường VN 2024–2027**, và **Đề xuất Chính sách `W24 Balanced Hybrid`** (+ 2 biến thể) cùng phân tích Break-Even Margin.
-4. Xây dựng **Python 12M Compensation & Enterprise Distribution Cost Engine** (`40/40` Golden Tests `PASS`) và **Excel Reference Model 14 sheet tương thích Excel 2007** — **đã chạy tính toán lại thực tế qua Microsoft Excel 12.0 COM** (`0` lỗi công thức, `20/20` Live Excel Golden Tests `PASS`, `12/12` Enterprise Cost Parity khớp `0.00%` với Python!).
-5. Bàn giao sạch **Gói A (`outputs/interview/W24_Executive_Recommendation_Step1.md` — 7 trang)** tách biệt hoàn toàn khỏi Gói B Working Papers.
+## 1. Trạng thái Trưởng thành & Kiểm chứng Hiện tại (Trung thực — Không Thổi phồng)
+
+- **Audited Baseline (`5cb7a21` — Codex):** **Level 1 (Organized)** với năng lực Level 2 giới hạn trong Python; `Repository Reproducibility = FAIL`, `Architecture Extensibility = FAIL`, `Public Portfolio Readiness = FAIL`.
+- **Sau Sprint Hardening (Local Commit — `SELF_VERIFIED`, CHƯA phải `INDEPENDENTLY_VERIFIED`):**
+  - **Level 2 Technical Reproducibility (Windows / Python 3.12 + openpyxl + MS Excel 12.0 COM):** Đã triển khai và tự kiểm chứng đầy đủ (`unittest discover`, `NaN/±Inf/UNKNOWN` validation, reproducible workbook build + Excel COM perturbation, automated quality gates, clean-clone verification).
+  - **Tổng thể Repository:** **`Level 2 PARTIALLY DEMONSTRATED (SELF_VERIFIED)`** vì: (1) chưa có Codex Independent Audit đợt 3, (2) vấn đề quyền tái phân phối 7 PDF công khai (`DEC-08`: `SRC-POL-MNL-001` là `RESTRICTED_INTERNAL`, 6 PDF AIA/Chubb là `PERMISSION_UNKNOWN`) đang `OPEN`, và (3) chưa kiểm chứng trên hệ điều hành thứ hai (Linux/macOS).
+  - **Level 3 (Configurable) & Level 4 (Extensible):** **CHƯA ĐẠT** (xem bản đồ phụ thuộc & lộ trình đề xuất tại `docs/architecture/level3-level4-architecture-advisory.md`).
 
 ---
 
-## 2. Danh mục Sản phẩm Đã Tạo Mới & Cập Nhật (Checkpoint này)
-- **Normalized Lookups & Data Inventories:**
-  - `knowledge/lookups/aia-paf-5y-targets.csv` (1,300 dòng, 0 sai lệch tổng)
-  - `knowledge/lookups/chubb-product-commission-schedule.csv` (113 dòng sản phẩm/phí trội/rider/nhóm)
-  - `knowledge/lookups/chubb-hsbh-tiers.csv` (10 khung tuổi HSBH *Tự Do An Phúc*)
-  - `knowledge/policies/role-organization-mapping.csv` (36 chức danh × 16 cột) & `.md`
-  - `knowledge/compensation/total-rewards-inventory.csv` (44 cấu phần × 33 cột) & `.md`
-  - `knowledge/sources/source-registry.csv` (16 nguồn × 17 cột, thêm `Revision_Class`, cập nhật Đ.51/52 `SOURCE_NOT_VERIFIED`)
-  - `knowledge/business-rules/business-rules-catalog.csv` (112 quy tắc × 25 cột, 3 cột trạng thái chuẩn Section 32, 0 tham chiếu gãy)
-- **Benchmarking, Rubric, Market & Strategy:**
-  - `outputs/working/competitor-benchmarking-12-methods.md` (v2.0 — 12 phương pháp + Ma trận Quyền lợi & Kịch bản)
-  - `docs/specifications/evaluation-framework-and-rubric.md` (15 tiêu chí + Mandatory Gate + 6 Calibration + Weight Sensitivity — `DRAFT`)
-  - `docs/research/vietnam-market-suitability.md` (IAV/MOF 2024–2026 + khung pháp lý 2026–2027)
-  - `outputs/working/strategic-recommendations-and-schemes.md` (`ADOPT/ADAPT/AVOID` + `W24 Balanced Hybrid` + Break-Even Sensitivity)
-- **Engines, Excel Model & Independent-Style Verification:**
-  - `model/compensation/compensation_engine.py` (12M calendar, dual-phase switches, conflict toggles, Enterprise Cost, MAPA, Break-Even)
-  - `tests/test_compensation_golden.py` (`40/40 PASSED` bao phủ 23 nhóm biên Section 33)
-  - `outputs/working/W24_Compensation_Reference_Model_v1.xlsx` (14 sheets, Excel 12.0 COM recalculated & saved!)
-- **Executive Delivery (Package A) & Governance/QA:**
-  - `outputs/interview/W24_Executive_Recommendation_Step1.md` (**Gói A — 7 trang sạch trình chị Nhi**)
-  - `qa/post-audit-remediation-register.md` (Theo dõi cả 10 phát hiện Codex — `SELF_VERIFIED` / `OPEN`)
-  - `qa/repository-maturity-assessment.md` (12+1 tiêu chuẩn trưởng thành)
-  - `docs/decisions/decision-register.md` (7 quyết định mở `DEC-01..DEC-07`)
-  - `docs/research/knowledge-backlog.md` (Khoảng trống nguồn & lộ trình P1/P2)
-- **Documentation Drift Fixed:** `docs/research/wheel-check.md`, `docs/architecture/reusable-model-schema.md`, `knowledge/policies/aia-alpha-2026-deep-guide.md`, `knowledge/policies/chubb-life-agency-2026-deep-guide.md`, `qa/g1-coverage-audit-matrix.md`, `qa/g1-extraction-qa-audit.md` (banner lịch sử), `outputs/working/competitor-comparison-v1.0.md` (banner lịch sử), `ANCHOR_SPEC.md`, `HANDOVER.md`, `CHANGELOG.md`.
+## 2. Kết quả Kiểm thử & Kiểm chứng Mới nhất (`SELF_VERIFIED`)
+
+| Lệnh / Kiểm chứng | Kết quả Thực tế | Bằng chứng / Ghi chú |
+|---|---|---|
+| `python scripts/run_checks.py` | **PASS** (exit `0`) | 1 lệnh chạy tuần tự: Quality Gates + `unittest discover` + Example Scenario (từ chối PASS nếu 0 test). |
+| `scripts/validate_repo.py` | **PASS** (`0` errors) | Kiểm 17 nguồn (`Redistribution_Rights_Status` + 7 PDF SHA-256), 112 rules (0 broken `Rule_ID`, valid enums), 3 lookups (`1,300` PAF+ 0 sai lệch tổng, `113` Chubb, `10` HSBH), 36 roles, 44 rewards, JSON schema, và 0 hygiene/path/secret leaks. |
+| `python -m unittest discover -s tests -v` | **`31` test cases PASS** (`0` fail, `0` error) | Gồm `18` Golden `TestCase` methods (`test_compensation_golden.py`, `GT-16` dùng hằng số độc lập), `9` NaN/Inf/Validation/Negative/Lookup Regression methods (`test_validation_and_regression.py`), `4` Quality Gate & Seeded-Defect methods (`test_quality_gates.py`). |
+| `scripts/build_workbook.py` + `scripts/verify_workbook_excel.py` | **PASS** (`overall_pass: true`) | Dựng lại 14 sheets (`915` công thức, không ghi đè `v1.xlsx`); Microsoft Excel 12.0 COM recalculation: `0` lỗi, `20/20` Excel Golden PASS, `12/12` Parity PASS; **2 live input perturbations PASS** (`C19: 0.16→0.20` → `60.91%/7.39%`; `C5: Table_80→Example_50` → `1.00`); tương đương chức năng 100% với `v1.xlsx`. Bằng chứng: `qa/excel-reproducibility-evidence.json`. |
+| Clean Environment `git clone` Test (Windows) | **PASS** *(xem báo cáo Checkpoint)* | Chạy độc lập từ bản clone sạch ngoài repo (0 file scratch/session AI): `run_checks.py` + `build_workbook.py` + `verify_workbook_excel.py` đều PASS. *Cross-OS chưa kiểm thử.* |
+| Confidentiality & Document Rights Review | **Lưu ngoài repo PUBLIC** | `0` secrets, `0` protected skill leaks, đã xóa sạch 10 đường dẫn cục bộ. Chi tiết quyền từng PDF lưu tại `%LOCALAPPDATA%\W24\Hardening-Private\W24_Confidentiality_And_Rights_Review_5cb7a21.md`. |
 
 ---
 
-## 3. Bằng chứng Kiểm thử & Kiểm chứng (`SELF_VERIFIED` — CHƯA PHẢI `INDEPENDENTLY_VERIFIED`)
-- **7 PDF bất biến trong `private/sources/`:** Xác minh `SHA-256` khớp 100% với `source-registry.csv` và thư mục Downloads (`ALL_7_PDFS_MATCH=True`). Không sửa bất kỳ file gốc nào.
-- **Python Golden Test Suite:** `40/40 PASSED` (kỳ vọng tính độc lập bằng tay từ văn bản gốc).
-- **Microsoft Excel 12.0 COM Recalculation (`CalculateFullRebuild`):**
-  - `EXCEL_COM_VERSION = 12.0` | `EXCEL_RECALC_SAVE_OK = True`
-  - Quét toàn bộ 14 sheet (`data_only=True`): **`0` ô lỗi công thức** (`#REF!`, `#NAME?`, `#VALUE!`, `#DIV/0!`, `#N/A`, `#NUM!`).
-  - Sheet `14_QA_Golden_Tests`: **`20/20 PASS` (`0` Failures)**.
-  - Sheet `11_Hierarchy_Dist_Cost`: **`12/12 PASS`** — khớp **`0.00%`** với Python trên mọi kịch bản K2 (`82%/72%/62%`) và mọi chính sách!
-- **Phân bố Trạng thái trên 112 Rules (`business-rules-catalog.csv`):**
-  - `Source_Verification`: `57 SOURCE_VERIFIED`, `46 MISSING_DEPENDENCY`, `7 SOURCE_NOT_VERIFIED`, `2 CONFLICTING_EVIDENCE`
-  - `Implementation_Status`: `72 IMPLEMENTED`, `40 NOT_IMPLEMENTED`
-  - `Calculation_Verification`: `37 TESTED_PASS (SELF)`, `35 CONDITIONAL`, `24 NOT_TESTED`, `16 BLOCKED`
+## 3. Khôi phục & Làm rõ Ranh giới Nghiệp vụ / Pháp lý / ROI
+
+- **Modeled Thresholds ≠ Actual ROI:** Toàn bộ kết quả trong Gói A (`outputs/interview/W24_Executive_Recommendation_Step1.md`) và Gói B là **Modeled Payout / Modeled Distribution Cost / Modeled Break-Even Gross Margin** trên kịch bản 1 Vùng `12 tỷ FYP` (`OpEx 15–25%` giả định), **KHÔNG phải ROI thực tế hay tăng trưởng đã chứng minh** (`VNB Margin`, `OpEx` thực & cohort mix là `UNKNOWN`).
+- **Pháp lý (`CONDITIONAL / SOURCE_NOT_VERIFIED`):** Đã cập nhật metadata Cổng TTĐT Chính phủ cho `TT 67/2023`, `NĐ 97/2026` (`31/03/2026`), `TT 96/2026` (`02/07/2026`) và Văn bản hợp nhất `44/2026/VBHN-TT-BTC` (`29/09/2026` — `SRC-LAW-005`). Không suy diễn ngày hiệu lực từng điều khoản từ metadata văn bản; giữ cổng pháp lý `CONDITIONAL` chờ Pháp chế rà soát toàn văn (`DEC-03`).
 
 ---
 
-## 4. Điểm Chưa Kiểm chứng / Hạn chế Trung thực
-1. **Chưa có Independent Audit đợt 2:** Toàn bộ kết quả kiểm thử trên là `SELF_VERIFIED` do AGY tự thực hiện; cần Codex rà soát độc lập để cấp nhãn `INDEPENDENTLY_VERIFIED`.
-2. **Rubric 15 tiêu chí còn ở trạng thái `DRAFT — NOT INDEPENDENTLY CALIBRATED`.**
-3. **7 quy tắc pháp lý (`REG-*`) ở trạng thái `SOURCE_NOT_VERIFIED`** do chưa tải bản PDF toàn văn Công báo chính thức (`DEC-03`).
-4. **2 xung đột nội tại nguồn gốc (`ERR-DOC-01` Chubb W1 `80% vs 50%`; `ERR-DOC-02` AIA làm tròn `RoundUp vs HalfUp`)** vẫn ở trạng thái `OPEN` (đã có toggle 2 chiều trên Excel & Python, không tự phán xử).
-5. **Thiếu tài liệu đối thủ & nội bộ:** Manulife FA/UM/DM (`UNKNOWN`), AIA Exchange/Pro & Phụ lục HH, Chubb `260005V`/BD, và `VNB Margin` / `Home Office OpEx` thật của doanh nghiệp đích.
+## 4. Trạng thái Git & Quyết định Mở Cần TJ (`docs/decisions/decision-register.md`)
+
+- **Repository GitHub:** `https://github.com/teoteo1081/W24_Life-Insurance-Strategy-Lab` (`PUBLIC` theo `DEC-07`).
+- **Nhánh & Sync:** Nhánh `main` có **local commit Hardening mới (`ahead 1` so với `origin/main` tại `5cb7a21`)** — **CHƯA PUSH lên GitHub** theo đúng giới hạn thẩm quyền (`DEC-09`).
+- **8 Quyết định Mở Cần TJ:**
+  - **`DEC-08` (Ưu tiên P0):** Xử lý quyền tái phân phối 7 PDF nguồn trên repo PUBLIC (`SRC-POL-MNL-001` = `RESTRICTED_INTERNAL`, 6 PDF AIA/Chubb = `PERMISSION_UNKNOWN`) — khuyến nghị Dual-Track Public Portfolio sạch dùng synthetic data.
+  - **`DEC-09` (Ưu tiên P0):** Phê duyệt push commit Hardening lên `origin/main` hoặc chạy Codex Independent Audit Đợt 3 trên bản local trước.
+  - **`DEC-03` (P0 trước ban hành):** Đối chiếu toàn văn Văn bản hợp nhất `44/2026/VBHN-TT-BTC` & `NĐ 97/2026` với Pháp chế/Kế toán.
+  - **`DEC-01` & `DEC-02`:** Phân xử 2 xung đột nguồn gốc (`ERR-DOC-01` Chubb `W1`, `ERR-DOC-02` AIA làm tròn).
+  - **`DEC-04`, `DEC-05`, `DEC-06`:** Thu thập tài liệu thiếu (Manulife FA/UM, AIA Exchange/HH, Chubb `260005V`/BD), chốt trọng số/biến thể, và nạp VNB/OpEx nội bộ cho Bước 2.
 
 ---
 
-## 5. Trạng thái Git & Quyết định Cần TJ
-- **Repository GitHub:** `https://github.com/teoteo1081/W24_Life-Insurance-Strategy-Lab` — Đã chuyển sang chế độ **`PUBLIC`** và đồng bộ nhánh `main` với `origin/main` theo **phê duyệt tường minh (Lựa chọn D) của Business Owner TJ ngày 2026-11-26** sau khi đã tiếp nhận đầy đủ cảnh báo về 7 file PDF nguồn tại `private/sources/`.
-- **Các mốc Commit chính trên `main`:** `7bcf70e` (G1 Deep — Codex audited) → `5c2d13b` (Track 7 PDFs) → `852ca87` (Post-Audit Remediation, 12-Method Benchmarking, Excel 12.0 COM Verified Model & Package A) → commit ghi nhận quyết định `DEC-07`.
-- **6 Quyết định Mở còn lại đang chờ TJ tại `docs/decisions/decision-register.md`:** `DEC-01` (`ERR-DOC-01`), `DEC-02` (`ERR-DOC-02`), `DEC-03` (Công báo pháp lý), `DEC-04` (Bổ sung PDF thiếu), `DEC-05` (Trọng số & Biến thể Đề xuất), `DEC-06` (Tham số VNB/OpEx nội bộ). `DEC-07` đã đóng (`APPROVED — OPTION D`).
+## 5. Hành động Tiếp theo (Sau Điểm Dừng Level 2 Hardening)
+
+1. TJ rà soát báo cáo Confidentiality & Rights Review ngoài repo và chốt `DEC-08` & `DEC-09`.
+2. Mời Independent Auditor (Codex) kiểm toán Đợt 3 trên checkpoint Hardening này để xác nhận độc lập các tiêu chí Level 2.
+3. Chỉ sau khi TJ duyệt: triển khai **Level 3 Vertical Slice** theo `docs/architecture/level3-level4-architecture-advisory.md`.

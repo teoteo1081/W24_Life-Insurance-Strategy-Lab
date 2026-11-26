@@ -13,9 +13,9 @@
 ### Tầng 0 — Mandatory Regulatory & Compliance Gate (`PASS / CONDITIONAL / FAIL`)
 | Cổng kiểm tra | Yêu cầu bắt buộc | Trạng thái hiện tại trên đối thủ & đề xuất |
 |---|---|---|
-| **G1. Trần Hoa hồng (Điều 51 TT 67/2023 & TT 96/2026)** | UL/ILP PCB Y1 ≤ 30%, Y2 ≤ 20%; Tử kỳ/Trọn đời Y1 ≤ 40%; Nhóm ≤ 50% cá nhân; Hưu trí ≤ 3%; Top-up ≤ phí ban đầu từ 01/01/2027. | Chubb SP mới: `PASS` (Top-up 0%); AIA/Manulife: `CONDITIONAL` (thiếu biểu HH; Manulife còn 6% Top-up vào FYP); Proposal W24: **`PASS`** *(cần xác minh toàn văn Công báo)*. |
-| **G2. Trần Thưởng & Hỗ trợ Đại lý (Điều 52 TT 67/2023 — hiệu lực đủ 2026)** | Tổng thưởng/hỗ trợ ĐL khai thác mới ≤ 20% phí ≤1Y + ≤ 30% FYP (>1Y); tái tục ≤ 7% RYP ở cấp toàn danh mục DN. | Chubb: **`CONDITIONAL / HIGH RISK`** (đỉnh cá nhân 25.7%–32.8% FYP, cần kiểm chứng cơ cấu danh mục); AIA: `CONDITIONAL` (thiếu số tiền Exchange/Pro); Proposal W24: **`PASS`** (thiết kế kiểm soát tổng danh mục ≤ 24% FYP Y1, có biên an toàn ≥ 6 điểm %!). |
-| **G3. Phân tách Phí Quản lý/Đào tạo (NĐ 97/2026/NĐ-CP)** | Mọi khoản phí quản lý/đào tạo/tuyển dụng phải gắn dịch vụ thực tế, có hợp đồng & biên bản nghiệm thu, không ngụy trang thưởng bán cá nhân. | Chubb RD & Manulife PSM+/HKD: `PASS` (nghiệm thu rõ); Proposal W24: **`PASS`** (bắt buộc nghiệm thu KPI quản lý & đào tạo). |
+| **G1. Trần Hoa hồng (Điều 51 TT 67/2023 & TT 96/2026 / `44/2026/VBHN-TT-BTC`)** | UL/ILP PCB Y1 ≤ 30%, Y2 ≤ 20%; Tử kỳ/Trọn đời Y1 ≤ 40%; Nhóm ≤ 50% cá nhân; Hưu trí ≤ 3%; Top-up ≤ phí ban đầu. | Chubb SP mới: `CONDITIONAL` *(Top-up 0% nhưng điều khoản luật `SOURCE_NOT_VERIFIED`)*; AIA/Manulife: `CONDITIONAL` *(thiếu biểu HH; Manulife còn 6% Top-up vào FYP)*; Proposal W24: **`CONDITIONAL`** *(thiết kế nhắm tuân thủ, chờ đối chiếu toàn văn `44/2026/VBHN-TT-BTC` — `DEC-03`)*. |
+| **G2. Trần Thưởng & Hỗ trợ Đại lý (Điều 52 TT 67/2023)** | Tổng thưởng/hỗ trợ ĐL khai thác mới ≤ 20% phí ≤1Y + ≤ 30% FYP (>1Y); tái tục ≤ 7% RYP ở cấp toàn danh mục DN. | Chubb: **`CONDITIONAL / HIGH RISK`** (đỉnh cá nhân 25.7%–32.8% FYP); AIA: `CONDITIONAL` (thiếu số tiền Exchange/Pro); Proposal W24: **`CONDITIONAL`** *(rổ thưởng mô phỏng `5.91%–19% FYP` < 30%, nhưng phân loại kế toán & mẫu số pháp định cần Pháp chế/Tài chính xác nhận trên toàn văn `44/2026/VBHN-TT-BTC`)*. |
+| **G3. Phân tách Phí Quản lý/Đào tạo (NĐ 97/2026/NĐ-CP)** | Mọi khoản phí quản lý/đào tạo/tuyển dụng phải gắn dịch vụ thực tế, có hợp đồng & biên bản nghiệm thu, không ngụy trang thưởng bán cá nhân. | Chubb RD, Manulife PSM+/HKD & Proposal W24: **`CONDITIONAL`** *(có cấu trúc nghiệm thu dịch vụ; chờ đối chiếu toàn văn NĐ 97/2026 ngày 31/03/2026)*. |
 
 ---
 
@@ -85,7 +85,7 @@
 
 | Trụ cột / Chỉ tiêu | Trọng số PO (Base) | AIA Alpha *(Tầng 1–3, thiếu Exch/HH)* | Chubb Life *(Tầng 1–3, thiếu BD/EHC)* | Manulife *(CHỈ Tầng 3 `PSM+/HKD`)* | **Proposal Primary (Balanced Hybrid)** |
 |---|---:|---:|---:|---:|---:|
-| **Mandatory Gate (G1–G3)** | **Gate** | `CONDITIONAL` *(thiếu HH & Exch)* | `CONDITIONAL` *(rủi ro trần Đ.52)* | `CONDITIONAL` *(6% Top-up + thiếu FA)* | **`PASS`** *(thiết kế sẵn 2027)* |
+| **Mandatory Gate (G1–G3)** | **Gate** | `CONDITIONAL` *(thiếu HH & Exch; luật `SOURCE_NOT_VERIFIED`)* | `CONDITIONAL` *(rủi ro trần Đ.52; luật `SOURCE_NOT_VERIFIED`)* | `CONDITIONAL` *(6% Top-up + thiếu FA)* | **`CONDITIONAL`** *(thiết kế nhắm tuân thủ, chờ toàn văn `44/2026/VBHN-TT-BTC`)* |
 | **I. Gia tăng Doanh số (`C01–C04`)** | **30%** | 3.77 | **4.27** | `N/A (T3: 3.60)` | **4.20** |
 | **II. Chất lượng Kinh doanh (`C05–C07`)** | **25%** | **3.92** | 3.60 | `3.95` *(T3)* | **4.60** |
 | **III. Hiệu quả Chi phí & ROI (`C08–C11`)** | **25%** | 3.24 | 2.48 | **`4.20`** *(T3)* | **4.52** |
@@ -101,4 +101,4 @@
 | **3. Quality-First (`20 / 40 / 20 / 10 / 10`)** | **3.59** | 3.37 | **4.46** | AIA nới rộng cách biệt (+0.22) nhờ vách đá FY 2027 & 50% SYC. |
 | **4. Financial-ROI-First (`20 / 20 / 40 / 10 / 10`)** | **3.48** | 3.16 | **4.45** | Chubb tụt mạnh nhất (-0.32 so với AIA) do áp lực tổng chi phí toàn cây & không có deferral. |
 
-**Kết luận Hiệu chuẩn:** Thứ hạng giữa AIA Alpha và Chubb Life **nhạy cảm rõ rệt với chiến lược ưu tiên của Ban Lãnh đạo** (Growth-First chọn cơ chế Chubb; Quality/ROI-First chọn kỷ luật AIA + Manulife), chứng tỏ Rubric phản ánh trung thực sự đánh đổi nghiệp vụ chứ không thiên vị cứng. Trong cả 4 bộ trọng số, **Proposal Primary (Balanced Hybrid)** giữ vị trí dẫn đầu ổn định (`4.36 – 4.46 / 5.0`) và là phương án duy nhất vượt qua sạch cả 3 cổng pháp lý `G1–G3`.
+**Kết luận Hiệu chuẩn:** Thứ hạng giữa AIA Alpha và Chubb Life **nhạy cảm rõ rệt với chiến lược ưu tiên của Ban Lãnh đạo** (Growth-First chọn cơ chế Chubb; Quality/ROI-First chọn kỷ luật AIA + Manulife), chứng tỏ Rubric phản ánh trung thực sự đánh đổi nghiệp vụ chứ không thiên vị cứng. Trong cả 4 bộ trọng số, **Proposal Primary (Balanced Hybrid)** đạt điểm thiết kế cao nhất (`4.36 – 4.46 / 5.0`), với điều kiện Cổng Pháp lý `G1–G3` vẫn giữ trạng thái **`CONDITIONAL`** cho đến khi đối chiếu toàn văn `44/2026/VBHN-TT-BTC` & `NĐ 97/2026/NĐ-CP` (`DEC-03`).

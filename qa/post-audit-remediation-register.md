@@ -38,4 +38,21 @@
    - Quét toàn bộ ô trên cả 14 sheet bằng `openpyxl(..., data_only=True)`: **`EXCEL_ERROR_CELLS = 0`** (không có `#REF!`, `#NAME?`, `#VALUE!`, `#DIV/0!`, `#N/A`, `#NUM!`).
    - Sheet `14_QA_Golden_Tests`: **`20/20 PASS (Failures=0)`**.
    - Sheet `11_Hierarchy_Dist_Cost` (12 kịch bản Enterprise Cost × 3 mức K2): **`12/12 PASS`**, khớp **`0.00%`** với Python Engine trên cả `Earned % FYP`, `Cash Y1 % FYP` và `Art.52 Bonus % FYP`.
-5. **Tuyên bố trung thực về giới hạn kiểm chứng:** Toàn bộ các kiểm tra trên là **`SELF_VERIFIED`** bởi AGY; **CHƯA phải `INDEPENDENTLY_VERIFIED`** cho đến khi Independent Auditor (Codex) kiểm toán độc lập đợt 2!
+5. **Tuyên bố trung thực về giới hạn kiểm chứng:** Toàn bộ các kiểm tra trên là **`SELF_VERIFIED`** bởi AGY; **CHƯA phải `INDEPENDENTLY_VERIFIED`** cho đến khi Independent Auditor (Codex) kiểm toán độc lập!
+
+---
+
+## 3. Tiếp nhận & Khắc phục Codex Independent Audit Đợt 2 (`5cb7a21` — Hardening Level 2 Sprint)
+
+**Nguồn tiếp nhận:** Báo cáo đầy đủ của Codex (`W24_Independent_Audit_5cb7a21.md`, lưu ngoài repo PUBLIC).
+
+| Audit Area (Codex `5cb7a21`) | Phân loại Finding | Khắc phục Đã Thực hiện trong Hardening Sprint (`SELF_VERIFIED`) | Trạng thái Sau Hardening |
+|---|---|---|---|
+| **A01 — Public Disclosure & Document Rights** | `Governance Risk` | Quét bảo mật toàn repo/lịch sử Git (0 secrets, 0 protected skill leaks; lưu báo cáo nhạy cảm ngoài repo PUBLIC); bổ sung cột `Redistribution_Rights_Status` (`RESTRICTED_INTERNAL` cho Manulife `0048M01`, `PERMISSION_UNKNOWN` cho 6 PDF AIA/Chubb); ban hành `docs/governance/confidentiality-and-rights-policy.md`; xóa sạch 10 liên kết tuyệt đối cục bộ; mở `DEC-08` trình TJ. | **Governance: `SELF_VERIFIED` \| Rights: `OPEN (DEC-08)`** |
+| **A02 — Public Landing & Documentation Drift (`REM-10`)** | `Confirmed Defect` | Viết lại hoàn chỉnh `README.md` (đúng hiện trạng, hạn chế, setup, Quick Start, Single Source of Truth); cập nhật `EXECUTION_PLAN.md`, `AGENTS.md`, `reusable-model-schema.md`, `repository-maturity-assessment.md`, `HANDOVER.md`. | **`SELF_VERIFIED`** |
+| **A03 — ROI Overclaim & Legal Source Certainty (`REM-01/02`)** | `Confirmed Defect` + `Missing Evidence` | Cập nhật metadata chính thức Cổng TTĐT Chính phủ (`TT 67/2023`, `NĐ 97/2026` 31/03/2026, `TT 96/2026` 02/07/2026, Văn bản hợp nhất `44/2026/VBHN-TT-BTC` 29/09/2026) vào `source-registry.csv` (`SRC-LAW-005`) & `wheel-check.md`; bỏ hoàn toàn cách diễn đạt `"tuân thủ 100%" / "PASS pháp lý" / "ROI vượt trội"` trên Gói A, chiến lược & Rubric; tách bạch `Modeled Break-Even` vs `Actual ROI (UNKNOWN)` và giữ cổng pháp lý `CONDITIONAL`. | **Wording: `SELF_VERIFIED` \| Full-text Legal: `OPEN (DEC-03)`** |
+| **A04 — `unittest discover=0`, `NaN` Bypass & Weak `GT-16`** | `Confirmed Defect` | Chuyển `tests/test_compensation_golden.py` sang `unittest.TestCase` + thêm `tests/__init__.py`; sửa `assert_close` chặn `NaN/±Inf/bool`; bổ sung strict validation trong `compensation_engine.py` (không chuyển ngầm `UNKNOWN` thành `1.0`, vẫn giữ âm hợp lệ cho clawback); độc lập hóa hằng số `GT-16`; thêm `tests/test_validation_and_regression.py`. | **`SELF_VERIFIED`** |
+| **A05 — Environment Manifest, Single Entrypoint & Clean Clone** | `Missing Evidence` | Thêm `requirements.txt`, `scripts/run_checks.py` (fail nếu 0 test), chạy kiểm chứng clean `git clone` ngoài repo. | **`SELF_VERIFIED` (Windows; cross-OS chưa test)** |
+| **A06 — Reproducible Workbook Build & Live Excel COM Perturbation** | `Confirmed Defect` | Tạo `scripts/build_workbook.py` (dựng 14 sheet vào đường dẫn tách biệt, bảo vệ không ghi đè `v1.xlsx`), `scripts/recalc_excel_com.ps1`, `scripts/verify_workbook_excel.py` (chạy Excel 12.0 COM recalculation + biến thiên 2 tham số sống `C19: 0.16→0.20` & `C5: Table_80→Example_50` + so khớp chức năng vs `v1.xlsx`), lưu bằng chứng tại `qa/excel-reproducibility-evidence.json`. | **`SELF_VERIFIED`** |
+| **A07 — Architecture Honesty & Level 3/4 Advisory** | `Architecture Limitation` | Khẳng định trung thực engine chưa config-driven; lập `docs/architecture/level3-level4-architecture-advisory.md` (Dependency Map, phân loại giá trị, Vertical Slice Level 3 & Tiêu chí mở rộng Level 4). | **`SELF_VERIFIED` (Advisory Only)** |
+| **A08 — Automated Quality Gates (`REM-08`)** | `Missing Evidence` | Xây `scripts/validate_repo.py` + `tests/test_quality_gates.py` (kiểm chứng tự động trên repo thật và dữ liệu giả lập lỗi). | **`SELF_VERIFIED`** |

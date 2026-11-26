@@ -2,6 +2,21 @@
 
 Tất cả thay đổi quan trọng của dự án `W24_Life-Insurance-Strategy-Lab` được ghi nhận tại đây.
 
+## [0.5.0] - 2026-11-26 (Post-Independent-Audit Hardening & Level 2 Maturity Sprint)
+
+### Added
+- **Governance & Rights Policy:** `docs/governance/confidentiality-and-rights-policy.md` và cột `Redistribution_Rights_Status` + bản ghi `SRC-LAW-005` (`44/2026/VBHN-TT-BTC`) trong `knowledge/sources/source-registry.csv`. *(Báo cáo Confidentiality Audit & Document Rights Review chi tiết lưu ngoài repository PUBLIC).*
+- **Automated Quality Gates & Single Entrypoint:** `scripts/validate_repo.py`, `scripts/run_checks.py`, `requirements.txt`, và `tests/test_quality_gates.py`.
+- **Regression & Input-Validation Suite:** `tests/test_validation_and_regression.py` kiểm chứng chặn `NaN`, `±Inf`, `bool`, kiểu dữ liệu/ngày/phần trăm/chức danh/scheme sai, `UNKNOWN` không bị chuyển ngầm thành `1.0`, khóa lookup trùng/thiếu, và phân biệt dữ liệu âm hợp lệ (clawback) vs âm lỗi.
+- **Reproducible Workbook Build & Live Excel COM Verification:** `scripts/build_workbook.py` (không ghi đè `v1.xlsx`), `scripts/recalc_excel_com.ps1`, `scripts/verify_workbook_excel.py` (kèm 2 live input perturbations & so khớp chức năng với `v1.xlsx`), và `qa/excel-reproducibility-evidence.json`.
+- **Level 3/4 Architecture Advisory:** `docs/architecture/level3-level4-architecture-advisory.md` (Dependency Map, phân loại giá trị trong code, Vertical Slice Level 3 và tiêu chí mở rộng Level 4).
+
+### Changed
+- **Test Discovery & Safety:** Chuyển `tests/test_compensation_golden.py` sang `unittest.TestCase` (+ `tests/__init__.py`) để `python -m unittest discover -s tests -v` tự nhận diện `31` test cases; sửa `assert_close` chặn `NaN/±Inf/bool`; thay `GT-16` bằng hằng số tính tay độc lập; bổ sung strict input validation tại `model/compensation/compensation_engine.py`.
+- **Business, ROI & Legal Precision:** Cập nhật metadata chính thức Cổng TTĐT Chính phủ (`TT 67/2023`, `NĐ 97/2026`, `TT 96/2026`, `44/2026/VBHN-TT-BTC`); bỏ cách diễn đạt khẳng định pháp lý/ROI vượt bằng chứng trên Gói A (`outputs/interview/W24_Executive_Recommendation_Step1.md`), `strategic-recommendations-and-schemes.md` và `evaluation-framework-and-rubric.md` (chuyển cổng pháp lý sang `CONDITIONAL`).
+- **Documentation Single Source of Truth & Portability:** Viết lại `README.md` sát hiện trạng, đồng bộ `EXECUTION_PLAN.md`, `AGENTS.md`, `HANDOVER.md`, `reusable-model-schema.md`, `repository-maturity-assessment.md`, `post-audit-remediation-register.md`, `decision-register.md` (`DEC-08/09`); thay toàn bộ 10 đường dẫn cục bộ không khả chuyển bằng đường dẫn tương đối và thêm `outputs/working/*_rebuilt.xlsx` vào `.gitignore`.
+- Chỉ tạo **local commit** trên nhánh `main` — chưa push lên GitHub (`DEC-09`).
+
 ## [0.4.1] - 2026-11-26 (BO-Approved Public Visibility & Remote Sync)
 
 ### Changed

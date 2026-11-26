@@ -1,0 +1,4 @@
+# W24 — Life Insurance Strategy Lab Python Dependencies
+# Core compensation engine, validation quality gates, and unittest suite use Python 3.12+ standard library only.
+# openpyxl is required ONLY for building and inspecting the Excel Reference Model (scripts/build_workbook.py).
+openpyxl>=3.1.0,<4.0.0

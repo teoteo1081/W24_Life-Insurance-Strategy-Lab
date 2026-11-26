@@ -16,49 +16,158 @@ from __future__ import annotations
 
 import csv
 import math
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 LOOKUPS_DIR = REPO_ROOT / "knowledge" / "lookups"
+_YM_RE = re.compile(r"^\d{4}-(0[1-9]|1[0-2])$")
+
+
+# =============================================================================
+# 0. STRICT NUMERIC & INPUT VALIDATION HELPERS (REJECT NaN / Inf / INVALID TYPES)
+# =============================================================================
+
+def _require_finite_float(val: Any, name: str) -> float:
+    """Validate finite real number (rejects bool, None, strings, NaN, +Inf, -Inf)."""
+    if isinstance(val, bool) or not isinstance(val, (int, float)):
+        raise ValueError(f"Invalid numeric type for {name}: {val!r}")
+    f = float(val)
+    if not math.isfinite(f):
+        raise ValueError(f"Non-finite numeric value for {name}: {val!r}")
+    return f
+
+
+def _require_non_negative_float(val: Any, name: str) -> float:
+    f = _require_finite_float(val, name)
+    if f < 0.0:
+        raise ValueError(f"{name} must be non-negative, got {f}")
+    return f
+
+
+def _require_positive_float(val: Any, name: str) -> float:
+    f = _require_finite_float(val, name)
+    if f <= 0.0:
+        raise ValueError(f"{name} must be strictly positive, got {f}")
+    return f
+
+
+def _require_int(val: Any, name: str, min_val: Optional[int] = None, max_val: Optional[int] = None) -> int:
+    if isinstance(val, bool) or not isinstance(val, int):
+        raise ValueError(f"Invalid integer for {name}: {val!r}")
+    if min_val is not None and val < min_val:
+        raise ValueError(f"{name} must be >= {min_val}, got {val}")
+    if max_val is not None and val > max_val:
+        raise ValueError(f"{name} must be <= {max_val}, got {val}")
+    return val
+
+
+def _require_percentage(val: Any, name: str, max_pct: float = 100.0) -> float:
+    f = _require_finite_float(val, name)
+    if f < 0.0 or f > max_pct:
+        raise ValueError(f"{name} must be within [0, {max_pct}], got {f}")
+    return f
+
+
+def _require_rate_0_to_1(val: Any, name: str, allow_zero: bool = True) -> float:
+    f = _require_finite_float(val, name)
+    if f < 0.0 or f > 1.0 or (not allow_zero and f == 0.0):
+        raise ValueError(f"{name} must be in {'[0, 1]' if allow_zero else '(0, 1]'}, got {f}")
+    return f
+
+
+def _require_vector(vec: Sequence[Any], expected_len: int, name: str, allow_negative: bool = False) -> List[float]:
+    if not isinstance(vec, (list, tuple)) or len(vec) != expected_len:
+        raise ValueError(f"{name} must be a sequence of length {expected_len}")
+    out = []
+    for i, item in enumerate(vec):
+        v = _require_finite_float(item, f"{name}[{i}]")
+        if not allow_negative and v < 0.0:
+            raise ValueError(f"{name}[{i}] must be non-negative, got {v}")
+        out.append(v)
+    return out
+
+
+def _require_int_vector(vec: Sequence[Any], expected_len: int, name: str, min_val: int = 0) -> List[int]:
+    if not isinstance(vec, (list, tuple)) or len(vec) != expected_len:
+        raise ValueError(f"{name} must be a sequence of length {expected_len}")
+    return [_require_int(item, f"{name}[{i}]", min_val=min_val) for i, item in enumerate(vec)]
+
+
+def _require_ym_date(ym: Any, name: str) -> str:
+    if not isinstance(ym, str) or not _YM_RE.match(ym):
+        raise ValueError(f"{name} must match YYYY-MM (01..12), got {ym!r}")
+    return ym
 
 
 # =============================================================================
 # 1. NORMALIZED LOOKUP LOADERS (PAF+ 1,300 rows & Chubb 113 rows + 10 HSBH)
 # =============================================================================
 
-def load_aia_paf_targets() -> Dict[Tuple[str, int, str], Tuple[float, float]]:
-    """Return {(Rank, Year_No, Period): (FYP_Million_VND, 1mAA_Count)}."""
-    path = LOOKUPS_DIR / "aia-paf-5y-targets.csv"
+def load_aia_paf_targets(path: Optional[Path] = None) -> Dict[Tuple[str, int, str], Tuple[float, float]]:
+    """Return {(Rank, Year_No, Period): (FYP_Million_VND, 1mAA_Count)} with duplicate/missing key checks."""
+    p = path or (LOOKUPS_DIR / "aia-paf-5y-targets.csv")
     out: Dict[Tuple[str, int, str], Tuple[float, float]] = {}
-    with open(path, encoding="utf-8") as f:
-        for r in csv.DictReader(f):
-            rank = r["Role_Code"]
-            yr = int(r["Tenure_Year"].replace("Year_", ""))
-            period = "Annual" if r["Period_Key"] == "ANNUAL_TOTAL" else r["Period_Key"]
-            metric = r["Metric"]
-            val = float(r["Target_Value"])
+    seen_metric_keys = set()
+    with open(p, encoding="utf-8") as f:
+        for idx, r in enumerate(csv.DictReader(f), 2):
+            rank = (r.get("Role_Code") or "").strip()
+            ty = (r.get("Tenure_Year") or "").strip()
+            pk = (r.get("Period_Key") or "").strip()
+            metric = (r.get("Metric") or "").strip()
+            if not rank or not ty.startswith("Year_") or not pk or metric not in ("FYP_Million_VND", "1mAA_Count"):
+                raise ValueError(f"Malformed AIA PAF lookup row {idx}: {r}")
+            yr = _require_int(int(ty.replace("Year_", "")), "Tenure_Year", 1, 5)
+            period = "Annual" if pk == "ANNUAL_TOTAL" else pk
+            mkey = (rank, yr, period, metric)
+            if mkey in seen_metric_keys:
+                raise ValueError(f"Duplicate AIA PAF lookup key at row {idx}: {mkey}")
+            seen_metric_keys.add(mkey)
+            val = _require_non_negative_float(float(r["Target_Value"]), f"Target_Value[{mkey}]")
             prev_fyp, prev_aa = out.get((rank, yr, period), (0.0, 0.0))
             if metric == "FYP_Million_VND":
                 out[(rank, yr, period)] = (val, prev_aa)
             else:
                 out[(rank, yr, period)] = (prev_fyp, val)
+    if not out:
+        raise ValueError(f"Empty AIA PAF lookup file: {p}")
     return out
 
 
-def load_chubb_commissions() -> Dict[str, Dict[str, str]]:
-    """Return {Product_Rule_ID: row_dict} from 113-row normalized schedule."""
-    path = LOOKUPS_DIR / "chubb-product-commission-schedule.csv"
-    with open(path, encoding="utf-8") as f:
-        return {r["Product_Rule_ID"]: r for r in csv.DictReader(f)}
+def load_chubb_commissions(path: Optional[Path] = None) -> Dict[str, Dict[str, str]]:
+    """Return {Product_Rule_ID: row_dict} from 113-row normalized schedule with duplicate-key check."""
+    p = path or (LOOKUPS_DIR / "chubb-product-commission-schedule.csv")
+    out: Dict[str, Dict[str, str]] = {}
+    with open(p, encoding="utf-8") as f:
+        for idx, r in enumerate(csv.DictReader(f), 2):
+            pid = (r.get("Product_Rule_ID") or "").strip()
+            if not pid:
+                raise ValueError(f"Missing Product_Rule_ID at row {idx}")
+            if pid in out:
+                raise ValueError(f"Duplicate Product_Rule_ID at row {idx}: {pid}")
+            out[pid] = r
+    if not out:
+        raise ValueError(f"Empty Chubb commission lookup file: {p}")
+    return out
 
 
-def load_chubb_hsbh() -> List[Dict[str, str]]:
-    """Return 10 age-band rows for Chubb Tu Do An Phuc HSBH tiers."""
-    path = LOOKUPS_DIR / "chubb-hsbh-tiers.csv"
-    with open(path, encoding="utf-8") as f:
-        return list(csv.DictReader(f))
+def load_chubb_hsbh(path: Optional[Path] = None) -> List[Dict[str, str]]:
+    """Return 10 age-band rows for Chubb Tu Do An Phuc HSBH tiers with key/range checks."""
+    p = path or (LOOKUPS_DIR / "chubb-hsbh-tiers.csv")
+    rows: List[Dict[str, str]] = []
+    seen_bands = set()
+    with open(p, encoding="utf-8") as f:
+        for idx, r in enumerate(csv.DictReader(f), 2):
+            band = (r.get("Age_Band") or "").strip()
+            if not band or band in seen_bands:
+                raise ValueError(f"Invalid or duplicate HSBH Age_Band at row {idx}: {band!r}")
+            seen_bands.add(band)
+            rows.append(r)
+    if not rows:
+        raise ValueError(f"Empty Chubb HSBH lookup file: {p}")
+    return rows
 
 
 def lookup_chubb_tudo_anphuc_y1_rate(age: int, gender: str, hsbh: float, hsbh_rows: Optional[List[Dict[str, str]]] = None) -> float:
@@ -67,27 +176,35 @@ def lookup_chubb_tudo_anphuc_y1_rate(age: int, gender: str, hsbh: float, hsbh_ro
     Age < 18: Tier0 (<T1)=20%, Tier1 (T1-<T2)=22%, Tier2 (>=T2)=25%.
     Age >= 18: Tier0 (<T1)=25%, Tier1 (T1-<T2)=27%, Tier2 (>=T2)=30%.
     """
-    rows = hsbh_rows if hsbh_rows is not None else load_chubb_hsbh()
+    age_i = _require_int(age, "age", 0, 65)
+    hsbh_f = _require_non_negative_float(hsbh, "hsbh")
+    if not isinstance(gender, str):
+        raise ValueError(f"Invalid gender: {gender!r}")
     g = gender.strip().upper()
-    t1_col = "Male_Tier1_HSBH" if g in ("M", "MALE", "NAM") else "Female_Tier1_HSBH"
-    t2_col = "Male_Tier2_HSBH" if g in ("M", "MALE", "NAM") else "Female_Tier2_HSBH"
+    if g in ("M", "MALE", "NAM"):
+        t1_col, t2_col = "Male_Tier1_HSBH", "Male_Tier2_HSBH"
+    elif g in ("F", "FEMALE", "NU", "NỮ"):
+        t1_col, t2_col = "Female_Tier1_HSBH", "Female_Tier2_HSBH"
+    else:
+        raise ValueError(f"Unsupported gender for HSBH lookup: {gender!r}")
+    rows = hsbh_rows if hsbh_rows is not None else load_chubb_hsbh()
     t1 = t2 = None
     for r in rows:
         lo, hi = int(r["Min_Age"]), int(r["Max_Age"])
-        if lo <= age <= hi:
-            t1 = float(r[t1_col])
-            t2 = float(r[t2_col])
+        if lo <= age_i <= hi:
+            t1 = _require_non_negative_float(float(r[t1_col]), t1_col)
+            t2 = _require_non_negative_float(float(r[t2_col]), t2_col)
             break
     if t1 is None or t2 is None:
-        raise ValueError(f"Age {age} out of Chubb HSBH range 0-65")
-    if age < 18:
-        if hsbh >= t2:
+        raise ValueError(f"Age {age_i} out of Chubb HSBH range 0-65")
+    if age_i < 18:
+        if hsbh_f >= t2:
             return 0.25
-        return 0.22 if hsbh >= t1 else 0.20
+        return 0.22 if hsbh_f >= t1 else 0.20
     else:
-        if hsbh >= t2:
+        if hsbh_f >= t2:
             return 0.30
-        return 0.27 if hsbh >= t1 else 0.25
+        return 0.27 if hsbh_f >= t1 else 0.25
 
 
 # =============================================================================
@@ -102,10 +219,11 @@ def round_aia_fy(fy_pct: float, mode: str = "HalfUp") -> int:
     - 'RoundUp': Ceiling rounding per AIA CVTV p.14 wording ('lam tron len den 0 so thap phan')
       (74.01 -> 75, 74.00 -> 74).
     """
+    fy_val = _require_percentage(fy_pct, "fy_pct", max_pct=100.0)
     if mode == "HalfUp":
-        return int(math.floor(fy_pct + 0.5))
+        return int(math.floor(fy_val + 0.5))
     elif mode == "RoundUp":
-        return int(math.ceil(fy_pct - 1e-12))
+        return int(math.ceil(fy_val - 1e-12))
     raise ValueError(f"Unknown AIA rounding mode: {mode}")
 
 
@@ -122,13 +240,16 @@ def apply_aia_70pct_cap(
     - PAF+ (2601-035 p.6-7): Direct block counts 100% (uncapped); ONLY each direct sub-PAF+
       branch is capped at 70% of target_req!
     """
-    cap = 0.70 * target_req
+    tgt = _require_non_negative_float(target_req, "target_req")
+    dval = _require_non_negative_float(direct_val, "direct_val")
+    subs = [_require_non_negative_float(v, f"sub_branch_vals[{i}]") for i, v in enumerate(sub_branch_vals)]
+    cap = 0.70 * tgt
     if level == "CQL":
-        if not sub_branch_vals:
-            return direct_val
-        return min(direct_val, cap) + sum(min(v, cap) for v in sub_branch_vals)
+        if not subs:
+            return dval
+        return min(dval, cap) + sum(min(v, cap) for v in subs)
     elif level == "PAF+":
-        return direct_val + sum(min(v, cap) for v in sub_branch_vals)
+        return dval + sum(min(v, cap) for v in subs)
     raise ValueError(f"Unknown level for 70% cap: {level}")
 
 
@@ -137,6 +258,8 @@ def apply_aia_70pct_cap(
 # =============================================================================
 
 def aia_cvtv_fy_factor(fy_pct_raw: float, policy_year: int = 2026, rounding_mode: str = "HalfUp") -> float:
+    if policy_year not in (2026, 2027):
+        raise ValueError(f"Unsupported AIA CVTV policy_year: {policy_year!r} (expected 2026 or 2027)")
     fy = round_aia_fy(fy_pct_raw, rounding_mode)
     if policy_year == 2026:
         if fy >= 85:
@@ -166,12 +289,13 @@ def aia_cvtv_fy_factor(fy_pct_raw: float, policy_year: int = 2026, rounding_mode
 
 def aia_cvtv_quarterly_rate(fyc_q_annualized: float) -> float:
     """8 tiers on quarterly FYC TC (Million VND) — SRC-POL-AIA-ALP-001 p.5."""
+    val = _require_finite_float(fyc_q_annualized, "fyc_q_annualized")
     tiers = [
         (150.0, 0.40), (120.0, 0.35), (90.0, 0.30), (70.0, 0.25),
         (50.0, 0.20), (35.0, 0.15), (20.0, 0.10), (16.0, 0.04),
     ]
     for th, rate in tiers:
-        if fyc_q_annualized >= th:
+        if val >= th:
             return rate
     return 0.0
 
@@ -181,21 +305,26 @@ def aia_cvtv_premier_tier(
     policy_year: int = 2026, rounding_mode: str = "HalfUp"
 ) -> Tuple[str, float, float]:
     """Return (TierLabel, PremierRate_on_FYC, SYC_Bonus_Rate)."""
+    if policy_year not in (2026, 2027):
+        raise ValueError(f"Unsupported AIA CVTV policy_year: {policy_year!r}")
+    fq = _require_finite_float(fyc_q, "fyc_q")
+    act = _require_int(active_months_in_q, "active_months_in_q", 0, 3)
     fy = round_aia_fy(fy_pct_raw, rounding_mode)
     gate_34 = 65 if policy_year == 2026 else 70
     gate_5 = 75 if policy_year == 2026 else 80
-    if fyc_q >= 70.0 and active_months_in_q >= 3 and fy >= gate_5:
+    if fq >= 70.0 and act >= 3 and fy >= gate_5:
         return ("5S", 0.15, 0.50)
-    if fyc_q >= 35.0 and active_months_in_q >= 3 and fy >= gate_34:
+    if fq >= 35.0 and act >= 3 and fy >= gate_34:
         return ("4S", 0.10, 0.30)
-    if fyc_q >= 20.0 and active_months_in_q >= 2 and fy >= gate_34:
+    if fq >= 20.0 and act >= 2 and fy >= gate_34:
         return ("3S", 0.05, 0.00)
     return ("None", 0.00, 0.00)
 
 
 def aia_cvtv_annual_rate(fyc_annual: float) -> float:
+    val = _require_finite_float(fyc_annual, "fyc_annual")
     for th, rate in [(1600.0, 0.20), (800.0, 0.14), (300.0, 0.10), (150.0, 0.06)]:
-        if fyc_annual >= th:
+        if val >= th:
             return rate
     return 0.0
 
@@ -208,9 +337,11 @@ def aia_ack_eligible_for_3m_bonus(
     Normally ACK must be valid within 15 days of approval, EXCEPT policies approved in
     2026-01 have until 2026-02-28!
     """
-    if approval_date_ym == "2026-01" and ack_received_on_or_before_feb28:
+    ym = _require_ym_date(approval_date_ym, "approval_date_ym")
+    days = _require_int(ack_days_from_approval, "ack_days_from_approval", 0)
+    if ym == "2026-01" and ack_received_on_or_before_feb28:
         return True
-    return ack_days_from_approval <= 15
+    return days <= 15
 
 
 def calc_aia_cvtv_12m(
@@ -230,7 +361,11 @@ def calc_aia_cvtv_12m(
     assumed_fyc_to_fyp_rate: float = 0.30,
 ) -> Dict[str, float]:
     """Full 12-month AIA Alpha CVTV simulation (in Million VND)."""
-    assert len(monthly_fyc) == 12 and len(monthly_syc) == 12
+    monthly_fyc = _require_vector(monthly_fyc, 12, "monthly_fyc", allow_negative=True)
+    monthly_syc = _require_vector(monthly_syc, 12, "monthly_syc", allow_negative=True)
+    _require_int(partial_q1_months, "partial_q1_months", 1, 3)
+    clawback_6m_fyc = _require_non_negative_float(clawback_6m_fyc, "clawback_6m_fyc")
+    assumed_fyc_to_fyp_rate = _require_rate_0_to_1(assumed_fyc_to_fyp_rate, "assumed_fyc_to_fyp_rate", allow_zero=False)
     fy_fac = aia_cvtv_fy_factor(fy_pct, policy_year, rounding_mode)
     disc_mult = 0.70 if disciplinary_final_warning else 1.00
 
@@ -323,8 +458,16 @@ def calc_aia_cql_12m(
     rounding_mode: str = "HalfUp",
 ) -> Dict[str, float]:
     """Full 12-month AIA Alpha CQL Manager calculation (Million VND)."""
+    monthly_team_fyc = _require_vector(monthly_team_fyc, 12, "monthly_team_fyc", allow_negative=True)
+    monthly_active_count = _require_int_vector(monthly_active_count, 12, "monthly_active_count", min_val=0)
+    tot_pct = _require_percentage(tot_pct, "tot_pct", 100.0)
+    new_agent_fyc_12m = _require_non_negative_float(new_agent_fyc_12m, "new_agent_fyc_12m")
+    indirect_gen2_base_12m = _require_finite_float(indirect_gen2_base_12m, "indirect_gen2_base_12m")
+    new_um_base_monthly = _require_non_negative_float(new_um_base_monthly, "new_um_base_monthly")
+    if new_agent_type not in ("SA", "Exchange", "ExchangePro"):
+        raise ValueError(f"Unsupported AIA new_agent_type: {new_agent_type!r}")
     fy = round_aia_fy(fy_pct, rounding_mode)
-    recruits = quarterly_new_recruits or [2, 2, 2, 2]
+    recruits = _require_int_vector(quarterly_new_recruits if quarterly_new_recruits is not None else [2, 2, 2, 2], 4, "quarterly_new_recruits", min_val=0)
 
     direct_m_total = 0.0
     activity_m_total = 0.0
@@ -411,7 +554,18 @@ def calc_aia_paf_12m(
     rounding_mode: str = "HalfUp",
 ) -> Dict[str, float]:
     """Full 12-month AIA Alpha PAF+ calculation reading normalized 1,300-row lookup."""
+    if rank not in PAF_BASE_FEES:
+        raise ValueError(f"Unsupported AIA PAF+ rank: {rank!r} (expected one of {sorted(PAF_BASE_FEES)})")
+    _require_int(year_no, "year_no", 1, 5)
+    monthly_fyp = _require_vector(monthly_fyp, 12, "monthly_fyp", allow_negative=True)
+    monthly_fyc = _require_vector(monthly_fyc, 12, "monthly_fyc", allow_negative=True)
+    monthly_1maa = _require_vector(monthly_1maa, 12, "monthly_1maa", allow_negative=False)
+    attendance_pct = _require_percentage(attendance_pct, "attendance_pct", 100.0)
+    sub_paf_prof_fees_12m = _require_finite_float(sub_paf_prof_fees_12m, "sub_paf_prof_fees_12m")
     t_map = targets if targets is not None else load_aia_paf_targets()
+    for pk in [f"M{m:02d}" for m in range(1, 13)] + ["Annual"]:
+        if (rank, year_no, pk) not in t_map:
+            raise ValueError(f"Missing AIA PAF+ lookup key: {(rank, year_no, pk)}")
     base_m = PAF_BASE_FEES[rank]
     fy = round_aia_fy(fy_pct, rounding_mode)
     att_mult = 1.0 if attendance_pct >= 70.0 else 0.70
@@ -486,17 +640,24 @@ def calc_aia_paf_12m(
 # 4. CHUBB LIFE AGENCY ENGINE (AR, CHAMPION HUBB, AL, RD)
 # =============================================================================
 
-def chubb_k2_factor(k2_pct: Optional[float]) -> float:
-    """Chubb AR & AL K2 factor (SRC-POL-CHB-001 p.5 & 002 p.5): <50% still gets 25%!"""
+def chubb_k2_factor(k2_pct: Optional[float], allow_new_no_k2: bool = True) -> float:
+    """
+    Chubb AR & AL K2 factor (SRC-POL-CHB-001 p.5 & 002 p.5): <50% still gets 25%!
+    Per memo p.5, new agents with no K2 history receive 100% ONLY when allow_new_no_k2=True;
+    otherwise None / missing K2 raises ValueError instead of silently converting UNKNOWN to 1.0.
+    """
     if k2_pct is None:
+        if not allow_new_no_k2:
+            raise ValueError("k2_pct is None/UNKNOWN and allow_new_no_k2=False")
         return 1.00
-    if k2_pct >= 80.0:
+    val = _require_percentage(k2_pct, "k2_pct", 100.0)
+    if val >= 80.0:
         return 1.20
-    if k2_pct >= 70.0:
+    if val >= 70.0:
         return 1.00
-    if k2_pct >= 60.0:
+    if val >= 60.0:
         return 0.75
-    if k2_pct >= 50.0:
+    if val >= 50.0:
         return 0.50
     return 0.25
 
@@ -507,23 +668,27 @@ def chubb_ch_w1_factor(sop_pct: float, conflict_mode: str = "Table_80") -> float
     - 'Table_80': Per official table p.9 (80-<90% -> 80%, 70-<80% -> 50%).
     - 'Example_50': Per p.10 M11-M12 worked example (85% -> 50%).
     """
-    if sop_pct >= 90.0:
+    if conflict_mode not in ("Table_80", "Example_50"):
+        raise ValueError(f"Unsupported Chubb ERR-DOC-01 conflict_mode: {conflict_mode!r}")
+    val = _require_percentage(sop_pct, "sop_pct", 100.0)
+    if val >= 90.0:
         return 1.00
-    if sop_pct >= 80.0:
+    if val >= 80.0:
         return 0.80 if conflict_mode == "Table_80" else 0.50
-    if sop_pct >= 70.0:
+    if val >= 70.0:
         return 0.50
     return 0.00
 
 
 def chubb_ch_w2_factor(k2_pct: float) -> float:
-    if k2_pct >= 85.0:
+    val = _require_percentage(k2_pct, "k2_pct", 100.0)
+    if val >= 85.0:
         return 1.25
-    if k2_pct >= 75.0:
+    if val >= 75.0:
         return 1.00
-    if k2_pct >= 65.0:
+    if val >= 65.0:
         return 0.50
-    if k2_pct >= 50.0:
+    if val >= 50.0:
         return 0.30
     return 0.00
 
@@ -541,6 +706,10 @@ def calc_chubb_ch_m1_12_offset(
     Deducts NewAgentBonus from CH_Month cash first; any excess deducts from CH_M12 deferred tranche!
     Verified directly against p.10 M7 (5.0+2.4 vs 6.0 -> 0.0 month, 1.4 M12) & M12 (2.5+1.2 vs 1.5 -> 1.0 month, 1.2 M12).
     """
+    month_idx = _require_int(month_idx, "month_idx", 1, 12)
+    cc_count = _require_int(cc_count, "cc_count", 0)
+    kpi_pct = _require_percentage(kpi_pct, "kpi_pct", 200.0)
+    new_agent_bonus_paid_in_month = _require_non_negative_float(new_agent_bonus_paid_in_month, "new_agent_bonus_paid_in_month")
     w1 = chubb_ch_w1_factor(sop_pct, conflict_mode)
     if kpi_pct < 70.0 or cc_count < 1 or w1 == 0.0:
         return {"w1": w1, "ch_month_gross": 0.0, "ch_m12_gross": 0.0, "ch_month_net": 0.0, "ch_m12_net": 0.0}
@@ -584,8 +753,13 @@ def calc_chubb_ar_12m(
     assumed_fyc_to_fyp_rate: float = 0.30,
 ) -> Dict[str, float]:
     """Full 12-month Chubb Life Individual Agent (AR or AL personal sales) calculation."""
-    assert len(monthly_fyc) == 12
-    k2_fac = chubb_k2_factor(k2_pct)
+    monthly_fyc = _require_vector(monthly_fyc, 12, "monthly_fyc", allow_negative=True)
+    monthly_ryc = _require_vector(monthly_ryc, 12, "monthly_ryc", allow_negative=True)
+    if not isinstance(monthly_ehc, (list, tuple)) or len(monthly_ehc) != 12 or not all(isinstance(x, bool) for x in monthly_ehc):
+        raise ValueError("monthly_ehc must be a 12-element sequence of booleans")
+    tenure_months_start = _require_int(tenure_months_start, "tenure_months_start", 1)
+    assumed_fyc_to_fyp_rate = _require_rate_0_to_1(assumed_fyc_to_fyp_rate, "assumed_fyc_to_fyp_rate", allow_zero=False)
+    k2_fac = chubb_k2_factor(k2_pct, allow_new_no_k2=(tenure_months_start < 13))
     hold_t_plus_1 = (k2_pct is None) or (k2_pct < 60.0)
 
     monthly_hqkd: List[float] = []
@@ -698,11 +872,14 @@ def calc_chubb_ar_12m(
 def calc_chubb_al_htktn_month(fyc_ntt: float, ehc_ntt: int, k2_ntt: Optional[float], al_tenure_months: int = 15) -> float:
     """
     Chubb AL Monthly HT KTN (SRC-POL-CHB-002 p.5-6) INCLUDING symmetric negative FYC clawback!
-    If fyc_ntt < 0, lookup tier on abs(fyc_ntt) and return negative fee!
+    If fyc_ntt < 0 (valid cancellation/clawback adjustment), lookup tier on abs(fyc_ntt) and return negative fee!
     """
+    fyc_ntt = _require_finite_float(fyc_ntt, "fyc_ntt")  # Negative allowed for valid symmetric clawback!
+    ehc_ntt = _require_int(ehc_ntt, "ehc_ntt", 0)
+    al_tenure_months = _require_int(al_tenure_months, "al_tenure_months", 1)
     abs_f = abs(fyc_ntt)
     high_ehc = ehc_ntt >= 4
-    k2_fac = chubb_k2_factor(k2_ntt)
+    k2_fac = chubb_k2_factor(k2_ntt, allow_new_no_k2=(al_tenure_months < 15))
     if al_tenure_months >= 15:
         if abs_f >= 40.0:
             rate = 0.60 if high_ehc else 0.50
@@ -745,6 +922,16 @@ def calc_chubb_al_12m(
     new_unit_fee_260009v_12m: float = 0.0,
 ) -> Dict[str, float]:
     """Full 12-month Chubb AL Manager calculation (excl. AL personal sales!)."""
+    monthly_fyc_ntt = _require_vector(monthly_fyc_ntt, 12, "monthly_fyc_ntt", allow_negative=True)
+    monthly_ehc_ntt = _require_int_vector(monthly_ehc_ntt, 12, "monthly_ehc_ntt", min_val=0)
+    al_tenure_start = _require_int(al_tenure_start, "al_tenure_start", 1)
+    if rank not in ("UM", "SM", "DM"):
+        raise ValueError(f"Unsupported Chubb AL rank: {rank!r} (expected UM, SM, or DM)")
+    new_ar_fyc_m1_6 = _require_non_negative_float(new_ar_fyc_m1_6, "new_ar_fyc_m1_6")
+    new_ar_fyc_m7_12 = _require_non_negative_float(new_ar_fyc_m7_12, "new_ar_fyc_m7_12")
+    new_um_indirect_monthly = _require_non_negative_float(new_um_indirect_monthly, "new_um_indirect_monthly")
+    ch_mgt_gross_12m = _require_non_negative_float(ch_mgt_gross_12m, "ch_mgt_gross_12m")
+    new_unit_fee_260009v_12m = _require_non_negative_float(new_unit_fee_260009v_12m, "new_unit_fee_260009v_12m")
     ht_m = [calc_chubb_al_htktn_month(monthly_fyc_ntt[m], monthly_ehc_ntt[m], k2_ntt, al_tenure_start + m) for m in range(12)]
     ht_q_total = 0.0
     for q in range(4):
@@ -820,7 +1007,16 @@ def calc_chubb_rd_12m(
     legacy_holdback_2025: float = 0.0,
 ) -> Dict[str, float]:
     """Full 12-month Chubb RD calculation with Q1-Q2 (50%) vs Q3-Q4 (60%) K2 Binary Cliff!"""
-    base_q_fyp = prior_year_q_fyp or [sum(monthly_direct_fyp[0:3]) / 1.15] * 4
+    monthly_direct_fyp = _require_vector(monthly_direct_fyp, 12, "monthly_direct_fyp", allow_negative=True)
+    monthly_direct_fyc = _require_vector(monthly_direct_fyc, 12, "monthly_direct_fyc", allow_negative=True)
+    monthly_direct_ehc = _require_int_vector(monthly_direct_ehc, 12, "monthly_direct_ehc", min_val=0)
+    monthly_3maa = _require_int_vector(monthly_3maa, 12, "monthly_3maa", min_val=0)
+    monthly_ryc = _require_vector(monthly_ryc, 12, "monthly_ryc", allow_negative=True)
+    k2_pct = _require_percentage(k2_pct, "k2_pct", 100.0)
+    weighted_reported_fyp_monthly = _require_non_negative_float(weighted_reported_fyp_monthly, "weighted_reported_fyp_monthly")
+    training_classes_monthly = _require_int(training_classes_monthly, "training_classes_monthly", 0)
+    legacy_holdback_2025 = _require_non_negative_float(legacy_holdback_2025, "legacy_holdback_2025")
+    base_q_fyp = _require_vector(prior_year_q_fyp, 4, "prior_year_q_fyp", allow_negative=True) if prior_year_q_fyp is not None else [sum(monthly_direct_fyp[0:3]) / 1.15] * 4
     train_total = act_total = biz_total = qual_m_total = 0.0
 
     for m in range(12):
@@ -896,38 +1092,42 @@ def calc_chubb_rd_12m(
 # 5. MANULIFE PSM+ / HKD ENGINE (DUAL-PHASE APR 2026 + 3Y VESTING 30/30/40%)
 # =============================================================================
 
-def manulife_k2_factor(k2_pct: Optional[float], month_idx_1_to_12: int) -> float:
+def manulife_k2_factor(k2_pct: Optional[float], month_idx_1_to_12: int, allow_new_no_k2: bool = True) -> float:
     """Dual-phase K2 switch on 2026-04-01 (SRC-POL-MNL-001 p.2-3)."""
+    month_idx_1_to_12 = _require_int(month_idx_1_to_12, "month_idx_1_to_12", 1, 12)
     if k2_pct is None:
+        if not allow_new_no_k2:
+            raise ValueError("k2_pct is None/UNKNOWN and allow_new_no_k2=False")
         return 1.00
+    k2_val = _require_percentage(k2_pct, "k2_pct", 100.0)
     if month_idx_1_to_12 <= 3:  # Pre-Apr 2026
-        if k2_pct >= 75.0:
+        if k2_val >= 75.0:
             return 1.15
-        if k2_pct >= 70.0:
+        if k2_val >= 70.0:
             return 1.10
-        if k2_pct >= 65.0:
+        if k2_val >= 65.0:
             return 1.05
-        if k2_pct >= 60.0:
+        if k2_val >= 60.0:
             return 1.00
-        if k2_pct >= 55.0:
+        if k2_val >= 55.0:
             return 0.90
-        if k2_pct >= 50.0:
+        if k2_val >= 50.0:
             return 0.75
-        return k2_pct / 100.0
+        return k2_val / 100.0
     else:  # Post-Apr 2026 (tightened!)
-        if k2_pct >= 80.0:
+        if k2_val >= 80.0:
             return 1.10
-        if k2_pct >= 75.0:
+        if k2_val >= 75.0:
             return 1.05
-        if k2_pct >= 70.0:
+        if k2_val >= 70.0:
             return 1.00
-        if k2_pct >= 65.0:
+        if k2_val >= 65.0:
             return 0.90
-        if k2_pct >= 60.0:
+        if k2_val >= 60.0:
             return 0.70
-        if k2_pct >= 50.0:
+        if k2_val >= 50.0:
             return 0.50
-        return (k2_pct / 100.0) / 2.0  # K2 / 2!
+        return (k2_val / 100.0) / 2.0  # K2 / 2!
 
 
 def calc_manulife_psm_12m(
@@ -940,6 +1140,12 @@ def calc_manulife_psm_12m(
     is_top15_national: bool = False,
 ) -> Dict[str, float]:
     """Full 12-month Manulife PSM+/HKD engine with Apr-2026 switch & 3Y 30/30/40% deferral."""
+    base_fee_monthly = _require_positive_float(base_fee_monthly, "base_fee_monthly")
+    monthly_fyp_ach_pct = _require_vector(monthly_fyp_ach_pct, 12, "monthly_fyp_ach_pct", allow_negative=False)
+    monthly_direct_fyc = _require_vector(monthly_direct_fyc, 12, "monthly_direct_fyc", allow_negative=True)
+    quarterly_1maa_ach_pct = _require_vector(quarterly_1maa_ach_pct, 4, "quarterly_1maa_ach_pct", allow_negative=False)
+    k2_pct = _require_percentage(k2_pct, "k2_pct", 100.0)
+    indirect_prod_act_12m = _require_finite_float(indirect_prod_act_12m, "indirect_prod_act_12m")
     base_total = 0.0
     prod_total = 0.0
     for m in range(12):
@@ -1006,18 +1212,49 @@ class ProposalParams:
     rd_deferred_3y_share: float = 0.60     # 60% of variable RD override deferred 30/30/40% (K2>=75%)
 
 
-def proposal_k2_factor(k2_pct: Optional[float], hard_floor: float = 60.0) -> float:
+def _validate_proposal_params(p: ProposalParams) -> None:
+    _require_rate_0_to_1(p.ul_y1_fyc_rate, "ProposalParams.ul_y1_fyc_rate", allow_zero=False)
+    _require_rate_0_to_1(p.topup_commission_rate, "ProposalParams.topup_commission_rate", allow_zero=True)
+    _require_percentage(p.k2_hard_floor_pct, "ProposalParams.k2_hard_floor_pct", 100.0)
+    _require_percentage(p.k2_holdback_t1_threshold, "ProposalParams.k2_holdback_t1_threshold", 100.0)
+    if len(p.agent_m_tier_rates) != 5 or len(p.agent_m_tier_thresholds) != 5:
+        raise ValueError("ProposalParams agent monthly tiers must have exactly 5 elements")
+    for i, r in enumerate(p.agent_m_tier_rates):
+        _require_rate_0_to_1(r, f"ProposalParams.agent_m_tier_rates[{i}]")
+    for i, th in enumerate(p.agent_m_tier_thresholds):
+        _require_non_negative_float(th, f"ProposalParams.agent_m_tier_thresholds[{i}]")
+    _require_rate_0_to_1(p.agent_q_consistency_3m, "ProposalParams.agent_q_consistency_3m")
+    _require_rate_0_to_1(p.agent_annual_mdrt_rate, "ProposalParams.agent_annual_mdrt_rate")
+    _require_rate_0_to_1(p.agent_ryc_bonus_rate, "ProposalParams.agent_ryc_bonus_rate")
+    _require_rate_0_to_1(p.mgr_direct_max_rate, "ProposalParams.mgr_direct_max_rate")
+    _require_non_negative_float(p.mgr_indirect_gate_fyc, "ProposalParams.mgr_indirect_gate_fyc")
+    _require_rate_0_to_1(p.mgr_indirect_l1_rate, "ProposalParams.mgr_indirect_l1_rate")
+    _require_rate_0_to_1(p.mgr_deferred_3y_rate, "ProposalParams.mgr_deferred_3y_rate")
+    _require_non_negative_float(p.rd_base_monthly, "ProposalParams.rd_base_monthly")
+    _require_rate_0_to_1(p.rd_direct_fyc_rate, "ProposalParams.rd_direct_fyc_rate")
+    _require_rate_0_to_1(p.rd_deferred_3y_share, "ProposalParams.rd_deferred_3y_share")
+
+
+def proposal_k2_factor(k2_pct: Optional[float], hard_floor: float = 60.0, allow_new_no_k2: bool = False) -> float:
+    """
+    Proposal K2 multiplier. Rejects None/UNKNOWN unless allow_new_no_k2=True (explicit new agent without K2 history).
+    Prevents silent conversion of missing/UNKNOWN K2 into 1.00.
+    """
+    hf = _require_percentage(hard_floor, "hard_floor", 100.0)
     if k2_pct is None:
+        if not allow_new_no_k2:
+            raise ValueError("k2_pct is None/UNKNOWN; pass allow_new_no_k2=True only for explicit new agents without K2 history")
         return 1.00
-    if k2_pct >= 85.0:
+    val = _require_percentage(k2_pct, "k2_pct", 100.0)
+    if val >= 85.0:
         return 1.20
-    if k2_pct >= 80.0:
+    if val >= 80.0:
         return 1.10
-    if k2_pct >= 75.0:
+    if val >= 75.0:
         return 1.00
-    if k2_pct >= 70.0:
+    if val >= 70.0:
         return 0.85
-    if k2_pct >= hard_floor:
+    if val >= hf:
         return 0.60
     return 0.00
 
@@ -1030,7 +1267,10 @@ def calc_proposal_agent_12m(
     params: Optional[ProposalParams] = None,
 ) -> Dict[str, float]:
     p = params or ProposalParams()
-    k2_fac = proposal_k2_factor(k2_pct, p.k2_hard_floor_pct)
+    _validate_proposal_params(p)
+    monthly_fyc = _require_vector(monthly_fyc, 12, "monthly_fyc", allow_negative=True)
+    monthly_syc = _require_vector(monthly_syc, 12, "monthly_syc", allow_negative=True)
+    k2_fac = proposal_k2_factor(k2_pct, p.k2_hard_floor_pct, allow_new_no_k2=is_new_agent)
     m_bonuses = []
     for m in range(12):
         f = monthly_fyc[m]
@@ -1108,6 +1348,9 @@ def calc_enterprise_hierarchy_cost(
            -> 20 Active Agents (5 per manager, each 15M FYC/M = 180M/Y, 3M active/Q)
     All payouts stacked across tiers without double-counting revenue!
     """
+    k2_pct = _require_percentage(k2_pct, "k2_pct", 100.0)
+    ul_fyc_rate = _require_rate_0_to_1(ul_fyc_rate, "ul_fyc_rate", allow_zero=False)
+    home_office_opex_pct_fyp = _require_rate_0_to_1(home_office_opex_pct_fyp, "home_office_opex_pct_fyp", allow_zero=True)
     annual_fyp = 12000.0
     annual_fyc = annual_fyp * ul_fyc_rate  # 3,600M
     agent_m_fyc = [15.0] * 12  # 20 agents * 15M = 300M/M = 3,600M/Y
@@ -1195,9 +1438,14 @@ def calc_enterprise_hierarchy_cost(
 
 def mapa_forward(manpower: float, active_ratio: float, cases_per_active_per_month: float, avg_case_size_fyp: float, months: int = 12) -> Dict[str, float]:
     """FYP = Manpower * Active_Ratio * Productivity(Cases/M) * Avg_Case_Size * Months."""
-    active_agents = manpower * active_ratio
-    total_cases = active_agents * cases_per_active_per_month * months
-    total_fyp = total_cases * avg_case_size_fyp
+    mp = _require_non_negative_float(manpower, "manpower")
+    ar = _require_rate_0_to_1(active_ratio, "active_ratio", allow_zero=True)
+    prod = _require_non_negative_float(cases_per_active_per_month, "cases_per_active_per_month")
+    acs = _require_non_negative_float(avg_case_size_fyp, "avg_case_size_fyp")
+    m = _require_int(months, "months", 1)
+    active_agents = mp * ar
+    total_cases = active_agents * prod * m
+    total_fyp = total_cases * acs
     return {
         "active_agents_avg": round(active_agents, 2),
         "total_cases": round(total_cases, 2),
@@ -1206,10 +1454,13 @@ def mapa_forward(manpower: float, active_ratio: float, cases_per_active_per_mont
 
 
 def mapa_reverse_required_manpower(target_fyp_vnd_m: float, active_ratio: float, cases_per_active_per_month: float, avg_case_size_fyp: float, months: int = 12) -> float:
-    denom = active_ratio * cases_per_active_per_month * avg_case_size_fyp * months
-    if denom <= 0:
-        raise ValueError("MAPA denominator must be positive")
-    return round(target_fyp_vnd_m / denom, 2)
+    tgt = _require_non_negative_float(target_fyp_vnd_m, "target_fyp_vnd_m")
+    ar = _require_rate_0_to_1(active_ratio, "active_ratio", allow_zero=False)
+    prod = _require_positive_float(cases_per_active_per_month, "cases_per_active_per_month")
+    acs = _require_positive_float(avg_case_size_fyp, "avg_case_size_fyp")
+    m = _require_int(months, "months", 1)
+    denom = ar * prod * acs * m
+    return round(tgt / denom, 2)
 
 
 if __name__ == "__main__":

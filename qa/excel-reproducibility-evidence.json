@@ -1,0 +1,40 @@
+{
+  "verification_timestamp_utc": "2026-11-26T08:59:19Z",
+  "verification_status": "SELF_VERIFIED",
+  "excel_com_version": "12.0",
+  "workbook_relative_name": "W24_Compensation_Reference_Model_rebuilt.xlsx",
+  "sheet_count": 14,
+  "formula_count": 915,
+  "excel_error_cells_count": 0,
+  "golden_tests_pass": 20,
+  "golden_tests_fail": 0,
+  "enterprise_parity_pass": 12,
+  "enterprise_parity_fail": 0,
+  "live_input_perturbation": {
+    "excel_com_version": "12.0",
+    "perturbation_1_proposal_tier2_0.16_to_0.20": {
+      "excel_earned_pct": 60.91,
+      "python_earned_pct": 60.91,
+      "excel_art52_pct": 7.39,
+      "python_art52_pct": 7.39,
+      "pass": true
+    },
+    "perturbation_2_err_doc_01_table80_to_example50": {
+      "excel_ch_m12_net": 1.0,
+      "python_ch_m12_net": 1.0,
+      "pass": true
+    },
+    "all_perturbations_pass": true
+  },
+  "functional_equivalence_vs_v1": {
+    "compared_against": "outputs/working/W24_Compensation_Reference_Model_v1.xlsx",
+    "same_sheet_names": true,
+    "rebuilt_formula_count": 915,
+    "v1_formula_count": 915,
+    "same_20_golden_values": true,
+    "same_12_enterprise_cost_values": true,
+    "functional_reproducibility_pass": true,
+    "note": "Functional reproducibility verified; byte-for-byte XLSX hash differs due to zip timestamps/metadata."
+  },
+  "overall_pass": true
+}

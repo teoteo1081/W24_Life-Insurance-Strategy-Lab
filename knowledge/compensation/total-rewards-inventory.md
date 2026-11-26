@@ -1,7 +1,7 @@
 # Total Rewards Inventory — Danh mục Đầy đủ Cấu phần Thu nhập & Phúc lợi (Nhóm A–H)
 
 **Ngày lập:** 2026-11-26  
-**Bảng dữ liệu đầy đủ (44 cấu phần × 33 trường metadata chuẩn Section 14):** [total-rewards-inventory.csv](file:///C:/Users/User/Desktop/TJ/Project/W24_Life-Insurance-Strategy-Lab/knowledge/compensation/total-rewards-inventory.csv)  
+**Bảng dữ liệu đầy đủ (44 cấu phần × 33 trường metadata chuẩn Section 14):** [total-rewards-inventory.csv](./total-rewards-inventory.csv)  
 **Cơ sở bằng chứng:** 7 PDF chính sách gốc (`116 trang`) — `BASED ON AVAILABLE POLICY DOCUMENTS`.
 
 > **Nguyên tắc Quản trị Chi phí & Phúc lợi (Section 14):**
@@ -43,4 +43,4 @@
 - **Rổ 3 — Thưởng Chăm sóc Tái tục (`Art52_Renewal_Bonus_7pct`):** Chịu trần **≤ 7% phí tái tục thực thu** (`TR-AIA-07` 30–50% SYC; `TR-CHB-05` 10–15% RYC).
 - **Rổ 4 — Chi phí Quản lý, Đào tạo & Tuyển dụng (`ND97_Mgt_Training_Service`):** Tách biệt khỏi Điều 51/52 theo NĐ 97/2026/NĐ-CP nhưng **phải có dịch vụ thực tế và biên bản nghiệm thu** (như Chubb RD và Manulife PSM+/HKD).
 
-Toàn bộ 33 trường metadata cho từng cấu phần xem tại [total-rewards-inventory.csv](file:///C:/Users/User/Desktop/TJ/Project/W24_Life-Insurance-Strategy-Lab/knowledge/compensation/total-rewards-inventory.csv).
+Toàn bộ 33 trường metadata cho từng cấu phần xem tại [total-rewards-inventory.csv](./total-rewards-inventory.csv).
