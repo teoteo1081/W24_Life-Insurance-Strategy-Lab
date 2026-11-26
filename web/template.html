@@ -159,6 +159,15 @@ body.present #tabs button[data-tab="tune"],body.present #planSeg button[data-pla
   .side .btn{display:none}
   #k2v::before{content:"K2 "}
 }
+
+.takeaway{font-size:17px;font-weight:600;line-height:1.45;margin:0 0 14px;padding:10px 14px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;max-width:100ch}
+abbr[title]{text-decoration:underline dotted;text-underline-offset:3px;cursor:help}
+details.cond{margin-top:4px}
+details.cond>summary{cursor:pointer;font-size:13.5px;color:var(--accent);list-style:none}
+details.cond>summary::-webkit-details-marker{display:none}
+details.cond>summary::before{content:"▸ "}
+details.cond[open]>summary::before{content:"▾ "}
+tr.totrow td,tr.totrow th{border-bottom:2px solid var(--line)}
 footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1px solid var(--line);margin-top:24px}
 </style>
 </head>
@@ -430,13 +439,13 @@ function proposalComponents(tier, p) {
 const blank = v => !v || /^(none|n\/a|0|immediate|—|-|không|ngay)$/i.test(String(v).trim());
 function renderPackage() {
   const k2 = state.k2, key = state.plan, tier = state.pkgTier || "agent", p = params(key), K = DATA.knowledge;
-  const cos = [["AIA", "AIA Alpha 2026"], ["Chubb", "Chubb Life 2026"], ["Manulife", "Manulife (PSM+/HKD)"], ["PLAN", PLAN_META[key].name]];
+  const cos = [["PLAN", PLAN_META[key].name], ["AIA", "AIA Alpha 2026"], ["Chubb", "Chubb Life 2026"], ["Manulife", "Manulife (PSM+/HKD)"]];
   const comps = K.rewards.filter(r => r.tier === tier);
   const mine = proposalComponents(tier, p);
   const cell = (co, cat) => {
     if (co === "PLAN") {
       const xs = mine.filter(m => m.cat === cat);
-      return xs.map(m => `<div class="pk"><b>${esc(m.name)}</b><div>${esc(m.rate)}</div><div class="small muted">Điều kiện: ${esc(m.cond)}</div><div class="small muted">Trả: ${esc(m.timing)}</div></div>`).join("") || "<span class='muted small'>—</span>";
+      return xs.map(m => `<div class="pk"><b>${esc(m.name)}</b><div>${esc(m.rate)}</div><details class="cond"><summary>Điều kiện &amp; cách trả</summary><div class="small muted">Điều kiện: ${esc(m.cond)}</div><div class="small muted">Trả: ${esc(m.timing)}</div></details></div>`).join("") || "<span class='muted small'>—</span>";
     }
     const xs = comps.filter(r => r.Company.startsWith(co) && r.Category_A_to_H === cat);
     if (!xs.length) return co === "Manulife" && tier !== "leader" ? "<span class='muted small'>❓ chưa có tài liệu</span>" : "<span class='muted small'>—</span>";
@@ -445,24 +454,36 @@ function renderPackage() {
         .filter(g => !blank(g[1])).map(g => g[0] + ": " + g[1]).join(" · ");
       const ids = (r.Rule_ID_Link || "").split(/[|,;\s]+/).filter(x => /^[A-Z]{3}-[A-Z]{2}-\d{3}/.test(x));
       return `<div class="pk"><b>${esc(r.Component_Name_VN)}</b><div>${esc(r.Rate_Or_Amount_Summary)}</div>
+        <details class="cond"><summary>Điều kiện &amp; cách trả</summary>
         <div class="small muted">Điều kiện: ${esc(r.Eligibility_Conditions)}${!blank(r.Threshold_Minimum) ? " · Ngưỡng: " + esc(r.Threshold_Minimum) : ""}${!blank(r.Cap_Maximum) ? " · Trần: " + esc(r.Cap_Maximum) : ""}</div>
         ${gates ? `<div class="small muted">${esc(gates)}</div>` : ""}
         <div class="small muted">Kỳ xét: ${esc(r.Measurement_Period)} · Trả: ${esc(r.Payment_Timing)}${!blank(r.Vesting_Schedule) ? " · Lịch trả / trả chậm: " + esc(r.Vesting_Schedule) : ""}</div>
         ${!blank(r.Clawback_Recovery_Rule) ? `<div class="small muted">Thu hồi: ${esc(r.Clawback_Recovery_Rule)}</div>` : ""}
+        </details>
         <div>${ids.map(ruleChip).join("")}</div></div>`;
     }).join("");
   };
   const cats = CATS.filter(([c]) => comps.some(r => r.Category_A_to_H === c) || mine.some(m => m.cat === c));
   const a = comp("AIA_Alpha_2026", k2), c = comp("Chubb_Agency_2026", k2), e = planEnt(key, k2), m = mnlLeader(k2);
-  const tot = {agent: [a.role_agent_earned, c.role_agent_earned, null, e.role_agent_earned], mgr: [a.role_mgr_direct_earned, c.role_mgr_direct_earned, null, e.role_mgr_direct_earned],
-    ind: [a.role_mgr_indirect_extra, c.role_mgr_indirect_extra, null, e.role_mgr_indirect_extra], leader: [a.role_leader_earned, c.role_leader_earned, m.leader_earned, e.role_leader_earned]}[tier];
+  const ag3 = f => [planAgent(key, k2, f).total_3y, agentComp("AIA", k2, f).total_3y, agentComp("CHUBB", k2, f).total_3y, null];
+  const tot = {agent: ag3(15), mgr: [e.role_mgr_direct_earned, a.role_mgr_direct_earned, c.role_mgr_direct_earned, null],
+    ind: [e.role_mgr_indirect_extra, a.role_mgr_indirect_extra, c.role_mgr_indirect_extra, null],
+    leader: [e.role_leader_earned, a.role_leader_earned, c.role_leader_earned, m.leader_earned]}[tier];
+  const totLabel = tier === "agent" ? `Tổng thu nhập 3 năm (đại lý 15tr FYC/tháng, có tái tục, K2 ${k2}%)` : `Tổng gói / năm (mô phỏng, K2 ${k2}%)`;
+  const unit = tier === "agent" ? "tr trong 3 năm" : "tr/năm";
   const roles = K.roles.filter(r => ROLE_TIER[tier].some(t => r.Functional_Tier.startsWith(t)));
+  const named = cos.map(([co, n], i) => ({n: co === "PLAN" ? PLAN_META[key].name : n.split(" (")[0], v: tot[i]})).filter(x => x.v != null);
+  const me = named[0], comp2 = named.slice(1), hi = comp2.reduce((a, b) => b.v > a.v ? b : a), lo = comp2.reduce((a, b) => b.v < a.v ? b : a);
+  const pos = me.v >= hi.v - 0.5 ? "cao nhất" : me.v >= lo.v - 0.5 ? "không thấp hơn đối thủ trả thấp nhất" : "thấp hơn cả các đối thủ";
+  const take = `Ở cấp ${PKG_TIERS[tier].toLowerCase()}, ${hi.n} trả cao nhất (${fmt(hi.v)} ${unit}), ${lo.n} thấp nhất (${fmt(lo.v)} tr). ${me.n} ${fmt(me.v)} tr — ${pos}.${tier !== "leader" ? " Manulife không có tài liệu ở cấp này." : ""}`;
   $("p-package").innerHTML = `
   <h2>Gói thu nhập theo cấp: ${esc(PKG_TIERS[tier])}</h2>
-  <div class="seg" id="pkgSeg" style="margin-bottom:14px">${Object.entries(PKG_TIERS).map(([k, n]) => `<button type="button" data-t="${k}" aria-pressed="${tier === k}">${n}</button>`).join("")}</div>
+  <p class="takeaway">${esc(take)}</p>
+  <div class="seg" id="pkgSeg" style="margin-bottom:10px">${Object.entries(PKG_TIERS).map(([k, n]) => `<button type="button" data-t="${k}" aria-pressed="${tier === k}">${n}</button>`).join("")}</div>
+  <div style="margin-bottom:10px"><button type="button" class="btn" id="pkgOpen">Mở tất cả điều kiện</button> <span class="small muted">Mỗi ô hiện tên khoản và mức trả; bấm “Điều kiện &amp; cách trả” để xem chi tiết.</span></div>
   <div class="tbl-wrap"><table class="pkg"><thead><tr><th style="min-width:11em">Loại thu nhập</th>${cos.map(([co, n]) => `<th style="min-width:15em">${esc(n)}</th>`).join("")}</tr></thead><tbody>
+    <tr class="totrow"><th>${esc(totLabel)}</th>${tot.map((v, i) => `<td class="n ${i === 0 ? "plancol" : ""}" style="font-size:18px;font-weight:700">${v == null ? "<span class='muted small' style='font-weight:400'>❓</span>" : fmt(v) + " tr"}</td>`).join("")}</tr>
     ${cats.map(([cat, n]) => `<tr><th>${esc(n)}</th>${cos.map(([co]) => `<td class="${co === "PLAN" ? "plancol" : ""}">${cell(co, cat)}</td>`).join("")}</tr>`).join("")}
-    <tr><th>Tổng gói / năm (mô phỏng, K2 ${k2}%)</th>${tot.map((v, i) => `<td class="n ${i === 3 ? "plancol" : ""}" style="font-size:18px;font-weight:700">${v == null ? "<span class='muted small' style='font-weight:400'>❓</span>" : fmt(v) + " tr"}</td>`).join("")}</tr>
   </tbody></table></div>
   <p class="note">Tổng gói: một người trên cây tổ chức chuẩn (đại lý 15tr FYC/tháng; quản lý nhóm 75tr FYC/tháng; vùng 12 tỷ FYP/năm), gồm khoản trả chậm. ${tier === "ind" ? "Quản lý gián tiếp: phần thu nhập gián tiếp thêm ngoài phí nhóm trực tiếp." : ""} Phúc lợi phi tiền mặt chưa quy ra tiền. Nội dung đối thủ lấy từ kho 44 cấu phần thu nhập, đã thêm dấu tiếng Việt để dễ đọc; bản trích xuất gốc không dấu giữ nguyên trong repo làm bằng chứng. Mã quy tắc mở đúng trang tài liệu để đối chiếu.</p>
   <details style="margin-top:12px"><summary><b>Điều kiện lên cấp và giữ cấp (${roles.length} chức danh)</b></summary>
@@ -470,6 +491,8 @@ function renderPackage() {
     ${roles.map(r => `<tr><td><b>${esc(r.Company.split(" ")[0])} · ${esc(r.Role_Code)}</b><div class="small muted">${esc(r.Role_Title_VN_EN)}</div></td><td class="small">${esc(r.Entry_Promotion_Condition)}</td><td class="small">${esc(r.Maintenance_Demotion_Condition)}</td><td class="small">${esc(r.Managed_Scope_Direct_Indirect)}</td></tr>`).join("")}
     </tbody></table></div></details>`;
   document.querySelectorAll("#pkgSeg button").forEach(b => b.onclick = () => { state.pkgTier = b.dataset.t; renderPackage(); });
+  $("pkgOpen").onclick = () => { const ds = [...document.querySelectorAll("#p-package details.cond")], open = !ds.every(d => d.open);
+    ds.forEach(d => d.open = open); $("pkgOpen").textContent = open ? "Gấp tất cả điều kiện" : "Mở tất cả điều kiện"; };
 }
 
 function renderTiers() {
@@ -713,6 +736,8 @@ function renderAssume() {
       <li>AIA: biểu hoa hồng sản phẩm, quy đổi FYC tín chỉ, gói trợ cấp Exchange/Exchange Pro — chi phí AIA trong mô hình đang thấp hơn thực tế.</li>
       <li>Chubb: quy định chung 260005V/006V/009V và chính sách BD.</li>
       <li>VNB margin, OpEx thật, tác động của thu nhập lên doanh số/tuyển dụng (không có dữ liệu — mô hình không giả vờ dự báo).</li></ul></div>
+    <div class="card" style="grid-column:1/-1"><h3 style="margin-top:0">Thuật ngữ</h3><p class="small muted">Trên trang, rê chuột vào chữ có gạch chấm để xem giải nghĩa.</p>
+      <div class="tbl-wrap"><table><tbody>${Object.entries(GLOSSARY).filter(([k]) => k !== "override").map(([k, v]) => `<tr><th style="width:7em">${esc(k)}</th><td class="small">${esc(v)}</td></tr>`).join("")}</tbody></table></div></div>
     <div class="card"><h3 style="margin-top:0">Pháp lý — CONDITIONAL</h3><p class="small">Ngưỡng Điều 51/52 TT 67/2023, NĐ 97/2026, TT 96/2026 đang tham chiếu từ bản tóm tắt công khai (SOURCE_NOT_VERIFIED). Cần Pháp chế đối chiếu toàn văn hợp nhất 44/2026/VBHN-TT-BTC trước khi ban hành. Hai mâu thuẫn trong tài liệu gốc (Chubb W1 80% vs 50%; AIA làm tròn FY) đang chờ quyết định.</p></div>
     <div class="card"><h3 style="margin-top:0">Thuế & bối cảnh thu nhập</h3>
       <p class="small">Thuế TNCN áp gần như giống nhau cho mọi hãng nên <b>không đổi thứ hạng</b>; chỉ ảnh hưởng thu nhập thực nhận. Bằng chứng duy nhất trong bộ tài liệu: AIA tạm khấu trừ 10% thuế trên phí giới thiệu chuyên viên mới ${ruleChip("AIA-CV-013")} (trang 8). Mức thuế chung cho thu nhập đại lý: <b>chưa đối chiếu văn bản</b>.</p>
@@ -751,6 +776,72 @@ function showTab() {
 $("k2").oninput = ev => { state.k2 = +ev.target.value; renderAll(); };
 const st = selfTest();
 
+
+/* ---------- Ý chính đầu trang & giải nghĩa thuật ngữ ---------- */
+const GLOSSARY = {
+  "K2": "Tỷ lệ duy trì hợp đồng năm 2: phần phí năm đầu còn được đóng tiếp ở năm thứ hai. Cao = khách giữ hợp đồng, chất lượng bán tốt.",
+  "FY": "Tỷ lệ duy trì phí năm đầu theo cách tính của AIA (14 tháng). Dùng như K2 để nhân thưởng.",
+  "FYC": "Hoa hồng năm đầu (First Year Commission) đại lý nhận trên phí năm đầu; là thước đo năng suất chính.",
+  "FYP": "Phí bảo hiểm năm đầu (First Year Premium) công ty thu được; chi phí phân phối thường tính theo % FYP.",
+  "SYC": "Hoa hồng năm thứ hai (Second Year Commission) khi khách đóng phí tái tục.",
+  "RYC": "Hoa hồng tái tục (Renewal Year Commission) từ năm thứ hai trở đi.",
+  "NTT": "Nhóm trực tiếp: các đại lý do quản lý tuyển và kèm trực tiếp.",
+  "EHC": "Đại lý/hợp đồng đạt chuẩn hoạt động trong tháng theo định nghĩa của Chubb (văn bản 260005V, chưa có).",
+  "3MAA": "Số đại lý hoạt động 3 tháng liên tục (Chubb).",
+  "1mAA": "Số đại lý có hoạt động trong tháng (AIA, Manulife).",
+  "Override": "Phí quản lý tính theo % doanh số của nhóm do mình quản lý.",
+  "override": "Phí quản lý tính theo % doanh số của nhóm do mình quản lý.",
+  "MDRT": "Danh hiệu quốc tế cho tư vấn viên doanh số cao; ở đây dùng làm mốc thưởng năm (FYC năm ≥ 400 triệu).",
+  "TOT": "Top of the Table — mức cao hơn MDRT; AIA dùng tỷ lệ TOT để khóa phần trả chậm của quản lý.",
+  "T+1": "Giữ lại khoản thưởng, trả vào kỳ sau khi đã đối soát hợp đồng không bị hủy.",
+  "HSBH": "Hệ số bảo vệ: mức độ bảo vệ thực của hợp đồng; Chubb trả hoa hồng cao hơn cho hợp đồng bảo vệ nhiều.",
+  "Top-up": "Phí đóng thêm vào hợp đồng liên kết đầu tư; đề xuất không trả hoa hồng cho phần này.",
+  "UL": "Bảo hiểm liên kết chung (Universal Life).",
+  "OpEx": "Chi phí vận hành văn phòng của công ty, ngoài chi phí trả cho lực lượng bán.",
+  "CQL": "Cấp quản lý (AIA): UM, SUM, DM, SDM.",
+  "PAF+": "Cấp lãnh đạo cao của AIA Alpha (Professional Agency Founder trở lên), có phí cố định hàng tháng.",
+  "PSM+": "Cấp quản lý cao cấp của Manulife (tương đương lãnh đạo vùng).",
+  "HKD": "Hộ kinh doanh: hình thức lãnh đạo vùng Manulife ký hợp đồng như một đơn vị kinh doanh.",
+  "RD": "Giám đốc vùng (Regional Director) của Chubb.",
+  "AL": "Đại lý quản lý (Agency Leader) của Chubb: UM, SM, DM.",
+  "AR": "Đại lý (Agency Representative) của Chubb."
+};
+const GLOSS_RE = new RegExp("(?<![\\w+])(" + Object.keys(GLOSSARY).sort((a, b) => b.length - a.length).map(k => k.replace(/[+.]/g, "\\$&")).join("|") + ")(?![\\w+])");
+function glossify(root) {
+  const seen = new Set(), walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {acceptNode: n =>
+    n.parentElement.closest("a,button,abbr,script,style,svg,summary,input,select,label,.seg,.badge,.tag,h2") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT});
+  const nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(n => {
+    const m = n.nodeValue.match(GLOSS_RE); if (!m || seen.has(m[1])) return;
+    seen.add(m[1]);
+    const after = n.splitText(m.index), rest = after.splitText(m[1].length), ab = document.createElement("abbr");
+    ab.title = GLOSSARY[m[1]]; ab.textContent = m[1]; after.replaceWith(ab);
+  });
+}
+function takeawayFor(id) {
+  const k2 = state.k2, key = state.plan, nm = PLAN_META[key].name, e = planEnt(key, k2), a = comp("AIA_Alpha_2026", k2), c = comp("Chubb_Agency_2026", k2);
+  if (id === "p-compare") { const m = DATA.knowledge.adopt_matrix, n = d => m.filter(x => x.decision === d).length;
+    return `Học có chọn lọc: áp dụng ${n("ADOPT")} cơ chế, cải tiến ${n("ADAPT")}, tránh ${n("AVOID")} cơ chế làm vỡ chi phí hoặc tạo động cơ sai; ${n("INVESTIGATE") + n("UNKNOWN")} mục còn thiếu tài liệu.`; }
+  if (id === "p-tiers") return `Ở K2 ${k2}%, mỗi người theo ${nm}: đại lý ${fmt(e.role_agent_earned)} tr/năm (AIA ${fmt(a.role_agent_earned)}, Chubb ${fmt(c.role_agent_earned)}), quản lý trực tiếp ${fmt(e.role_mgr_direct_earned)} tr, lãnh đạo vùng ${fmt(e.role_leader_earned)} tr.`;
+  if (id === "p-cost") return `${nm} tốn ${pct(e.earned_pct_fyp)} FYP, ${e.earned_pct_fyp < a.earned_pct_fyp ? "thấp hơn" : "cao hơn"} AIA ${fmt(Math.abs(a.earned_pct_fyp - e.earned_pct_fyp), 1)} điểm và thấp hơn Chubb ${fmt(c.earned_pct_fyp - e.earned_pct_fyp, 1)} điểm. Đây là chi phí mô phỏng; nhập biên lợi nhuận thật để biết cần bán thêm bao nhiêu.`;
+  if (id === "p-rubric") { const sc = scoreAll(k2), r = sc.totals.slice().sort((x, y) => y.total - x.total), me = r.findIndex(t => t.e.key === key);
+    return `Góc nhìn “${PRESETS[state.weightsPreset].name}”: dẫn đầu là ${r[0].e.name} (${fmt(r[0].total, 2)}/5); ${nm} xếp ${me + 1} (${fmt(r[me].total, 2)}). Hai phương án Song Hành chênh nhau chủ yếu ở sàn K2 — đổi trọng số để thấy kết quả thay đổi.`; }
+  if (id === "p-tune") return "Kéo một thanh trượt để thấy đánh đổi: thu nhập từng cấp và chi phí đổi ngay; huy hiệu đỏ nghĩa là phương án vi phạm một điều kiện tự đặt.";
+  if (id === "p-evidence") { const R = DATA.knowledge.rules; return `7 tài liệu, 116 trang, ${R.length} quy tắc trích có số trang; ${R.filter(r => r.impl === "IMPLEMENTED").length} đã đưa vào mô hình, ${R.filter(r => r.calc === "TESTED_PASS").length} đã kiểm thử đạt; kiểm mẫu độc lập 14/14 khớp nội dung và trang.`; }
+  if (id === "p-method") return "Mọi con số trên trang đều tính từ các công thức dưới đây; đổi phương án hoặc K2 thì các bảng tính lại.";
+  if (id === "p-assume") return "Kết quả phụ thuộc vào vài giả định áp chung cho mọi hãng và một số dữ liệu chưa có — liệt kê đủ ở đây, không quy dữ liệu thiếu về 0.";
+  return "";
+}
+function postRender(id) {
+  const el = $(id); if (!el) return;
+  const t = takeawayFor(id);
+  if (t && !el.querySelector(":scope > .takeaway")) { const p = document.createElement("p"); p.className = "takeaway"; p.textContent = t; const h = el.querySelector(":scope > h2"); h ? h.after(p) : el.prepend(p); }
+  glossify(el);
+}
+["Overview", "Package", "Tiers", "Cost", "Rubric", "Tune", "Compare", "Evidence", "Method", "Assume"].forEach(n => {
+  const id = "p-" + n.toLowerCase(), orig = window["render" + n];
+  window["render" + n] = function () { const r = orig.apply(this, arguments); postRender(id); return r; };
+});
 /* ---------- Xem PDF bên phải ---------- */
 const SRC_NAME = Object.fromEntries(DATA.knowledge.sources.map(x => [x.id, x.company + " — " + x.scheme]));
 function openPdf(url) {
