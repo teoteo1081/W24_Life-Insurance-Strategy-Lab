@@ -2,6 +2,21 @@
 
 Tất cả thay đổi quan trọng của dự án `W24_Life-Insurance-Strategy-Lab` được ghi nhận tại đây.
 
+## [0.3.0] - 2026-11-26 (Checkpoint G1 Deep Policy Understanding & Coverage Audit)
+
+### Added
+- Policy Knowledge Base đầy đủ cho 3 công ty (`knowledge/policies/aia-alpha-2026-deep-guide.md`, `chubb-life-agency-2026-deep-guide.md`, `manulife-psm-hkd-2026-deep-guide.md`) kèm sơ đồ cấp bậc Mermaid và ví dụ tính toán thực tế.
+- Cross-document Mapping (`knowledge/policies/cross-document-mapping.md`) truy vết trọn vẹn 25 mục tham chiếu chéo giữa các memo.
+- Coverage Audit Matrix (`qa/g1-coverage-audit-matrix.md`) kiểm toán toàn văn 116/116 trang theo 6 trạng thái & 5 cấp độ trưởng thành hiểu biết.
+- Phân tích chiến lược 12 khía cạnh từng công ty (`docs/research/competitor-strategy-analysis.md`), tách rõ chiến lược xác nhận trong văn bản vs. suy luận từ thiết kế.
+- Đặc tả yêu cầu mô hình xuất phát từ thực tế memo (`docs/architecture/bottom-up-model-requirements.md`: 10 entities, tham số dùng chung vs. đặc thù, 14 năng lực Rule Engine).
+
+### Changed
+- Mở rộng `knowledge/business-rules/business-rules-catalog.csv` từ 53 lên **108 Atomic Business Rules** (`105 VERIFIED_FACT` + `3 SOURCE_CLAIM`).
+- Mở rộng `knowledge/glossary/glossary.md` với toàn bộ thuật ngữ thực tế từ 7 memo và cảnh báo trùng mã viết tắt khác nghĩa giữa các công ty.
+- Sửa chính xác SHA-256 của file nén trùng lặp `.7z` trong `knowledge/sources/source-registry.csv` sau khi kiểm kê lại thư mục nguồn & attachments.
+- Cập nhật `ANCHOR_SPEC.md` (`REQ-01` -> `DONE_G1_DEEP`) và `HANDOVER.md`.
+
 ## [0.2.0] - 2026-11-26 (Checkpoint G1)
 
 ### Added
