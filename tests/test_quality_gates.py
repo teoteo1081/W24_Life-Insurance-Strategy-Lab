@@ -10,6 +10,7 @@ Verifies both:
 from __future__ import annotations
 
 import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -39,7 +40,7 @@ class TestQualityGates(unittest.TestCase):
             rules_dir.mkdir(parents=True)
             (rules_dir / "business-rules-catalog.csv").write_text(
                 "Rule_ID,Scheme_ID,Source_ID_And_Page,Stacking_Rule,Source_Verification,Implementation_Status,Calculation_Verification\n"
-                "AIA-CV-001,AIA,SRC-001 p.1,Ref AIA-CV-999,SOURCE_VERIFIED,IMPLEMENTED,TESTED_PASS\n"
+                "AIA-CV-001,AIA,SRC-001 p.1,Ref AIA-CV-999,SOURCE_VERIFIED,NOT_IMPLEMENTED,TESTED_PASS\n"
                 "AIA-CV-001,AIA,,None,INVALID_ENUM,IMPLEMENTED,TESTED_PASS\n",
                 encoding="utf-8",
             )
@@ -49,6 +50,34 @@ class TestQualityGates(unittest.TestCase):
             self.assertIn("broken Rule_ID reference -> AIA-CV-999", joined)
             self.assertIn("empty Source_ID_And_Page", joined)
             self.assertIn("invalid Source_Verification", joined)
+            self.assertIn("unknown Source_ID SRC-001", joined)
+            self.assertIn("NOT_IMPLEMENTED cannot be TESTED_PASS", joined)
+
+    def test_registry_rejects_missing_invalid_and_unregistered_pdfs(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            registry = root / "knowledge/sources/source-registry.csv"
+            registry.parent.mkdir(parents=True)
+            registry.write_text(
+                "Source_ID,Original_Filename,Local_Relative_Path,SHA256_Hash,Company,Document_Type,Revision_Class,Confidentiality,Redistribution_Rights_Status,Verification_Status\n"
+                f"SRC-X,missing.pdf,missing.pdf,{'g' * 64},Co,Policy,Main,Internal,PERMISSION_UNKNOWN,VERIFIED_FACT\n",
+                encoding="utf-8",
+            )
+            (root / "unregistered.PDF").touch()
+            errors = "\n".join(validate_source_registry(root))
+            self.assertIn("invalid SHA-256", errors)
+            self.assertIn("missing registered PDF", errors)
+            self.assertIn("unregistered PDF", errors)
+
+    def test_hygiene_scans_archive_and_untracked_files(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            (root / "untracked.md").write_text("Token: ghp_1234567890abcdefghij123456", encoding="utf-8")
+            (root / "ignored.md").write_text("Token: ghp_1234567890abcdefghij123456", encoding="utf-8")
+            (root / ".gitignore").write_text("ignored.md\n", encoding="utf-8")
+            self.assertIn("Hygiene FAIL [secret_pattern]: untracked.md", validate_public_hygiene(root))
+            subprocess.run(["git", "init", "--quiet", str(root)], check=True)
+            self.assertEqual(validate_public_hygiene(root), ["Hygiene FAIL [secret_pattern]: untracked.md"])
 
     def test_validator_catches_seeded_invalid_rights_enum(self) -> None:
         with tempfile.TemporaryDirectory() as td:

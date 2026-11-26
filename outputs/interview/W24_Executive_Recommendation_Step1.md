@@ -16,7 +16,7 @@
 1. **Chuyển dịch thị trường VN (`SOURCE_CLAIM` — IAV/MOF 2024–2026):** Sau giai đoạn giảm sâu (`-13.0%` NBP năm 2024), số lượng hợp đồng mới 8–9T/2026 đã phục hồi (`+2.9% đến +4.3%`), **nhưng tổng phí khai thác mới vẫn giảm (`-10.6% đến -11.7%`)** do kích cỡ hợp đồng (`Case Size`) thu hẹp và **>50% hợp đồng mới dịch chuyển sang Bảo vệ thuần / Tử kỳ**.
 2. **Hai gọng kìm pháp lý mới:**
    - **Điều 52 TT 67/2023/TT-BTC (hết lộ trình chuyển tiếp 31/12/2025 → hiệu lực đầy đủ 2026):** Khóa trần tổng chi thưởng & hỗ trợ đại lý khai thác mới ở mức **`≤ 20%` (HĐ ≤1 năm) + `≤ 30%` FYP Năm 1 (HĐ >1 năm)** và **`≤ 7%` phí tái tục** ở cấp toàn danh mục công ty.
-   - **Thông tư 96/2026/TT-BTC (hiệu lực 01/01/2027):** Khóa chặt hoa hồng **phí đóng thêm (Top-up) ≤ tỷ lệ phí ban đầu**, chặn hoàn toàn hành vi đẩy Top-up trục lợi hoa hồng năm 1.
+   - **Thông tư 96/2026/TT-BTC — `SOURCE CLAIM`:** Bản tóm tắt nêu tỷ lệ hoa hồng Top-up không vượt tỷ lệ phí ban đầu. Phạm vi và mốc áp dụng chờ đối chiếu toàn văn hợp nhất.
 
 ### Khuyến nghị Trung tâm: Kiến trúc `Balanced Hybrid` (Cân bằng Doanh số — Chất lượng — Dòng tiền)
 - **Định vị:** Kết hợp các cơ chế chứng minh xuất sắc nhất từ cả 3 hãng (Bảo vệ thực chất + Chặn T+1 + Khóa gián tiếp từ Chubb; Kỷ luật tái tục & SYC cao từ AIA; Trả chậm 3 năm `30/30/40%` + Sàn/Trần định phí + Chuyển đổi HKD từ Manulife), đồng thời **loại bỏ 3 nguồn gây vỡ chi phí lớn nhất thị trường** (Direct Override >100% FYC, Phí cố định quá cao kèm chuỗi gián tiếp vô hạn tầng, và thưởng tăng trưởng thuần QoQ).
@@ -60,9 +60,9 @@
 
 | Quyết định | Cơ chế Chính sách Cụ thể | Tác động Trực tiếp |
 |---|---|---|
-| **`ADOPT` (Áp dụng ngay)** | • `Top-up = 0%` & phân tầng FYC theo **Hệ số Bảo vệ (HSBH)** *(Chubb)*<br>• Trả chậm **T+1** cho ĐL mới / `K2 <65%` & **Phí âm đối xứng** *(Chubb)*<br>• Khóa **Indirect Override = 0%** nếu Nhóm trực tiếp `<15tr/M` *(Chubb)*<br>• **Trả chậm 3 năm (`30/30/40%`)** gắn `K2 ≥75%` + Định phí **Sàn 30% / Trần 140%** + Chuyển đổi **HKD** *(Manulife)*<br>• **Biên bản nghiệm thu dịch vụ** & điều kiện đào tạo bắt buộc *(Chubb RD / NĐ 97/2026)*<br>• Thưởng tái tục **SYC/RYC cao (+15%–30%)** đồng bộ cả 3 tầng *(AIA & Chubb RD)* | Chuẩn hóa tuân thủ 100% TT 67/2023, TT 96/2026 & NĐ 97/2026; giảm mạnh áp lực tiền mặt Năm 1 và khóa chặt chất lượng tái tục. |
+| **`ADOPT` (Áp dụng ngay)** | • `Top-up = 0%` & phân tầng FYC theo **Hệ số Bảo vệ (HSBH)** *(Chubb)*<br>• Trả chậm **T+1** cho ĐL mới / `K2 <65%` & **Phí âm đối xứng** *(Chubb)*<br>• Khóa **Indirect Override = 0%** nếu Nhóm trực tiếp `<15tr/M` *(Chubb)*<br>• **Trả chậm 3 năm (`30/30/40%`)** gắn `K2 ≥75%` + Định phí **Sàn 30% / Trần 140%** + Chuyển đổi **HKD** *(Manulife)*<br>• **Biên bản nghiệm thu dịch vụ** & điều kiện đào tạo bắt buộc *(Chubb RD / NĐ 97/2026)*<br>• Thưởng tái tục **SYC/RYC cao (+15%–30%)** đồng bộ cả 3 tầng *(AIA & Chubb RD)* | Hỗ trợ kiểm soát theo khung pháp lý tham chiếu (`CONDITIONAL`); giảm mạnh áp lực tiền mặt Năm 1 và khóa chặt chất lượng tái tục. |
 | **`ADAPT` (Cải tiến cho VN 2026)** | • **Cổng Persistency sàn cứng tại `K2 <60% → 0%`** (thay vì 25% quá mềm của Chubb hay 70% quá sốc của AIA 2027), có lộ trình nâng lên 65% ở Năm 2.<br>• Gói kích hoạt M1–M6 mức vào dễ thở (`≥5–8tr FYC/M` phù hợp Case Size nhỏ), giữ lại **50% trả tại M12** + quy định bù trừ `MAX()` rõ ràng (loại bỏ mâu thuẫn).<br>• Áp thống nhất **Luật 70% Concentration Cap** cho mọi cấp quản lý. | Kích hoạt nhanh đại lý bảo vệ thuần, giảm tỷ lệ sốc rơi rụng năm 1 và ngăn phụ thuộc 1 nhánh lớn. |
-| **`AVOID` (Loại bỏ triệt để)** | • Đỉnh Direct Override `108% FYC` & Cá nhân `109.2% FYC` *(Chubb)* → phá vỡ ROI & đe dọa trần Điều 52.<br>• Phí cố định `20–130tr/M` + Dual Career + **Chuỗi gián tiếp 50% vô hạn tầng** *(AIA PAF+)* → phình định phí không kiểm soát.<br>• Thưởng tăng trưởng thuần **QoQ tới 27.5%** *(Chubb RD)* → tạo bẫy nén số giữa các quý.<br>• Tính **6% Top-up** vào chỉ tiêu FYP *(Manulife)* → ngược xu hướng TT 96/2026. | Bảo vệ biên lợi nhuận VNB, an toàn pháp lý tuyệt đối và tránh rủi ro vận hành/trục lợi. |
+| **`AVOID` (Loại bỏ triệt để)** | • Đỉnh Direct Override `108% FYC` & Cá nhân `109.2% FYC` *(Chubb)* → phá vỡ ROI & đe dọa trần Điều 52.<br>• Phí cố định `20–130tr/M` + Dual Career + **Chuỗi gián tiếp 50% vô hạn tầng** *(AIA PAF+)* → phình định phí không kiểm soát.<br>• Thưởng tăng trưởng thuần **QoQ tới 27.5%** *(Chubb RD)* → tạo bẫy nén số giữa các quý.<br>• Tính **6% Top-up** vào chỉ tiêu FYP *(Manulife)* → ngược xu hướng TT 96/2026. | Bảo vệ biên lợi nhuận VNB, giảm rủi ro pháp lý cần thẩm định và tránh rủi ro vận hành/trục lợi. |
 
 ---
 
@@ -88,10 +88,10 @@
 |---|---:|---:|---:|---:|---:|---:|
 | **Chubb Life Agency 2026** | **82%** | `99.21%` | `99.21%` | `21.06%` *(ĐL top sát trần!)* | `120.99%` | `119.21%` |
 | **AIA Alpha 2026** *(chưa gồm Exch/Pro)* | **82%** | `73.44%` | `70.44%` | `10.23%` | `89.57%` | `93.44%` |
-| **W24 Proposed Balanced (`PROPOSAL`)** | **82%** | **`59.44%`** | **`54.45%`** | **`5.91%` (PASS)** | **`72.48%`** | **`79.44%`** |
+| **W24 Proposed Balanced (`PROPOSAL`)** | **82%** | **`59.44%`** | **`54.45%`** | **`5.91%` (dưới ngưỡng mô phỏng)** | **`72.48%`** | **`79.44%`** |
 | **Chubb Life Agency 2026** | **62%** | `77.14%` | `77.14%` | `13.16%` | **`124.42%`** *(tệ hơn 82%!)* | `97.14%` |
 | **AIA Alpha 2027 (Vách đá `<70%`)** | **62%** | `51.98%` | `51.98%` | `0.00%` | `83.84%` | `71.98%` |
-| **W24 Proposed Balanced (`PROPOSAL`)** | **62%** | **`45.42%`** | **`45.42%`** | **`3.23%` (PASS)** | **`73.27%`** *(siêu ổn định!)* | **`65.42%`** |
+| **W24 Proposed Balanced (`PROPOSAL`)** | **62%** | **`45.42%`** | **`45.42%`** | **`3.23%` (dưới ngưỡng mô phỏng)** | **`73.27%`** *(siêu ổn định!)* | **`65.42%`** |
 
 ### 3 Kết luận Tài chính Mô phỏng & Giới hạn ROI cho Ban Lãnh đạo
 1. **Phân biệt rạch ròi `Modeled Distribution Cost / Break-Even` với `Actual ROI (UNKNOWN)`:** Mô hình hiện chứng minh **ngưỡng hòa vốn biên gộp cần thiết (`Modeled Break-Even Gross Margin`)** và **chi phí trên mỗi đồng phí còn sống đến Năm 2** trên kịch bản chuẩn, **chưa phải ROI thực tế đã chứng minh** (vì chưa có `VNB Margin`, `OpEx` và tỷ lệ thực tế của doanh nghiệp đích). Khi `K2` tụt từ 82% xuống 62%, chi phí mô phỏng trên mỗi đồng phí còn sống đến Năm 2 ở mô hình đáy mềm (Chubb) tăng lên `124.42%`, trong khi **W24 Proposed Balanced** giữ ổn định trong dải hẹp `69.36% – 73.27%`.
@@ -111,7 +111,7 @@
    - Thiết kế hệ thống nghiệm thu dịch vụ số hóa (NĐ 97/2026) và quy trình chuyển đổi `HKD`.
 3. **Ngày 61–90 (Truyền thông, Đào tạo & Chuyển tiếp Không sốc):**
    - Ban hành tài liệu chính sách tinh gọn (**≤ 15 trang**, không mâu thuẫn nội tại, công cụ giả lập thu nhập cho đại lý).
-   - Áp dụng **lộ trình chuyển tiếp 6 tháng** trước khi khóa sàn cứng `K2 = 60%` và kích hoạt đồng bộ trước mốc **01/01/2027 (TT 96/2026)**.
+   - Áp dụng **lộ trình chuyển tiếp 6 tháng** trước khi khóa sàn cứng `K2 = 60%` và chốt lịch triển khai sau khi xác minh điều khoản chuyển tiếp.
 
 ### 4 Quyết định Cần Ban Lãnh đạo / Chị Nhi Xác nhận cho Bước 2
 1. **Ưu tiên chiến lược (Trọng số):** Xác nhận bộ trọng số ưu tiên (`30% Doanh số / 25% Chất lượng / 25% Tài chính / 10% Con người / 10% Triển khai`) hay muốn nghiêng mạnh hơn về Growth hoặc Quality?

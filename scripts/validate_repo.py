@@ -39,6 +39,7 @@ VALID_IMP_ENUMS = {"IMPLEMENTED", "NOT_IMPLEMENTED"}
 VALID_CV_ENUMS = {"TESTED_PASS", "CONDITIONAL", "NOT_TESTED", "BLOCKED"}
 
 RULE_REF_RE = re.compile(r"(?<!SRC-POL-)\b(?:AIA|MNL|CHB|REG)-(?:CV|MG|PF|PM|AG|CH|RD|CAP|BON|MGT)-\d{3}\b")
+SOURCE_REF_RE = re.compile(r"\bSRC-[A-Z0-9]+(?:-[A-Z0-9]+)*\b")
 ABS_PATH_RE = re.compile(r"(?:file:///C:/|C:\\Users\\|C:/Users/)", re.I)
 SECRET_RE = re.compile(
     r"(?:ghp_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9]{20,}|AIza[0-9A-Za-z\-_]{20,}|BEGIN (?:RSA|OPENSSH|PRIVATE) KEY)",
@@ -48,6 +49,14 @@ PROTECTED_MARKER_RE = re.compile(
     r"(?:\banh B[aả]o\b|SKILL\.md|\bdecision-advisor\b|\bpo-decision-bridge\b|\brubric-engineering\b|\brisk-adaptive-audit\b|\bexecution-contract\b|\btechnicaldebug\b|\blocal_orchestrator_cli\b|\bgit-state-recovery\b)",
     re.I,
 )
+
+
+def git_files(repo: Path, *options: str) -> List[Path]:
+    raw = subprocess.check_output(
+        ["git", "-C", str(repo), "ls-files", "-z", *options],
+        encoding="utf-8",
+    )
+    return [repo / name for name in dict.fromkeys(raw.split("\0")) if name]
 
 
 def validate_source_registry(repo: Path) -> List[str]:
@@ -70,6 +79,7 @@ def validate_source_registry(repo: Path) -> List[str]:
         return errs
 
     seen = set()
+    registered_pdfs = set()
     for i, r in enumerate(rows, 2):
         sid = r["Source_ID"].strip()
         if not sid:
@@ -84,14 +94,21 @@ def validate_source_registry(repo: Path) -> List[str]:
 
         rel = r["Local_Relative_Path"].strip()
         expected_sha = r["SHA256_Hash"].strip().lower()
-        if rel.startswith("private/sources/") and len(expected_sha) == 64:
+        if Path(rel).suffix.lower() == ".pdf":
+            registered_pdfs.add(Path(rel).as_posix())
             pdf_path = repo / rel
-            if not pdf_path.exists():
-                errs.append(f"source-registry ({sid}): missing tracked PDF {rel}")
-            else:
-                actual_sha = hashlib.sha256(pdf_path.read_bytes()).hexdigest().lower()
-                if actual_sha != expected_sha:
-                    errs.append(f"source-registry ({sid}): SHA-256 mismatch on {rel}")
+            valid_hash = re.fullmatch(r"[0-9a-f]{64}", expected_sha)
+            if not valid_hash:
+                errs.append(f"source-registry ({sid}): invalid SHA-256 for {rel}")
+            if not pdf_path.is_file():
+                errs.append(f"source-registry ({sid}): missing registered PDF {rel}")
+            elif valid_hash and hashlib.sha256(pdf_path.read_bytes()).hexdigest() != expected_sha:
+                errs.append(f"source-registry ({sid}): SHA-256 mismatch on {rel}")
+
+    files = git_files(repo, "--cached") if (repo / ".git").exists() else repo.rglob("*")
+    for pdf in files:
+        if pdf.suffix.lower() == ".pdf" and pdf.relative_to(repo).as_posix() not in registered_pdfs:
+            errs.append(f"source-registry: unregistered PDF {pdf.relative_to(repo)}")
     return errs
 
 
@@ -112,6 +129,11 @@ def validate_business_rules(repo: Path) -> List[str]:
     if missing:
         return [f"business-rules-catalog.csv missing columns: {sorted(missing)}"]
 
+    registry = repo / "knowledge/sources/source-registry.csv"
+    source_ids = set()
+    if registry.is_file():
+        with registry.open(encoding="utf-8") as f:
+            source_ids = {row.get("Source_ID", "").strip() for row in csv.DictReader(f)}
     ids = set()
     for i, r in enumerate(rows, 2):
         rid = r["Rule_ID"].strip()
@@ -122,12 +144,17 @@ def validate_business_rules(repo: Path) -> List[str]:
         ids.add(rid)
         if not r["Source_ID_And_Page"].strip():
             errs.append(f"rules row {i} ({rid}): empty Source_ID_And_Page")
+        for source_id in SOURCE_REF_RE.findall(r["Source_ID_And_Page"]):
+            if source_id not in source_ids:
+                errs.append(f"rules row {i} ({rid}): unknown Source_ID {source_id}")
         if r["Source_Verification"] not in VALID_SV_ENUMS:
             errs.append(f"rules row {i} ({rid}): invalid Source_Verification={r['Source_Verification']!r}")
         if r["Implementation_Status"] not in VALID_IMP_ENUMS:
             errs.append(f"rules row {i} ({rid}): invalid Implementation_Status={r['Implementation_Status']!r}")
         if r["Calculation_Verification"] not in VALID_CV_ENUMS:
             errs.append(f"rules row {i} ({rid}): invalid Calculation_Verification={r['Calculation_Verification']!r}")
+        if r["Implementation_Status"] == "NOT_IMPLEMENTED" and r["Calculation_Verification"] == "TESTED_PASS":
+            errs.append(f"rules row {i} ({rid}): NOT_IMPLEMENTED cannot be TESTED_PASS")
 
     for i, r in enumerate(rows, 2):
         rid = r["Rule_ID"]
@@ -225,23 +252,21 @@ def validate_inventories_and_schema(repo: Path) -> List[str]:
 
 def validate_public_hygiene(repo: Path, text_files: List[Path] | None = None) -> List[str]:
     errs: List[str] = []
-    if text_files is None:
-        raw = subprocess.check_output(
-            ["git", "-C", str(repo), "-c", "core.quotepath=false", "ls-files"],
-            text=True, encoding="utf-8",
-        ).splitlines()
-        candidates = [repo / p for p in raw]
-    else:
+    if text_files is not None:
         candidates = text_files
+    elif (repo / ".git").exists():
+        candidates = git_files(repo, "--cached", "--others", "--exclude-standard")
+    else:
+        candidates = repo.rglob("*")
 
     skip_ext = {".pdf", ".xlsx", ".png", ".7z", ".zip"}
     # Exclude self (validator regex patterns legitimately contain regex strings!)
     self_path = (repo / "scripts/validate_repo.py").resolve()
     for p in candidates:
-        if not p.exists() or p.suffix.lower() in skip_ext or p.resolve() == self_path:
+        if not p.is_file() or p.suffix.lower() in skip_ext or p.resolve() == self_path:
             continue
         # Also skip test_quality_gates.py which seeds synthetic bad strings to verify the regex gate!
-        if p.name == "test_quality_gates.py":
+        if p == repo / "tests/test_quality_gates.py":
             continue
         txt = p.read_text(encoding="utf-8", errors="replace")
         if ABS_PATH_RE.search(txt):

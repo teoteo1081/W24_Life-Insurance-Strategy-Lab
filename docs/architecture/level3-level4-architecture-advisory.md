@@ -36,7 +36,7 @@
 
 ## 3. Proposed Level 3 Vertical Slice (Next Phase Only — NOT Implemented in Level 2)
 
-> **Goal:** Prove **Level 3 — Configuration-Driven** cleanly on ONE bounded vertical slice without rewriting the entire 1,225-line engine.
+> **Goal:** Prove **Level 3 — Configuration-Driven** cleanly on ONE bounded vertical slice without rewriting the entire compensation engine.
 
 - **Selected Vertical Slice:** **Retroactive Tiered Quarterly Production Bonus with Effective-Dated Quality Multiplier** (shared pattern across AIA Alpha CVTV Quarterly Bonus `2026 vs 2027` AND W24 Proposal Monthly/Quarterly Bonus).
 - **Artifact Design:**

@@ -72,6 +72,30 @@ class TestAssertCloseSafety(unittest.TestCase):
 class TestNaNInfAndTypeRejection(unittest.TestCase):
     """Proves NaN, +Inf, -Inf, booleans, and wrong types fail explicitly at engine entry."""
 
+    def test_chubb_optional_vectors_reject_invalid_values(self) -> None:
+        for field in ("sub_l1_htktn_monthly", "sub_l2_htktn_monthly", "sub_l3_htktn_monthly"):
+            for invalid in ([], [1.0], [float("nan")] * 12, [float("inf")] * 12, [True] * 12):
+                with self.subTest(field=field, invalid=invalid), self.assertRaisesRegex(ValueError, field):
+                    calc_chubb_al_12m([20.0] * 12, [4] * 12, k2_ntt=80.0, **{field: invalid})
+        for field, invalid in (
+            ("monthly_cc_ch", []),
+            ("monthly_cc_ch", [float("nan")] * 12),
+            ("new_agent_cc_m3_6_12", [0, float("nan"), 0]),
+        ):
+            with self.subTest(field=field, invalid=invalid), self.assertRaisesRegex(ValueError, field):
+                calc_chubb_ar_12m(
+                    [10.0] * 12, [0.0] * 12, [True] * 12, k2_pct=80.0,
+                    tenure_months_start=1, join_ch=True, **{field: invalid},
+                )
+
+    def test_proposal_requires_strictly_increasing_thresholds(self) -> None:
+        for thresholds in ((5, 22, 12, 35, 55), (5, 12, 12, 35, 55)):
+            with self.subTest(thresholds=thresholds), self.assertRaisesRegex(ValueError, "strictly increasing"):
+                calc_proposal_agent_12m(
+                    [10.0] * 12, [0.0] * 12, k2_pct=80.0,
+                    params=ProposalParams(agent_m_tier_thresholds=thresholds),
+                )
+
     def test_proposal_rejects_nan_inf_and_invalid_params(self) -> None:
         for bad in (float("nan"), float("inf"), float("-inf")):
             with self.assertRaises(ValueError):

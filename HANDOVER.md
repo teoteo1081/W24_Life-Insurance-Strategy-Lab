@@ -1,22 +1,27 @@
 # HANDOVER.md — Điểm Bàn giao & Single Source of Truth (Trạng thái Hiện hành)
 
-**Cập nhật lần cuối:** 2026-11-26 *(Level 2 Targeted Closure — Sau Codex Independent Audit Đợt 3 tại `a308f0f`)*  
-**Business Owner:** TJ | **Implementation Agent:** AGY | **Independent Auditor:** Codex
+**Cập nhật lần cuối** 2026-11-26 — Bản vá cục bộ F-01–F-05
 
-> **Cập nhật Targeted Closure (2026-11-26):** Xem báo cáo đầy đủ tại `qa/level2-targeted-closure-report.md` (tổng hợp khôi phục `F-01..F-05` có bản chi tiết lưu ngoài repo PUBLIC tại `%LOCALAPPDATA%\W24\Hardening-Private\W24_Findings_F01_F05_Recovery_a308f0f.md`; chẩn đoán gốc lỗi Excel COM `0x80080005` do `HKCU` WPS Office `et.exe` ghi đè `HKLM` MS Excel `16.0`; kết quả live recalc tạm thời trên WPS COM `12.0`; đối soát đủ `40` Golden sub-cases cũ trong `31` unittest methods / `120` assertions; và Level 2 Closure Matrix ở trạng thái `PARTIAL`). Không tự nâng Level 2 lên PASS toàn diện trước khi TJ duyệt vá `F-01..F-05` và chốt xử lý COM.
+## Trạng thái hiện hành
+
+- **F-01/F-02** — Đồng bộ cách diễn đạt pháp lý thành `CONDITIONAL` / `SOURCE_NOT_VERIFIED`, sửa thông tin chế độ PUBLIC của repo và dẫn chiếu chính sách quyền tài liệu.
+- **F-03/F-04** — Kiểm tra đầu vào tùy chọn và thứ tự ngưỡng. Python và workbook áp trần hiệu dụng Direct Override 36% của phương án W24. Validator kiểm SHA-256, PDF thiếu hoặc chưa đăng ký, Source_ID, trạng thái rule và hygiene của file chưa stage. Validator chạy được trên bản xuất thiếu metadata Git.
+- **F-05** — Sửa truy vết nguồn, chú thích SAF và phạm vi đối chiếu workbook. Record `AIA-CV-023` ghi rõ engine nhận FY đã tính sẵn và hỗ trợ các chế độ làm tròn. Công thức FY 14 tháng từ phí và chuyển giao chưa được triển khai.
+- **`SELF_VERIFIED`** — 35/35 unittest và quality gates đạt. Workbook dựng lại có 14 sheet và 915 công thức. COM 12.0 trả 0 lỗi công thức, 20/20 Golden, 12/12 enterprise parity và 2/2 perturbations. Ca AIA CQL âm M04 khớp ở −54 triệu VND trong cả hai mô hình theo giả định FYC có dấu đã dùng trong Python.
+- **Level 2 vẫn `PARTIAL`** — Cần kiểm chứng độc lập bản vá và chạy lại trên Microsoft Excel 16.0. Phạm vi đã xác minh pháp lý và quyết định làm tròn FY giữ trạng thái hiện có. Bản vá lưu cục bộ.
 
 ---
 
-## Kết quả Targeted Level 2 mới nhất — Codex (2026-11-26)
+## Kết quả kiểm toán snapshot `a308f0f` — Lịch sử (2026-11-26)
 
 - **VERIFIED FACT:** Codex kiểm chứng độc lập snapshot `a308f0f` bằng Microsoft Excel **16.0**, đối chiếu executable Office16 trong phiên tương tác: full recalculation, lưu và đọc lại thành công; **0** lỗi công thức, **20/20** Golden, **12/12** Python/Excel parity, **2/2** perturbations đạt. Workbook dựng lại có **14 sheets / 915 công thức**.
 - **Phạm vi equivalence:** cùng tên sheet, 20 Golden values và 12 enterprise scenario outputs so với `v1.xlsx`; không khẳng định tương đương mọi ô hoặc mọi miền đầu vào.
-- **VERIFIED FACT:** Đã khôi phục F-01…F-05; các findings vẫn **OPEN**. Codex tái lập các lỗi trọng yếu về optional-input `NaN/Inf`, thresholds đảo thứ tự và validator. Tổng thể Level 2 vẫn **PARTIAL**.
+- **VERIFIED FACT:** Đã khôi phục F-01…F-05; các findings vẫn **OPEN**. Codex tái lập các lỗi trọng yếu về optional-input `NaN/Inf`, thresholds đảo thứ tự và validator. Tổng thể Level 2 tại snapshot là **PARTIAL**.
 - **COM:** Đăng ký theo người dùng trỏ WPS, cấp máy trỏ Microsoft Excel. Khởi động trực tiếp Office16 và giữ cùng COM instance đã cho phép kiểm chứng Microsoft Excel 16.0. Nguyên nhân chính xác của lỗi `80080005` trước đây vẫn **UNKNOWN**; chưa chứng minh do sandbox. Bằng chứng AGY COM 12.0 trước đây giữ trạng thái `SELF_VERIFIED`, không dùng thay cho lượt Codex 16.0.
 - **Bằng chứng:** Báo cáo `Codex_Targeted_Level2_Closure_a308f0f.md`, `codex-ms-excel-results.json`, transcript COM và probes được giữ ngoài repository PUBLIC; không đưa bằng chứng chi tiết vào commit.
 - **Tiếp theo:** TJ duyệt riêng việc vá F-01…F-05 bởi AGY, sau đó kiểm chứng độc lập; Level 3 chưa được triển khai. Phê duyệt commit/push tài liệu hiện tại được ghi tại **DEC-10**.
 
-Các mục dưới giữ kết quả bàn giao trước targeted verification để đối chiếu; trạng thái mới nhất là phần này.
+Các mục dưới lưu kết quả bàn giao theo từng giai đoạn trước bản vá.
 
 ---
 
@@ -37,7 +42,7 @@ Các mục dưới giữ kết quả bàn giao trước targeted verification đ
 | `python scripts/run_checks.py` | **PASS** (exit `0`) | 1 lệnh chạy tuần tự: Quality Gates + `unittest discover` + Example Scenario (từ chối PASS nếu 0 test). |
 | `scripts/validate_repo.py` | **PASS** (`0` errors) | Kiểm 17 nguồn (`Redistribution_Rights_Status` + 7 PDF SHA-256), 112 rules (0 broken `Rule_ID`, valid enums), 3 lookups (`1,300` PAF+ 0 sai lệch tổng, `113` Chubb, `10` HSBH), 36 roles, 44 rewards, JSON schema, và 0 hygiene/path/secret leaks. |
 | `python -m unittest discover -s tests -v` | **`31` test cases PASS** (`0` fail, `0` error) | Gồm `18` Golden `TestCase` methods (`test_compensation_golden.py`, `GT-16` dùng hằng số độc lập), `9` NaN/Inf/Validation/Negative/Lookup Regression methods (`test_validation_and_regression.py`), `4` Quality Gate & Seeded-Defect methods (`test_quality_gates.py`). |
-| `scripts/build_workbook.py` + `scripts/verify_workbook_excel.py` | **PASS** (`overall_pass: true`) | Dựng lại 14 sheets (`915` công thức, không ghi đè `v1.xlsx`); Microsoft Excel 12.0 COM recalculation: `0` lỗi, `20/20` Excel Golden PASS, `12/12` Parity PASS; **2 live input perturbations PASS** (`C19: 0.16→0.20` → `60.91%/7.39%`; `C5: Table_80→Example_50` → `1.00`); tương đương chức năng 100% với `v1.xlsx`. Bằng chứng: `qa/excel-reproducibility-evidence.json`. |
+| `scripts/build_workbook.py` + `scripts/verify_workbook_excel.py` | **PASS** (`overall_pass: true`) | Dựng lại 14 sheets (`915` công thức, không ghi đè `v1.xlsx`); Microsoft Excel 12.0 COM recalculation: `0` lỗi, `20/20` Excel Golden PASS, `12/12` Parity PASS; **2 live input perturbations PASS** (`C19: 0.16→0.20` → `60.91%/7.39%`; `C5: Table_80→Example_50` → `1.00`); khớp tên sheet, 20 Golden values và 12 enterprise outputs trong phép đối chiếu với `v1.xlsx`. Bằng chứng: `qa/excel-reproducibility-evidence.json`. |
 | Clean Environment `git clone` Test (Windows) | **PASS** *(xem báo cáo Checkpoint)* | Chạy độc lập từ bản clone sạch ngoài repo (0 file scratch/session AI): `run_checks.py` + `build_workbook.py` + `verify_workbook_excel.py` đều PASS. *Cross-OS chưa kiểm thử.* |
 | Confidentiality & Document Rights Review | **Lưu ngoài repo PUBLIC** | `0` secrets, `0` protected skill leaks, đã xóa sạch 10 đường dẫn cục bộ. Chi tiết quyền từng PDF lưu tại `%LOCALAPPDATA%\W24\Hardening-Private\W24_Confidentiality_And_Rights_Review_5cb7a21.md`. |
 

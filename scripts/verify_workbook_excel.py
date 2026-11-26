@@ -21,6 +21,7 @@ from __future__ import annotations
 import argparse
 import datetime
 import json
+import math
 import shutil
 import subprocess
 import sys
@@ -34,6 +35,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from model.compensation.compensation_engine import (
     ProposalParams,
+    calc_aia_cql_12m,
     calc_chubb_ch_m1_12_offset,
     calc_enterprise_hierarchy_cost,
     calc_proposal_agent_12m,
@@ -200,6 +202,19 @@ def main() -> int:
         shutil.copy2(src_wb, tmp_wb)
         excel_ver = run_excel_com(tmp_wb)
         base_audit = inspect_workbook(tmp_wb)
+        wb = openpyxl.load_workbook(tmp_wb, data_only=True)
+        try:
+            cql_excel = wb["09_Mgr_Senior_Comp"]["C8"].value
+        finally:
+            wb.close()
+
+    cql = calc_aia_cql_12m([-25.0] * 12, [4] * 12, fy_pct=80.0, tot_pct=85.0)
+    cql_python = cql["direct_monthly"] + cql["activity_monthly"] + cql["premier_quarterly"]
+    cql_pass = (
+        type(cql_excel) in (int, float)
+        and math.isfinite(cql_excel)
+        and math.isclose(cql_excel, cql_python, rel_tol=0, abs_tol=0.01)
+    )
 
     pert = run_perturbation_test(src_wb)
 
@@ -229,6 +244,7 @@ def main() -> int:
         len(base_audit["error_cells"]) == 0
         and base_audit["golden_fail"] == 0
         and base_audit["parity_fail"] == 0
+        and cql_pass
         and pert["all_perturbations_pass"]
         and (func_equiv is None or func_equiv["functional_reproducibility_pass"])
     )
@@ -245,6 +261,7 @@ def main() -> int:
         "golden_tests_fail": base_audit["golden_fail"],
         "enterprise_parity_pass": base_audit["parity_pass"],
         "enterprise_parity_fail": base_audit["parity_fail"],
+        "aia_cql_negative_fyc": {"excel": cql_excel, "python": cql_python, "pass": cql_pass},
         "live_input_perturbation": pert,
         "functional_equivalence_vs_v1": func_equiv,
         "overall_pass": overall_pass,

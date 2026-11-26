@@ -131,7 +131,7 @@ def build_workbook(out_path: Path = DEFAULT_OUT_XLSX, allow_overwrite_v1: bool =
     ws1.merge_cells("C14:H14")
     sheets_desc = [
         ("01_User_Guide", "Navigation", "Business Anchor, governance rules, color coding & sheet index"),
-        ("02_Source_Index_Gaps", "Ground Truth", "16 Source Registry rows (SHA-256, Revision_Class) + Known Gaps & Conflict Register"),
+        ("02_Source_Index_Gaps", "Ground Truth", "17 Source Registry rows (SHA-256, Revision_Class) + Known Gaps & Conflict Register"),
         ("03_Role_And_Components", "Inventory", "36 Role Mappings (16 cols) + 44 Total Rewards Components (33 cols, Cash vs Unpriced Non-Cash)"),
         ("04_Policy_Parameters", "Control Center", "Global toggles (ERR-DOC-01, ERR-DOC-02), Locked Competitor tables, PO-Editable Proposal params"),
         ("05_Lookup_PAF_5Y", "Normalized Lookup", "Full 1,300-row AIA PAF+ 5-Year Target Matrix + Live Excel SUMIF reconciliation (0 discrepancies)"),
@@ -179,7 +179,7 @@ def build_workbook(out_path: Path = DEFAULT_OUT_XLSX, allow_overwrite_v1: bool =
         ("GAP-MNL-01", "UNKNOWN", "Manulife", "Missing Individual Agent (FA), Mid-Manager (UM/SUM/DM), Commission Schedule, FYP/1mAA Target Table & 0016M03/2024.", "Marked 'UNKNOWN' on Tier 1 & Tier 2 outputs (NEVER 0); Tier 3 PSM+/HKD modeled fully.", "TJ"),
         ("GAP-AIA-01", "MISSING_DEPENDENCY", "AIA Alpha", "Missing Product Commission Appendix, FYC Tin Chi conversion memo, Exchange/Pro allowance & 2501-017.", "Compare directly on % FYC; % FYP uses labeled 30% UL assumption on 04_Policy_Parameters!$C$7.", "TJ"),
         ("GAP-CHB-01", "MISSING_DEPENDENCY", "Chubb Life", "Missing CHH0DCEB260005V (1 EHC threshold, K2/P13 formula), 260006V, 260009V & BD 2026 Policy.", "EHC modeled as boolean/count input; RD II.7-8 BD dependency flagged.", "TJ"),
-        ("GAP-LAW-01", "SOURCE_NOT_VERIFIED", "Vietnam Reg", "TT 67/2023 (Art.51 & 52), TT 96/2026, ND 97/2026 summarized from public legal portals, not official Gazette PDFs.", "Flagged SOURCE_NOT_VERIFIED; mandatory Gazette review before real policy issuance.", "Legal / TJ"),
+        ("GAP-LAW-01", "SOURCE_NOT_VERIFIED", "Vietnam Reg", "TT 67/2023 (Art.51 & 52), TT 96/2026 and ND 97/2026 summaries plus 44/2026/VBHN-TT-BTC metadata. Clause-level verification pending.", "Flagged SOURCE_NOT_VERIFIED; mandatory Gazette review before real policy issuance.", "Legal / TJ"),
     ]
     for idx, g in enumerate(gaps_list, r_gap + 2):
         ws2.cell(idx, 1, g[0]).font = FONT_WARN
@@ -274,24 +274,25 @@ def build_workbook(out_path: Path = DEFAULT_OUT_XLSX, allow_overwrite_v1: bool =
     write_table_header(ws4, 14, ["Param_ID", "Proposal Parameter", "PO Value", "Unit", "Editable?", "Design Rationale"])
     ws4.merge_cells("F14:H14")
     prop_params = [
-        ("PRP-01", "UL/ILP Base Commission Year 1 (Top-up = 0%)", 0.30, "% PCB", "TRUE", "Compliant with Art.51 & TT 96/2026; paired with HSBH tiers"),
+        ("PRP-01", "UL/ILP Base Commission Year 1 (Top-up = 0%)", 0.30, "% PCB", "TRUE", "PROPOSAL paired with HSBH tiers; legal verification pending"),
         ("PRP-02", "K2 Hard Floor Threshold (Below -> 0% Bonus)", 60.0, "% K2", "TRUE", "Eliminates Chubb 25% soft floor without AIA 70% cliff shock"),
         ("PRP-03", "T+1 Cash Holdback K2 Threshold", 65.0, "% K2", "TRUE", "Holds M12/monthly bonus to T+1 for New or K2<65% agents"),
         ("PRP-04", "Monthly Tier 1 Rate (>= 5M FYC/M)", 0.08, "% FYC", "TRUE", "Low entry threshold fits VN 2026 smaller case sizes"),
         ("PRP-05", "Monthly Tier 2 Rate (>= 12M FYC/M)", 0.16, "% FYC", "TRUE", "Core productive agent tier"),
         ("PRP-06", "Monthly Tier 3 Rate (>= 22M FYC/M)", 0.24, "% FYC", "TRUE", "Mid-high productive tier"),
         ("PRP-07", "Monthly Tier 4 Rate (>= 35M FYC/M)", 0.32, "% FYC", "TRUE", "High producer tier"),
-        ("PRP-08", "Monthly Tier 5 Rate (>= 55M FYC/M)", 0.38, "% FYC", "TRUE", "Top MDRT producer tier (Art.52 safe!)"),
+        ("PRP-08", "Monthly Tier 5 Rate (>= 55M FYC/M)", 0.38, "% FYC", "TRUE", "Top modeled monthly production tier"),
         ("PRP-09", "Quarterly 3-of-3 Active Consistency Multiplier", 0.12, "% of M-Bonus", "TRUE", "Rewards steady monthly activity without Chubb 109% compounding"),
         ("PRP-10", "Annual MDRT Bonus Rate (>= 400M FYC/Y)", 0.10, "% Ann FYC", "TRUE", "30% deferred to Y2 gated on K2>=75%"),
         ("PRP-11", "Annual MDRT Deferred Share (Post-Y1)", 0.30, "% of MDRT", "TRUE", "Improves Y1 cash flow & locks top agent persistency"),
-        ("PRP-12", "Agent Y2 SYC/RYC Quality Bonus (K2 >= 75%)", 0.25, "% SYC", "TRUE", "Strong Y2 servicing reward within Art.52 7% RYP cap"),
+        ("PRP-12", "Agent Y2 SYC/RYC Quality Bonus (K2 >= 75%)", 0.25, "% SYC", "TRUE", "Y2 servicing reward; assess portfolio-level cap separately"),
         ("PRP-13", "Manager Direct Override Rate (Base x K2)", 0.30, "% Team FYC", "TRUE", "Disciplined vs Chubb 108% peak; symmetric negative clawback"),
         ("PRP-14", "Manager Indirect Override Rate (Max 3 Gens, NTT>=15M)", 0.35, "% Sub Direct", "TRUE", "Zero infinite chain; 0% if Direct Team < 15M/M"),
         ("PRP-15", "Manager 3-Year Deferred Retention Rate (K2 >= 75%)", 0.12, "% Team FYC", "TRUE", "Vests 30%/30%/40% Y+1..Y+3 (learned from Manulife & AIA)"),
         ("PRP-16", "Regional Leader Monthly Base Fee (KPI 30% floor/140% cap)", 35.0, "Million VND", "TRUE", "KPI-linked & service-acceptance verified (ND 97/2026)"),
         ("PRP-17", "Regional Leader Variable Override Rate (x K2)", 0.07, "% Reg FYC", "TRUE", "Paired with 60% 3-Year Deferred Retention (K2>=75%)"),
         ("PRP-18", "Regional Leader 3Y Deferred Retention Share (on Var)", 0.60, "% Reg Var", "TRUE", "Matches Manulife cash-flow discipline without Top-up 6%"),
+        ("PRP-19", "Manager Direct Override Effective Rate Cap", 0.36, "% Team FYC", "TRUE", "Caps base rate multiplied by K2"),
     ]
     for i, pp in enumerate(prop_params, 15):
         ws4.cell(i, 1, pp[0]).border = BORDER
@@ -645,12 +646,12 @@ def build_workbook(out_path: Path = DEFAULT_OUT_XLSX, allow_overwrite_v1: bool =
         ws9.cell(r9, 1, f"={p}A{r7}").font = FONT_BOLD
         ws9.cell(r9, 2, f"={fm}*12").number_format = "#,##0.0"
 
-        # AIA CQL Direct Monthly + Activity + Premier Q (only if fm>0)
+        # AIA CQL: signed monthly FYC matches the Python stress-test assumption.
         aia_dr = f"IF({k2}>=80,IF({fm}>=50,0.24,IF({fm}>=20,0.18,IF({fm}>=7,0.15,0.1))),IF({fm}>=50,0.2,IF({fm}>=20,0.15,IF({fm}>=7,0.12,0.08))))"
         aia_ar = f"IF({act}>=6,0.12,IF({act}>=4,0.08,IF({act}>=2,0.05,0)))*IF({k2}>=70,1,{k2}/100)"
         aia_pq = f"IF(AND({k2}>=75,{fm}*3>=170,{act}*3>=14),0.15,IF(AND({k2}>=75,{fm}*3>=80,{act}*3>=9),0.08,IF(AND({k2}>=75,{fm}*3>=50,{act}*3>=6),0.05,0)))"
         aia_def = f"IF(AND({k2}>=75,{fm}*3>=170,{act}*3>=14),0.1,IF(AND({k2}>=75,{fm}*3>=80,{act}*3>=9),0.05,0))"
-        ws9.cell(r9, 3, f"=IF({fm}>0,B{r9}*({aia_dr}+{aia_ar}+{aia_pq}),0)").number_format = "#,##0.00"
+        ws9.cell(r9, 3, f"=B{r9}*({aia_dr}+{aia_ar}+{aia_pq})").number_format = "#,##0.00"
         ws9.cell(r9, 4, f"=IF({fm}>0,B{r9}*{aia_def},0)").number_format = "#,##0.00"
         ws9.cell(r9, 5, f"=IF({tot}>=85,D{r9}*0.6,0)").number_format = "#,##0.00"
 
@@ -665,7 +666,7 @@ def build_workbook(out_path: Path = DEFAULT_OUT_XLSX, allow_overwrite_v1: bool =
 
         # Proposal Manager (Live Sheet 04 Block B)
         prp_k2 = f"IF({k2}>=85,1.2,IF({k2}>=80,1.1,IF({k2}>=75,1,IF({k2}>=70,0.85,IF({k2}>={par}$C$16,0.6,0)))))"
-        ws9.cell(r9, 9, f"=B{r9}*{par}$C$27*{prp_k2}").number_format = "#,##0.00"
+        ws9.cell(r9, 9, f"=B{r9}*MIN({par}$C$33,{par}$C$27*{prp_k2})").number_format = "#,##0.00"
         ws9.cell(r9, 10, f"=IF({fm}<15,0,{par}$C$28*{sub}*12)").number_format = "#,##0.00"
         ws9.cell(r9, 11, f"=IF(AND({fm}>0,{k2}>=75),B{r9}*{par}$C$29,0)").number_format = "#,##0.00"
         ws9.cell(r9, 12, "UNKNOWN").fill = FILL_WARN
@@ -696,7 +697,7 @@ def build_workbook(out_path: Path = DEFAULT_OUT_XLSX, allow_overwrite_v1: bool =
         ws9.cell(r9, 1, f"={p}A{r7}").font = FONT_BOLD
         ws9.cell(r9, 2, f"={fyp_m}*12").number_format = "#,##0.0"
 
-        # C: AIA PAF+ SAF (Year 1 Annual Target pulled LIVE from Sheet 05!$G$3 = 6,600M!)
+        # C: AIA PAF+ SAF (Year 1 Annual Target pulled LIVE from Sheet 05!$G$3 = 5,000M)
         # Base 50M/M x FYP tier + Monthly & Quarterly Prof + Seniority capped at 12M Base
         paf_fy = f"IF({k2}>=75,1.2,IF({k2}>=70,1.1,IF({k2}>=65,1,IF({k2}>=60,0.8,IF({k2}>=50,0.6,0)))))"
         paf_b = f"50*12*IF({ach}>=1.15,1.2,IF({ach}>=0.55,1,IF({ach}>=0.35,0.5,0)))"
@@ -809,7 +810,7 @@ def build_workbook(out_path: Path = DEFAULT_OUT_XLSX, allow_overwrite_v1: bool =
         "Scheme & Persistency Scenario", "K2/FY (%)", "Layer A: Comm (30%)", "Layer B: Agent Bonus",
         "Layer C: Mgr Direct", "Layer D: Mgr Indirect", "Layer E: RD Cash", "Layer F: 3Y Deferred",
         "Total Earned (M)", "Cash Paid Y1 (M)", "Earned % FYP", "Cash Y1 % FYP",
-        "Art.52 Bonus % FYP", "Art.52 <=30% Gate", "Cost / Persisted Y2 %"
+        "Art.52 Modeled Bonus % FYP", "Modeled Threshold Check", "Cost / Persisted Y2 %"
     ])
     par = "'04_Policy_Parameters'!"
     # 12 rows = 3 K2 levels (82, 72, 62) x 4 schemes (AIA 26, AIA 27, Chubb 26, Proposal Balanced)
@@ -866,7 +867,7 @@ def build_workbook(out_path: Path = DEFAULT_OUT_XLSX, allow_overwrite_v1: bool =
             # Agent 15M/M -> Tier 2 (C19=16%) * K2 * (1+C23=12%)
             ws11.cell(idx, 4, f"=C{idx}*{par}$C$19*{prp_k2}*(1+{par}$C$23)")
             # Mgr Direct: C27 (30%) * K2; Indirect: 50% sub * C28 (35%)
-            ws11.cell(idx, 5, f"=C{idx}*{par}$C$27*{prp_k2}")
+            ws11.cell(idx, 5, f"=C{idx}*MIN({par}$C$33,{par}$C$27*{prp_k2})")
             ws11.cell(idx, 6, f"=E{idx}*0.5*{par}$C$28")
             # RD Cash: Base C30*12*MIN(1.4,1.05*1.25) + Var C*C31*K2
             ws11.cell(idx, 7, f"={par}$C$30*12*MIN(1.4,1.05*1.25)+C{idx}*{par}$C$31*{prp_k2}")

@@ -814,7 +814,7 @@ def calc_chubb_ar_12m(
     # New Agent Bonus M3 / M6 / M12 (only for M1 starters)
     new_ag_by_month = [0.0] * 12
     if tenure_months_start == 1:
-        cc3, cc6, cc12 = new_agent_cc_m3_6_12
+        cc3, cc6, cc12 = _require_int_vector(new_agent_cc_m3_6_12, 3, "new_agent_cc_m3_6_12")
         course_mult = 1.0 if new_agent_courses_ok else 0.50
         if cc3 >= 6:
             new_ag_by_month[2] = min(6.0, sum(monthly_fyc[0:3]) * 0.20)
@@ -828,7 +828,7 @@ def calc_chubb_ar_12m(
     ch_m_net_total = 0.0
     ch_m12_net_total = 0.0
     if join_ch and tenure_months_start == 1:
-        ccs = monthly_cc_ch or [2] * 12
+        ccs = _require_int_vector(monthly_cc_ch if monthly_cc_ch is not None else [2] * 12, 12, "monthly_cc_ch")
         for m in range(12):
             res = calc_chubb_ch_m1_12_offset(
                 month_idx=m + 1, cc_count=ccs[m], sop_pct=sop_pct, kpi_pct=kpi_ch_pct,
@@ -951,9 +951,18 @@ def calc_chubb_al_12m(
             qr = 0.0
         ht_q_total += qm_fee * qr
 
-    l1_arr = sub_l1_htktn_monthly or [0.0] * 12
-    l2_arr = sub_l2_htktn_monthly or [0.0] * 12
-    l3_arr = sub_l3_htktn_monthly or [0.0] * 12
+    l1_arr = _require_vector(
+        sub_l1_htktn_monthly if sub_l1_htktn_monthly is not None else [0.0] * 12,
+        12, "sub_l1_htktn_monthly", allow_negative=True,
+    )
+    l2_arr = _require_vector(
+        sub_l2_htktn_monthly if sub_l2_htktn_monthly is not None else [0.0] * 12,
+        12, "sub_l2_htktn_monthly", allow_negative=True,
+    )
+    l3_arr = _require_vector(
+        sub_l3_htktn_monthly if sub_l3_htktn_monthly is not None else [0.0] * 12,
+        12, "sub_l3_htktn_monthly", allow_negative=True,
+    )
     ind_total = 0.0
     for m in range(12):
         f_ntt = monthly_fyc_ntt[m]
@@ -1194,8 +1203,8 @@ def calc_manulife_psm_12m(
 class ProposalParams:
     """PO-configurable parameters for W24 Proposed Balanced/Hybrid Scheme."""
     name: str = "W24_Balanced_Hybrid_Primary"
-    ul_y1_fyc_rate: float = 0.30           # Compliant with Art.51 TT67/TT96
-    topup_commission_rate: float = 0.00    # Compliant with TT96/2026
+    ul_y1_fyc_rate: float = 0.30           # Modeling input pending legal verification
+    topup_commission_rate: float = 0.00    # Modeling input pending legal verification
     k2_hard_floor_pct: float = 60.0        # Below 60% -> 0% bonus (avoids Chubb soft 25% & AIA 70% cliff shock)
     k2_holdback_t1_threshold: float = 65.0 # Below 65% or New -> T+1 cash settlement
     agent_m_tier_rates: Tuple[float, float, float, float, float] = (0.08, 0.16, 0.24, 0.32, 0.38)
@@ -1217,12 +1226,12 @@ def _validate_proposal_params(p: ProposalParams) -> None:
     _require_rate_0_to_1(p.topup_commission_rate, "ProposalParams.topup_commission_rate", allow_zero=True)
     _require_percentage(p.k2_hard_floor_pct, "ProposalParams.k2_hard_floor_pct", 100.0)
     _require_percentage(p.k2_holdback_t1_threshold, "ProposalParams.k2_holdback_t1_threshold", 100.0)
-    if len(p.agent_m_tier_rates) != 5 or len(p.agent_m_tier_thresholds) != 5:
-        raise ValueError("ProposalParams agent monthly tiers must have exactly 5 elements")
-    for i, r in enumerate(p.agent_m_tier_rates):
+    rates = _require_vector(p.agent_m_tier_rates, 5, "ProposalParams.agent_m_tier_rates")
+    thresholds = _require_vector(p.agent_m_tier_thresholds, 5, "ProposalParams.agent_m_tier_thresholds")
+    for i, r in enumerate(rates):
         _require_rate_0_to_1(r, f"ProposalParams.agent_m_tier_rates[{i}]")
-    for i, th in enumerate(p.agent_m_tier_thresholds):
-        _require_non_negative_float(th, f"ProposalParams.agent_m_tier_thresholds[{i}]")
+    if any(lower >= upper for lower, upper in zip(thresholds, thresholds[1:])):
+        raise ValueError("ProposalParams.agent_m_tier_thresholds must be strictly increasing")
     _require_rate_0_to_1(p.agent_q_consistency_3m, "ProposalParams.agent_q_consistency_3m")
     _require_rate_0_to_1(p.agent_annual_mdrt_rate, "ProposalParams.agent_annual_mdrt_rate")
     _require_rate_0_to_1(p.agent_ryc_bonus_rate, "ProposalParams.agent_ryc_bonus_rate")
@@ -1281,7 +1290,7 @@ def calc_proposal_agent_12m(
                 break
         m_bonuses.append(f * rate * k2_fac)
 
-    # Onboarding structured bonus M1-M6 (2M/M if >=8M FYC, 50% held to M12)
+    # Onboarding structured bonus M1-M6 (3M/M if >=8M FYC, 50% held to M12)
     onb_cash = 0.0
     onb_m12 = 0.0
     if is_new_agent:
@@ -1366,7 +1375,7 @@ def calc_enterprise_hierarchy_cost(
         mg_direct_all = (mg["direct_monthly"] + mg["activity_monthly"] + mg["premier_quarterly"]) * 4.0
         mg_deferred_all = mg["annual_deferred_3y"] * 4.0
         mg_indirect_all = (mg["direct_monthly"] * 0.50) * 2.0
-        # 1 PAF+ leader (SAF rank, Year 1 target = 6,600M -> 12,000M exceeds target)
+        # 1 PAF+ leader (SAF rank, Year 1 target = 5,000M -> 12,000M exceeds target)
         paf = calc_aia_paf_12m("SAF", 1, [1000.0] * 12, [300.0] * 12, [20.0] * 12, fy_pct=k2_pct)
         rd_cash = paf["cash_paid_y1"]
         rd_deferred = 0.0
@@ -1389,7 +1398,7 @@ def calc_enterprise_hierarchy_cost(
         ag = calc_proposal_agent_12m(agent_m_fyc, agent_m_syc, k2_pct=k2_pct, params=p)
         ag_bonuses_all = ag["total_bonuses_earned"] * 20.0
         k2_fac = proposal_k2_factor(k2_pct, p.k2_hard_floor_pct)
-        mg_direct_all = annual_fyc * 0.30 * k2_fac  # 30% direct override x K2
+        mg_direct_all = annual_fyc * min(p.mgr_direct_max_rate, 0.30 * k2_fac)
         mg_indirect_all = (mg_direct_all * 0.50) * p.mgr_indirect_l1_rate  # 2 sub-managers
         mg_deferred_all = annual_fyc * p.mgr_deferred_3y_rate if k2_pct >= 75.0 else 0.0
         rd_base = p.rd_base_monthly * 12.0 * min(1.40, 1.05 * 1.25)  # 105% FYP ach -> 131.25%

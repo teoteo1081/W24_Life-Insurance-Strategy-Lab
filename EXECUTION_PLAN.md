@@ -27,6 +27,6 @@
 
 ## Giai đoạn Mở rộng Sau Checkpoint (P2 — Chưa triển khai trong Sprint Level 2)
 
-- [ ] **Independent Audit Đợt 3 (Codex):** Xác nhận độc lập các năng lực Level 2 và rà soát `DEC-01..08`.
+- [ ] **Independent Audit Đợt 3 (Codex):** Xác nhận độc lập các năng lực Level 2 và rà soát decision register.
 - [ ] **Level 3 Vertical Slice:** Cấu hình hóa 1 nhóm thưởng bằng JSON có `effective_date` chạy trực tiếp qua operator chuẩn không sửa công thức.
 - [ ] **Level 4/P3 (Khi TJ duyệt):** Company Adapters + Cross-engine Golden Vectors + HTML Interactive Simulator + Phễu Marketing Tuyển Sales & Khách hàng + Nạp VNB/OpEx thực tế.

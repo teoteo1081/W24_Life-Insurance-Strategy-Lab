@@ -20,7 +20,7 @@ This repository is an **organized research prototype and reproducible Python/Exc
 |---|---|
 | Immutable business ask & P0/P1/P2 scope | [ANCHOR_SPEC.md](ANCHOR_SPEC.md) |
 | Current operational state, test counts & next actions | [HANDOVER.md](HANDOVER.md) |
-| Open/closed Business Owner decisions (`DEC-01..08`) | [docs/decisions/decision-register.md](docs/decisions/decision-register.md) |
+| Open/closed Business Owner decisions (`DEC-01..10`) | [docs/decisions/decision-register.md](docs/decisions/decision-register.md) |
 | Chronological change history | [CHANGELOG.md](CHANGELOG.md) |
 | Dated QA, remediation & Excel verification evidence | [qa/post-audit-remediation-register.md](qa/post-audit-remediation-register.md) & [qa/excel-reproducibility-evidence.json](qa/excel-reproducibility-evidence.json) |
 | Confidentiality, IP & source-rights rules | [docs/governance/confidentiality-and-rights-policy.md](docs/governance/confidentiality-and-rights-policy.md) |

@@ -45,7 +45,7 @@
    - Chuẩn hóa khung trần hoa hồng sửa đổi Điều 51 TT 67/2023; các bản tóm tắt công khai ghi nhận mốc áp dụng khung hoa hồng mới đối với hợp đồng phát hành từ `01/01/2027` (**cần xác minh chính xác điều khoản chuyển tiếp trong toàn văn `44/2026/VBHN-TT-BTC`**, không tự suy diễn từ metadata!).
    - **Siết chặt hoa hồng phí đóng thêm (Top-up):** Tóm tắt công khai ghi nhận hoa hồng đại lý trên phí đóng thêm của hợp đồng UL/ILP/Hưu trí **không được vượt quá tỷ lệ phí ban đầu** áp dụng cho phần phí đóng thêm đó.
 
-### 2.2. Bảng Trần Hoa hồng Tối đa (Điều 51 TT 67/2023 từ 01/07/2024 & TT 96/2026 từ 01/01/2027)
+### 2.2. Bảng tham chiếu trần hoa hồng Điều 51 — `SOURCE_NOT_VERIFIED`
 
 *(Trạng thái: `SOURCE_CLAIM` / `SOURCE_NOT_VERIFIED` — Cần đối chiếu toàn văn Công báo trước khi ban hành chính sách thật)*
 
@@ -59,9 +59,9 @@
 | **Bảo hiểm Hưu trí** | — | **≤ 3%** tổng phí thực thu | **≤ 3%** tổng phí thực thu | **≤ 3%** tổng phí thực thu | Phí đóng thêm hưu trí ≤ phí ban đầu (TT 96/2026). |
 | **Bảo hiểm Nhân thọ Nhóm (Group Life)** | **50% trần cá nhân** | **50% trần cá nhân** | **50% trần cá nhân** | **50% trần cá nhân** | Khoản 3.2 Điều 51 TT 67/2023. |
 
-### 2.3. Bảng Trần Thưởng & Hỗ trợ Đại lý Riêng biệt (Điều 52 TT 67/2023 — Hiệu lực đầy đủ từ 01/01/2026)
+### 2.3. Bảng tham chiếu trần thưởng và hỗ trợ đại lý Điều 52 — `SOURCE_NOT_VERIFIED`
 
-| Hạng mục chi phí ngoài Hoa hồng (Điều 52 TT 67/2023) | Cơ sở tính trần (Cấp toàn danh mục DN trong năm tài chính) | Trần tối đa bắt buộc | Ghi chú áp dụng vào mô hình W24 |
+| Hạng mục chi phí ngoài Hoa hồng (Điều 52 TT 67/2023) | Cơ sở tính trần (Cấp toàn danh mục DN trong năm tài chính) | Ngưỡng tham chiếu | Ghi chú áp dụng vào mô hình W24 |
 |---|---|---|---|
 | **Thưởng, hỗ trợ & quyền lợi khác — Khai thác mới (≤ 1 năm)** | Phí bảo hiểm thực thu năm tài chính (HĐ ≤ 1 năm / tái tục năm) | **≤ 20%** | Kiểm tra bắt buộc ở tầng **Enterprise Distribution Cost** (không nhầm với trần 30% hoa hồng cá nhân). |
 | **Thưởng, hỗ trợ & quyền lợi khác — Khai thác mới (> 1 năm)** | Phí bảo hiểm thực thu **Năm 1** trong năm tài chính (HĐ > 1 năm) | **≤ 30%** | **Rất quan trọng:** Nếu công ty có nhiều đại lý đạt thưởng 85%–109% FYC (tương đương 25%–33% FYP), tổng thưởng toàn công ty có nguy cơ tiệm cận hoặc chạm trần 30% FYP Điều 52 nếu không cân bằng bằng đại lý năng suất trung bình/cơ chế giữ lại! |
@@ -69,8 +69,8 @@
 | **Chi phí Quản lý, Đào tạo, Tuyển dụng & Giám sát Đại lý (NĐ 97/2026)** | Hợp đồng dịch vụ & chứng từ nghiệm thu hợp lệ | Theo quy chế tài chính & luật thuế *(không gom chung trần Điều 52 nếu có dịch vụ quản lý thực)* | Phải kiểm soát rủi ro thanh tra thuế/BTC: không được ngụy trang thưởng bán cá nhân thành phí dịch vụ quản lý. |
 
 ### 2.4. Hàm ý Chiến lược cho Bài tư vấn W24
-- **Hai gọng kìm pháp lý năm 2026–2027:** Doanh nghiệp BHNT tại Việt Nam chịu đồng thời **(1) Trần Hoa hồng cá nhân theo hợp đồng (Điều 51: 30% FYC cho UL/ILP)** và **(2) Trần Tổng Thưởng & Hỗ trợ Đại lý khai thác mới theo danh mục công ty (Điều 52: 30% FYP năm 1, hết lộ trình chuyển tiếp từ 01/01/2026)**.
+- **`SOURCE CLAIM`:** Mô hình tham chiếu riêng trần hoa hồng theo sản phẩm và trần thưởng/hỗ trợ cấp danh mục. Căn cứ tính và mốc áp dụng từng điều khoản chờ kiểm tra toàn văn.
 - **Hệ quả thiết kế trực tiếp:**
   1. Không doanh nghiệp nào có thể cạnh tranh bằng đẩy FYC UL/ILP vượt 30% hoặc trả hoa hồng cao cho phí đóng thêm (Top-up bị khóa theo TT 96/2026).
-  2. Thiết kế thưởng cá nhân cực cao như Chubb Life (AR đỉnh 85.8% FYC ≈ 25.7% FYP; AL cá nhân đỉnh 109.2% FYC ≈ 32.8% FYP) **chỉ khả thi dưới trần 30% Điều 52 ở cấp toàn danh mục** khi phần lớn đại lý ở bậc thấp hơn hoặc một phần được hạch toán sang phí dịch vụ quản lý hợp lệ (theo NĐ 97/2026).
+  2. Thiết kế thưởng cá nhân cực cao như Chubb Life (AR đỉnh 85.8% FYC ≈ 25.7% FYP; AL cá nhân đỉnh 109.2% FYC ≈ 32.8% FYP) cần đối chiếu cơ cấu thưởng, phí thực thu cấp danh mục và phân loại chi phí dịch vụ có chứng từ.
   3. Do đó, mọi đề xuất chính sách trong W24 phải tích hợp **Mandatory Regulatory Gate** kiểm tra cả **Điều 51 (Hoa hồng theo sản phẩm)**, **Điều 52 (Tổng thưởng đại lý ≤ 30% FYP Y1 / ≤ 7% RYP)** và **TT 96/2026 (Top-up)** ngay trong Excel Reference Model.
