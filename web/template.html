@@ -5,123 +5,138 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chiến lược Thu nhập Đại lý</title>
 <meta name="robots" content="noindex, nofollow">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#f6f7f9;--surface:#ffffff;--surface-2:#f0f2f5;--text:#1b1f24;--muted:#5b6470;--line:#dde1e6;
-  --accent:#1f6feb;--accent-soft:#e6efff;--good:#1a7f37;--good-soft:#e7f5ec;--bad:#c2261c;--bad-soft:#fdecea;
-  --warn:#9a6700;--warn-soft:#fff6db;
-  --s-plan:#1f6feb;--s-aia:#d1242f;--s-aia27:#e8828a;--s-chubb:#7c3aed;--s-mnl:#0f8a7b;--s-alt:#9aa4b2;
-  --radius:10px;--shadow:0 1px 2px rgba(16,24,40,.06),0 1px 3px rgba(16,24,40,.08);
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0f1318;--surface:#171c23;--surface-2:#1e252e;--text:#e6e9ee;--muted:#9aa4b2;--line:#2b333d;
-  --accent:#4c8dff;--accent-soft:#16253d;--good:#3fb950;--good-soft:#132a1b;--bad:#f2665c;--bad-soft:#331a18;
-  --warn:#d4a72c;--warn-soft:#2e2611;--s-plan:#4c8dff;--s-aia:#f2665c;--s-aia27:#f4a3a9;--s-chubb:#a78bfa;--s-mnl:#2dc9b4;--s-alt:#6b7684;
-  --shadow:none;}}
-:root[data-theme="dark"]{
-  --bg:#0f1318;--surface:#171c23;--surface-2:#1e252e;--text:#e6e9ee;--muted:#9aa4b2;--line:#2b333d;
-  --accent:#4c8dff;--accent-soft:#16253d;--good:#3fb950;--good-soft:#132a1b;--bad:#f2665c;--bad-soft:#331a18;
-  --warn:#d4a72c;--warn-soft:#2e2611;--s-plan:#4c8dff;--s-aia:#f2665c;--s-aia27:#f4a3a9;--s-chubb:#a78bfa;--s-mnl:#2dc9b4;--s-alt:#6b7684;--shadow:none;}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+/* VOICE work — a strategy brief for an insurance executive
+   IDEA central-bank style bulletin: finding as headline, ruled tables, one teal for the proposal
+   PICTURE two ranked bar charts on the overview (cost % FYP, agent 3-year income)
+   COLOUR white ground, ink #14161a, teal #0b5d63 for the proposal, greys for competitors, red only for failures
+   TYPE Be Vietnam Pro (Vietnamese diacritics) for headlines and text
+   LAYOUT title + finding across the top, sticky control bar, two charts side by side; stacks below 760px */
+:root{color-scheme:light dark;
+  --bg:light-dark(#ffffff,#0d1416);--surface:light-dark(#ffffff,#121c1f);--tint:light-dark(#f3f6f6,#172327);
+  --ink:light-dark(#14161a,#e8eeee);--muted:light-dark(#4f5862,#a7b3b6);--line:light-dark(#dfe4e6,#26353a);
+  --accent:light-dark(#0b5d63,#4fc1c4);--accent-ink:light-dark(#ffffff,#0d1416);--accent-soft:light-dark(#e3f1f1,#123236);
+  --comp:light-dark(#5c6670,#8d9aa0);--alt:light-dark(#b9c2c7,#4a585d);
+  --good:light-dark(#1b7a3d,#5fd08a);--good-soft:light-dark(#e6f4ea,#14301f);--bad:light-dark(#b42318,#f97066);--bad-soft:light-dark(#fdecea,#3a1714);
+  --warn:light-dark(#8a5a00,#e6b450);--warn-soft:light-dark(#fff4d6,#33280f);
+  --s-plan:var(--accent);--s-aia:light-dark(#b42318,#f97066);--s-aia27:light-dark(#e08a83,#f4a8a1);--s-chubb:light-dark(#5b3fb0,#a996f5);--s-mnl:light-dark(#8a5a00,#e6b450);--s-alt:var(--alt)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Be Vietnam Pro",system-ui,"Segoe UI",Roboto,Arial,sans-serif;overflow-x:clip}
 a{color:var(--accent)}
-.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
-header.top{padding:22px 0 10px}
-h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
-h2{font-size:18px;margin:0 0 10px}
-h3{font-size:15px;margin:14px 0 6px}
-.sub{color:var(--muted);margin:0}
-.req{margin:12px 0 0;padding:10px 14px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:6px}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:3px 9px;border-radius:999px;background:var(--surface-2);color:var(--muted);border:1px solid var(--line)}
-.badge.good{background:var(--good-soft);color:var(--good);border-color:transparent}
-.badge.bad{background:var(--bad-soft);color:var(--bad);border-color:transparent}
-.badge.warn{background:var(--warn-soft);color:var(--warn);border-color:transparent}
-.controls{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding:10px 0}
-.ctl-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.ctl{display:flex;flex-direction:column;gap:4px}
-.ctl label,.lbl{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(5vw,16px,env(safe-area-inset-left,0px));padding-right:max(5vw,16px,env(safe-area-inset-right,0px))}
+header.top{padding-block:28px 14px}
+h1{font:700 clamp(30px,4vw,44px)/1.08 "Be Vietnam Pro",system-ui,sans-serif;letter-spacing:-.02em;margin:0 0 10px;max-width:22ch}
+h2{font:700 22px/1.25 "Be Vietnam Pro",system-ui,sans-serif;letter-spacing:-.01em;margin:0 0 12px}
+h3{font-size:16px;font-weight:600;margin:18px 0 8px}
+.sub{color:var(--muted);margin:0;max-width:70ch}
+.req{margin:14px 0 0;padding:12px 16px;background:var(--tint);border-left:3px solid var(--accent);max-width:90ch}
+.controls{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-block:1px solid var(--line);padding-block:10px}
+.ctl-row{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end}
+.ctl{display:flex;flex-direction:column;gap:5px}
+.ctl label,.lbl{font-size:13px;color:var(--muted);font-weight:500}
 .seg{display:flex;flex-wrap:wrap;gap:4px}
-.seg button{font:inherit;font-size:13px;padding:5px 10px;border-radius:7px;border:1px solid var(--line);background:var(--surface);color:var(--text);cursor:pointer}
-.seg button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
-input[type=range]{width:180px;accent-color:var(--accent)}
-.k2v{font-variant-numeric:tabular-nums;font-weight:700}
-nav.tabs{display:flex;gap:2px;flex-wrap:wrap;margin:14px 0 0}
-nav.tabs button{font:inherit;font-size:14px;padding:8px 12px;border:0;background:transparent;color:var(--muted);border-bottom:2px solid transparent;cursor:pointer}
-nav.tabs button[aria-selected="true"]{color:var(--text);border-bottom-color:var(--accent);font-weight:600}
-section.panel{display:none;padding:16px 0 40px}
+.seg button,.btn{font:inherit;font-size:14px;min-height:38px;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.seg button:hover,.btn:hover{border-color:var(--accent)}
+.seg button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn:focus-visible,.seg button:focus-visible,nav.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+input[type=range]{width:220px;accent-color:var(--accent);height:28px}
+.k2v{font-variant-numeric:tabular-nums;font-weight:700;color:var(--ink)}
+.reset{margin-left:auto}
+nav.tabs{display:flex;gap:4px;flex-wrap:wrap;margin-top:10px}
+nav.tabs button{font:inherit;font-size:15px;padding:8px 12px;border:0;background:transparent;color:var(--muted);border-bottom:2px solid transparent;cursor:pointer}
+nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
+section.panel{display:none;padding-block:20px 8px}
 section.panel.on{display:block}
-.grid{display:grid;gap:12px}
+.grid{display:grid;gap:16px}
 .g2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .g3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
-@media (max-width:860px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g2{grid-template-columns:1fr}}
-@media (max-width:520px){.g3,.g4{grid-template-columns:1fr}input[type=range]{width:140px}}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);min-width:0}
-.kpi .v{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums}
-.kpi .d{font-size:13px;color:var(--muted)}
-.verdict{display:flex;gap:10px;align-items:flex-start}
-.verdict .ic{font-size:20px;line-height:1}
-.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
-table{border-collapse:collapse;width:100%;font-size:13.5px}
-th,td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-th{background:var(--surface-2);font-weight:600;white-space:nowrap;position:sticky;top:0}
+@media (max-width:900px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.g2{grid-template-columns:1fr}.reset{margin-left:0}}
+@media (max-width:520px){.g3,.g4{grid-template-columns:1fr}input[type=range]{width:100%}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
+.finding{font:700 clamp(22px,2.6vw,30px)/1.22 "Be Vietnam Pro",system-ui,sans-serif;letter-spacing:-.01em;margin:0 0 6px;max-width:40ch}
+.kpi .v{font-size:30px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.kpi .d{font-size:14px;color:var(--muted)}
+.bars{display:grid;gap:8px}
+.brow{display:grid;grid-template-columns:minmax(7em,10.5em) minmax(0,1fr) 4.6em;gap:10px;align-items:center;font-size:14px}
+.brow .track{height:22px;background:var(--tint);border-radius:4px;overflow:hidden}
+.brow .fill{height:100%;background:var(--comp);border-radius:4px}
+.brow.me .fill{background:var(--accent)}.brow.alt .fill{background:var(--alt)}
+.brow.me .nm{font-weight:700}.brow .val{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+.checks li{display:flex;gap:10px;align-items:baseline}
+.ok{color:var(--good);font-weight:700}.no{color:var(--bad);font-weight:700}.cond{color:var(--warn);font-weight:700}
+.verdicts{display:grid;gap:0;border-top:1px solid var(--line)}
+.verdicts>div{display:grid;grid-template-columns:9em minmax(0,1fr);gap:16px;padding-block:12px;border-bottom:1px solid var(--line)}
+@media (max-width:520px){.verdicts>div{grid-template-columns:1fr;gap:2px}}
+.badges{display:flex;flex-wrap:wrap;gap:6px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;padding:3px 9px;border-radius:999px;background:var(--tint);color:var(--muted)}
+.badge.good{background:var(--good-soft);color:var(--good)}.badge.bad{background:var(--bad-soft);color:var(--bad)}.badge.warn{background:var(--warn-soft);color:var(--warn)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--tint);font-weight:600}
 td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 tr.plan td{background:var(--accent-soft)}
-.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
-.ev{display:inline-block;font-size:12px;padding:1px 7px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line);text-decoration:none;color:var(--text);margin:1px 3px 1px 0;white-space:nowrap}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.ev{display:inline-block;font-size:13px;padding:2px 8px;border-radius:6px;background:var(--tint);border:1px solid var(--line);text-decoration:none;color:var(--ink);margin:2px 4px 2px 0;white-space:nowrap}
 .ev:hover{border-color:var(--accent)}
-.muted{color:var(--muted)}
-.small{font-size:12.5px}
-.tag{font-size:11px;font-weight:700;padding:1px 6px;border-radius:5px;letter-spacing:.02em}
+.muted{color:var(--muted)}.small{font-size:13.5px}
+.tag{font-size:12px;font-weight:700;padding:2px 7px;border-radius:5px}
 .tag.ADOPT{background:var(--good-soft);color:var(--good)}.tag.ADAPT{background:var(--accent-soft);color:var(--accent)}
 .tag.AVOID{background:var(--bad-soft);color:var(--bad)}.tag.INVESTIGATE,.tag.UNKNOWN{background:var(--warn-soft);color:var(--warn)}
 .chart{width:100%;height:auto;display:block}
-.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--muted);margin-top:6px}
-.sliders{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px 18px}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:13.5px;color:var(--muted);margin-top:6px}
+.sliders{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px 20px}
 .sl{display:flex;flex-direction:column;gap:2px}
-.sl .row{display:flex;justify-content:space-between;font-size:13px}
+.sl .row{display:flex;justify-content:space-between;gap:10px;font-size:14px}
 .sl input{width:100%}
-.note{font-size:13px;color:var(--muted);border-top:1px dashed var(--line);margin-top:10px;padding-top:8px}
+.note{font-size:14px;color:var(--muted);border-top:1px solid var(--line);margin-top:14px;padding-top:10px;max-width:100ch}
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
-.filters input,.filters select{font:inherit;font-size:13px;padding:6px 9px;border-radius:7px;border:1px solid var(--line);background:var(--surface);color:var(--text)}
-.bar{height:8px;border-radius:4px;background:var(--surface-2);overflow:hidden}
+.filters input,.filters select,input[type=number]{font:inherit;font-size:16px;padding:7px 10px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.bar{height:6px;border-radius:3px;background:var(--tint);overflow:hidden;margin-top:4px}
 .bar>i{display:block;height:100%;background:var(--accent)}
 .score{font-weight:700;font-variant-numeric:tabular-nums}
-.win{outline:2px solid var(--good);outline-offset:-2px}
-footer{color:var(--muted);font-size:12.5px;padding:20px 0 40px;border-top:1px solid var(--line)}
-.themebtn{float:right;font:inherit;font-size:12px;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:7px;padding:4px 8px;cursor:pointer}
+.win{box-shadow:inset 0 0 0 2px var(--good)}
+.pkg td{min-width:15em}.pk{padding-block:6px}.pk+.pk{border-top:1px dashed var(--line)}td.plancol{background:var(--accent-soft)}
+.callout{padding:12px 16px;border-radius:10px;background:var(--tint);margin:0 0 16px}
+footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1px solid var(--line);margin-top:24px}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header class="top">
-  <button class="themebtn" id="themeBtn" type="button">Sáng/Tối</button>
-  <h1>Chiến lược Thu nhập Đại lý BHNT tại Việt Nam</h1>
-  <p class="sub">So sánh chính sách 2026 của AIA (kênh Alpha), Chubb Life và Manulife (tầng lãnh đạo vùng), và đề xuất chính sách phù hợp.</p>
-  <div class="req"><b>Đề bài (chị Nhi):</b> “Phân tích các chính sách thu nhập giữa các công ty, và đề xuất chính sách phù hợp tại thị trường VN, nhằm thúc đẩy gia tăng doanh số, chất lượng kinh doanh và hiệu quả về mặt chi phí (ROI).”</div>
-  <div class="badges" id="topBadges"></div>
+  <h1>Chính sách thu nhập đại lý: trả ngang thị trường, chi phí thấp hơn</h1>
+  <p class="sub">So sánh chính sách 2026 của AIA (kênh Alpha), Chubb Life và Manulife (tầng lãnh đạo vùng), và đề xuất phương án Song Hành cho thị trường Việt Nam.</p>
+  <div class="req"><b>Đề bài:</b> “Phân tích các chính sách thu nhập giữa các công ty, và đề xuất chính sách phù hợp tại thị trường VN, nhằm thúc đẩy gia tăng doanh số, chất lượng kinh doanh và hiệu quả về mặt chi phí (ROI).”</div>
 </header>
 </div>
 
 <div class="controls"><div class="wrap">
   <div class="ctl-row">
-    <div class="ctl"><label>Phương án</label><div class="seg" id="planSeg"></div></div>
-    <div class="ctl"><label for="k2">Kịch bản K2 (tỷ lệ duy trì HĐ năm 2): <span class="k2v" id="k2v"></span></label>
+    <div class="ctl"><span class="lbl">Phương án</span><div class="seg" id="planSeg"></div></div>
+    <div class="ctl"><label for="k2">Kịch bản K2 (tỷ lệ duy trì hợp đồng năm 2): <span class="k2v" id="k2v"></span></label>
       <input type="range" id="k2" min="50" max="95" step="1" value="82"></div>
+    <button type="button" class="btn reset" id="resetAll">↺ Về mặc định</button>
   </div>
   <nav class="tabs" id="tabs" role="tablist"></nav>
 </div></div>
 
 <div class="wrap">
 <section class="panel on" id="p-overview"></section>
+<section class="panel" id="p-package"></section>
 <section class="panel" id="p-tiers"></section>
 <section class="panel" id="p-cost"></section>
 <section class="panel" id="p-rubric"></section>
 <section class="panel" id="p-tune"></section>
 <section class="panel" id="p-compare"></section>
-<section class="panel" id="p-method"></section>
 <section class="panel" id="p-evidence"></section>
+<section class="panel" id="p-method"></section>
 <section class="panel" id="p-assume"></section>
 <footer id="foot"></footer>
 </div>
@@ -139,15 +154,14 @@ const $ = id => document.getElementById(id);
 
 /* ---------- Trạng thái ---------- */
 const PLAN_META = {
-  song_hanh: {name: "Song Hành", star: true, desc: "Khuyến nghị: ở K2 tốt (~75–90%) không tầng nào bị trả thấp nhất thị trường; thưởng tái tục 50% (ngang AIA), trả chậm 3 năm ở tầng quản lý và vùng; chi phí vẫn thấp hơn AIA và Chubb nhờ cấu trúc (gắn K2, cắt chuỗi gián tiếp, không phí cố định cao)."},
-  can_bang: {name: "Cân bằng (tiết kiệm)", desc: "Chi phí thấp nhất, nhưng mọi tầng đều bị trả thấp hơn đối thủ: rủi ro mất đại lý và quản lý giỏi."},
-  theo_chat: {name: "Thưởng Theo Chất", desc: "Biến thể của Song Hành siết chất lượng: sàn K2 65% (dưới mức này thưởng = 0), giữ T+1 dưới 70%, thưởng tháng thấp hơn 8%. Rẻ hơn khi K2 xấu nhưng có “vách đá” thu nhập."},
-  custom: {name: "Tự chỉnh", desc: "Bắt đầu từ Song Hành; kéo thông số ở tab “Tự chỉnh thông số”."}
+  song_hanh: {name: "Song Hành", star: true, desc: "Đề xuất. Ở K2 tốt (khoảng 75–90%) không tầng nào bị trả thấp hơn đối thủ trả thấp nhất; thưởng tái tục 50% như AIA; trả chậm 3 năm ở tầng quản lý và vùng. Chi phí thấp hơn nhờ cấu trúc: thưởng gắn K2, cắt chuỗi gián tiếp nhiều tầng, không phí cố định cao."},
+  theo_chat: {name: "Song Hành siết K2", desc: "Biến thể của Song Hành, chỉ khác một điểm chính: sàn K2 65% (dưới mức này không có thưởng), giữ T+1 khi K2 dưới 70%, thưởng tháng thấp hơn 8%. Rẻ hơn khi K2 xấu, đổi lại thu nhập đại lý rơi đột ngột quanh ngưỡng 65%."},
+  can_bang: {name: "Tiết kiệm tối đa", desc: "Phương án ban đầu. Chi phí thấp nhất, nhưng mọi tầng đều bị trả thấp hơn đối thủ: rủi ro mất đại lý và quản lý giỏi. Dùng làm mốc so sánh."},
+  custom: {name: "Tự chỉnh", desc: "Bắt đầu từ Song Hành; kéo thông số ở tab “Tự chỉnh”."}
 };
 const state = {plan: "song_hanh", k2: 82, tab: "overview", tier: "agent",
   custom: JSON.parse(JSON.stringify(DATA.plans.song_hanh)),
   weightsPreset: "ttbv", weights: {G: 30, Q: 25, R: 25, P: 10, I: 10}, margin: 85, opex: 20, avgIncome: null};
-try { const t = localStorage.getItem("w24-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
 
 const params = key => key === "custom" ? state.custom : DATA.plans[key];
 const comp = (s, k2) => DATA.competitors.enterprise[s][String(k2)];
@@ -280,35 +294,118 @@ function lineChart(series, opt) {
 }
 
 /* ---------- Các tab ---------- */
-const TABS = [["overview", "Tổng quan"], ["tiers", "Thu nhập theo tầng"], ["cost", "Chi phí & ROI"], ["rubric", "Chấm điểm"],
-  ["tune", "Tự chỉnh thông số"], ["compare", "So sánh cơ chế"], ["method", "Cách tính"], ["evidence", "Bằng chứng"], ["assume", "Giả định & giới hạn"]];
+const TABS = [["overview", "Tổng quan", ["p-overview"]], ["package", "Gói thu nhập theo cấp", ["p-package"]], ["money", "Thu nhập & chi phí", ["p-tiers", "p-cost"]],
+  ["rubric", "Chấm điểm", ["p-rubric"]], ["tune", "Tự chỉnh", ["p-tune"]],
+  ["evidence", "Cơ chế & bằng chứng", ["p-compare", "p-evidence"]], ["method", "Cách tính & giả định", ["p-method", "p-assume"]]];
 
+function barRows(items, unit, digits) {
+  const max = Math.max(...items.map(i => i.v)) || 1;
+  return `<div class="bars">${items.map(i => `<div class="brow ${i.cls || ""}"><span class="nm">${esc(i.name)}</span><span class="track"><span class="fill" style="display:block;width:${Math.max(1, i.v / max * 100)}%"></span></span><span class="val">${fmt(i.v, digits)}${unit}</span></div>`).join("")}</div>`;
+}
 function renderOverview() {
   const k2 = state.k2, key = state.plan, e = planEnt(key, k2), aia = comp("AIA_Alpha_2026", k2), chb = comp("Chubb_Agency_2026", k2);
   const ag = planAgent(key, k2, 15).total_3y, agA = agentComp("AIA", k2, 15).total_3y, agC = agentComp("CHUBB", k2, 15).total_3y;
-  const cons = constraints(key, k2), sc = scoreAll(k2), rank = sc.totals.slice().sort((a, b) => b.total - a.total);
-  const me = sc.totals.find(t => t.e.key === key);
-  const v = (ok, t, d) => `<div class="card verdict"><div class="ic">${ok ? "✅" : "⚠️"}</div><div><b>${t}</b><div class="small muted">${d}</div></div></div>`;
+  const cons = constraints(key, k2), sc = scoreAll(k2), rank = sc.totals.slice().sort((a, b) => b.total - a.total), me = sc.totals.find(t => t.e.key === key);
+  const plans = ["song_hanh", "theo_chat", "can_bang"].concat(key === "custom" ? ["custom"] : []);
+  const cls = p => p === key ? "me" : "alt";
+  const costItems = [{name: "AIA Alpha 2026", v: aia.earned_pct_fyp}, {name: "Chubb Life 2026", v: chb.earned_pct_fyp}]
+    .concat(plans.map(p => ({name: PLAN_META[p].name, v: planEnt(p, k2).earned_pct_fyp, cls: cls(p)}))).sort((x, y) => y.v - x.v);
+  const incItems = [{name: "AIA Alpha 2026", v: agA}, {name: "Chubb Life 2026", v: agC}]
+    .concat(plans.map(p => ({name: PLAN_META[p].name, v: planAgent(p, k2, 15).total_3y, cls: cls(p)}))).sort((x, y) => y.v - x.v);
+  const dA = aia.earned_pct_fyp - e.earned_pct_fyp;
+  const close = rank[0].e.key !== key
+    ? `<p class="small muted">Theo rubric (góc nhìn “${esc(PRESETS[state.weightsPreset].name)}”), ${esc(rank[0].e.name)} được ${fmt(rank[0].total, 2)} điểm, ${esc(PLAN_META[key].name)} được ${fmt(me.total, 2)}. Chênh lệch nhỏ, chủ yếu do sàn K2 — xem tab Chấm điểm.</p>` : "";
   $("p-overview").innerHTML = `
-  <div class="card" style="margin-bottom:12px"><div class="lbl">Phương án đang xem</div>
-    <h2 style="margin:4px 0">${esc(PLAN_META[key].name)}${PLAN_META[key].star ? " ⭐ <span class='badge warn'>Khuyến nghị — chờ TJ duyệt</span>" : ""}</h2>
-    <div class="muted">${esc(PLAN_META[key].desc)}</div></div>
-  ${rank[0].e.key !== key ? `<div class="card" style="margin-bottom:12px;border-color:var(--warn)"><b>⚠️ Theo rubric ở góc nhìn “${esc(PRESETS[state.weightsPreset].name)}”, phương án dẫn đầu là ${esc(rank[0].e.name)} (${fmt(rank[0].total, 2)} điểm), ${esc(PLAN_META[key].name)} xếp ${rank.findIndex(t => t.e.key === key) + 1} (${fmt(me.total, 2)}).</b><div class="small muted">Chênh lệch nhỏ và phụ thuộc trọng số — xem tab Chấm điểm để thấy phương án nào thắng ở tiêu chí nào.</div></div>` : ""}
-  <h2>Trả lời 3 vế của đề bài (K2 = ${k2}%)</h2>
-  <div class="grid g3">
-    ${v(ag >= Math.min(agA, agC), "Doanh số: thu nhập đại lý", `Đại lý trung bình nhận ${fmt(ag)}tr trong 3 năm — AIA ${fmt(agA)}tr, Chubb ${fmt(agC)}tr. Thu nhập không thấp hơn đối thủ thì mới giữ và tuyển được đại lý.`)}
-    ${v(me.byP.Q >= 3, "Chất lượng: thưởng gắn K2", `Điểm trụ Chất lượng ${fmt(me.byP.Q, 2)}/5. Đại lý trung bình nhận thêm ${fmt(planAgent(key, 85, 15).total_3y - planAgent(key, 60, 15).total_3y)}tr nếu K2 85% thay vì 60%.`)}
-    ${v(e.earned_pct_fyp < aia.earned_pct_fyp, "Chi phí & ROI", `Tổng chi phí ${pct(e.earned_pct_fyp)} FYP — AIA ${pct(aia.earned_pct_fyp)}, Chubb ${pct(chb.earned_pct_fyp)}. Hòa vốn cần biên gộp ${pct(e.breakeven_gross_margin_pct)} (OpEx giả định ${state.opex}%).`)}
+  <p class="finding">${esc(PLAN_META[key].name)}: chi phí ${pct(e.earned_pct_fyp)} FYP, ${dA >= 0 ? "thấp hơn AIA " + fmt(dA, 1) : "cao hơn AIA " + fmt(-dA, 1)} điểm; đại lý trung bình nhận ${fmt(ag)} triệu trong 3 năm (AIA ${fmt(agA)}, Chubb ${fmt(agC)}).</p>
+  <p class="muted" style="max-width:90ch;margin:0 0 18px">${esc(PLAN_META[key].desc)}</p>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">Tổng chi phí phân phối, % FYP (K2 ${k2}%)</h3>${barRows(costItems, "%", 1)}<p class="small muted" style="margin-bottom:0">Thấp hơn là tốt hơn. AIA chưa gồm gói Exchange/Exchange Pro.</p></div>
+    <div class="card"><h3 style="margin-top:0">Thu nhập 3 năm của đại lý trung bình, triệu VND</h3>${barRows(incItems, "", 0)}<p class="small muted" style="margin-bottom:0">Đại lý 15 triệu FYC/tháng, gồm hoa hồng, tái tục và thưởng. Manulife không có tài liệu tầng đại lý.</p></div>
   </div>
-  <h3>Điều kiện ràng buộc</h3>
-  <div class="badges">${cons.map(c => `<span class="badge ${c.ok ? (c.cond ? "warn" : "good") : "bad"}">${c.ok ? "✓" : "✗"} ${esc(c.txt)}</span>`).join("")}</div>
-  <div class="grid g4" style="margin-top:12px">
-    <div class="card kpi"><div class="lbl">Tổng chi phí</div><div class="v">${pct(e.earned_pct_fyp)}</div><div class="d">FYP · AIA ${pct(aia.earned_pct_fyp)}</div></div>
-    <div class="card kpi"><div class="lbl">Tiền mặt năm 1</div><div class="v">${pct(e.cash_y1_pct_fyp)}</div><div class="d">FYP · phần còn lại trả chậm</div></div>
-    <div class="card kpi"><div class="lbl">Chi phí / phí còn sống năm 2</div><div class="v">${pct(e.cost_per_persisted_y2_pct)}</div><div class="d">AIA ${pct(aia.cost_per_persisted_y2_pct)} · Chubb ${pct(chb.cost_per_persisted_y2_pct)}</div></div>
-    <div class="card kpi"><div class="lbl">Điểm rubric</div><div class="v">${fmt(me.total, 2)}/5</div><div class="d">Xếp ${rank.findIndex(t => t.e.key === key) + 1}/${rank.length} · góc nhìn “${esc(PRESETS[state.weightsPreset].name)}”</div></div>
+  <h2 style="margin-top:28px">Trả lời 3 vế của đề bài</h2>
+  <div class="verdicts">
+    <div><b>Doanh số</b><span>Đại lý trung bình nhận ${fmt(ag)} triệu trong 3 năm, ${ag >= Math.min(agA, agC) - 0.5 ? "không thấp hơn đối thủ trả thấp nhất" : "<span class='no'>thấp hơn cả hai đối thủ</span>"}. Quản lý trực tiếp nhận ${fmt(e.role_mgr_direct_earned)} triệu/năm (AIA ${fmt(aia.role_mgr_direct_earned)}, Chubb ${fmt(chb.role_mgr_direct_earned)}). Trả ngang thị trường là điều kiện để giữ và tuyển được người.</span></div>
+    <div><b>Chất lượng</b><span>Thưởng nhân theo K2 và về 0 dưới sàn ${params(key).k2_hard_floor_pct}%. Đại lý trung bình nhận thêm ${fmt(planAgent(key, 85, 15).total_3y - planAgent(key, 60, 15).total_3y)} triệu nếu giữ K2 85% thay vì 60%. Áp dụng thêm cơ chế chống trục lợi của Chubb: giữ T+1, phí âm khi hủy, không trả hoa hồng phí đóng thêm.</span></div>
+    <div><b>Chi phí & ROI</b><span>Tổng chi phí ${pct(e.earned_pct_fyp)} FYP (AIA ${pct(aia.earned_pct_fyp)}, Chubb ${pct(chb.earned_pct_fyp)}); tiền mặt năm 1 ${pct(e.cash_y1_pct_fyp)}; chi phí trên mỗi đồng phí còn sống năm 2 là ${pct(e.cost_per_persisted_y2_pct)}. Đây là chi phí mô phỏng, không phải ROI thực tế — tab Thu nhập & chi phí cho phép nhập biên lợi nhuận thật.</span></div>
   </div>
-  <p class="note">Mọi con số là <b>mô phỏng</b> trên một vùng chuẩn 12 tỷ FYP/năm (20 đại lý × 15tr FYC/tháng, 4 quản lý, 1 lãnh đạo vùng), không phải ROI thực tế. Chi phí AIA chưa gồm gói trợ cấp Exchange/Exchange Pro (thiếu tài liệu). Manulife chỉ có tài liệu tầng lãnh đạo vùng.</p>`;
+  <div class="grid g2" style="margin-top:20px">
+    <div><h3 style="margin-top:0">Điều kiện tự đặt cho phương án</h3><ul class="checks">${cons.map(c => `<li><span class="${c.ok ? (c.cond ? "cond" : "ok") : "no"}">${c.ok ? "✓" : "✗"}</span><span>${esc(c.txt)}</span></li>`).join("")}</ul></div>
+    <div><h3 style="margin-top:0">Điểm rubric: ${fmt(me.total, 2)}/5, xếp ${rank.findIndex(t => t.e.key === key) + 1}/${rank.length}</h3>${close}<p class="small muted">Mọi con số là mô phỏng trên một vùng chuẩn 12 tỷ FYP/năm (20 đại lý × 15 triệu FYC/tháng, 4 quản lý, 1 lãnh đạo vùng). Pháp lý: CONDITIONAL, chờ đối chiếu toàn văn 44/2026/VBHN-TT-BTC.</p></div>
+  </div>`;
+}
+
+const CATS = [["A_Direct_Commission", "Hoa hồng"], ["B_Fixed_Base_Allowance", "Trợ cấp, phí cố định"], ["C_Activation_Onboarding", "Kích hoạt, đại lý mới"],
+  ["D_Short_Term_Production", "Thưởng doanh số tháng / quý / năm, danh hiệu"], ["E_Quality_Persistency", "Thưởng chất lượng, tái tục"],
+  ["F_Management_Override_Recruit", "Phí quản lý, tuyển dụng, override"], ["G_Long_Term_Deferred", "Trả chậm dài hạn, thâm niên"],
+  ["H_Non_Cash_Benefits", "Phúc lợi phi tiền mặt, vinh danh"]];
+const PKG_TIERS = {agent: "Đại lý cá nhân", mgr: "Quản lý trực tiếp", ind: "Quản lý gián tiếp (cấp 1–3)", leader: "Lãnh đạo vùng"};
+const ROLE_TIER = {agent: ["Tier_1"], mgr: ["Tier_2"], ind: ["Tier_2"], leader: ["Tier_3"]};
+const pctx = v => fmt(v * 100, 1) + "%";
+function proposalComponents(tier, p) {
+  const t = p.agent_m_tier_thresholds, r = p.agent_m_tier_rates;
+  const C = (cat, name, rate, cond, timing) => ({cat, name, rate, cond, timing});
+  if (tier === "agent") return [
+    C("A_Direct_Commission", "Hoa hồng sản phẩm", "UL/ILP năm 1 25–30% theo hệ số bảo vệ; năm 2 20%; năm 3+ 10%; phí đóng thêm 0%", "Theo trần Điều 51 (CONDITIONAL)", "Hàng tháng"),
+    C("C_Activation_Onboarding", "Gói kích hoạt M1–M6", "1,5tr tiền mặt + 1,5tr giữ đến tháng 12, tối đa 18tr", "Tháng 1–6 có ≥ 8tr FYC; xác nhận hợp đồng ≤ 15 ngày, qua 21 ngày cân nhắc", "Giữ một nửa đến M12"),
+    C("D_Short_Term_Production", "Thưởng tháng 5 bậc", t.map((x, i) => "≥ " + x + "tr: " + pctx(r[i])).join(" · ") + " FYC × hệ số K2", "Hệ số K2: ≥85% 1,2 · ≥80% 1,1 · ≥75% 1,0 · ≥70% 0,85 · ≥" + p.k2_hard_floor_pct + "% 0,6 · thấp hơn 0", "Hàng tháng; giữ T+1 nếu K2 < " + p.k2_holdback_t1_threshold + "%"),
+    C("D_Short_Term_Production", "Thưởng đều đặn quý", "+" + pctx(p.agent_q_consistency_3m) + " tổng thưởng tháng của quý", "Cả 3 tháng trong quý ≥ 4tr FYC", "Hàng quý"),
+    C("D_Short_Term_Production", "Thưởng năm (mức MDRT)", "+" + pctx(p.agent_annual_mdrt_rate) + " FYC năm × hệ số K2", "FYC năm ≥ 400tr", "30% trả chậm sang năm 2, cần K2 ≥ 75%"),
+    C("E_Quality_Persistency", "Thưởng tái tục", "+" + pctx(p.agent_ryc_bonus_rate) + " hoa hồng tái tục", "K2 ≥ 75%", "Hàng năm"),
+    C("H_Non_Cash_Benefits", "Phúc lợi phi tiền mặt, vinh danh", "Chưa thiết kế trong đề xuất", "Đề nghị giữ danh hiệu kiểu “Ngoại hạng” và gói sức khỏe như AIA ở bước 2", "—")];
+  if (tier === "mgr") return [
+    C("F_Management_Override_Recruit", "Override nhóm trực tiếp", pctx(p.mgr_direct_base_rate) + " FYC nhóm × hệ số K2, trần " + pctx(p.mgr_direct_max_rate), "Phí âm đối xứng khi hợp đồng của nhóm bị hủy", "Hàng tháng"),
+    C("F_Management_Override_Recruit", "Phí tuyển dụng, nhân bản UM", "10% FYC người mới (50% giữ đến M12); +100% cho UM mới 12 tháng, trần 15tr/tháng", "K2 nhóm ≥ 75% (chưa đưa vào mô hình chi phí)", "Hàng tháng"),
+    C("G_Long_Term_Deferred", "Thưởng giữ chân 3 năm", pctx(p.mgr_deferred_3y_rate) + " FYC nhóm/năm", "K2 nhóm ≥ 75% ở mỗi kỳ trả", "Trả 30% / 30% / 40% trong 3 năm sau"),
+    C("E_Quality_Persistency", "Thưởng tái tục nhóm", "+15% RYC nhóm", "K2 nhóm ≥ 70% (chưa đưa vào mô hình chi phí)", "Hàng năm")];
+  if (tier === "ind") return [
+    C("F_Management_Override_Recruit", "Override gián tiếp tối đa 3 cấp", "Cấp 1 " + pctx(p.mgr_indirect_l1_rate) + " · cấp 2 " + pctx(p.mgr_indirect_l1_rate / 2) + " · cấp 3 " + pctx(p.mgr_indirect_l1_rate / 4) + " phí của quản lý cấp dưới", "Khóa về 0 nếu FYC nhóm trực tiếp của chính mình < 15tr/tháng; trần 70% từ một nhánh", "Hàng tháng")];
+  return [
+    C("B_Fixed_Base_Allowance", "Phí cơ bản theo KPI", fmt(p.rd_base_monthly, 1) + "tr/tháng × mức hoàn thành FYP × 125%, sàn 30% trần 140%", "Có biên bản nghiệm thu dịch vụ, ≥ 3 lớp đào tạo/tháng", "Hàng tháng"),
+    C("F_Management_Override_Recruit", "Override vùng", pctx(p.rd_direct_fyc_rate) + " FYC vùng × hệ số K2 (+ gián tiếp 40%, tối đa 2 cấp)", "K2 vùng", "Hàng tháng"),
+    C("G_Long_Term_Deferred", "Hợp tác dài hạn 3 năm", pctx(p.rd_deferred_3y_share) + " phần override, thêm vào gói", "K2 vùng ≥ 75% ở mỗi kỳ trả; cho chuyển đổi cá nhân ↔ hộ kinh doanh", "Trả 30% / 30% / 40%")];
+}
+function renderPackage() {
+  const k2 = state.k2, key = state.plan, tier = state.pkgTier || "agent", p = params(key), K = DATA.knowledge;
+  const cos = [["AIA", "AIA Alpha 2026"], ["Chubb", "Chubb Life 2026"], ["Manulife", "Manulife (PSM+/HKD)"], ["PLAN", PLAN_META[key].name]];
+  const comps = K.rewards.filter(r => r.tier === tier);
+  const mine = proposalComponents(tier, p);
+  const cell = (co, cat) => {
+    if (co === "PLAN") {
+      const xs = mine.filter(m => m.cat === cat);
+      return xs.map(m => `<div class="pk"><b>${esc(m.name)}</b><div>${esc(m.rate)}</div><div class="small muted">Điều kiện: ${esc(m.cond)}</div><div class="small muted">Trả: ${esc(m.timing)}</div></div>`).join("") || "<span class='muted small'>—</span>";
+    }
+    const xs = comps.filter(r => r.Company.startsWith(co) && r.Category_A_to_H === cat);
+    if (!xs.length) return co === "Manulife" && tier !== "leader" ? "<span class='muted small'>❓ chưa có tài liệu</span>" : "<span class='muted small'>—</span>";
+    return xs.map(r => {
+      const gates = [["K2/chất lượng", r.Quality_Persistency_Gate], ["Chấm công", r.Activity_Attendance_Gate], ["Đào tạo", r.Training_Compliance_Gate]]
+        .filter(g => g[1] && !/^(none|n\/a)$/i.test(g[1].trim())).map(g => g[0] + ": " + g[1]).join(" · ");
+      const ids = (r.Rule_ID_Link || "").split(/[|,;\s]+/).filter(x => /^[A-Z]{3}-[A-Z]{2}-\d{3}/.test(x));
+      return `<div class="pk"><b>${esc(r.Component_Name_VN)}</b><div>${esc(r.Rate_Or_Amount_Summary)}</div>
+        <div class="small muted">Điều kiện: ${esc(r.Eligibility_Conditions)}${r.Threshold_Minimum && r.Threshold_Minimum !== "0" ? " · Ngưỡng: " + esc(r.Threshold_Minimum) : ""}${r.Cap_Maximum && r.Cap_Maximum !== "N/A" ? " · Trần: " + esc(r.Cap_Maximum) : ""}</div>
+        ${gates ? `<div class="small muted">${esc(gates)}</div>` : ""}
+        <div class="small muted">Kỳ xét: ${esc(r.Measurement_Period)} · Trả: ${esc(r.Payment_Timing)}${r.Vesting_Schedule && !/^immediate$/i.test(r.Vesting_Schedule) ? " · " + esc(r.Vesting_Schedule) : ""}</div>
+        ${r.Clawback_Recovery_Rule && !/^none$/i.test(r.Clawback_Recovery_Rule) ? `<div class="small muted">Thu hồi: ${esc(r.Clawback_Recovery_Rule)}</div>` : ""}
+        <div>${ids.map(ruleChip).join("")}</div></div>`;
+    }).join("");
+  };
+  const cats = CATS.filter(([c]) => comps.some(r => r.Category_A_to_H === c) || mine.some(m => m.cat === c));
+  const a = comp("AIA_Alpha_2026", k2), c = comp("Chubb_Agency_2026", k2), e = planEnt(key, k2), m = mnlLeader(k2);
+  const tot = {agent: [a.role_agent_earned, c.role_agent_earned, null, e.role_agent_earned], mgr: [a.role_mgr_direct_earned, c.role_mgr_direct_earned, null, e.role_mgr_direct_earned],
+    ind: [a.role_mgr_indirect_extra, c.role_mgr_indirect_extra, null, e.role_mgr_indirect_extra], leader: [a.role_leader_earned, c.role_leader_earned, m.leader_earned, e.role_leader_earned]}[tier];
+  const roles = K.roles.filter(r => ROLE_TIER[tier].some(t => r.Functional_Tier.startsWith(t)));
+  $("p-package").innerHTML = `
+  <h2>Gói thu nhập theo cấp: ${esc(PKG_TIERS[tier])}</h2>
+  <div class="seg" id="pkgSeg" style="margin-bottom:14px">${Object.entries(PKG_TIERS).map(([k, n]) => `<button type="button" data-t="${k}" aria-pressed="${tier === k}">${n}</button>`).join("")}</div>
+  <div class="tbl-wrap"><table class="pkg"><thead><tr><th style="min-width:11em">Loại thu nhập</th>${cos.map(([co, n]) => `<th style="min-width:15em">${esc(n)}</th>`).join("")}</tr></thead><tbody>
+    ${cats.map(([cat, n]) => `<tr><th>${esc(n)}</th>${cos.map(([co]) => `<td class="${co === "PLAN" ? "plancol" : ""}">${cell(co, cat)}</td>`).join("")}</tr>`).join("")}
+    <tr><th>Tổng gói / năm (mô phỏng, K2 ${k2}%)</th>${tot.map((v, i) => `<td class="n ${i === 3 ? "plancol" : ""}" style="font-size:18px;font-weight:700">${v == null ? "<span class='muted small' style='font-weight:400'>❓</span>" : fmt(v) + " tr"}</td>`).join("")}</tr>
+  </tbody></table></div>
+  <p class="note">Tổng gói: một người trên cây tổ chức chuẩn (đại lý 15tr FYC/tháng; quản lý nhóm 75tr FYC/tháng; vùng 12 tỷ FYP/năm), gồm khoản trả chậm. ${tier === "ind" ? "Quản lý gián tiếp: phần thu nhập gián tiếp thêm ngoài phí nhóm trực tiếp." : ""} Phúc lợi phi tiền mặt chưa quy ra tiền. Nội dung đối thủ lấy từ kho 44 cấu phần thu nhập (chữ không dấu là nguyên văn dữ liệu trích xuất).</p>
+  <details style="margin-top:12px"><summary><b>Điều kiện lên cấp và giữ cấp (${roles.length} chức danh)</b></summary>
+    <div class="tbl-wrap" style="margin-top:8px"><table><thead><tr><th>Hãng · chức danh</th><th>Điều kiện lên cấp</th><th>Điều kiện giữ cấp / giáng cấp</th><th>Phạm vi quản lý</th></tr></thead><tbody>
+    ${roles.map(r => `<tr><td><b>${esc(r.Company.split(" ")[0])} · ${esc(r.Role_Code)}</b><div class="small muted">${esc(r.Role_Title_VN_EN)}</div></td><td class="small">${esc(r.Entry_Promotion_Condition)}</td><td class="small">${esc(r.Maintenance_Demotion_Condition)}</td><td class="small">${esc(r.Managed_Scope_Direct_Indirect)}</td></tr>`).join("")}
+    </tbody></table></div></details>`;
+  document.querySelectorAll("#pkgSeg button").forEach(b => b.onclick = () => { state.pkgTier = b.dataset.t; renderPackage(); });
 }
 
 function renderTiers() {
@@ -574,24 +671,26 @@ function renderAll() {
   $("k2v").textContent = state.k2 + "%";
   $("planSeg").innerHTML = Object.entries(PLAN_META).map(([k, m]) => `<button type="button" data-plan="${k}" aria-pressed="${state.plan === k}">${esc(m.name)}${m.star ? " ⭐" : ""}</button>`).join("");
   document.querySelectorAll("#planSeg button").forEach(b => b.onclick = () => { state.plan = b.dataset.plan; renderAll(); });
+  $("k2").value = state.k2;
   $("tabs").innerHTML = TABS.map(([k, n]) => `<button type="button" role="tab" data-tab="${k}" aria-selected="${state.tab === k}">${n}</button>`).join("");
   document.querySelectorAll("#tabs button").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; showTab(); });
-  renderOverview(); renderTiers(); renderCost(); renderRubric(); renderTune(); renderCompare(); renderMethod(); renderAssume();
+  renderOverview(); renderPackage(); renderTiers(); renderCost(); renderRubric(); renderTune(); renderCompare(); renderMethod(); renderAssume();
   showTab();
 }
 function showTab() {
-  document.querySelectorAll("section.panel").forEach(s => s.classList.toggle("on", s.id === "p-" + state.tab));
+  const t = TABS.find(x => x[0] === state.tab) || TABS[0];
+  if (t[2].includes("p-evidence") && !$("rtb")) renderEvidence();
+  document.querySelectorAll("section.panel").forEach(sec => sec.classList.toggle("on", t[2].includes(sec.id)));
   document.querySelectorAll("#tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === state.tab));
-  if (state.tab === "evidence" && !$("rtb")) renderEvidence();
 }
 $("k2").oninput = ev => { state.k2 = +ev.target.value; renderAll(); };
-$("themeBtn").onclick = () => { const r = document.documentElement, cur = r.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-  r.dataset.theme = cur === "dark" ? "light" : "dark"; try { localStorage.setItem("w24-theme", r.dataset.theme); } catch (e) {} };
 const st = selfTest();
-$("topBadges").innerHTML = `<span class="badge ${st.ok === st.n && st.n ? "good" : "bad"}">Engine JS khớp Python: ${st.ok}/${st.n} ca mẫu</span>
-  <span class="badge">Dữ liệu dựng ngày ${esc(DATA.generated)}</span><span class="badge warn">Mô phỏng — không phải ROI thực tế</span>
-  <span class="badge">${DATA.knowledge.rules.length} quy tắc · 7 tài liệu · 116 trang</span>`;
-$("foot").innerHTML = `Bằng chứng mở từ ${esc(DATA.evidence_base)} (đúng trang qua #page). Tài liệu gốc thuộc quyền của các công ty phát hành; trang này dùng cho mục đích phân tích, không phải tài liệu chính thức của AIA, Chubb Life hay Manulife.`;
+$("resetAll").onclick = () => {
+  Object.assign(state, {plan: "song_hanh", k2: 82, tier: "agent", weightsPreset: "ttbv", weights: Object.assign({}, PRESETS.ttbv.w),
+    custom: JSON.parse(JSON.stringify(DATA.plans.song_hanh)), margin: 85, opex: 20});
+  renderAll();
+};
+$("foot").innerHTML = `<p><span class="badge ${st.ok === st.n && st.n ? "good" : "bad"}">Kiểm tra khi mở trang: engine JS khớp Python ${st.ok}/${st.n} ca mẫu</span> · ${DATA.knowledge.rules.length} quy tắc từ 7 tài liệu (116 trang) · dữ liệu dựng ngày ${esc(DATA.generated)}</p><p>` + `Bằng chứng mở từ ${esc(DATA.evidence_base)} (đúng trang qua #page). Tài liệu gốc thuộc quyền của các công ty phát hành; trang này dùng cho mục đích phân tích, không phải tài liệu chính thức của AIA, Chubb Life hay Manulife.</p>`;
 renderAll();
 </script>
 </body>

@@ -145,7 +145,33 @@ def knowledge(manifest: dict) -> dict:
             matrix.append({"no": int(m.group(1)), "mechanism": re.sub(r"`", "", m.group(2)).strip(),
                            "company": (m.group(4) or "").strip(), "rules": ids, "decision": m.group(6),
                            "why": re.sub(r"[`*]", "", m.group(7)).strip()})
-    return {"sources": sources, "rules": out_rules, "spot_check": spot, "adopt_matrix": matrix}
+    # Tổng gói thu nhập: 44 cấu phần (knowledge/compensation) gán vào 4 cấp để so sánh theo cấp.
+    tier_of = {}
+    for cid in ["AIA-%02d" % i for i in range(1, 12)] + ["CHB-%02d" % i for i in range(1, 7)] + ["MNL-05"]:
+        tier_of["TR-" + cid] = "agent"
+    for cid in ("AIA-12", "AIA-13", "AIA-15", "AIA-16", "AIA-17", "AIA-18", "CHB-07", "CHB-08", "CHB-10", "CHB-11", "CHB-12"):
+        tier_of["TR-" + cid] = "mgr"
+    for cid in ("AIA-14", "CHB-09"):
+        tier_of["TR-" + cid] = "ind"
+    for cid in ("AIA-19", "AIA-20", "AIA-21", "MNL-01", "MNL-02", "MNL-03", "MNL-04",
+                "CHB-13", "CHB-14", "CHB-15", "CHB-16", "CHB-17", "CHB-18"):
+        tier_of["TR-" + cid] = "leader"
+    keep = ("Component_ID", "Company", "Target_Role", "Category_A_to_H", "Component_Name_VN", "Rate_Or_Amount_Summary",
+            "Eligibility_Conditions", "Threshold_Minimum", "Cap_Maximum", "Quality_Persistency_Gate", "Activity_Attendance_Gate",
+            "Training_Compliance_Gate", "Measurement_Period", "Payment_Timing", "Vesting_Schedule", "Clawback_Recovery_Rule",
+            "Holdback_Forfeiture_Rule", "Rule_ID_Link", "Source_ID_And_Page", "Evidence_Status")
+    rewards = []
+    with (REPO / "knowledge/compensation/total-rewards-inventory.csv").open(encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            d = {k: r[k] for k in keep}
+            d["tier"] = tier_of.get(r["Component_ID"], "agent")
+            rewards.append(d)
+    with (REPO / "knowledge/policies/role-organization-mapping.csv").open(encoding="utf-8") as f:
+        roles = [{k: r[k] for k in ("Role_ID", "Company", "Role_Code", "Role_Title_VN_EN", "Functional_Tier",
+                                     "Entry_Promotion_Condition", "Maintenance_Demotion_Condition", "Managed_Scope_Direct_Indirect",
+                                     "Source_ID_And_Page_And_Status")} for r in csv.DictReader(f)]
+    return {"sources": sources, "rules": out_rules, "spot_check": spot, "adopt_matrix": matrix,
+            "rewards": rewards, "roles": roles}
 
 
 def main() -> int:
