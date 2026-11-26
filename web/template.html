@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chiến lược Thu nhập Đại lý</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+:root{
+  --bg:#f6f7f9;--surface:#ffffff;--surface-2:#f0f2f5;--text:#1b1f24;--muted:#5b6470;--line:#dde1e6;
+  --accent:#1f6feb;--accent-soft:#e6efff;--good:#1a7f37;--good-soft:#e7f5ec;--bad:#c2261c;--bad-soft:#fdecea;
+  --warn:#9a6700;--warn-soft:#fff6db;
+  --s-plan:#1f6feb;--s-aia:#d1242f;--s-aia27:#e8828a;--s-chubb:#7c3aed;--s-mnl:#0f8a7b;--s-alt:#9aa4b2;
+  --radius:10px;--shadow:0 1px 2px rgba(16,24,40,.06),0 1px 3px rgba(16,24,40,.08);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1318;--surface:#171c23;--surface-2:#1e252e;--text:#e6e9ee;--muted:#9aa4b2;--line:#2b333d;
+  --accent:#4c8dff;--accent-soft:#16253d;--good:#3fb950;--good-soft:#132a1b;--bad:#f2665c;--bad-soft:#331a18;
+  --warn:#d4a72c;--warn-soft:#2e2611;--s-plan:#4c8dff;--s-aia:#f2665c;--s-aia27:#f4a3a9;--s-chubb:#a78bfa;--s-mnl:#2dc9b4;--s-alt:#6b7684;
+  --shadow:none;}}
+:root[data-theme="dark"]{
+  --bg:#0f1318;--surface:#171c23;--surface-2:#1e252e;--text:#e6e9ee;--muted:#9aa4b2;--line:#2b333d;
+  --accent:#4c8dff;--accent-soft:#16253d;--good:#3fb950;--good-soft:#132a1b;--bad:#f2665c;--bad-soft:#331a18;
+  --warn:#d4a72c;--warn-soft:#2e2611;--s-plan:#4c8dff;--s-aia:#f2665c;--s-aia27:#f4a3a9;--s-chubb:#a78bfa;--s-mnl:#2dc9b4;--s-alt:#6b7684;--shadow:none;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+header.top{padding:22px 0 10px}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+h2{font-size:18px;margin:0 0 10px}
+h3{font-size:15px;margin:14px 0 6px}
+.sub{color:var(--muted);margin:0}
+.req{margin:12px 0 0;padding:10px 14px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:6px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:3px 9px;border-radius:999px;background:var(--surface-2);color:var(--muted);border:1px solid var(--line)}
+.badge.good{background:var(--good-soft);color:var(--good);border-color:transparent}
+.badge.bad{background:var(--bad-soft);color:var(--bad);border-color:transparent}
+.badge.warn{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.controls{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding:10px 0}
+.ctl-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.ctl{display:flex;flex-direction:column;gap:4px}
+.ctl label,.lbl{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+.seg{display:flex;flex-wrap:wrap;gap:4px}
+.seg button{font:inherit;font-size:13px;padding:5px 10px;border-radius:7px;border:1px solid var(--line);background:var(--surface);color:var(--text);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+input[type=range]{width:180px;accent-color:var(--accent)}
+.k2v{font-variant-numeric:tabular-nums;font-weight:700}
+nav.tabs{display:flex;gap:2px;flex-wrap:wrap;margin:14px 0 0}
+nav.tabs button{font:inherit;font-size:14px;padding:8px 12px;border:0;background:transparent;color:var(--muted);border-bottom:2px solid transparent;cursor:pointer}
+nav.tabs button[aria-selected="true"]{color:var(--text);border-bottom-color:var(--accent);font-weight:600}
+section.panel{display:none;padding:16px 0 40px}
+section.panel.on{display:block}
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:860px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g2{grid-template-columns:1fr}}
+@media (max-width:520px){.g3,.g4{grid-template-columns:1fr}input[type=range]{width:140px}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);min-width:0}
+.kpi .v{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums}
+.kpi .d{font-size:13px;color:var(--muted)}
+.verdict{display:flex;gap:10px;align-items:flex-start}
+.verdict .ic{font-size:20px;line-height:1}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--surface-2);font-weight:600;white-space:nowrap;position:sticky;top:0}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.plan td{background:var(--accent-soft)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.ev{display:inline-block;font-size:12px;padding:1px 7px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line);text-decoration:none;color:var(--text);margin:1px 3px 1px 0;white-space:nowrap}
+.ev:hover{border-color:var(--accent)}
+.muted{color:var(--muted)}
+.small{font-size:12.5px}
+.tag{font-size:11px;font-weight:700;padding:1px 6px;border-radius:5px;letter-spacing:.02em}
+.tag.ADOPT{background:var(--good-soft);color:var(--good)}.tag.ADAPT{background:var(--accent-soft);color:var(--accent)}
+.tag.AVOID{background:var(--bad-soft);color:var(--bad)}.tag.INVESTIGATE,.tag.UNKNOWN{background:var(--warn-soft);color:var(--warn)}
+.chart{width:100%;height:auto;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--muted);margin-top:6px}
+.sliders{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px 18px}
+.sl{display:flex;flex-direction:column;gap:2px}
+.sl .row{display:flex;justify-content:space-between;font-size:13px}
+.sl input{width:100%}
+.note{font-size:13px;color:var(--muted);border-top:1px dashed var(--line);margin-top:10px;padding-top:8px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.filters input,.filters select{font:inherit;font-size:13px;padding:6px 9px;border-radius:7px;border:1px solid var(--line);background:var(--surface);color:var(--text)}
+.bar{height:8px;border-radius:4px;background:var(--surface-2);overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--accent)}
+.score{font-weight:700;font-variant-numeric:tabular-nums}
+.win{outline:2px solid var(--good);outline-offset:-2px}
+footer{color:var(--muted);font-size:12.5px;padding:20px 0 40px;border-top:1px solid var(--line)}
+.themebtn{float:right;font:inherit;font-size:12px;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:7px;padding:4px 8px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <button class="themebtn" id="themeBtn" type="button">Sáng/Tối</button>
+  <h1>Chiến lược Thu nhập Đại lý BHNT tại Việt Nam</h1>
+  <p class="sub">So sánh chính sách 2026 của AIA (kênh Alpha), Chubb Life và Manulife (tầng lãnh đạo vùng), và đề xuất chính sách phù hợp.</p>
+  <div class="req"><b>Đề bài (chị Nhi):</b> “Phân tích các chính sách thu nhập giữa các công ty, và đề xuất chính sách phù hợp tại thị trường VN, nhằm thúc đẩy gia tăng doanh số, chất lượng kinh doanh và hiệu quả về mặt chi phí (ROI).”</div>
+  <div class="badges" id="topBadges"></div>
+</header>
+</div>
+
+<div class="controls"><div class="wrap">
+  <div class="ctl-row">
+    <div class="ctl"><label>Phương án</label><div class="seg" id="planSeg"></div></div>
+    <div class="ctl"><label for="k2">Kịch bản K2 (tỷ lệ duy trì HĐ năm 2): <span class="k2v" id="k2v"></span></label>
+      <input type="range" id="k2" min="50" max="95" step="1" value="82"></div>
+  </div>
+  <nav class="tabs" id="tabs" role="tablist"></nav>
+</div></div>
+
+<div class="wrap">
+<section class="panel on" id="p-overview"></section>
+<section class="panel" id="p-tiers"></section>
+<section class="panel" id="p-cost"></section>
+<section class="panel" id="p-rubric"></section>
+<section class="panel" id="p-tune"></section>
+<section class="panel" id="p-compare"></section>
+<section class="panel" id="p-evidence"></section>
+<section class="panel" id="p-assume"></section>
+<footer id="foot"></footer>
+</div>
+
+<script>/*__ENGINE_JS__*/</script>
+<script>
+"use strict";
+const DATA = /*__DATA_JSON__*/null;
+const GOLDEN = /*__GOLDEN_JSON__*/null;
+const E = window.W24Engine;
+const fmt = (x, d = 0) => (x == null || !isFinite(x)) ? "—" : x.toLocaleString("vi-VN", {minimumFractionDigits: d, maximumFractionDigits: d});
+const pct = (x, d = 1) => fmt(x, d) + "%";
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+const $ = id => document.getElementById(id);
+
+/* ---------- Trạng thái ---------- */
+const PLAN_META = {
+  song_hanh: {name: "Song Hành", star: true, desc: "Khuyến nghị: không tầng nào bị trả thấp nhất thị trường, chi phí vẫn thấp hơn AIA và Chubb nhờ cấu trúc."},
+  can_bang: {name: "Cân bằng (tiết kiệm)", desc: "Chi phí thấp nhất, nhưng mọi tầng đều bị trả thấp hơn đối thủ: rủi ro mất đại lý và quản lý giỏi."},
+  theo_chat: {name: "Thưởng Theo Chất", desc: "Biến thể của Song Hành: sàn K2 65%, thưởng tái tục +50% (ngang AIA), trả chậm nhiều hơn."},
+  custom: {name: "Tự chỉnh", desc: "Bắt đầu từ Song Hành; kéo thông số ở tab “Tự chỉnh thông số”."}
+};
+const state = {plan: "song_hanh", k2: 82, tab: "overview", tier: "agent",
+  custom: JSON.parse(JSON.stringify(DATA.plans.song_hanh)),
+  weightsPreset: "ttbv", weights: {G: 30, Q: 25, R: 25, P: 10, I: 10}, margin: 85, opex: 20, avgIncome: null};
+try { const t = localStorage.getItem("w24-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+
+const params = key => key === "custom" ? state.custom : DATA.plans[key];
+const comp = (s, k2) => DATA.competitors.enterprise[s][String(k2)];
+const agentComp = (s, k2, f) => DATA.competitors.agent3y[s][String(k2)][String(f)];
+const mnlLeader = k2 => DATA.competitors.manulife_leader[String(k2)];
+const evUrl = (sid, page) => DATA.evidence_base + "/evidence/" + sid + ".pdf" + (page ? "#page=" + page : "");
+const RULES = Object.fromEntries(DATA.knowledge.rules.map(r => [r.id, r]));
+function ruleChip(id) {
+  const base = id.replace(/\/\d{3}$/, "").replace(/\.\.\d{3}$/, "");
+  const r = RULES[base];
+  if (!r || !r.refs.length) return `<span class="ev" title="${esc(r ? r.ref : "")}">${esc(id)}</span>`;
+  const f = r.refs[0];
+  return `<a class="ev" target="_blank" rel="noopener" href="${evUrl(f.sid, f.page)}" title="${esc(r.type)} — ${esc(r.ref)}">📄 ${esc(id)}${f.page ? " · tr." + f.page : ""}</a>`;
+}
+
+/* ---------- Số liệu cho một kịch bản ---------- */
+function planEnt(key, k2) { return E.enterprise(k2, JSON.parse(JSON.stringify(params(key))), state.opex / 100); }
+function planAgent(key, k2, f) { return E.agentIncome3y(f, k2, JSON.parse(JSON.stringify(params(key)))); }
+function entities(k2) {
+  const list = [
+    {key: "aia", name: "AIA Alpha 2026", color: "var(--s-aia)", ent: comp("AIA_Alpha_2026", k2), agent: f => agentComp("AIA", k2, f).total_3y},
+    {key: "chubb", name: "Chubb Life 2026", color: "var(--s-chubb)", ent: comp("Chubb_Agency_2026", k2), agent: f => agentComp("CHUBB", k2, f).total_3y}
+  ];
+  ["song_hanh", "can_bang", "theo_chat"].concat(state.plan === "custom" ? ["custom"] : []).forEach(p => {
+    list.push({key: p, name: PLAN_META[p].name, plan: true, color: p === state.plan ? "var(--s-plan)" : "var(--s-alt)",
+      ent: planEnt(p, k2), agent: f => planAgent(p, k2, f).total_3y});
+  });
+  return list;
+}
+function tierFloor(k2) {
+  const a = comp("AIA_Alpha_2026", k2), c = comp("Chubb_Agency_2026", k2), m = mnlLeader(k2);
+  return {agent: Math.min(agentComp("AIA", k2, 15).total_3y, agentComp("CHUBB", k2, 15).total_3y),
+    mgr: Math.min(a.role_mgr_direct_earned, c.role_mgr_direct_earned),
+    ind: Math.min(a.role_mgr_indirect_extra, c.role_mgr_indirect_extra),
+    leader: Math.min(a.role_leader_earned, c.role_leader_earned, m.leader_earned)};
+}
+function constraints(key, k2) {
+  const e = planEnt(key, k2), fl = tierFloor(k2), ag = planAgent(key, k2, 15).total_3y;
+  const aia = comp("AIA_Alpha_2026", k2);
+  return [
+    {ok: ag >= fl.agent - 0.5, txt: "Đại lý (15tr FYC, 3 năm) không thấp nhất thị trường"},
+    {ok: e.role_mgr_direct_earned >= fl.mgr - 0.5, txt: "Quản lý trực tiếp không thấp nhất"},
+    {ok: e.role_leader_earned >= fl.leader - 0.5, txt: "Lãnh đạo vùng không thấp nhất (gồm Manulife)"},
+    {ok: e.earned_pct_fyp < aia.earned_pct_fyp, txt: "Tổng chi phí thấp hơn AIA (AIA chưa gồm gói Exchange/Pro)"},
+    {ok: e.art52_bonus_pct_fyp <= 30, txt: "Thưởng đại lý ≤ 30% FYP (tham chiếu Điều 52 — CONDITIONAL)", cond: true}
+  ];
+}
+
+/* ---------- Rubric v2 ---------- */
+const PRESETS = {
+  ttbv: {name: "Tăng Trưởng Bền Vững", w: {G: 30, Q: 25, R: 25, P: 10, I: 10}},
+  ba_tru: {name: "3 Trụ Cân Bằng", w: {G: 33, Q: 33, R: 34, P: 0, I: 0}},
+  chat_luong: {name: "Ưu tiên chất lượng", w: {G: 20, Q: 40, R: 20, P: 10, I: 10}},
+  tuyen_dung: {name: "Ưu tiên tuyển dụng", w: {G: 40, Q: 15, R: 15, P: 20, I: 10}},
+  custom: {name: "Tự kéo trọng số", w: null}
+};
+const PILLARS = {G: "Doanh số", Q: "Chất lượng", R: "Chi phí & ROI", P: "Con người & giữ chân", I: "Triển khai"};
+const QUAL = {
+  anti: {aia: [3, "Vách đá FY 2027, thu hồi 6 tháng", ["AIA-CV-002", "AIA-CV-021"]],
+         chubb: [5, "Top-up 0%, giữ T+1, phí âm đối xứng khi hủy", ["CHB-AG-001", "CHB-AG-005", "CHB-MG-002"]],
+         plan: [4, "Áp dụng cơ chế của Chubb nhưng mới là đề xuất, chưa vận hành", ["CHB-AG-005", "CHB-MG-002"]]},
+  simple: {aia: [2, "3 văn bản 62 trang, chuỗi gián tiếp không giới hạn tầng, nhiều chương trình", ["AIA-PF-004"]],
+           chubb: [3, "3 văn bản 48 trang, phụ thuộc quy định chung 260005V/006V", ["CHB-MG-005"]],
+           plan: [3, "Chưa có văn bản; mục tiêu ≤ 15 trang (đề xuất, chưa kiểm chứng)", []]}
+};
+function criteria(k2) {
+  const low = Math.max(50, k2 - 20);
+  return [
+    {id: "G1", p: "G", name: "Thu nhập 3 năm — đại lý mới/yếu (5tr FYC/tháng)", up: true, unit: "tr", v: e => e.agent(5)},
+    {id: "G2", p: "G", name: "Thu nhập 3 năm — đại lý trung bình (15tr)", up: true, unit: "tr", v: e => e.agent(15)},
+    {id: "G3", p: "G", name: "Thu nhập 3 năm — đại lý giỏi (35tr)", up: true, unit: "tr", v: e => e.agent(35)},
+    {id: "G4", p: "G", name: "Thu nhập quản lý trực tiếp (động lực xây nhóm)", up: true, unit: "tr", v: e => e.ent.role_mgr_direct_earned},
+    {id: "Q1", p: "Q", name: "Chênh thu nhập đại lý giữa K2 85% và 60% (động lực giữ HĐ)", up: true, unit: "tr",
+      v: e => e.plan ? planAgent(e.key, 85, 15).total_3y - planAgent(e.key, 60, 15).total_3y
+                     : agentComp(e.key === "aia" ? "AIA" : "CHUBB", 85, 15).total_3y - agentComp(e.key === "aia" ? "AIA" : "CHUBB", 60, 15).total_3y},
+    {id: "Q2", p: "Q", name: "Chống trục lợi & hủy sớm (định tính, có bằng chứng)", up: true, qual: "anti"},
+    {id: "R1", p: "R", name: "Tổng chi phí phân phối (% FYP)", up: false, unit: "%", v: e => e.ent.earned_pct_fyp},
+    {id: "R2", p: "R", name: "Chi phí trên mỗi đồng phí còn sống năm 2 (%)", up: false, unit: "%", v: e => e.ent.cost_per_persisted_y2_pct},
+    {id: "R3", p: "R", name: "Tiền mặt chi năm 1 (% FYP)", up: false, unit: "%", v: e => e.ent.cash_y1_pct_fyp},
+    {id: "R4", p: "R", name: `Chi phí trên phí còn sống khi K2 xấu đi (K2 ${low}%)`, up: false, unit: "%",
+      v: e => e.plan ? planEnt(e.key, low).cost_per_persisted_y2_pct : comp(e.key === "aia" ? "AIA_Alpha_2026" : "Chubb_Agency_2026", low).cost_per_persisted_y2_pct},
+    {id: "P1", p: "P", name: "Số tầng không bị trả thấp nhất (đại lý, quản lý, lãnh đạo vùng)", up: true, unit: "/3",
+      v: e => { const fl = tierFloor(k2); return (e.agent(15) >= fl.agent - .5) + (e.ent.role_mgr_direct_earned >= fl.mgr - .5) + (e.ent.role_leader_earned >= fl.leader - .5); }},
+    {id: "P2", p: "P", name: "Tỷ trọng trả chậm (giữ chân dài hạn)", up: true, unit: "%", v: e => e.ent.deferred_share_pct},
+    {id: "I1", p: "I", name: "Độ đơn giản, dễ truyền thông (định tính)", up: true, qual: "simple"}
+  ];
+}
+function scoreAll(k2) {
+  const ents = entities(k2), cr = criteria(k2), w = state.weights;
+  const rows = cr.map(c => {
+    const vals = ents.map(e => {
+      if (c.qual) { const q = QUAL[c.qual][e.plan ? "plan" : e.key]; return {raw: q[0], note: q[1], rules: q[2]}; }
+      return {raw: c.v(e)};
+    });
+    const xs = vals.map(v => v.raw), lo = Math.min(...xs), hi = Math.max(...xs);
+    vals.forEach(v => { v.score = c.qual ? v.raw : (hi - lo < 1e-9 ? 3 : 1 + 4 * (c.up ? (v.raw - lo) : (hi - v.raw)) / (hi - lo)); });
+    return {c, vals};
+  });
+  const nIn = p => cr.filter(c => c.p === p).length;
+  const totals = ents.map((e, i) => {
+    let t = 0, wsum = 0; const byP = {};
+    Object.keys(PILLARS).forEach(p => {
+      const rs = rows.filter(r => r.c.p === p); const avg = rs.reduce((s, r) => s + r.vals[i].score, 0) / rs.length;
+      byP[p] = avg; t += avg * (w[p] || 0); wsum += (w[p] || 0);
+    });
+    return {e, total: wsum ? t / wsum : 0, byP};
+  });
+  return {ents, rows, totals, nIn};
+}
+
+/* ---------- Biểu đồ SVG nhỏ ---------- */
+function lineChart(series, opt) {
+  const W = 640, H = 260, L = 56, R = 12, T = 12, B = 34;
+  const xs = series.flatMap(s => s.pts.map(p => p[0])), ys = series.flatMap(s => s.pts.map(p => p[1]));
+  const x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = opt.y0 != null ? opt.y0 : Math.min(...ys) * 0.95, y1 = Math.max(...ys) * 1.05;
+  const X = x => L + (x - x0) / (x1 - x0) * (W - L - R), Y = y => H - B - (y - y0) / (y1 - y0) * (H - T - B);
+  let g = "";
+  for (let i = 0; i <= 4; i++) { const yv = y0 + (y1 - y0) * i / 4;
+    g += `<line x1="${L}" x2="${W - R}" y1="${Y(yv)}" y2="${Y(yv)}" stroke="var(--line)"/><text x="${L - 6}" y="${Y(yv) + 4}" text-anchor="end" font-size="11" fill="var(--muted)">${fmt(yv, opt.yd || 0)}</text>`; }
+  (opt.xticks || []).forEach(xv => { g += `<text x="${X(xv)}" y="${H - B + 16}" text-anchor="middle" font-size="11" fill="var(--muted)">${xv}</text>`; });
+  if (opt.marker != null) g += `<line x1="${X(opt.marker)}" x2="${X(opt.marker)}" y1="${T}" y2="${H - B}" stroke="var(--muted)" stroke-dasharray="3 3"/>`;
+  series.forEach(s => { g += `<polyline fill="none" stroke="${s.color}" stroke-width="${s.w || 2}" ${s.dash ? 'stroke-dasharray="5 4"' : ""} points="${s.pts.map(p => X(p[0]) + "," + Y(p[1])).join(" ")}"><title>${esc(s.name)}</title></polyline>`; });
+  g += `<text x="${(L + W - R) / 2}" y="${H - 4}" text-anchor="middle" font-size="11.5" fill="var(--muted)">${esc(opt.xlabel || "")}</text>`;
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(opt.label || "")}">${g}</svg>` +
+    `<div class="legend">${series.map(s => `<span><span class="dot" style="background:${s.color}"></span>${esc(s.name)}</span>`).join("")}</div>`;
+}
+
+/* ---------- Các tab ---------- */
+const TABS = [["overview", "Tổng quan"], ["tiers", "Thu nhập theo tầng"], ["cost", "Chi phí & ROI"], ["rubric", "Chấm điểm"],
+  ["tune", "Tự chỉnh thông số"], ["compare", "So sánh cơ chế"], ["evidence", "Bằng chứng"], ["assume", "Giả định & giới hạn"]];
+
+function renderOverview() {
+  const k2 = state.k2, key = state.plan, e = planEnt(key, k2), aia = comp("AIA_Alpha_2026", k2), chb = comp("Chubb_Agency_2026", k2);
+  const ag = planAgent(key, k2, 15).total_3y, agA = agentComp("AIA", k2, 15).total_3y, agC = agentComp("CHUBB", k2, 15).total_3y;
+  const cons = constraints(key, k2), sc = scoreAll(k2), rank = sc.totals.slice().sort((a, b) => b.total - a.total);
+  const me = sc.totals.find(t => t.e.key === key);
+  const v = (ok, t, d) => `<div class="card verdict"><div class="ic">${ok ? "✅" : "⚠️"}</div><div><b>${t}</b><div class="small muted">${d}</div></div></div>`;
+  $("p-overview").innerHTML = `
+  <div class="card" style="margin-bottom:12px"><div class="lbl">Phương án đang xem</div>
+    <h2 style="margin:4px 0">${esc(PLAN_META[key].name)}${PLAN_META[key].star ? " ⭐ <span class='badge warn'>Khuyến nghị — chờ TJ duyệt</span>" : ""}</h2>
+    <div class="muted">${esc(PLAN_META[key].desc)}</div></div>
+  <h2>Trả lời 3 vế của đề bài (K2 = ${k2}%)</h2>
+  <div class="grid g3">
+    ${v(ag >= Math.min(agA, agC), "Doanh số: thu nhập đại lý", `Đại lý trung bình nhận ${fmt(ag)}tr trong 3 năm — AIA ${fmt(agA)}tr, Chubb ${fmt(agC)}tr. Thu nhập không thấp hơn đối thủ thì mới giữ và tuyển được đại lý.`)}
+    ${v(me.byP.Q >= 3, "Chất lượng: thưởng gắn K2", `Điểm trụ Chất lượng ${fmt(me.byP.Q, 2)}/5. Đại lý trung bình nhận thêm ${fmt(planAgent(key, 85, 15).total_3y - planAgent(key, 60, 15).total_3y)}tr nếu K2 85% thay vì 60%.`)}
+    ${v(e.earned_pct_fyp < aia.earned_pct_fyp, "Chi phí & ROI", `Tổng chi phí ${pct(e.earned_pct_fyp)} FYP — AIA ${pct(aia.earned_pct_fyp)}, Chubb ${pct(chb.earned_pct_fyp)}. Hòa vốn cần biên gộp ${pct(e.breakeven_gross_margin_pct)} (OpEx giả định ${state.opex}%).`)}
+  </div>
+  <h3>Điều kiện ràng buộc</h3>
+  <div class="badges">${cons.map(c => `<span class="badge ${c.ok ? (c.cond ? "warn" : "good") : "bad"}">${c.ok ? "✓" : "✗"} ${esc(c.txt)}</span>`).join("")}</div>
+  <div class="grid g4" style="margin-top:12px">
+    <div class="card kpi"><div class="lbl">Tổng chi phí</div><div class="v">${pct(e.earned_pct_fyp)}</div><div class="d">FYP · AIA ${pct(aia.earned_pct_fyp)}</div></div>
+    <div class="card kpi"><div class="lbl">Tiền mặt năm 1</div><div class="v">${pct(e.cash_y1_pct_fyp)}</div><div class="d">FYP · phần còn lại trả chậm</div></div>
+    <div class="card kpi"><div class="lbl">Chi phí / phí còn sống năm 2</div><div class="v">${pct(e.cost_per_persisted_y2_pct)}</div><div class="d">AIA ${pct(aia.cost_per_persisted_y2_pct)} · Chubb ${pct(chb.cost_per_persisted_y2_pct)}</div></div>
+    <div class="card kpi"><div class="lbl">Điểm rubric</div><div class="v">${fmt(me.total, 2)}/5</div><div class="d">Xếp ${rank.findIndex(t => t.e.key === key) + 1}/${rank.length} · góc nhìn “${esc(PRESETS[state.weightsPreset].name)}”</div></div>
+  </div>
+  <p class="note">Mọi con số là <b>mô phỏng</b> trên một vùng chuẩn 12 tỷ FYP/năm (20 đại lý × 15tr FYC/tháng, 4 quản lý, 1 lãnh đạo vùng), không phải ROI thực tế. Chi phí AIA chưa gồm gói trợ cấp Exchange/Exchange Pro (thiếu tài liệu). Manulife chỉ có tài liệu tầng lãnh đạo vùng.</p>`;
+}
+
+function renderTiers() {
+  const k2 = state.k2, key = state.plan, e = planEnt(key, k2), a = comp("AIA_Alpha_2026", k2), c = comp("Chubb_Agency_2026", k2), m = mnlLeader(k2);
+  const tiers = {agent: "Đại lý cá nhân", mgr: "Quản lý trực tiếp", ind: "Thu nhập gián tiếp (quản lý cấp cao)", leader: "Lãnh đạo vùng"};
+  const pref = {agent: ["AIA-CV", "CHB-AG", "CHB-CH"], mgr: ["AIA-MG", "CHB-MG"], ind: ["AIA-MG-003", "AIA-PF-004", "CHB-MG-005", "MNL-PM-003"], leader: ["AIA-PF", "CHB-RD", "MNL-PM"]};
+  const row = (name, color, vals, cls) => `<tr class="${cls || ""}"><td><span class="dot" style="background:${color}"></span>${esc(name)}</td>${vals.map(v => `<td class="n">${typeof v === "string" ? v : fmt(v)}</td>`).join("")}</tr>`;
+  const U = "<span class='muted'>❓ chưa có tài liệu</span>";
+  const agentRows = [["AIA Alpha 2026", "var(--s-aia)", f => agentComp("AIA", k2, f).total_3y], ["Chubb Life 2026", "var(--s-chubb)", f => agentComp("CHUBB", k2, f).total_3y],
+    [PLAN_META[key].name, "var(--s-plan)", f => planAgent(key, k2, f).total_3y, "plan"]];
+  const ruleList = DATA.knowledge.rules.filter(r => pref[state.tier].some(p => r.id.startsWith(p)));
+  $("p-tiers").innerHTML = `
+  <div class="ctl" style="margin-bottom:10px"><span class="lbl">Tầng</span><div class="seg" id="tierSeg">${Object.entries(tiers).map(([k, n]) => `<button type="button" data-tier="${k}" aria-pressed="${state.tier === k}">${n}</button>`).join("")}</div></div>
+  <h2>Thu nhập mỗi người / năm theo tầng (triệu VND, K2 = ${k2}%)</h2>
+  <div class="tbl-wrap"><table><thead><tr><th>Chính sách</th><th class="n">Đại lý (năm 1, 15tr FYC)</th><th class="n">Quản lý trực tiếp</th><th class="n">Gián tiếp thêm</th><th class="n">Lãnh đạo vùng</th></tr></thead><tbody>
+    ${row("AIA Alpha 2026", "var(--s-aia)", [a.role_agent_earned, a.role_mgr_direct_earned, a.role_mgr_indirect_extra, a.role_leader_earned])}
+    ${row("Chubb Life 2026", "var(--s-chubb)", [c.role_agent_earned, c.role_mgr_direct_earned, c.role_mgr_indirect_extra, c.role_leader_earned])}
+    ${row("Manulife (PSM+/HKD)", "var(--s-mnl)", [U, U, U, m.leader_earned])}
+    ${row(PLAN_META[key].name, "var(--s-plan)", [e.role_agent_earned, e.role_mgr_direct_earned, e.role_mgr_indirect_extra, e.role_leader_earned], "plan")}
+  </tbody></table></div>
+  <p class="note">Cây tổ chức chuẩn giống nhau cho mọi chính sách. Thu nhập gồm khoản trả chậm. Lãnh đạo vùng Manulife: phí cơ bản 35tr, đạt 105% chỉ tiêu FYP, FYC vùng 300tr/tháng (giả định).</p>
+  <div class="grid g2" style="margin-top:12px">
+    <div class="card"><h3 style="margin-top:0">Đại lý: tổng thu nhập 3 năm theo năng suất</h3>
+      ${lineChart(agentRows.map(r => ({name: r[0], color: r[1], w: r[3] ? 3 : 2, pts: DATA.fyc_levels.map(f => [f, r[2](f)])})), {xlabel: "FYC mỗi tháng (triệu VND)", xticks: DATA.fyc_levels, label: "Thu nhập 3 năm của đại lý theo năng suất", y0: 0})}
+      <p class="small muted">Gồm FYC, hoa hồng tái tục (giả định chung 20%/10%) và thưởng. Manulife: không có tài liệu tầng đại lý.</p></div>
+    <div class="card"><h3 style="margin-top:0">Đại lý 3 năm tại các mức năng suất</h3>
+      <div class="tbl-wrap"><table><thead><tr><th>FYC/tháng</th>${agentRows.map(r => `<th class="n">${esc(r[0])}</th>`).join("")}</tr></thead><tbody>
+      ${[5, 15, 35].map(f => `<tr><td>${f}tr</td>${agentRows.map(r => `<td class="n">${fmt(r[2](f))}</td>`).join("")}</tr>`).join("")}</tbody></table></div></div>
+  </div>
+  <h3>Bằng chứng — ${esc(tiers[state.tier])} (${ruleList.length} quy tắc)</h3>
+  <div>${ruleList.map(r => ruleChip(r.id)).join("")}</div>`;
+  document.querySelectorAll("#tierSeg button").forEach(b => b.onclick = () => { state.tier = b.dataset.tier; renderTiers(); });
+}
+
+function renderCost() {
+  const k2 = state.k2, ents = entities(k2);
+  const series = [["AIA Alpha 2026", "var(--s-aia)", k => comp("AIA_Alpha_2026", k).earned_pct_fyp],
+    ["AIA Alpha 2027 (vách đá FY <70%)", "var(--s-aia27)", k => comp("AIA_Alpha_2027", k).earned_pct_fyp, true],
+    ["Chubb Life 2026", "var(--s-chubb)", k => comp("Chubb_Agency_2026", k).earned_pct_fyp],
+    [PLAN_META[state.plan].name, "var(--s-plan)", k => planEnt(state.plan, k).earned_pct_fyp]];
+  const ks = []; for (let k = 50; k <= 95; k++) ks.push(k);
+  const base = planEnt("can_bang", k2), cur = planEnt(state.plan, k2);
+  const up = E.requiredFypUplift(cur, base, state.margin / 100, state.opex / 100);
+  const extra = (cur.total_earned - base.total_earned) / 1000;
+  $("p-cost").innerHTML = `
+  <h2>Chi phí toàn hệ thống (K2 = ${k2}%)</h2>
+  <div class="tbl-wrap"><table><thead><tr><th>Chính sách</th><th class="n">Tổng chi phí % FYP</th><th class="n">Tiền mặt năm 1</th><th class="n">Thưởng ĐL % FYP</th><th class="n">Chi phí / phí còn sống N2</th><th class="n">Biên gộp hòa vốn</th></tr></thead><tbody>
+  ${ents.concat([{name: "AIA Alpha 2027", color: "var(--s-aia27)", ent: comp("AIA_Alpha_2027", k2)}]).map(x => `<tr class="${x.key === state.plan ? "plan" : ""}"><td><span class="dot" style="background:${x.color}"></span>${esc(x.name)}</td>
+    <td class="n">${pct(x.ent.earned_pct_fyp)}</td><td class="n">${pct(x.ent.cash_y1_pct_fyp)}</td><td class="n">${pct(x.ent.art52_bonus_pct_fyp)}</td>
+    <td class="n">${pct(x.ent.cost_per_persisted_y2_pct)}</td><td class="n">${pct(x.plan ? x.ent.breakeven_gross_margin_pct : x.ent.earned_pct_fyp + state.opex)}</td></tr>`).join("")}
+  </tbody></table></div>
+  <div class="grid g2" style="margin-top:12px">
+    <div class="card"><h3 style="margin-top:0">Tổng chi phí % FYP khi K2 thay đổi</h3>
+      ${lineChart(series.map(s => ({name: s[0], color: s[1], dash: s[3], w: s[0] === PLAN_META[state.plan].name ? 3 : 2, pts: ks.map(k => [k, s[2](k)])})), {xlabel: "K2 (%)", xticks: [50, 60, 70, 80, 90], marker: k2, yd: 0, label: "Chi phí theo K2"})}
+      <p class="small muted">K2 là <b>kịch bản</b>, không phải kết quả mô hình dự báo. Chi phí giảm khi K2 thấp vì thưởng bị cắt theo K2.</p></div>
+    <div class="card"><h3 style="margin-top:0">Đánh đổi: ${esc(PLAN_META[state.plan].name)} phải bán thêm bao nhiêu?</h3>
+      <div class="sliders">
+        <div class="sl"><div class="row"><span>Biên đóng góp trước chi phí phân phối</span><b>${state.margin}% FYP</b></div><input type="range" id="mg" min="40" max="150" value="${state.margin}"></div>
+        <div class="sl"><div class="row"><span>OpEx văn phòng</span><b>${state.opex}% FYP</b></div><input type="range" id="ox" min="5" max="40" value="${state.opex}"></div>
+      </div>
+      <p>So với phương án <b>Cân bằng</b>, phương án này tốn ${extra >= 0 ? "thêm" : "ít hơn"} <b>${fmt(Math.abs(extra), 2)} tỷ/năm</b> trên vùng 12 tỷ FYP.</p>
+      <p style="font-size:17px">${state.plan === "can_bang" ? "Đây là phương án gốc để so sánh." : up == null ? "⚠️ Ở biên này, phương án <b>không thể hòa vốn</b> dù bán thêm bao nhiêu." : `Cần FYP tăng <b>${fmt(up, 1)}%</b> để lợi nhuận bằng phương án Cân bằng.`}</p>
+      <p class="small muted"><b>ASSUMPTION</b>: biên đóng góp và OpEx là con số giả định — hãy nhập số thật của công ty. FYP tăng nhờ thêm đại lý cùng năng suất, nên mọi chi phí tăng theo tỷ lệ trừ phí cơ bản của lãnh đạo vùng. Mô hình <b>không</b> dự báo thu nhập cao hơn sẽ làm doanh số tăng bao nhiêu; câu hỏi là “cần tăng bao nhiêu mới đáng”.</p></div>
+  </div>`;
+  $("mg").oninput = ev => { state.margin = +ev.target.value; renderCost(); };
+  $("ox").oninput = ev => { state.opex = +ev.target.value; renderAll(); };
+}
+
+function renderRubric() {
+  const k2 = state.k2, sc = scoreAll(k2), w = state.weights;
+  const best = sc.totals.reduce((a, b) => b.total > a.total ? b : a);
+  const sens = Object.entries(PRESETS).filter(([k]) => k !== "custom").map(([k, p]) => {
+    const keep = state.weights; state.weights = p.w; const s = scoreAll(k2); state.weights = keep;
+    const r = s.totals.slice().sort((a, b) => b.total - a.total);
+    return {name: p.name, win: r[0].e.name, list: r};
+  });
+  $("p-rubric").innerHTML = `
+  <h2>Chấm điểm 5 chính sách (K2 = ${k2}%)</h2>
+  <p class="muted small">Mỗi tiêu chí đo bằng số từ mô hình (hoặc định tính có bằng chứng), quy về thang 1–5 <b>tương đối trong nhóm so sánh</b>: tốt nhất = 5, kém nhất = 1. Trụ = trung bình tiêu chí; tổng = trung bình trụ theo trọng số. Pháp lý là <b>cổng bắt buộc</b>, không cộng điểm: mọi phương án đang ở trạng thái <span class="badge warn">CONDITIONAL</span> chờ đối chiếu toàn văn 44/2026/VBHN-TT-BTC.</p>
+  <div class="card" style="margin:10px 0">
+    <div class="ctl"><span class="lbl">Góc nhìn chấm điểm</span><div class="seg" id="wSeg">${Object.entries(PRESETS).map(([k, p]) => `<button type="button" data-w="${k}" aria-pressed="${state.weightsPreset === k}">${esc(p.name)}</button>`).join("")}</div></div>
+    <div class="sliders" style="margin-top:10px">${Object.entries(PILLARS).map(([p, n]) => `<div class="sl"><div class="row"><span>${n}</span><b>${w[p]}%</b></div><input type="range" data-p="${p}" min="0" max="60" value="${w[p]}"></div>`).join("")}</div>
+  </div>
+  <div class="tbl-wrap"><table><thead><tr><th>Tiêu chí</th>${sc.ents.map(e => `<th class="n"><span class="dot" style="background:${e.color}"></span>${esc(e.name)}</th>`).join("")}</tr></thead><tbody>
+  ${Object.entries(PILLARS).map(([p, n]) => `<tr><th colspan="${sc.ents.length + 1}">${n} — trọng số ${w[p]}%</th></tr>` + sc.rows.filter(r => r.c.p === p).map(r => {
+    const top = Math.max(...r.vals.map(v => v.score));
+    return `<tr><td>${esc(r.c.id)} · ${esc(r.c.name)}</td>${r.vals.map(v => `<td class="n ${Math.abs(v.score - top) < 1e-9 ? "win" : ""}" title="${esc(v.note || "")}"><span class="score">${fmt(v.score, 1)}</span><div class="small muted">${r.c.qual ? esc(v.note) : fmt(v.raw, r.c.unit === "%" ? 1 : 0) + (r.c.unit === "%" ? "%" : r.c.unit === "/3" ? "/3" : "tr")}</div>${v.rules ? v.rules.map(ruleChip).join("") : ""}</td>`).join("")}</tr>`;
+  }).join("")).join("")}
+  <tr><th>Tổng điểm</th>${sc.totals.map(t => `<th class="n ${t === best ? "win" : ""}">${fmt(t.total, 2)}</th>`).join("")}</tr>
+  </tbody></table></div>
+  <h3>Độ nhạy: phương án dẫn đầu ở từng góc nhìn</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>Góc nhìn</th><th>Dẫn đầu</th><th>Thứ tự</th></tr></thead><tbody>
+  ${sens.map(s => `<tr><td>${esc(s.name)}</td><td><b>${esc(s.win)}</b></td><td class="small">${s.list.map(t => esc(t.e.name) + " " + fmt(t.total, 2)).join(" · ")}</td></tr>`).join("")}</tbody></table></div>
+  <p class="note">Rubric do người làm bài thiết kế (chưa được hiệu chỉnh độc lập). Điểm tương đối thay đổi khi thêm/bớt phương án. Tiêu chí định tính (Q2, I1) có nêu căn cứ để người đọc tự đánh giá lại.</p>`;
+  document.querySelectorAll("#wSeg button").forEach(b => b.onclick = () => {
+    state.weightsPreset = b.dataset.w; if (PRESETS[b.dataset.w].w) state.weights = Object.assign({}, PRESETS[b.dataset.w].w); renderAll(); });
+  document.querySelectorAll("#p-rubric input[data-p]").forEach(i => i.oninput = () => {
+    state.weights[i.dataset.p] = +i.value; state.weightsPreset = "custom"; renderRubric(); renderOverview(); });
+}
+
+const TUNE = [
+  ["agent_m_tier_rates", 0, "Thưởng tháng bậc 1 (≥ 5tr FYC)", 0, 0.4, 0.005, "% FYC"], ["agent_m_tier_rates", 1, "Thưởng tháng bậc 2 (≥ 12tr)", 0, 0.5, 0.005, "% FYC"],
+  ["agent_m_tier_rates", 2, "Thưởng tháng bậc 3 (≥ 22tr)", 0, 0.6, 0.005, "% FYC"], ["agent_m_tier_rates", 3, "Thưởng tháng bậc 4 (≥ 35tr)", 0, 0.7, 0.005, "% FYC"],
+  ["agent_m_tier_rates", 4, "Thưởng tháng bậc 5 (≥ 55tr)", 0, 0.8, 0.005, "% FYC"], ["agent_ryc_bonus_rate", null, "Thưởng tái tục đại lý (K2 ≥ 75%)", 0, 0.8, 0.01, "% SYC"],
+  ["agent_q_consistency_3m", null, "Thưởng đều đặn quý", 0, 0.3, 0.01, "% thưởng tháng"], ["k2_hard_floor_pct", null, "Sàn K2 (dưới mức này thưởng = 0)", 50, 75, 1, "% K2"],
+  ["mgr_direct_base_rate", null, "Quản lý trực tiếp — tỷ lệ cơ bản", 0, 0.6, 0.005, "% FYC nhóm"], ["mgr_direct_max_rate", null, "Quản lý trực tiếp — trần", 0, 0.8, 0.005, "% FYC nhóm"],
+  ["mgr_indirect_l1_rate", null, "Gián tiếp cấp 1", 0, 0.6, 0.01, "% phí trực tiếp"], ["mgr_deferred_3y_rate", null, "Quản lý — thưởng trả chậm 3 năm", 0, 0.3, 0.005, "% FYC nhóm"],
+  ["rd_base_monthly", null, "Lãnh đạo vùng — phí cơ bản/tháng", 10, 80, 0.5, "triệu"], ["rd_direct_fyc_rate", null, "Lãnh đạo vùng — override", 0, 0.2, 0.001, "% FYC vùng"],
+  ["rd_deferred_3y_share", null, "Lãnh đạo vùng — phần trả chậm 3 năm", 0, 1, 0.01, "× override"]];
+function renderTune() {
+  const p = state.custom, k2 = state.k2;
+  const get = t => t[1] == null ? p[t[0]] : p[t[0]][t[1]];
+  const show = (t, v) => t[6].startsWith("%") ? fmt(v * 100, 1) + t[6] : fmt(v, t[5] < 1 ? 1 : 0) + " " + t[6];
+  let ok = true, msg = ""; try { E.validate(JSON.parse(JSON.stringify(p))); } catch (er) { ok = false; msg = er.message; }
+  const e = ok ? planEnt("custom", k2) : null, sh = planEnt("song_hanh", k2), cons = ok ? constraints("custom", k2) : [];
+  const d = (a, b, suf) => { const x = a - b; return `<span class="${Math.abs(x) < 1e-9 ? "muted" : ""}">${x > 0 ? "+" : ""}${fmt(x, 1)}${suf}</span>`; };
+  $("p-tune").innerHTML = `
+  <h2>Tự chỉnh thông số (bắt đầu từ Song Hành)</h2>
+  <p class="muted small">Kéo thanh trượt: trang tính lại ngay bằng engine JS đã kiểm khớp Python. Huy hiệu đỏ = vi phạm điều kiện. ${state.plan !== "custom" ? "<b>Chọn “Tự chỉnh” ở thanh Phương án để xem kết quả này ở mọi tab.</b>" : ""}</p>
+  <div class="grid g2">
+    <div class="card"><div class="sliders">${TUNE.map((t, i) => `<div class="sl"><div class="row"><span>${esc(t[2])}</span><b>${show(t, get(t))}</b></div><input type="range" data-i="${i}" min="${t[3]}" max="${t[4]}" step="${t[5]}" value="${get(t)}"></div>`).join("")}</div>
+      <div style="margin-top:10px"><button type="button" class="ev" id="resetTune">↺ Về Song Hành</button></div></div>
+    <div class="card">${ok ? `
+      <div class="badges">${cons.map(c => `<span class="badge ${c.ok ? (c.cond ? "warn" : "good") : "bad"}">${c.ok ? "✓" : "✗"} ${esc(c.txt)}</span>`).join("")}</div>
+      <div class="tbl-wrap" style="margin-top:10px"><table><thead><tr><th>Chỉ số (K2 ${k2}%)</th><th class="n">Tự chỉnh</th><th class="n">so với Song Hành</th></tr></thead><tbody>
+        <tr><td>Tổng chi phí % FYP</td><td class="n">${pct(e.earned_pct_fyp)}</td><td class="n">${d(e.earned_pct_fyp, sh.earned_pct_fyp, " điểm")}</td></tr>
+        <tr><td>Tiền mặt năm 1 % FYP</td><td class="n">${pct(e.cash_y1_pct_fyp)}</td><td class="n">${d(e.cash_y1_pct_fyp, sh.cash_y1_pct_fyp, " điểm")}</td></tr>
+        <tr><td>Chi phí / phí còn sống N2</td><td class="n">${pct(e.cost_per_persisted_y2_pct)}</td><td class="n">${d(e.cost_per_persisted_y2_pct, sh.cost_per_persisted_y2_pct, " điểm")}</td></tr>
+        <tr><td>Đại lý 3 năm — 5tr FYC</td><td class="n">${fmt(planAgent("custom", k2, 5).total_3y)}</td><td class="n">${d(planAgent("custom", k2, 5).total_3y, planAgent("song_hanh", k2, 5).total_3y, "tr")}</td></tr>
+        <tr><td>Đại lý 3 năm — 15tr FYC</td><td class="n">${fmt(planAgent("custom", k2, 15).total_3y)}</td><td class="n">${d(planAgent("custom", k2, 15).total_3y, planAgent("song_hanh", k2, 15).total_3y, "tr")}</td></tr>
+        <tr><td>Đại lý 3 năm — 35tr FYC</td><td class="n">${fmt(planAgent("custom", k2, 35).total_3y)}</td><td class="n">${d(planAgent("custom", k2, 35).total_3y, planAgent("song_hanh", k2, 35).total_3y, "tr")}</td></tr>
+        <tr><td>Quản lý trực tiếp / năm</td><td class="n">${fmt(e.role_mgr_direct_earned)}</td><td class="n">${d(e.role_mgr_direct_earned, sh.role_mgr_direct_earned, "tr")}</td></tr>
+        <tr><td>Lãnh đạo vùng / năm</td><td class="n">${fmt(e.role_leader_earned)}</td><td class="n">${d(e.role_leader_earned, sh.role_leader_earned, "tr")}</td></tr>
+      </tbody></table></div>
+      <p class="small muted">Thử: giảm thưởng bậc 1–2 → chi phí giảm; xem đại lý 5tr vẫn trên AIA (${fmt(agentComp("AIA", k2, 5).total_3y)}tr) và 15tr vẫn ≥ ${fmt(tierFloor(k2).agent)}tr.</p>`
+      : `<div class="badge bad">Thông số không hợp lệ: ${esc(msg)}</div>`}</div>
+  </div>`;
+  document.querySelectorAll("#p-tune input[data-i]").forEach(inp => inp.oninput = () => {
+    const t = TUNE[+inp.dataset.i], v = +inp.value; if (t[1] == null) state.custom[t[0]] = v; else state.custom[t[0]][t[1]] = v;
+    if (state.plan === "custom") renderAll(); else renderTune(); });
+  $("resetTune").onclick = () => { state.custom = JSON.parse(JSON.stringify(DATA.plans.song_hanh)); renderAll(); };
+}
+
+function renderCompare() {
+  const m = DATA.knowledge.adopt_matrix;
+  $("p-compare").innerHTML = `
+  <h2>Học gì từ đối thủ: Áp dụng / Cải tiến / Tránh</h2>
+  <p class="muted small">Mỗi cơ chế dẫn về quy tắc gốc; bấm 📄 để mở đúng trang tài liệu.</p>
+  <div class="tbl-wrap"><table><thead><tr><th>#</th><th>Cơ chế</th><th>Quyết định</th><th>Lý do</th><th>Bằng chứng</th></tr></thead><tbody>
+  ${m.map(x => `<tr><td>${x.no}</td><td><b>${esc(x.mechanism)}</b><div class="small muted">${esc(x.company)}</div></td><td><span class="tag ${x.decision}">${x.decision}</span></td><td class="small">${esc(x.why)}</td><td>${x.rules.map(ruleChip).join("") || "<span class='muted small'>chưa có tài liệu</span>"}</td></tr>`).join("")}
+  </tbody></table></div>`;
+}
+
+function renderEvidence() {
+  const K = DATA.knowledge, pdfs = K.sources.filter(s => s.url);
+  const cnt = (sid, f) => K.rules.filter(r => r.refs.some(x => x.sid === sid) && f(r)).length;
+  $("p-evidence").innerHTML = `
+  <h2>7 tài liệu gốc & độ phủ</h2>
+  <div class="tbl-wrap"><table><thead><tr><th>Tài liệu</th><th class="n">Trang</th><th class="n">Quy tắc</th><th class="n">Đã lập trình</th><th class="n">Kiểm thử đạt</th><th>Quyền tài liệu</th><th></th></tr></thead><tbody>
+  ${pdfs.map(s => { const n = cnt(s.id, () => true), im = cnt(s.id, r => r.impl === "IMPLEMENTED"), tp = cnt(s.id, r => r.calc === "TESTED_PASS");
+    return `<tr><td><b>${esc(s.company)}</b> — ${esc(s.scheme)}<div class="small muted">${esc(s.id)} · ${esc(s.audience)}</div></td><td class="n">${esc(s.pages)}</td><td class="n">${n}</td>
+    <td class="n">${im}<div class="bar"><i style="width:${n ? im / n * 100 : 0}%"></i></div></td><td class="n">${tp}<div class="bar"><i style="width:${n ? tp / n * 100 : 0}%"></i></div></td>
+    <td class="small">${esc(s.confidentiality)} · ${esc(s.rights)}</td><td><a class="ev" target="_blank" rel="noopener" href="${evUrl(s.id)}">📄 Xem toàn văn</a></td></tr>`; }).join("")}
+  </tbody></table></div>
+  <p class="note">Độ phủ: 116/116 trang đã đọc và phân loại (tự kiểm của người trích xuất). Một số quy tắc phụ thuộc văn bản chưa có (ví dụ Chubb 260005V, biểu hoa hồng AIA) nên chưa lập trình được — hiển thị đúng trạng thái, không giấu.</p>
+  <h2 style="margin-top:20px">Kiểm mẫu độc lập 14 quy tắc ↔ trang PDF</h2>
+  <div class="tbl-wrap"><table><thead><tr><th>Quy tắc</th><th>Trang</th><th>Kết quả</th><th>Bằng chứng trên trang</th></tr></thead><tbody>
+  ${K.spot_check.map(s => `<tr><td>${ruleChip(s.rule)}</td><td class="small">${esc(s.where)}</td><td>${esc(s.result)}</td><td class="small">${esc(s.evidence)}</td></tr>`).join("")}</tbody></table></div>
+  <p class="note">14/14 khớp nội dung; số trang trong quy tắc trùng chỉ số trang PDF nên link mở đúng chỗ. Mẫu nhỏ (14/112), không thay kiểm toán đầy đủ.</p>
+  <h2 style="margin-top:20px">Thư viện ${K.rules.length} quy tắc</h2>
+  <div class="filters"><input id="rq" placeholder="Tìm: K2, override, clawback…" aria-label="Tìm quy tắc">
+    <select id="rc" aria-label="Lọc theo hãng"><option value="">Mọi nguồn</option><option>AIA</option><option>CHB</option><option>MNL</option><option>REG</option></select>
+    <select id="rs" aria-label="Lọc theo trạng thái"><option value="">Mọi trạng thái kiểm thử</option><option>TESTED_PASS</option><option>CONDITIONAL</option><option>NOT_TESTED</option><option>BLOCKED</option></select></div>
+  <div class="tbl-wrap" style="max-height:560px;overflow:auto"><table><thead><tr><th>Quy tắc</th><th>Tầng</th><th>Loại thu nhập</th><th>Tỷ lệ / cấu trúc</th><th>Trạng thái</th></tr></thead><tbody id="rtb"></tbody></table></div>`;
+  const draw = () => {
+    const q = $("rq").value.toLowerCase(), c = $("rc").value, st = $("rs").value;
+    const rows = K.rules.filter(r => (!c || r.id.startsWith(c)) && (!st || r.calc === st) && (!q || JSON.stringify(r).toLowerCase().includes(q)));
+    $("rtb").innerHTML = rows.map(r => `<tr><td>${ruleChip(r.id)}</td><td class="small">${esc(r.tier)}</td><td class="small">${esc(r.type)}</td><td class="small">${esc(r.rate)}${r.threshold && r.threshold !== "0" && r.threshold !== "N/A" ? "<div class='muted'>Ngưỡng: " + esc(r.threshold) + "</div>" : ""}${r.cap && r.cap !== "N/A" ? "<div class='muted'>Trần: " + esc(r.cap) + "</div>" : ""}</td>
+      <td class="small"><span class="badge ${r.calc === "TESTED_PASS" ? "good" : r.calc === "BLOCKED" ? "bad" : "warn"}">${esc(r.calc)}</span><div class="muted">${esc(r.src_ver)}</div></td></tr>`).join("") || `<tr><td colspan="5" class="muted">Không có quy tắc khớp bộ lọc.</td></tr>`;
+  };
+  ["rq", "rc", "rs"].forEach(id => $(id).oninput = draw); draw();
+}
+
+function renderAssume() {
+  const k2 = state.k2, ag15 = planAgent(state.plan, k2, 15).y1;
+  $("p-assume").innerHTML = `
+  <h2>Giả định & giới hạn</h2>
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">Giả định áp chung cho mọi chính sách (ASSUMPTION)</h3><ul class="small">
+      <li>Vùng chuẩn 12 tỷ FYP/năm, FYC = 30% FYP (sản phẩm UL); 20 đại lý × 15tr FYC/tháng, 4 quản lý, 1 lãnh đạo vùng.</li>
+      <li>Thu nhập 3 năm của đại lý: viết cùng mức FYC mỗi năm; hoa hồng tái tục năm 2 = 20%, năm 3 = 10% phí tái tục; phí năm 3 = K2 × 92%.</li>
+      <li>K2 là kịch bản do người xem chọn, không phải kết quả dự báo của thiết kế.</li>
+      <li>Biên đóng góp và OpEx trong tab Chi phí là số giả định để thử; cần số thật của công ty.</li></ul></div>
+    <div class="card"><h3 style="margin-top:0">Chưa biết (UNKNOWN) — không quy về 0</h3><ul class="small">
+      <li>Manulife tầng đại lý và quản lý cấp trung: không có tài liệu.</li>
+      <li>AIA: biểu hoa hồng sản phẩm, quy đổi FYC tín chỉ, gói trợ cấp Exchange/Exchange Pro — chi phí AIA trong mô hình đang thấp hơn thực tế.</li>
+      <li>Chubb: quy định chung 260005V/006V/009V và chính sách BD.</li>
+      <li>VNB margin, OpEx thật, tác động của thu nhập lên doanh số/tuyển dụng (không có dữ liệu — mô hình không giả vờ dự báo).</li></ul></div>
+    <div class="card"><h3 style="margin-top:0">Pháp lý — CONDITIONAL</h3><p class="small">Ngưỡng Điều 51/52 TT 67/2023, NĐ 97/2026, TT 96/2026 đang tham chiếu từ bản tóm tắt công khai (SOURCE_NOT_VERIFIED). Cần Pháp chế đối chiếu toàn văn hợp nhất 44/2026/VBHN-TT-BTC trước khi ban hành. Hai mâu thuẫn trong tài liệu gốc (Chubb W1 80% vs 50%; AIA làm tròn FY) đang chờ quyết định.</p></div>
+    <div class="card"><h3 style="margin-top:0">Thuế & bối cảnh thu nhập</h3>
+      <p class="small">Thuế TNCN áp gần như giống nhau cho mọi hãng nên <b>không đổi thứ hạng</b>; chỉ ảnh hưởng thu nhập thực nhận. Bằng chứng duy nhất trong bộ tài liệu: AIA tạm khấu trừ 10% thuế trên phí giới thiệu chuyên viên mới ${ruleChip("AIA-CV-013")} (trang 8). Mức thuế chung cho thu nhập đại lý: <b>chưa đối chiếu văn bản</b>.</p>
+      <div class="sl"><div class="row"><span>Thu nhập bình quân tham chiếu (triệu/tháng) — nhập từ nguồn chính thức</span></div>
+        <input type="number" id="avgInc" min="1" step="0.1" placeholder="ví dụ: số GSO mới nhất" value="${state.avgIncome || ""}" style="font:inherit;padding:6px;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--text)"></div>
+      <p class="small" id="avgOut">${state.avgIncome ? `Đại lý trung bình (15tr FYC) năm 1 theo ${esc(PLAN_META[state.plan].name)}: ${fmt(ag15 / 12, 1)}tr/tháng ≈ <b>${fmt(ag15 / 12 / state.avgIncome, 1)} lần</b> mức tham chiếu.` : "Chưa nhập số tham chiếu."}</p></div>
+  </div>`;
+  $("avgInc").oninput = ev => { const v = parseFloat(ev.target.value); state.avgIncome = v > 0 ? v : null; renderAssume(); $("avgInc").focus(); };
+}
+
+/* ---------- Khung trang ---------- */
+function selfTest() {
+  let ok = 0, n = 0;
+  (GOLDEN || []).forEach(c => { n++; const p = JSON.parse(JSON.stringify(DATA.plans[c.plan] || {}));
+    try { const r = c.kind === "enterprise" ? E.enterprise(c.k2, p) : E.agentIncome3y(c.fyc, c.k2, p);
+      if (Object.entries(c.expect).every(([k, v]) => Math.abs(r[k] - v) <= 0.02)) ok++; } catch (e) {} });
+  return {ok, n};
+}
+function renderAll() {
+  $("k2v").textContent = state.k2 + "%";
+  $("planSeg").innerHTML = Object.entries(PLAN_META).map(([k, m]) => `<button type="button" data-plan="${k}" aria-pressed="${state.plan === k}">${esc(m.name)}${m.star ? " ⭐" : ""}</button>`).join("");
+  document.querySelectorAll("#planSeg button").forEach(b => b.onclick = () => { state.plan = b.dataset.plan; renderAll(); });
+  $("tabs").innerHTML = TABS.map(([k, n]) => `<button type="button" role="tab" data-tab="${k}" aria-selected="${state.tab === k}">${n}</button>`).join("");
+  document.querySelectorAll("#tabs button").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; showTab(); });
+  renderOverview(); renderTiers(); renderCost(); renderRubric(); renderTune(); renderCompare(); renderAssume();
+  showTab();
+}
+function showTab() {
+  document.querySelectorAll("section.panel").forEach(s => s.classList.toggle("on", s.id === "p-" + state.tab));
+  document.querySelectorAll("#tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === state.tab));
+  if (state.tab === "evidence" && !$("rtb")) renderEvidence();
+}
+$("k2").oninput = ev => { state.k2 = +ev.target.value; renderAll(); };
+$("themeBtn").onclick = () => { const r = document.documentElement, cur = r.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  r.dataset.theme = cur === "dark" ? "light" : "dark"; try { localStorage.setItem("w24-theme", r.dataset.theme); } catch (e) {} };
+const st = selfTest();
+$("topBadges").innerHTML = `<span class="badge ${st.ok === st.n && st.n ? "good" : "bad"}">Engine JS khớp Python: ${st.ok}/${st.n} ca mẫu</span>
+  <span class="badge">Dữ liệu dựng ngày ${esc(DATA.generated)}</span><span class="badge warn">Mô phỏng — không phải ROI thực tế</span>
+  <span class="badge">${DATA.knowledge.rules.length} quy tắc · 7 tài liệu · 116 trang</span>`;
+$("foot").innerHTML = `Bằng chứng mở từ ${esc(DATA.evidence_base)} (đúng trang qua #page). Tài liệu gốc thuộc quyền của các công ty phát hành; trang này dùng cho mục đích phân tích, không phải tài liệu chính thức của AIA, Chubb Life hay Manulife.`;
+renderAll();
+</script>
+</body>
+</html>
