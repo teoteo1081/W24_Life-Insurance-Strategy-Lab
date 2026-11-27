@@ -4,7 +4,12 @@
 
 ## Trạng thái hiện hành
 
-**2026-11-27 — Sửa UI theo góp ý TJ (`web/template.html`), đã build lại cả 2 bản, CHƯA commit/push.**
+**2026-11-27 — ĐÃ PHÁT HÀNH bản Public lần 2 (TJ yêu cầu "commit và push").**
+- Local `main`: `90a6195` (thay đổi dưới đây) + `cb59670` (golden.json chỉ đổi thứ tự khóa). KHÔNG push `main`.
+- `public-release` `0687e34` = `fa6aef7` + 1 commit chỉ thay `outputs/interactive/W24_Strategy_Lab.html` bằng bản `--public` dựng từ `cb59670`; scanner PASS trước khi push; `git push origin public-release:main` → `origin/main` = `0687e34`.
+- Sửa thêm trước khi phát hành: nút phương án/K2 chỉ hiện ở trang thật sự dùng chúng (đã thử từng trang; trước đó Học từ đối thủ, Bằng chứng không phản ứng, Tự chỉnh thông số chỉ dùng K2).
+
+**2026-11-27 — Sửa UI theo góp ý TJ (`web/template.html`), đã build lại cả 2 bản.**
 - Thanh bên: kéo mép phải để đổi độ rộng (180–440px, nhấp đúp về 232px, phím ←/→), nút ghim kiểu W02 (bỏ ghim = tự ẩn, rê mép trái để mở); lưu `localStorage` `w24.side`. Chỉ áp dụng màn hình >980px.
 - Nội dung bám trái, tối đa 1560px (trước đây căn giữa 1240px → thừa trắng hai bên).
 - Trang 1–3 và Phụ lục không dùng K2/phương án (số cố định K2 85%) → ẩn bộ chọn phương án + thanh K2 ở các trang đó, tránh hiện "K2 82%" cạnh bảng K2 85%.
