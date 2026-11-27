@@ -1,7 +1,7 @@
 # ANCHOR_SPEC.md — Mục tiêu, Business Anchor và Phạm vi Chuẩn
 
 **Dự án:** W24 — Life Insurance Strategy Lab  
-**Phiên bản:** 1.1 (Cập nhật Business Anchor nguyên văn ngày 2026-11-26)  
+**Phiên bản:** 1.2 (2026-11-27 — đồng bộ ngược từ sản phẩm HTML sau Drift Check; yêu cầu gốc mục 1 giữ nguyên văn. Xem DEC-15)  
 **Business Owner:** TJ  
 
 ---
@@ -39,6 +39,8 @@ Mọi hoạt động nghiên cứu, xây dựng mô hình và trình bày trong 
 1. **Phân tích chính sách thu nhập giữa các công ty** (tách rõ Công ty → Kênh → Scheme → Đối tượng → Phiên bản → Hiệu lực).
 2. **Bảng so sánh chính sách thu nhập** trên cùng một cơ sở chuẩn hóa + **Danh mục quy tắc nghiệp vụ** (`business-rules-catalog.csv`) có truy vết nguồn.
 3. **Đề xuất chính sách thu nhập phù hợp tại thị trường VN** (tối thiểu 3 hướng chiến lược: Growth / Quality / Balanced-Hybrid, tuân thủ khung pháp lý TT 67/2023 & TT 96/2026).
+   - *Cập nhật 1.2 (DEC-15):* chốt **một đề xuất duy nhất — `Chính sách Đề xuất 2026`** (tên làm việc cũ: "Chính sách Lai") trên mô hình khu vực 45 đại lý, 1,2 tỷ FYP/tháng. Các hướng đã cân nhắc giữ làm lịch sử thiết kế ở nhóm "Phân tích sâu" (mô hình 1 vùng 12 tỷ FYP/năm): Song Hành = Balanced (bản tiền thân), Song Hành siết K2 = Quality, Tiết kiệm tối đa = mốc chi phí thấp. **Chưa có biến thể Growth** — ghi nhận là khoảng trống so với yêu cầu "tối thiểu 3 hướng".
+   - Pháp lý hiển thị ở trang 2: kiểm Điều 52 TT 67/2023 (thưởng + hỗ trợ ≤ 30% FYP, `CONDITIONAL`) cho từng phương án; trần 7% phí đóng 1 lần theo TT 96/2026 từ 01/01/2027 (`SOURCE_CLAIM`).
 4. **Phân tích tác động lên 3 mục tiêu cốt lõi:** (a) Gia tăng doanh số, (b) Chất lượng kinh doanh, (c) Hiệu quả về mặt chi phí & ROI (có phân tích độ nhạy & điểm hòa vốn).
 5. **Mô hình Excel tham chiếu có thể kiểm chứng độc lập** (tách Inputs / Formulas / Outputs + Golden Test Cases).
 6. **Bản trình bày lãnh đạo** (Gói A — Interview Delivery, 5–7 trang/slide).
@@ -49,6 +51,7 @@ Mọi hoạt động nghiên cứu, xây dựng mô hình và trình bày trong 
 - **Marketing tìm kiếm khách hàng** (phễu khách hàng & phân bổ ngân sách quảng cáo).
 - **PO điều chỉnh tham số** (PO Decision Bridge cấu hình linh hoạt).
 - **HTML Interactive Simulator** phiên bản đầu tiên (chỉ xây sau khi Excel đã kiểm chứng và có Parity Test).
+  - *Cập nhật 1.2:* HTML đã trở thành sản phẩm trình bày chính (mục 6). Parity Test chạy mỗi lần mở trang và hiển thị ở trang "Cách tính & giả định" (60/60 ca mẫu). Excel **chỉ** chứa mô hình 1 vùng 12 tỷ (Balanced Hybrid / Song Hành), **không** có Chính sách Đề xuất 2026 và mô hình 45 đại lý.
 
 ### P2 — Tầm nhìn Dài hạn (Phát triển sau deadline 3 ngày)
 - Tự động hóa đọc PDF, tối ưu hóa nâng cao (Operations Research), tích hợp CRM/Chatbot, hệ thống tính hoa hồng production, kết nối nền tảng quảng cáo.
@@ -67,6 +70,10 @@ Mọi hoạt động nghiên cứu, xây dựng mô hình và trình bày trong 
 
 ---
 
+> **Ghi chú số liệu 1.2:** các con số trong ma trận trên là tại thời điểm phiên bản 1.1. Hiện hành: **9 PDF / 135 trang** (thêm 0046M01 & 0047M01 của Manulife — ghi "thông tin mật", DEC-14), **133 quy tắc** trong `business-rules-catalog.csv`. Đề xuất ở REQ-02 nay là Chính sách Đề xuất 2026 (mục 2, P0-3).
+
+---
+
 ## 4. Tiêu chuẩn Trưởng thành Repository
 
 - **Mục tiêu 3 ngày:** Đạt **Level 1 (Có tổ chức)** toàn repo và chứng minh **Level 2 (Có thể tái tạo kết quả)** trên các luồng tính toán trọng yếu (Compensation, MAPA, Cost/ROI sensitivity).
@@ -79,3 +86,25 @@ Mọi hoạt động nghiên cứu, xây dựng mô hình và trình bày trong 
 - **Gói A (`outputs/interview/W24_Executive_Recommendation_Step1.md`):** Gói trình bày sạch 7 trang cho chị Nhi. Chỉ chứa kết luận có bằng chứng, bảng so sánh, đề xuất, trade-offs, kết quả tài chính và lộ trình triển khai 90 ngày (tuyệt đối không kèm PDF nguồn hay working papers nội bộ).
 - **Gói B (Working Papers):** Bản phân tích theo chính sách chia sẻ của repo (`outputs/working/`, `knowledge/`, `model/`, `tests/`, `qa/`).
 - **GitHub PUBLIC:** DEC-07 và DEC-08 ghi nhận quyết định của TJ về chế độ hiển thị và công bố kèm disclosure. Quyền tái phân phối của từng nguồn được ghi riêng tại Source Registry và áp dụng theo [chính sách bảo mật và quyền tài liệu](docs/governance/confidentiality-and-rights-policy.md).
+
+---
+
+## 6. Sản phẩm HTML hiện hành (`outputs/interactive/W24_Strategy_Lab.html`) — cập nhật 1.2
+
+| Thành phần | Phục vụ | Ghi chú |
+|---|---|---|
+| ★ **Tổng quan điều hành** (trang mặc định) | REQ-01…05 | Thẻ Đề bài + 9 PDF bấm mở đúng trang; 4 KPI (tổng chi / FYP, đỉnh stress test so trần 75%, điểm 5 tiêu chí, cơ chế cốt lõi); 2 biểu đồ (thu nhập 4 tầng L1–L4 theo Tháng/Quý/Năm; tổng chi / FYP với vạch trần 75%); 3 bước tiếp theo |
+| **? Hướng dẫn** (hộp thoại) | Người đọc lần đầu | 5 phần: đề bài & mục tiêu · kết luận 3 dòng · phương pháp & giả định · cách đọc bằng chứng · lộ trình đọc 3 phút |
+| Trang 1 · So sánh Thu nhập & Quyền lợi | REQ-01 | 4 mốc chuẩn L1–L4, trích dẫn `[Mã văn bản : trang]`; Tóm tắt 2 góc nhìn (đại lý / công ty) |
+| Trang 2 · Phân tích Hành vi & Hiệu quả chi phí | REQ-03…05 | Tổng chi / FYP, độ nhạy K2 và cơ cấu sản phẩm, kiểm Điều 52 & TT 96, bẫy hành vi, chấm điểm 5 tiêu chí |
+| Trang 3 · Chính sách Đề xuất 2026 & Phân vùng | REQ-02 | 2 đường ray Full-time / Part-time, K2 ≥ 80%, **4 vùng** theo lương tối thiểu NĐ 293/2025 (100/89/78/70%) |
+| Phụ lục: Từ điển & Tài liệu gốc | Bằng chứng | Thuật ngữ + mục lục từng PDF |
+| Nhóm "Phân tích sâu & công cụ" (thu gọn mặc định) | Truy vết | Trả lời đề bài chi tiết + khung giả định, mô hình 1 vùng 12 tỷ, thư viện 133 quy tắc, cách tính, tự chỉnh thông số |
+
+**Định nghĩa đã chốt:** FYC chuẩn hóa = FYP × 30% làm cơ sở thưởng/phí quản lý; **trần tổng chi trả hệ thống đại lý 75% FYP** ở kịch bản xấu nhất (không phải tổng chi phí khai thác trên BCTC). ROI hiện là proxy (chi phí / FYP, chi phí / phí còn duy trì) — cần product mix & expense overrun từ Actuarial để tính VNB. Thí điểm 6–12 tháng ghép cặp với văn phòng đối chứng, đọc sớm sau 1 quý, K2 đo ở tháng 13–15.
+
+**Chuẩn chấm giao diện:** `docs/UI_AUDIT_RUBRIC.md` (đậu ≥ 95 điểm và 0 lỗi P1 ở tiêu chí 1–2).
+
+**Phát hành:** bản công khai dựng bằng `scripts/build_html.py --public` (lược dòng mật), quét bằng `scripts/check_public_build.py`, chỉ đẩy qua nhánh `public-release`; `main` local chứa dữ liệu mật không push.
+
+**Khoảng trống còn mở:** biến thể Growth (P0-3); MAPA tính xuôi/ngược và phễu marketing (P1) chưa có trên HTML; Gói A (`outputs/interview/W24_Executive_Recommendation_Step1.md`) còn xoay quanh Balanced Hybrid — cần viết lại theo Chính sách Đề xuất 2026.
