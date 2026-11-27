@@ -240,11 +240,15 @@ def build():
               "M4": (T.m(paf["total_earned"] + a4_cql["total_earned"]), T.m(rd["total_earned"]), T.m(psm["total_earned"]))}
     header4 = {"M4": ("PAF", "RD (bổ nhiệm)", "PSM/SM (bổ nhiệm)")}
 
-    def emit_row_block(cols, data):
+    CELLS = []   # ô có cấu trúc cho Supabase (role_benefit_matrix) — cùng nguồn với bảng Markdown
+
+    def emit_row_block(cols, data, mid, table, titles_row):
         for i, rname in enumerate(ROWS):
             cells_txt = []
             for co in cols:
                 c = data[co][i]
+                CELLS.append({"milestone_id": mid, "matrix_table": table, "company": co, "title": titles_row[co], "row_no": i + 1,
+                              "row_label": rname, "value_text": c["val"], "citation": c["cite"], "label": c["label"]})
                 ev["data"] += 1
                 ev["labelled"] += 1
                 if c["label"] == "UNKNOWN":
@@ -279,7 +283,7 @@ def build():
             w("")
         w(f"| Dòng | AIA Alpha · **{ta}** | Chubb Life · **{tc}** | Manulife · **{tm}** |")
         w("|---|---|---|---|")
-        emit_row_block(("AIA", "Chubb", "Manulife"), M[ms.mid])
+        emit_row_block(("AIA", "Chubb", "Manulife"), M[ms.mid], ms.mid, "primary", {"AIA": ta, "Chubb": tc, "Manulife": tm})
         ta_, tc_, tm_ = totals[ms.mid]
         w(f"| **Tổng tr/tháng** | **{vn(ta_)}** | **{vn(tc_)}** | **{vn(tm_)}** |")
         w("")
@@ -287,7 +291,7 @@ def build():
     w("")
     w("| Dòng | Chubb Life · **DM (AL)** — nếu chưa lên BD | Manulife · **UM+** |")
     w("|---|---|---|")
-    emit_row_block(("Chubb", "Manulife"), M4B)
+    emit_row_block(("Chubb", "Manulife"), M4B, "M4", "secondary", {"Chubb": "DM (AL)", "Manulife": "UM+"})
     w(f"| **Tổng tr/tháng** | **{vn(T.m(dm4['total_earned']))}** | **{vn(T.m(u4['total_earned']))}** |")
     w("")
     w("### Ghi chú độ nhạy — Manulife có danh hiệu MBA Pro (để chạy ở Giai đoạn 2)")
@@ -305,7 +309,14 @@ def build():
     w(f"Script đã kiểm token trên trang cho {len(checks)} trích dẫn (bản scan 0003V: đối chiếu bằng mắt).")
     if tot < 90:
         raise SystemExit(f"rubric FAIL {tot}")
+    build.cells = CELLS
     return "\n".join(L) + "\n", bookmarks(pages)
+
+
+def build_cells():
+    """Ô ma trận quyền lợi có cấu trúc + mục lục PDF (cho scripts/sync_to_supabase.py)."""
+    md, bm = build()
+    return build.cells, bm
 
 
 def main() -> None:

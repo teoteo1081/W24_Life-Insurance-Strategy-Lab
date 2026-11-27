@@ -180,12 +180,59 @@ def knowledge(manifest: dict) -> dict:
             "rewards": rewards, "roles": roles}
 
 
+def _looks_like_service_key(key: str) -> bool:
+    """Chặn nhúng nhầm service key: khóa mới 'sb_secret_…' hoặc JWT có role=service_role."""
+    import base64
+    if key.startswith("sb_secret_"):
+        return True
+    parts = key.split(".")
+    if len(parts) == 3:
+        try:
+            body = json.loads(base64.urlsafe_b64decode(parts[1] + "=" * (-len(parts[1]) % 4)))
+            return body.get("role") == "service_role"
+        except (ValueError, UnicodeDecodeError):
+            return False
+    return False
+
+
+def supabase_meta() -> str:
+    """Thẻ meta cấu hình ĐỌC cho web/data-loader.js — chỉ từ W24_SUPABASE_URL / W24_SUPABASE_ANON_KEY (env hoặc .env).
+    Không cấu hình → trang dùng snapshot nhúng (offline)."""
+    import html as _html
+    import os
+    env = dict(os.environ)
+    p = REPO / ".env"
+    if p.exists():
+        for line in p.read_text(encoding="utf-8").splitlines():
+            if "=" in line and not line.strip().startswith("#"):
+                k, v = line.split("=", 1)
+                env.setdefault(k.strip(), v.strip().strip('"').strip("'"))
+    url, key = env.get("W24_SUPABASE_URL", "").strip(), env.get("W24_SUPABASE_ANON_KEY", "").strip()
+    if not url or not key:
+        return "<!-- Supabase chưa cấu hình: trang dùng dữ liệu nhúng -->"
+    if _looks_like_service_key(key) or key == env.get("SUPABASE_SERVICE_KEY", "").strip():
+        raise SystemExit("W24_SUPABASE_ANON_KEY trông như SERVICE key — không nhúng vào HTML. Dùng anon/publishable key.")
+    if not re.match(r"^https://[a-z0-9-]+\.supabase\.co/?$", url):
+        raise SystemExit("W24_SUPABASE_URL không đúng dạng https://<project>.supabase.co")
+    return (f'<meta name="w24-supabase-url" content="{_html.escape(url)}">\n'
+            f'<meta name="w24-supabase-anon-key" content="{_html.escape(key)}">')
+
+
 def main() -> int:
     manifest = json.loads((REPO / "infra/evidence-worker/manifest.json").read_text(encoding="utf-8"))
     plans = plan_params()
-    data = {"generated": "2026-11-26", "k2_range": [K2_RANGE[0], K2_RANGE[-1]], "fyc_levels": FYC_LEVELS,
+    data = {"generated": "2026-11-27", "k2_range": [K2_RANGE[0], K2_RANGE[-1]], "fyc_levels": FYC_LEVELS,
             "plans": plans, "competitors": competitor_data(), "knowledge": knowledge(manifest),
             "evidence_base": manifest["base_url"]}
+    # Từ điển & mục lục 9 PDF — nguồn duy nhất: knowledge/sources/glossary.json, pdf-bookmarks.json
+    # (sinh bởi scripts/build_glossary.py, scripts/build_benefit_matrix.py). PDF chỉ mở được nếu đã có trên kho
+    # bằng chứng (manifest); 0046M01/0047M01 là tài liệu mật, chỉ lưu local (DEC-14) nên không có url.
+    gl = json.loads((REPO / "knowledge/sources/glossary.json").read_text(encoding="utf-8"))
+    bm = json.loads((REPO / "knowledge/sources/pdf-bookmarks.json").read_text(encoding="utf-8"))
+    data["glossary"] = gl["entries"]
+    data["pdfs"] = [{"file_id": f["file_id"], "sid": f["source_id"], "name": f["file_name"], "pages": f["page_count"],
+                     "url": manifest["files"].get(f["source_id"], {}).get("url"),
+                     "bookmarks": [{"t": b["title"], "p": b["page"]} for b in f["bookmarks"]]} for f in bm["files"]]
     g = golden(plans)
     GOLDEN.write_text(json.dumps(g, ensure_ascii=False) + "\n", encoding="utf-8")
     tpl = (REPO / "web/template.html").read_text(encoding="utf-8")
@@ -193,6 +240,13 @@ def main() -> int:
     payload = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     html = tpl.replace("/*__ENGINE_JS__*/", engine).replace("/*__DATA_JSON__*/null", payload)
     html = html.replace("/*__GOLDEN_JSON__*/null", json.dumps(g["cases"][:60], separators=(",", ":")))
+    # Lớp dữ liệu tách rời (supabase/schema.sql): loader + snapshot dự phòng offline + cấu hình đọc (chỉ anon key).
+    loader = (REPO / "web/data-loader.js").read_text(encoding="utf-8")
+    snap_path = REPO / "web/data/snapshot.json"
+    snap = json.dumps(json.loads(snap_path.read_text(encoding="utf-8")), ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/") \
+        if snap_path.exists() else "null"
+    html = html.replace("/*__DATA_LOADER__*/", loader).replace("/*__LOCAL_SNAPSHOT__*/null", snap)
+    html = html.replace("<!--__SUPABASE_META__-->", supabase_meta())
     OUT_HTML.parent.mkdir(parents=True, exist_ok=True)
     OUT_HTML.write_text(html, encoding="utf-8")
     print(f"wrote {OUT_HTML.relative_to(REPO)} ({len(html)//1024} KB), golden cases: {len(g['cases'])}")

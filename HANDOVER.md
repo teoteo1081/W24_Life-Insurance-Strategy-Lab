@@ -4,6 +4,18 @@
 
 ## Trạng thái hiện hành
 
+**2026-11-27 (tối) — Kiến trúc tách lớp Supabase (khung, chưa nối project thật, chưa commit).**
+- Data contract `supabase/schema.sql`: 4 bảng (`benchmark_results`, `role_benefit_matrix`, `glossary_terms`, `pdf_bookmarks`), RLS chỉ SELECT; dòng dựa trên 0046M01/0047M01 = `restricted`, chỉ user trong allowlist `w24_readers` đọc được (DEC-14). `region` hiện chỉ `ALL` — V1–V3 chưa có tham số (UNKNOWN).
+- `scripts/sync_to_supabase.py`: dựng payload từ cùng hàm của báo cáo 00/01 (15 + 84 + 64 + 131 dòng, 54 restricted); `--dry-run` ghi `web/data/snapshot.json`; upsert qua REST (urllib, không thêm gói), `--prune` xóa dòng cũ; khóa đọc từ `.env` (gitignore).
+- `web/data-loader.js`: đọc Supabase bằng anon key (meta), merge với snapshot nhúng; offline/không key → snapshot. `build_html.py` từ chối nhúng service key.
+- Kiểm: Chrome headless — offline dùng snapshot; mock PostgREST → tooltip K2 cập nhật theo server. `tests/test_supabase_contract.py` (9 test). Hướng dẫn: `supabase/README.md`.
+
+**2026-11-27 (tối) — Từ điển thuật ngữ & tooltip (chưa commit, chờ TJ xem).**
+- Nguồn duy nhất `knowledge/sources/glossary.json` (64 thuật ngữ, 6 trường + nhóm/công ty/trích dẫn), sinh bởi `python scripts/build_glossary.py`; trang xuất hiện đầu tiên tự tìm trên text 9 PDF, test `tests/test_glossary.py` kiểm trang trích có chứa thuật ngữ.
+- Sửa theo văn bản: PAF = "Quyền Sáng lập khối" (2601-035 tr.3), 3MAA = đại lý đạt EHC ≥1 lần trong 3 tháng (0003V tr.14); BM, VNB, MAPA, ROI không có trong 9 PDF. Tên tiếng Anh không có trong văn bản gắn nhãn "diễn giải".
+- HTML: bỏ bảng GLOSSARY gõ tay; tooltip đọc từ `DATA.glossary`, bọc mọi lần xuất hiện (371 chỗ trên 8 trang), dạng "English — Tiếng Việt", hiện khi rê chuột / chạm / Tab; nút 📖 trên header + trang "Phụ lục: Từ điển & 9 PDF" (tìm, lọc công ty/nhóm, mục lục 9 PDF), link `#glossary`. Trích dẫn 0046M01/0047M01 không mở được (không lên kho bằng chứng, DEC-14).
+- Kiểm: run_checks PASS; pytest 82 passed; Chrome headless dựng DOM đúng (64 dòng, tự kiểm 60/60).
+
 **2026-11-27 (chiều) — Giai đoạn 1 khóa dữ liệu 9/9 PDF — TJ ĐÃ DUYỆT (DEC-14), commit LOCAL, KHÔNG push; chờ Codex kiểm toán độc lập trước Giai đoạn 2.**
 - Nguồn: 9/9 PDF trong `private/sources/` (gitignore) khớp SHA-256 registry; thêm `SRC-POL-MNL-002` (0046M01 Đại Lý, 11 tr.) và `SRC-POL-MNL-003` (0047M01 UM+, 8 tr.), bổ sung lúc 11:47–11:50. `SRC-GAP-002` thu hẹp: còn thiếu biểu hoa hồng theo sản phẩm, 0013M04/2024 (chức danh), 0050M01/2026 (MBA Pro), 0011M04/2024 (Manulife Pro).
 - Engine: `calc_manulife_agent_12m` (0046M01 B.III–B.VIII), `calc_manulife_um_12m` (0047M01 A.I–A.V), `manulife_agent_k2_factor`; test `tests/test_manulife_agent_um.py`. 3 P2 Codex đã sửa (MISSING_INPUT 3MAA, `K2_NO_K2_YET` ≠ UNKNOWN, câu 3 sao ≥1 / 4–5 sao ≥2).

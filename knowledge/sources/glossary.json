@@ -1,0 +1,1963 @@
+{
+ "$comment": "Nguồn duy nhất cho từ điển & tooltip trên trang HTML. Sinh bởi scripts/build_glossary.py; trang trích dẫn tự tìm trên text 9 PDF (bản scan CHH0DCEB260003V: đối chiếu bằng mắt). english_status = 'Diễn giải' khi văn bản không ghi tên tiếng Anh.",
+ "required_fields": [
+  "abbr",
+  "english",
+  "vietnamese",
+  "company_and_memo",
+  "market_equivalent",
+  "note"
+ ],
+ "entries": [
+  {
+   "abbr": "FYP",
+   "english": "First Year Premium",
+   "vietnamese": "Phí bảo hiểm thực thu năm thứ nhất",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 11] · Chubb [CHH0DCEB260007V : 9] · Manulife [0046M01_2026 : 2]",
+   "market_equivalent": "APE (phí quy năm) — tương đương khi quy đổi kỳ đóng phí",
+   "note": "Manulife: gồm phí cơ bản + bổ trợ + 6% phí đóng một lần, trừ HĐ bị hủy trong 21 ngày [0048M01_2026 : 6]",
+   "group": "Chỉ số",
+   "companies": [
+    "AIA",
+    "Chubb",
+    "Manulife"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 11,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 8,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 3,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260007V",
+     "source_id": "SRC-POL-CHB-001",
+     "page": 9,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260008V",
+     "source_id": "SRC-POL-CHB-002",
+     "page": 11,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260003V",
+     "source_id": "SRC-POL-CHB-003",
+     "page": 5,
+     "method": "visual_scan"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0046M01_2026",
+     "source_id": "SRC-POL-MNL-002",
+     "page": 2,
+     "method": "text_search"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0047M01_2026",
+     "source_id": "SRC-POL-MNL-003",
+     "page": 6,
+     "method": "text_search"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0048M01_2026",
+     "source_id": "SRC-POL-MNL-001",
+     "page": 1,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "FYC",
+   "english": "First Year Commission",
+   "vietnamese": "Hoa hồng thực thu năm thứ nhất",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 3] · Chubb [CHH0DCEB260007V : 4] · Manulife [0046M01_2026 : 4]",
+   "market_equivalent": "First-year commission — thước đo năng suất đại lý",
+   "note": "Repo giả định FYC ≈ 30% FYP (A1) vì thiếu biểu hoa hồng theo sản phẩm",
+   "group": "Chỉ số",
+   "companies": [
+    "AIA",
+    "Chubb",
+    "Manulife"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 3,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 3,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 4,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260007V",
+     "source_id": "SRC-POL-CHB-001",
+     "page": 4,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260008V",
+     "source_id": "SRC-POL-CHB-002",
+     "page": 4,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260003V",
+     "source_id": "SRC-POL-CHB-003",
+     "page": 7,
+     "method": "visual_scan"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0046M01_2026",
+     "source_id": "SRC-POL-MNL-002",
+     "page": 4,
+     "method": "text_search"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0047M01_2026",
+     "source_id": "SRC-POL-MNL-003",
+     "page": 1,
+     "method": "text_search"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0048M01_2026",
+     "source_id": "SRC-POL-MNL-001",
+     "page": 1,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "FYC tín chỉ",
+   "english": "Credited First Year Commission",
+   "vietnamese": "FYC dùng để xét thưởng / chỉ tiêu ở AIA",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 3]",
+   "market_equivalent": "Weighted / credited FYC",
+   "note": "Cách quy đổi nằm ở memo riêng của AIA, không có trong 9 PDF; repo coi = FYC",
+   "group": "Chỉ số",
+   "companies": [
+    "AIA"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 3,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 3,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 4,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "SYC",
+   "english": "Second Year Commission",
+   "vietnamese": "Hoa hồng năm thứ hai (phí tái tục năm 2)",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 6]",
+   "market_equivalent": "Renewal commission Y2",
+   "note": "AIA trả thưởng chất lượng phục vụ theo % SYC quý",
+   "group": "Chỉ số",
+   "companies": [
+    "AIA"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 6,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "RYC",
+   "english": "Renewal Year Commission",
+   "vietnamese": "Hoa hồng tái tục (từ năm hợp đồng thứ 2)",
+   "company_and_memo": "Chubb [CHH0DCEB260007V : 6]",
+   "market_equivalent": "Renewal commission",
+   "note": "Chubb tính phí/thưởng duy trì trên RYC năm 2–5",
+   "group": "Chỉ số",
+   "companies": [
+    "Chubb"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260007V",
+     "source_id": "SRC-POL-CHB-001",
+     "page": 6,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260008V",
+     "source_id": "SRC-POL-CHB-002",
+     "page": 10,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260003V",
+     "source_id": "SRC-POL-CHB-003",
+     "page": 9,
+     "method": "visual_scan"
+    }
+   ]
+  },
+  {
+   "abbr": "K2",
+   "english": "Year-2 Persistency Ratio",
+   "vietnamese": "Tỷ lệ duy trì hợp đồng năm thứ 2",
+   "company_and_memo": "Chubb [CHH0DCEB260007V : 4]",
+   "market_equivalent": "13/25-month persistency (canonical: K2)",
+   "note": "Công thức K2 của Chubb nằm ở 260005V (không có trong 9 PDF)",
+   "group": "Chỉ số",
+   "companies": [
+    "Chubb"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260007V",
+     "source_id": "SRC-POL-CHB-001",
+     "page": 4,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260008V",
+     "source_id": "SRC-POL-CHB-002",
+     "page": 5,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260003V",
+     "source_id": "SRC-POL-CHB-003",
+     "page": 7,
+     "method": "visual_scan"
+    }
+   ]
+  },
+  {
+   "abbr": "TLDTHD",
+   "english": "Year-2 Policy Persistency Ratio",
+   "vietnamese": "Tỷ lệ duy trì hợp đồng năm 2 (Manulife)",
+   "company_and_memo": "Manulife [0046M01_2026 : 1]",
+   "market_equivalent": "K2",
+   "note": "Công thức ở 0016M03/2024 (không có trong 9 PDF); hệ số nhân đổi bảng từ 04/2026",
+   "group": "Chỉ số",
+   "companies": [
+    "Manulife"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Manulife",
+     "file_id": "0046M01_2026",
+     "source_id": "SRC-POL-MNL-002",
+     "page": 1,
+     "method": "text_search"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0047M01_2026",
+     "source_id": "SRC-POL-MNL-003",
+     "page": 1,
+     "method": "text_search"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0048M01_2026",
+     "source_id": "SRC-POL-MNL-001",
+     "page": 1,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "FY",
+   "english": "AIA FY Persistency Ratio",
+   "vietnamese": "Tỷ lệ duy trì phí AIA FY (14 tháng)",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 3]",
+   "market_equivalent": "K2 / 13-month persistency",
+   "note": "Ví dụ tính FY: phí thực thu ÷ phí phải thu (2604-069 mục VII)",
+   "group": "Chỉ số",
+   "companies": [
+    "AIA"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 3,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 3,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 4,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "TOT",
+   "english": "AIA TOT Persistency Ratio",
+   "vietnamese": "Tỷ lệ duy trì tổng phí AIA TOT",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 10]",
+   "market_equivalent": "Total-premium persistency",
+   "note": "Phí năm CQL trả chậm cần TOT ≥85% tại thời điểm chi trả",
+   "group": "Chỉ số",
+   "companies": [
+    "AIA"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 10,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 5,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 15,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "P13",
+   "english": "13th-month Persistency",
+   "vietnamese": "Tỷ lệ duy trì tháng 13",
+   "company_and_memo": "Chubb [CHH0DCEB260007V : 7]",
+   "market_equivalent": "13-month persistency",
+   "note": "Chubb dùng K2 hoặc trung bình P13 3 tháng để xét thăng/giữ cấp",
+   "group": "Chỉ số",
+   "companies": [
+    "Chubb"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260007V",
+     "source_id": "SRC-POL-CHB-001",
+     "page": 7,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "EHC",
+   "english": "— (định nghĩa ở 260005V, không có trong 9 PDF)",
+   "vietnamese": "Lượt/đại lý đạt chuẩn hoạt động trong tháng (Chubb)",
+   "company_and_memo": "Chubb [CHH0DCEB260007V : 5]",
+   "market_equivalent": "Active agent (monthly)",
+   "note": "Định nghĩa chi tiết ở CHH0DCEB260005V — không có trong nguồn",
+   "group": "Chỉ số",
+   "companies": [
+    "Chubb"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260007V",
+     "source_id": "SRC-POL-CHB-001",
+     "page": 5,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260008V",
+     "source_id": "SRC-POL-CHB-002",
+     "page": 5,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260003V",
+     "source_id": "SRC-POL-CHB-003",
+     "page": 6,
+     "method": "visual_scan"
+    }
+   ]
+  },
+  {
+   "abbr": "3MAA",
+   "english": "3-Month Active Agent",
+   "vietnamese": "Đại lý chính thức còn làm việc và đạt EHC ít nhất 1 lần trong 3 tháng gần nhất",
+   "company_and_memo": "Chubb [CHH0DCEB260007V : 7]",
+   "market_equivalent": "Active agents (3-month window)",
+   "note": "Định nghĩa nguyên văn ở [CHH0DCEB260003V : 14] (mục V.10). KHÔNG phải \"bình quân 3 tháng\"",
+   "group": "Chỉ số",
+   "companies": [
+    "Chubb"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260007V",
+     "source_id": "SRC-POL-CHB-001",
+     "page": 7,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260008V",
+     "source_id": "SRC-POL-CHB-002",
+     "page": 9,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260003V",
+     "source_id": "SRC-POL-CHB-003",
+     "page": 7,
+     "method": "visual_scan"
+    }
+   ]
+  },
+  {
+   "abbr": "1mAA",
+   "english": "1-Month Active Agent",
+   "vietnamese": "Số lượt đại lý có hoạt động trong tháng",
+   "company_and_memo": "AIA [AIAVAD 2601-035 : 4] · Manulife [0048M01_2026 : 2]",
+   "market_equivalent": "Monthly active agents",
+   "note": "Manulife 1mAA_4mFYC: đại lý ≥1 HĐ thực cấp và ≥4tr FYC trong tháng [0048M01_2026 : 6]",
+   "group": "Chỉ số",
+   "companies": [
+    "AIA",
+    "Manulife"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 4,
+     "method": "text_search"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0048M01_2026",
+     "source_id": "SRC-POL-MNL-001",
+     "page": 2,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "CC",
+   "english": "Case Count",
+   "vietnamese": "Số hợp đồng thực cấp (đã trừ hủy / từ chối)",
+   "company_and_memo": "Manulife [0046M01_2026 : 2]",
+   "market_equivalent": "Net issued cases",
+   "note": "Định nghĩa ở [0046M01_2026 : 10]",
+   "group": "Chỉ số",
+   "companies": [
+    "Manulife"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Manulife",
+     "file_id": "0046M01_2026",
+     "source_id": "SRC-POL-MNL-002",
+     "page": 2,
+     "method": "text_search"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0047M01_2026",
+     "source_id": "SRC-POL-MNL-003",
+     "page": 2,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "NTT",
+   "english": "Direct Team",
+   "vietnamese": "Nhóm trực tiếp (Chubb)",
+   "company_and_memo": "Chubb [CHH0DCEB260008V : 5]",
+   "market_equivalent": "Direct team / F1",
+   "note": "FYC NTT của AL không gồm FYC của chính AL",
+   "group": "Chỉ số",
+   "companies": [
+    "Chubb"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260008V",
+     "source_id": "SRC-POL-CHB-002",
+     "page": 5,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "FNA",
+   "english": "Financial Needs Analysis",
+   "vietnamese": "Gặp khách hàng có phân tích nhu cầu tài chính",
+   "company_and_memo": "Chubb [CHH0DCEB260007V : 9]",
+   "market_equivalent": "Needs-based selling activity",
+   "note": "Chỉ tiêu Champion Hubb: 20 FNA/tháng",
+   "group": "Chỉ số",
+   "companies": [
+    "Chubb"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260007V",
+     "source_id": "SRC-POL-CHB-001",
+     "page": 9,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260008V",
+     "source_id": "SRC-POL-CHB-002",
+     "page": 11,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "SOP",
+   "english": "Standard Operating Procedure (hoạt động chuẩn)",
+   "vietnamese": "Tỷ lệ tham dự hoạt động chuẩn (Champion Hubb)",
+   "company_and_memo": "Chubb [CHH0DCEB260007V : 9]",
+   "market_equivalent": "Activity discipline",
+   "note": "Hệ số W1 theo % tham dự SOP; có mâu thuẫn bảng vs ví dụ (ERR-DOC-01)",
+   "group": "Chỉ số",
+   "companies": [
+    "Chubb"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260007V",
+     "source_id": "SRC-POL-CHB-001",
+     "page": 9,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260008V",
+     "source_id": "SRC-POL-CHB-002",
+     "page": 11,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "MDRT",
+   "english": "Million Dollar Round Table",
+   "vietnamese": "Danh hiệu quốc tế cho tư vấn viên doanh số cao",
+   "company_and_memo": "AIA [AIAVAD 2601-034 : 1] · Manulife [0046M01_2026 : 5]",
+   "market_equivalent": "MDRT",
+   "note": "Manulife dùng MDRT cho mức thưởng xuất sắc ≥120tr FYP",
+   "group": "Chỉ số",
+   "companies": [
+    "AIA",
+    "Manulife"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 1,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 1,
+     "method": "text_search"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0046M01_2026",
+     "source_id": "SRC-POL-MNL-002",
+     "page": 5,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "APE",
+   "english": "Annualised Premium Equivalent",
+   "vietnamese": "Phí bảo hiểm quy năm",
+   "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+   "market_equivalent": "APE",
+   "note": "Thuật ngữ chung toàn ngành; tìm thấy trong 9 PDF chỉ ở dạng liệt kê chỉ số (nếu có)",
+   "group": "Chỉ số",
+   "companies": [
+    "Chung"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": []
+  },
+  {
+   "abbr": "VNB",
+   "english": "Value of New Business",
+   "vietnamese": "Giá trị hợp đồng mới (lợi nhuận kỳ vọng của hợp đồng mới)",
+   "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+   "market_equivalent": "VNB margin",
+   "note": "Không có trong 9 PDF; dùng ở Giai đoạn 2 (ROI) — số VNB thật là UNKNOWN",
+   "group": "Chỉ số",
+   "companies": [
+    "Chung"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": []
+  },
+  {
+   "abbr": "ROI",
+   "english": "Return on Investment",
+   "vietnamese": "Hiệu quả trên chi phí bỏ ra",
+   "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+   "market_equivalent": "ROI",
+   "note": "Đề bài yêu cầu; repo chỉ có chi phí mô phỏng, không phải ROI thực tế",
+   "group": "Chỉ số",
+   "companies": [
+    "Chung"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": []
+  },
+  {
+   "abbr": "MAPA",
+   "english": "Manpower × Active × Productivity × Average case size",
+   "vietnamese": "Công thức doanh số: nhân lực × tỷ lệ hoạt động × năng suất × quy mô hợp đồng",
+   "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+   "market_equivalent": "Agency sales driver tree",
+   "note": "Thuật ngữ dự án W24 (mapa_forward trong engine)",
+   "group": "Chỉ số",
+   "companies": [
+    "Chung"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": []
+  },
+  {
+   "abbr": "OpEx",
+   "english": "Operating Expenses",
+   "vietnamese": "Chi phí vận hành văn phòng của công ty",
+   "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+   "market_equivalent": "OpEx",
+   "note": "Không có trong 9 PDF; repo giả định 15–25% FYP",
+   "group": "Chỉ số",
+   "companies": [
+    "Chung"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": []
+  },
+  {
+   "abbr": "HT KTN",
+   "english": "Team Production Support Fee",
+   "vietnamese": "Phí dịch vụ hỗ trợ khai thác nhóm (Chubb AL)",
+   "company_and_memo": "Chubb [CHH0DCEB260008V : 6]",
+   "market_equivalent": "Direct override (F1)",
+   "note": "Tháng: FYC NTT × 10–60% × hệ số K2; quý: thêm 30–50%",
+   "group": "Khoản thu nhập",
+   "companies": [
+    "Chubb"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260008V",
+     "source_id": "SRC-POL-CHB-002",
+     "page": 6,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "HQKD",
+   "english": "Personal Business Performance Bonus",
+   "vietnamese": "Thưởng hiệu quả kinh doanh cá nhân (Chubb)",
+   "company_and_memo": "Chubb [CHH0DCEB260007V : 4]",
+   "market_equivalent": "Production bonus",
+   "note": "Tháng theo FYC 3 tháng × K2; quý ×15–30% theo EHC",
+   "group": "Khoản thu nhập",
+   "companies": [
+    "Chubb"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260007V",
+     "source_id": "SRC-POL-CHB-001",
+     "page": 4,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "CLKD",
+   "english": "Business Quality Multiplier",
+   "vietnamese": "Hệ số nhân chất lượng kinh doanh (kỷ luật) — Manulife",
+   "company_and_memo": "Manulife [0046M01_2026 : 1]",
+   "market_equivalent": "Compliance multiplier",
+   "note": "Thư nhắc nhở 50%; cảnh cáo / chấm dứt = 0",
+   "group": "Khoản thu nhập",
+   "companies": [
+    "Manulife"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Manulife",
+     "file_id": "0046M01_2026",
+     "source_id": "SRC-POL-MNL-002",
+     "page": 1,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "KDXS",
+   "english": "Annual Business Excellence Bonus",
+   "vietnamese": "Thưởng kinh doanh xuất sắc năm (Manulife)",
+   "company_and_memo": "Manulife [0046M01_2026 : 6]",
+   "market_equivalent": "Annual bonus (deferred)",
+   "note": "Chỉ cho Manulife Pro Vàng trở lên; trả 50/30/20% trong 3 năm",
+   "group": "Khoản thu nhập",
+   "companies": [
+    "Manulife"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Manulife",
+     "file_id": "0046M01_2026",
+     "source_id": "SRC-POL-MNL-002",
+     "page": 6,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "M-Star",
+   "english": "M-Star",
+   "vietnamese": "Thưởng theo tiến độ FYP lũy kế (Manulife)",
+   "company_and_memo": "Manulife [0046M01_2026 : 7]",
+   "market_equivalent": "Sales contest bonus",
+   "note": "Quý: ≥160/430/750/1.073,6tr FYP lũy kế",
+   "group": "Khoản thu nhập",
+   "companies": [
+    "Manulife"
+   ],
+   "english_status": "Nguyên văn văn bản",
+   "citations": [
+    {
+     "company": "Manulife",
+     "file_id": "0046M01_2026",
+     "source_id": "SRC-POL-MNL-002",
+     "page": 7,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "JFW",
+   "english": "Join-field-work",
+   "vietnamese": "Doanh số làm việc kèm thực địa (AIA)",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 21]",
+   "market_equivalent": "Joint field work credit",
+   "note": "Phí dịch vụ JFW tính riêng với phí tuyển dụng hiệu quả",
+   "group": "Khoản thu nhập",
+   "companies": [
+    "AIA"
+   ],
+   "english_status": "Nguyên văn văn bản",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 21,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 3,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "Override",
+   "english": "Override",
+   "vietnamese": "Phí quản lý tính theo % doanh số / phí của nhóm do mình quản lý",
+   "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+   "market_equivalent": "Management override",
+   "note": "Thuật ngữ chung; mỗi hãng gọi khác: phí dịch vụ tuyển dụng (AIA), HT KTN (Chubb), phí năng suất nhóm (Manulife)",
+   "group": "Khoản thu nhập",
+   "companies": [
+    "Chung"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": []
+  },
+  {
+   "abbr": "CVTV",
+   "english": "— (AIA dùng \"SA\")",
+   "vietnamese": "Chuyên viên Tư vấn (AIA)",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 3]",
+   "market_equivalent": "Tầng 1 — Đại lý cá nhân",
+   "note": "\"SA\" là Chuyên viên Tư vấn (viết tắt CVTV) [AIAVAD 2604-069 : 17]",
+   "group": "Chức danh",
+   "companies": [
+    "AIA"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 3,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 3,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 2,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "SA (AIA)",
+   "english": "— (văn bản không ghi tiếng Anh)",
+   "vietnamese": "Chuyên viên Tư vấn — đại lý cá nhân AIA Alpha",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 2]",
+   "market_equivalent": "Tầng 1 — Đại lý cá nhân",
+   "note": "Lên UM cần ≥2 người tuyển/6 tháng, FYC toàn nhánh 6T ≥50tr",
+   "group": "Chức danh",
+   "companies": [
+    "AIA"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 2,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 4,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "SA (Manulife)",
+   "english": "Servicing Agent",
+   "vietnamese": "Đại lý phục vụ (Manulife)",
+   "company_and_memo": "Manulife [0047M01_2026 : 1]",
+   "market_equivalent": "Tầng 1C — Đại lý phục vụ",
+   "note": "Quy định ở 01M02/2024/AO (không có trong 9 PDF); được tính vào 1mAA_4mFYC",
+   "group": "Chức danh",
+   "companies": [
+    "Manulife"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Manulife",
+     "file_id": "0047M01_2026",
+     "source_id": "SRC-POL-MNL-003",
+     "page": 1,
+     "method": "text_search"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0048M01_2026",
+     "source_id": "SRC-POL-MNL-001",
+     "page": 3,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "SE",
+   "english": "— (văn bản không ghi tiếng Anh)",
+   "vietnamese": "Chuyên viên Tư vấn Hỗ trợ phục vụ (AIA)",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 10]",
+   "market_equivalent": "Tầng 1C — Đại lý phục vụ",
+   "note": "SA/UM+ không đạt duy trì → SE nếu phục vụ ≥3 HĐ, phí quy năm ≥20tr",
+   "group": "Chức danh",
+   "companies": [
+    "AIA"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 10,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 4,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 2,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "Exchange",
+   "english": "Exchange",
+   "vietnamese": "Chuyên viên Hoạch định Tài chính (AIA)",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 4]",
+   "market_equivalent": "Tầng 1B — Đại lý toàn thời gian",
+   "note": "Gói trợ cấp riêng không có trong 9 PDF",
+   "group": "Tuyến hợp đồng",
+   "companies": [
+    "AIA"
+   ],
+   "english_status": "Nguyên văn văn bản",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 4,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 5,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "Exchange Pro",
+   "english": "Exchange Pro",
+   "vietnamese": "Chuyên viên Hoạch định Tài chính Cấp cao (AIA)",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 4]",
+   "market_equivalent": "Tầng 1B — Đại lý toàn thời gian",
+   "note": "Tính 2 lượt hoạt động; phí đồng hành cho CQL 40%",
+   "group": "Tuyến hợp đồng",
+   "companies": [
+    "AIA"
+   ],
+   "english_status": "Nguyên văn văn bản",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 4,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 5,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "CQL",
+   "english": "— (văn bản không ghi tiếng Anh)",
+   "vietnamese": "Cấp Quản Lý (AIA): UM, SUM, DM, SDM",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 4]",
+   "market_equivalent": "Tầng 2 — Quản lý trực tiếp",
+   "note": "Ký Hợp đồng Đại lý + Hợp đồng Dịch vụ Quản lý Đại lý",
+   "group": "Chức danh",
+   "companies": [
+    "AIA"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 4,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 3,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 2,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "UM+",
+   "english": "— (văn bản không ghi tiếng Anh)",
+   "vietnamese": "Nhóm cấp quản lý: AIA = UM/SUM/DM/SDM; Manulife = Quản Lý Đại Lý",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 3] · Manulife [0047M01_2026 : 1]",
+   "market_equivalent": "Tầng 2 — Quản lý trực tiếp",
+   "note": "Manulife: biểu phí 0047M01, ký HĐDV QLĐL",
+   "group": "Chức danh",
+   "companies": [
+    "AIA",
+    "Manulife"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 3,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 4,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 6,
+     "method": "text_search"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0047M01_2026",
+     "source_id": "SRC-POL-MNL-003",
+     "page": 1,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "UM",
+   "english": "Unit Manager",
+   "vietnamese": "Trưởng nhóm kinh doanh (AIA: có chỗ gọi Trưởng Phòng Kinh Doanh — mâu thuẫn tên)",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 2] · Chubb [CHH0DCEB260007V : 7] · Manulife [0047M01_2026 : 4]",
+   "market_equivalent": "Tầng 2 — Quản lý cấp 1",
+   "note": "AIA: CONFLICTING EVIDENCE về tên tiếng Việt (2601-034 tr.2 vs 2604-069 tr.17)",
+   "group": "Chức danh",
+   "companies": [
+    "AIA",
+    "Chubb",
+    "Manulife"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 2,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 2,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 8,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260007V",
+     "source_id": "SRC-POL-CHB-001",
+     "page": 7,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260008V",
+     "source_id": "SRC-POL-CHB-002",
+     "page": 3,
+     "method": "text_search"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0047M01_2026",
+     "source_id": "SRC-POL-MNL-003",
+     "page": 4,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "SUM",
+   "english": "Senior Unit Manager",
+   "vietnamese": "Trưởng nhóm kinh doanh cấp cao (AIA)",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 2]",
+   "market_equivalent": "Tầng 2 — Quản lý cấp 1",
+   "note": "Lên SUM: 9 lượt hoạt động 3T, FYC toàn nhánh 6T ≥100tr",
+   "group": "Chức danh",
+   "companies": [
+    "AIA"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 2,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 2,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 8,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "SM (Chubb)",
+   "english": "Sales Manager",
+   "vietnamese": "Trưởng Ban Kinh doanh (Chubb AL)",
+   "company_and_memo": "Chubb [CHH0DCEB260007V : 7]",
+   "market_equivalent": "Tầng 2 — Quản lý cấp 2",
+   "note": "Lên SM cần ≥1 AL báo cáo trực tiếp",
+   "group": "Chức danh",
+   "companies": [
+    "Chubb"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260007V",
+     "source_id": "SRC-POL-CHB-001",
+     "page": 7,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260008V",
+     "source_id": "SRC-POL-CHB-002",
+     "page": 3,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "DM",
+   "english": "District Manager",
+   "vietnamese": "AIA: Trưởng Phòng Kinh Doanh (có chỗ gọi Giám Đốc Ban); Chubb: cấp AL cao nhất",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 2] · Chubb [CHH0DCEB260007V : 7]",
+   "market_equivalent": "Tầng 2 — Quản lý cấp 2/3",
+   "note": "Chubb DM nhận L1–L3; AIA DM cần ≥1 UM+ trực tiếp",
+   "group": "Chức danh",
+   "companies": [
+    "AIA",
+    "Chubb"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 2,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 2,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 16,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260007V",
+     "source_id": "SRC-POL-CHB-001",
+     "page": 7,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260008V",
+     "source_id": "SRC-POL-CHB-002",
+     "page": 3,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "SDM",
+   "english": "Senior District Manager",
+   "vietnamese": "Trưởng Phòng Kinh Doanh Cấp cao (AIA)",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 2]",
+   "market_equivalent": "Tầng 2 — Quản lý cấp cao nhất tuyến CQL",
+   "note": "Lên PAF cần ≥3 UM+ trực tiếp, FYP toàn nhánh 6T ≥1.200tr",
+   "group": "Chức danh",
+   "companies": [
+    "AIA"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 2,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 2,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 8,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "BM",
+   "english": "Branch Manager",
+   "vietnamese": "Trưởng ban (thuật ngữ của bài toán)",
+   "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+   "market_equivalent": "Tầng 2 — Quản lý cấp 2",
+   "note": "KHÔNG xuất hiện trong 9 PDF; tương ứng AIA SUM/SDM, Chubb SM/DM theo quy mô (xem 4 mốc)",
+   "group": "Chức danh",
+   "companies": [
+    "Chung"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": []
+  },
+  {
+   "abbr": "AR",
+   "english": "Agency Representative",
+   "vietnamese": "Đại diện Kinh doanh (Chubb)",
+   "company_and_memo": "Chubb [CHH0DCEB260007V : 3]",
+   "market_equivalent": "Tầng 1 — Đại lý cá nhân",
+   "note": "\"Đại diện Kinh doanh (ĐDKD hay AR)\"",
+   "group": "Chức danh",
+   "companies": [
+    "Chubb"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260007V",
+     "source_id": "SRC-POL-CHB-001",
+     "page": 3,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260008V",
+     "source_id": "SRC-POL-CHB-002",
+     "page": 3,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "AL",
+   "english": "Agency Leader",
+   "vietnamese": "Quản lý Kinh doanh (Chubb): UM, SM, DM",
+   "company_and_memo": "Chubb [CHH0DCEB260007V : 3]",
+   "market_equivalent": "Tầng 2 — Quản lý trực tiếp",
+   "note": "\"Quản lý Kinh doanh (QLKD hay AL)\"",
+   "group": "Chức danh",
+   "companies": [
+    "Chubb"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260007V",
+     "source_id": "SRC-POL-CHB-001",
+     "page": 3,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260008V",
+     "source_id": "SRC-POL-CHB-002",
+     "page": 3,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "AMD",
+   "english": "Agency Management and Development",
+   "vietnamese": "Ban Điều hành và Phát triển Kinh doanh (Chubb): BD, RD",
+   "company_and_memo": "Chubb [CHH0DCEB260007V : 4]",
+   "market_equivalent": "Tầng 3 — Lãnh đạo vùng",
+   "note": "Ký hợp đồng dịch vụ, có báo cáo nghiệm thu",
+   "group": "Chức danh",
+   "companies": [
+    "Chubb"
+   ],
+   "english_status": "Nguyên văn văn bản",
+   "citations": [
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260007V",
+     "source_id": "SRC-POL-CHB-001",
+     "page": 4,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260008V",
+     "source_id": "SRC-POL-CHB-002",
+     "page": 4,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260003V",
+     "source_id": "SRC-POL-CHB-003",
+     "page": 3,
+     "method": "visual_scan"
+    }
+   ]
+  },
+  {
+   "abbr": "BD",
+   "english": "Business Director, Agency Development",
+   "vietnamese": "Giám đốc, Phát triển Kinh doanh (Chubb)",
+   "company_and_memo": "Chubb [CHH0DCEB260007V : 7]",
+   "market_equivalent": "Tầng 3 — Lãnh đạo vùng (bậc 1)",
+   "note": "Lên BD từ DM có điều kiện; biểu phí BD KHÔNG có trong 9 PDF",
+   "group": "Chức danh",
+   "companies": [
+    "Chubb"
+   ],
+   "english_status": "Nguyên văn văn bản",
+   "citations": [
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260007V",
+     "source_id": "SRC-POL-CHB-001",
+     "page": 7,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260003V",
+     "source_id": "SRC-POL-CHB-003",
+     "page": 3,
+     "method": "visual_scan"
+    }
+   ]
+  },
+  {
+   "abbr": "RD",
+   "english": "Regional Director, Agency Management and Development",
+   "vietnamese": "Giám đốc Vùng, Điều hành và Phát triển Kinh doanh (Chubb)",
+   "company_and_memo": "Chubb [CHH0DCEB260003V : 3]",
+   "market_equivalent": "Tầng 3 — Lãnh đạo vùng",
+   "note": "Bổ nhiệm theo hợp đồng; 8 khoản phí dịch vụ",
+   "group": "Chức danh",
+   "companies": [
+    "Chubb"
+   ],
+   "english_status": "Nguyên văn văn bản",
+   "citations": [
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260003V",
+     "source_id": "SRC-POL-CHB-003",
+     "page": 3,
+     "method": "visual_scan"
+    }
+   ]
+  },
+  {
+   "abbr": "PAF+",
+   "english": "— (văn bản không ghi tiếng Anh)",
+   "vietnamese": "Nhóm Nhà Sáng lập (AIA): PAF → … → President",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 1]",
+   "market_equivalent": "Tầng 3 — Lãnh đạo vùng",
+   "note": "\"Con đường sự nghiệp kép\": vẫn nhận phí CQL trực tiếp, không nhận gián tiếp cấp 2–4",
+   "group": "Chức danh",
+   "companies": [
+    "AIA"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 1,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 4,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 1,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "PAF",
+   "english": "Pre-Agency Founder",
+   "vietnamese": "Quyền Sáng lập khối (AIA) — bậc đầu tuyến PAF+",
+   "company_and_memo": "AIA [AIAVAD 2601-034 : 8]",
+   "market_equivalent": "Tầng 3 — Lãnh đạo vùng (bậc 1)",
+   "note": "KHÔNG phải \"Premier Agency Force\": văn bản gọi là Quyền Sáng lập khối [AIAVAD 2601-035 : 3]; phí cố định 20tr/tháng",
+   "group": "Chức danh",
+   "companies": [
+    "AIA"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 8,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 2,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "AF",
+   "english": "Agency Founder",
+   "vietnamese": "Nhà Sáng lập khối (AIA)",
+   "company_and_memo": "AIA [AIAVAD 2601-035 : 3]",
+   "market_equivalent": "Tầng 3 — Lãnh đạo vùng",
+   "note": "Lên AF: FYP 6T 2.500tr, 5 UM+ trực tiếp",
+   "group": "Chức danh",
+   "companies": [
+    "AIA"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 3,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "RF",
+   "english": "Regional Founder",
+   "vietnamese": "Nhà Sáng lập vùng (AIA)",
+   "company_and_memo": "AIA [AIAVAD 2601-035 : 3]",
+   "market_equivalent": "Tầng 3 — Lãnh đạo vùng",
+   "note": "Chỉ tiêu năm 1: 10.000tr FYP",
+   "group": "Chức danh",
+   "companies": [
+    "AIA"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 3,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "AFF",
+   "english": "— (văn bản không ghi tiếng Anh)",
+   "vietnamese": "Chương trình tuyển dụng Cấp quản lý trực tiếp (AIA)",
+   "company_and_memo": "AIA [AIAVAD 2604-069 : 22]",
+   "market_equivalent": "Direct manager recruitment",
+   "note": "Chi tiết chương trình không có trong 9 PDF",
+   "group": "Tuyến hợp đồng",
+   "companies": [
+    "AIA"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2604-069",
+     "source_id": "SRC-POL-AIA-ALP-001",
+     "page": 22,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-034",
+     "source_id": "SRC-POL-AIA-ALP-002",
+     "page": 8,
+     "method": "text_search"
+    },
+    {
+     "company": "AIA",
+     "file_id": "AIAVAD 2601-035",
+     "source_id": "SRC-POL-AIA-ALP-003",
+     "page": 2,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "PSM+",
+   "english": "— (văn bản không ghi tiếng Anh)",
+   "vietnamese": "Quản Lý Cấp Cao (Manulife): PSM/SM, PSSM/SSM",
+   "company_and_memo": "Manulife [0046M01_2026 : 2]",
+   "market_equivalent": "Tầng 3 — Lãnh đạo vùng",
+   "note": "Ký HĐDV QLCC; phí cơ bản 35tr / 45tr",
+   "group": "Chức danh",
+   "companies": [
+    "Manulife"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Manulife",
+     "file_id": "0046M01_2026",
+     "source_id": "SRC-POL-MNL-002",
+     "page": 2,
+     "method": "text_search"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0047M01_2026",
+     "source_id": "SRC-POL-MNL-003",
+     "page": 3,
+     "method": "text_search"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0048M01_2026",
+     "source_id": "SRC-POL-MNL-001",
+     "page": 1,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "PSM / SM (Manulife)",
+   "english": "— (văn bản không ghi tiếng Anh)",
+   "vietnamese": "Quản lý cấp cao bậc 1 (Manulife), phí cơ bản 35tr",
+   "company_and_memo": "Manulife [0048M01_2026 : 1]",
+   "market_equivalent": "Tầng 3 — Lãnh đạo vùng",
+   "note": "Điều kiện bậc ở 0013M04/2024 (không có trong 9 PDF)",
+   "group": "Chức danh",
+   "companies": [
+    "Manulife"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Manulife",
+     "file_id": "0048M01_2026",
+     "source_id": "SRC-POL-MNL-001",
+     "page": 1,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "PSSM / SSM",
+   "english": "— (văn bản không ghi tiếng Anh)",
+   "vietnamese": "Quản lý cấp cao bậc 2 (Manulife), phí cơ bản 45tr",
+   "company_and_memo": "Manulife [0048M01_2026 : 1]",
+   "market_equivalent": "Tầng 3 — Lãnh đạo vùng",
+   "note": "Cùng biểu phí với HKD3/4",
+   "group": "Chức danh",
+   "companies": [
+    "Manulife"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Manulife",
+     "file_id": "0048M01_2026",
+     "source_id": "SRC-POL-MNL-001",
+     "page": 1,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "MBA Pro",
+   "english": "MBA Pro",
+   "vietnamese": "Danh hiệu của Quản Lý Đại Lý UM+ (Manulife): Bạc / Vàng / Bạch Kim",
+   "company_and_memo": "Manulife [0047M01_2026 : 2]",
+   "market_equivalent": "Manager quality title",
+   "note": "Tiêu chí ở 0050M01/2026 (không có); base case không có danh hiệu",
+   "group": "Chức danh",
+   "companies": [
+    "Manulife"
+   ],
+   "english_status": "Nguyên văn văn bản",
+   "citations": [
+    {
+     "company": "Manulife",
+     "file_id": "0047M01_2026",
+     "source_id": "SRC-POL-MNL-003",
+     "page": 2,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "Manulife Pro",
+   "english": "Manulife Pro",
+   "vietnamese": "Danh hiệu đại lý Manulife: Bạc / Vàng / Bạch Kim",
+   "company_and_memo": "Manulife [0046M01_2026 : 3]",
+   "market_equivalent": "Agent quality title",
+   "note": "Tiêu chí ở 0011M04/2024 (không có)",
+   "group": "Chức danh",
+   "companies": [
+    "Manulife"
+   ],
+   "english_status": "Nguyên văn văn bản",
+   "citations": [
+    {
+     "company": "Manulife",
+     "file_id": "0046M01_2026",
+     "source_id": "SRC-POL-MNL-002",
+     "page": 3,
+     "method": "text_search"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0047M01_2026",
+     "source_id": "SRC-POL-MNL-003",
+     "page": 3,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "HKD",
+   "english": "— (văn bản không ghi tiếng Anh)",
+   "vietnamese": "Hộ Kinh Doanh (Manulife) — lãnh đạo ký hợp đồng như một đơn vị kinh doanh",
+   "company_and_memo": "Manulife [0046M01_2026 : 7]",
+   "market_equivalent": "Tầng 3B — Pháp nhân đối tác",
+   "note": "Cùng biểu phí với PSM+; tự xuất hóa đơn, tự chịu thuế [0048M01_2026 : 5-6]",
+   "group": "Tuyến hợp đồng",
+   "companies": [
+    "Manulife"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Manulife",
+     "file_id": "0046M01_2026",
+     "source_id": "SRC-POL-MNL-002",
+     "page": 7,
+     "method": "text_search"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0047M01_2026",
+     "source_id": "SRC-POL-MNL-003",
+     "page": 6,
+     "method": "text_search"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0048M01_2026",
+     "source_id": "SRC-POL-MNL-001",
+     "page": 1,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "HĐDV QLĐL",
+   "english": "— (văn bản không ghi tiếng Anh)",
+   "vietnamese": "Hợp đồng Dịch vụ Quản Lý Đại Lý (Manulife UM+)",
+   "company_and_memo": "Manulife [0047M01_2026 : 1]",
+   "market_equivalent": "Manager service contract",
+   "note": "Công ty tạm khấu trừ TNCN",
+   "group": "Tuyến hợp đồng",
+   "companies": [
+    "Manulife"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Manulife",
+     "file_id": "0047M01_2026",
+     "source_id": "SRC-POL-MNL-003",
+     "page": 1,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "HĐDV QLCC",
+   "english": "— (văn bản không ghi tiếng Anh)",
+   "vietnamese": "Hợp đồng Dịch vụ Quản lý Đại lý dành cho Quản Lý Cấp Cao (Manulife PSM+)",
+   "company_and_memo": "Manulife [0046M01_2026 : 7]",
+   "market_equivalent": "Senior manager service contract",
+   "note": "Có thể chuyển đổi qua lại với HĐDV HKD, bảo lưu kết quả",
+   "group": "Tuyến hợp đồng",
+   "companies": [
+    "Manulife"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Manulife",
+     "file_id": "0046M01_2026",
+     "source_id": "SRC-POL-MNL-002",
+     "page": 7,
+     "method": "text_search"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0047M01_2026",
+     "source_id": "SRC-POL-MNL-003",
+     "page": 6,
+     "method": "text_search"
+    },
+    {
+     "company": "Manulife",
+     "file_id": "0048M01_2026",
+     "source_id": "SRC-POL-MNL-001",
+     "page": 1,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "Champion Hubb",
+   "english": "Champion Hubb",
+   "vietnamese": "Chương trình đại lý/quản lý chuyên nghiệp có kỷ luật hoạt động (Chubb)",
+   "company_and_memo": "Chubb [CHH0DCEB260007V : 2]",
+   "market_equivalent": "Tầng 1B / 2 — chương trình toàn thời gian",
+   "note": "AL chỉ chọn 1 trong 2 vai trò: Cá nhân hoặc Quản lý",
+   "group": "Tuyến hợp đồng",
+   "companies": [
+    "Chubb"
+   ],
+   "english_status": "Nguyên văn văn bản",
+   "citations": [
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260007V",
+     "source_id": "SRC-POL-CHB-001",
+     "page": 2,
+     "method": "text_search"
+    },
+    {
+     "company": "Chubb",
+     "file_id": "CHH0DCEB260008V",
+     "source_id": "SRC-POL-CHB-002",
+     "page": 5,
+     "method": "text_search"
+    }
+   ]
+  },
+  {
+   "abbr": "GTF",
+   "english": "— (văn bản không ghi tiếng Anh)",
+   "vietnamese": "Chương trình Phát Triển Quản Lý Đại Lý (Manulife UM+ GTF)",
+   "company_and_memo": "Manulife [0047M01_2026 : 5]",
+   "market_equivalent": "Manager development program",
+   "note": "Không tính phí phát triển nhóm mới trên UM+ GTF; quy định ở 0004M04/2024 (không có)",
+   "group": "Tuyến hợp đồng",
+   "companies": [
+    "Manulife"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": [
+    {
+     "company": "Manulife",
+     "file_id": "0047M01_2026",
+     "source_id": "SRC-POL-MNL-003",
+     "page": 5,
+     "method": "text_search"
+    }
+   ]
+  }
+ ]
+}

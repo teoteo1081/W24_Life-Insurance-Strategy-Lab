@@ -2,6 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8">
+<!--__SUPABASE_META__-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chiến lược Thu nhập Đại lý</title>
 <meta name="robots" content="noindex, nofollow">
@@ -162,6 +163,15 @@ body.present #tabs button[data-tab="tune"],body.present #planSeg button[data-pla
 
 .takeaway{font-size:17px;font-weight:600;line-height:1.45;margin:0 0 14px;padding:10px 14px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;max-width:100ch}
 abbr[title]{text-decoration:underline dotted;text-underline-offset:3px;cursor:help}
+abbr.gl{text-decoration:none;border-bottom:1px dotted currentColor;cursor:help}
+abbr.gl:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+#gltip{position:fixed;z-index:60;padding:8px 10px;border-radius:8px;background:var(--ink);color:var(--bg);font-size:13.5px;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);pointer-events:none}
+.glbar{display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin:8px 0 12px}.glbar input,.glbar select{display:block;margin-top:4px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);font:inherit}
+.gltable td,.gltable th{vertical-align:top}.ev.nolink{opacity:.75;cursor:not-allowed}
+details.more{display:inline}details.more>summary{display:inline;cursor:pointer}
+details.pdfdoc{margin:6px 0;padding:6px 10px;border:1px solid var(--line);border-radius:8px}details.pdfdoc ol{margin:6px 0 2px;padding-left:22px}
+.glbtn{float:right;margin-left:12px}
+@media (max-width:760px){.glbtn{float:none;display:inline-block;margin:0 0 10px}}
 details.cond{margin-top:4px}
 details.cond>summary{cursor:pointer;font-size:13.5px;color:var(--accent);list-style:none}
 details.cond>summary::-webkit-details-marker{display:none}
@@ -188,6 +198,7 @@ footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1p
 </aside>
 <main class="main" id="main" tabindex="-1"><div class="wrap">
 <header class="top">
+  <button type="button" class="btn glbtn" id="glOpen">📖 Từ điển &amp; 9 PDF</button>
   <h1>Chính sách thu nhập đại lý: trả ngang thị trường, chi phí thấp hơn</h1>
   <p class="sub">So sánh chính sách 2026 của AIA (kênh Alpha), Chubb Life và Manulife (tầng lãnh đạo vùng), và đề xuất phương án Song Hành cho thị trường Việt Nam.</p>
   <div class="req"><b>Đề bài:</b> “Phân tích các chính sách thu nhập giữa các công ty, và đề xuất chính sách phù hợp tại thị trường VN, nhằm thúc đẩy gia tăng doanh số, chất lượng kinh doanh và hiệu quả về mặt chi phí (ROI).”</div>
@@ -202,6 +213,7 @@ footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1p
 <section class="panel" id="p-evidence"></section>
 <section class="panel" id="p-method"></section>
 <section class="panel" id="p-assume"></section>
+<section class="panel" id="p-glossary"></section>
 <footer id="foot"></footer>
 </div></main>
 <aside class="pdfpane" id="pdfpane" hidden aria-label="Tài liệu bằng chứng">
@@ -211,6 +223,8 @@ footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1p
 </div>
 
 <script>/*__ENGINE_JS__*/</script>
+<script>/*__DATA_LOADER__*/
+window.W24_LOCAL_SNAPSHOT = /*__LOCAL_SNAPSHOT__*/null;</script>
 <script>
 "use strict";
 const DATA = /*__DATA_JSON__*/null;
@@ -367,7 +381,8 @@ function lineChart(series, opt) {
 const TABS = [["overview", "Tổng quan", ["p-overview"]], ["package", "Gói thu nhập theo cấp", ["p-package"]],
   ["learn", "Học từ đối thủ", ["p-compare"]], ["money", "Thu nhập & chi phí", ["p-tiers", "p-cost"]],
   ["rubric", "Chấm điểm", ["p-rubric"]], ["evidence", "Bằng chứng", ["p-evidence"]],
-  ["method", "Cách tính & giả định", ["p-method", "p-assume"]], ["tune", "Tự chỉnh thông số", ["p-tune"]]];
+  ["method", "Cách tính & giả định", ["p-method", "p-assume"]], ["tune", "Tự chỉnh thông số", ["p-tune"]],
+  ["glossary", "Phụ lục: Từ điển & 9 PDF", ["p-glossary"]]];
 
 function barRows(items, unit, digits) {
   const max = Math.max(...items.map(i => i.v)) || 1;
@@ -736,8 +751,7 @@ function renderAssume() {
       <li>AIA: biểu hoa hồng sản phẩm, quy đổi FYC tín chỉ, gói trợ cấp Exchange/Exchange Pro — chi phí AIA trong mô hình đang thấp hơn thực tế.</li>
       <li>Chubb: quy định chung 260005V/006V/009V và chính sách BD.</li>
       <li>VNB margin, OpEx thật, tác động của thu nhập lên doanh số/tuyển dụng (không có dữ liệu — mô hình không giả vờ dự báo).</li></ul></div>
-    <div class="card" style="grid-column:1/-1"><h3 style="margin-top:0">Thuật ngữ</h3><p class="small muted">Trên trang, rê chuột vào chữ có gạch chấm để xem giải nghĩa.</p>
-      <div class="tbl-wrap"><table><tbody>${Object.entries(GLOSSARY).filter(([k]) => k !== "override").map(([k, v]) => `<tr><th style="width:7em">${esc(k)}</th><td class="small">${esc(v)}</td></tr>`).join("")}</tbody></table></div></div>
+    <div class="card" style="grid-column:1/-1"><h3 style="margin-top:0">Thuật ngữ</h3><p class="small">Rê chuột (hoặc chạm) vào chữ có gạch chấm để xem giải nghĩa. Bảng đầy đủ ${GL.length} thuật ngữ, kèm trang tài liệu gốc: trang <b>Phụ lục: Từ điển &amp; 9 PDF</b>.</p></div>
     <div class="card"><h3 style="margin-top:0">Pháp lý — CONDITIONAL</h3><p class="small">Ngưỡng Điều 51/52 TT 67/2023, NĐ 97/2026, TT 96/2026 đang tham chiếu từ bản tóm tắt công khai (SOURCE_NOT_VERIFIED). Cần Pháp chế đối chiếu toàn văn hợp nhất 44/2026/VBHN-TT-BTC trước khi ban hành. Hai mâu thuẫn trong tài liệu gốc (Chubb W1 80% vs 50%; AIA làm tròn FY) đang chờ quyết định.</p></div>
     <div class="card"><h3 style="margin-top:0">Thuế & bối cảnh thu nhập</h3>
       <p class="small">Thuế TNCN áp gần như giống nhau cho mọi hãng nên <b>không đổi thứ hạng</b>; chỉ ảnh hưởng thu nhập thực nhận. Bằng chứng duy nhất trong bộ tài liệu: AIA tạm khấu trừ 10% thuế trên phí giới thiệu chuyên viên mới ${ruleChip("AIA-CV-013")} (trang 8). Mức thuế chung cho thu nhập đại lý: <b>chưa đối chiếu văn bản</b>.</p>
@@ -764,7 +778,7 @@ function renderAll() {
   $("tabs").innerHTML = TABS.map(([k, n], i) => `<button type="button" data-tab="${k}" ${state.tab === k ? 'aria-current="page"' : ""}><span class="stepn">${i + 1}</span>${n}</button>`).join("");
   $("sideNote").textContent = PLAN_META[state.plan].star ? "Song Hành là phương án đề xuất. Bấm vào mã quy tắc ở bất kỳ đâu để xem trang tài liệu gốc bên phải." : "Đang xem: " + PLAN_META[state.plan].name + ".";
   document.querySelectorAll("#tabs button").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; showTab(); window.scrollTo(0, 0); });
-  renderOverview(); renderPackage(); renderTiers(); renderCost(); renderRubric(); renderTune(); renderCompare(); renderMethod(); renderAssume();
+  renderOverview(); renderPackage(); renderTiers(); renderCost(); renderRubric(); renderTune(); renderCompare(); renderMethod(); renderAssume(); renderGlossary();
   showTab();
 }
 function showTab() {
@@ -778,45 +792,118 @@ const st = selfTest();
 
 
 /* ---------- Ý chính đầu trang & giải nghĩa thuật ngữ ---------- */
-const GLOSSARY = {
-  "K2": "Tỷ lệ duy trì hợp đồng năm 2: phần phí năm đầu còn được đóng tiếp ở năm thứ hai. Cao = khách giữ hợp đồng, chất lượng bán tốt.",
-  "FY": "Tỷ lệ duy trì phí năm đầu theo cách tính của AIA (14 tháng). Dùng như K2 để nhân thưởng.",
-  "FYC": "Hoa hồng năm đầu (First Year Commission) đại lý nhận trên phí năm đầu; là thước đo năng suất chính.",
-  "FYP": "Phí bảo hiểm năm đầu (First Year Premium) công ty thu được; chi phí phân phối thường tính theo % FYP.",
-  "SYC": "Hoa hồng năm thứ hai (Second Year Commission) khi khách đóng phí tái tục.",
-  "RYC": "Hoa hồng tái tục (Renewal Year Commission) từ năm thứ hai trở đi.",
-  "NTT": "Nhóm trực tiếp: các đại lý do quản lý tuyển và kèm trực tiếp.",
-  "EHC": "Đại lý/hợp đồng đạt chuẩn hoạt động trong tháng theo định nghĩa của Chubb (văn bản 260005V, chưa có).",
-  "3MAA": "Số đại lý hoạt động 3 tháng liên tục (Chubb).",
-  "1mAA": "Số đại lý có hoạt động trong tháng (AIA, Manulife).",
-  "Override": "Phí quản lý tính theo % doanh số của nhóm do mình quản lý.",
-  "override": "Phí quản lý tính theo % doanh số của nhóm do mình quản lý.",
-  "MDRT": "Danh hiệu quốc tế cho tư vấn viên doanh số cao; ở đây dùng làm mốc thưởng năm (FYC năm ≥ 400 triệu).",
-  "TOT": "Top of the Table — mức cao hơn MDRT; AIA dùng tỷ lệ TOT để khóa phần trả chậm của quản lý.",
-  "T+1": "Giữ lại khoản thưởng, trả vào kỳ sau khi đã đối soát hợp đồng không bị hủy.",
-  "HSBH": "Hệ số bảo vệ: mức độ bảo vệ thực của hợp đồng; Chubb trả hoa hồng cao hơn cho hợp đồng bảo vệ nhiều.",
-  "Top-up": "Phí đóng thêm vào hợp đồng liên kết đầu tư; đề xuất không trả hoa hồng cho phần này.",
-  "UL": "Bảo hiểm liên kết chung (Universal Life).",
-  "OpEx": "Chi phí vận hành văn phòng của công ty, ngoài chi phí trả cho lực lượng bán.",
-  "CQL": "Cấp quản lý (AIA): UM, SUM, DM, SDM.",
-  "PAF+": "Cấp lãnh đạo cao của AIA Alpha (Professional Agency Founder trở lên), có phí cố định hàng tháng.",
-  "PSM+": "Cấp quản lý cao cấp của Manulife (tương đương lãnh đạo vùng).",
-  "HKD": "Hộ kinh doanh: hình thức lãnh đạo vùng Manulife ký hợp đồng như một đơn vị kinh doanh.",
-  "RD": "Giám đốc vùng (Regional Director) của Chubb.",
-  "AL": "Đại lý quản lý (Agency Leader) của Chubb: UM, SM, DM.",
-  "AR": "Đại lý (Agency Representative) của Chubb."
+/* Từ điển: nguồn duy nhất knowledge/sources/glossary.json (DATA.glossary) — không gõ tay thuật ngữ trong template. */
+let GL = [], GL_BY = {}, GLOSS_RE = /$^/u, PDF_BY_FILE = {}, GL_GROUPS = ["Tất cả"];
+const glTerm = e => e.abbr.replace(/\s*\((AIA|Chubb|Manulife)\)$/, "");
+const glEn = e => /^—/.test(e.english) ? e.abbr : e.english;
+/* Dựng lại chỉ mục từ DATA.glossary / DATA.pdfs — gọi lại khi web/data-loader.js nạp được dữ liệu Supabase. */
+function glReindex() {
+  GL = DATA.glossary || []; GL_BY = {};
+  GL.forEach(e => {
+    const t = glTerm(e);
+    if (/\s\/\s/.test(t)) return;                     // "PSM / SM", "PSSM / SSM": chỉ tra cứu trong bảng
+    (GL_BY[t] = GL_BY[t] || []).push(e);
+  });
+  const keys = Object.keys(GL_BY).sort((a, b) => b.length - a.length).map(k => k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  GLOSS_RE = keys.length ? new RegExp("(?<![\\p{L}\\p{N}+])(" + keys.join("|") + ")(?![\\p{L}\\p{N}+])", "gu") : /$^/u;
+  PDF_BY_FILE = Object.fromEntries((DATA.pdfs || []).map(f => [f.file_id, f]));
+  GL_GROUPS = ["Tất cả"].concat([...new Set(GL.map(e => e.group))]);
+}
+glReindex();
+const glTip = t => {
+  const es = GL_BY[t] || [];
+  if (es.length === 1) return `${glEn(es[0])} — ${es[0].vietnamese}`;
+  return es.map(e => `${e.companies.join("/")}: ${glEn(e)} — ${e.vietnamese}`).join("  |  ");
 };
-const GLOSS_RE = new RegExp("(?<![\\w+])(" + Object.keys(GLOSSARY).sort((a, b) => b.length - a.length).map(k => k.replace(/[+.]/g, "\\$&")).join("|") + ")(?![\\w+])");
 function glossify(root) {
-  const seen = new Set(), walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {acceptNode: n =>
-    n.parentElement.closest("a,button,abbr,script,style,svg,summary,input,select,label,.seg,.badge,.tag,h2") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT});
+  if (!root || root.id === "p-glossary") return;
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {acceptNode: n =>
+    n.parentElement.closest("a,button,abbr,script,style,svg,input,select,option,textarea,label,.seg,.badge,.tag,#gltip") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT});
   const nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode);
   nodes.forEach(n => {
-    const m = n.nodeValue.match(GLOSS_RE); if (!m || seen.has(m[1])) return;
-    seen.add(m[1]);
-    const after = n.splitText(m.index), rest = after.splitText(m[1].length), ab = document.createElement("abbr");
-    ab.title = GLOSSARY[m[1]]; ab.textContent = m[1]; after.replaceWith(ab);
+    const txt = n.nodeValue; GLOSS_RE.lastIndex = 0;
+    if (!GLOSS_RE.test(txt)) return;
+    GLOSS_RE.lastIndex = 0;
+    const frag = document.createDocumentFragment(); let last = 0, m;
+    while ((m = GLOSS_RE.exec(txt))) {
+      if (m.index > last) frag.append(txt.slice(last, m.index));
+      const ab = document.createElement("abbr");
+      ab.className = "gl"; ab.tabIndex = 0; ab.dataset.tip = glTip(m[1]); ab.textContent = m[1];
+      ab.setAttribute("aria-label", m[1] + ": " + ab.dataset.tip);
+      frag.append(ab); last = m.index + m[1].length;
+    }
+    if (last < txt.length) frag.append(txt.slice(last));
+    n.replaceWith(frag);
   });
+}
+/* Tooltip dùng chung: rê chuột (desktop), chạm (mobile), Tab (bàn phím). */
+const GLT = document.createElement("div"); GLT.id = "gltip"; GLT.setAttribute("role", "tooltip"); GLT.hidden = true; document.body.append(GLT);
+let glPinned = null;
+function glShow(ab) {
+  GLT.textContent = ab.dataset.tip; GLT.hidden = false;
+  const r = ab.getBoundingClientRect(), w = Math.min(340, window.innerWidth - 24);
+  GLT.style.maxWidth = w + "px";
+  const left = Math.max(12, Math.min(r.left, window.innerWidth - w - 12));
+  GLT.style.left = left + "px";
+  const below = r.bottom + 8, h = GLT.offsetHeight;
+  GLT.style.top = (below + h > window.innerHeight - 8 ? Math.max(8, r.top - h - 8) : below) + "px";
+}
+function glHide() { GLT.hidden = true; glPinned = null; }
+document.addEventListener("mouseover", ev => { const ab = ev.target.closest && ev.target.closest("abbr.gl"); if (ab && !glPinned) glShow(ab); });
+document.addEventListener("mouseout", ev => { const ab = ev.target.closest && ev.target.closest("abbr.gl"); if (ab && !glPinned) GLT.hidden = true; });
+document.addEventListener("focusin", ev => { if (ev.target.matches && ev.target.matches("abbr.gl")) glShow(ev.target); });
+document.addEventListener("focusout", ev => { if (ev.target.matches && ev.target.matches("abbr.gl") && !glPinned) GLT.hidden = true; });
+document.addEventListener("click", ev => {
+  const ab = ev.target.closest && ev.target.closest("abbr.gl");
+  if (ab) { if (glPinned === ab) glHide(); else { glPinned = ab; glShow(ab); } return; }
+  if (glPinned) glHide();
+});
+window.addEventListener("scroll", () => { if (!GLT.hidden) glHide(); }, {passive: true});
+document.addEventListener("keydown", ev => { if (ev.key === "Escape" && !GLT.hidden) glHide(); });
+
+/* ---------- Trang Từ điển & 9 PDF ---------- */
+function citeLink(fid, page, label) {
+  const f = PDF_BY_FILE[fid], txt = label || `[${fid} : ${page}]`;
+  if (f && f.url) return `<a class="ev" href="${f.url}#page=${page}" title="${esc(f.name)} — trang ${page}">${DOC}${esc(txt)}</a>`;
+  return `<span class="ev nolink" title="PDF chưa đưa lên kho bằng chứng (tài liệu mật, chỉ lưu local — DEC-14)">${esc(txt)}</span>`;
+}
+const linkifyCites = s => esc(s).replace(/\[([^\]:]+) : (\d+)(?:-\d+)?\]/g, (m0, fid, pg) => citeLink(fid.trim(), +pg, m0.replace(/&amp;/g, "&")));
+const GL_COS = ["Tất cả", "Chung", "AIA", "Chubb", "Manulife"];
+function glRows() {
+  const q = (state.glQ || "").trim().toLowerCase(), co = state.glCo || "Tất cả", gr = state.glGr || "Tất cả";
+  const rows = GL.filter(e => (co === "Tất cả" || e.companies.includes(co)) && (gr === "Tất cả" || e.group === gr)
+    && (!q || [e.abbr, e.english, e.vietnamese, e.market_equivalent, e.note].join(" ").toLowerCase().includes(q)));
+  $("glCount").textContent = `${rows.length}/${GL.length} thuật ngữ`;
+  $("glBody").innerHTML = rows.map(e => {
+    // Trang xuất hiện ĐẦU TIÊN mỗi hãng; các văn bản khác cùng hãng gom vào "+n"
+    const byCo = {}; e.citations.forEach(c => (byCo[c.company] = byCo[c.company] || []).push(c));
+    const cites = e.citations.length ? Object.entries(byCo).map(([co, cs]) => `${esc(co)} ${citeLink(cs[0].file_id, cs[0].page)}`
+      + (cs.length > 1 ? ` <details class="more"><summary class="small muted">+${cs.length - 1} văn bản</summary>${cs.slice(1).map(c => citeLink(c.file_id, c.page)).join(" ")}</details>` : "")).join("<br>") : esc(e.company_and_memo);
+    const enBadge = /Diễn giải/.test(e.english_status) ? ' <span class="tag INVESTIGATE" title="' + esc(e.english_status) + '">diễn giải</span>' : "";
+    return `<tr><th scope="row"><b>${esc(e.abbr)}</b><div class="small muted">${esc(e.group)}</div></th><td>${esc(e.english)}${enBadge}</td><td>${esc(e.vietnamese)}</td>`
+      + `<td class="small">${cites}</td><td class="small">${esc(e.market_equivalent)}</td><td class="small">${linkifyCites(e.note)}</td></tr>`;
+  }).join("") || `<tr><td colspan="6" class="muted">Không có thuật ngữ khớp bộ lọc.</td></tr>`;
+}
+function renderGlossary() {
+  const pdfs = DATA.pdfs || [], pages = pdfs.reduce((a, f) => a + f.pages, 0);
+  $("p-glossary").innerHTML = `
+  <h2>Phụ lục tra cứu: Từ điển thuật ngữ & ${pdfs.length} PDF nguồn</h2>
+  <p class="note">Nguồn duy nhất: <code>knowledge/sources/glossary.json</code> (${GL.length} thuật ngữ, 6 trường). Trích dẫn <b>[Mã văn bản : trang]</b> là trang xuất hiện đầu tiên, do script tìm trên text PDF. Bấm để mở đúng trang. Tooltip trên mọi trang đọc từ cùng file này.</p>
+  <div class="glbar">
+    <label class="small">Tìm nhanh <input type="search" id="glQ" placeholder="VD: K2, Trưởng nhóm, PAF…" value="${esc(state.glQ || "")}"></label>
+    <label class="small">Công ty <select id="glCo">${GL_COS.map(c => `<option${(state.glCo || "Tất cả") === c ? " selected" : ""}>${c}</option>`).join("")}</select></label>
+    <label class="small">Nhóm <select id="glGr">${GL_GROUPS.map(c => `<option${(state.glGr || "Tất cả") === c ? " selected" : ""}>${c}</option>`).join("")}</select></label>
+    <span class="small muted" id="glCount" aria-live="polite"></span>
+  </div>
+  <div class="tbl-wrap"><table class="gltable"><thead><tr><th>Viết tắt</th><th>Tiếng Anh</th><th>Tiếng Việt</th><th>Công ty · [Memo : Trang]</th><th>Tương ứng thị trường / tầng chuẩn</th><th>Ghi chú</th></tr></thead><tbody id="glBody"></tbody></table></div>
+  <h3>${pdfs.length} PDF nguồn · ${pages} trang — mục lục từng văn bản</h3>
+  <p class="note">Không PDF nào có bookmark gắn sẵn; mục lục dựng từ dòng tiêu đề trong text (bản scan 0003V: từ trang Mục lục). PDF chưa lên kho bằng chứng thì chỉ hiện trang, không mở được.</p>
+  ${pdfs.map(f => `<details class="pdfdoc"><summary><b>${esc(f.file_id)}</b> · ${esc(f.name)} · ${f.pages} trang ${f.url ? "" : '<span class="tag AVOID">chỉ lưu local</span>'}</summary>
+    <ol class="small">${f.bookmarks.map(b => `<li>${f.url ? `<a href="${f.url}#page=${b.p}">${esc(b.t)}</a>` : esc(b.t)} <span class="muted">· tr.${b.p}</span></li>`).join("")}</ol></details>`).join("")}`;
+  $("glQ").oninput = ev => { state.glQ = ev.target.value; glRows(); };
+  $("glCo").onchange = ev => { state.glCo = ev.target.value; glRows(); };
+  $("glGr").onchange = ev => { state.glGr = ev.target.value; glRows(); };
+  glRows();
 }
 function takeawayFor(id) {
   const k2 = state.k2, key = state.plan, nm = PLAN_META[key].name, e = planEnt(key, k2), a = comp("AIA_Alpha_2026", k2), c = comp("Chubb_Agency_2026", k2);
@@ -862,6 +949,7 @@ document.addEventListener("click", ev => {
   if (!a || a.id === "pdfNew" || ev.ctrlKey || ev.metaKey || ev.shiftKey || ev.button !== 0) return;
   ev.preventDefault(); openPdf(a.href);
 });
+$("glOpen").onclick = () => { state.tab = "glossary"; showTab(); window.scrollTo(0, 0); };
 $("presentBtn").onclick = () => {
   const on = document.body.classList.toggle("present");
   $("presentBtn").setAttribute("aria-pressed", on); $("presentBtn").textContent = on ? "Thoát chế độ trình bày" : "Chế độ trình bày";
@@ -872,8 +960,25 @@ $("resetAll").onclick = () => {
     custom: JSON.parse(JSON.stringify(DATA.plans.song_hanh)), margin: 85, opex: 20});
   renderAll();
 };
-$("foot").innerHTML = `<p><span class="badge ${st.ok === st.n && st.n ? "good" : "bad"}">Kiểm tra khi mở trang: engine JS khớp Python ${st.ok}/${st.n} ca mẫu</span> · ${DATA.knowledge.rules.length} quy tắc từ 7 tài liệu (116 trang) · dữ liệu dựng ngày ${esc(DATA.generated)}</p><p>` + `Bằng chứng mở từ ${esc(DATA.evidence_base)} (đúng trang qua #page). Tài liệu gốc thuộc quyền của các công ty phát hành; trang này dùng cho mục đích phân tích, không phải tài liệu chính thức của AIA, Chubb Life hay Manulife.</p>`;
+$("foot").innerHTML = `<p><span class="badge" id="dataSrc">Đang nạp dữ liệu…</span> <span class="badge ${st.ok === st.n && st.n ? "good" : "bad"}">Kiểm tra khi mở trang: engine JS khớp Python ${st.ok}/${st.n} ca mẫu</span> · ${DATA.knowledge.rules.length} quy tắc · ${(DATA.pdfs || []).length} tài liệu (${(DATA.pdfs || []).reduce((a, f) => a + f.pages, 0)} trang) · ${GL.length} thuật ngữ · dữ liệu dựng ngày ${esc(DATA.generated)}</p><p>` + `Bằng chứng mở từ ${esc(DATA.evidence_base)} (đúng trang qua #page). Tài liệu gốc thuộc quyền của các công ty phát hành; trang này dùng cho mục đích phân tích, không phải tài liệu chính thức của AIA, Chubb Life hay Manulife.</p>`;
+if (/^#(glossary|tu-dien)$/.test(location.hash)) state.tab = "glossary";   // link thẳng tới Phụ lục tra cứu
 renderAll();
+/* Lớp dữ liệu tách rời: thử Supabase; không có cấu hình / offline thì giữ dữ liệu nhúng (web/data-loader.js). */
+function showDataSource(res) {
+  const el = $("dataSrc"); if (!el) return;
+  el.className = "badge " + (res.source === "supabase" ? "good" : "");
+  el.textContent = res.source === "supabase"
+    ? `Dữ liệu từ Supabase · đồng bộ ${res.meta && res.meta.synced_at ? res.meta.synced_at.slice(0, 16).replace("T", " ") : "?"}`
+    : `Dữ liệu nhúng trong trang (${res.reason || "offline"})${res.meta ? " · bản " + esc(res.meta.model_version || "") : ""}`;
+}
+if (window.W24Data) W24Data.load().then(res => {
+  if (res.source === "supabase" && res.tables) {
+    if (res.tables.glossary_terms.length) DATA.glossary = W24Data.toGlossary(res.tables.glossary_terms);
+    if (res.tables.pdf_bookmarks.length) DATA.pdfs = W24Data.toPdfs(res.tables.pdf_bookmarks);
+    DATA.db = res.tables; glReindex(); renderAll();
+  } else if (res.tables) DATA.db = res.tables;
+  showDataSource(res);
+});
 </script>
 </body>
 </html>

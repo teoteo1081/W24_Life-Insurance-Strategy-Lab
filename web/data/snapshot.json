@@ -1,0 +1,5411 @@
+{
+ "meta": {
+  "model_version": "2543e02-dirty",
+  "synced_at": "2026-11-27T06:01:02+00:00",
+  "contract": "supabase/schema.sql v1",
+  "confidential_files": [
+   "0046M01_2026",
+   "0047M01_2026"
+  ]
+ },
+ "tables": {
+  "benchmark_results": [
+   {
+    "id": "M1|ALL|AIA|primary|SA",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "milestone_label": "Mốc 1 — Cá nhân",
+    "producing_agents": 1,
+    "org_fyp_month_vnd_m": 30.0,
+    "region": "ALL",
+    "company": "AIA",
+    "comparison": "primary",
+    "title": "SA",
+    "income_basis": "personal_income",
+    "income_vnd_m_month": 18.066,
+    "cash_y1_vnd_m_month": 18.066,
+    "cost_pct_org_fyp": 60.22,
+    "promotion_citation": "[AIAVAD 2601-034 : 8]",
+    "fee_citation": "[AIAVAD 2604-069 : 3-7]",
+    "label": "MODEL_OUTPUT",
+    "note": "FYC/tái tục theo giả định A1, A7",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M1|ALL|Chubb|primary|AR",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "milestone_label": "Mốc 1 — Cá nhân",
+    "producing_agents": 1,
+    "org_fyp_month_vnd_m": 30.0,
+    "region": "ALL",
+    "company": "Chubb",
+    "comparison": "primary",
+    "title": "AR",
+    "income_basis": "personal_income",
+    "income_vnd_m_month": 22.4769,
+    "cash_y1_vnd_m_month": 22.4769,
+    "cost_pct_org_fyp": 74.923,
+    "promotion_citation": "[CHH0DCEB260007V : 7]",
+    "fee_citation": "[CHH0DCEB260007V : 4-7]",
+    "label": "MODEL_OUTPUT",
+    "note": "FYC/RYC theo giả định A1, A7",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M1|ALL|Manulife|primary|Đại Lý",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "milestone_label": "Mốc 1 — Cá nhân",
+    "producing_agents": 1,
+    "org_fyp_month_vnd_m": 30.0,
+    "region": "ALL",
+    "company": "Manulife",
+    "comparison": "primary",
+    "title": "Đại Lý",
+    "income_basis": "personal_income",
+    "income_vnd_m_month": 17.796,
+    "cash_y1_vnd_m_month": 17.796,
+    "cost_pct_org_fyp": 59.32,
+    "promotion_citation": "[0047M01_2026 : 6]",
+    "fee_citation": "[0046M01_2026 : 1-8]",
+    "label": "MODEL_OUTPUT",
+    "note": "Không danh hiệu Manulife Pro (base case)",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|ALL|AIA|primary|SUM",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "milestone_label": "Mốc 2 — Nhóm 6 người",
+    "producing_agents": 5,
+    "org_fyp_month_vnd_m": 150.0,
+    "region": "ALL",
+    "company": "AIA",
+    "comparison": "primary",
+    "title": "SUM",
+    "income_basis": "net_management_fee",
+    "income_vnd_m_month": 17.55,
+    "cash_y1_vnd_m_month": 15.3,
+    "cost_pct_org_fyp": 11.7,
+    "promotion_citation": "[AIAVAD 2601-034 : 8]",
+    "fee_citation": "[AIAVAD 2601-034 : 3-5]",
+    "label": "MODEL_OUTPUT",
+    "note": "",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|ALL|Chubb|primary|UM",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "milestone_label": "Mốc 2 — Nhóm 6 người",
+    "producing_agents": 5,
+    "org_fyp_month_vnd_m": 150.0,
+    "region": "ALL",
+    "company": "Chubb",
+    "comparison": "primary",
+    "title": "UM",
+    "income_basis": "net_management_fee",
+    "income_vnd_m_month": 54.1845,
+    "cash_y1_vnd_m_month": 54.1845,
+    "cost_pct_org_fyp": 36.123,
+    "promotion_citation": "[CHH0DCEB260007V : 7]",
+    "fee_citation": "[CHH0DCEB260008V : 5-10]",
+    "label": "MODEL_OUTPUT",
+    "note": "",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|ALL|Manulife|primary|UM+",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "milestone_label": "Mốc 2 — Nhóm 6 người",
+    "producing_agents": 5,
+    "org_fyp_month_vnd_m": 150.0,
+    "region": "ALL",
+    "company": "Manulife",
+    "comparison": "primary",
+    "title": "UM+",
+    "income_basis": "net_management_fee",
+    "income_vnd_m_month": 10.9547,
+    "cash_y1_vnd_m_month": 10.9547,
+    "cost_pct_org_fyp": 7.3031,
+    "promotion_citation": "[0047M01_2026 : 6]",
+    "fee_citation": "[0047M01_2026 : 1-3]",
+    "label": "MODEL_OUTPUT",
+    "note": "Không danh hiệu MBA Pro (base case)",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|ALL|AIA|primary|SDM",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "milestone_label": "Mốc 3 — Ban 15 người",
+    "producing_agents": 15,
+    "org_fyp_month_vnd_m": 450.0,
+    "region": "ALL",
+    "company": "AIA",
+    "comparison": "primary",
+    "title": "SDM",
+    "income_basis": "net_management_fee",
+    "income_vnd_m_month": 25.65,
+    "cash_y1_vnd_m_month": 23.4,
+    "cost_pct_org_fyp": 5.7,
+    "promotion_citation": "[AIAVAD 2601-034 : 8]",
+    "fee_citation": "[AIAVAD 2601-034 : 3-5]",
+    "label": "MODEL_OUTPUT",
+    "note": "",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|ALL|Chubb|primary|DM",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "milestone_label": "Mốc 3 — Ban 15 người",
+    "producing_agents": 15,
+    "org_fyp_month_vnd_m": 450.0,
+    "region": "ALL",
+    "company": "Chubb",
+    "comparison": "primary",
+    "title": "DM",
+    "income_basis": "net_management_fee",
+    "income_vnd_m_month": 86.5845,
+    "cash_y1_vnd_m_month": 86.5845,
+    "cost_pct_org_fyp": 19.241,
+    "promotion_citation": "[CHH0DCEB260007V : 7]",
+    "fee_citation": "[CHH0DCEB260008V : 5-10]",
+    "label": "MODEL_OUTPUT",
+    "note": "",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|ALL|Manulife|primary|UM+",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "milestone_label": "Mốc 3 — Ban 15 người",
+    "producing_agents": 15,
+    "org_fyp_month_vnd_m": 450.0,
+    "region": "ALL",
+    "company": "Manulife",
+    "comparison": "primary",
+    "title": "UM+",
+    "income_basis": "net_management_fee",
+    "income_vnd_m_month": 18.1547,
+    "cash_y1_vnd_m_month": 18.1547,
+    "cost_pct_org_fyp": 4.0344,
+    "promotion_citation": "[0047M01_2026 : 6]",
+    "fee_citation": "[0047M01_2026 : 1-3]",
+    "label": "MODEL_OUTPUT",
+    "note": "Không danh hiệu MBA Pro (base case)",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|ALL|AIA|primary|PAF",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "milestone_label": "Mốc 4 — Khu vực 45 người",
+    "producing_agents": 45,
+    "org_fyp_month_vnd_m": 1200.0,
+    "region": "ALL",
+    "company": "AIA",
+    "comparison": "primary",
+    "title": "PAF",
+    "income_basis": "net_management_fee",
+    "income_vnd_m_month": 136.32,
+    "cash_y1_vnd_m_month": 134.32,
+    "cost_pct_org_fyp": 11.36,
+    "promotion_citation": "[AIAVAD 2601-034 : 8], [AIAVAD 2601-035 : 6]",
+    "fee_citation": "[AIAVAD 2601-035 : 2-5], [AIAVAD 2601-034 : 3-5]",
+    "label": "MODEL_OUTPUT",
+    "note": "Dual Career: không có gián tiếp cấp 2–4",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|ALL|Chubb|primary|RD",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "milestone_label": "Mốc 4 — Khu vực 45 người",
+    "producing_agents": 45,
+    "org_fyp_month_vnd_m": 1200.0,
+    "region": "ALL",
+    "company": "Chubb",
+    "comparison": "primary",
+    "title": "RD",
+    "income_basis": "net_management_fee",
+    "income_vnd_m_month": 186.552,
+    "cash_y1_vnd_m_month": 186.552,
+    "cost_pct_org_fyp": 15.546,
+    "promotion_citation": "[CHH0DCEB260003V : 3]",
+    "fee_citation": "[CHH0DCEB260003V : 5-10]",
+    "label": "MODEL_OUTPUT",
+    "note": "RD bổ nhiệm theo hợp đồng; so sánh chính theo DEC-14",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|ALL|Manulife|primary|PSM/SM",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "milestone_label": "Mốc 4 — Khu vực 45 người",
+    "producing_agents": 45,
+    "org_fyp_month_vnd_m": 1200.0,
+    "region": "ALL",
+    "company": "Manulife",
+    "comparison": "primary",
+    "title": "PSM/SM",
+    "income_basis": "net_management_fee",
+    "income_vnd_m_month": 105.0744,
+    "cash_y1_vnd_m_month": 79.5425,
+    "cost_pct_org_fyp": 8.7562,
+    "promotion_citation": "[0048M01_2026 : 5]",
+    "fee_citation": "[0048M01_2026 : 1-5]",
+    "label": "MODEL_OUTPUT",
+    "note": "PSM+ bổ nhiệm; đạt 100% chỉ tiêu là giả định A8",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|ALL|Chubb|secondary|DM",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "milestone_label": "Mốc 4 — Khu vực 45 người",
+    "producing_agents": 45,
+    "org_fyp_month_vnd_m": 1200.0,
+    "region": "ALL",
+    "company": "Chubb",
+    "comparison": "secondary",
+    "title": "DM",
+    "income_basis": "net_management_fee",
+    "income_vnd_m_month": 134.564,
+    "cash_y1_vnd_m_month": 134.564,
+    "cost_pct_org_fyp": 11.2137,
+    "promotion_citation": "[CHH0DCEB260007V : 7]",
+    "fee_citation": "[CHH0DCEB260008V : 5-10]",
+    "label": "MODEL_OUTPUT",
+    "note": "Tuyến quản lý truyền thống — nếu chưa lên BD",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|ALL|Chubb|secondary|BD",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "milestone_label": "Mốc 4 — Khu vực 45 người",
+    "producing_agents": 45,
+    "org_fyp_month_vnd_m": 1200.0,
+    "region": "ALL",
+    "company": "Chubb",
+    "comparison": "secondary",
+    "title": "BD",
+    "income_basis": "net_management_fee",
+    "income_vnd_m_month": null,
+    "cash_y1_vnd_m_month": null,
+    "cost_pct_org_fyp": null,
+    "promotion_citation": "[CHH0DCEB260007V : 7]",
+    "fee_citation": "[CHH0DCEB260003V : 3], [CHH0DCEB260003V : 10-11]",
+    "label": "UNKNOWN",
+    "note": "Chức danh đạt bằng chỉ tiêu; biểu phí BD không có trong 9 PDF",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|ALL|Manulife|secondary|UM+",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "milestone_label": "Mốc 4 — Khu vực 45 người",
+    "producing_agents": 45,
+    "org_fyp_month_vnd_m": 1200.0,
+    "region": "ALL",
+    "company": "Manulife",
+    "comparison": "secondary",
+    "title": "UM+",
+    "income_basis": "net_management_fee",
+    "income_vnd_m_month": 28.9375,
+    "cash_y1_vnd_m_month": 28.9375,
+    "cost_pct_org_fyp": 2.4115,
+    "promotion_citation": "[0047M01_2026 : 6]",
+    "fee_citation": "[0047M01_2026 : 1-3]",
+    "label": "MODEL_OUTPUT",
+    "note": "Tuyến quản lý truyền thống",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   }
+  ],
+  "role_benefit_matrix": [
+   {
+    "id": "M1|primary|AIA|1",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "SA",
+    "row_no": 1,
+    "row_label": "(1) Hoa hồng trực tiếp",
+    "value_text": "16,4 (FYC + tái tục, A1/A7)",
+    "citation": "[AIAVAD 2604-069 : 18]",
+    "label": "ASSUMPTION",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M1|primary|Chubb|1",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "AR",
+    "row_no": 1,
+    "row_label": "(1) Hoa hồng trực tiếp",
+    "value_text": "16,4 (FYC + RYC, A1/A7)",
+    "citation": "[CHH0DCEB260007V : 13-19]",
+    "label": "ASSUMPTION",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M1|primary|Manulife|1",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "Đại Lý",
+    "row_no": 1,
+    "row_label": "(1) Hoa hồng trực tiếp",
+    "value_text": "16,4 (FYC + tái tục, A1/A7)",
+    "citation": "[0046M01_2026 : 9]",
+    "label": "ASSUMPTION",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M1|primary|AIA|2",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "SA",
+    "row_no": 2,
+    "row_label": "(2) Phí quản lý F1 (nhóm trực tiếp)",
+    "value_text": "— không quản lý",
+    "citation": "[AIAVAD 2601-034 : 8]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M1|primary|Chubb|2",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "AR",
+    "row_no": 2,
+    "row_label": "(2) Phí quản lý F1 (nhóm trực tiếp)",
+    "value_text": "— không quản lý",
+    "citation": "[CHH0DCEB260008V : 3]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M1|primary|Manulife|2",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "Đại Lý",
+    "row_no": 2,
+    "row_label": "(2) Phí quản lý F1 (nhóm trực tiếp)",
+    "value_text": "— không quản lý",
+    "citation": "[0047M01_2026 : 1]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M1|primary|AIA|3",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "SA",
+    "row_no": 3,
+    "row_label": "(3) Phí quản lý gián tiếp F2–F4",
+    "value_text": "— không quản lý",
+    "citation": "[AIAVAD 2601-034 : 4]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M1|primary|Chubb|3",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "AR",
+    "row_no": 3,
+    "row_label": "(3) Phí quản lý gián tiếp F2–F4",
+    "value_text": "— không quản lý",
+    "citation": "[CHH0DCEB260008V : 7]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M1|primary|Manulife|3",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "Đại Lý",
+    "row_no": 3,
+    "row_label": "(3) Phí quản lý gián tiếp F2–F4",
+    "value_text": "— không quản lý",
+    "citation": "[0047M01_2026 : 1]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M1|primary|AIA|4",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "SA",
+    "row_no": 4,
+    "row_label": "(4) Thưởng quý / năm / tăng trưởng",
+    "value_text": "1,6",
+    "citation": "[AIAVAD 2604-069 : 5-7]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M1|primary|Chubb|4",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "AR",
+    "row_no": 4,
+    "row_label": "(4) Thưởng quý / năm / tăng trưởng",
+    "value_text": "4,9 (HQKD tháng + quý)",
+    "citation": "[CHH0DCEB260007V : 4-6]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M1|primary|Manulife|4",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "Đại Lý",
+    "row_no": 4,
+    "row_label": "(4) Thưởng quý / năm / tăng trưởng",
+    "value_text": "1,3 (năng suất tháng/quý + M-Star)",
+    "citation": "[0046M01_2026 : 4-8]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M1|primary|AIA|5",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "SA",
+    "row_no": 5,
+    "row_label": "(5) Duy trì tái tục (RYC)",
+    "value_text": "0,0 (thưởng SYC)",
+    "citation": "[AIAVAD 2604-069 : 6]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M1|primary|Chubb|5",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "AR",
+    "row_no": 5,
+    "row_label": "(5) Duy trì tái tục (RYC)",
+    "value_text": "1,1",
+    "citation": "[CHH0DCEB260007V : 6-7]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M1|primary|Manulife|5",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "Đại Lý",
+    "row_no": 5,
+    "row_label": "(5) Duy trì tái tục (RYC)",
+    "value_text": "— không có khoản riêng",
+    "citation": "[0046M01_2026 : 2-8]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M1|primary|AIA|6",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "SA",
+    "row_no": 6,
+    "row_label": "(6) Điều kiện chặn K2 / tuyển mới",
+    "value_text": "Thưởng × hệ số FY 2026; lên UM cần ≥2 người tuyển/6 tháng",
+    "citation": "[AIAVAD 2604-069 : 3], [AIAVAD 2601-034 : 8]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M1|primary|Chubb|6",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "AR",
+    "row_no": 6,
+    "row_label": "(6) Điều kiện chặn K2 / tuyển mới",
+    "value_text": "Thưởng × K2 cá nhân (≥80%: 120% … <50%: 25%); RYC cần K2 ≥65%; lên UM cần 2 đại lý giới thiệu đạt 3MAA",
+    "citation": "[CHH0DCEB260007V : 4], [CHH0DCEB260007V : 7]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M1|primary|Manulife|6",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M1",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "Đại Lý",
+    "row_no": 6,
+    "row_label": "(6) Điều kiện chặn K2 / tuyển mới",
+    "value_text": "Mọi thưởng × hệ số TLDTHD (từ 04/2026: ≥70% 100%, <50% TLDTHD/2) × CLKD; điều kiện lên UM+ ở 0013M04/2024 (không có)",
+    "citation": "[0046M01_2026 : 1], [0047M01_2026 : 6]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|primary|AIA|1",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "SUM",
+    "row_no": 1,
+    "row_label": "(1) Hoa hồng trực tiếp",
+    "value_text": "— quản lý không tự bán (A3)",
+    "citation": "",
+    "label": "ASSUMPTION",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|primary|Chubb|1",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "UM",
+    "row_no": 1,
+    "row_label": "(1) Hoa hồng trực tiếp",
+    "value_text": "— quản lý không tự bán (A3)",
+    "citation": "",
+    "label": "ASSUMPTION",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|primary|Manulife|1",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "UM+",
+    "row_no": 1,
+    "row_label": "(1) Hoa hồng trực tiếp",
+    "value_text": "— quản lý không tự bán (A3)",
+    "citation": "",
+    "label": "ASSUMPTION",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|primary|AIA|2",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "SUM",
+    "row_no": 2,
+    "row_label": "(2) Phí quản lý F1 (nhóm trực tiếp)",
+    "value_text": "11,7",
+    "citation": "[AIAVAD 2601-034 : 3]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|primary|Chubb|2",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "UM",
+    "row_no": 2,
+    "row_label": "(2) Phí quản lý F1 (nhóm trực tiếp)",
+    "value_text": "32,4",
+    "citation": "[CHH0DCEB260008V : 5]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|primary|Manulife|2",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "UM+",
+    "row_no": 2,
+    "row_label": "(2) Phí quản lý F1 (nhóm trực tiếp)",
+    "value_text": "7,2 (A.I cấp 1) + 3,8 (A.II)",
+    "citation": "[0047M01_2026 : 1-2]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|primary|AIA|3",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "SUM",
+    "row_no": 3,
+    "row_label": "(3) Phí quản lý gián tiếp F2–F4",
+    "value_text": "— không có quản lý con",
+    "citation": "[AIAVAD 2601-034 : 4]",
+    "label": "ASSUMPTION",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|primary|Chubb|3",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "UM",
+    "row_no": 3,
+    "row_label": "(3) Phí quản lý gián tiếp F2–F4",
+    "value_text": "— không có AL con",
+    "citation": "[CHH0DCEB260008V : 7]",
+    "label": "ASSUMPTION",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|primary|Manulife|3",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "UM+",
+    "row_no": 3,
+    "row_label": "(3) Phí quản lý gián tiếp F2–F4",
+    "value_text": "— không có cấp 2",
+    "citation": "[0047M01_2026 : 1]",
+    "label": "ASSUMPTION",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|primary|AIA|4",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "SUM",
+    "row_no": 4,
+    "row_label": "(4) Thưởng quý / năm / tăng trưởng",
+    "value_text": "5,9 (quý 4 sao + năm trả chậm)",
+    "citation": "[AIAVAD 2601-034 : 4-5]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|primary|Chubb|4",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "UM",
+    "row_no": 4,
+    "row_label": "(4) Thưởng quý / năm / tăng trưởng",
+    "value_text": "16,2 (HT KTN quý)",
+    "citation": "[CHH0DCEB260008V : 6]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|primary|Manulife|4",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "UM+",
+    "row_no": 4,
+    "row_label": "(4) Thưởng quý / năm / tăng trưởng",
+    "value_text": "0 (phí dài hạn chỉ cho MBA Pro)",
+    "citation": "[0047M01_2026 : 5]",
+    "label": "ASSUMPTION",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|primary|AIA|5",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "SUM",
+    "row_no": 5,
+    "row_label": "(5) Duy trì tái tục (RYC)",
+    "value_text": "— không có khoản này",
+    "citation": "[AIAVAD 2601-034 : 3-7]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|primary|Chubb|5",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "UM",
+    "row_no": 5,
+    "row_label": "(5) Duy trì tái tục (RYC)",
+    "value_text": "5,6",
+    "citation": "[CHH0DCEB260008V : 9-10]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|primary|Manulife|5",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "UM+",
+    "row_no": 5,
+    "row_label": "(5) Duy trì tái tục (RYC)",
+    "value_text": "— không có khoản này",
+    "citation": "[0047M01_2026 : 1-6]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|primary|AIA|6",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "SUM",
+    "row_no": 6,
+    "row_label": "(6) Điều kiện chặn K2 / tuyển mới",
+    "value_text": "FY nhóm <80% → bậc phí thấp hơn; FY <70% → phí hoạt động × FY thực đạt; quý cần FY ≥75%; người mới/quý: 3 sao ≥1, 4–5 sao ≥2 (từ Q2)",
+    "citation": "[AIAVAD 2601-034 : 3-5]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|primary|Chubb|6",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "UM",
+    "row_no": 6,
+    "row_label": "(6) Điều kiện chặn K2 / tuyển mới",
+    "value_text": "Phí tháng × K2 NTT (≥80%: 120% … <50%: 25%); phí RYC cần K2 NTT ≥65%; gián tiếp = 0 nếu FYC NTT <15tr",
+    "citation": "[CHH0DCEB260008V : 5-10]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M2|primary|Manulife|6",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M2",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "UM+",
+    "row_no": 6,
+    "row_label": "(6) Điều kiện chặn K2 / tuyển mới",
+    "value_text": "Phí hoạt động × TLDTHD cấp 1 (từ 04/2026: ≥80% 110% … <50% TLDTHD/2); phải \"Đội ngũ chuyên cần\" ≥4 buổi/tháng; phí dài hạn cần TLDTHD ≥70%",
+    "citation": "[0047M01_2026 : 2-3], [0047M01_2026 : 6]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|primary|AIA|1",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "SDM",
+    "row_no": 1,
+    "row_label": "(1) Hoa hồng trực tiếp",
+    "value_text": "— quản lý không tự bán (A3)",
+    "citation": "",
+    "label": "ASSUMPTION",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|primary|Chubb|1",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "DM",
+    "row_no": 1,
+    "row_label": "(1) Hoa hồng trực tiếp",
+    "value_text": "— quản lý không tự bán (A3)",
+    "citation": "",
+    "label": "ASSUMPTION",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|primary|Manulife|1",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "UM+",
+    "row_no": 1,
+    "row_label": "(1) Hoa hồng trực tiếp",
+    "value_text": "— quản lý không tự bán (A3)",
+    "citation": "",
+    "label": "ASSUMPTION",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|primary|AIA|2",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "SDM",
+    "row_no": 2,
+    "row_label": "(2) Phí quản lý F1 (nhóm trực tiếp)",
+    "value_text": "11,7",
+    "citation": "[AIAVAD 2601-034 : 3]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|primary|Chubb|2",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "DM",
+    "row_no": 2,
+    "row_label": "(2) Phí quản lý F1 (nhóm trực tiếp)",
+    "value_text": "32,4",
+    "citation": "[CHH0DCEB260008V : 5]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|primary|Manulife|2",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "UM+",
+    "row_no": 2,
+    "row_label": "(2) Phí quản lý F1 (nhóm trực tiếp)",
+    "value_text": "7,2 (A.I cấp 1) + 3,8 (A.II)",
+    "citation": "[0047M01_2026 : 1-2]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|primary|AIA|3",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "SDM",
+    "row_no": 3,
+    "row_label": "(3) Phí quản lý gián tiếp F2–F4",
+    "value_text": "8,1",
+    "citation": "[AIAVAD 2601-034 : 4]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|primary|Chubb|3",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "DM",
+    "row_no": 3,
+    "row_label": "(3) Phí quản lý gián tiếp F2–F4",
+    "value_text": "32,4",
+    "citation": "[CHH0DCEB260008V : 7]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|primary|Manulife|3",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "UM+",
+    "row_no": 3,
+    "row_label": "(3) Phí quản lý gián tiếp F2–F4",
+    "value_text": "7,2 (cấp 2 × ½ tỷ lệ)",
+    "citation": "[0047M01_2026 : 1]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|primary|AIA|4",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "SDM",
+    "row_no": 4,
+    "row_label": "(4) Thưởng quý / năm / tăng trưởng",
+    "value_text": "5,9 (quý 4 sao + năm trả chậm)",
+    "citation": "[AIAVAD 2601-034 : 4-5]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|primary|Chubb|4",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "DM",
+    "row_no": 4,
+    "row_label": "(4) Thưởng quý / năm / tăng trưởng",
+    "value_text": "16,2 (HT KTN quý)",
+    "citation": "[CHH0DCEB260008V : 6]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|primary|Manulife|4",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "UM+",
+    "row_no": 4,
+    "row_label": "(4) Thưởng quý / năm / tăng trưởng",
+    "value_text": "0 (phí dài hạn chỉ cho MBA Pro)",
+    "citation": "[0047M01_2026 : 5]",
+    "label": "ASSUMPTION",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|primary|AIA|5",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "SDM",
+    "row_no": 5,
+    "row_label": "(5) Duy trì tái tục (RYC)",
+    "value_text": "— không có khoản này",
+    "citation": "[AIAVAD 2601-034 : 3-7]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|primary|Chubb|5",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "DM",
+    "row_no": 5,
+    "row_label": "(5) Duy trì tái tục (RYC)",
+    "value_text": "5,6",
+    "citation": "[CHH0DCEB260008V : 9-10]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|primary|Manulife|5",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "UM+",
+    "row_no": 5,
+    "row_label": "(5) Duy trì tái tục (RYC)",
+    "value_text": "— không có khoản này",
+    "citation": "[0047M01_2026 : 1-6]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|primary|AIA|6",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "SDM",
+    "row_no": 6,
+    "row_label": "(6) Điều kiện chặn K2 / tuyển mới",
+    "value_text": "FY nhóm <80% → bậc phí thấp hơn; FY <70% → phí hoạt động × FY thực đạt; quý cần FY ≥75%; người mới/quý: 3 sao ≥1, 4–5 sao ≥2 (từ Q2)",
+    "citation": "[AIAVAD 2601-034 : 3-5]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|primary|Chubb|6",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "DM",
+    "row_no": 6,
+    "row_label": "(6) Điều kiện chặn K2 / tuyển mới",
+    "value_text": "Phí tháng × K2 NTT (≥80%: 120% … <50%: 25%); phí RYC cần K2 NTT ≥65%; gián tiếp = 0 nếu FYC NTT <15tr",
+    "citation": "[CHH0DCEB260008V : 5-10]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M3|primary|Manulife|6",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M3",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "UM+",
+    "row_no": 6,
+    "row_label": "(6) Điều kiện chặn K2 / tuyển mới",
+    "value_text": "Phí hoạt động × TLDTHD cấp 1 (từ 04/2026: ≥80% 110% … <50% TLDTHD/2); phải \"Đội ngũ chuyên cần\" ≥4 buổi/tháng; phí dài hạn cần TLDTHD ≥70%",
+    "citation": "[0047M01_2026 : 2-3], [0047M01_2026 : 6]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|primary|AIA|1",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "PAF",
+    "row_no": 1,
+    "row_label": "(1) Hoa hồng trực tiếp",
+    "value_text": "— quản lý không tự bán (A3)",
+    "citation": "",
+    "label": "ASSUMPTION",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|primary|Chubb|1",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "RD (bổ nhiệm)",
+    "row_no": 1,
+    "row_label": "(1) Hoa hồng trực tiếp",
+    "value_text": "— RD không tự bán (A3)",
+    "citation": "",
+    "label": "ASSUMPTION",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|primary|Manulife|1",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "PSM/SM (bổ nhiệm)",
+    "row_no": 1,
+    "row_label": "(1) Hoa hồng trực tiếp",
+    "value_text": "— PSM+ không tự bán (A3)",
+    "citation": "",
+    "label": "ASSUMPTION",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|primary|AIA|2",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "PAF",
+    "row_no": 2,
+    "row_label": "(2) Phí quản lý F1 (nhóm trực tiếp)",
+    "value_text": "24,0 (phí cơ bản PAF) + 38,5 (chuyên môn tháng) + 10,4 (CQL trực tiếp)",
+    "citation": "[AIAVAD 2601-035 : 3-4], [AIAVAD 2601-035 : 2]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|primary|Chubb|2",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "RD (bổ nhiệm)",
+    "row_no": 2,
+    "row_label": "(2) Phí quản lý F1 (nhóm trực tiếp)",
+    "value_text": "45,0 (đào tạo 25 + hoạt động 8 + kinh doanh 12) + 43,2 (chất lượng 12% FYC)",
+    "citation": "[CHH0DCEB260003V : 5-7]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|primary|Manulife|2",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "PSM/SM (bổ nhiệm)",
+    "row_no": 2,
+    "row_label": "(2) Phí quản lý F1 (nhóm trực tiếp)",
+    "value_text": "45,5 (phí cơ bản 35tr × 100% × 130%) + 24,0 (năng suất 6% FYC × TLDTHD)",
+    "citation": "[0048M01_2026 : 1-2]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|primary|AIA|3",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "PAF",
+    "row_no": 3,
+    "row_label": "(3) Phí quản lý gián tiếp F2–F4",
+    "value_text": "0 — PAF+ không nhận gián tiếp cấp 2-3-4",
+    "citation": "[AIAVAD 2601-035 : 2]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|primary|Chubb|3",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "RD (bổ nhiệm)",
+    "row_no": 3,
+    "row_label": "(3) Phí quản lý gián tiếp F2–F4",
+    "value_text": "0 — không có BD/RD con trong cấu trúc mốc (phí II.7–II.8 = 25–50% / 12,5–25% phí của BD/RD con)",
+    "citation": "[CHH0DCEB260003V : 10-11]",
+    "label": "ASSUMPTION",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|primary|Manulife|3",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "PSM/SM (bổ nhiệm)",
+    "row_no": 3,
+    "row_label": "(3) Phí quản lý gián tiếp F2–F4",
+    "value_text": "0 — không có PSM+ báo cáo trực tiếp (gián tiếp = 50% phí của cấp báo cáo)",
+    "citation": "[0048M01_2026 : 2]",
+    "label": "ASSUMPTION",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|primary|AIA|4",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "PAF",
+    "row_no": 4,
+    "row_label": "(4) Thưởng quý / năm / tăng trưởng",
+    "value_text": "34,2 (chuyên môn quý) + 24,0 (vượt chỉ tiêu) + 5,2 (CQL quý/năm)",
+    "citation": "[AIAVAD 2601-035 : 4-5]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|primary|Chubb|4",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "RD (bổ nhiệm)",
+    "row_no": 4,
+    "row_label": "(4) Thưởng quý / năm / tăng trưởng",
+    "value_text": "9,0 (tăng trưởng quý 2,5% — FYP đi ngang)",
+    "citation": "[CHH0DCEB260003V : 8-9]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|primary|Manulife|4",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "PSM/SM (bổ nhiệm)",
+    "row_no": 4,
+    "row_label": "(4) Thưởng quý / năm / tăng trưởng",
+    "value_text": "10,0 (hoạt động quý 2,5%) + 25,5 (hợp tác dài hạn, trả chậm 30/30/40)",
+    "citation": "[0048M01_2026 : 2-5]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|primary|AIA|5",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "PAF",
+    "row_no": 5,
+    "row_label": "(5) Duy trì tái tục (RYC)",
+    "value_text": "— không có khoản này",
+    "citation": "[AIAVAD 2601-035 : 3-5]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|primary|Chubb|5",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "RD (bổ nhiệm)",
+    "row_no": 5,
+    "row_label": "(5) Duy trì tái tục (RYC)",
+    "value_text": "89,4 (30% RYC năm 2–5, K2 ≥70%; RYC theo A7)",
+    "citation": "[CHH0DCEB260003V : 9-10]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|primary|Manulife|5",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "PSM/SM (bổ nhiệm)",
+    "row_no": 5,
+    "row_label": "(5) Duy trì tái tục (RYC)",
+    "value_text": "— không có khoản này",
+    "citation": "[0048M01_2026 : 1-5]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|primary|AIA|6",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "primary",
+    "company": "AIA",
+    "title": "PAF",
+    "row_no": 6,
+    "row_label": "(6) Điều kiện chặn K2 / tuyển mới",
+    "value_text": "Hệ số FY cho phí chuyên môn: ≥75% 120% … <50% 0%; phí cơ bản theo % đạt chỉ tiêu FYP (<35% = 0)",
+    "citation": "[AIAVAD 2601-035 : 3-4]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|primary|Chubb|6",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "primary",
+    "company": "Chubb",
+    "title": "RD (bổ nhiệm)",
+    "row_no": 6,
+    "row_label": "(6) Điều kiện chặn K2 / tuyển mới",
+    "value_text": "Phí chất lượng & tăng trưởng = 0 nếu K2 <60% (từ Q3/2026); duy trì: nhánh trực tiếp 750tr FYP + 25 EHC / 6 tháng; chức danh RD do bổ nhiệm theo hợp đồng",
+    "citation": "[CHH0DCEB260003V : 7], [CHH0DCEB260003V : 13], [CHH0DCEB260003V : 3]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|primary|Manulife|6",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "primary",
+    "company": "Manulife",
+    "title": "PSM/SM (bổ nhiệm)",
+    "row_no": 6,
+    "row_label": "(6) Điều kiện chặn K2 / tuyển mới",
+    "value_text": "Phí cơ bản = 0 nếu đạt <30% chỉ tiêu FYP; phí năng suất/quý × TLDTHD (từ 04/2026: <50% → TLDTHD/2); phí dài hạn cần ≥85% chỉ tiêu và TLDTHD ≥70%; chức danh PSM+ do bổ nhiệm (0013M04/2024 không có)",
+    "citation": "[0048M01_2026 : 1-4]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|secondary|Chubb|1",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "secondary",
+    "company": "Chubb",
+    "title": "DM (AL)",
+    "row_no": 1,
+    "row_label": "(1) Hoa hồng trực tiếp",
+    "value_text": "— quản lý không tự bán (A3)",
+    "citation": "",
+    "label": "ASSUMPTION",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|secondary|Manulife|1",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "secondary",
+    "company": "Manulife",
+    "title": "UM+",
+    "row_no": 1,
+    "row_label": "(1) Hoa hồng trực tiếp",
+    "value_text": "— quản lý không tự bán (A3)",
+    "citation": "",
+    "label": "ASSUMPTION",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|secondary|Chubb|2",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "secondary",
+    "company": "Chubb",
+    "title": "DM (AL)",
+    "row_no": 2,
+    "row_label": "(2) Phí quản lý F1 (nhóm trực tiếp)",
+    "value_text": "28,8",
+    "citation": "[CHH0DCEB260008V : 5]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|secondary|Manulife|2",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "secondary",
+    "company": "Manulife",
+    "title": "UM+",
+    "row_no": 2,
+    "row_label": "(2) Phí quản lý F1 (nhóm trực tiếp)",
+    "value_text": "6,4 (A.I cấp 1) + 3,3 (A.II)",
+    "citation": "[0047M01_2026 : 1-2]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|secondary|Chubb|3",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "secondary",
+    "company": "Chubb",
+    "title": "DM (AL)",
+    "row_no": 3,
+    "row_label": "(3) Phí quản lý gián tiếp F2–F4",
+    "value_text": "86,4 (L1 50% × 4 AL con + L2 25% × 4 UM)",
+    "citation": "[CHH0DCEB260008V : 7]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|secondary|Manulife|3",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "secondary",
+    "company": "Manulife",
+    "title": "UM+",
+    "row_no": 3,
+    "row_label": "(3) Phí quản lý gián tiếp F2–F4",
+    "value_text": "19,2 (cấp 2 × 8% + cấp 3 × 4%)",
+    "citation": "[0047M01_2026 : 1]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|secondary|Chubb|4",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "secondary",
+    "company": "Chubb",
+    "title": "DM (AL)",
+    "row_no": 4,
+    "row_label": "(4) Thưởng quý / năm / tăng trưởng",
+    "value_text": "14,4 (HT KTN quý)",
+    "citation": "[CHH0DCEB260008V : 6]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|secondary|Manulife|4",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "secondary",
+    "company": "Manulife",
+    "title": "UM+",
+    "row_no": 4,
+    "row_label": "(4) Thưởng quý / năm / tăng trưởng",
+    "value_text": "0 (phí dài hạn chỉ cho MBA Pro)",
+    "citation": "[0047M01_2026 : 5]",
+    "label": "ASSUMPTION",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|secondary|Chubb|5",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "secondary",
+    "company": "Chubb",
+    "title": "DM (AL)",
+    "row_no": 5,
+    "row_label": "(5) Duy trì tái tục (RYC)",
+    "value_text": "5,0",
+    "citation": "[CHH0DCEB260008V : 9-10]",
+    "label": "MODEL_OUTPUT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|secondary|Manulife|5",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "secondary",
+    "company": "Manulife",
+    "title": "UM+",
+    "row_no": 5,
+    "row_label": "(5) Duy trì tái tục (RYC)",
+    "value_text": "— không có khoản này",
+    "citation": "[0047M01_2026 : 1-6]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|secondary|Chubb|6",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "secondary",
+    "company": "Chubb",
+    "title": "DM (AL)",
+    "row_no": 6,
+    "row_label": "(6) Điều kiện chặn K2 / tuyển mới",
+    "value_text": "Phí tháng × K2 NTT (≥80%: 120% … <50%: 25%); phí RYC cần K2 NTT ≥65%; gián tiếp = 0 nếu FYC NTT <15tr; đủ điều kiện lên BD nhưng biểu phí BD không có trong nguồn (Negative Proof: `00_Role_Mapping_Audit.md` mục 4.3)",
+    "citation": "[CHH0DCEB260008V : 5-10], [CHH0DCEB260007V : 7]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "M4|secondary|Manulife|6",
+    "model_version": "2543e02-dirty",
+    "milestone_id": "M4",
+    "matrix_table": "secondary",
+    "company": "Manulife",
+    "title": "UM+",
+    "row_no": 6,
+    "row_label": "(6) Điều kiện chặn K2 / tuyển mới",
+    "value_text": "Phí hoạt động × TLDTHD cấp 1 (từ 04/2026: ≥80% 110% … <50% TLDTHD/2); phải \"Đội ngũ chuyên cần\" ≥4 buổi/tháng; phí dài hạn cần TLDTHD ≥70%",
+    "citation": "[0047M01_2026 : 2-3]",
+    "label": "VERIFIED FACT",
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   }
+  ],
+  "glossary_terms": [
+   {
+    "abbr": "FYP",
+    "english": "First Year Premium",
+    "vietnamese": "Phí bảo hiểm thực thu năm thứ nhất",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 11] · Chubb [CHH0DCEB260007V : 9] · Manulife [0048M01_2026 : 1]",
+    "market_equivalent": "APE (phí quy năm) — tương đương khi quy đổi kỳ đóng phí",
+    "note": "Manulife: gồm phí cơ bản + bổ trợ + 6% phí đóng một lần, trừ HĐ bị hủy trong 21 ngày [0048M01_2026 : 6]",
+    "term_group": "Chỉ số",
+    "companies": [
+     "AIA",
+     "Chubb",
+     "Manulife"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 11,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 8,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 3,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260007V",
+      "source_id": "SRC-POL-CHB-001",
+      "page": 9,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260008V",
+      "source_id": "SRC-POL-CHB-002",
+      "page": 11,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260003V",
+      "source_id": "SRC-POL-CHB-003",
+      "page": 5,
+      "method": "visual_scan"
+     },
+     {
+      "company": "Manulife",
+      "file_id": "0048M01_2026",
+      "source_id": "SRC-POL-MNL-001",
+      "page": 1,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "FYC",
+    "english": "First Year Commission",
+    "vietnamese": "Hoa hồng thực thu năm thứ nhất",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 3] · Chubb [CHH0DCEB260007V : 4] · Manulife [0048M01_2026 : 1]",
+    "market_equivalent": "First-year commission — thước đo năng suất đại lý",
+    "note": "Repo giả định FYC ≈ 30% FYP (A1) vì thiếu biểu hoa hồng theo sản phẩm",
+    "term_group": "Chỉ số",
+    "companies": [
+     "AIA",
+     "Chubb",
+     "Manulife"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 3,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 3,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 4,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260007V",
+      "source_id": "SRC-POL-CHB-001",
+      "page": 4,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260008V",
+      "source_id": "SRC-POL-CHB-002",
+      "page": 4,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260003V",
+      "source_id": "SRC-POL-CHB-003",
+      "page": 7,
+      "method": "visual_scan"
+     },
+     {
+      "company": "Manulife",
+      "file_id": "0048M01_2026",
+      "source_id": "SRC-POL-MNL-001",
+      "page": 1,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "FYC tín chỉ",
+    "english": "Credited First Year Commission",
+    "vietnamese": "FYC dùng để xét thưởng / chỉ tiêu ở AIA",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 3]",
+    "market_equivalent": "Weighted / credited FYC",
+    "note": "Cách quy đổi nằm ở memo riêng của AIA, không có trong 9 PDF; repo coi = FYC",
+    "term_group": "Chỉ số",
+    "companies": [
+     "AIA"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 3,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 3,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 4,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "SYC",
+    "english": "Second Year Commission",
+    "vietnamese": "Hoa hồng năm thứ hai (phí tái tục năm 2)",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 6]",
+    "market_equivalent": "Renewal commission Y2",
+    "note": "AIA trả thưởng chất lượng phục vụ theo % SYC quý",
+    "term_group": "Chỉ số",
+    "companies": [
+     "AIA"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 6,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "RYC",
+    "english": "Renewal Year Commission",
+    "vietnamese": "Hoa hồng tái tục (từ năm hợp đồng thứ 2)",
+    "company_and_memo": "Chubb [CHH0DCEB260007V : 6]",
+    "market_equivalent": "Renewal commission",
+    "note": "Chubb tính phí/thưởng duy trì trên RYC năm 2–5",
+    "term_group": "Chỉ số",
+    "companies": [
+     "Chubb"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260007V",
+      "source_id": "SRC-POL-CHB-001",
+      "page": 6,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260008V",
+      "source_id": "SRC-POL-CHB-002",
+      "page": 10,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260003V",
+      "source_id": "SRC-POL-CHB-003",
+      "page": 9,
+      "method": "visual_scan"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "K2",
+    "english": "Year-2 Persistency Ratio",
+    "vietnamese": "Tỷ lệ duy trì hợp đồng năm thứ 2",
+    "company_and_memo": "Chubb [CHH0DCEB260007V : 4]",
+    "market_equivalent": "13/25-month persistency (canonical: K2)",
+    "note": "Công thức K2 của Chubb nằm ở 260005V (không có trong 9 PDF)",
+    "term_group": "Chỉ số",
+    "companies": [
+     "Chubb"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260007V",
+      "source_id": "SRC-POL-CHB-001",
+      "page": 4,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260008V",
+      "source_id": "SRC-POL-CHB-002",
+      "page": 5,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260003V",
+      "source_id": "SRC-POL-CHB-003",
+      "page": 7,
+      "method": "visual_scan"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "TLDTHD",
+    "english": "Year-2 Policy Persistency Ratio",
+    "vietnamese": "Tỷ lệ duy trì hợp đồng năm 2 (Manulife)",
+    "company_and_memo": "Manulife [0048M01_2026 : 1]",
+    "market_equivalent": "K2",
+    "note": "Công thức ở 0016M03/2024 (không có trong 9 PDF); hệ số nhân đổi bảng từ 04/2026",
+    "term_group": "Chỉ số",
+    "companies": [
+     "Manulife"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Manulife",
+      "file_id": "0048M01_2026",
+      "source_id": "SRC-POL-MNL-001",
+      "page": 1,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "FY",
+    "english": "AIA FY Persistency Ratio",
+    "vietnamese": "Tỷ lệ duy trì phí AIA FY (14 tháng)",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 3]",
+    "market_equivalent": "K2 / 13-month persistency",
+    "note": "Ví dụ tính FY: phí thực thu ÷ phí phải thu (2604-069 mục VII)",
+    "term_group": "Chỉ số",
+    "companies": [
+     "AIA"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 3,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 3,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 4,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "TOT",
+    "english": "AIA TOT Persistency Ratio",
+    "vietnamese": "Tỷ lệ duy trì tổng phí AIA TOT",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 10]",
+    "market_equivalent": "Total-premium persistency",
+    "note": "Phí năm CQL trả chậm cần TOT ≥85% tại thời điểm chi trả",
+    "term_group": "Chỉ số",
+    "companies": [
+     "AIA"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 10,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 5,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 15,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "P13",
+    "english": "13th-month Persistency",
+    "vietnamese": "Tỷ lệ duy trì tháng 13",
+    "company_and_memo": "Chubb [CHH0DCEB260007V : 7]",
+    "market_equivalent": "13-month persistency",
+    "note": "Chubb dùng K2 hoặc trung bình P13 3 tháng để xét thăng/giữ cấp",
+    "term_group": "Chỉ số",
+    "companies": [
+     "Chubb"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260007V",
+      "source_id": "SRC-POL-CHB-001",
+      "page": 7,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "EHC",
+    "english": "— (định nghĩa ở 260005V, không có trong 9 PDF)",
+    "vietnamese": "Lượt/đại lý đạt chuẩn hoạt động trong tháng (Chubb)",
+    "company_and_memo": "Chubb [CHH0DCEB260007V : 5]",
+    "market_equivalent": "Active agent (monthly)",
+    "note": "Định nghĩa chi tiết ở CHH0DCEB260005V — không có trong nguồn",
+    "term_group": "Chỉ số",
+    "companies": [
+     "Chubb"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260007V",
+      "source_id": "SRC-POL-CHB-001",
+      "page": 5,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260008V",
+      "source_id": "SRC-POL-CHB-002",
+      "page": 5,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260003V",
+      "source_id": "SRC-POL-CHB-003",
+      "page": 6,
+      "method": "visual_scan"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "3MAA",
+    "english": "3-Month Active Agent",
+    "vietnamese": "Đại lý chính thức còn làm việc và đạt EHC ít nhất 1 lần trong 3 tháng gần nhất",
+    "company_and_memo": "Chubb [CHH0DCEB260007V : 7]",
+    "market_equivalent": "Active agents (3-month window)",
+    "note": "Định nghĩa nguyên văn ở [CHH0DCEB260003V : 14] (mục V.10). KHÔNG phải \"bình quân 3 tháng\"",
+    "term_group": "Chỉ số",
+    "companies": [
+     "Chubb"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260007V",
+      "source_id": "SRC-POL-CHB-001",
+      "page": 7,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260008V",
+      "source_id": "SRC-POL-CHB-002",
+      "page": 9,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260003V",
+      "source_id": "SRC-POL-CHB-003",
+      "page": 7,
+      "method": "visual_scan"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "1mAA",
+    "english": "1-Month Active Agent",
+    "vietnamese": "Số lượt đại lý có hoạt động trong tháng",
+    "company_and_memo": "AIA [AIAVAD 2601-035 : 4] · Manulife [0048M01_2026 : 2]",
+    "market_equivalent": "Monthly active agents",
+    "note": "Manulife 1mAA_4mFYC: đại lý ≥1 HĐ thực cấp và ≥4tr FYC trong tháng [0048M01_2026 : 6]",
+    "term_group": "Chỉ số",
+    "companies": [
+     "AIA",
+     "Manulife"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 4,
+      "method": "text_search"
+     },
+     {
+      "company": "Manulife",
+      "file_id": "0048M01_2026",
+      "source_id": "SRC-POL-MNL-001",
+      "page": 2,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "CC",
+    "english": "Case Count",
+    "vietnamese": "Số hợp đồng thực cấp (đã trừ hủy / từ chối)",
+    "company_and_memo": "Manulife [0046M01_2026 : 2]",
+    "market_equivalent": "Net issued cases",
+    "note": "Định nghĩa ở [0046M01_2026 : 10]",
+    "term_group": "Chỉ số",
+    "companies": [
+     "Manulife"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Manulife",
+      "file_id": "0046M01_2026",
+      "source_id": "SRC-POL-MNL-002",
+      "page": 2,
+      "method": "text_search"
+     },
+     {
+      "company": "Manulife",
+      "file_id": "0047M01_2026",
+      "source_id": "SRC-POL-MNL-003",
+      "page": 2,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "NTT",
+    "english": "Direct Team",
+    "vietnamese": "Nhóm trực tiếp (Chubb)",
+    "company_and_memo": "Chubb [CHH0DCEB260008V : 5]",
+    "market_equivalent": "Direct team / F1",
+    "note": "FYC NTT của AL không gồm FYC của chính AL",
+    "term_group": "Chỉ số",
+    "companies": [
+     "Chubb"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260008V",
+      "source_id": "SRC-POL-CHB-002",
+      "page": 5,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "FNA",
+    "english": "Financial Needs Analysis",
+    "vietnamese": "Gặp khách hàng có phân tích nhu cầu tài chính",
+    "company_and_memo": "Chubb [CHH0DCEB260007V : 9]",
+    "market_equivalent": "Needs-based selling activity",
+    "note": "Chỉ tiêu Champion Hubb: 20 FNA/tháng",
+    "term_group": "Chỉ số",
+    "companies": [
+     "Chubb"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260007V",
+      "source_id": "SRC-POL-CHB-001",
+      "page": 9,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260008V",
+      "source_id": "SRC-POL-CHB-002",
+      "page": 11,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "SOP",
+    "english": "Standard Operating Procedure (hoạt động chuẩn)",
+    "vietnamese": "Tỷ lệ tham dự hoạt động chuẩn (Champion Hubb)",
+    "company_and_memo": "Chubb [CHH0DCEB260007V : 9]",
+    "market_equivalent": "Activity discipline",
+    "note": "Hệ số W1 theo % tham dự SOP; có mâu thuẫn bảng vs ví dụ (ERR-DOC-01)",
+    "term_group": "Chỉ số",
+    "companies": [
+     "Chubb"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260007V",
+      "source_id": "SRC-POL-CHB-001",
+      "page": 9,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260008V",
+      "source_id": "SRC-POL-CHB-002",
+      "page": 11,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "MDRT",
+    "english": "Million Dollar Round Table",
+    "vietnamese": "Danh hiệu quốc tế cho tư vấn viên doanh số cao",
+    "company_and_memo": "AIA [AIAVAD 2601-034 : 1]",
+    "market_equivalent": "MDRT",
+    "note": "Manulife dùng MDRT cho mức thưởng xuất sắc ≥120tr FYP",
+    "term_group": "Chỉ số",
+    "companies": [
+     "AIA",
+     "Manulife"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 1,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 1,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "APE",
+    "english": "Annualised Premium Equivalent",
+    "vietnamese": "Phí bảo hiểm quy năm",
+    "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+    "market_equivalent": "APE",
+    "note": "Thuật ngữ chung toàn ngành; tìm thấy trong 9 PDF chỉ ở dạng liệt kê chỉ số (nếu có)",
+    "term_group": "Chỉ số",
+    "companies": [
+     "Chung"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "VNB",
+    "english": "Value of New Business",
+    "vietnamese": "Giá trị hợp đồng mới (lợi nhuận kỳ vọng của hợp đồng mới)",
+    "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+    "market_equivalent": "VNB margin",
+    "note": "Không có trong 9 PDF; dùng ở Giai đoạn 2 (ROI) — số VNB thật là UNKNOWN",
+    "term_group": "Chỉ số",
+    "companies": [
+     "Chung"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "ROI",
+    "english": "Return on Investment",
+    "vietnamese": "Hiệu quả trên chi phí bỏ ra",
+    "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+    "market_equivalent": "ROI",
+    "note": "Đề bài yêu cầu; repo chỉ có chi phí mô phỏng, không phải ROI thực tế",
+    "term_group": "Chỉ số",
+    "companies": [
+     "Chung"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "MAPA",
+    "english": "Manpower × Active × Productivity × Average case size",
+    "vietnamese": "Công thức doanh số: nhân lực × tỷ lệ hoạt động × năng suất × quy mô hợp đồng",
+    "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+    "market_equivalent": "Agency sales driver tree",
+    "note": "Thuật ngữ dự án W24 (mapa_forward trong engine)",
+    "term_group": "Chỉ số",
+    "companies": [
+     "Chung"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "OpEx",
+    "english": "Operating Expenses",
+    "vietnamese": "Chi phí vận hành văn phòng của công ty",
+    "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+    "market_equivalent": "OpEx",
+    "note": "Không có trong 9 PDF; repo giả định 15–25% FYP",
+    "term_group": "Chỉ số",
+    "companies": [
+     "Chung"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "HT KTN",
+    "english": "Team Production Support Fee",
+    "vietnamese": "Phí dịch vụ hỗ trợ khai thác nhóm (Chubb AL)",
+    "company_and_memo": "Chubb [CHH0DCEB260008V : 6]",
+    "market_equivalent": "Direct override (F1)",
+    "note": "Tháng: FYC NTT × 10–60% × hệ số K2; quý: thêm 30–50%",
+    "term_group": "Khoản thu nhập",
+    "companies": [
+     "Chubb"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260008V",
+      "source_id": "SRC-POL-CHB-002",
+      "page": 6,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "HQKD",
+    "english": "Personal Business Performance Bonus",
+    "vietnamese": "Thưởng hiệu quả kinh doanh cá nhân (Chubb)",
+    "company_and_memo": "Chubb [CHH0DCEB260007V : 4]",
+    "market_equivalent": "Production bonus",
+    "note": "Tháng theo FYC 3 tháng × K2; quý ×15–30% theo EHC",
+    "term_group": "Khoản thu nhập",
+    "companies": [
+     "Chubb"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260007V",
+      "source_id": "SRC-POL-CHB-001",
+      "page": 4,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "CLKD",
+    "english": "Business Quality Multiplier",
+    "vietnamese": "Hệ số nhân chất lượng kinh doanh (kỷ luật) — Manulife",
+    "company_and_memo": "Manulife [0046M01_2026 : 1]",
+    "market_equivalent": "Compliance multiplier",
+    "note": "Thư nhắc nhở 50%; cảnh cáo / chấm dứt = 0",
+    "term_group": "Khoản thu nhập",
+    "companies": [
+     "Manulife"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Manulife",
+      "file_id": "0046M01_2026",
+      "source_id": "SRC-POL-MNL-002",
+      "page": 1,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "KDXS",
+    "english": "Annual Business Excellence Bonus",
+    "vietnamese": "Thưởng kinh doanh xuất sắc năm (Manulife)",
+    "company_and_memo": "Manulife [0046M01_2026 : 6]",
+    "market_equivalent": "Annual bonus (deferred)",
+    "note": "Chỉ cho Manulife Pro Vàng trở lên; trả 50/30/20% trong 3 năm",
+    "term_group": "Khoản thu nhập",
+    "companies": [
+     "Manulife"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Manulife",
+      "file_id": "0046M01_2026",
+      "source_id": "SRC-POL-MNL-002",
+      "page": 6,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "M-Star",
+    "english": "M-Star",
+    "vietnamese": "Thưởng theo tiến độ FYP lũy kế (Manulife)",
+    "company_and_memo": "Manulife [0046M01_2026 : 7]",
+    "market_equivalent": "Sales contest bonus",
+    "note": "Quý: ≥160/430/750/1.073,6tr FYP lũy kế",
+    "term_group": "Khoản thu nhập",
+    "companies": [
+     "Manulife"
+    ],
+    "english_status": "Nguyên văn văn bản",
+    "citations": [
+     {
+      "company": "Manulife",
+      "file_id": "0046M01_2026",
+      "source_id": "SRC-POL-MNL-002",
+      "page": 7,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "JFW",
+    "english": "Join-field-work",
+    "vietnamese": "Doanh số làm việc kèm thực địa (AIA)",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 21]",
+    "market_equivalent": "Joint field work credit",
+    "note": "Phí dịch vụ JFW tính riêng với phí tuyển dụng hiệu quả",
+    "term_group": "Khoản thu nhập",
+    "companies": [
+     "AIA"
+    ],
+    "english_status": "Nguyên văn văn bản",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 21,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 3,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "Override",
+    "english": "Override",
+    "vietnamese": "Phí quản lý tính theo % doanh số / phí của nhóm do mình quản lý",
+    "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+    "market_equivalent": "Management override",
+    "note": "Thuật ngữ chung; mỗi hãng gọi khác: phí dịch vụ tuyển dụng (AIA), HT KTN (Chubb), phí năng suất nhóm (Manulife)",
+    "term_group": "Khoản thu nhập",
+    "companies": [
+     "Chung"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "CVTV",
+    "english": "— (AIA dùng \"SA\")",
+    "vietnamese": "Chuyên viên Tư vấn (AIA)",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 3]",
+    "market_equivalent": "Tầng 1 — Đại lý cá nhân",
+    "note": "\"SA\" là Chuyên viên Tư vấn (viết tắt CVTV) [AIAVAD 2604-069 : 17]",
+    "term_group": "Chức danh",
+    "companies": [
+     "AIA"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 3,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 3,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 2,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "SA (AIA)",
+    "english": "— (văn bản không ghi tiếng Anh)",
+    "vietnamese": "Chuyên viên Tư vấn — đại lý cá nhân AIA Alpha",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 2]",
+    "market_equivalent": "Tầng 1 — Đại lý cá nhân",
+    "note": "Lên UM cần ≥2 người tuyển/6 tháng, FYC toàn nhánh 6T ≥50tr",
+    "term_group": "Chức danh",
+    "companies": [
+     "AIA"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 2,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 4,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "SA (Manulife)",
+    "english": "Servicing Agent",
+    "vietnamese": "Đại lý phục vụ (Manulife)",
+    "company_and_memo": "Manulife [0048M01_2026 : 3]",
+    "market_equivalent": "Tầng 1C — Đại lý phục vụ",
+    "note": "Quy định ở 01M02/2024/AO (không có trong 9 PDF); được tính vào 1mAA_4mFYC",
+    "term_group": "Chức danh",
+    "companies": [
+     "Manulife"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Manulife",
+      "file_id": "0048M01_2026",
+      "source_id": "SRC-POL-MNL-001",
+      "page": 3,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "SE",
+    "english": "— (văn bản không ghi tiếng Anh)",
+    "vietnamese": "Chuyên viên Tư vấn Hỗ trợ phục vụ (AIA)",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 10]",
+    "market_equivalent": "Tầng 1C — Đại lý phục vụ",
+    "note": "SA/UM+ không đạt duy trì → SE nếu phục vụ ≥3 HĐ, phí quy năm ≥20tr",
+    "term_group": "Chức danh",
+    "companies": [
+     "AIA"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 10,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 4,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 2,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "Exchange",
+    "english": "Exchange",
+    "vietnamese": "Chuyên viên Hoạch định Tài chính (AIA)",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 4]",
+    "market_equivalent": "Tầng 1B — Đại lý toàn thời gian",
+    "note": "Gói trợ cấp riêng không có trong 9 PDF",
+    "term_group": "Tuyến hợp đồng",
+    "companies": [
+     "AIA"
+    ],
+    "english_status": "Nguyên văn văn bản",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 4,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 5,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "Exchange Pro",
+    "english": "Exchange Pro",
+    "vietnamese": "Chuyên viên Hoạch định Tài chính Cấp cao (AIA)",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 4]",
+    "market_equivalent": "Tầng 1B — Đại lý toàn thời gian",
+    "note": "Tính 2 lượt hoạt động; phí đồng hành cho CQL 40%",
+    "term_group": "Tuyến hợp đồng",
+    "companies": [
+     "AIA"
+    ],
+    "english_status": "Nguyên văn văn bản",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 4,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 5,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "CQL",
+    "english": "— (văn bản không ghi tiếng Anh)",
+    "vietnamese": "Cấp Quản Lý (AIA): UM, SUM, DM, SDM",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 4]",
+    "market_equivalent": "Tầng 2 — Quản lý trực tiếp",
+    "note": "Ký Hợp đồng Đại lý + Hợp đồng Dịch vụ Quản lý Đại lý",
+    "term_group": "Chức danh",
+    "companies": [
+     "AIA"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 4,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 3,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 2,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "UM+",
+    "english": "— (văn bản không ghi tiếng Anh)",
+    "vietnamese": "Nhóm cấp quản lý: AIA = UM/SUM/DM/SDM; Manulife = Quản Lý Đại Lý",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 3]",
+    "market_equivalent": "Tầng 2 — Quản lý trực tiếp",
+    "note": "Manulife: biểu phí 0047M01, ký HĐDV QLĐL",
+    "term_group": "Chức danh",
+    "companies": [
+     "AIA",
+     "Manulife"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 3,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 4,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 6,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "UM",
+    "english": "Unit Manager",
+    "vietnamese": "Trưởng nhóm kinh doanh (AIA: có chỗ gọi Trưởng Phòng Kinh Doanh — mâu thuẫn tên)",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 2] · Chubb [CHH0DCEB260007V : 7]",
+    "market_equivalent": "Tầng 2 — Quản lý cấp 1",
+    "note": "AIA: CONFLICTING EVIDENCE về tên tiếng Việt (2601-034 tr.2 vs 2604-069 tr.17)",
+    "term_group": "Chức danh",
+    "companies": [
+     "AIA",
+     "Chubb",
+     "Manulife"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 2,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 2,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 8,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260007V",
+      "source_id": "SRC-POL-CHB-001",
+      "page": 7,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260008V",
+      "source_id": "SRC-POL-CHB-002",
+      "page": 3,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "SUM",
+    "english": "Senior Unit Manager",
+    "vietnamese": "Trưởng nhóm kinh doanh cấp cao (AIA)",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 2]",
+    "market_equivalent": "Tầng 2 — Quản lý cấp 1",
+    "note": "Lên SUM: 9 lượt hoạt động 3T, FYC toàn nhánh 6T ≥100tr",
+    "term_group": "Chức danh",
+    "companies": [
+     "AIA"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 2,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 2,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 8,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "SM (Chubb)",
+    "english": "Sales Manager",
+    "vietnamese": "Trưởng Ban Kinh doanh (Chubb AL)",
+    "company_and_memo": "Chubb [CHH0DCEB260007V : 7]",
+    "market_equivalent": "Tầng 2 — Quản lý cấp 2",
+    "note": "Lên SM cần ≥1 AL báo cáo trực tiếp",
+    "term_group": "Chức danh",
+    "companies": [
+     "Chubb"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260007V",
+      "source_id": "SRC-POL-CHB-001",
+      "page": 7,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260008V",
+      "source_id": "SRC-POL-CHB-002",
+      "page": 3,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "DM",
+    "english": "District Manager",
+    "vietnamese": "AIA: Trưởng Phòng Kinh Doanh (có chỗ gọi Giám Đốc Ban); Chubb: cấp AL cao nhất",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 2] · Chubb [CHH0DCEB260007V : 7]",
+    "market_equivalent": "Tầng 2 — Quản lý cấp 2/3",
+    "note": "Chubb DM nhận L1–L3; AIA DM cần ≥1 UM+ trực tiếp",
+    "term_group": "Chức danh",
+    "companies": [
+     "AIA",
+     "Chubb"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 2,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 2,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 16,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260007V",
+      "source_id": "SRC-POL-CHB-001",
+      "page": 7,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260008V",
+      "source_id": "SRC-POL-CHB-002",
+      "page": 3,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "SDM",
+    "english": "Senior District Manager",
+    "vietnamese": "Trưởng Phòng Kinh Doanh Cấp cao (AIA)",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 2]",
+    "market_equivalent": "Tầng 2 — Quản lý cấp cao nhất tuyến CQL",
+    "note": "Lên PAF cần ≥3 UM+ trực tiếp, FYP toàn nhánh 6T ≥1.200tr",
+    "term_group": "Chức danh",
+    "companies": [
+     "AIA"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 2,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 2,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 8,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "BM",
+    "english": "Branch Manager",
+    "vietnamese": "Trưởng ban (thuật ngữ của bài toán)",
+    "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+    "market_equivalent": "Tầng 2 — Quản lý cấp 2",
+    "note": "KHÔNG xuất hiện trong 9 PDF; tương ứng AIA SUM/SDM, Chubb SM/DM theo quy mô (xem 4 mốc)",
+    "term_group": "Chức danh",
+    "companies": [
+     "Chung"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "AR",
+    "english": "Agency Representative",
+    "vietnamese": "Đại diện Kinh doanh (Chubb)",
+    "company_and_memo": "Chubb [CHH0DCEB260007V : 3]",
+    "market_equivalent": "Tầng 1 — Đại lý cá nhân",
+    "note": "\"Đại diện Kinh doanh (ĐDKD hay AR)\"",
+    "term_group": "Chức danh",
+    "companies": [
+     "Chubb"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260007V",
+      "source_id": "SRC-POL-CHB-001",
+      "page": 3,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260008V",
+      "source_id": "SRC-POL-CHB-002",
+      "page": 3,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "AL",
+    "english": "Agency Leader",
+    "vietnamese": "Quản lý Kinh doanh (Chubb): UM, SM, DM",
+    "company_and_memo": "Chubb [CHH0DCEB260007V : 3]",
+    "market_equivalent": "Tầng 2 — Quản lý trực tiếp",
+    "note": "\"Quản lý Kinh doanh (QLKD hay AL)\"",
+    "term_group": "Chức danh",
+    "companies": [
+     "Chubb"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260007V",
+      "source_id": "SRC-POL-CHB-001",
+      "page": 3,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260008V",
+      "source_id": "SRC-POL-CHB-002",
+      "page": 3,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "AMD",
+    "english": "Agency Management and Development",
+    "vietnamese": "Ban Điều hành và Phát triển Kinh doanh (Chubb): BD, RD",
+    "company_and_memo": "Chubb [CHH0DCEB260007V : 4]",
+    "market_equivalent": "Tầng 3 — Lãnh đạo vùng",
+    "note": "Ký hợp đồng dịch vụ, có báo cáo nghiệm thu",
+    "term_group": "Chức danh",
+    "companies": [
+     "Chubb"
+    ],
+    "english_status": "Nguyên văn văn bản",
+    "citations": [
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260007V",
+      "source_id": "SRC-POL-CHB-001",
+      "page": 4,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260008V",
+      "source_id": "SRC-POL-CHB-002",
+      "page": 4,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260003V",
+      "source_id": "SRC-POL-CHB-003",
+      "page": 3,
+      "method": "visual_scan"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "BD",
+    "english": "Business Director, Agency Development",
+    "vietnamese": "Giám đốc, Phát triển Kinh doanh (Chubb)",
+    "company_and_memo": "Chubb [CHH0DCEB260007V : 7]",
+    "market_equivalent": "Tầng 3 — Lãnh đạo vùng (bậc 1)",
+    "note": "Lên BD từ DM có điều kiện; biểu phí BD KHÔNG có trong 9 PDF",
+    "term_group": "Chức danh",
+    "companies": [
+     "Chubb"
+    ],
+    "english_status": "Nguyên văn văn bản",
+    "citations": [
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260007V",
+      "source_id": "SRC-POL-CHB-001",
+      "page": 7,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260003V",
+      "source_id": "SRC-POL-CHB-003",
+      "page": 3,
+      "method": "visual_scan"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "RD",
+    "english": "Regional Director, Agency Management and Development",
+    "vietnamese": "Giám đốc Vùng, Điều hành và Phát triển Kinh doanh (Chubb)",
+    "company_and_memo": "Chubb [CHH0DCEB260003V : 3]",
+    "market_equivalent": "Tầng 3 — Lãnh đạo vùng",
+    "note": "Bổ nhiệm theo hợp đồng; 8 khoản phí dịch vụ",
+    "term_group": "Chức danh",
+    "companies": [
+     "Chubb"
+    ],
+    "english_status": "Nguyên văn văn bản",
+    "citations": [
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260003V",
+      "source_id": "SRC-POL-CHB-003",
+      "page": 3,
+      "method": "visual_scan"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "PAF+",
+    "english": "— (văn bản không ghi tiếng Anh)",
+    "vietnamese": "Nhóm Nhà Sáng lập (AIA): PAF → … → President",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 1]",
+    "market_equivalent": "Tầng 3 — Lãnh đạo vùng",
+    "note": "\"Con đường sự nghiệp kép\": vẫn nhận phí CQL trực tiếp, không nhận gián tiếp cấp 2–4",
+    "term_group": "Chức danh",
+    "companies": [
+     "AIA"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 1,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 4,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 1,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "PAF",
+    "english": "Pre-Agency Founder",
+    "vietnamese": "Quyền Sáng lập khối (AIA) — bậc đầu tuyến PAF+",
+    "company_and_memo": "AIA [AIAVAD 2601-034 : 8]",
+    "market_equivalent": "Tầng 3 — Lãnh đạo vùng (bậc 1)",
+    "note": "KHÔNG phải \"Premier Agency Force\": văn bản gọi là Quyền Sáng lập khối [AIAVAD 2601-035 : 3]; phí cố định 20tr/tháng",
+    "term_group": "Chức danh",
+    "companies": [
+     "AIA"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 8,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 2,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "AF",
+    "english": "Agency Founder",
+    "vietnamese": "Nhà Sáng lập khối (AIA)",
+    "company_and_memo": "AIA [AIAVAD 2601-035 : 3]",
+    "market_equivalent": "Tầng 3 — Lãnh đạo vùng",
+    "note": "Lên AF: FYP 6T 2.500tr, 5 UM+ trực tiếp",
+    "term_group": "Chức danh",
+    "companies": [
+     "AIA"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 3,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "RF",
+    "english": "Regional Founder",
+    "vietnamese": "Nhà Sáng lập vùng (AIA)",
+    "company_and_memo": "AIA [AIAVAD 2601-035 : 3]",
+    "market_equivalent": "Tầng 3 — Lãnh đạo vùng",
+    "note": "Chỉ tiêu năm 1: 10.000tr FYP",
+    "term_group": "Chức danh",
+    "companies": [
+     "AIA"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 3,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "AFF",
+    "english": "— (văn bản không ghi tiếng Anh)",
+    "vietnamese": "Chương trình tuyển dụng Cấp quản lý trực tiếp (AIA)",
+    "company_and_memo": "AIA [AIAVAD 2604-069 : 22]",
+    "market_equivalent": "Direct manager recruitment",
+    "note": "Chi tiết chương trình không có trong 9 PDF",
+    "term_group": "Tuyến hợp đồng",
+    "companies": [
+     "AIA"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2604-069",
+      "source_id": "SRC-POL-AIA-ALP-001",
+      "page": 22,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-034",
+      "source_id": "SRC-POL-AIA-ALP-002",
+      "page": 8,
+      "method": "text_search"
+     },
+     {
+      "company": "AIA",
+      "file_id": "AIAVAD 2601-035",
+      "source_id": "SRC-POL-AIA-ALP-003",
+      "page": 2,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "PSM+",
+    "english": "— (văn bản không ghi tiếng Anh)",
+    "vietnamese": "Quản Lý Cấp Cao (Manulife): PSM/SM, PSSM/SSM",
+    "company_and_memo": "Manulife [0048M01_2026 : 1]",
+    "market_equivalent": "Tầng 3 — Lãnh đạo vùng",
+    "note": "Ký HĐDV QLCC; phí cơ bản 35tr / 45tr",
+    "term_group": "Chức danh",
+    "companies": [
+     "Manulife"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Manulife",
+      "file_id": "0048M01_2026",
+      "source_id": "SRC-POL-MNL-001",
+      "page": 1,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "PSM / SM (Manulife)",
+    "english": "— (văn bản không ghi tiếng Anh)",
+    "vietnamese": "Quản lý cấp cao bậc 1 (Manulife), phí cơ bản 35tr",
+    "company_and_memo": "Manulife [0048M01_2026 : 1]",
+    "market_equivalent": "Tầng 3 — Lãnh đạo vùng",
+    "note": "Điều kiện bậc ở 0013M04/2024 (không có trong 9 PDF)",
+    "term_group": "Chức danh",
+    "companies": [
+     "Manulife"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Manulife",
+      "file_id": "0048M01_2026",
+      "source_id": "SRC-POL-MNL-001",
+      "page": 1,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "PSSM / SSM",
+    "english": "— (văn bản không ghi tiếng Anh)",
+    "vietnamese": "Quản lý cấp cao bậc 2 (Manulife), phí cơ bản 45tr",
+    "company_and_memo": "Manulife [0048M01_2026 : 1]",
+    "market_equivalent": "Tầng 3 — Lãnh đạo vùng",
+    "note": "Cùng biểu phí với HKD3/4",
+    "term_group": "Chức danh",
+    "companies": [
+     "Manulife"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Manulife",
+      "file_id": "0048M01_2026",
+      "source_id": "SRC-POL-MNL-001",
+      "page": 1,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "MBA Pro",
+    "english": "MBA Pro",
+    "vietnamese": "Danh hiệu của Quản Lý Đại Lý UM+ (Manulife): Bạc / Vàng / Bạch Kim",
+    "company_and_memo": "Manulife [0047M01_2026 : 2]",
+    "market_equivalent": "Manager quality title",
+    "note": "Tiêu chí ở 0050M01/2026 (không có); base case không có danh hiệu",
+    "term_group": "Chức danh",
+    "companies": [
+     "Manulife"
+    ],
+    "english_status": "Nguyên văn văn bản",
+    "citations": [
+     {
+      "company": "Manulife",
+      "file_id": "0047M01_2026",
+      "source_id": "SRC-POL-MNL-003",
+      "page": 2,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "Manulife Pro",
+    "english": "Manulife Pro",
+    "vietnamese": "Danh hiệu đại lý Manulife: Bạc / Vàng / Bạch Kim",
+    "company_and_memo": "Manulife [0046M01_2026 : 3]",
+    "market_equivalent": "Agent quality title",
+    "note": "Tiêu chí ở 0011M04/2024 (không có)",
+    "term_group": "Chức danh",
+    "companies": [
+     "Manulife"
+    ],
+    "english_status": "Nguyên văn văn bản",
+    "citations": [
+     {
+      "company": "Manulife",
+      "file_id": "0046M01_2026",
+      "source_id": "SRC-POL-MNL-002",
+      "page": 3,
+      "method": "text_search"
+     },
+     {
+      "company": "Manulife",
+      "file_id": "0047M01_2026",
+      "source_id": "SRC-POL-MNL-003",
+      "page": 3,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "HKD",
+    "english": "— (văn bản không ghi tiếng Anh)",
+    "vietnamese": "Hộ Kinh Doanh (Manulife) — lãnh đạo ký hợp đồng như một đơn vị kinh doanh",
+    "company_and_memo": "Manulife [0048M01_2026 : 1]",
+    "market_equivalent": "Tầng 3B — Pháp nhân đối tác",
+    "note": "Cùng biểu phí với PSM+; tự xuất hóa đơn, tự chịu thuế [0048M01_2026 : 5-6]",
+    "term_group": "Tuyến hợp đồng",
+    "companies": [
+     "Manulife"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Manulife",
+      "file_id": "0048M01_2026",
+      "source_id": "SRC-POL-MNL-001",
+      "page": 1,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "HĐDV QLĐL",
+    "english": "— (văn bản không ghi tiếng Anh)",
+    "vietnamese": "Hợp đồng Dịch vụ Quản Lý Đại Lý (Manulife UM+)",
+    "company_and_memo": "Manulife [0047M01_2026 : 1]",
+    "market_equivalent": "Manager service contract",
+    "note": "Công ty tạm khấu trừ TNCN",
+    "term_group": "Tuyến hợp đồng",
+    "companies": [
+     "Manulife"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Manulife",
+      "file_id": "0047M01_2026",
+      "source_id": "SRC-POL-MNL-003",
+      "page": 1,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "HĐDV QLCC",
+    "english": "— (văn bản không ghi tiếng Anh)",
+    "vietnamese": "Hợp đồng Dịch vụ Quản lý Đại lý dành cho Quản Lý Cấp Cao (Manulife PSM+)",
+    "company_and_memo": "Manulife [0048M01_2026 : 1]",
+    "market_equivalent": "Senior manager service contract",
+    "note": "Có thể chuyển đổi qua lại với HĐDV HKD, bảo lưu kết quả",
+    "term_group": "Tuyến hợp đồng",
+    "companies": [
+     "Manulife"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Manulife",
+      "file_id": "0048M01_2026",
+      "source_id": "SRC-POL-MNL-001",
+      "page": 1,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "Champion Hubb",
+    "english": "Champion Hubb",
+    "vietnamese": "Chương trình đại lý/quản lý chuyên nghiệp có kỷ luật hoạt động (Chubb)",
+    "company_and_memo": "Chubb [CHH0DCEB260007V : 2]",
+    "market_equivalent": "Tầng 1B / 2 — chương trình toàn thời gian",
+    "note": "AL chỉ chọn 1 trong 2 vai trò: Cá nhân hoặc Quản lý",
+    "term_group": "Tuyến hợp đồng",
+    "companies": [
+     "Chubb"
+    ],
+    "english_status": "Nguyên văn văn bản",
+    "citations": [
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260007V",
+      "source_id": "SRC-POL-CHB-001",
+      "page": 2,
+      "method": "text_search"
+     },
+     {
+      "company": "Chubb",
+      "file_id": "CHH0DCEB260008V",
+      "source_id": "SRC-POL-CHB-002",
+      "page": 5,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "abbr": "GTF",
+    "english": "— (văn bản không ghi tiếng Anh)",
+    "vietnamese": "Chương trình Phát Triển Quản Lý Đại Lý (Manulife UM+ GTF)",
+    "company_and_memo": "Manulife [0047M01_2026 : 5]",
+    "market_equivalent": "Manager development program",
+    "note": "Không tính phí phát triển nhóm mới trên UM+ GTF; quy định ở 0004M04/2024 (không có)",
+    "term_group": "Tuyến hợp đồng",
+    "companies": [
+     "Manulife"
+    ],
+    "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+    "citations": [
+     {
+      "company": "Manulife",
+      "file_id": "0047M01_2026",
+      "source_id": "SRC-POL-MNL-003",
+      "page": 5,
+      "method": "text_search"
+     }
+    ],
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   }
+  ],
+  "pdf_bookmarks": [
+   {
+    "id": "AIAVAD 2604-069|0",
+    "file_id": "AIAVAD 2604-069",
+    "source_id": "SRC-POL-AIA-ALP-001",
+    "file_name": "(Ref AIAVAD 2604-069) - Chính sách thu nhập năm 2026 dành cho CVTV_Alpha.pdf",
+    "page_count": 23,
+    "seq": 0,
+    "title": "PHỤ LỤC 1: CHÍNH SÁCH DÀNH CHO CHUYÊN VIÊN – NĂM 2026",
+    "page": 2,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2604-069|1",
+    "file_id": "AIAVAD 2604-069",
+    "source_id": "SRC-POL-AIA-ALP-001",
+    "file_name": "(Ref AIAVAD 2604-069) - Chính sách thu nhập năm 2026 dành cho CVTV_Alpha.pdf",
+    "page_count": 23,
+    "seq": 1,
+    "title": "I. CHÍNH SÁCH THU NHẬP",
+    "page": 3,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2604-069|2",
+    "file_id": "AIAVAD 2604-069",
+    "source_id": "SRC-POL-AIA-ALP-001",
+    "file_name": "(Ref AIAVAD 2604-069) - Chính sách thu nhập năm 2026 dành cho CVTV_Alpha.pdf",
+    "page_count": 23,
+    "seq": 2,
+    "title": "II. CHÍNH SÁCH THĂNG TIẾN",
+    "page": 8,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2604-069|3",
+    "file_id": "AIAVAD 2604-069",
+    "source_id": "SRC-POL-AIA-ALP-001",
+    "file_name": "(Ref AIAVAD 2604-069) - Chính sách thu nhập năm 2026 dành cho CVTV_Alpha.pdf",
+    "page_count": 23,
+    "seq": 3,
+    "title": "III. ĐIỀU KIỆN DUY TRÌ HỢP ĐỒNG",
+    "page": 9,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2604-069|4",
+    "file_id": "AIAVAD 2604-069",
+    "source_id": "SRC-POL-AIA-ALP-001",
+    "file_name": "(Ref AIAVAD 2604-069) - Chính sách thu nhập năm 2026 dành cho CVTV_Alpha.pdf",
+    "page_count": 23,
+    "seq": 4,
+    "title": "IV. ĐIỀU KIỆN CHUYỂN THÀNH “CHUYÊN VIÊN TƯ VẤN HỖ TRỢ PHỤC VỤ” (SE)",
+    "page": 10,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2604-069|5",
+    "file_id": "AIAVAD 2604-069",
+    "source_id": "SRC-POL-AIA-ALP-001",
+    "file_name": "(Ref AIAVAD 2604-069) - Chính sách thu nhập năm 2026 dành cho CVTV_Alpha.pdf",
+    "page_count": 23,
+    "seq": 5,
+    "title": "V. GIA HẠN HỢP ĐỒNG ĐỐI VỚI CVTV (SA/ UM+)/ CVTV HỖ TRỢ PHỤC VỤ (SE)",
+    "page": 11,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2604-069|6",
+    "file_id": "AIAVAD 2604-069",
+    "source_id": "SRC-POL-AIA-ALP-001",
+    "file_name": "(Ref AIAVAD 2604-069) - Chính sách thu nhập năm 2026 dành cho CVTV_Alpha.pdf",
+    "page_count": 23,
+    "seq": 6,
+    "title": "VI. QUY ĐỊNH CÁCH TÍNH DOANH SỐ VÀ CHI TRẢ",
+    "page": 11,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2604-069|7",
+    "file_id": "AIAVAD 2604-069",
+    "source_id": "SRC-POL-AIA-ALP-001",
+    "file_name": "(Ref AIAVAD 2604-069) - Chính sách thu nhập năm 2026 dành cho CVTV_Alpha.pdf",
+    "page_count": 23,
+    "seq": 7,
+    "title": "VII. QUY ĐỊNH VỀ TỶ LỆ DUY TRÌ PHÍ NĂM ĐẦU (AIA FY)",
+    "page": 14,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2604-069|8",
+    "file_id": "AIAVAD 2604-069",
+    "source_id": "SRC-POL-AIA-ALP-001",
+    "file_name": "(Ref AIAVAD 2604-069) - Chính sách thu nhập năm 2026 dành cho CVTV_Alpha.pdf",
+    "page_count": 23,
+    "seq": 8,
+    "title": "VIII. ĐỊNH NGHĨA, THUẬT NGỮ VÀ VIẾT TẮT",
+    "page": 17,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2604-069|9",
+    "file_id": "AIAVAD 2604-069",
+    "source_id": "SRC-POL-AIA-ALP-001",
+    "file_name": "(Ref AIAVAD 2604-069) - Chính sách thu nhập năm 2026 dành cho CVTV_Alpha.pdf",
+    "page_count": 23,
+    "seq": 9,
+    "title": "PHỤ LỤC 2: PHÍ DỊCH VỤ DOANH SỐ HOẠT ĐỘNG JFW HÀNG THÁNG",
+    "page": 21,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2604-069|10",
+    "file_id": "AIAVAD 2604-069",
+    "source_id": "SRC-POL-AIA-ALP-001",
+    "file_name": "(Ref AIAVAD 2604-069) - Chính sách thu nhập năm 2026 dành cho CVTV_Alpha.pdf",
+    "page_count": 23,
+    "seq": 10,
+    "title": "PHỤ LỤC 3: CHÍNH SÁCH ĐỒNG HÀNH CÙNG CHUYÊN VIÊN MỚI 3",
+    "page": 22,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|0",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 0,
+    "title": "PHỤ LỤC 1: CHÍNH SÁCH DÀNH CHO CẤP QUẢN LÝ – 2026",
+    "page": 2,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|1",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 1,
+    "title": "A. CHÍNH SÁCH THU NHẬP DÀNH CHO CẤP QUẢN LÝ",
+    "page": 3,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|2",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 2,
+    "title": "I. PHÍ DỊCH VỤ TUYỂN DỤNG HIỆU QUẢ HÀNG THÁNG",
+    "page": 3,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|3",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 3,
+    "title": "II. PHÍ DỊCH VỤ TUYỂN DỤNG CHẤT LƯỢNG HÀNG THÁNG",
+    "page": 3,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|4",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 4,
+    "title": "III. PHÍ DỊCH VỤ ĐÀO TẠO NHÓM TUYỂN DỤNG HIỆU QUẢ HÀNG THÁNG",
+    "page": 4,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|5",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 5,
+    "title": "IV. PHÍ DỊCH VỤ TUYỂN DỤNG CHUYÊN VIÊN TƯ VẤN THĂNG TIẾN",
+    "page": 4,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|6",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 6,
+    "title": "V. PHÍ DỊCH VỤ NÂNG CAO KỸ NĂNG NHÓM TUYỂN DỤNG TRỰC TIẾP HÀNG QUÝ",
+    "page": 4,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|7",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 7,
+    "title": "1. DANH HIỆU CQL NGOẠI HẠNG QUÝ",
+    "page": 4,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|8",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 8,
+    "title": "2. PHÍ DỊCH VỤ NÂNG CAO KỸ NĂNG NHÓM TUYỂN DỤNG TRỰC TIẾP HÀNG QUÝ",
+    "page": 5,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|9",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 9,
+    "title": "VI. PHÍ DỊCH VỤ NÂNG CAO KỸ NĂNG NHÓM TUYỂN DỤNG TRỰC TIẾP HÀNG NĂM",
+    "page": 5,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|10",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 10,
+    "title": "B. CHÍNH SÁCH ĐỒNG HÀNH CÙNG CVTV MỚI",
+    "page": 6,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|11",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 11,
+    "title": "C. CHÍNH SÁCH THĂNG TIẾN",
+    "page": 8,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|12",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 12,
+    "title": "I. THĂNG TIẾN LÊN VAI TRÒ UM+",
+    "page": 8,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|13",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 13,
+    "title": "II. SDM THĂNG TIẾN LÊN PAF+",
+    "page": 8,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|14",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 14,
+    "title": "III. QUY ĐỊNH CHUNG",
+    "page": 9,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|15",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 15,
+    "title": "D. ĐIỀU KIỆN DUY TRÌ CHỨC DANH",
+    "page": 10,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|16",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 16,
+    "title": "E. QUY ĐỊNH VỀ BÁO CÁO ĐỒNG CẤP",
+    "page": 11,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|17",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 17,
+    "title": "I. SƠ ĐỒ CẤU TRÚC NHÓM",
+    "page": 12,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|18",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 18,
+    "title": "II. THUẬT NGỮ VÀ VIẾT TẮT",
+    "page": 12,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|19",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 19,
+    "title": "III. HỢP ĐỒNG THAY THẾ: VUI LÒNG THAM KHẢO MEMO HIỆN HÀNH VỀ HỢP ĐỒNG",
+    "page": 14,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|20",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 20,
+    "title": "IV. QUY ĐỊNH VỀ CÁCH TÍNH CHỈ TIÊU DOANH SỐ (FYP, FYC TÍN CHỈ, HỢP ĐỒNG…)",
+    "page": 14,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|21",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 21,
+    "title": "V. QUI ĐỊNH VỀ XÉT TRẢ VÀ THU HỒI KHOẢN PHÍ DỊCH VỤ",
+    "page": 14,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|22",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 22,
+    "title": "VI. QUY ĐỊNH VỀ CHẤM CÔNG HÀNG THÁNG",
+    "page": 15,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|23",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 23,
+    "title": "VII. DANH SÁCH KHÓA HỌC",
+    "page": 16,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|24",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 24,
+    "title": "VIII. NGHỈ THAI SẢN:",
+    "page": 16,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|25",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 25,
+    "title": "A. CÔNG THỨC TÍNH TỶ LỆ DUY TRÌ PHÍ THÁNG",
+    "page": 17,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|26",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 26,
+    "title": "B. MỘT SỐ QUY ĐỊNH CHUNG:",
+    "page": 17,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|27",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 27,
+    "title": "C. VÍ DỤ MINH HỌA:",
+    "page": 18,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-034|28",
+    "file_id": "AIAVAD 2601-034",
+    "source_id": "SRC-POL-AIA-ALP-002",
+    "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+    "page_count": 21,
+    "seq": 28,
+    "title": "D. QUY ĐỊNH LÀM TRÒN",
+    "page": 21,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-035|0",
+    "file_id": "AIAVAD 2601-035",
+    "source_id": "SRC-POL-AIA-ALP-003",
+    "file_name": "(Ref AIAVAD 2601-035)_Chính sách thu nhập năm 2026 dành cho PAF+ 2026_Alpha_To SPVP (cập nhật Huấn luyện).pdf",
+    "page_count": 18,
+    "seq": 0,
+    "title": "PHỤ LỤC 1 - CHÍNH SÁCH DÀNH CHO PAF+ – 2026",
+    "page": 3,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-035|1",
+    "file_id": "AIAVAD 2601-035",
+    "source_id": "SRC-POL-AIA-ALP-003",
+    "file_name": "(Ref AIAVAD 2601-035)_Chính sách thu nhập năm 2026 dành cho PAF+ 2026_Alpha_To SPVP (cập nhật Huấn luyện).pdf",
+    "page_count": 18,
+    "seq": 1,
+    "title": "A. CHÍNH SÁCH THU NHẬP DÀNH CHO PAF+",
+    "page": 3,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-035|2",
+    "file_id": "AIAVAD 2601-035",
+    "source_id": "SRC-POL-AIA-ALP-003",
+    "file_name": "(Ref AIAVAD 2601-035)_Chính sách thu nhập năm 2026 dành cho PAF+ 2026_Alpha_To SPVP (cập nhật Huấn luyện).pdf",
+    "page_count": 18,
+    "seq": 2,
+    "title": "1. PHÍ DỊCH VỤ HIỆU QUẢ ĐÀO TẠO CƠ BẢN HÀNG THÁNG",
+    "page": 3,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-035|3",
+    "file_id": "AIAVAD 2601-035",
+    "source_id": "SRC-POL-AIA-ALP-003",
+    "file_name": "(Ref AIAVAD 2601-035)_Chính sách thu nhập năm 2026 dành cho PAF+ 2026_Alpha_To SPVP (cập nhật Huấn luyện).pdf",
+    "page_count": 18,
+    "seq": 3,
+    "title": "2. PHÍ DỊCH VỤ HIỆU QUẢ ĐÀO TẠO CHUYÊN NGHIỆP HÀNG THÁNG",
+    "page": 4,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-035|4",
+    "file_id": "AIAVAD 2601-035",
+    "source_id": "SRC-POL-AIA-ALP-003",
+    "file_name": "(Ref AIAVAD 2601-035)_Chính sách thu nhập năm 2026 dành cho PAF+ 2026_Alpha_To SPVP (cập nhật Huấn luyện).pdf",
+    "page_count": 18,
+    "seq": 4,
+    "title": "3. PHÍ DỊCH VỤ HIỆU QUẢ ĐÀO TẠO CHUYÊN NGHIỆP HÀNG QUÝ",
+    "page": 4,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-035|5",
+    "file_id": "AIAVAD 2601-035",
+    "source_id": "SRC-POL-AIA-ALP-003",
+    "file_name": "(Ref AIAVAD 2601-035)_Chính sách thu nhập năm 2026 dành cho PAF+ 2026_Alpha_To SPVP (cập nhật Huấn luyện).pdf",
+    "page_count": 18,
+    "seq": 5,
+    "title": "4. PHÍ DỊCH VỤ HIỆU QUẢ ĐÀO TẠO CHUYÊN NGHIỆP THÂM NIÊN",
+    "page": 5,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-035|6",
+    "file_id": "AIAVAD 2601-035",
+    "source_id": "SRC-POL-AIA-ALP-003",
+    "file_name": "(Ref AIAVAD 2601-035)_Chính sách thu nhập năm 2026 dành cho PAF+ 2026_Alpha_To SPVP (cập nhật Huấn luyện).pdf",
+    "page_count": 18,
+    "seq": 6,
+    "title": "B. CHÍNH SÁCH THĂNG TIẾN",
+    "page": 6,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-035|7",
+    "file_id": "AIAVAD 2601-035",
+    "source_id": "SRC-POL-AIA-ALP-003",
+    "file_name": "(Ref AIAVAD 2601-035)_Chính sách thu nhập năm 2026 dành cho PAF+ 2026_Alpha_To SPVP (cập nhật Huấn luyện).pdf",
+    "page_count": 18,
+    "seq": 7,
+    "title": "C. ĐIỀU KIỆN DUY TRÌ CHỨC DANH",
+    "page": 7,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-035|8",
+    "file_id": "AIAVAD 2601-035",
+    "source_id": "SRC-POL-AIA-ALP-003",
+    "file_name": "(Ref AIAVAD 2601-035)_Chính sách thu nhập năm 2026 dành cho PAF+ 2026_Alpha_To SPVP (cập nhật Huấn luyện).pdf",
+    "page_count": 18,
+    "seq": 8,
+    "title": "D. QUY ĐỊNH VỀ BÁO CÁO ĐỒNG CẤP",
+    "page": 8,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-035|9",
+    "file_id": "AIAVAD 2601-035",
+    "source_id": "SRC-POL-AIA-ALP-003",
+    "file_name": "(Ref AIAVAD 2601-035)_Chính sách thu nhập năm 2026 dành cho PAF+ 2026_Alpha_To SPVP (cập nhật Huấn luyện).pdf",
+    "page_count": 18,
+    "seq": 9,
+    "title": "E. ĐỊNH NGHĨA VÀ QUY ĐỊNH CHUNG",
+    "page": 9,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-035|10",
+    "file_id": "AIAVAD 2601-035",
+    "source_id": "SRC-POL-AIA-ALP-003",
+    "file_name": "(Ref AIAVAD 2601-035)_Chính sách thu nhập năm 2026 dành cho PAF+ 2026_Alpha_To SPVP (cập nhật Huấn luyện).pdf",
+    "page_count": 18,
+    "seq": 10,
+    "title": "A. CÔNG THỨC TÍNH TỈ LỆ DUY TRÌ PHÍ THÁNG",
+    "page": 15,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-035|11",
+    "file_id": "AIAVAD 2601-035",
+    "source_id": "SRC-POL-AIA-ALP-003",
+    "file_name": "(Ref AIAVAD 2601-035)_Chính sách thu nhập năm 2026 dành cho PAF+ 2026_Alpha_To SPVP (cập nhật Huấn luyện).pdf",
+    "page_count": 18,
+    "seq": 11,
+    "title": "B. MỘT SỐ QUY ĐỊNH CHUNG:",
+    "page": 15,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-035|12",
+    "file_id": "AIAVAD 2601-035",
+    "source_id": "SRC-POL-AIA-ALP-003",
+    "file_name": "(Ref AIAVAD 2601-035)_Chính sách thu nhập năm 2026 dành cho PAF+ 2026_Alpha_To SPVP (cập nhật Huấn luyện).pdf",
+    "page_count": 18,
+    "seq": 12,
+    "title": "C. VÍ DỤ MINH HỌA:",
+    "page": 16,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "AIAVAD 2601-035|13",
+    "file_id": "AIAVAD 2601-035",
+    "source_id": "SRC-POL-AIA-ALP-003",
+    "file_name": "(Ref AIAVAD 2601-035)_Chính sách thu nhập năm 2026 dành cho PAF+ 2026_Alpha_To SPVP (cập nhật Huấn luyện).pdf",
+    "page_count": 18,
+    "seq": 13,
+    "title": "D. QUY ĐỊNH LÀM TRÒN",
+    "page": 18,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0046M01_2026|0",
+    "file_id": "0046M01_2026",
+    "source_id": "SRC-POL-MNL-002",
+    "file_name": "0046M01_2026_Chinh sach chi tra danh cho Dai Ly.pdf",
+    "page_count": 11,
+    "seq": 0,
+    "title": "A. HỆ SỐ NHÂN CÁC KHOẢN THƯỞNG",
+    "page": 1,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0046M01_2026|1",
+    "file_id": "0046M01_2026",
+    "source_id": "SRC-POL-MNL-002",
+    "file_name": "0046M01_2026_Chinh sach chi tra danh cho Dai Ly.pdf",
+    "page_count": 11,
+    "seq": 1,
+    "title": "II. Hệ số nhân thưởng Chất lượng kinh doanh (",
+    "page": 1,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0046M01_2026|2",
+    "file_id": "0046M01_2026",
+    "source_id": "SRC-POL-MNL-002",
+    "file_name": "0046M01_2026_Chinh sach chi tra danh cho Dai Ly.pdf",
+    "page_count": 11,
+    "seq": 2,
+    "title": "B. CÁC KHOẢN THƯỞNG",
+    "page": 2,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0046M01_2026|3",
+    "file_id": "0046M01_2026",
+    "source_id": "SRC-POL-MNL-002",
+    "file_name": "0046M01_2026_Chinh sach chi tra danh cho Dai Ly.pdf",
+    "page_count": 11,
+    "seq": 3,
+    "title": "I. Thưởng Đại Lý mới",
+    "page": 2,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0046M01_2026|4",
+    "file_id": "0046M01_2026",
+    "source_id": "SRC-POL-MNL-002",
+    "file_name": "0046M01_2026_Chinh sach chi tra danh cho Dai Ly.pdf",
+    "page_count": 11,
+    "seq": 4,
+    "title": "III. Thưởng năng suất tháng",
+    "page": 4,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0046M01_2026|5",
+    "file_id": "0046M01_2026",
+    "source_id": "SRC-POL-MNL-002",
+    "file_name": "0046M01_2026_Chinh sach chi tra danh cho Dai Ly.pdf",
+    "page_count": 11,
+    "seq": 5,
+    "title": "IV. Thưởng năng suất xuất sắc tháng (dành cho Đại Lý Manulife Pro)",
+    "page": 4,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0046M01_2026|6",
+    "file_id": "0046M01_2026",
+    "source_id": "SRC-POL-MNL-002",
+    "file_name": "0046M01_2026_Chinh sach chi tra danh cho Dai Ly.pdf",
+    "page_count": 11,
+    "seq": 6,
+    "title": "V. Thưởng năng suất quý",
+    "page": 5,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0046M01_2026|7",
+    "file_id": "0046M01_2026",
+    "source_id": "SRC-POL-MNL-002",
+    "file_name": "0046M01_2026_Chinh sach chi tra danh cho Dai Ly.pdf",
+    "page_count": 11,
+    "seq": 7,
+    "title": "VI. Thưởng kinh doanh xuất sắc năm",
+    "page": 6,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0046M01_2026|8",
+    "file_id": "0046M01_2026",
+    "source_id": "SRC-POL-MNL-002",
+    "file_name": "0046M01_2026_Chinh sach chi tra danh cho Dai Ly.pdf",
+    "page_count": 11,
+    "seq": 8,
+    "title": "VII. Thưởng M-Star",
+    "page": 7,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0046M01_2026|9",
+    "file_id": "0046M01_2026",
+    "source_id": "SRC-POL-MNL-002",
+    "file_name": "0046M01_2026_Chinh sach chi tra danh cho Dai Ly.pdf",
+    "page_count": 11,
+    "seq": 9,
+    "title": "VIII. Thưởng Khuyến khích phát triển Kinh doanh mới hàng tháng",
+    "page": 8,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0046M01_2026|10",
+    "file_id": "0046M01_2026",
+    "source_id": "SRC-POL-MNL-002",
+    "file_name": "0046M01_2026_Chinh sach chi tra danh cho Dai Ly.pdf",
+    "page_count": 11,
+    "seq": 10,
+    "title": "C. HOA HỒNG, HỖ TRỢ VÀ CÁC QUYỀN LỢI KHÁC",
+    "page": 9,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0046M01_2026|11",
+    "file_id": "0046M01_2026",
+    "source_id": "SRC-POL-MNL-002",
+    "file_name": "0046M01_2026_Chinh sach chi tra danh cho Dai Ly.pdf",
+    "page_count": 11,
+    "seq": 11,
+    "title": "D. QUY ĐỊNH CHUNG",
+    "page": 9,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0046M01_2026|12",
+    "file_id": "0046M01_2026",
+    "source_id": "SRC-POL-MNL-002",
+    "file_name": "0046M01_2026_Chinh sach chi tra danh cho Dai Ly.pdf",
+    "page_count": 11,
+    "seq": 12,
+    "title": "E. ĐỊNH NGHĨA",
+    "page": 10,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0047M01_2026|0",
+    "file_id": "0047M01_2026",
+    "source_id": "SRC-POL-MNL-003",
+    "file_name": "0047M01_2026_Bieu phi dich vu danh cho UM+.pdf",
+    "page_count": 8,
+    "seq": 0,
+    "title": "A. CÁC KHOẢN PHÍ DỊCH VỤ",
+    "page": 1,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0047M01_2026|1",
+    "file_id": "0047M01_2026",
+    "source_id": "SRC-POL-MNL-003",
+    "file_name": "0047M01_2026_Bieu phi dich vu danh cho UM+.pdf",
+    "page_count": 8,
+    "seq": 1,
+    "title": "I. Phí dịch vụ theo năng suất nhóm hàng tháng",
+    "page": 1,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0047M01_2026|2",
+    "file_id": "0047M01_2026",
+    "source_id": "SRC-POL-MNL-003",
+    "file_name": "0047M01_2026_Bieu phi dich vu danh cho UM+.pdf",
+    "page_count": 8,
+    "seq": 2,
+    "title": "II. Phí dịch vụ theo hoạt động nhóm hàng tháng",
+    "page": 1,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0047M01_2026|3",
+    "file_id": "0047M01_2026",
+    "source_id": "SRC-POL-MNL-003",
+    "file_name": "0047M01_2026_Bieu phi dich vu danh cho UM+.pdf",
+    "page_count": 8,
+    "seq": 3,
+    "title": "III. Phí dịch vụ phát triển Đại Lý mới Manulife Pro",
+    "page": 3,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0047M01_2026|4",
+    "file_id": "0047M01_2026",
+    "source_id": "SRC-POL-MNL-003",
+    "file_name": "0047M01_2026_Bieu phi dich vu danh cho UM+.pdf",
+    "page_count": 8,
+    "seq": 4,
+    "title": "IV. Phí dịch vụ phát triển nhóm mới",
+    "page": 4,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0047M01_2026|5",
+    "file_id": "0047M01_2026",
+    "source_id": "SRC-POL-MNL-003",
+    "file_name": "0047M01_2026_Bieu phi dich vu danh cho UM+.pdf",
+    "page_count": 8,
+    "seq": 5,
+    "title": "V. Phí dịch vụ hợp tác dài hạn",
+    "page": 5,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0047M01_2026|6",
+    "file_id": "0047M01_2026",
+    "source_id": "SRC-POL-MNL-003",
+    "file_name": "0047M01_2026_Bieu phi dich vu danh cho UM+.pdf",
+    "page_count": 8,
+    "seq": 6,
+    "title": "B. QUI ĐỊNH CHUNG",
+    "page": 6,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0047M01_2026|7",
+    "file_id": "0047M01_2026",
+    "source_id": "SRC-POL-MNL-003",
+    "file_name": "0047M01_2026_Bieu phi dich vu danh cho UM+.pdf",
+    "page_count": 8,
+    "seq": 7,
+    "title": "C. ĐỊNH NGHĨA",
+    "page": 7,
+    "method": "text_heading",
+    "evidence_url": null,
+    "confidentiality": "restricted",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0048M01_2026|0",
+    "file_id": "0048M01_2026",
+    "source_id": "SRC-POL-MNL-001",
+    "file_name": "0048M01_2026_Bieu phi dich vu danh cho PSM+ & HKD.pdf",
+    "page_count": 6,
+    "seq": 0,
+    "title": "A. CÁC KHOẢN PHÍ DỊCH VỤ",
+    "page": 1,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-MNL-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0048M01_2026|1",
+    "file_id": "0048M01_2026",
+    "source_id": "SRC-POL-MNL-001",
+    "file_name": "0048M01_2026_Bieu phi dich vu danh cho PSM+ & HKD.pdf",
+    "page_count": 6,
+    "seq": 1,
+    "title": "I. Phí dịch vụ cơ bản hàng tháng",
+    "page": 1,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-MNL-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0048M01_2026|2",
+    "file_id": "0048M01_2026",
+    "source_id": "SRC-POL-MNL-001",
+    "file_name": "0048M01_2026_Bieu phi dich vu danh cho PSM+ & HKD.pdf",
+    "page_count": 6,
+    "seq": 2,
+    "title": "II. Phí dịch vụ theo năng suất tháng",
+    "page": 1,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-MNL-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0048M01_2026|3",
+    "file_id": "0048M01_2026",
+    "source_id": "SRC-POL-MNL-001",
+    "file_name": "0048M01_2026_Bieu phi dich vu danh cho PSM+ & HKD.pdf",
+    "page_count": 6,
+    "seq": 3,
+    "title": "III. Phí dịch vụ theo hoạt động quý",
+    "page": 2,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-MNL-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0048M01_2026|4",
+    "file_id": "0048M01_2026",
+    "source_id": "SRC-POL-MNL-001",
+    "file_name": "0048M01_2026_Bieu phi dich vu danh cho PSM+ & HKD.pdf",
+    "page_count": 6,
+    "seq": 4,
+    "title": "IV. Phí dịch vụ hợp tác dài hạn",
+    "page": 3,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-MNL-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0048M01_2026|5",
+    "file_id": "0048M01_2026",
+    "source_id": "SRC-POL-MNL-001",
+    "file_name": "0048M01_2026_Bieu phi dich vu danh cho PSM+ & HKD.pdf",
+    "page_count": 6,
+    "seq": 5,
+    "title": "C. QUY ĐỊNH CHUNG",
+    "page": 5,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-MNL-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "0048M01_2026|6",
+    "file_id": "0048M01_2026",
+    "source_id": "SRC-POL-MNL-001",
+    "file_name": "0048M01_2026_Bieu phi dich vu danh cho PSM+ & HKD.pdf",
+    "page_count": 6,
+    "seq": 6,
+    "title": "D. ĐỊNH NGHĨA",
+    "page": 6,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-MNL-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260007V|0",
+    "file_id": "CHH0DCEB260007V",
+    "source_id": "SRC-POL-CHB-001",
+    "file_name": "CHH0DCEB260007V - Chính sách thu nhập dành cho Đại lý bảo hiểm - Kênh Đại lý.pdf",
+    "page_count": 19,
+    "seq": 0,
+    "title": "I. QUY ĐỊNH CHUNG",
+    "page": 3,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260007V|1",
+    "file_id": "CHH0DCEB260007V",
+    "source_id": "SRC-POL-CHB-001",
+    "file_name": "CHH0DCEB260007V - Chính sách thu nhập dành cho Đại lý bảo hiểm - Kênh Đại lý.pdf",
+    "page_count": 19,
+    "seq": 1,
+    "title": "1. MỤC ĐÍCH",
+    "page": 3,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260007V|2",
+    "file_id": "CHH0DCEB260007V",
+    "source_id": "SRC-POL-CHB-001",
+    "file_name": "CHH0DCEB260007V - Chính sách thu nhập dành cho Đại lý bảo hiểm - Kênh Đại lý.pdf",
+    "page_count": 19,
+    "seq": 2,
+    "title": "2. PHẠM VI ÁP DỤNG",
+    "page": 3,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260007V|3",
+    "file_id": "CHH0DCEB260007V",
+    "source_id": "SRC-POL-CHB-001",
+    "file_name": "CHH0DCEB260007V - Chính sách thu nhập dành cho Đại lý bảo hiểm - Kênh Đại lý.pdf",
+    "page_count": 19,
+    "seq": 3,
+    "title": "3. HIỆU LỰC THI HÀNH",
+    "page": 3,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260007V|4",
+    "file_id": "CHH0DCEB260007V",
+    "source_id": "SRC-POL-CHB-001",
+    "file_name": "CHH0DCEB260007V - Chính sách thu nhập dành cho Đại lý bảo hiểm - Kênh Đại lý.pdf",
+    "page_count": 19,
+    "seq": 4,
+    "title": "4. BẢNG TÓM TẮT CHẾ ĐỘ THU NHẬP",
+    "page": 3,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260007V|5",
+    "file_id": "CHH0DCEB260007V",
+    "source_id": "SRC-POL-CHB-001",
+    "file_name": "CHH0DCEB260007V - Chính sách thu nhập dành cho Đại lý bảo hiểm - Kênh Đại lý.pdf",
+    "page_count": 19,
+    "seq": 5,
+    "title": "II. CÁC KHOẢN THU NHẬP",
+    "page": 4,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260007V|6",
+    "file_id": "CHH0DCEB260007V",
+    "source_id": "SRC-POL-CHB-001",
+    "file_name": "CHH0DCEB260007V - Chính sách thu nhập dành cho Đại lý bảo hiểm - Kênh Đại lý.pdf",
+    "page_count": 19,
+    "seq": 6,
+    "title": "1. HOA HỒNG ĐẠI LÝ",
+    "page": 4,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260007V|7",
+    "file_id": "CHH0DCEB260007V",
+    "source_id": "SRC-POL-CHB-001",
+    "file_name": "CHH0DCEB260007V - Chính sách thu nhập dành cho Đại lý bảo hiểm - Kênh Đại lý.pdf",
+    "page_count": 19,
+    "seq": 7,
+    "title": "2. THƯỞNG HIỆU QUẢ KINH DOANH CÁ NHÂN THEO THÁNG",
+    "page": 4,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260007V|8",
+    "file_id": "CHH0DCEB260007V",
+    "source_id": "SRC-POL-CHB-001",
+    "file_name": "CHH0DCEB260007V - Chính sách thu nhập dành cho Đại lý bảo hiểm - Kênh Đại lý.pdf",
+    "page_count": 19,
+    "seq": 8,
+    "title": "3. THƯỞNG HIỆU QUẢ KINH DOANH CÁ NHÂN THEO QUÝ",
+    "page": 5,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260007V|9",
+    "file_id": "CHH0DCEB260007V",
+    "source_id": "SRC-POL-CHB-001",
+    "file_name": "CHH0DCEB260007V - Chính sách thu nhập dành cho Đại lý bảo hiểm - Kênh Đại lý.pdf",
+    "page_count": 19,
+    "seq": 9,
+    "title": "4. THƯỞNG HOẠT ĐỘNG ĐẠI LÝ MỚI",
+    "page": 6,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260007V|10",
+    "file_id": "CHH0DCEB260007V",
+    "source_id": "SRC-POL-CHB-001",
+    "file_name": "CHH0DCEB260007V - Chính sách thu nhập dành cho Đại lý bảo hiểm - Kênh Đại lý.pdf",
+    "page_count": 19,
+    "seq": 10,
+    "title": "5. THƯỞNG DUY TRÌ CHẤT LƯỢNG HĐBH THEO QUÝ",
+    "page": 6,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260007V|11",
+    "file_id": "CHH0DCEB260007V",
+    "source_id": "SRC-POL-CHB-001",
+    "file_name": "CHH0DCEB260007V - Chính sách thu nhập dành cho Đại lý bảo hiểm - Kênh Đại lý.pdf",
+    "page_count": 19,
+    "seq": 11,
+    "title": "III. ĐIỀU KIỆN THĂNG CẤP VÀ DUY TRÌ VỊ TRÍ",
+    "page": 7,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260007V|12",
+    "file_id": "CHH0DCEB260007V",
+    "source_id": "SRC-POL-CHB-001",
+    "file_name": "CHH0DCEB260007V - Chính sách thu nhập dành cho Đại lý bảo hiểm - Kênh Đại lý.pdf",
+    "page_count": 19,
+    "seq": 12,
+    "title": "1. ĐIỀU KIỆN THĂNG CẤP",
+    "page": 7,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260007V|13",
+    "file_id": "CHH0DCEB260007V",
+    "source_id": "SRC-POL-CHB-001",
+    "file_name": "CHH0DCEB260007V - Chính sách thu nhập dành cho Đại lý bảo hiểm - Kênh Đại lý.pdf",
+    "page_count": 19,
+    "seq": 13,
+    "title": "2. ĐIỀU KIỆN DUY TRÌ VỊ TRÍ",
+    "page": 8,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260007V|14",
+    "file_id": "CHH0DCEB260007V",
+    "source_id": "SRC-POL-CHB-001",
+    "file_name": "CHH0DCEB260007V - Chính sách thu nhập dành cho Đại lý bảo hiểm - Kênh Đại lý.pdf",
+    "page_count": 19,
+    "seq": 14,
+    "title": "3. QUY ĐỊNH TÍNH TOÁN CHỈ TIÊU THĂNG CẤP VÀ DUY TRÌ VỊ TRÍ",
+    "page": 8,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260008V|0",
+    "file_id": "CHH0DCEB260008V",
+    "source_id": "SRC-POL-CHB-002",
+    "file_name": "CHH0DCEB260008V - Chính sách về phí dịch vụ dành cho cấp Quản lý kinh doanh, Hỗ trợ kinh doanh - Kênh Đại lý.pdf",
+    "page_count": 14,
+    "seq": 0,
+    "title": "1. PHÍ DỊCH VỤ HỖ TRỢ TUYỂN DỤNG VÀ ĐỒNG HÀNH CÙNG ĐẠI DIỆN KINH DOANH MỚI ... 4",
+    "page": 2,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260008V|1",
+    "file_id": "CHH0DCEB260008V",
+    "source_id": "SRC-POL-CHB-002",
+    "file_name": "CHH0DCEB260008V - Chính sách về phí dịch vụ dành cho cấp Quản lý kinh doanh, Hỗ trợ kinh doanh - Kênh Đại lý.pdf",
+    "page_count": 14,
+    "seq": 1,
+    "title": "I. QUY ĐỊNH CHUNG",
+    "page": 3,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260008V|2",
+    "file_id": "CHH0DCEB260008V",
+    "source_id": "SRC-POL-CHB-002",
+    "file_name": "CHH0DCEB260008V - Chính sách về phí dịch vụ dành cho cấp Quản lý kinh doanh, Hỗ trợ kinh doanh - Kênh Đại lý.pdf",
+    "page_count": 14,
+    "seq": 2,
+    "title": "1. MỤC ĐÍCH",
+    "page": 3,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260008V|3",
+    "file_id": "CHH0DCEB260008V",
+    "source_id": "SRC-POL-CHB-002",
+    "file_name": "CHH0DCEB260008V - Chính sách về phí dịch vụ dành cho cấp Quản lý kinh doanh, Hỗ trợ kinh doanh - Kênh Đại lý.pdf",
+    "page_count": 14,
+    "seq": 3,
+    "title": "2. PHẠM VI ÁP DỤNG",
+    "page": 3,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260008V|4",
+    "file_id": "CHH0DCEB260008V",
+    "source_id": "SRC-POL-CHB-002",
+    "file_name": "CHH0DCEB260008V - Chính sách về phí dịch vụ dành cho cấp Quản lý kinh doanh, Hỗ trợ kinh doanh - Kênh Đại lý.pdf",
+    "page_count": 14,
+    "seq": 4,
+    "title": "3. HIỆU LỰC THI HÀNH",
+    "page": 3,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260008V|5",
+    "file_id": "CHH0DCEB260008V",
+    "source_id": "SRC-POL-CHB-002",
+    "file_name": "CHH0DCEB260008V - Chính sách về phí dịch vụ dành cho cấp Quản lý kinh doanh, Hỗ trợ kinh doanh - Kênh Đại lý.pdf",
+    "page_count": 14,
+    "seq": 5,
+    "title": "4. BẢNG TÓM TẮT CÁC KHOẢN CHI TRẢ",
+    "page": 3,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260008V|6",
+    "file_id": "CHH0DCEB260008V",
+    "source_id": "SRC-POL-CHB-002",
+    "file_name": "CHH0DCEB260008V - Chính sách về phí dịch vụ dành cho cấp Quản lý kinh doanh, Hỗ trợ kinh doanh - Kênh Đại lý.pdf",
+    "page_count": 14,
+    "seq": 6,
+    "title": "II. CÁC KHOẢN PHÍ DỊCH VỤ",
+    "page": 4,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260008V|7",
+    "file_id": "CHH0DCEB260008V",
+    "source_id": "SRC-POL-CHB-002",
+    "file_name": "CHH0DCEB260008V - Chính sách về phí dịch vụ dành cho cấp Quản lý kinh doanh, Hỗ trợ kinh doanh - Kênh Đại lý.pdf",
+    "page_count": 14,
+    "seq": 7,
+    "title": "1. PHÍ DỊCH VỤ HỖ TRỢ TUYỂN DỤNG VÀ ĐỒNG HÀNH CÙNG ĐẠI DIỆN KINH DOANH MỚI",
+    "page": 4,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260008V|8",
+    "file_id": "CHH0DCEB260008V",
+    "source_id": "SRC-POL-CHB-002",
+    "file_name": "CHH0DCEB260008V - Chính sách về phí dịch vụ dành cho cấp Quản lý kinh doanh, Hỗ trợ kinh doanh - Kênh Đại lý.pdf",
+    "page_count": 14,
+    "seq": 8,
+    "title": "2. PHÍ DỊCH VỤ HỖ TRỢ KHAI THÁC NHÓM",
+    "page": 5,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260008V|9",
+    "file_id": "CHH0DCEB260008V",
+    "source_id": "SRC-POL-CHB-002",
+    "file_name": "CHH0DCEB260008V - Chính sách về phí dịch vụ dành cho cấp Quản lý kinh doanh, Hỗ trợ kinh doanh - Kênh Đại lý.pdf",
+    "page_count": 14,
+    "seq": 9,
+    "title": "3. PHÍ DỊCH VỤ QUẢN LÝ NHÓM THEO THÁNG",
+    "page": 7,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260008V|10",
+    "file_id": "CHH0DCEB260008V",
+    "source_id": "SRC-POL-CHB-002",
+    "file_name": "CHH0DCEB260008V - Chính sách về phí dịch vụ dành cho cấp Quản lý kinh doanh, Hỗ trợ kinh doanh - Kênh Đại lý.pdf",
+    "page_count": 14,
+    "seq": 10,
+    "title": "4. PHÍ DỊCH VỤ ĐÀO TẠO NÂNG CAO CHẤT LƯỢNG QUẢN LÝ",
+    "page": 8,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260008V|11",
+    "file_id": "CHH0DCEB260008V",
+    "source_id": "SRC-POL-CHB-002",
+    "file_name": "CHH0DCEB260008V - Chính sách về phí dịch vụ dành cho cấp Quản lý kinh doanh, Hỗ trợ kinh doanh - Kênh Đại lý.pdf",
+    "page_count": 14,
+    "seq": 11,
+    "title": "5. PHÍ DỊCH VỤ DUY TRÌ CHẤT LƯỢNG HỢP ĐỒNG BẢO HIỂM",
+    "page": 9,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260008V|12",
+    "file_id": "CHH0DCEB260008V",
+    "source_id": "SRC-POL-CHB-002",
+    "file_name": "CHH0DCEB260008V - Chính sách về phí dịch vụ dành cho cấp Quản lý kinh doanh, Hỗ trợ kinh doanh - Kênh Đại lý.pdf",
+    "page_count": 14,
+    "seq": 12,
+    "title": "PHỤ ĐÍNH III – CHAMPION HUBB VAI TRÒ QUẢN LÝ",
+    "page": 11,
+    "method": "text_heading",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|0",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 0,
+    "title": "I. QUY ĐỊNH CHUNG",
+    "page": 3,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|1",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 1,
+    "title": "1. MỤC ĐÍCH",
+    "page": 3,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|2",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 2,
+    "title": "2. HỆ THỐNG CẤP BẬC",
+    "page": 3,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|3",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 3,
+    "title": "3. PHẠM VI ÁP DỤNG",
+    "page": 3,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|4",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 4,
+    "title": "4. HIỆU LỰC THI HÀNH",
+    "page": 3,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|5",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 5,
+    "title": "5. MỐI QUAN HỆ BÁO CÁO",
+    "page": 4,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|6",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 6,
+    "title": "6. BẢNG TÓM TẮT CÁC KHOẢN CHI TRẢ",
+    "page": 4,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|7",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 7,
+    "title": "II. CÁC KHOẢN PHÍ DỊCH VỤ",
+    "page": 5,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|8",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 8,
+    "title": "1. PHÍ DỊCH VỤ ĐÀO TẠO TIÊU CHUẨN THÁNG",
+    "page": 5,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|9",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 9,
+    "title": "2. PHÍ DỊCH VỤ QUẢN LÝ HOẠT ĐỘNG THÁNG",
+    "page": 6,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|10",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 10,
+    "title": "3. PHÍ DỊCH VỤ QUẢN LÝ KINH DOANH THÁNG",
+    "page": 6,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|11",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 11,
+    "title": "4. PHÍ DỊCH VỤ QUẢN LÝ CHẤT LƯỢNG HOẠT ĐỘNG ĐẠI LÝ BẢO HIỂM THÁNG",
+    "page": 7,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|12",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 12,
+    "title": "5. PHÍ DỊCH VỤ QUẢN LÝ VÀ PHÁT TRIỂN KINH DOANH QUÝ",
+    "page": 8,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|13",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 13,
+    "title": "6. PHÍ DỊCH VỤ QUẢN LÝ CHẤT LƯỢNG PHỤC VỤ KHÁCH HÀNG QUÝ",
+    "page": 9,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|14",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 14,
+    "title": "7. PHÍ DỊCH VỤ ĐÀO TẠO VÀ PHÁT TRIỂN ĐỘI NGŨ TRỰC THUỘC",
+    "page": 10,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|15",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 15,
+    "title": "8. PHÍ DỊCH VỤ QUẢN LÝ ĐỘI NGŨ TRỰC THUỘC",
+    "page": 11,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|16",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 16,
+    "title": "III. QUY ĐỊNH VỀ NGHIỆM THU PHÍ DỊCH VỤ",
+    "page": 12,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|17",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 17,
+    "title": "IV. CHỈ TIÊU THĂNG CẤP VÀ DUY TRÌ CẤP BẬC",
+    "page": 12,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|18",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 18,
+    "title": "1. CHỈ TIÊU THĂNG CẤP",
+    "page": 12,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|19",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 19,
+    "title": "2. CHỈ TIÊU DUY TRÌ CẤP BẬC",
+    "page": 13,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   },
+   {
+    "id": "CHH0DCEB260003V|20",
+    "file_id": "CHH0DCEB260003V",
+    "source_id": "SRC-POL-CHB-003",
+    "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+    "page_count": 15,
+    "seq": 20,
+    "title": "V. QUY ĐỊNH KHÁC",
+    "page": 13,
+    "method": "visual_toc_p2",
+    "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
+    "confidentiality": "public",
+    "synced_at": "2026-11-27T06:01:02+00:00"
+   }
+  ]
+ }
+}
