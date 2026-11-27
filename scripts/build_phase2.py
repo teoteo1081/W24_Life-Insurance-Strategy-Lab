@@ -56,9 +56,10 @@ def renewal(fyp_m, k2):
     return y * k * RENEWAL_COMM_Y2, y * k * K3_RATIO * RENEWAL_COMM_Y3
 
 
-def agent(scheme, fyp_m, k2, base, region="V1", track="FULL_TIME", with_renewal=False):
-    """with_renewal=False: chi phí năm đầu (ROI tầng 1). True: cùng cơ sở thu nhập Mốc 1 của bảng 01 (gồm tái tục A7)."""
-    fyc = fyp_m * FYC_RATE
+def agent(scheme, fyp_m, k2, base, region="V1", track="FULL_TIME", with_renewal=False, fyc_rate=FYC_RATE):
+    """with_renewal=False: chi phí năm đầu (ROI tầng 1). True: cùng cơ sở thu nhập Mốc 1 của bảng 01 (gồm tái tục A7).
+    fyc_rate: tỷ lệ hoa hồng năm đầu của cơ cấu sản phẩm (độ nhạy 25/30/40% — AUD-03)."""
+    fyc = fyp_m * fyc_rate
     y2, y3 = renewal(fyp_m, k2) if with_renewal else (0.0, 0.0)
     if scheme == "AIA":
         r = calc_aia_cvtv_12m([fyc] * 12, [y2 / 12] * 12, fy_pct=k2)
@@ -69,13 +70,14 @@ def agent(scheme, fyp_m, k2, base, region="V1", track="FULL_TIME", with_renewal=
     if scheme == "Manulife":
         r = calc_manulife_agent_12m([fyc] * 12, [fyp_m] * 12, [1] * 12, k2=k2, monthly_ryc=[(y2 + y3) / 12] * 12)
         return {"total": r["total_earned"], "cash": r["cash_paid_y1"], "fixed": 0.0}
-    r = H.hybrid_agent_12m(fyp_m, H.FT_MIN_CC_MONTH, k2, region, track, base, syc_month=y2 / 12)
-    return {"total": r["total_earned"] + y3, "cash": r["cash_paid_y1"] + y3, "fixed": r["allowance_fixed"]}
+    r = H.hybrid_agent_12m(fyp_m, H.FT_MIN_CC_MONTH, k2, region, track, base, fyc_rate=fyc_rate, syc_month=y2 / 12)
+    return {"total": r["total_earned"] + y3, "cash": r["cash_paid_y1"] + y3, "fixed": r["allowance_fixed"], "commission": r["fyc_total"]}
 
 
-def manager(scheme, fpa_fyp, k2, base, n_sub=0, n_grand=0, region="V1", direct=5, rank="UM"):
-    """Quản lý có `direct` đại lý trực tiếp, n_sub quản lý con (mỗi người 5 ĐL), n_grand quản lý cháu."""
-    fpa = fpa_fyp * FYC_RATE
+def manager(scheme, fpa_fyp, k2, base, n_sub=0, n_grand=0, region="V1", direct=5, rank="UM", fyc_rate=FYC_RATE):
+    """Quản lý có `direct` đại lý trực tiếp, n_sub quản lý con (mỗi người 5 ĐL), n_grand quản lý cháu.
+    Chính sách Lai tính phí quản lý trên FYC chuẩn hóa (FYP × 30%); 3 hãng tính trên FYC thật theo văn bản của họ."""
+    fpa = fpa_fyp * (H.NORMALIZED_FYC_RATE if scheme == "Hybrid" else fyc_rate)
     team = fpa * direct
     sub_team = fpa * 5
     if scheme == "AIA":
@@ -97,8 +99,8 @@ def manager(scheme, fpa_fyp, k2, base, n_sub=0, n_grand=0, region="V1", direct=5
     return {"total": r["total_earned"], "cash": r["cash_paid_y1"], "fixed": 0.0}
 
 
-def leader(scheme, org_fyp_m, org_agents, k2, base, region="V1", psm_ach=1.0):
-    fyc = org_fyp_m * FYC_RATE
+def leader(scheme, org_fyp_m, org_agents, k2, base, region="V1", psm_ach=1.0, fyc_rate=FYC_RATE):
+    fyc = org_fyp_m * (H.NORMALIZED_FYC_RATE if scheme == "Hybrid" else fyc_rate)
     team5 = fyc / org_agents * 5
     if scheme == "AIA":
         paf = calc_aia_paf_12m("PAF", 1, [org_fyp_m] * 12, [fyc] * 12, [float(org_agents)] * 12, fy_pct=k2, attendance_pct=80.0)
@@ -115,24 +117,32 @@ def leader(scheme, org_fyp_m, org_agents, k2, base, region="V1", psm_ach=1.0):
     return {"total": r["total_earned"], "cash": r["cash_paid_y1"], "fixed": r["fixed"]}
 
 
-def org_cost(scheme, k2, base, prod=1.0, region="V1"):
+def org_cost(scheme, k2, base, prod=1.0, region="V1", fyc_rate=FYC_RATE):
     """Khu vực Mốc 4: 45 ĐL × FYP/ĐL; lãnh đạo (5 trực tiếp) + 2 trưởng ban (5 + 2 UM) + 2 UM trực tiếp + 4 UM dưới ban.
     Chi phí NĂM ĐẦU: hoa hồng FYC + thưởng + phí quản lý; KHÔNG gồm hoa hồng/thưởng tái tục (cùng quy ước enterprise model)."""
     m4 = load_milestones()[3]
     fpa = m4.fyp_per_agent * prod
     org_fyp = fpa * m4.agents
-    parts = [("45 đại lý", agent(scheme, fpa, k2, base, region), m4.agents),
-             ("6 trưởng nhóm", manager(scheme, fpa, k2, base, region=region, rank="UM"), 6),
-             ("2 trưởng ban", manager(scheme, fpa, k2, base, n_sub=2, region=region, rank="DM"), 2),
-             ("lãnh đạo khu vực", leader(scheme, org_fyp, m4.agents, k2, base, region, psm_ach=prod), 1)]
+    parts = [("45 đại lý", agent(scheme, fpa, k2, base, region, fyc_rate=fyc_rate), m4.agents),
+             ("6 trưởng nhóm", manager(scheme, fpa, k2, base, region=region, rank="UM", fyc_rate=fyc_rate), 6),
+             ("2 trưởng ban", manager(scheme, fpa, k2, base, n_sub=2, region=region, rank="DM", fyc_rate=fyc_rate), 2),
+             ("lãnh đạo khu vực", leader(scheme, org_fyp, m4.agents, k2, base, region, psm_ach=prod, fyc_rate=fyc_rate), 1)]
     tot = sum(r["total"] * n for _, r, n in parts)
     cash = sum(r["cash"] * n for _, r, n in parts)
     fixed = sum(r["fixed"] * n for _, r, n in parts)
     fyp_y = org_fyp * 12
+    scale = 1.0
+    if scheme == "Hybrid":   # trần quỹ thu nhập cây đại lý: co thưởng + phí quản lý biến đổi theo cùng tỷ lệ (AUD-03)
+        comm = parts[0][1]["commission"] * m4.agents
+        scale = H.pool_cap_scale(tot, comm, fixed, fyp_y)
+        if scale < 1.0:
+            var_tot, var_cash = tot - comm - fixed, cash - comm - fixed
+            parts = [(nm, {**r, "total": r["total"] * (comm + fixed + var_tot * scale) / tot}, n) for nm, r, n in parts]
+            tot, cash = comm + fixed + var_tot * scale, comm + fixed + var_cash * scale
     return {"total": tot, "cash": cash, "fixed": fixed, "fyp_y": fyp_y, "cost_pct": tot / fyp_y * 100, "cash_share": cash / tot * 100,
             "deferred_share": (tot - cash) / tot * 100, "fixed_share": fixed / tot * 100,
             "cost_per_persisted_pct": tot / (fyp_y * k2 / 100) * 100,
-            "parts": {name: r["total"] * n for name, r, n in parts}}
+            "parts": {name: r["total"] * n for name, r, n in parts}, "pool_scale": scale}
 
 
 SCHEME_SRC = {"AIA": "[AIAVAD 2601-034 : 3-6], [AIAVAD 2601-035 : 2-5], [AIAVAD 2604-069 : 3-7]",
@@ -170,7 +180,7 @@ def negative_proof() -> list:
     return out
 
 
-def sweep_hybrid(base) -> list:
+def sweep_hybrid(base, fyc_rate=FYC_RATE) -> list:
     """Lưới quét điểm gãy Chính sách Lai: mỗi vùng × năng suất/ĐL (quanh quota vùng, các bậc thưởng tháng,
     ngưỡng nhất quán, MDRT, năng suất V1) × K2 {80, 85, 95}. Trả mọi điểm để kiểm trần ở điểm CAO NHẤT."""
     fpa0 = load_milestones()[3].fyp_per_agent
@@ -184,7 +194,7 @@ def sweep_hybrid(base) -> list:
         fyps |= {base.agent_q_consistency_min_fyc * c / FYC_RATE, base.agent_mdrt_fyc_threshold * c / 12 / FYC_RATE}
         for f in sorted(fyps):
             for k2 in (80.0, 85.0, 95.0):
-                o = org_cost("Hybrid", k2, base, prod=f / fpa0, region=reg)
+                o = org_cost("Hybrid", k2, base, prod=f / fpa0, region=reg, fyc_rate=fyc_rate)
                 pts.append({"region": reg, "fpa": f, "k2": k2, "cost_pct": o["cost_pct"], "org": o})
     return pts
 
@@ -239,6 +249,34 @@ def compute() -> dict:
         elastic = (o85["total"] - o65["total"]) / o85["total"] * 100
         out["roi"].append({"id": f"{s}|payout_drop_k2_85_to_65|0", "scheme": s, "metric": "payout_drop_k2_85_to_65", "k2": 0, "value": round(elastic, 2),
                            "unit": "% giảm chi trả", "label": lab, "note": "Chi trả giảm bao nhiêu khi K2 sập 85%→65% (cao = gắn chất lượng)", "confidentiality": conf})
+
+    # ---------- Độ nhạy cơ cấu sản phẩm: tỷ lệ hoa hồng năm đầu 25% / 30% / 40% (AUD-03) ----------
+    # 40% ≈ cơ cấu nghiêng bảo vệ thuần/tử kỳ (>50% HĐ mới 9T/2026 — SOURCE_CLAIM). Chính sách Lai: thưởng/phí quản lý trên FYC chuẩn hóa
+    # + trần quỹ 75% (pool_scale = phần thưởng & phí quản lý biến đổi còn được trả). Kịch bản xấu nhất của Lai = lưới quét + mọi ĐL đạt quota.
+    fpa0 = load_milestones()[3].fyp_per_agent
+    out["fyc_sensitivity"] = []
+    for rate in (0.25, 0.30, 0.40):
+        for s in SCHEMES:
+            std = org_cost(s, 85.0, base, fyc_rate=rate)
+            cands = [std, org_cost(s, 85.0, base, prod=H.FT_QUOTA_FYP_MONTH / fpa0, fyc_rate=rate)]
+            if s == "Hybrid":
+                cands += [x["org"] for x in sweep_hybrid(base, fyc_rate=rate)]
+            worst = max(cands, key=lambda o: o["cost_pct"])
+            tag = f"fyc{int(round(rate * 100))}"
+            row = {"scheme": s, "rate": rate, "std": std["cost_pct"], "worst": worst["cost_pct"],
+                   "pool_scale_std": std["pool_scale"], "pool_scale_worst": worst["pool_scale"]}
+            out["fyc_sensitivity"].append(row)
+            conf = "restricted" if s in CONF else "public"
+            lab = "PROPOSAL" if s == "Hybrid" else "MODEL_OUTPUT"
+            for metric, v, note in ((f"cost_pct_fyp_{tag}", std["cost_pct"], f"Hoa hồng năm đầu {int(rate * 100)}% FYP, K2 85%, năng suất Mốc 4"),
+                                    (f"cost_pct_fyp_worst_{tag}", worst["cost_pct"], f"Hoa hồng {int(rate * 100)}% FYP — kịch bản chi phí cao nhất")):
+                out["roi"].append({"id": f"{s}|{metric}|85", "scheme": s, "metric": metric, "k2": 85, "value": round(fin(v), 2), "unit": "% FYP",
+                                   "label": lab, "note": note, "confidentiality": conf})
+            if s == "Hybrid":
+                for metric, v in ((f"pool_paid_share_{tag}", std["pool_scale"]), (f"pool_paid_share_worst_{tag}", worst["pool_scale"])):
+                    out["roi"].append({"id": f"{s}|{metric}|85", "scheme": s, "metric": metric, "k2": 85, "value": round(fin(v) * 100, 2),
+                                       "unit": "% thưởng & phí quản lý được trả", "label": lab,
+                                       "note": "100% = trần 75% không phải cắt; <100% = quỹ thưởng tự co để giữ trần", "confidentiality": conf})
 
     # ---------- Bẫy hành vi ----------
     def trap(s, key, title, value, text, cite, label="MODEL_OUTPUT"):
@@ -397,6 +435,20 @@ def write_reports(d: dict) -> None:
         w(f"Lưới quét điểm gãy Chính sách Lai: {len(sw)} điểm (3 vùng × năng suất quanh quota vùng, mọi bậc thưởng tháng, ngưỡng nhất quán, MDRT, năng suất V1 × K2 80/85/95%); "
           f"{sum(1 for x in sw if x['cost_pct'] > H.COST_CAP_PCT_FYP)} điểm vượt trần {int(H.COST_CAP_PCT_FYP)}%. "
           "Sửa theo Codex P1 (9dea455): bản trước bỏ sót kịch bản V3 đạt đúng quota vùng (76,2% — VƯỢT); nay trợ cấp Full-time nhân hệ số vùng và mọi ngưỡng đại lý giãn theo vùng.")
+        w("")
+    if d.get("fyc_sensitivity"):
+        fs = {(r["scheme"], r["rate"]): r for r in d["fyc_sensitivity"]}
+        w("**Độ nhạy cơ cấu sản phẩm — tỷ lệ hoa hồng năm đầu 25% / 30% / 40% FYP** (40% ≈ nghiêng bảo vệ thuần/tử kỳ, >50% HĐ mới 9T/2026 — `SOURCE_CLAIM`). "
+          "Chính sách Lai tính thưởng & phí quản lý trên **FYC chuẩn hóa = FYP × 30%** (hoa hồng vẫn theo sản phẩm) và có **trần quỹ thu nhập cây đại lý 75% FYP**: "
+          "vượt trần thì thưởng & phí quản lý biến đổi co theo cùng tỷ lệ. 3 hãng trả trên FYC thật theo văn bản của họ. "
+          "Trần 75% là trần quỹ thu nhập cây đại lý, KHÔNG phải tổng chi phí khai thác trên BCTC (gồm thêm văn phòng, marketing, bancassurance — wheel-check r2 câu 3).")
+        w("")
+        w("| Phương án | Hoa hồng 25% — chuẩn | 25% — xấu nhất | Hoa hồng 30% — chuẩn | 30% — xấu nhất | Hoa hồng 40% — chuẩn | 40% — xấu nhất | Quỹ thưởng còn trả ở 40% xấu nhất | Nguồn | Nhãn |")
+        w("|---|---:|---:|---:|---:|---:|---:|---:|---|---|")
+        for s in SCHEMES:
+            r25, r30, r40 = fs[(s, 0.25)], fs[(s, 0.30)], fs[(s, 0.40)]
+            pool = f"{vn(r40['pool_scale_worst'] * 100)}%" if s == "Hybrid" else "—"
+            w(f"| {names[s]} | {vn(r25['std'])}% | {vn(r25['worst'])}% | {vn(r30['std'])}% | {vn(r30['worst'])}% | {vn(r40['std'])}% | {vn(r40['worst'])}% | {pool} | {SCHEME_SRC[s]} | `{'PROPOSAL' if s == 'Hybrid' else 'MODEL_OUTPUT'}` |")
         w("")
     w(f"- **Tầng 1:** trần đề xuất 75% FYP, kiểm ở kịch bản xấu nhất. Chính sách Lai {vn(o['Hybrid']['worst']['cost_pct'])}% ({o['Hybrid']['worst_name']}) → {'**ĐẠT**' if d['cost_cap_ok'] else '**VƯỢT**'} trần, khoảng dư chỉ {vn(d['cost_cap_headroom'])} điểm %. Rủi ro định phí thật của Chính sách Lai là khi **nhiều** đại lý đạt quota, không phải khi năng suất giảm.")
     w("- **Tầng 2:** chi phí trên mỗi đồng phí còn duy trì sang năm 2 = chi phí ÷ (FYP × K2). Khi K2 sập 85%→65%, phương án gắn thưởng với K2 tốt thì chi trả **giảm theo**; phương án yếu thì chi phí trên phí còn lại **tăng vọt**.")

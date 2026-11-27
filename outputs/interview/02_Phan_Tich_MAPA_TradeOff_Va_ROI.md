@@ -36,6 +36,15 @@
 
 Lưới quét điểm gãy Chính sách Lai: 195 điểm (3 vùng × năng suất quanh quota vùng, mọi bậc thưởng tháng, ngưỡng nhất quán, MDRT, năng suất V1 × K2 80/85/95%); 0 điểm vượt trần 75%. Sửa theo Codex P1 (9dea455): bản trước bỏ sót kịch bản V3 đạt đúng quota vùng (76,2% — VƯỢT); nay trợ cấp Full-time nhân hệ số vùng và mọi ngưỡng đại lý giãn theo vùng.
 
+**Độ nhạy cơ cấu sản phẩm — tỷ lệ hoa hồng năm đầu 25% / 30% / 40% FYP** (40% ≈ nghiêng bảo vệ thuần/tử kỳ, >50% HĐ mới 9T/2026 — `SOURCE_CLAIM`). Chính sách Lai tính thưởng & phí quản lý trên **FYC chuẩn hóa = FYP × 30%** (hoa hồng vẫn theo sản phẩm) và có **trần quỹ thu nhập cây đại lý 75% FYP**: vượt trần thì thưởng & phí quản lý biến đổi co theo cùng tỷ lệ. 3 hãng trả trên FYC thật theo văn bản của họ. Trần 75% là trần quỹ thu nhập cây đại lý, KHÔNG phải tổng chi phí khai thác trên BCTC (gồm thêm văn phòng, marketing, bancassurance — wheel-check r2 câu 3).
+
+| Phương án | Hoa hồng 25% — chuẩn | 25% — xấu nhất | Hoa hồng 30% — chuẩn | 30% — xấu nhất | Hoa hồng 40% — chuẩn | 40% — xấu nhất | Quỹ thưởng còn trả ở 40% xấu nhất | Nguồn | Nhãn |
+|---|---:|---:|---:|---:|---:|---:|---:|---|---|
+| AIA Alpha | 49,3% | 49,3% | 58,4% | 58,4% | 79,4% | 88,6% | — | [AIAVAD 2601-034 : 3-6], [AIAVAD 2601-035 : 2-5], [AIAVAD 2604-069 : 3-7] | `MODEL_OUTPUT` |
+| Chubb Life | 69,4% | 69,4% | 88,1% | 88,1% | 116,2% | 116,2% | — | [CHH0DCEB260007V : 4-7], [CHH0DCEB260008V : 5-10], [CHH0DCEB260003V : 5-10] | `MODEL_OUTPUT` |
+| Manulife | 43,0% | 43,5% | 50,8% | 51,4% | 74,8% | 75,0% | — | [0046M01_2026 : 1-8], [0047M01_2026 : 1-3], [0048M01_2026 : 1-5] | `MODEL_OUTPUT` |
+| **Chính sách Lai (đề xuất)** | 54,9% | 68,1% | 59,9% | 73,1% | 69,9% | 75,0% | 89,4% | PROPOSAL (hybrid_scheme.py) | `PROPOSAL` |
+
 - **Tầng 1:** trần đề xuất 75% FYP, kiểm ở kịch bản xấu nhất. Chính sách Lai 73,1% (V3, điểm gãy cao nhất của lưới quét (123,75tr FYP/ĐL, K2 85%)) → **ĐẠT** trần, khoảng dư chỉ 1,9 điểm %. Rủi ro định phí thật của Chính sách Lai là khi **nhiều** đại lý đạt quota, không phải khi năng suất giảm.
 - **Tầng 2:** chi phí trên mỗi đồng phí còn duy trì sang năm 2 = chi phí ÷ (FYP × K2). Khi K2 sập 85%→65%, phương án gắn thưởng với K2 tốt thì chi trả **giảm theo**; phương án yếu thì chi phí trên phí còn lại **tăng vọt**.
 - **Tầng 3:** phần trả các năm sau (AIA thưởng năm 15/25/60% đến 2030; Manulife phí dài hạn 30/30/40%, M-Star năm trả tháng 2 năm sau; Lai trả chậm khi K2 ≥80%) giữ người và giảm áp lực tiền mặt năm 1.
@@ -110,9 +119,9 @@ Tỷ lệ thưởng/FYP theo enterprise model (ngưỡng 30% Điều 52, `CONDIT
 |---|---|---:|---:|---|
 | 1 | Độ phủ nguồn 9/9 file | 25.0 | 25 | 9/9 file mở được và khớp SHA-256; bản scan soát 15/15 trang |
 | 2 | Chức danh gốc & tuyến | 25.0 | 25 | 3/3 chức danh có tên nguyên văn khớp trang trích (hoặc đối chiếu bằng mắt với bản scan) và có `track_type` |
-| 3 | Trích dẫn `[File : Trang]` cho từng con số | 19.5 | 20 | 39/40 dòng có số mang trích dẫn đúng mẫu |
+| 3 | Trích dẫn `[File : Trang]` cho từng con số | 19.1 | 20 | 43/45 dòng có số mang trích dẫn đúng mẫu |
 | 4 | Negative Proof | 15.0 | 15 | 2/2 kết luận "không có trong tài liệu" kèm nhật ký tìm kiếm |
-| 5 | Tách Fact / Assumption | 15.0 | 15 | 40/40 dòng có nhãn phân loại |
-| | **Tổng** | **99.5** | **100** | **PASS** (ngưỡng 90) — `SELF_VERIFIED`, chưa phải kiểm toán độc lập |
+| 5 | Tách Fact / Assumption | 14.7 | 15 | 44/45 dòng có nhãn phân loại |
+| | **Tổng** | **98.8** | **100** | **PASS** (ngưỡng 90) — `SELF_VERIFIED`, chưa phải kiểm toán độc lập |
 
 Tiêu chí 1 theo kiểm kê `00_Role_Mapping_Audit.md` (9/9 file khớp SHA-256, 15/15 trang scan). Tiêu chí 2: 3 chức danh lãnh đạo Mốc 4 (AIA PAF, Chubb RD, Manulife PSM/SM) lấy từ ma trận `00_Role_And_Benefit_Matrix.md`. Tiêu chí 3/5 đếm tự động mọi dòng bảng có số ở mục 1–2 (dòng Chính sách Lai trích `PROPOSAL (hybrid_scheme.py)` vì không có trong PDF).

@@ -73,7 +73,8 @@ class TestPayload(unittest.TestCase):
         t = self.payload["tables"]
         self.assertEqual(len(t["role_benefit_matrix"]), 84)
         self.assertEqual(len(t["pdf_bookmarks"]), 131)
-        for k, n in (("roi_analysis", 56), ("rubric_scores", 20), ("behavior_traps", 20), ("hybrid_regional", 30)):   # Giai đoạn 2
+        # roi_analysis 56 → 86 (AUD-03): + 4 phương án × 3 tỷ lệ hoa hồng (25/30/40%) × 2 chỉ số (chuẩn, xấu nhất) + Lai 3 × 2 tỷ lệ quỹ thưởng còn trả
+        for k, n in (("roi_analysis", 56 + 4 * 3 * 2 + 3 * 2), ("rubric_scores", 20), ("behavior_traps", 20), ("hybrid_regional", 30)):   # Giai đoạn 2
             self.assertEqual(len(t[k]), n, k)
         self.assertEqual(set(t), set(self.S.TABLE_KEYS))
         self.assertEqual(len(t["glossary_terms"]), len(json.loads((REPO / "knowledge/sources/glossary.json").read_text(encoding="utf-8"))["entries"]))

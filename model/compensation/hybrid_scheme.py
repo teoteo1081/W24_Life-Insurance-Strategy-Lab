@@ -41,6 +41,13 @@ K2_RAMP_FROM_PCT = 75.0            # trả chậm: K2 ≥80% nhận 100%; 75–<
 K2_RAMP_SHARE = 0.5
 DIRECT_FULL_RATE_CAP_FYC = 60.0    # override đủ tỷ lệ tới 60tr FYC nhóm trực tiếp/tháng (cố định mọi vùng); phần vượt 50% — chống bẫy đội phẳng
 DIRECT_EXCESS_RATE_SHARE = 0.5
+# Chống vỡ trần khi cơ cấu nghiêng bảo vệ thuần (AUD-03, audit r1 2026-11-27 — TJ chọn "sửa cơ chế"):
+#  (1) FYC chuẩn hóa: mọi khoản THƯỞNG và PHÍ QUẢN LÝ tính trên FYP × 30%, không phụ thuộc tỷ lệ hoa hồng của sản phẩm.
+#      Hoa hồng vẫn trả đúng tỷ lệ của từng sản phẩm (trần Điều 51 TT 67/2023 — CONDITIONAL).
+#  (2) Trần quỹ thu nhập cây đại lý: nếu tổng chi khu vực > COST_CAP_PCT_FYP, phần thưởng + phí quản lý biến đổi (không gồm
+#      hoa hồng và phần cố định) giảm theo cùng một tỷ lệ cho vừa trần — giống cách Điều 52 khóa trần ở cấp công ty.
+#      Trần 75% là trần QUỸ THU NHẬP CÂY ĐẠI LÝ, không phải tổng chi phí khai thác trên BCTC (wheel-check r2 câu 3).
+NORMALIZED_FYC_RATE = 0.30
 
 
 def song_hanh_params() -> ProposalParams:
@@ -91,17 +98,36 @@ def regional_params(base: ProposalParams, region: str, track: str) -> ProposalPa
 def hybrid_agent_12m(fyp_month: float, cc_month: int, k2: Optional[float], region: str, track: str,
                      base: ProposalParams, fyc_rate: float = 0.30, syc_month: float = 0.0) -> Dict[str, float]:
     fyp_month = _fin(fyp_month, "fyp_month")
+    fyc_rate = _fin(fyc_rate, "fyc_rate")
+    if not 0.0 < fyc_rate <= 1.0:
+        raise ValueError("fyc_rate must be in (0, 1]")
     p = regional_params(base, region, track)
-    fyc = fyp_month * fyc_rate
-    r = calc_proposal_agent_12m([fyc] * 12, [syc_month] * 12, k2_pct=k2, params=p)
+    # Thưởng tính trên FYC chuẩn hóa (FYP × 30%); hoa hồng thật = FYP × tỷ lệ của sản phẩm
+    r = calc_proposal_agent_12m([fyp_month * NORMALIZED_FYC_RATE] * 12, [syc_month] * 12, k2_pct=k2, params=p)
+    commission = fyp_month * fyc_rate * 12
+    adj = commission - r["fyc_total"]
     quota = FT_QUOTA_FYP_MONTH * _coef(region)
     allow_months = 12 if (track == "FULL_TIME" and fyp_month >= quota and cc_month >= FT_MIN_CC_MONTH and _k2_ok(k2)) else 0
     allowance = FT_ALLOWANCE_MONTH * _coef(region) * allow_months   # trợ cấp tỷ lệ theo hệ số vùng (Codex P1 9dea455: V3 đạt quota vượt trần 75%)
-    total = r["total_earned"] + allowance
-    return {"fyc_total": r["fyc_total"], "bonuses": round(r["total_bonuses_earned"], 4), "allowance_fixed": round(allowance, 4),
-            "total_earned": round(total, 4), "cash_paid_y1": round(r["cash_paid_y1"] + allowance, 4),
+    total = r["total_earned"] + adj + allowance
+    return {"fyc_total": round(commission, 4), "bonuses": round(r["total_bonuses_earned"], 4), "allowance_fixed": round(allowance, 4),
+            "total_earned": round(total, 4), "cash_paid_y1": round(r["cash_paid_y1"] + adj + allowance, 4),
             "paid_next_years": round(r["deferred_post_y1"] + r["accrued_t_plus_1_unpaid"], 4), "quota_fyp_month": round(quota, 4),
             "quota_met": allow_months > 0}
+
+
+def pool_cap_scale(total: float, commission: float, fixed: float, fyp_y: float) -> float:
+    """Hệ số co của phần thưởng + phí quản lý biến đổi để tổng chi ≤ COST_CAP_PCT_FYP × FYP (1.0 = không phải co).
+    Nếu riêng hoa hồng + phần cố định đã vượt trần thì co phần biến đổi về 0 (trần không thể đạt bằng cơ chế này)."""
+    for v, n in ((total, "total"), (commission, "commission"), (fixed, "fixed"), (fyp_y, "fyp_y")):
+        _fin(v, n)
+    if fyp_y <= 0:
+        raise ValueError("fyp_y must be > 0")
+    cap = COST_CAP_PCT_FYP / 100.0 * fyp_y
+    variable = total - commission - fixed
+    if total <= cap or variable <= 0:
+        return 1.0
+    return max(0.0, (cap - commission - fixed) / variable)
 
 
 def hybrid_manager_12m(direct_fyc_month: float, sub_direct_fyc_months: tuple, grand_sub_direct_fyc_months: tuple,

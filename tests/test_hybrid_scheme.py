@@ -59,6 +59,24 @@ class TestHybridRules(unittest.TestCase):
         fixed = calc_proposal_agent_12m([3.5] * 12, [0.0] * 12, k2_pct=85.0, params=replace(v3, agent_q_consistency_min_fyc=4.0))
         self.assertGreater(scaled["total_bonuses_earned"], fixed["total_bonuses_earned"])
 
+    def test_bonus_base_independent_of_product_commission_rate(self) -> None:
+        a30 = H.hybrid_agent_12m(30, 2, 85.0, "V1", "FULL_TIME", BASE, fyc_rate=0.30)
+        a40 = H.hybrid_agent_12m(30, 2, 85.0, "V1", "FULL_TIME", BASE, fyc_rate=0.40)
+        self.assertEqual(a30["bonuses"], a40["bonuses"])                                   # thưởng trên FYC chuẩn hóa
+        self.assertAlmostEqual(a40["total_earned"] - a30["total_earned"], 30 * 0.10 * 12, places=3)   # chỉ hoa hồng đổi
+        self.assertAlmostEqual(a40["fyc_total"], 30 * 0.40 * 12, places=3)
+        for bad in (float("nan"), float("inf"), 0.0, -0.3, 1.5):
+            with self.subTest(bad=bad), self.assertRaises(ValueError):
+                H.hybrid_agent_12m(30, 2, 85.0, "V1", "FULL_TIME", BASE, fyc_rate=bad)
+
+    def test_pool_cap_scale(self) -> None:
+        self.assertEqual(H.pool_cap_scale(70.0, 30.0, 5.0, 100.0), 1.0)                     # dưới trần: không co
+        self.assertAlmostEqual(H.pool_cap_scale(85.0, 30.0, 5.0, 100.0), (75 - 35) / 50)   # co đúng phần biến đổi
+        self.assertEqual(H.pool_cap_scale(120.0, 70.0, 10.0, 100.0), 0.0)                  # hoa hồng + cố định đã vượt
+        for bad in ((float("nan"), 1, 1, 100), (80, 1, 1, 0), (80, float("inf"), 1, 100)):
+            with self.subTest(bad=bad), self.assertRaises(ValueError):
+                H.pool_cap_scale(*bad)
+
     def test_part_time_earns_less_than_full_time(self) -> None:
         ft = H.hybrid_agent_12m(30, 2, 85.0, "V1", "FULL_TIME", BASE)
         pt = H.hybrid_agent_12m(30, 2, 85.0, "V1", "PART_TIME", BASE)
@@ -125,6 +143,19 @@ class TestPhase2Outputs(unittest.TestCase):
                     for reg in H.REGIONS for k2 in (80.0, 85.0, 90.0, 95.0) for i in range(239))
         self.assertLessEqual(worst, 75.0)
         self.assertLessEqual(worst, self.d["org"]["Hybrid"]["worst"]["cost_pct"] + 0.5)   # lưới không bỏ sót đỉnh đáng kể
+
+    def test_cap_holds_when_mix_is_pure_protection(self) -> None:
+        # AUD-03 (audit r1): hoa hồng 40% (bảo vệ thuần) từng đẩy Chính sách Lai lên 78–93% FYP
+        rows = {(r["scheme"], r["rate"]): r for r in self.d["fyc_sensitivity"]}
+        self.assertEqual({r for _, r in rows}, {0.25, 0.30, 0.40})
+        h40 = rows[("Hybrid", 0.40)]
+        self.assertLessEqual(h40["worst"], H.COST_CAP_PCT_FYP + 1e-6)
+        self.assertLess(h40["pool_scale_worst"], 1.0)                 # trần thật sự chặn — và được công bố, không giấu
+        self.assertEqual(rows[("Hybrid", 0.30)]["pool_scale_worst"], 1.0)   # kịch bản chuẩn không bị cắt
+        self.assertAlmostEqual(rows[("Hybrid", 0.30)]["std"], self.d["org"]["Hybrid"]["k85"]["cost_pct"], places=6)
+        self.assertGreater(rows[("Chubb", 0.40)]["std"], rows[("Chubb", 0.30)]["std"])   # đối thủ trả trên FYC thật
+        for r in self.d["fyc_sensitivity"]:
+            self.assertTrue(all(math.isfinite(r[k]) for k in ("std", "worst", "pool_scale_std", "pool_scale_worst")))
 
     def test_agent_cliffs_disclosed_and_simplicity_counted_uniformly(self) -> None:
         keys = {t["id"] for t in self.d["traps"]}
