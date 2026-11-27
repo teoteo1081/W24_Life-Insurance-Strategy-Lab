@@ -6,6 +6,16 @@
 
 ---
 
+## STRICT DATA INGESTION & MAPPING PROTOCOL (MANDATORY)
+1. **NO PREMATURE CALCULATION:** Never write calculation code or summary tables before completing a 100% Source & Entity Inventory of ALL input files.
+2. **EXACT TITLE & SCOPE EXTRACTION:** Extract exact verbatim titles/roles and eligibility rules with `[FileName : PageNumber]` citations before normalizing across entities.
+3. **NEGATIVE PROOF RULE:** You are strictly forbidden from claiming "missing data/document" unless you provide a search log proving all input files and filenames were scanned for related keywords.
+4. **EVIDENCE-BOUND NUMBERS:** Every threshold, tier, or percentage in code/tables must cite its exact PDF source and page number.
+
+Đồng bộ nguyên văn từ `AGENTS.md` (DEC-13, 2026-11-27). Áp dụng cho mọi lần nạp tài liệu và mọi công ty bổ sung sau này.
+
+---
+
 ## 1. Primary Business Anchor — Yêu cầu Nghiệp vụ Gốc (Ưu tiên Cao nhất)
 
 **Nguồn:** `SRC-REQ-001` — Nguyên văn yêu cầu của chị Nhi (`VERIFIED FACT`, ghi nhận ngày 2026-11-26):

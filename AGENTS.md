@@ -1,5 +1,11 @@
 # AGENTS.md — Quy tắc Làm việc & Phân định Thẩm quyền cho AI Agent
 
+## STRICT DATA INGESTION & MAPPING PROTOCOL (MANDATORY)
+1. **NO PREMATURE CALCULATION:** Never write calculation code or summary tables before completing a 100% Source & Entity Inventory of ALL input files.
+2. **EXACT TITLE & SCOPE EXTRACTION:** Extract exact verbatim titles/roles and eligibility rules with `[FileName : PageNumber]` citations before normalizing across entities.
+3. **NEGATIVE PROOF RULE:** You are strictly forbidden from claiming "missing data/document" unless you provide a search log proving all input files and filenames were scanned for related keywords.
+4. **EVIDENCE-BOUND NUMBERS:** Every threshold, tier, or percentage in code/tables must cite its exact PDF source and page number.
+
 Áp dụng cho mọi AI agent làm việc trong repository `W24_Life-Insurance-Strategy-Lab`.
 
 ## 1. Phân định Vai trò & Giới hạn Thẩm quyền
