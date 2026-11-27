@@ -4,6 +4,11 @@
 
 ## Trạng thái hiện hành
 
+**2026-11-27 (khuya) — ĐÃ PHÁT HÀNH bản Public (TJ duyệt).**
+- `git push origin public-release:main` → `origin/main` = `fa6aef7`: 1 commit trên `1e36986`, chỉ thay `outputs/interactive/W24_Strategy_Lab.html` bằng bản `--public`.
+- GitHub Pages build `fa6aef7`: built. Link `https://teoteo1081.github.io/W24_Life-Insurance-Strategy-Lab/outputs/interactive/W24_Strategy_Lab.html` trả HTTP 200, trùng blob `fa6aef7`; scanner trên bản live PASS; Chrome dựng trang, tự kiểm 60/60.
+- Repo giữ PUBLIC (TJ quyết). Local `main` giờ TÁCH nhánh với `origin/main` — KHÔNG push / force-push `main`; lần phát hành sau lặp lại quy trình nhánh `public-release` từ `origin/main`.
+
 **2026-11-27 (khuya) — Bản build công khai an toàn (DEC-14) — CHƯA push, chờ TJ duyệt danh sách file.**
 - Lệnh: `python scripts/build_html.py --public` sinh `outputs/public/W24_Strategy_Lab.html`; bản đầy đủ `outputs/interactive/W24_Strategy_Lab.html` giữ nguyên để gửi trực tiếp.
 - Bản public lọc **79 dòng restricted** (không phải 54: GĐ2 thêm 24 dòng Manulife, từ điển thêm 1), bỏ mọi phần tử dữ liệu nhúng có nhắc 0046M01/0047M01 (role MNL-R06/R07, 2 PDF trong mục lục), bỏ `meta.confidential_files` và điểm Manulife. Từ điển lấy từ dòng public đã làm sạch.
