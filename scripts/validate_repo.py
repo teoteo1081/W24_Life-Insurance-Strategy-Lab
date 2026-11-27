@@ -59,6 +59,13 @@ def git_files(repo: Path, *options: str) -> List[Path]:
     return [repo / name for name in dict.fromkeys(raw.split("\0")) if name]
 
 
+# PDF do chính repo sinh ra (không phải văn bản nguồn) — được phép track, không cần đăng ký nguồn.
+# Mỗi file phải có script sinh ra nó còn tồn tại, để không thành chỗ lách cho PDF lạ.
+GENERATED_PDFS = {
+    "outputs/interview/W24_Tom_Tat_2_Trang.pdf": "scripts/build_onepager.py",
+}
+
+
 def validate_source_registry(repo: Path) -> List[str]:
     errs: List[str] = []
     path = repo / "knowledge/sources/source-registry.csv"
@@ -101,13 +108,18 @@ def validate_source_registry(repo: Path) -> List[str]:
             if not valid_hash:
                 errs.append(f"source-registry ({sid}): invalid SHA-256 for {rel}")
             if not pdf_path.is_file():
-                errs.append(f"source-registry ({sid}): missing registered PDF {rel}")
+                hint = " (worktree phụ? chạy: python scripts/setup_worktree.py)" if Path(rel).parts[:1] == ("private",) else ""
+                errs.append(f"source-registry ({sid}): missing registered PDF {rel}{hint}")
             elif valid_hash and hashlib.sha256(pdf_path.read_bytes()).hexdigest() != expected_sha:
                 errs.append(f"source-registry ({sid}): SHA-256 mismatch on {rel}")
 
     files = git_files(repo, "--cached") if (repo / ".git").exists() else repo.rglob("*")
+    for gen, script in GENERATED_PDFS.items():
+        if not (repo / script).is_file():
+            errs.append(f"source-registry: generated PDF {gen} has no generator {script}")
     for pdf in files:
-        if pdf.suffix.lower() == ".pdf" and pdf.relative_to(repo).as_posix() not in registered_pdfs:
+        rel_pdf = pdf.relative_to(repo).as_posix()
+        if pdf.suffix.lower() == ".pdf" and rel_pdf not in registered_pdfs and rel_pdf not in GENERATED_PDFS:
             errs.append(f"source-registry: unregistered PDF {pdf.relative_to(repo)}")
     return errs
 
