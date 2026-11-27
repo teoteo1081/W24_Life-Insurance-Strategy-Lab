@@ -224,6 +224,6 @@ def rubric_table(files_ok: int, scan_pages_seen: int, scan_pages_total: int,
         f"| 3 | Trích dẫn `[File : Trang]` cho từng con số | {c3:.1f} | 20 | {cited_rows}/{numeric_rows} dòng có số mang trích dẫn đúng mẫu |",
         f"| 4 | Negative Proof | {c4:.1f} | 15 | {missing_with_proof}/{missing_total} kết luận \"không có trong tài liệu\" kèm nhật ký tìm kiếm |",
         f"| 5 | Tách Fact / Assumption | {c5:.1f} | 15 | {labelled_rows}/{total_rows} dòng có nhãn phân loại |",
-        f"| | **Tổng** | **{tot:.1f}** | **100** | **{res}** (ngưỡng 90) — `SELF_VERIFIED`, chưa phải kiểm toán độc lập |",
+        f"| | **Tổng** | **{tot:.1f}** | **100** | **{res}** (ngưỡng 90) — máy đếm trên chính các bảng, đo độ phủ trích dẫn & nhãn, không phải điểm chất lượng phân tích |",
     ]
     return "\n".join(lines), tot

@@ -45,7 +45,7 @@ So mọi hãng ở cùng quy mô: **L1** đại lý 30 triệu FYP/tháng · **L
 **Đọc bảng:** “Thơm” = cao hơn mức thấp nhất của các hãng cùng tầng ≥ 1,2 lần; “Không thơm” = lên quản lý nhóm mà thu ít hơn tự bán. Trích dẫn trang văn bản gốc nằm ở cột nhận xét của *Tóm tắt nhanh 2 góc nhìn* (`outputs/interview/00_Executive_Summary_Keo_Thom.md`) và trên trang tương tác.
 
 - **AIA Alpha** — tổng chi 58,4% FYP; tự bán vs quản lý thuần: Đại lý Mốc 1 18,1 tr/th; quản lý nhóm 5 người (phí thuần) 17,6 tr/th → quản lý thu ÍT hơn tự bán [AIAVAD 2601-034 : 3-5]; bẫy giữ đội phẳng: Ban 15 ĐL: để phẳng (15 trực tiếp) 82,4 vs có 2 quản lý con 25,7 tr/th → tỷ lệ 3,21× [AIAVAD 2601-034 : 3-5]; vách đá K2 tại 80%: Quản lý nhóm: K2 80% → 79% làm phí năm giảm 7,7% [AIAVAD 2601-034 : 3-5].
-- **Chubb Life** — tổng chi 88,1% FYP; tự bán vs quản lý thuần: Đại lý Mốc 1 22,5 tr/th; quản lý nhóm 5 người (phí thuần) 48,6 tr/th → quản lý thu nhiều hơn tự bán [CHH0DCEB260008V : 5-7]; bẫy giữ đội phẳng: Ban 15 ĐL: để phẳng (15 trực tiếp) 145,8 vs có 2 quản lý con 81,0 tr/th → tỷ lệ 1,80× [CHH0DCEB260008V : 5-7]; vách đá K2 tại 80%: Quản lý nhóm: K2 80% → 79% làm phí năm giảm 16,7% [CHH0DCEB260008V : 5-7].
+- **Chubb Life** — tổng chi 88,1% FYP; tự bán vs quản lý thuần: Đại lý Mốc 1 22,5 tr/th; quản lý nhóm 5 người (phí thuần) 48,6 tr/th → quản lý thu nhiều hơn tự bán (chưa gồm khoản Duy trì chất lượng HĐ tính trên RYC — vì vậy thấp hơn cột Tổng của Chubb UM ở bảng 01) [CHH0DCEB260008V : 5-7]; bẫy giữ đội phẳng: Ban 15 ĐL: để phẳng (15 trực tiếp) 145,8 vs có 2 quản lý con 81,0 tr/th → tỷ lệ 1,80× [CHH0DCEB260008V : 5-7]; vách đá K2 tại 80%: Quản lý nhóm: K2 80% → 79% làm phí năm giảm 16,7% [CHH0DCEB260008V : 5-7].
 - **Manulife** — tổng chi 50,8% FYP; tự bán vs quản lý thuần: Đại lý Mốc 1 17,8 tr/th; quản lý nhóm 5 người (phí thuần) 11,0 tr/th → quản lý thu ÍT hơn tự bán [0047M01_2026 : 1-2]; bẫy giữ đội phẳng: Ban 15 ĐL: để phẳng (15 trực tiếp) 40,5 vs có 2 quản lý con 18,2 tr/th → tỷ lệ 2,23× [0047M01_2026 : 1-2]; vách đá K2 tại 80%: Quản lý nhóm: K2 80% → 79% làm phí năm giảm 1,2% [0047M01_2026 : 1-2].
 
 ## Trang 3 — Tác động lên 3 mục tiêu của đề bài
@@ -106,7 +106,7 @@ Từ 01/01/2027, TT 96/2026 thêm trần **7% phí thực thu** cho hợp đồn
 
 **Rủi ro còn mở của đề xuất (công bố, không giấu):**
 - Vách đá K2 tại 80%: Quản lý nhóm: K2 80% → 79% làm phí năm giảm 21,9% `PROPOSAL`
-- Vách đá K2 của đại lý Full-time: Đại lý Full-time 30tr FYP: K2 80% → 79% làm thu nhập năm giảm 23,6% (13,1 → 10,0 tr/th) vì mất trọn trợ cấp `PROPOSAL`
+- Vách đá K2 của đại lý Full-time: Đại lý Full-time 30tr FYP: K2 80% → 79% làm thu nhập năm giảm 23,6% (13,1 → 10,0 tr/th) vì mất trọn trợ cấp — số này không gồm tái tục; con số Mốc 1 ở bảng 01 gồm tái tục (A7) và tính ở K2 85% nên cao hơn `PROPOSAL`
 - Vách đá quota & dồn hợp đồng: FYP 30 → 29,9tr/tháng: thu nhập 13,2 → 10,2 tr/th — động cơ dồn/chuyển hợp đồng giữa các tháng để chạm quota (HYPOTHESIS về hành vi) `PROPOSAL`
 - Bẫy giữ đội phẳng: Ban 15 ĐL: để phẳng (15 trực tiếp) 65,9 vs có 2 quản lý con 40,8 tr/th → tỷ lệ 1,61× `PROPOSAL`
 - Lách vùng (đăng ký mã vùng có hệ số thấp) — cần quy tắc xác định vùng theo địa bàn hoạt động thực tế.

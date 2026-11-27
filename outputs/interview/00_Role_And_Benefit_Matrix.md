@@ -42,7 +42,7 @@
 
 ## Mốc 4 — Khu vực 45 người — 45 đại lý, 1.200,0tr FYP/tháng (phí quản lý thuần, không gồm tự bán)
 
-**Bảng chính — tuyến lãnh đạo vùng** (TJ chọn ngày 2026-11-27). Chubb: chức danh đạt bằng chỉ tiêu là **BD** `[CHH0DCEB260007V : 7]` nhưng biểu phí BD không có trong nguồn; RD và PSM/SM là chức danh bổ nhiệm theo hợp đồng dịch vụ.
+**Bảng chính — tuyến lãnh đạo vùng.** Chubb: chức danh đạt bằng chỉ tiêu là **BD** `[CHH0DCEB260007V : 7]` nhưng biểu phí BD không có trong nguồn; RD và PSM/SM là chức danh bổ nhiệm theo hợp đồng dịch vụ.
 
 | Dòng | AIA Alpha · **PAF** | Chubb Life · **RD (bổ nhiệm)** | Manulife · **PSM/SM (bổ nhiệm)** |
 |---|---|---|---|
@@ -70,7 +70,7 @@
 
 Base case = **không có danh hiệu** (tiêu chí MBA Pro ở 0050M01/2026, không có trong 9 PDF). Nếu UM+ có danh hiệu MBA Pro: phí hoạt động nhóm tăng từ 50% lên **100%** (4–5 người sản xuất) hoặc 125% (≥6) `[0047M01_2026 : 2]`; phí phát triển đại lý mới tăng từ 50% lên 100% `[0047M01_2026 : 3]`; có thêm **phí hợp tác dài hạn** 80% (Bạc) / 100% (Vàng) / 125% (Bạch Kim) × (A.II + A.III), trả chậm 30/30/40% `[0047M01_2026 : 5-6]`. Với đại lý: danh hiệu Manulife Pro mở thêm thưởng xuất sắc tháng và thưởng KDXS năm `[0046M01_2026 : 4-7]`. Nhãn: `HYPOTHESIS` — chưa đưa vào số base case.
 
-## Tự chấm rubric 100 điểm (`qa/data-ingestion-rubric.md`)
+## Phụ lục — Kiểm tra độ phủ trích dẫn (máy tự đếm)
 
 | # | Tiêu chí (`qa/data-ingestion-rubric.md`) | Điểm | Tối đa | Căn cứ đo được |
 |---|---|---:|---:|---|
@@ -79,6 +79,6 @@ Base case = **không có danh hiệu** (tiêu chí MBA Pro ở 0050M01/2026, kh�
 | 3 | Trích dẫn `[File : Trang]` cho từng con số | 20.0 | 20 | 57/57 dòng có số mang trích dẫn đúng mẫu |
 | 4 | Negative Proof | 15.0 | 15 | 0/0 kết luận "không có trong tài liệu" kèm nhật ký tìm kiếm |
 | 5 | Tách Fact / Assumption | 15.0 | 15 | 84/84 dòng có nhãn phân loại |
-| | **Tổng** | **100.0** | **100** | **PASS** (ngưỡng 90) — `SELF_VERIFIED`, chưa phải kiểm toán độc lập |
+| | **Tổng** | **100.0** | **100** | **PASS** (ngưỡng 90) — máy đếm trên chính các bảng, đo độ phủ trích dẫn & nhãn, không phải điểm chất lượng phân tích |
 
 Script đã kiểm token trên trang cho 82 trích dẫn (bản scan 0003V: đối chiếu bằng mắt).

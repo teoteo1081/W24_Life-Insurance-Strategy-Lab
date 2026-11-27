@@ -313,7 +313,7 @@ def build() -> str:
     w("")
 
     # ---- Rubric
-    w("## 6. Tự chấm rubric 100 điểm")
+    w("## 6. Phụ lục — Kiểm tra độ phủ trích dẫn (máy tự đếm)")
     w("")
     tbl, tot = rubric_table(files_ok, len(SCAN_PAGES_REVIEWED), src[SCAN_ID]["n"], titles_ok, titles_total,
                             counters["cited"], counters["numeric"], missing_with_proof, len(MISSING),

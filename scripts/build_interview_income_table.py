@@ -191,7 +191,7 @@ def build() -> str:
     w("")
     w("> **Mốc 2–4 là PHÍ QUẢN LÝ THUẦN, KHÔNG gồm hoa hồng/thưởng tự bán của quản lý** (giả định A3). Vì vậy Mốc 2 của AIA (17,6) và Manulife (11,0) thấp hơn Mốc 1 (đại lý tự bán 30tr FYP). "
       f"Nếu quản lý vẫn tự bán như Mốc 1, cộng thêm khoảng: AIA {vn(m(aia_m1_tot))}, Chubb {vn(m(r1[4]['total_earned']))}, Manulife {vn(m(m1_mnl['total_earned']))} tr/tháng. "
-      "Mốc 4 so sánh chính theo tuyến lãnh đạo vùng (AIA PAF · Chubb RD · Manulife PSM/SM) — TJ chọn ngày 2026-11-27; số tuyến quản lý truyền thống (Chubb DM · Manulife UM+) ở cột ghi chú.")
+      "Mốc 4 so sánh chính theo tuyến lãnh đạo vùng (AIA PAF · Chubb RD · Manulife PSM/SM); số tuyến quản lý truyền thống (Chubb DM · Manulife UM+) ở cột ghi chú.")
     w("")
     w("### 1.1. Giải trình các ô ❓ và số tham chiếu")
     w("")
@@ -353,7 +353,7 @@ def build() -> str:
     w("3. Mốc 4: so sánh chính **AIA PAF · Chubb RD · Manulife PSM/SM**; số phụ **Chubb DM · Manulife UM+**.")
     w("4. Bảo mật: chỉ commit local, **không push** (0046M01 D.3 và 0047M01 B.4 ghi thông tin mật).")
     w("")
-    w("## 6. Tự chấm rubric 100 điểm (`qa/data-ingestion-rubric.md`)")
+    w("## 6. Phụ lục — Kiểm tra độ phủ trích dẫn (máy tự đếm)")
     w("")
     n_titles = len(titles) * 3   # AIA + Chubb + Manulife
     tbl, tot = rubric_table(len(FILE_IDS), 15, 15, n_titles, n_titles, ev["cited"], ev["numeric"], ev["missing_proof"], ev["missing"], ev["labelled"], ev["data"])

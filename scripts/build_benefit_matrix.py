@@ -279,7 +279,7 @@ def build():
         w(f"## {ms.label} — {ms.agents} đại lý, {vn(ms.fyp_month)}tr FYP/tháng ({kind})")
         w("")
         if ms.mid == "M4":
-            w("**Bảng chính — tuyến lãnh đạo vùng** (TJ chọn ngày 2026-11-27). Chubb: chức danh đạt bằng chỉ tiêu là **BD** `[CHH0DCEB260007V : 7]` nhưng biểu phí BD không có trong nguồn; RD và PSM/SM là chức danh bổ nhiệm theo hợp đồng dịch vụ.")
+            w("**Bảng chính — tuyến lãnh đạo vùng.** Chubb: chức danh đạt bằng chỉ tiêu là **BD** `[CHH0DCEB260007V : 7]` nhưng biểu phí BD không có trong nguồn; RD và PSM/SM là chức danh bổ nhiệm theo hợp đồng dịch vụ.")
             w("")
         w(f"| Dòng | AIA Alpha · **{ta}** | Chubb Life · **{tc}** | Manulife · **{tm}** |")
         w("|---|---|---|---|")
@@ -301,7 +301,7 @@ def build():
       "có thêm **phí hợp tác dài hạn** 80% (Bạc) / 100% (Vàng) / 125% (Bạch Kim) × (A.II + A.III), trả chậm 30/30/40% `[0047M01_2026 : 5-6]`. "
       "Với đại lý: danh hiệu Manulife Pro mở thêm thưởng xuất sắc tháng và thưởng KDXS năm `[0046M01_2026 : 4-7]`. Nhãn: `HYPOTHESIS` — chưa đưa vào số base case.")
     w("")
-    w("## Tự chấm rubric 100 điểm (`qa/data-ingestion-rubric.md`)")
+    w("## Phụ lục — Kiểm tra độ phủ trích dẫn (máy tự đếm)")
     w("")
     tbl, tot = rubric_table(len(FILE_IDS), 15, 15, len(MS) * 3, len(MS) * 3, ev["cited"], ev["numeric"], ev["missing_proof"], ev["missing"], ev["labelled"], ev["data"])
     w(tbl)

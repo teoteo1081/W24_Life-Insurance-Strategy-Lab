@@ -1,11 +1,11 @@
-"""Giai đoạn 2 — phân tích hành vi / ROI 3 tầng / Rubric 5 trụ cột + Chính sách Lai & phân vùng.
+"""Giai đoạn 2 — phân tích hành vi / ROI 3 tầng / Rubric 5 trụ cột + Chính sách Đề xuất 2026 & phân vùng.
 
 Sinh:
   outputs/interview/02_Phan_Tich_MAPA_TradeOff_Va_ROI.md
   outputs/interview/03_De_Xuat_Chinh_Sach_Lai_VN2026.md
 compute() cũng là nguồn cho scripts/sync_to_supabase.py (bảng roi_analysis, rubric_scores, behavior_traps, hybrid_regional).
 
-Nhãn: số tính từ engine = MODEL_OUTPUT; tham số Chính sách Lai & hệ số vùng = PROPOSAL; khác biệt hành vi vùng miền = HYPOTHESIS;
+Nhãn: số tính từ engine = MODEL_OUTPUT; tham số Chính sách Đề xuất 2026 & hệ số vùng = PROPOSAL; khác biệt hành vi vùng miền = HYPOTHESIS;
 "ROI" ở đây là chi phí / FYP và chi phí / phí còn duy trì — KHÔNG phải ROI thực tế (VNB, biên lợi nhuận, OpEx thật = UNKNOWN).
 Chạy:  python scripts/build_phase2.py
 """
@@ -76,7 +76,7 @@ def agent(scheme, fyp_m, k2, base, region="V1", track="FULL_TIME", with_renewal=
 
 def manager(scheme, fpa_fyp, k2, base, n_sub=0, n_grand=0, region="V1", direct=5, rank="UM", fyc_rate=FYC_RATE):
     """Quản lý có `direct` đại lý trực tiếp, n_sub quản lý con (mỗi người 5 ĐL), n_grand quản lý cháu.
-    Chính sách Lai tính phí quản lý trên FYC chuẩn hóa (FYP × 30%); 3 hãng tính trên FYC thật theo văn bản của họ."""
+    Chính sách Đề xuất 2026 tính phí quản lý trên FYC chuẩn hóa (FYP × 30%); 3 hãng tính trên FYC thật theo văn bản của họ."""
     fpa = fpa_fyp * (H.NORMALIZED_FYC_RATE if scheme == "Hybrid" else fyc_rate)
     team = fpa * direct
     sub_team = fpa * 5
@@ -183,7 +183,7 @@ def negative_proof() -> list:
 
 
 def sweep_hybrid(base, fyc_rate=FYC_RATE) -> list:
-    """Lưới quét điểm gãy Chính sách Lai: mỗi vùng × năng suất/ĐL (quanh quota vùng, các bậc thưởng tháng,
+    """Lưới quét điểm gãy Chính sách Đề xuất 2026: mỗi vùng × năng suất/ĐL (quanh quota vùng, các bậc thưởng tháng,
     ngưỡng nhất quán, MDRT, năng suất V1) × K2 {80, 85, 95}. Trả mọi điểm để kiểm trần ở điểm CAO NHẤT."""
     fpa0 = load_milestones()[3].fyp_per_agent
     pts = []
@@ -257,7 +257,7 @@ def compute() -> dict:
                            "unit": "% giảm chi trả", "label": lab, "note": "Chi trả giảm bao nhiêu khi K2 sập 85%→65% (cao = gắn chất lượng)", "confidentiality": conf})
 
     # ---------- Độ nhạy cơ cấu sản phẩm: tỷ lệ hoa hồng năm đầu 25% / 30% / 40% (AUD-03) ----------
-    # 40% ≈ cơ cấu nghiêng bảo vệ thuần/tử kỳ (>50% HĐ mới 9T/2026 — SOURCE_CLAIM). Chính sách Lai: thưởng/phí quản lý trên FYC chuẩn hóa
+    # 40% ≈ cơ cấu nghiêng bảo vệ thuần/tử kỳ (>50% HĐ mới 9T/2026 — SOURCE_CLAIM). Chính sách Đề xuất 2026: thưởng/phí quản lý trên FYC chuẩn hóa
     # + trần quỹ 75% (pool_scale = phần thưởng & phí quản lý biến đổi còn được trả). Kịch bản xấu nhất của Lai = lưới quét + mọi ĐL đạt quota.
     fpa0 = load_milestones()[3].fyp_per_agent
     out["fyc_sensitivity"] = []
@@ -302,7 +302,8 @@ def compute() -> dict:
         cliff[s] = (c80 - c79) / c80 * 100 if c80 else 0.0
         cite = {"AIA": "[AIAVAD 2601-034 : 3-5]", "Chubb": "[CHH0DCEB260008V : 5-7]", "Manulife": "[0047M01_2026 : 1-2]", "Hybrid": "PROPOSAL (hybrid_scheme.py)"}[s]
         trap(s, "self_vs_manage", "Tự bán vs quản lý thuần", mg2 - a1,
-             f"Đại lý Mốc 1 {vn(a1)} tr/th; quản lý nhóm 5 người (phí thuần) {vn(mg2)} tr/th → {'quản lý thu ÍT hơn tự bán' if mg2 < a1 else 'quản lý thu nhiều hơn tự bán'}", cite,
+             f"Đại lý Mốc 1 {vn(a1)} tr/th; quản lý nhóm 5 người (phí thuần) {vn(mg2)} tr/th → {'quản lý thu ÍT hơn tự bán' if mg2 < a1 else 'quản lý thu nhiều hơn tự bán'}"
+             + (" (chưa gồm khoản Duy trì chất lượng HĐ tính trên RYC — vì vậy thấp hơn cột Tổng của Chubb UM ở bảng 01)" if s == "Chubb" else ""), cite,
              "PROPOSAL" if s == "Hybrid" else "MODEL_OUTPUT")
         trap(s, "flat_team", "Bẫy giữ đội phẳng", fl3 / st3,
              f"Ban 15 ĐL: để phẳng (15 trực tiếp) {vn(fl3)} vs có 2 quản lý con {vn(st3)} tr/th → tỷ lệ {vn(fl3 / st3, 2)}×", cite,
@@ -327,7 +328,7 @@ def compute() -> dict:
     a80 = H.hybrid_agent_12m(30, 2, 80.0, "V1", "FULL_TIME", base)["total_earned"]
     a79 = H.hybrid_agent_12m(30, 2, 79.0, "V1", "FULL_TIME", base)["total_earned"]
     trap("Hybrid", "agent_k2_cliff", "Vách đá K2 của đại lý Full-time", (a80 - a79) / a80 * 100,
-         f"Đại lý Full-time 30tr FYP: K2 80% → 79% làm thu nhập năm giảm {vn((a80 - a79) / a80 * 100)}% ({vn(a80 / 12)} → {vn(a79 / 12)} tr/th) vì mất trọn trợ cấp",
+         f"Đại lý Full-time 30tr FYP: K2 80% → 79% làm thu nhập năm giảm {vn((a80 - a79) / a80 * 100)}% ({vn(a80 / 12)} → {vn(a79 / 12)} tr/th) vì mất trọn trợ cấp — số này không gồm tái tục; con số Mốc 1 ở bảng 01 gồm tái tục (A7) và tính ở K2 85% nên cao hơn",
          "PROPOSAL (hybrid_scheme.py)", "PROPOSAL")
     q1 = H.hybrid_agent_12m(30, 2, 85.0, "V1", "FULL_TIME", base)["total_earned"]
     q0 = H.hybrid_agent_12m(29.9, 2, 85.0, "V1", "FULL_TIME", base)["total_earned"]
@@ -378,7 +379,7 @@ def compute() -> dict:
                                   "confidentiality": "restricted" if s in CONF else "public"})
     out["weighted"] = {s: round(sum(r["weight"] * r["score"] for r in out["rubric"] if r["scheme"] == s), 2) for s in SCHEMES}
 
-    # ---------- Chính sách Lai theo vùng ----------
+    # ---------- Chính sách Đề xuất 2026 theo vùng ----------
     for reg, meta in H.REGIONS.items():
         c = meta["coef"]
         for basis, mult in (("national_fyp", 1.0), ("regional_fyp", c)):
@@ -407,17 +408,17 @@ def compute() -> dict:
 # =============================================================================
 def write_reports(d: dict) -> None:
     o, W = d["org"], d["weighted"]
-    names = {"AIA": "AIA Alpha", "Chubb": "Chubb Life", "Manulife": "Manulife", "Hybrid": "**Chính sách Lai (đề xuất)**"}
+    names = {"AIA": "AIA Alpha", "Chubb": "Chubb Life", "Manulife": "Manulife", "Hybrid": "**Chính sách Đề xuất 2026**"}
     L = []
     w = L.append
     w("# 02 — Phân tích hành vi, Trade-off & ROI 3 tầng (Giai đoạn 2)")
     w("")
-    w("> Sinh bởi `scripts/build_phase2.py` từ engine (baseline `90e7d10`, Codex PASS). Số 3 hãng = `MODEL_OUTPUT`; số Chính sách Lai = `PROPOSAL`. "
+    w("> Số 3 hãng = `MODEL_OUTPUT`; số Chính sách Đề xuất 2026 = `PROPOSAL`. "
       "**\"ROI\" ở đây là chi phí / FYP và chi phí / phí còn duy trì — KHÔNG phải ROI thực tế** (VNB, biên lợi nhuận, OpEx thật = `UNKNOWN`). "
-      "Số Manulife dựa trên 0046M01/0047M01 (`restricted`, DEC-14).")
+      "Số Manulife dựa trên 2 văn bản chính sách thu nhập 2026 của Manulife.")
     w("")
     w("**Mô hình tổ chức dùng chung (`ASSUMPTION`):** khu vực Mốc 4 — 45 đại lý × 26,7tr FYP/tháng (1,2 tỷ), 1 lãnh đạo (5 ĐL trực tiếp) + 2 trưởng ban (5 ĐL + 2 trưởng nhóm) + 6 trưởng nhóm. "
-      "Lãnh đạo: AIA PAF · Chubb RD · Manulife PSM/SM (đạt 100% chỉ tiêu) · Lai: lãnh đạo vùng. Chi phí năm đầu = hoa hồng FYC + thưởng + phí quản lý; không gồm tái tục.")
+      "Lãnh đạo: AIA PAF · Chubb RD · Manulife PSM/SM (đạt 100% chỉ tiêu) · Chính sách Đề xuất 2026: lãnh đạo vùng. Chi phí năm đầu = hoa hồng FYC + thưởng + phí quản lý; không gồm tái tục.")
     w("")
     w("## 1. ROI 3 tầng")
     w("")
@@ -438,14 +439,14 @@ def write_reports(d: dict) -> None:
     w("")
     if d.get("sweep"):
         sw = d["sweep"]
-        w(f"Lưới quét điểm gãy Chính sách Lai: {len(sw)} điểm ({len(H.REGIONS)} vùng × năng suất quanh quota vùng, mọi bậc thưởng tháng, ngưỡng nhất quán, MDRT, năng suất V1 × K2 80/85/95%); "
+        w(f"Lưới quét điểm gãy Chính sách Đề xuất 2026: {len(sw)} điểm ({len(H.REGIONS)} vùng × năng suất quanh quota vùng, mọi bậc thưởng tháng, ngưỡng nhất quán, MDRT, năng suất V1 × K2 80/85/95%); "
           f"{sum(1 for x in sw if x['cost_pct'] > H.COST_CAP_PCT_FYP)} điểm vượt trần {int(H.COST_CAP_PCT_FYP)}%. "
-          "Sửa theo Codex P1 (9dea455): bản trước bỏ sót kịch bản V3 đạt đúng quota vùng (76,2% — VƯỢT); nay trợ cấp Full-time nhân hệ số vùng và mọi ngưỡng đại lý giãn theo vùng.")
+          "Bản nháp trước bỏ sót kịch bản V3 đạt đúng quota vùng (76,2% — VƯỢT); bản này đã nhân trợ cấp Full-time theo hệ số vùng và giãn mọi ngưỡng đại lý theo vùng.")
         w("")
     if d.get("fyc_sensitivity"):
         fs = {(r["scheme"], r["rate"]): r for r in d["fyc_sensitivity"]}
         w("**Độ nhạy cơ cấu sản phẩm — tỷ lệ hoa hồng năm đầu 25% / 30% / 40% FYP** (40% ≈ nghiêng bảo vệ thuần/tử kỳ, >50% HĐ mới 9T/2026 — `SOURCE_CLAIM`). "
-          "Chính sách Lai tính thưởng & phí quản lý trên **FYC chuẩn hóa = FYP × 30%** (hoa hồng vẫn theo sản phẩm) và có **trần quỹ thu nhập cây đại lý 75% FYP**: "
+          "Chính sách Đề xuất 2026 tính thưởng & phí quản lý trên **FYC chuẩn hóa = FYP × 30%** (hoa hồng vẫn theo sản phẩm) và có **trần quỹ thu nhập cây đại lý 75% FYP**: "
           "vượt trần thì thưởng & phí quản lý biến đổi co theo cùng tỷ lệ. 3 hãng trả trên FYC thật theo văn bản của họ. "
           "Trần 75% là trần quỹ thu nhập cây đại lý, KHÔNG phải tổng chi phí khai thác trên BCTC (gồm thêm văn phòng, marketing, bancassurance — wheel-check r2 câu 3).")
         w("")
@@ -456,12 +457,13 @@ def write_reports(d: dict) -> None:
             pool = f"{vn(r40['pool_scale_worst'] * 100)}%" if s == "Hybrid" else "—"
             w(f"| {names[s]} | {vn(r25['std'])}% | {vn(r25['worst'])}% | {vn(r30['std'])}% | {vn(r30['worst'])}% | {vn(r40['std'])}% | {vn(r40['worst'])}% | {pool} | {SCHEME_SRC[s]} | `{'PROPOSAL' if s == 'Hybrid' else 'MODEL_OUTPUT'}` |")
         w("")
-    w(f"- **Tầng 1:** trần đề xuất 75% FYP, kiểm ở kịch bản xấu nhất. Chính sách Lai {vn(o['Hybrid']['worst']['cost_pct'])}% ({o['Hybrid']['worst_name']}) → {'**ĐẠT**' if d['cost_cap_ok'] else '**VƯỢT**'} trần, khoảng dư chỉ {vn(d['cost_cap_headroom'])} điểm %. Rủi ro định phí thật của Chính sách Lai là khi **nhiều** đại lý đạt quota, không phải khi năng suất giảm.")
+    w(f"- **Tầng 1:** trần đề xuất 75% FYP, kiểm ở kịch bản xấu nhất. Chính sách Đề xuất 2026 {vn(o['Hybrid']['worst']['cost_pct'])}% ({o['Hybrid']['worst_name']}) → {'**ĐẠT**' if d['cost_cap_ok'] else '**VƯỢT**'} trần, khoảng dư chỉ {vn(d['cost_cap_headroom'])} điểm %. Rủi ro định phí thật của Chính sách Đề xuất 2026 là khi **nhiều** đại lý đạt quota, không phải khi năng suất giảm.")
     w("- **Điều 52 TT 67/2023** (thưởng + hỗ trợ đại lý, không gồm hoa hồng, ≤ 30% FYP phí định kỳ — `CONDITIONAL`): "
       + " · ".join(f"{names[s]} {vn(o[s]['k85']['art52_pct'])}% (xấu nhất {vn(o[s]['worst']['art52_pct'])}%)" for s in SCHEMES)
-      + f" — {'tất cả **ĐẠT**' if all(o[s]['worst']['art52_pct'] <= 30 for s in SCHEMES) else '**CÓ PHƯƠNG ÁN VƯỢT**'}. Phí quản lý tính là phí dịch vụ (NĐ 97/2026), cùng định nghĩa với mô hình enterprise. `MODEL_OUTPUT` / Lai `PROPOSAL`.")
+      + f" — {'tất cả **ĐẠT**' if all(o[s]['worst']['art52_pct'] <= 30 for s in SCHEMES) else '**CÓ PHƯƠNG ÁN VƯỢT**'}. Phí quản lý tính là phí dịch vụ (NĐ 97/2026), cùng định nghĩa với mô hình enterprise. `MODEL_OUTPUT` / Chính sách Đề xuất 2026 `PROPOSAL`.")
+    w(f"  - Vì sao Chính sách Đề xuất 2026 nhảy từ {vn(o['Hybrid']['k85']['art52_pct'])}% lên {vn(o['Hybrid']['worst']['art52_pct'])}%: kịch bản xấu nhất ({o['Hybrid']['worst_name']}) là đại lý năng suất rất cao, chạm bậc thưởng tháng cao nhất và MDRT, nên phần thưởng (không gồm hoa hồng) tăng mạnh so với FYP; ở mốc chuẩn 26,7tr FYP/ĐL đa số đại lý chỉ ở bậc thưởng thấp. Mức xấu nhất vẫn dưới trần 30%, khoảng dư {vn(30 - o['Hybrid']['worst']['art52_pct'])} điểm %.")
     w("- **Tầng 2:** chi phí trên mỗi đồng phí còn duy trì sang năm 2 = chi phí ÷ (FYP × K2). Khi K2 sập 85%→65%, phương án gắn thưởng với K2 tốt thì chi trả **giảm theo**; phương án yếu thì chi phí trên phí còn lại **tăng vọt**.")
-    w("- **Tầng 3:** phần trả các năm sau (AIA thưởng năm 15/25/60% đến 2030; Manulife phí dài hạn 30/30/40%, M-Star năm trả tháng 2 năm sau; Lai trả chậm khi K2 ≥80%) giữ người và giảm áp lực tiền mặt năm 1.")
+    w("- **Tầng 3:** phần trả các năm sau (AIA thưởng năm 15/25/60% đến 2030; Manulife phí dài hạn 30/30/40%, M-Star năm trả tháng 2 năm sau; Chính sách Đề xuất 2026 trả chậm khi K2 ≥80%) giữ người và giảm áp lực tiền mặt năm 1.")
     w("")
     w("## 2. Bẫy hành vi (Gaming) & điểm gãy")
     w("")
@@ -488,11 +490,11 @@ def write_reports(d: dict) -> None:
     for s in SCHEMES:
         w(f"- **{names[s]}:** " + "; ".join(f"*{r['pillar']}* — {r['evidence']} (`{r['label']}`)" for r in d["rubric"] if r["scheme"] == s))
     w("")
-    w("> **Lưu ý thiên lệch:** bậc đệm K2 75–80% và trần đội phẳng của Chính sách Lai được thêm SAU khi đo bằng chính rubric này — thiết kế đã được hiệu chỉnh theo thước đo, nên rubric không phải phép thử khách quan cho Chính sách Lai. "
-      "Độ nhạy (tự kiểm toán): chấm Vận hành & Pháp lý của Lai ở 2,0 (chưa đối chiếu pháp lý) thì điểm giảm 0,225.")
+    w("> **Lưu ý thiên lệch:** bậc đệm K2 75–80% và trần đội phẳng của Chính sách Đề xuất 2026 được thêm SAU khi đo bằng chính rubric này — thiết kế đã được hiệu chỉnh theo thước đo, nên rubric không phải phép thử khách quan cho Chính sách Đề xuất 2026. "
+      "Độ nhạy: chấm Vận hành & Pháp lý của Chính sách Đề xuất 2026 ở 2,0 (chưa đối chiếu pháp lý) thì điểm giảm 0,225.")
     w("")
     w("> 3 trụ cột đầu tính bằng công thức công khai ở trên; *Độ đơn giản* đếm khoản phí theo mục lục văn bản; *Vận hành & Pháp lý* là đánh giá có dẫn chứng (`JUDGEMENT`). "
-      "Điểm Chính sách Lai là **tự chấm của bên thiết kế** — cần kiểm toán độc lập (Codex) trước khi dùng làm kết luận.")
+      "Điểm Chính sách Đề xuất 2026 là **tự chấm của bên thiết kế** — cần một bên độc lập chấm lại trước khi dùng làm kết luận.")
     w("")
     w("## 4. Ghi chú độ nhạy Manulife MBA Pro (`HYPOTHESIS`)")
     w("")
@@ -503,7 +505,7 @@ def write_reports(d: dict) -> None:
     o = d["org"]   # AUD D6 (audit r1): dùng CÙNG mô hình khu vực 45 ĐL của báo cáo này, không kéo số từ mô hình 1 vùng 12 tỷ
     w("Rổ thưởng + hỗ trợ đại lý / FYP trên mô hình khu vực 45 ĐL (ngưỡng 30% Điều 52, `CONDITIONAL / SOURCE_NOT_VERIFIED`): " +
       ", ".join(f"{s} {vn(o[s]['k85']['art52_pct'])}% (xấu nhất {vn(o[s]['worst']['art52_pct'])}%)" for s in SCHEMES) +
-      ". Từ 01/01/2027, Điều 17 TT 96/2026 thêm trần 7% cho phí nộp 1 lần (`SOURCE_CLAIM`, wheel-check r2). Cần Pháp chế đối chiếu ảnh trang Điều 51–52 trong 44/2026/VBHN-TT-BTC trước khi ban hành.")
+      ". Từ 01/01/2027, Điều 17 TT 96/2026 thêm trần 7% cho phí nộp 1 lần (`SOURCE_CLAIM`). Cần Pháp chế đối chiếu ảnh trang Điều 51–52 trong 44/2026/VBHN-TT-BTC trước khi ban hành.")
     w("")
     w("## 6. Negative Proof — kết luận \"không có trong nguồn\" của báo cáo này")
     w("")
@@ -513,14 +515,14 @@ def write_reports(d: dict) -> None:
         hits = "; ".join(f"{fid}: " + ", ".join(f"`{k}` {pp}" for k, pp in pages.items() if pp) for fid, _, pages in np_["log"] if any(pages.values())) or "0 trang"
         w(f"| {np_['claim']} | {np_['files_scanned']}/9 file (tên file + toàn văn từng trang) | {'CÓ' if np_['is_a_source_file'] else 'KHÔNG'} | {hits} |")
     w("")
-    w("## 7. Tự chấm rubric 100 điểm (`qa/data-ingestion-rubric.md`)")
+    w("## 7. Phụ lục — Kiểm tra độ phủ trích dẫn (máy tự đếm)")
     w("")
     tbl, tot = rubric_table(len(FILE_IDS), 15, 15, 3, 3, d["ev02"]["cited"], d["ev02"]["numeric"],
                             sum(1 for x in d["negative_proof"] if not x["is_a_source_file"]), len(d["negative_proof"]), d["ev02"]["labelled"], d["ev02"]["numeric"])
     w(tbl)
     w("")
     w("Tiêu chí 1 theo kiểm kê `00_Role_Mapping_Audit.md` (9/9 file khớp SHA-256, 15/15 trang scan). Tiêu chí 2: 3 chức danh lãnh đạo Mốc 4 (AIA PAF, Chubb RD, Manulife PSM/SM) lấy từ ma trận `00_Role_And_Benefit_Matrix.md`. "
-      "Tiêu chí 3/5 đếm tự động mọi dòng bảng có số ở mục 1–2 (dòng Chính sách Lai trích `PROPOSAL (hybrid_scheme.py)` vì không có trong PDF).")
+      "Tiêu chí 3/5 đếm tự động mọi dòng bảng có số ở mục 1–2 (dòng Chính sách Đề xuất 2026 trích `PROPOSAL (hybrid_scheme.py)` vì không có trong PDF).")
     d["rubric02"] = tot
     OUT02.write_text("\n".join(L) + "\n", encoding="utf-8")
 
@@ -528,7 +530,7 @@ def write_reports(d: dict) -> None:
     P = d["params"]
     L = []
     w = L.append
-    w("# 03 — Đề xuất Chính sách Lai VN 2026 (Hybrid Scheme) & Phân vùng")
+    w("# 03 — Chính sách Đề xuất 2026 & Phân vùng")
     w("")
     w("> `PROPOSAL` — không phải chính sách đã ban hành. Sinh bởi `scripts/build_phase2.py`; tham số ở `model/compensation/hybrid_scheme.py`. "
       "Kế thừa bộ tham số **Song Hành** đã hiệu chỉnh (không thấp nhất thị trường ở mọi tầng, K2 ~75–90%).")
@@ -540,7 +542,7 @@ def write_reports(d: dict) -> None:
     w(f"| Đường ray **Full-time** (cam kết) | Thưởng tháng 100% bậc Song Hành + trợ cấp cam kết {vn(P['ft_allowance'])}tr/tháng (Vùng 1; vùng khác × hệ số vùng) khi FYP ≥ quota vùng, ≥{P['ft_cc']} HĐ/tháng và K2 ≥{int(P['k2_gate'])}% | Nuôi quân có điều kiện như AIA Exchange nhưng có cổng chất lượng; phần cố định nhỏ |")
     w(f"| Đường ray **Part-time** (thuần biến phí) | Thưởng tháng {int(P['pt_mult'] * 100)}% bậc Song Hành, không trợ cấp | Không phát sinh định phí cho người bán không đều |")
     w(f"| **Chốt chặn K2 ≥ {int(P['k2_gate'])}%** | Trợ cấp Full-time chỉ khi K2 ≥{int(P['k2_gate'])}%; phần trả chậm nhận ĐỦ khi K2 ≥{int(P['k2_gate'])}%, 50% khi 75–<80%, 0 khi <75%; thưởng tháng theo hệ số K2 liên tục (sàn {vn(P['song_hanh']['k2_hard_floor_pct'], 0)}%) | Bản thử đầu (cắt hết dưới 80%) tạo vách đá −37,5% ở quản lý nhóm — lớn nhất trong 4 phương án; bậc đệm 75–80% giảm vách đá mà vẫn khóa phần thưởng lớn vào chất lượng |")
-    w(f"| Giảm (chưa xóa) bẫy đội phẳng | Override nhóm trực tiếp đủ tỷ lệ tới {vn(H.DIRECT_FULL_RATE_CAP_FYC, 0)}tr FYC/tháng (không giãn theo vùng), phần vượt {int(H.DIRECT_EXCESS_RATE_SHARE * 100)}% | Cả 3 hãng trả cho đội phẳng nhiều hơn đội có quản lý con (mục 2 của 02); với Chính sách Lai tỷ lệ vẫn > 1 — chỉ giảm, chưa xóa |")
+    w(f"| Giảm (chưa xóa) bẫy đội phẳng | Override nhóm trực tiếp đủ tỷ lệ tới {vn(H.DIRECT_FULL_RATE_CAP_FYC, 0)}tr FYC/tháng (không giãn theo vùng), phần vượt {int(H.DIRECT_EXCESS_RATE_SHARE * 100)}% | Cả 3 hãng trả cho đội phẳng nhiều hơn đội có quản lý con (mục 2 của 02); với Chính sách Đề xuất 2026 tỷ lệ vẫn > 1 — chỉ giảm, chưa xóa |")
     w(f"| Quản lý | Override {vn(P['song_hanh']['mgr_direct_base_rate'] * 100)}% × hệ số K2 (trần {vn(P['song_hanh']['mgr_direct_max_rate'] * 100)}%) FYC nhóm; gián tiếp 2 đời ({vn(P['song_hanh']['mgr_indirect_l1_rate'] * 100)}% / ½), cổng FYC nhóm ≥ {vn(P['song_hanh']['mgr_indirect_gate_fyc'])}tr × hệ số vùng; trả chậm {vn(P['song_hanh']['mgr_deferred_3y_rate'] * 100)}% FYC nhóm | Học cổng 15tr của Chubb, bỏ chuỗi gián tiếp vô hạn |")
     w(f"| Lãnh đạo vùng | Phí cơ bản {vn(P['song_hanh']['rd_base_monthly'])}tr × % đạt chỉ tiêu (sàn 30%, trần 140%) + override {vn(P['song_hanh']['rd_direct_fyc_rate'] * 100, 2)}% FYC vùng × K2; {vn(P['song_hanh']['rd_deferred_3y_share'] * 100, 0)}% override trả chậm | Học Manulife: phí cơ bản gắn chỉ tiêu, không cố định cứng |")
     w(f"| Trần chi phí | Tổng chi / FYP ≤ {int(P['cost_cap'])}% ở kịch bản XẤU NHẤT | Kiểm tự động: chuẩn {vn(o['Hybrid']['k85']['cost_pct'])}%; xấu nhất ({o['Hybrid']['worst_name']}) {vn(o['Hybrid']['worst']['cost_pct'])}% → {'ĐẠT' if d['cost_cap_ok'] else 'VƯỢT'}, dư {vn(d['cost_cap_headroom'])} điểm % |")
@@ -552,7 +554,7 @@ def write_reports(d: dict) -> None:
     for reg, meta in H.REGIONS.items():
         w(f"| {meta['name']} | {vn(meta['coef'] * 100, 1)}% | {vn(P['ft_quota'] * meta['coef'])} | {vn(P['ft_allowance'] * meta['coef'], 2)} | {vn(P['leader_target'] * meta['coef'], 0)} | ≥{P['ft_cc']} HĐ/tháng; K2 ≥{int(P['k2_gate'])}% — PROPOSAL (hybrid_scheme.py) `PROPOSAL` |")
     w("")
-    w("Hệ số giãn **mọi ngưỡng FYP/FYC** của Chính sách Lai: quota, bậc thưởng tháng, ngưỡng thưởng nhất quán (4tr FYC/tháng), MDRT (400tr FYC/năm), thưởng nhập môn (8tr), cổng gián tiếp, chỉ tiêu lãnh đạo; và **trợ cấp Full-time** (3tr × hệ số). "
+    w("Hệ số giãn **mọi ngưỡng FYP/FYC** của Chính sách Đề xuất 2026: quota, bậc thưởng tháng, ngưỡng thưởng nhất quán (4tr FYC/tháng), MDRT (400tr FYC/năm), thưởng nhập môn (8tr), cổng gián tiếp, chỉ tiêu lãnh đạo; và **trợ cấp Full-time** (3tr × hệ số). "
       "**Không giãn:** tỷ lệ %, số hợp đồng, K2, và trần override đội phẳng 60tr FYC (nhắm vào quy mô đội, không phải năng suất). "
       "Hệ số = lương tối thiểu vùng 2026 theo NĐ 293/2025/NĐ-CP (5,31 / 4,73 / 4,14 / 3,70 tr/tháng → 100 / 89 / 78 / 70%) — `SOURCE_CLAIM` (wheel-check r2 câu 5); thay bộ tự đặt 100 / 82,5 / 67,5% trước đây. "
       "Đối chiếu thu nhập bình quân đầu người VHLSS 2025: thành phố lớn 84–87% Hà Nội/TP.HCM, cả nước 73%, miền núi 31–50% → Vùng IV 70% vẫn cao so với tỉnh miền núi nghèo nhất (`HYPOTHESIS`: có thể cần bậc thứ 5).")
@@ -562,7 +564,7 @@ def write_reports(d: dict) -> None:
     w("Hai cách đọc: **cùng FYP** (cùng năng suất ở mọi vùng) và **FYP vùng** (năng suất điển hình = FYP mốc × hệ số vùng). Đại lý = thu nhập cá nhân gồm tái tục (A7, cùng cơ sở bảng 01); quản lý = phí quản lý thuần.")
     w("")
     w("| Vai trò | " + " | ".join(f"{reg} cùng FYP | {reg} FYP vùng" for reg in H.REGIONS) + " | Nguồn |")
-    w("|---|" + "---:|" * 6 + "---|")
+    w("|---|" + "---:|" * (2 * len(H.REGIONS)) + "---|")
     roles = []
     for r in d["regional"]:
         if (r["milestone_id"], r["track"], r["role"]) not in roles:
@@ -577,7 +579,7 @@ def write_reports(d: dict) -> None:
     w("")
     w("## 4. Đáp ứng khác biệt vùng miền (`HYPOTHESIS` — repo không có dữ liệu hành vi theo vùng)")
     w("")
-    w("| Miền | Giả thuyết hành vi | Cơ chế trong Chính sách Lai |")
+    w("| Miền | Giả thuyết hành vi | Cơ chế trong Chính sách Đề xuất 2026 |")
     w("|---|---|---|")
     w("| Bắc | Trọng hệ thống, danh hiệu, lộ trình thăng tiến | Lộ trình quản lý 2 đời rõ ràng; trả chậm gắn K2 như \"danh hiệu bền\"; quota vùng 1 cho Hà Nội |")
     w("| Trung | K2 cao, hợp đồng nhỏ, năng suất thấp hơn | Hệ số vùng 2/3 hạ quota nhưng **giữ CC và K2**; thưởng tháng theo hệ số K2 liên tục thưởng chất lượng |")
@@ -590,7 +592,7 @@ def write_reports(d: dict) -> None:
     for s in sorted(SCHEMES, key=lambda x: -W[x]):
         w(f"| {names[s]} | {vn(W[s], 2)} — {SCHEME_SRC[s]} `{'PROPOSAL' if s == 'Hybrid' else 'MODEL_OUTPUT'}` |")
     w("")
-    w("Chi tiết trụ cột và công thức: `02_Phan_Tich_MAPA_TradeOff_Va_ROI.md` mục 3. **Lưu ý:** điểm Chính sách Lai do bên thiết kế tự chấm; trụ cột Vận hành & Pháp lý là đánh giá; pháp lý `CONDITIONAL`.")
+    w("Chi tiết trụ cột và công thức: `02_Phan_Tich_MAPA_TradeOff_Va_ROI.md` mục 3. **Lưu ý:** điểm Chính sách Đề xuất 2026 do bên thiết kế tự chấm; trụ cột Vận hành & Pháp lý là đánh giá; pháp lý `CONDITIONAL`.")
     w("")
     w("## 6. Rủi ro & việc TJ cần quyết")
     w("")
@@ -598,11 +600,11 @@ def write_reports(d: dict) -> None:
     w(f"2. Trợ cấp Full-time {vn(P['ft_allowance'])}tr/tháng và quota — phần cố định duy nhất; nếu tỷ lệ đạt quota thấp, chi phí thấp hơn mô hình.")
     w("3. Pháp lý: tỷ lệ thưởng/FYP và hợp đồng hộ kinh doanh cần Pháp chế đối chiếu toàn văn trước khi ban hành.")
     vr = {reg: next(r for r in d["regional"] if r["region"] == reg and r["track"] == "FULL_TIME" and r["milestone_id"] == "M1" and r["basis"] == "national_fyp")["income_vnd_m_month"] for reg in H.REGIONS}
-    w(f"4. **Rủi ro lách vùng (chưa có kiểm soát — TJ chọn):** cùng năng suất, đại lý vùng thấp nhất ({list(H.REGIONS)[-1]}) nhận {vn(vr[list(H.REGIONS)[-1]])} so với V1 {vn(vr['V1'])} tr/tháng và chi phí tổ chức tăng lên mức kịch bản xấu nhất ở 02 — tạo động cơ đăng ký mã vùng thấp hơn nơi bán thật. "
+    w(f"4. **Rủi ro lách vùng (chưa có kiểm soát — cần chọn 1 trong 3 cách dưới đây trước khi thí điểm):** cùng năng suất, đại lý vùng thấp nhất ({list(H.REGIONS)[-1]}) nhận {vn(vr[list(H.REGIONS)[-1]])} so với V1 {vn(vr['V1'])} tr/tháng và chi phí tổ chức tăng lên mức kịch bản xấu nhất ở 02 — tạo động cơ đăng ký mã vùng thấp hơn nơi bán thật. "
       "Lựa chọn: (a) gắn vùng theo địa chỉ bên mua bảo hiểm của từng hợp đồng; (b) gắn theo văn phòng quản lý, kiểm tra chéo tỷ lệ hợp đồng ngoài vùng; (c) trần: đại lý vượt 120% quota vùng 3 tháng liên tiếp chuyển sang ngưỡng vùng trên.")
-    w("5. Vách đá cấp đại lý còn lại (mục 2 của 02): mất K2 80% hoặc thiếu 0,1tr quota làm mất trọn trợ cấp. Giữ nguyên vì là chốt chặn TJ chỉ định; nếu muốn mềm hơn, TJ quyết có cho trợ cấp giảm dần hay không.")
+    w("5. Vách đá cấp đại lý còn lại (mục 2 của 02): mất K2 80% hoặc thiếu 0,1tr quota làm mất trọn trợ cấp. Giữ nguyên có chủ đích vì đây là chốt chặn chất lượng hồ sơ; phương án mềm hơn (trợ cấp giảm dần thay vì mất trọn) để ngỏ cho giai đoạn thí điểm.")
     w("")
-    w("## 7. Tự chấm rubric 100 điểm (`qa/data-ingestion-rubric.md`)")
+    w("## 7. Phụ lục — Kiểm tra độ phủ trích dẫn (máy tự đếm)")
     w("")
     w("Báo cáo này là `PROPOSAL`: mọi tham số lấy từ `hybrid_scheme.py` / bộ Song Hành, không từ PDF; các con số đối chiếu 3 hãng nằm ở 02 (đã trích). "
       "Tiêu chí 3 đếm dòng bảng có số mang nguồn (PDF hoặc `PROPOSAL`); tiêu chí 5 đếm dòng có nhãn.")

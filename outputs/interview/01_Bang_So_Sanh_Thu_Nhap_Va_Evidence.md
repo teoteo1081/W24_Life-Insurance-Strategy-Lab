@@ -21,7 +21,7 @@
 | Mốc 4 — Khu vực 45 người | Chubb | **RD** (bổ nhiệm) · 186,6 — *so sánh chính* | RD bổ nhiệm theo hợp đồng [CHH0DCEB260003V : 3]; chức danh đạt bằng chỉ tiêu là BD [CHH0DCEB260007V : 7] | [CHH0DCEB260003V : 5-10] | Phụ (tuyến quản lý truyền thống): DM 134,6 [CHH0DCEB260008V : 5-10]. BD: biểu phí không có trong nguồn — Negative Proof `00_Role_Mapping_Audit.md` mục 4.3 | `MODEL_OUTPUT` |
 | Mốc 4 — Khu vực 45 người | Manulife | **PSM/SM** (bổ nhiệm) · 105,1 — *so sánh chính* | PSM+ bổ nhiệm; điều kiện bậc ở 0013M04/2024 (không có) [0048M01_2026 : 5] | [0048M01_2026 : 1-5] | Đạt 100% chỉ tiêu là giả định A8. Phụ: UM+ 28,9 [0047M01_2026 : 1-3] | `MODEL_OUTPUT` |
 
-> **Mốc 2–4 là PHÍ QUẢN LÝ THUẦN, KHÔNG gồm hoa hồng/thưởng tự bán của quản lý** (giả định A3). Vì vậy Mốc 2 của AIA (17,6) và Manulife (11,0) thấp hơn Mốc 1 (đại lý tự bán 30tr FYP). Nếu quản lý vẫn tự bán như Mốc 1, cộng thêm khoảng: AIA 18,1, Chubb 22,5, Manulife 17,8 tr/tháng. Mốc 4 so sánh chính theo tuyến lãnh đạo vùng (AIA PAF · Chubb RD · Manulife PSM/SM) — TJ chọn ngày 2026-11-27; số tuyến quản lý truyền thống (Chubb DM · Manulife UM+) ở cột ghi chú.
+> **Mốc 2–4 là PHÍ QUẢN LÝ THUẦN, KHÔNG gồm hoa hồng/thưởng tự bán của quản lý** (giả định A3). Vì vậy Mốc 2 của AIA (17,6) và Manulife (11,0) thấp hơn Mốc 1 (đại lý tự bán 30tr FYP). Nếu quản lý vẫn tự bán như Mốc 1, cộng thêm khoảng: AIA 18,1, Chubb 22,5, Manulife 17,8 tr/tháng. Mốc 4 so sánh chính theo tuyến lãnh đạo vùng (AIA PAF · Chubb RD · Manulife PSM/SM); số tuyến quản lý truyền thống (Chubb DM · Manulife UM+) ở cột ghi chú.
 
 ### 1.1. Giải trình các ô ❓ và số tham chiếu
 
@@ -174,7 +174,7 @@ Base case = **không có danh hiệu** (tiêu chí ở 0050M01/2026 và 0011M04/
 3. Mốc 4: so sánh chính **AIA PAF · Chubb RD · Manulife PSM/SM**; số phụ **Chubb DM · Manulife UM+**.
 4. Bảo mật: chỉ commit local, **không push** (0046M01 D.3 và 0047M01 B.4 ghi thông tin mật).
 
-## 6. Tự chấm rubric 100 điểm (`qa/data-ingestion-rubric.md`)
+## 6. Phụ lục — Kiểm tra độ phủ trích dẫn (máy tự đếm)
 
 | # | Tiêu chí (`qa/data-ingestion-rubric.md`) | Điểm | Tối đa | Căn cứ đo được |
 |---|---|---:|---:|---|
@@ -183,6 +183,6 @@ Base case = **không có danh hiệu** (tiêu chí ở 0050M01/2026 và 0011M04/
 | 3 | Trích dẫn `[File : Trang]` cho từng con số | 18.9 | 20 | 71/75 dòng có số mang trích dẫn đúng mẫu |
 | 4 | Negative Proof | 15.0 | 15 | 1/1 kết luận "không có trong tài liệu" kèm nhật ký tìm kiếm |
 | 5 | Tách Fact / Assumption | 15.0 | 15 | 99/99 dòng có nhãn phân loại |
-| | **Tổng** | **98.9** | **100** | **PASS** (ngưỡng 90) — `SELF_VERIFIED`, chưa phải kiểm toán độc lập |
+| | **Tổng** | **98.9** | **100** | **PASS** (ngưỡng 90) — máy đếm trên chính các bảng, đo độ phủ trích dẫn & nhãn, không phải điểm chất lượng phân tích |
 
 Tiêu chí 1–2 dựa trên kiểm kê của `00_Role_Mapping_Audit.md` (9/9 file khớp hash, 15/15 trang scan; chức danh mỗi mốc suy từ điều kiện có trích dẫn). Tiêu chí 3 đếm các dòng có số ở mục 3; dòng giả định thuần (hoa hồng theo A1, tái tục theo A7) không có trang nguồn nên bị trừ điểm.

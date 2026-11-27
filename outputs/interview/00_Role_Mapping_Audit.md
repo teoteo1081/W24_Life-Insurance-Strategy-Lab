@@ -213,7 +213,7 @@ Mốc định nghĩa trong `knowledge/policies/scale-milestones.json`. Giả đ�
 
 Ghi chú: Chubb **BD** (Mốc 4) có điều kiện thăng cấp `[CHH0DCEB260007V : 7]` nhưng **biểu phí BD không có trong nguồn** (mục 4.3). Chubb **RD** và Manulife **PSM+/HKD** là bổ nhiệm theo hợp đồng dịch vụ, không có lộ trình định lượng từ tuyến đại lý trong 9 PDF. Manulife: Đại Lý → UM+ → PSM+/HKD là các tuyến hợp đồng; điều kiện chuyển bậc ở 0013M04/2024 (không có trong nguồn, nhật ký 4.3).
 
-## 6. Tự chấm rubric 100 điểm
+## 6. Phụ lục — Kiểm tra độ phủ trích dẫn (máy tự đếm)
 
 | # | Tiêu chí (`qa/data-ingestion-rubric.md`) | Điểm | Tối đa | Căn cứ đo được |
 |---|---|---:|---:|---|
@@ -222,5 +222,5 @@ Ghi chú: Chubb **BD** (Mốc 4) có điều kiện thăng cấp `[CHH0DCEB26000
 | 3 | Trích dẫn `[File : Trang]` cho từng con số | 20.0 | 20 | 41/41 dòng có số mang trích dẫn đúng mẫu |
 | 4 | Negative Proof | 15.0 | 15 | 4/4 kết luận "không có trong tài liệu" kèm nhật ký tìm kiếm |
 | 5 | Tách Fact / Assumption | 15.0 | 15 | 94/94 dòng có nhãn phân loại |
-| | **Tổng** | **100.0** | **100** | **PASS** (ngưỡng 90) — `SELF_VERIFIED`, chưa phải kiểm toán độc lập |
+| | **Tổng** | **100.0** | **100** | **PASS** (ngưỡng 90) — máy đếm trên chính các bảng, đo độ phủ trích dẫn & nhãn, không phải điểm chất lượng phân tích |
 
