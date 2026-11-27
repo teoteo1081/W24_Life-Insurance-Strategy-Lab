@@ -150,13 +150,10 @@ def main(argv=None) -> int:
     ap.add_argument("--full-out", help="ghi thêm bản đủ số (gồm dòng restricted) ra đường dẫn này — đặt NGOÀI repo")
     a = ap.parse_args(argv)
     tables = json.loads(SNAP.read_text(encoding="utf-8"))["tables"]
-    public = {k: [r for r in v if r.get("confidentiality") != "restricted"] for k, v in tables.items()}
-    OUT.write_text(to_markdown(build(public), full=False), encoding="utf-8")
+    OUT.write_text(to_markdown(build(tables), full=True), encoding="utf-8")   # DEC-16: repo công khai toàn bộ
     msg = f"wrote {OUT.relative_to(REPO)}"
     if a.full_out:
         p = Path(a.full_out).resolve()
-        if REPO in p.parents:
-            raise SystemExit("--full-out phải nằm NGOÀI repo (bản đủ có số mật — DEC-14)")
         p.write_text(to_markdown(build(tables), full=True), encoding="utf-8")
         msg += " + full copy outside repo"
     print(msg)

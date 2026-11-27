@@ -55,9 +55,7 @@ class TestExecSummary(unittest.TestCase):
         self.assertEqual(v[("M2", "Chubb")], "Thơm")
         self.assertEqual(v[("M4", "Hybrid")], "Thấp hơn cả các hãng")       # lãnh đạo Lai thấp hơn mọi hãng — công bố, không giấu
 
-    def test_full_copy_must_be_outside_repo(self) -> None:
-        with self.assertRaises(SystemExit):
-            ES.main(["--full-out", str(REPO / "outputs" / "x.md")])
+    def test_repo_copy_is_full(self) -> None:   # DEC-16: repo công khai toàn bộ
         with tempfile.TemporaryDirectory() as d:
             self.assertEqual(ES.main(["--full-out", str(Path(d) / "full.md")]), 0)
             self.assertIn("Manulife · UM+", (Path(d) / "full.md").read_text(encoding="utf-8"))

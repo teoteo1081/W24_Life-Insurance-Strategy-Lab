@@ -1,6 +1,6 @@
 # Chính sách thu nhập đại lý BHNT tại Việt Nam 2026 — Khuyến nghị điều hành (Bước 1)
 
-> **Gói A — bản công khai.** Số liệu sinh tự động từ cùng nguồn với trang tương tác *W24 Strategy Lab* (`web/data/snapshot.json`); không gõ tay. Nhãn: `MODEL_OUTPUT` = kết quả mô phỏng · `PROPOSAL` = đề xuất, chưa ban hành · `ASSUMPTION` = giả định · `HYPOTHESIS` = giả thuyết cần thí điểm · `CONDITIONAL` / `SOURCE_CLAIM` = pháp lý chờ đối chiếu toàn văn. Bản này đã lược Manulife tầng đại lý và quản lý nhóm (2 văn bản ghi “thông tin mật”); Manulife tầng lãnh đạo vùng (0048M01) vẫn có.
+> **Gói A.** Số liệu sinh tự động từ cùng nguồn với trang tương tác *W24 Strategy Lab* (`web/data/snapshot.json`); không gõ tay. Nhãn: `MODEL_OUTPUT` = kết quả mô phỏng · `PROPOSAL` = đề xuất, chưa ban hành · `ASSUMPTION` = giả định · `HYPOTHESIS` = giả thuyết cần thí điểm · `CONDITIONAL` / `SOURCE_CLAIM` = pháp lý chờ đối chiếu toàn văn.
 
 **Đề bài:** “Phân tích các chính sách thu nhập giữa các công ty, và đề xuất chính sách phù hợp tại thị trường VN, nhằm thúc đẩy gia tăng doanh số, chất lượng kinh doanh và hiệu quả về mặt chi phí (ROI).”
 
@@ -8,11 +8,11 @@
 
 | Vế đề bài | Kết luận | Số chính (K2 85%, khu vực 45 đại lý) | Xem |
 |---|---|---|---|
-| Phân tích chính sách các công ty | Ở đại lý cá nhân các hãng trả gần ngang nhau; khác biệt nằm ở tầng quản lý và ở việc chi trả có co theo chất lượng hay không. | AIA Alpha 58,4% FYP · Chubb Life 88,1% FYP | Trang 2 |
+| Phân tích chính sách các công ty | Ở đại lý cá nhân các hãng trả gần ngang nhau; khác biệt nằm ở tầng quản lý và ở việc chi trả có co theo chất lượng hay không. | AIA Alpha 58,4% FYP · Chubb Life 88,1% FYP · Manulife 50,8% FYP | Trang 2 |
 | Đề xuất phù hợp VN | **Chính sách Đề xuất 2026** `PROPOSAL`: trả ngang thị trường, mọi khoản thưởng lớn gắn K2, giữ lại phần trả chậm, hệ số vùng theo lương tối thiểu. | Tổng chi 59,9% FYP · điểm 5 tiêu chí 3,91/5 | Trang 5 |
 | Doanh số | `HYPOTHESIS` — mô hình chưa đo được doanh số tăng thêm; cơ chế kỳ vọng: đường ray Full-time có trợ cấp gắn quota, thưởng đều đặn. Cần thí điểm. | — | Trang 3, 7 |
 | Chất lượng | Chi trả co mạnh nhất khi K2 xấu đi. | Khi K2 85% → 65%: đề xuất −26,7%; hãng co mạnh nhất Chubb Life −21,3% | Trang 3 |
-| Chi phí / ROI | Không rẻ nhất khi chất lượng tốt (AIA Alpha 58,4% thấp hơn), nhưng an toàn nhất khi xấu: đỉnh stress test không vượt trần 75% FYP. ROI hiện là proxy (chi phí / FYP), chưa phải VNB. | Xấu nhất 73,0%; bán nghiêng bảo vệ thuần 75,0% | Trang 6 |
+| Chi phí / ROI | Không rẻ nhất khi chất lượng tốt (AIA Alpha 58,4%, Manulife 50,8% thấp hơn), nhưng an toàn nhất khi xấu: đỉnh stress test không vượt trần 75% FYP. ROI hiện là proxy (chi phí / FYP), chưa phải VNB. | Xấu nhất 73,0%; bán nghiêng bảo vệ thuần 75,0% | Trang 6 |
 
 ## Trang 1 — Tóm tắt điều hành
 
@@ -37,24 +37,25 @@ So mọi hãng ở cùng quy mô: **L1** đại lý 30 triệu FYP/tháng · **L
 
 | Tầng | AIA Alpha | Chubb Life | Manulife | Chính sách Đề xuất 2026 |
 |---|---|---|---|---|
-| L1 · Cá nhân 30tr FYP/tháng | SA **18,1** — Trung bình | AR **22,5** — Thơm | lược (văn bản mật) | Đại lý Full-time **23,2** — Thơm |
-| L2 · Nhóm 150tr (5 ĐL) | SUM **17,6** — Không thơm (quản lý thu ít hơn tự bán) | UM **54,2** — Thơm | lược (văn bản mật) | Trưởng nhóm **27,3** — Thơm |
-| L3 · Ban 450tr (15 ĐL) | SDM **25,6** — Trung bình | DM **86,6** — Thơm | lược (văn bản mật) | Trưởng ban **40,8** — Thơm |
+| L1 · Cá nhân 30tr FYP/tháng | SA **18,1** — Trung bình | AR **22,5** — Thơm | Đại Lý **17,8** — Trung bình | Đại lý Full-time **23,2** — Thơm |
+| L2 · Nhóm 150tr (5 ĐL) | SUM **17,6** — Không thơm (quản lý thu ít hơn tự bán) | UM **54,2** — Thơm | UM+ **11,0** — Không thơm (quản lý thu ít hơn tự bán) | Trưởng nhóm **27,3** — Thơm |
+| L3 · Ban 450tr (15 ĐL) | SDM **25,6** — Thơm | DM **86,6** — Thơm | UM+ **18,2** — Trung bình | Trưởng ban **40,8** — Thơm |
 | L4 · Khu vực 1,2 tỷ (45 ĐL) | PAF **136,3** — Thơm | RD **186,6** — Thơm | PSM/SM **105,1** — Trung bình | Lãnh đạo khu vực **91,1** — Thấp hơn cả các hãng |
 
 **Đọc bảng:** “Thơm” = cao hơn mức thấp nhất của các hãng cùng tầng ≥ 1,2 lần; “Không thơm” = lên quản lý nhóm mà thu ít hơn tự bán. Trích dẫn trang văn bản gốc nằm ở cột nhận xét của *Tóm tắt nhanh 2 góc nhìn* (`outputs/interview/00_Executive_Summary_Keo_Thom.md`) và trên trang tương tác.
 
 - **AIA Alpha** — tổng chi 58,4% FYP; tự bán vs quản lý thuần: Đại lý Mốc 1 18,1 tr/th; quản lý nhóm 5 người (phí thuần) 17,6 tr/th → quản lý thu ÍT hơn tự bán [AIAVAD 2601-034 : 3-5]; bẫy giữ đội phẳng: Ban 15 ĐL: để phẳng (15 trực tiếp) 82,4 vs có 2 quản lý con 25,7 tr/th → tỷ lệ 3,21× [AIAVAD 2601-034 : 3-5]; vách đá K2 tại 80%: Quản lý nhóm: K2 80% → 79% làm phí năm giảm 7,7% [AIAVAD 2601-034 : 3-5].
 - **Chubb Life** — tổng chi 88,1% FYP; tự bán vs quản lý thuần: Đại lý Mốc 1 22,5 tr/th; quản lý nhóm 5 người (phí thuần) 48,6 tr/th → quản lý thu nhiều hơn tự bán [CHH0DCEB260008V : 5-7]; bẫy giữ đội phẳng: Ban 15 ĐL: để phẳng (15 trực tiếp) 145,8 vs có 2 quản lý con 81,0 tr/th → tỷ lệ 1,80× [CHH0DCEB260008V : 5-7]; vách đá K2 tại 80%: Quản lý nhóm: K2 80% → 79% làm phí năm giảm 16,7% [CHH0DCEB260008V : 5-7].
+- **Manulife** — tổng chi 50,8% FYP; tự bán vs quản lý thuần: Đại lý Mốc 1 17,8 tr/th; quản lý nhóm 5 người (phí thuần) 11,0 tr/th → quản lý thu ÍT hơn tự bán [0047M01_2026 : 1-2]; bẫy giữ đội phẳng: Ban 15 ĐL: để phẳng (15 trực tiếp) 40,5 vs có 2 quản lý con 18,2 tr/th → tỷ lệ 2,23× [0047M01_2026 : 1-2]; vách đá K2 tại 80%: Quản lý nhóm: K2 80% → 79% làm phí năm giảm 1,2% [0047M01_2026 : 1-2].
 
 ## Trang 3 — Tác động lên 3 mục tiêu của đề bài
 
-| Mục tiêu | AIA Alpha | Chubb Life | Chính sách Đề xuất 2026 |
-|---|---|---|---|
-| Chi trả giảm khi K2 85% → 65% (cao = gắn chất lượng) | 14,2% | 21,3% | 26,7% |
-| Chi phí / phí còn duy trì, K2 85% | 68,7% | 103,6% | 70,5% |
-| Chi phí / phí còn duy trì, K2 65% | 77,0% | 106,7% | 67,5% |
-| Tổng chi / FYP, K2 85% | 58,4% | 88,1% | 59,9% |
+| Mục tiêu | AIA Alpha | Chubb Life | Manulife | Chính sách Đề xuất 2026 |
+|---|---|---|---|---|
+| Chi trả giảm khi K2 85% → 65% (cao = gắn chất lượng) | 14,2% | 21,3% | 6,7% | 26,7% |
+| Chi phí / phí còn duy trì, K2 85% | 68,7% | 103,6% | 59,8% | 70,5% |
+| Chi phí / phí còn duy trì, K2 65% | 77,0% | 106,7% | 73,0% | 67,5% |
+| Tổng chi / FYP, K2 85% | 58,4% | 88,1% | 50,8% | 59,9% |
 
 - **Doanh số** `HYPOTHESIS`: thu nhập đại lý Full-time và quản lý không thấp hơn thị trường (trang 2) là điều kiện giữ và tuyển người; mức tăng FYP thật chỉ đo được bằng thí điểm (trang 7).
 - **Chất lượng:** trợ cấp Full-time chỉ trả khi K2 ≥ 80%; phí quản lý nhân hệ số K2; trả chậm nhận đủ khi K2 ≥ 80%, một nửa khi 75–80%, mất khi dưới 75% `PROPOSAL`.
@@ -98,6 +99,7 @@ So mọi hãng ở cùng quy mô: **L1** đại lý 30 triệu FYP/tháng · **L
 |---|---:|---:|---|
 | AIA Alpha | 5,4% | 5,4% | Trong trần |
 | Chubb Life | 16,4% | 16,4% | Trong trần |
+| Manulife | 4,5% | 4,5% | Trong trần |
 | Chính sách Đề xuất 2026 | 4,1% | 24,9% | Trong trần |
 
 Từ 01/01/2027, TT 96/2026 thêm trần **7% phí thực thu** cho hợp đồng **đóng phí một lần** `SOURCE_CLAIM` — mô hình hiện chỉ tính phí định kỳ; sản phẩm đóng phí một lần phải tách riêng.
@@ -115,6 +117,7 @@ Từ 01/01/2027, TT 96/2026 thêm trần **7% phí thực thu** cho hợp đồn
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | AIA Alpha | 58,4% | 54,3% | 58,4% | 79,4% | 88,6% | 97,4% | 2,6% | 3,4% |
 | Chubb Life | 88,1% | 73,4% | 88,1% | 116,2% | 116,2% | 100,0% | 0,0% | 4,3% |
+| Manulife | 50,8% | 44,9% | 51,4% | 74,8% | 75,0% | 95,8% | 4,2% | 7,5% |
 | Chính sách Đề xuất 2026 | 59,9% | 56,1% | 73,0% | 69,9% | 75,0% | 88,7% | 11,3% | 7,8% |
 
 - Khi bán nghiêng bảo vệ thuần (hoa hồng 40%), đề xuất chạm đúng trần 75% ở kịch bản xấu nhất; quỹ thưởng vẫn trả 89% `MODEL_OUTPUT`.

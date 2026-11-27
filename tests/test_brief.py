@@ -40,11 +40,12 @@ class TestBrief(unittest.TestCase):
         self.assertIn("UM+", self.full)
         self.assertGreater(len(self.full), len(self.pub))
 
-    def test_full_copy_must_be_outside_repo(self) -> None:
-        with self.assertRaises(SystemExit):
-            BB.main(["--full-out", str(REPO / "outputs" / "x.md")])
+    def test_repo_copy_is_full_and_has_no_secrecy_wording(self) -> None:   # DEC-16
         with tempfile.TemporaryDirectory() as d:
             self.assertEqual(BB.main(["--full-out", str(Path(d) / "full.md")]), 0)
+        md = BB.OUT.read_text(encoding="utf-8")
+        self.assertIn("UM+", md)
+        self.assertNotIn("mật", md)
 
 
 if __name__ == "__main__":

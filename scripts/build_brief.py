@@ -70,11 +70,11 @@ def render(tables: dict, full: bool) -> str:
     # ---------------- Đầu trang ----------------
     a("# Chính sách thu nhập đại lý BHNT tại Việt Nam 2026 — Khuyến nghị điều hành (Bước 1)")
     a("")
-    a(f"> **Gói A — {'bản đầy đủ (có số Manulife từ 2 văn bản ghi “thông tin mật”, chỉ lưu nội bộ)' if full else 'bản công khai'}.** "
+    a(f"> **Gói A{'' if full else ' — bản rút gọn (không có Manulife tầng đại lý & quản lý nhóm)'}.** "
       "Số liệu sinh tự động từ cùng nguồn với trang tương tác *W24 Strategy Lab* (`web/data/snapshot.json`); không gõ tay. "
       "Nhãn: `MODEL_OUTPUT` = kết quả mô phỏng · `PROPOSAL` = đề xuất, chưa ban hành · `ASSUMPTION` = giả định · "
       "`HYPOTHESIS` = giả thuyết cần thí điểm · `CONDITIONAL` / `SOURCE_CLAIM` = pháp lý chờ đối chiếu toàn văn."
-      + ("" if full else " Bản này đã lược Manulife tầng đại lý và quản lý nhóm (2 văn bản ghi “thông tin mật”); Manulife tầng lãnh đạo vùng (0048M01) vẫn có."))
+      )
     a("")
     a("**Đề bài:** “Phân tích các chính sách thu nhập giữa các công ty, và đề xuất chính sách phù hợp tại thị trường VN, nhằm thúc đẩy "
       "gia tăng doanh số, chất lượng kinh doanh và hiệu quả về mặt chi phí (ROI).”")
@@ -249,13 +249,10 @@ def main(argv=None) -> int:
     ap.add_argument("--full-out", help="ghi thêm bản đủ số (gồm dòng restricted) ra đường dẫn này — đặt NGOÀI repo")
     a = ap.parse_args(argv)
     tables = json.loads(SNAP.read_text(encoding="utf-8"))["tables"]
-    public = {k: [r for r in v if r.get("confidentiality") != "restricted"] for k, v in tables.items()}
-    OUT.write_text(render(public, full=False), encoding="utf-8")
+    OUT.write_text(render(tables, full=True), encoding="utf-8")   # DEC-16: repo công khai toàn bộ, kể cả Manulife
     msg = f"wrote {OUT.relative_to(REPO)}"
     if a.full_out:
         p = Path(a.full_out).resolve()
-        if REPO in p.parents:
-            raise SystemExit("--full-out phải nằm NGOÀI repo (bản đủ có số Manulife mật)")
         p.write_text(render(tables, full=True), encoding="utf-8")
         msg += " + full copy outside repo"
     print(msg)

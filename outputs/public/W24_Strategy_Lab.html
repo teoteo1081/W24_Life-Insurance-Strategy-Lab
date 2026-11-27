@@ -636,10 +636,10 @@ function ruleChip(id, raw) {
   const r = RULES[base];
   if (!r || !r.refs.length) return `<span class="ev" title="Mã quy tắc ${esc(id)}${r ? " — " + esc(r.ref) : ""}">${esc(raw ? id : RULE_CO(id) + " · văn bản pháp lý / tóm tắt")}</span>`;
   const f = r.refs[0], pdf = (DATA.pdfs || []).find(x => x.sid === f.sid);
-  const label = raw ? id : RULE_CO(id) + " · " + (pdf ? docShort(pdf) : "văn bản mật");
+  const label = raw ? id : RULE_CO(id) + " · " + (pdf ? docShort(pdf) : "văn bản gốc");
   const tip = `Mã quy tắc ${id} — ${r.type}${pdf ? " · " + pdf.name : ""}`;
   if (!(DATA.knowledge.sources.find(s => s.id === f.sid) || {}).url)   // văn bản mật: không có bản online để mở
-    return `<span class="ev nolink" title="${esc(tip)} (văn bản mật, không mở online)">${esc(label)}${f.page ? " · tr." + f.page : ""}</span>`;
+    return `<span class="ev nolink" title="${esc(tip)} (chưa có bản online)">${esc(label)}${f.page ? " · tr." + f.page : ""}</span>`;
   return `<a class="ev" target="_blank" rel="noopener" href="${evUrl(f.sid, f.page)}" title="${esc(tip)}">${DOC}${esc(label)}${f.page ? " · tr." + f.page : ""}</a>`;
 }
 /* Danh sách bằng chứng dài: gấp mặc định, mỗi văn bản + trang chỉ hiện 1 lần */
@@ -1110,11 +1110,11 @@ function renderEvidence() {
   const cnt = (sid, f) => K.rules.filter(r => r.refs.some(x => x.sid === sid) && f(r)).length;
   $("p-evidence").innerHTML = `
   <h2>${cov.docs.length} tài liệu gốc & độ phủ</h2>
-  <div class="tbl-wrap"><table><thead><tr><th>Tài liệu</th><th class="n">Trang</th><th class="n">Quy tắc</th><th class="n">Đã lập trình</th><th class="n">Kiểm thử đạt</th><th>Quyền tài liệu</th><th></th></tr></thead><tbody>
+  <div class="tbl-wrap"><table><thead><tr><th>Tài liệu</th><th class="n">Trang</th><th class="n">Quy tắc</th><th class="n">Đã lập trình</th><th class="n">Kiểm thử đạt</th><th>Loại nguồn</th><th></th></tr></thead><tbody>
   ${cov.docs.map(f => { const s = SRC[f.sid] || {}, n = cnt(f.sid, () => true), im = cnt(f.sid, r => r.impl === "IMPLEMENTED"), tp = cnt(f.sid, r => r.calc === "TESTED_PASS");
     return `<tr><td><b>${esc(s.company || f.file_id)}</b> — ${esc(s.scheme || f.name)}<div class="small muted">${esc(f.file_id)} · ${esc(s.audience || "")}</div></td><td class="n">${fmt(f.pages)}</td><td class="n">${n || '<span class="muted" title="Chưa trích thành quy tắc trong thư viện">—</span>'}</td>
     <td class="n">${n ? im + `<div class="bar"><i style="width:${im / n * 100}%"></i></div>` : "—"}</td><td class="n">${n ? tp + `<div class="bar"><i style="width:${tp / n * 100}%"></i></div>` : "—"}</td>
-    <td class="small">${esc(s.confidentiality || "")} · ${esc(s.rights || "")}</td><td>${f.url ? `<a class="ev" target="_blank" rel="noopener" href="${evUrl(f.sid)}">${DOC}Xem toàn văn</a>` : '<span class="tag AVOID" title="Văn bản ghi “thông tin mật” — chỉ lưu local, không đưa lên kho bằng chứng">mật · không mở online</span>'}</td></tr>`; }).join("")}
+    <td class="small">${/^public$/i.test(s.confidentiality || "") ? "Văn bản pháp luật công khai" : "Chính sách thu nhập của hãng"}</td><td>${f.url ? `<a class="ev" target="_blank" rel="noopener" href="${evUrl(f.sid)}">${DOC}Xem toàn văn</a>` : '<span class="muted small">chưa có bản online</span>'}</td></tr>`; }).join("")}
   </tbody></table></div>
   <p class="note">Độ phủ: ${fmt(cov.pages)} trang trong ${cov.docs.length} tài liệu đã đọc và phân loại (tự kiểm của người trích xuất). Thư viện ${K.rules.length} quy tắc trích từ ${cov.ruled.length} tài liệu (${fmt(cov.ruledPages)} trang)${cov.unruled.length ? `; ${cov.unruled.length} tài liệu bổ sung sau (${cov.unruled.map(f => esc(f.file_id)).join(", ")} — ${fmt(cov.pages - cov.ruledPages)} trang) mới dùng cho bảng so sánh ở trang 1–2 và ma trận quyền lợi, <b>chưa trích thành quy tắc</b> nên cột quy tắc để “—”` : ""}.${DATA.public_build ? ' Bản công khai: 2 văn bản Manulife ghi "thông tin mật" đã được lược khỏi danh sách.' : ""} Một số quy tắc phụ thuộc văn bản chưa có (ví dụ Chubb 260005V, biểu hoa hồng AIA) nên chưa lập trình được — hiển thị đúng trạng thái, không giấu.</p>
   <h2 style="margin-top:20px">Kiểm mẫu độc lập 14 quy tắc ↔ trang PDF</h2>
@@ -1246,7 +1246,7 @@ const CO3 = ["AIA", "Chubb", "Manulife"], SC4 = ["AIA", "Chubb", "Manulife", "Hy
 const SNAME = {AIA: "AIA Alpha", Chubb: "Chubb Life", Manulife: "Manulife", Hybrid: "Chính sách Đề xuất 2026"};
 const MS_LABEL = {M1: "Mốc 1 — Cá nhân · 30tr FYP/tháng", M2: "Mốc 2 — Nhóm 6 người · 150tr", M3: "Mốc 3 — Ban 15 người · 450tr", M4: "Mốc 4 — Khu vực 45 người · 1,2 tỷ"};
 const BASIS = {personal_income: "thu nhập cá nhân (gồm tự bán)", net_management_fee: "phí quản lý thuần (không gồm tự bán)"};
-const confTag = r => r && r.confidentiality === "restricted" ? ' <span class="tag AVOID" title="Dựa trên 2 văn bản Manulife ghi "thông tin mật" — thông tin mật, chỉ lưu local">mật</span>' : "";
+const confTag = () => "";   // DEC-16: không còn đánh dấu dòng Manulife là "mật"
 const lblTag = l => l ? ` <span class="badge">${esc(l)}</span>` : "";
 function benchCell(r) {
   if (!r) return DATA.public_build ? '<span class="muted small">Đã lược ở bản công khai — dựa trên văn bản Manulife ghi "thông tin mật"</span>' : '<span class="muted">—</span>';
@@ -1298,7 +1298,7 @@ function renderT1() {
   ${execSummaryHtml()}
   <p class="note"><b>Mốc 1</b> = thu nhập cá nhân của đại lý (gồm hoa hồng tự bán). <b>Mốc 2–4</b> = <b>phí quản lý thuần, không gồm hoa hồng tự bán</b> — vì vậy Mốc 2 của AIA và Manulife có thể thấp hơn Mốc 1. Đơn vị: triệu đồng/tháng, K2 85%, trước thuế. Bấm vào từng mốc để mở bảng quyền lợi ngang hàng 6 dòng; mọi ô có link <b>[Mã văn bản : trang]</b>.</p>
   <div class="tbl-wrap"><table class="t1"><thead><tr><th>Mốc</th>${CO3.map(co => `<th>${esc(SNAME[co])}</th>`).join("")}</tr></thead><tbody>${rowsHtml}</tbody></table></div>
-  <p class="note">Mốc 4 so sánh chính theo tuyến lãnh đạo vùng (AIA PAF · Chubb RD · Manulife PSM/SM). Chubb BD là chức danh đạt bằng chỉ tiêu nhưng biểu phí không có trong bộ tài liệu nguồn. Ô gắn <span class="tag AVOID">mật</span> dựa trên 2 văn bản Manulife ghi "thông tin mật", chỉ lưu local.</p>`;
+  <p class="note">Mốc 4 so sánh chính theo tuyến lãnh đạo vùng (AIA PAF · Chubb RD · Manulife PSM/SM). Chubb BD là chức danh đạt bằng chỉ tiêu nhưng biểu phí không có trong bộ tài liệu nguồn.</p>`;
   document.querySelectorAll("#p-t1 tr.msrow").forEach(tr => {
     const go = () => { state.t1Open = state.t1Open === tr.dataset.mid ? "" : tr.dataset.mid; renderT1(); postRender("p-t1"); };
     tr.onclick = ev => { if (!ev.target.closest("a,abbr")) go(); };
@@ -1399,12 +1399,13 @@ const DOC_SHORT = {"AIAVAD 2604-069": "Chuyên viên tư vấn (Alpha)", "AIAVAD
   "CHH0DCEB260007V": "Đại lý", "CHH0DCEB260008V": "Phí dịch vụ cấp quản lý", "CHH0DCEB260003V": "Phí dịch vụ giám đốc vùng",
   "0048M01_2026": "Biểu phí PSM+ & hộ kinh doanh"};
 /* Văn bản mật KHÔNG được ghi mã trong template (template nhúng cả vào bản công khai) — tên rút gọn tự suy từ tên file */
-const docShort = f => DOC_SHORT[f.file_id] || f.name.replace(/^[^_]*_\d{4}_/, "").replace(/\.pdf$/i, "");
+const DOC_BY_NAME = [[/chi tra danh cho Dai Ly/i, "Chính sách chi trả Đại lý"], [/phi dich vu danh cho UM\+/i, "Biểu phí dịch vụ UM+"]];
+const docShort = f => DOC_SHORT[f.file_id] || (DOC_BY_NAME.find(([re]) => re.test(f.name)) || [])[1] || f.name.replace(/^[^_]*_\d{4}_/, "").replace(/\.pdf$/i, "");
 const docCo = fid => /^AIA/.test(fid) ? "AIA" : /^CHH/.test(fid) ? "Chubb Life" : /M01/.test(fid) ? "Manulife" : "Khác";
 function execBriefHtml() {
   const pdfs = DATA.pdfs || [], cos = ["AIA", "Chubb Life", "Manulife"];
   const item = f => f.url ? `<a href="${f.url}#page=1" title="${esc(f.name)}">${DOC}${esc(docShort(f))} <span class="pg">· ${f.pages} tr</span></a>`
-    : `<span class="lock" title="${esc(f.name)}">🔒 ${esc(docShort(f))} <span class="pg">· ${f.pages} tr · mật, chỉ lưu local</span></span>`;
+    : `<span class="lock" title="${esc(f.name)}">${DOC}${esc(docShort(f))} <span class="pg">· ${f.pages} tr · chưa có bản online</span></span>`;
   const hidden = DATA.public_build && cos.includes("Manulife") ? '<span class="lock">🔒 2 văn bản ghi “thông tin mật” — không đưa lên bản công khai</span>' : "";
   return `<div class="card xbrief">
     <div><span class="lb">Đề bài</span><blockquote>“${esc(DE_BAI)}”</blockquote>
@@ -1626,7 +1627,7 @@ document.addEventListener("keydown", ev => { if (ev.key === "Escape" && !GLT.hid
 function citeLink(fid, page, label) {
   const f = PDF_BY_FILE[fid], txt = label || `[${fid} : ${page}]`;
   if (f && f.url) return `<a class="ev" href="${f.url}#page=${page}" title="${esc(f.name)} — trang ${page}">${DOC}${esc(txt)}</a>`;
-  return `<span class="ev nolink" title="PDF chưa đưa lên kho bằng chứng (tài liệu mật, chỉ lưu local)">${esc(txt)}</span>`;
+  return `<span class="ev nolink" title="PDF chưa có bản online">${esc(txt)}</span>`;
 }
 const linkifyCites = s => esc(s).replace(/\[([^\]:]+) : (\d+)(?:-\d+)?\]/g, (m0, fid, pg) => citeLink(fid.trim(), +pg, m0.replace(/&amp;/g, "&")));
 const GL_COS = ["Tất cả", "Chung", "AIA", "Chubb", "Manulife"];
@@ -1659,7 +1660,7 @@ function renderGlossary() {
   <div class="tbl-wrap"><table class="gltable"><thead><tr><th>Viết tắt</th><th>Tiếng Anh</th><th>Tiếng Việt</th><th>Công ty · [Memo : Trang]</th><th>Tương ứng thị trường / tầng chuẩn</th><th>Ghi chú</th></tr></thead><tbody id="glBody"></tbody></table></div>
   <h3>${pdfs.length} PDF nguồn · ${pages} trang — mục lục từng văn bản</h3>
   <p class="note">Không PDF nào có bookmark gắn sẵn; mục lục dựng từ dòng tiêu đề trong text (bản scan 0003V: từ trang Mục lục). PDF chưa lên kho bằng chứng thì chỉ hiện trang, không mở được.</p>
-  ${pdfs.map(f => `<details class="pdfdoc"><summary><b>${esc(f.file_id)}</b> · ${esc(f.name)} · ${f.pages} trang ${f.url ? "" : '<span class="tag AVOID">chỉ lưu local</span>'}</summary>
+  ${pdfs.map(f => `<details class="pdfdoc"><summary><b>${esc(f.file_id)}</b> · ${esc(f.name)} · ${f.pages} trang ${f.url ? "" : '<span class="muted small">chưa có bản online</span>'}</summary>
     <ol class="small">${f.bookmarks.map(b => `<li>${f.url ? `<a href="${f.url}#page=${b.p}">${esc(b.t)}</a>` : esc(b.t)} <span class="muted">· tr.${b.p}</span></li>`).join("")}</ol></details>`).join("")}`;
   $("glQ").oninput = ev => { state.glQ = ev.target.value; glRows(); };
   $("glCo").onchange = ev => { state.glCo = ev.target.value; glRows(); };
