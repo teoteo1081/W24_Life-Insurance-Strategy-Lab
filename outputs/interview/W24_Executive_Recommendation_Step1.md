@@ -19,6 +19,18 @@
 
 ---
 
+## TRẢ LỜI ĐỀ BÀI TRONG 1 TRANG
+
+| Đề bài hỏi | Trả lời ngắn | Con số dẫn chứng (`MODEL_OUTPUT`, 1 Vùng 12 tỷ FYP/năm) | Vì sao hợp Việt Nam | Chi tiết |
+|---|---|---|---|---|
+| **1. Các công ty trả thu nhập thế nào?** | Ở đại lý cá nhân các hãng trả gần ngang nhau; khác biệt lớn nằm ở **tầng quản lý** — nơi quyết định chi phí và động cơ của cả hệ thống. | Tổng chi toàn cây ở K2 82%: Chubb `99.21%`, AIA `73.44%` FYP; Chubb trả quản lý trực tiếp tới `108% FYC`, AIA có phí cố định lãnh đạo `20–130tr/tháng`. | 3 hãng đều trong top 10 thị phần phí khai thác mới 2024 (Manulife #4, AIA #6, Chubb #10 — `SOURCE_CLAIM`). | Trang 2 |
+| **2. Chính sách nào hợp thị trường VN?** | **Balanced Hybrid:** thu nhập đại lý ngang thị trường, nhưng mọi khoản thưởng lớn gắn với K2 và một phần trả chậm 3 năm; cắt chuỗi gián tiếp vô hạn tầng và phí cố định cao. | Override trực tiếp đỉnh `30–36% FYC` (Chubb `108%`); gián tiếp tối đa 3 tầng, khóa nếu nhóm `<15tr FYC/tháng`; trả chậm `30/30/40%` gắn `K2 ≥75%`. | (1) Hợp đồng mới nhỏ đi, >50% là bảo vệ thuần → ngưỡng thưởng thấp, `Top-up = 0%`; (2) Điều 52 TT 67/2023 khóa trần thưởng 20–30% FYP → phải cạnh tranh bằng cấu trúc, không bằng tiền; (3) NĐ 97/2026 yêu cầu nghiệm thu dịch vụ → phí lãnh đạo gắn KPI. | Trang 4–5 |
+| **3. Tác động lên doanh số, chất lượng, chi phí?** | **Chất lượng & chi phí đã đo được; doanh số chưa** — cần thí điểm. | Chi phí co giãn theo chất lượng: K2 82% → 62% làm tổng chi giảm từ `59.44%` xuống `45.42% FYP`; chi phí trên mỗi đồng phí còn sống giữ ổn định `72.48% → 73.27%` (Chubb tăng lên `124.42%`). | Thị trường đang trong khủng hoảng niềm tin & K2 → chính sách phải tự “phạt” bán ẩu thay vì trả theo khối lượng. | Trang 3, 6 |
+
+**Doanh số (`HYPOTHESIS`):** mô hình chưa đo được doanh số tăng thêm. Cơ chế kỳ vọng: gói kích hoạt M1–M6 ngưỡng thấp, thưởng tháng 5 bậc mượt, thưởng đều đặn quý. **Cách đo:** thí điểm 3 tháng ở một vùng, so với vùng đối chứng giữ chính sách cũ — FYP trên mỗi đại lý hoạt động, tỷ lệ đại lý hoạt động, K2.
+
+---
+
 ## TRANG 1 — TÓM TẮT ĐIỀU HÀNH (EXECUTIVE SUMMARY)
 
 ### Bối cảnh 2026–2027: Kỷ nguyên "Đốt Quỹ Thưởng Mua Thị Phần" Đã Chấm Dứt
