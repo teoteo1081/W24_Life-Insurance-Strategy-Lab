@@ -108,8 +108,25 @@ tr.plan td{background:var(--accent-soft)}
 .callout{padding:12px 16px;border-radius:10px;background:var(--tint);margin:0 0 16px}
 
 /* Bố cục 3 cột kiểu W02: menu trái | nội dung | PDF bằng chứng bên phải */
-.app{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}
-.app.pdf-open{grid-template-columns:232px minmax(0,1fr) clamp(380px,38vw,820px)}
+.app{display:grid;grid-template-columns:var(--sidew,232px) minmax(0,1fr);min-height:100vh}
+.app.pdf-open{grid-template-columns:var(--sidew,232px) minmax(0,1fr) clamp(380px,38vw,820px)}
+/* Nội dung bám trái, rộng hơn: bớt khoảng trắng hai bên trên màn hình lớn */
+.main .wrap{max-width:1560px;margin:0;padding-left:clamp(16px,3vw,48px);padding-right:clamp(16px,3vw,48px)}
+.brand{display:flex;align-items:flex-start;gap:6px}.brand>span{flex:1}
+.pin{flex:0 0 auto;display:inline-grid;place-items:center;width:28px;height:28px;margin:-3px -4px 0 0;border:0;border-radius:6px;background:transparent;color:var(--muted);cursor:pointer}
+.pin:hover{background:var(--surface);color:var(--ink)}.pin[aria-pressed="true"]{color:var(--accent)}
+.pin:focus-visible,#sideResize:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+#sideResize{position:fixed;top:0;bottom:0;left:calc(var(--sidew,232px) - 3px);width:7px;z-index:25;cursor:col-resize;background:transparent}
+#sideResize:hover,body.resizing #sideResize{background:var(--accent);opacity:.45}
+body.resizing{cursor:col-resize;user-select:none}body.resizing iframe{pointer-events:none}
+@media (min-width:981px){
+  .main{grid-column:2}.pdfpane{grid-column:3}
+  .app.unpinned{grid-template-columns:12px minmax(0,1fr)}
+  .app.unpinned.pdf-open{grid-template-columns:12px minmax(0,1fr) clamp(380px,38vw,820px)}
+  .app.unpinned .side{position:fixed;left:0;top:0;z-index:30;width:var(--sidew,232px);transform:translateX(calc(-100% + 12px));transition:transform .18s ease}
+  .app.unpinned .side:hover,.app.unpinned .side:focus-within{transform:none;box-shadow:6px 0 24px rgba(0,0,0,.28)}
+  .app.unpinned #sideResize{display:none}
+}
 .side{position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--tint);border-right:1px solid var(--line);padding:16px 10px 20px}
 .brand{font-weight:800;font-size:15px;line-height:1.3;padding:2px 8px 12px;border-bottom:1px solid var(--line);margin-bottom:6px}
 .side-title{font-size:13px;font-weight:700;color:var(--muted);padding:12px 8px 4px}
@@ -146,7 +163,7 @@ tr.plan td{background:var(--accent-soft)}
 /* Chế độ trình bày: chữ lớn để chiếu, ẩn phần thử nghiệm */
 body.present .main{zoom:1.16}
 body.present .side{font-size:15px}
-body.present #tabs button[data-tab="tune"],body.present #planSeg button[data-plan="custom"],body.present .side-note{display:none}
+body.present #tabs button[data-tab="tune"],body.present #tabs button[data-tab="rubric"],body.present #planSeg button[data-plan="custom"],body.present .side-note{display:none}
 /* Điện thoại: menu gọn thành các hàng cuộn ngang, nội dung lên màn hình đầu */
 @media (max-width:980px){
   .side{padding:8px 12px;position:sticky;top:0;z-index:20}
@@ -158,6 +175,7 @@ body.present #tabs button[data-tab="tune"],body.present #planSeg button[data-pla
   .navl button{white-space:nowrap;min-height:36px;padding:6px 10px;flex:0 0 auto}
   .side input[type=range]{margin:2px 0}
   .side .btn{display:none}
+  #sideResize{display:none}
   section.panel,#p-glossary{scroll-margin-top:165px}   /* agy: thanh dính không che nội dung khi cuộn tới */
 }
 
@@ -176,6 +194,18 @@ details.pdfdoc{margin:6px 0;padding:6px 10px;border:1px solid var(--line);border
 .navsep{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin:10px 0 2px}
 @media (max-width:980px){.navsep{display:none}}
 table.t1 tr.msrow{cursor:pointer}table.t1 tr.msrow:hover td{background:var(--tint)}table.t1 td.mx{background:var(--tint);padding:10px}
+.mshint{display:inline-block;margin-top:6px;font-size:12.5px;font-weight:600;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:1px 9px;white-space:nowrap}
+/* Điện thoại: bảng 4 mốc và bảng quyền lợi chuyển thành thẻ xếp dọc, mỗi ô có nhãn công ty */
+@media (max-width:760px){
+  table.t1,table.t1 tbody,table.t1 tr,table.t1 th,table.t1 td{display:block;width:100%}
+  table.t1 thead{display:none}
+  table.t1 tr{border-bottom:2px solid var(--line)}
+  table.t1 th,table.t1 td{border-bottom:0;padding:6px 12px}
+  table.t1 tr>th[scope=row]{background:var(--tint);padding-top:10px}
+  table.t1 td[data-co]::before{content:attr(data-co);display:block;font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+  table.t1 td.mx{padding:8px}
+  table.t1 .ev{white-space:normal}
+}
 .basis{font-size:12px;color:var(--muted);display:block}.hl{background:var(--accent-soft)}
 @media (max-width:760px){.glbtn{float:none;display:inline-block;margin:0 0 10px}}
 details.cond{margin-top:4px}
@@ -184,6 +214,10 @@ details.cond>summary::-webkit-details-marker{display:none}
 details.cond>summary::before{content:"▸ "}
 details.cond[open]>summary::before{content:"▾ "}
 tr.totrow td,tr.totrow th{border-bottom:2px solid var(--line)}
+details.assume{margin:10px 0 0;padding:8px 16px;border:1px solid var(--line);border-radius:8px;max-width:90ch}
+details.assume>summary{cursor:pointer;font-size:14.5px}details.assume ul{margin:8px 0 4px;padding-left:20px}details.assume p{margin:4px 0}
+/* Bảng chấm điểm: ô điểm có ghi chú định tính dài — cho xuống dòng, nếu không bảng phình 2.400px và chỉ thấy cột AIA */
+#p-rubric td.n{white-space:normal;min-width:6.5em}#p-rubric td:first-child{min-width:11em}#p-rubric .ev{white-space:normal}
 footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1px solid var(--line);margin-top:24px}
 </style>
 </head>
@@ -191,23 +225,38 @@ footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1p
 <a class="skip" href="#main">Bỏ qua menu, tới nội dung</a>
 <div class="app" id="app">
 <aside class="side" aria-label="Điều hướng">
-  <div class="brand">Chiến lược thu nhập đại lý · Bước 1</div>
+  <div class="brand"><span>Chiến lược thu nhập đại lý · Bước 1</span><button type="button" class="pin" id="pinBtn" aria-pressed="true" aria-label="Ghim thanh bên"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5M9 10.76V6h6v4.76l2.5 2.74V17h-11v-3.5z"/><path d="M8 2h8"/></svg></button></div>
+  <div id="planCtl">
+  <div id="planBox">
   <div class="side-title">Phương án</div>
   <div class="navl" id="planSeg"></div>
+  </div>
   <div class="side-title"><label for="k2">Kịch bản K2: <span class="k2v" id="k2v"></span></label></div>
   <input type="range" id="k2" min="50" max="95" step="1" value="82" aria-label="Kịch bản K2">
+  </div>
   <div class="side-title">Trang</div>
   <nav class="navl" id="tabs" aria-label="Các trang"></nav>
   <button type="button" class="btn" id="presentBtn" aria-pressed="false">Chế độ trình bày</button>
   <button type="button" class="btn" id="resetAll">Về mặc định</button>
   <div class="side-note" id="sideNote"></div>
 </aside>
+<div id="sideResize" role="separator" aria-orientation="vertical" aria-label="Kéo để đổi độ rộng thanh bên (nhấp đúp để về mặc định)" tabindex="0" title="Kéo để đổi độ rộng · nhấp đúp để về mặc định"></div>
 <main class="main" id="main" tabindex="-1"><div class="wrap">
 <header class="top">
   <button type="button" class="btn glbtn" id="glOpen">📖 Từ điển &amp; 9 PDF</button>
-  <h1>Chính sách thu nhập đại lý: trả ngang thị trường, chi phí thấp hơn</h1>
-  <p class="sub">So sánh chính sách 2026 của AIA (kênh Alpha), Chubb Life và Manulife (tầng lãnh đạo vùng), và đề xuất phương án Song Hành cho thị trường Việt Nam.</p>
+  <h1>Chính sách thu nhập đại lý: trả ngang thị trường, chi phí co giãn theo chất lượng</h1>
+  <p class="sub">So sánh chính sách 2026 của AIA (kênh Alpha), Chubb Life và Manulife, và đề xuất Chính sách Lai cho thị trường Việt Nam: chi trả giảm mạnh nhất khi tỷ lệ duy trì hợp đồng (K2) xấu đi, và giữ lại nhiều tiền trả chậm nhất.</p>
   <div class="req"><b>Đề bài:</b> “Phân tích các chính sách thu nhập giữa các công ty, và đề xuất chính sách phù hợp tại thị trường VN, nhằm thúc đẩy gia tăng doanh số, chất lượng kinh doanh và hiệu quả về mặt chi phí (ROI).”</div>
+  <details class="assume" open><summary><b>Đề bài không nêu ngân sách, chỉ tiêu hay quy mô — các giả định đang dùng</b></summary>
+    <ul class="small">
+      <li><b>Ngân sách chi phí phân phối:</b> chưa có → trần tự đặt <b>tổng chi ≤ 75% FYP ở kịch bản xấu nhất</b>, cộng trần pháp lý Điều 52 TT 67/2023 cho thưởng & hỗ trợ (20–30% FYP, <span class="badge warn">CONDITIONAL</span>).</li>
+      <li><b>Quy mô:</b> trang 1–3 dùng 1 khu vực <b>45 đại lý, 1,2 tỷ FYP/tháng</b> (1 lãnh đạo, 2 trưởng ban, 6 trưởng nhóm); nhóm Phân tích sâu dùng 1 vùng 12 tỷ FYP/năm. Hai mô hình khác nhau — không cộng trừ số giữa chúng.</li>
+      <li><b>Chất lượng:</b> K2 85% là kịch bản chuẩn, K2 65% là kịch bản xấu.</li>
+      <li><b>ROI:</b> chưa có biên lợi nhuận (VNB) và chi phí vận hành của công ty → đo bằng <b>chi phí / FYP</b> và <b>chi phí / phí còn duy trì</b>, không phải ROI thực tế.</li>
+      <li><b>Ưu tiên:</b> trọng số rubric trang 2 = hành vi 25% · tài chính 25% · cạnh tranh thu nhập 20% · đơn giản 15% · vận hành & pháp lý 15%.</li>
+    </ul>
+    <p class="small muted">Có số thật (ngân sách, chỉ tiêu, cơ cấu lực lượng) thì thay vào mô hình là tính lại — không cần đổi cấu trúc đề xuất.</p>
+  </details>
 </header>
 <section class="panel on" id="p-t1"></section>
 <section class="panel" id="p-t2"></section>
@@ -388,10 +437,10 @@ function lineChart(series, opt) {
 
 /* ---------- Các tab ---------- */
 const TABS = [["t1", "Soi tiền & Quyền lợi", ["p-t1"]], ["t2", "MAPA, Trade-off & ROI", ["p-t2"]], ["t3", "Chính sách Lai & Vùng", ["p-t3"]],
-  ["glossary", "Phụ lục: Từ điển & 9 PDF", ["p-glossary"]],
+  ["glossary", "Phụ lục: Từ điển & PDF", ["p-glossary"]],
   ["overview", "Tổng quan", ["p-overview"], "ref"], ["package", "Gói thu nhập theo cấp", ["p-package"], "ref"],
   ["learn", "Học từ đối thủ", ["p-compare"], "ref"], ["money", "Thu nhập & chi phí", ["p-tiers", "p-cost"], "ref"],
-  ["rubric", "Chấm điểm (bản trước)", ["p-rubric"], "ref"], ["evidence", "Bằng chứng", ["p-evidence"], "ref"],
+  ["rubric", "Chấm điểm 5 phương án", ["p-rubric"], "ref"], ["evidence", "Bằng chứng", ["p-evidence"], "ref"],
   ["method", "Cách tính & giả định", ["p-method", "p-assume"], "ref"], ["tune", "Tự chỉnh thông số", ["p-tune"], "ref"]];
 
 function barRows(items, unit, digits) {
@@ -596,6 +645,7 @@ function renderRubric() {
   });
   $("p-rubric").innerHTML = `
   <h2>Chấm điểm 5 chính sách (K2 = ${k2}%)</h2>
+  <p class="callout small"><b>Trang này khác bảng điểm ở trang 2.</b> Trang 2 chấm đề xuất cuối cùng (<b>Chính sách Lai</b>) với AIA, Chubb, Manulife. Trang này là công cụ thiết kế: so <b>3 biến thể của bộ tham số Song Hành</b> (nền của Chính sách Lai) với AIA và Chubb, cho kéo K2 và trọng số để thấy kết quả đổi thế nào. Biến thể dẫn đầu thay đổi theo trọng số — đó là lý do Chính sách Lai giữ Song Hành và bổ sung chốt chặn K2, phân vùng.</p>
   <p class="muted small">Mỗi tiêu chí đo bằng số từ mô hình (hoặc định tính có bằng chứng), quy về thang 1–5 <b>tương đối trong nhóm so sánh</b>: tốt nhất = 5, kém nhất = 1. Trụ = trung bình tiêu chí; tổng = trung bình trụ theo trọng số. Pháp lý là <b>cổng bắt buộc</b>, không cộng điểm: mọi phương án đang ở trạng thái <span class="badge warn">CONDITIONAL</span> chờ đối chiếu toàn văn 44/2026/VBHN-TT-BTC.</p>
   <div class="card" style="margin:10px 0">
     <div class="ctl"><span class="lbl">Góc nhìn chấm điểm</span><div class="seg" id="wSeg">${Object.entries(PRESETS).map(([k, p]) => `<button type="button" data-w="${k}" aria-pressed="${state.weightsPreset === k}">${esc(p.name)}</button>`).join("")}</div></div>
@@ -716,22 +766,29 @@ function renderMethod() {
   <p class="small">Lợi nhuận = (biên đóng góp − OpEx) × FYP − chi phí phân phối. Khi FYP tăng (1 + u) nhờ thêm đại lý cùng năng suất, mọi chi phí tăng theo tỷ lệ trừ phí cơ bản lãnh đạo vùng. Giải u sao cho lợi nhuận phương án đang xem = lợi nhuận phương án Cân bằng ở FYP hiện tại.</p>`;
 }
 
+/* Một nguồn đếm duy nhất cho số tài liệu/trang: DATA.pdfs (mục lục PDF), không ghi cứng số */
+function evidenceCoverage() {
+  const docs = DATA.pdfs || [], R = DATA.knowledge.rules;
+  const ruled = docs.filter(f => R.some(r => r.refs.some(x => x.sid === f.sid)));
+  const sum = a => a.reduce((t, f) => t + (+f.pages || 0), 0);
+  return {docs, ruled, unruled: docs.filter(f => !ruled.includes(f)), pages: sum(docs), ruledPages: sum(ruled)};
+}
 function renderEvidence() {
-  const K = DATA.knowledge, pdfs = K.sources.filter(s => s.url);
+  const K = DATA.knowledge, cov = evidenceCoverage(), SRC = Object.fromEntries(K.sources.map(s => [s.id, s]));
   const cnt = (sid, f) => K.rules.filter(r => r.refs.some(x => x.sid === sid) && f(r)).length;
   $("p-evidence").innerHTML = `
-  <h2>7 tài liệu gốc & độ phủ</h2>
+  <h2>${cov.docs.length} tài liệu gốc & độ phủ</h2>
   <div class="tbl-wrap"><table><thead><tr><th>Tài liệu</th><th class="n">Trang</th><th class="n">Quy tắc</th><th class="n">Đã lập trình</th><th class="n">Kiểm thử đạt</th><th>Quyền tài liệu</th><th></th></tr></thead><tbody>
-  ${pdfs.map(s => { const n = cnt(s.id, () => true), im = cnt(s.id, r => r.impl === "IMPLEMENTED"), tp = cnt(s.id, r => r.calc === "TESTED_PASS");
-    return `<tr><td><b>${esc(s.company)}</b> — ${esc(s.scheme)}<div class="small muted">${esc(s.id)} · ${esc(s.audience)}</div></td><td class="n">${esc(s.pages)}</td><td class="n">${n}</td>
-    <td class="n">${im}<div class="bar"><i style="width:${n ? im / n * 100 : 0}%"></i></div></td><td class="n">${tp}<div class="bar"><i style="width:${n ? tp / n * 100 : 0}%"></i></div></td>
-    <td class="small">${esc(s.confidentiality)} · ${esc(s.rights)}</td><td><a class="ev" target="_blank" rel="noopener" href="${evUrl(s.id)}">${DOC}Xem toàn văn</a></td></tr>`; }).join("")}
+  ${cov.docs.map(f => { const s = SRC[f.sid] || {}, n = cnt(f.sid, () => true), im = cnt(f.sid, r => r.impl === "IMPLEMENTED"), tp = cnt(f.sid, r => r.calc === "TESTED_PASS");
+    return `<tr><td><b>${esc(s.company || f.file_id)}</b> — ${esc(s.scheme || f.name)}<div class="small muted">${esc(f.file_id)} · ${esc(s.audience || "")}</div></td><td class="n">${fmt(f.pages)}</td><td class="n">${n || '<span class="muted" title="Chưa trích thành quy tắc trong thư viện">—</span>'}</td>
+    <td class="n">${n ? im + `<div class="bar"><i style="width:${im / n * 100}%"></i></div>` : "—"}</td><td class="n">${n ? tp + `<div class="bar"><i style="width:${tp / n * 100}%"></i></div>` : "—"}</td>
+    <td class="small">${esc(s.confidentiality || "")} · ${esc(s.rights || "")}</td><td>${f.url ? `<a class="ev" target="_blank" rel="noopener" href="${evUrl(f.sid)}">${DOC}Xem toàn văn</a>` : '<span class="tag AVOID" title="Văn bản ghi “thông tin mật” — chỉ lưu local, không đưa lên kho bằng chứng (DEC-14)">mật · không mở online</span>'}</td></tr>`; }).join("")}
   </tbody></table></div>
-  <p class="note">Độ phủ: 116/116 trang đã đọc và phân loại (tự kiểm của người trích xuất). Một số quy tắc phụ thuộc văn bản chưa có (ví dụ Chubb 260005V, biểu hoa hồng AIA) nên chưa lập trình được — hiển thị đúng trạng thái, không giấu.</p>
+  <p class="note">Độ phủ: ${fmt(cov.pages)} trang trong ${cov.docs.length} tài liệu đã đọc và phân loại (tự kiểm của người trích xuất). Thư viện ${K.rules.length} quy tắc trích từ ${cov.ruled.length} tài liệu (${fmt(cov.ruledPages)} trang)${cov.unruled.length ? `; ${cov.unruled.length} tài liệu bổ sung sau (${cov.unruled.map(f => esc(f.file_id)).join(", ")} — ${fmt(cov.pages - cov.ruledPages)} trang) mới dùng cho bảng so sánh ở trang 1–2 và ma trận quyền lợi, <b>chưa trích thành quy tắc</b> nên cột quy tắc để “—”` : ""}.${DATA.public_build ? ' Bản công khai: 2 văn bản Manulife ghi "thông tin mật" đã được lược khỏi danh sách (DEC-14).' : ""} Một số quy tắc phụ thuộc văn bản chưa có (ví dụ Chubb 260005V, biểu hoa hồng AIA) nên chưa lập trình được — hiển thị đúng trạng thái, không giấu.</p>
   <h2 style="margin-top:20px">Kiểm mẫu độc lập 14 quy tắc ↔ trang PDF</h2>
   <div class="tbl-wrap"><table><thead><tr><th>Quy tắc</th><th>Trang</th><th>Kết quả</th><th>Bằng chứng trên trang</th></tr></thead><tbody>
   ${K.spot_check.map(s => `<tr><td>${ruleChip(s.rule)}</td><td class="small">${esc(s.where)}</td><td>${esc(s.result)}</td><td class="small">${esc(s.evidence)}</td></tr>`).join("")}</tbody></table></div>
-  <p class="note">14/14 khớp nội dung; số trang trong quy tắc trùng chỉ số trang PDF nên link mở đúng chỗ. Mẫu nhỏ (14/112), không thay kiểm toán đầy đủ.</p>
+  <p class="note">14/14 khớp nội dung; số trang trong quy tắc trùng chỉ số trang PDF nên link mở đúng chỗ. Mẫu nhỏ (14/${K.rules.length}), không thay kiểm toán đầy đủ.</p>
   <h2 style="margin-top:20px">Thư viện ${K.rules.length} quy tắc</h2>
   <div class="filters"><input id="rq" placeholder="Tìm: K2, override, clawback…" aria-label="Tìm quy tắc">
     <select id="rc" aria-label="Lọc theo hãng"><option value="">Mọi nguồn</option><option>AIA</option><option>CHB</option><option>MNL</option><option>REG</option></select>
@@ -762,7 +819,7 @@ function renderAssume() {
       <li>AIA: biểu hoa hồng sản phẩm, quy đổi FYC tín chỉ, gói trợ cấp Exchange/Exchange Pro — chi phí AIA trong mô hình đang thấp hơn thực tế.</li>
       <li>Chubb: quy định chung 260005V/006V/009V và chính sách BD.</li>
       <li>VNB margin, OpEx thật, tác động của thu nhập lên doanh số/tuyển dụng (không có dữ liệu — mô hình không giả vờ dự báo).</li></ul></div>
-    <div class="card" style="grid-column:1/-1"><h3 style="margin-top:0">Thuật ngữ</h3><p class="small">Rê chuột (hoặc chạm) vào chữ có gạch chấm để xem giải nghĩa. Bảng đầy đủ ${GL.length} thuật ngữ, kèm trang tài liệu gốc: trang <b>Phụ lục: Từ điển &amp; 9 PDF</b>.</p></div>
+    <div class="card" style="grid-column:1/-1"><h3 style="margin-top:0">Thuật ngữ</h3><p class="small">Rê chuột (hoặc chạm) vào chữ có gạch chấm để xem giải nghĩa. Bảng đầy đủ ${GL.length} thuật ngữ, kèm trang tài liệu gốc: trang <b>Phụ lục: Từ điển &amp; ${(DATA.pdfs || []).length} PDF</b>.</p></div>
     <div class="card"><h3 style="margin-top:0">Pháp lý — CONDITIONAL</h3><p class="small">Ngưỡng Điều 51/52 TT 67/2023, NĐ 97/2026, TT 96/2026 đang tham chiếu từ bản tóm tắt công khai (SOURCE_NOT_VERIFIED). Cần Pháp chế đối chiếu toàn văn hợp nhất 44/2026/VBHN-TT-BTC trước khi ban hành. Hai mâu thuẫn trong tài liệu gốc (Chubb W1 80% vs 50%; AIA làm tròn FY) đang chờ quyết định.</p></div>
     <div class="card"><h3 style="margin-top:0">Thuế & bối cảnh thu nhập</h3>
       <p class="small">Thuế TNCN áp gần như giống nhau cho mọi hãng nên <b>không đổi thứ hạng</b>; chỉ ảnh hưởng thu nhập thực nhận. Bằng chứng duy nhất trong bộ tài liệu: AIA tạm khấu trừ 10% thuế trên phí giới thiệu chuyên viên mới ${ruleChip("AIA-CV-013")} (trang 8). Mức thuế chung cho thu nhập đại lý: <b>chưa đối chiếu văn bản</b>.</p>
@@ -786,11 +843,12 @@ function renderAll() {
   $("planSeg").innerHTML = Object.entries(PLAN_META).map(([k, m]) => `<button type="button" data-plan="${k}" aria-pressed="${state.plan === k}">${esc(m.name)}${m.star ? ' <span class="tag ADAPT">đề xuất</span>' : ""}</button>`).join("");
   document.querySelectorAll("#planSeg button").forEach(b => b.onclick = () => { state.plan = b.dataset.plan; renderAll(); });
   $("k2").value = state.k2;
-  $("tabs").innerHTML = TABS.map(([k, n, , grp], i) => (grp === "ref" && (!TABS[i - 1] || TABS[i - 1][3] !== "ref") ? '<div class="navsep">Tham khảo (bản trước)</div>' : "")
-    + `<button type="button" data-tab="${k}" ${state.tab === k ? 'aria-current="page"' : ""}><span class="stepn">${k === "glossary" ? "📖" : grp === "ref" ? "·" : i + 1}</span>${n}</button>`).join("");
-  $("sideNote").textContent = PLAN_META[state.plan].star ? "Song Hành là phương án đề xuất. Bấm vào mã quy tắc ở bất kỳ đâu để xem trang tài liệu gốc bên phải." : "Đang xem: " + PLAN_META[state.plan].name + ".";
+  $("tabs").innerHTML = TABS.map(([k, n, , grp], i) => (grp === "ref" && (!TABS[i - 1] || TABS[i - 1][3] !== "ref") ? '<div class="navsep">Phân tích sâu · chỉnh K2 &amp; phương án</div>' : "")
+    + `<button type="button" data-tab="${k}" ${state.tab === k ? 'aria-current="page"' : ""}><span class="stepn">${k === "glossary" ? "📖" : grp === "ref" ? "·" : i + 1}</span>${k === "glossary" ? `Phụ lục: Từ điển & ${(DATA.pdfs || []).length} PDF` : n}</button>`).join("");
+  $("glOpen").textContent = `📖 Từ điển & ${(DATA.pdfs || []).length} PDF`;
   document.querySelectorAll("#tabs button").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; showTab(); window.scrollTo(0, 0); });
   renderOverview(); renderPackage(); renderTiers(); renderCost(); renderRubric(); renderTune(); renderCompare(); renderMethod(); renderAssume(); renderGlossary(); renderT1(); renderT2(); renderT3();
+  if ($("rtb")) renderEvidence();   // đã mở trang Bằng chứng: vẽ lại khi dữ liệu (vd. Supabase) đổi số tài liệu
   showTab();
 }
 function showTab() {
@@ -798,7 +856,39 @@ function showTab() {
   if (t[2].includes("p-evidence") && !$("rtb")) renderEvidence();
   document.querySelectorAll("section.panel").forEach(sec => sec.classList.toggle("on", t[2].includes(sec.id)));
   document.querySelectorAll("#tabs button").forEach(b => b.dataset.tab === state.tab ? b.setAttribute("aria-current", "page") : b.removeAttribute("aria-current"));
+  /* Chỉ hiện điều khiển mà trang thật sự dùng (đã thử từng trang: đổi phương án / K2 có làm đổi nội dung không).
+     Trang 1–3, Phụ lục, Học từ đối thủ, Bằng chứng: số cố định → ẩn cả hai. Tự chỉnh thông số: chỉ dùng K2. */
+  const usesPlan = ["overview", "package", "money", "rubric", "method"].includes(t[0]);
+  const usesK2 = usesPlan || t[0] === "tune";
+  const deep = usesK2;
+  $("planCtl").hidden = !usesK2;
+  $("planBox").hidden = !usesPlan;
+  $("sideNote").textContent = !deep ? "Bấm vào mã [văn bản : trang] ở bất kỳ đâu để mở đúng trang tài liệu gốc bên phải."
+    : PLAN_META[state.plan].star ? "Song Hành là phương án đề xuất. Kéo K2 hoặc đổi phương án — các trang Phân tích sâu tính lại ngay." : "Đang xem: " + PLAN_META[state.plan].name + ".";
 }
+/* Thanh bên: kéo mép phải để đổi độ rộng, nút ghim để cố định / tự ẩn (giống W02 WordLoop) */
+(function sideCtl() {
+  const app = $("app"), rz = $("sideResize"), pin = $("pinBtn"), KEY = "w24.side";
+  const pref = {w: 232, pinned: true};
+  try { Object.assign(pref, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) {}
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(pref)); } catch (e) {} };
+  const apply = () => {
+    pref.w = Math.min(440, Math.max(180, Math.round(+pref.w) || 232));
+    app.style.setProperty("--sidew", pref.w + "px");
+    app.classList.toggle("unpinned", !pref.pinned);
+    pin.setAttribute("aria-pressed", pref.pinned);
+    pin.title = pref.pinned ? "Bỏ ghim: thanh bên tự ẩn, rê chuột vào mép trái để mở" : "Ghim thanh bên";
+  };
+  pin.onclick = () => { pref.pinned = !pref.pinned; apply(); save(); };
+  rz.onpointerdown = ev => {
+    ev.preventDefault(); rz.setPointerCapture(ev.pointerId); document.body.classList.add("resizing");
+    rz.onpointermove = e => { pref.w = e.clientX; apply(); };
+    rz.onpointerup = rz.onpointercancel = () => { rz.onpointermove = null; document.body.classList.remove("resizing"); save(); };
+  };
+  rz.ondblclick = () => { pref.w = 232; apply(); save(); };
+  rz.onkeydown = ev => { if (ev.key === "ArrowLeft" || ev.key === "ArrowRight") { ev.preventDefault(); pref.w += ev.key === "ArrowLeft" ? -16 : 16; apply(); save(); } };
+  apply();
+})();
 $("k2").oninput = ev => { state.k2 = +ev.target.value; renderAll(); };
 const st = selfTest();
 
@@ -827,7 +917,7 @@ function matrixTable(mid, table) {
   return `<div class="tbl-wrap"><table><thead><tr><th>Dòng quyền lợi</th>${cos.map(co => `<th>${esc(co)} · ${esc((cells.find(c => c.company === co) || {}).title || "")}</th>`).join("")}</tr></thead><tbody>`
     + rows.map(rn => `<tr><th scope="row">${esc((cells.find(c => c.row_no === rn) || {}).row_label || "")}</th>${cos.map(co => {
       const c = cells.find(x => x.company === co && x.row_no === rn);
-      return c ? `<td class="small">${linkifyCites(c.value_text)} ${linkifyCites(c.citation)}${lblTag(c.label)}${confTag(c)}</td>` : "<td></td>";
+      return c ? `<td class="small" data-co="${esc(co)} · ${esc((cells.find(x => x.company === co) || {}).title || "")}">${linkifyCites(c.value_text)} ${linkifyCites(c.citation)}${lblTag(c.label)}${confTag(c)}</td>` : "<td></td>";
     }).join("")}</tr>`).join("") + "</tbody></table></div>";
 }
 function renderT1() {
@@ -835,10 +925,10 @@ function renderT1() {
   const get = (mid, co, cmp, title) => B.find(r => r.milestone_id === mid && r.company === co && r.comparison === cmp && (!title || r.title === title));
   const rowsHtml = ["M1", "M2", "M3", "M4"].map(mid => {
     const open = state.t1Open === mid;
-    let h = `<tr class="msrow" data-mid="${mid}" tabindex="0" aria-expanded="${open}"><th scope="row">${open ? "▾" : "▸"} ${esc(MS_LABEL[mid])}<span class="basis">${mid === "M1" ? BASIS.personal_income : BASIS.net_management_fee}</span></th>`
-      + CO3.map(co => `<td class="small">${benchCell(get(mid, co, "primary"))}</td>`).join("") + "</tr>";
-    if (mid === "M4") h += `<tr><th scope="row" class="small">Mốc 4 — bảng phụ (tuyến quản lý truyền thống)</th><td class="small muted">—</td>`
-      + `<td class="small">${benchCell(get("M4", "Chubb", "secondary", "DM"))}<hr>${benchCell(get("M4", "Chubb", "secondary", "BD"))}</td><td class="small">${benchCell(get("M4", "Manulife", "secondary", "UM+"))}</td></tr>`;
+    let h = `<tr class="msrow" data-mid="${mid}" tabindex="0" aria-expanded="${open}"><th scope="row">${esc(MS_LABEL[mid])}<span class="basis">${mid === "M1" ? BASIS.personal_income : BASIS.net_management_fee}</span><span class="mshint">${open ? "▾ Thu gọn" : "▸ Xem 6 dòng quyền lợi"}</span></th>`
+      + CO3.map(co => `<td class="small" data-co="${esc(SNAME[co])}">${benchCell(get(mid, co, "primary"))}</td>`).join("") + "</tr>";
+    if (mid === "M4") h += `<tr><th scope="row" class="small">Mốc 4 — bảng phụ (tuyến quản lý truyền thống)</th><td class="small muted" data-co="${esc(SNAME.AIA)}">—</td>`
+      + `<td class="small" data-co="${esc(SNAME.Chubb)}">${benchCell(get("M4", "Chubb", "secondary", "DM"))}<hr>${benchCell(get("M4", "Chubb", "secondary", "BD"))}</td><td class="small" data-co="${esc(SNAME.Manulife)}">${benchCell(get("M4", "Manulife", "secondary", "UM+"))}</td></tr>`;
     if (open) h += `<tr><td colspan="4" class="mx"><b>Quyền lợi ngang hàng — ${esc(MS_LABEL[mid])}</b>${matrixTable(mid, "primary")}${mid === "M4" ? "<p class='small'><b>Bảng phụ Mốc 4:</b></p>" + matrixTable("M4", "secondary") : ""}</td></tr>`;
     return h;
   }).join("");
@@ -846,7 +936,7 @@ function renderT1() {
   <h2>1 · Soi tiền & quyền lợi theo 4 mốc quy mô</h2>
   <p class="note"><b>Mốc 1</b> = thu nhập cá nhân của đại lý (gồm hoa hồng tự bán). <b>Mốc 2–4</b> = <b>phí quản lý thuần, không gồm hoa hồng tự bán</b> — vì vậy Mốc 2 của AIA và Manulife có thể thấp hơn Mốc 1. Đơn vị: triệu đồng/tháng, K2 85%, trước thuế. Bấm vào từng mốc để mở bảng quyền lợi ngang hàng 6 dòng; mọi ô có link <b>[Mã văn bản : trang]</b>.</p>
   <div class="tbl-wrap"><table class="t1"><thead><tr><th>Mốc</th>${CO3.map(co => `<th>${esc(SNAME[co])}</th>`).join("")}</tr></thead><tbody>${rowsHtml}</tbody></table></div>
-  <p class="note">Mốc 4 so sánh chính theo tuyến lãnh đạo vùng (AIA PAF · Chubb RD · Manulife PSM/SM — DEC-14). Chubb BD là chức danh đạt bằng chỉ tiêu nhưng biểu phí không có trong 9 PDF. Ô gắn <span class="tag AVOID">mật</span> dựa trên 0046M01/0047M01, chỉ lưu local.</p>`;
+  <p class="note">Mốc 4 so sánh chính theo tuyến lãnh đạo vùng (AIA PAF · Chubb RD · Manulife PSM/SM — DEC-14). Chubb BD là chức danh đạt bằng chỉ tiêu nhưng biểu phí không có trong bộ tài liệu nguồn. Ô gắn <span class="tag AVOID">mật</span> dựa trên 0046M01/0047M01, chỉ lưu local.</p>`;
   document.querySelectorAll("#p-t1 tr.msrow").forEach(tr => {
     const go = () => { state.t1Open = state.t1Open === tr.dataset.mid ? "" : tr.dataset.mid; renderT1(); postRender("p-t1"); };
     tr.onclick = ev => { if (!ev.target.closest("a,abbr")) go(); };
@@ -861,7 +951,7 @@ function renderT2() {
   const ws = s => RB.filter(r => r.scheme === s).reduce((a, r) => a + r.weight * r.score, 0);
   const cls = s => s === "Hybrid" ? "me" : "";
   $("p-t2").innerHTML = `
-  <h2>2 · MAPA, Trade-off & ROI 3 tầng</h2>
+  <h2>2 · MAPA, Trade-off & ROI 3 tầng</h2>${DATA.public_build ? '<p class="callout small"><span class="badge warn">Bản công khai</span> Trang này <b>không có Manulife</b>: chi phí toàn khu vực của Manulife tính từ 2 văn bản ghi "thông tin mật" nên đã được lược (DEC-14). So sánh chi phí dưới đây chỉ gồm AIA, Chubb và đề xuất.</p>' : ""}
   <p class="note">Khu vực Mốc 4 dùng chung: 45 đại lý, 1,2 tỷ FYP/tháng, 1 lãnh đạo + 2 trưởng ban + 6 trưởng nhóm. <b>"ROI" ở đây là chi phí / FYP và chi phí / phí còn duy trì — không phải ROI thực tế</b> (VNB, biên lợi nhuận thật chưa có). Số Chính sách Lai là đề xuất.</p>
   <div class="grid g2">
     <div class="card"><h3 style="margin-top:0">Tầng 1 — Tổng chi / FYP (K2 85%)</h3>${barRows(sc.map(s => ({name: SNAME[s], v: v(s, "cost_pct_fyp", 85), cls: cls(s)})), "%", 1)}<p class="small muted">Trần đề xuất 75% FYP, kiểm ở kịch bản xấu nhất (cột "Kịch bản xấu nhất" dưới đây — gồm trường hợp mọi đại lý đạt quota).</p></div>
@@ -1041,7 +1131,7 @@ function takeawayFor(id) {
   if (id === "p-rubric") { const sc = scoreAll(k2), r = sc.totals.slice().sort((x, y) => y.total - x.total), me = r.findIndex(t => t.e.key === key);
     return `Góc nhìn “${PRESETS[state.weightsPreset].name}”: dẫn đầu là ${r[0].e.name} (${fmt(r[0].total, 2)}/5); ${nm} xếp ${me + 1} (${fmt(r[me].total, 2)}). Hai phương án Song Hành chênh nhau chủ yếu ở sàn K2 — đổi trọng số để thấy kết quả thay đổi.`; }
   if (id === "p-tune") return "Kéo một thanh trượt để thấy đánh đổi: thu nhập từng cấp và chi phí đổi ngay; huy hiệu đỏ nghĩa là phương án vi phạm một điều kiện tự đặt.";
-  if (id === "p-evidence") { const R = DATA.knowledge.rules; return `7 tài liệu, 116 trang, ${R.length} quy tắc trích có số trang; ${R.filter(r => r.impl === "IMPLEMENTED").length} đã đưa vào mô hình, ${R.filter(r => r.calc === "TESTED_PASS").length} đã kiểm thử đạt; kiểm mẫu độc lập 14/14 khớp nội dung và trang.`; }
+  if (id === "p-evidence") { const R = DATA.knowledge.rules, cv = evidenceCoverage(); return `${cv.docs.length} tài liệu, ${fmt(cv.pages)} trang; ${R.length} quy tắc trích có số trang (từ ${cv.ruled.length} tài liệu); ${R.filter(r => r.impl === "IMPLEMENTED").length} đã đưa vào mô hình, ${R.filter(r => r.calc === "TESTED_PASS").length} đã kiểm thử đạt; kiểm mẫu độc lập 14/14 khớp nội dung và trang.`; }
   if (id === "p-method") return "Mọi con số trên trang đều tính từ các công thức dưới đây; đổi phương án hoặc K2 thì các bảng tính lại.";
   if (id === "p-assume") return "Kết quả phụ thuộc vào vài giả định áp chung cho mọi hãng và một số dữ liệu chưa có — liệt kê đủ ở đây, không quy dữ liệu thiếu về 0.";
   return "";
@@ -1087,7 +1177,7 @@ $("glOpen").onclick = () => {
 $("presentBtn").onclick = () => {
   const on = document.body.classList.toggle("present");
   $("presentBtn").setAttribute("aria-pressed", on); $("presentBtn").textContent = on ? "Thoát chế độ trình bày" : "Chế độ trình bày";
-  if (on && state.tab === "tune") { state.tab = "overview"; showTab(); }
+  if (on && (state.tab === "tune" || state.tab === "rubric")) { state.tab = "t2"; showTab(); }
 };
 $("resetAll").onclick = () => {
   Object.assign(state, {plan: "song_hanh", k2: 82, tier: "agent", weightsPreset: "ttbv", weights: Object.assign({}, PRESETS.ttbv.w),

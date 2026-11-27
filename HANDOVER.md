@@ -4,6 +4,21 @@
 
 ## Trạng thái hiện hành
 
+**2026-11-27 — Sửa UI theo góp ý TJ (`web/template.html`), đã build lại cả 2 bản, CHƯA commit/push.**
+- Thanh bên: kéo mép phải để đổi độ rộng (180–440px, nhấp đúp về 232px, phím ←/→), nút ghim kiểu W02 (bỏ ghim = tự ẩn, rê mép trái để mở); lưu `localStorage` `w24.side`. Chỉ áp dụng màn hình >980px.
+- Nội dung bám trái, tối đa 1560px (trước đây căn giữa 1240px → thừa trắng hai bên).
+- Trang 1–3 và Phụ lục không dùng K2/phương án (số cố định K2 85%) → ẩn bộ chọn phương án + thanh K2 ở các trang đó, tránh hiện "K2 82%" cạnh bảng K2 85%.
+- Nhóm "Tham khảo (bản trước)" → "Phân tích sâu · chỉnh K2 & phương án"; "Chấm điểm (bản trước)" → "Chấm điểm 5 phương án".
+- Trang 1 trên điện thoại (≤760px): bảng 4 mốc + ma trận quyền lợi thành thẻ xếp dọc, mỗi ô có nhãn công ty; nút "Xem 6 dòng quyền lợi" thay mũi tên ▸.
+- Lỗi "7 tài liệu": bảng Bằng chứng lọc `sources` có `url` → 2 văn bản mật 0046M01/0047M01 (không có url theo DEC-14) bị rơi, tiêu đề ghi cứng "7 tài liệu, 116 trang". Nay đếm từ `DATA.pdfs` (bản đầy đủ: 9 tài liệu/135 trang; bản public: 7 + ghi chú lược 2 văn bản mật); 2 văn bản này hiện "—" ở cột quy tắc vì thư viện 112 quy tắc chỉ trích từ 7 văn bản đầu (116 trang) — chưa trích quy tắc từ 0046M01/0047M01. Nhãn "9 PDF" ở tab/nút/thẻ cũng đếm động. Trang Bằng chứng vẽ lại khi Supabase nạp xong.
+- `outputs/interview/W24_Executive_Recommendation_Step1.md`: cơ sở bằng chứng ghi 9 văn bản/135 trang, nói rõ nội dung bản khuyến nghị phân tích trên 7 văn bản đầu; bỏ "chưa có Đại lý/Quản lý cấp trung Manulife" khỏi giới hạn và khỏi yêu cầu bổ sung. Không đưa số liệu hay mã văn bản mật vào file (repo PUBLIC).
+- TJ duyệt (2026-11-27): **bản khuyến nghị đầy đủ có số liệu Manulife Đại lý/UM+** lưu NGOÀI repo (thư mục làm việc riêng của TJ, không phải Git), chỉ gửi trực tiếp chị Nhi. Các phần thêm đánh dấu "[BẢN ĐẦY ĐỦ]", trích trang 0046M01/0047M01.
+- **Phát hiện cần TJ quyết (chưa sửa):** trên mô hình Giai đoạn 2, khi tính đủ 3 tầng Manulife thì đề xuất KHÔNG còn rẻ nhất ở K2 tốt, chỉ rẻ nhất khi K2 xấu (số cụ thể chỉ ghi trong bản đầy đủ ngoài repo). Tiêu đề trang web bản đầy đủ "trả ngang thị trường, chi phí thấp hơn" và trang 1 bản khuyến nghị công khai đang mâu thuẫn với bảng ở trang 2 web.
+- TJ giao tự quyết (bài đánh giá freelance, không hỏi lại chị Nhi). Đã làm: tiêu đề web → "chi phí co giãn theo chất lượng"; khung "giả định thay cho ngân sách/chỉ tiêu/quy mô" ở đầu web + 2 bản khuyến nghị; bản public có dòng báo trang 2 không có Manulife; trang Chấm điểm 5 phương án có đoạn giải thích khác trang 2 và ẩn khi bật Chế độ trình bày; +21 quy tắc MNL-AG-001..014 / MNL-MG-001..007 (0046M01/0047M01) → catalog 133 dòng (bản public tự lọc còn 112).
+- Quyết định: CHƯA mở rộng Excel cho Manulife Đại lý/UM+ và Chính sách Lai — ghi giới hạn trong 2 bản khuyến nghị. Python engine + test là nguồn tính cho phần này.
+- Sửa thêm: bảng "Chấm điểm 5 phương án" phình 2.456px (ô điểm `white-space:nowrap` + ghi chú định tính dài) → chỉ thấy cột AIA; nay cho xuống dòng, vừa khung.
+- Kiểm: `run_checks.py` ALL PASSED; `check_public_build.py` PASS (79 dòng restricted lọc); Chrome 1584px + khung 390px (không cuộn ngang).
+
 **2026-11-27 (khuya) — ĐÃ PHÁT HÀNH bản Public (TJ duyệt).**
 - `git push origin public-release:main` → `origin/main` = `fa6aef7`: 1 commit trên `1e36986`, chỉ thay `outputs/interactive/W24_Strategy_Lab.html` bằng bản `--public`.
 - GitHub Pages build `fa6aef7`: built. Link `https://teoteo1081.github.io/W24_Life-Insurance-Strategy-Lab/outputs/interactive/W24_Strategy_Lab.html` trả HTTP 200, trùng blob `fa6aef7`; scanner trên bản live PASS; Chrome dựng trang, tự kiểm 60/60.

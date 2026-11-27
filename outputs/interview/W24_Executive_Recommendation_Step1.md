@@ -2,11 +2,20 @@
 ## Gói Bàn giao Điều hành — Bước 1 (`Executive Advisory Deck — 7 Trang`)
 
 > **Đề bài gốc (Chị Nhi):** *"Bước 1: Phân tích các chính sách thu nhập giữa các công ty, và đề xuất chính sách phù hợp tại thị trường VN, nhằm thúc đẩy gia tăng doanh số, chất lượng kinh doanh và hiệu quả về mặt chi phí (ROI)."*  
-> **Cơ sở bằng chứng:** Phân tích trực tiếp **7 văn bản chính sách hiệu lực 2026** của **AIA Việt Nam (Kênh Alpha)**, **Chubb Life Việt Nam (Kênh Đại lý)** và **Manulife Việt Nam (Tầng Quản lý Cấp cao `PSM+/HKD`)**, bối cảnh thị trường IAV/MOF 2024–2026 (`SOURCE_CLAIM`), và tham chiếu khung pháp lý Việt Nam (TT 67/2023/TT-BTC, NĐ 97/2026/NĐ-CP, TT 96/2026/TT-BTC, Văn bản hợp nhất `44/2026/VBHN-TT-BTC` — `SOURCE_NOT_VERIFIED` ở mức toàn văn từng điều khoản).  
+> **Cơ sở bằng chứng:** **9 văn bản chính sách hiệu lực 2026 (135 trang)** của **AIA Việt Nam (Kênh Alpha)**, **Chubb Life Việt Nam (Kênh Đại lý)** và **Manulife Việt Nam**. Bản khuyến nghị này được phân tích trên **7 văn bản đầu (116 trang)**, trong đó Manulife chỉ có tầng Quản lý Cấp cao `PSM+/HKD`; **2 văn bản Manulife bổ sung sau** (chính sách Đại lý cá nhân và biểu phí Quản lý cấp trung `UM+`, ghi "thông tin mật" — chỉ lưu local, DEC-14) đã được đưa vào bảng so sánh 4 mốc & ma trận quyền lợi trên trang web (trang 1–2) nhưng **chưa được phản ánh vào các kết luận và bảng dưới đây**. Ngoài ra: bối cảnh thị trường IAV/MOF 2024–2026 (`SOURCE_CLAIM`), và tham chiếu khung pháp lý Việt Nam (TT 67/2023/TT-BTC, NĐ 97/2026/NĐ-CP, TT 96/2026/TT-BTC, Văn bản hợp nhất `44/2026/VBHN-TT-BTC` — `SOURCE_NOT_VERIFIED` ở mức toàn văn từng điều khoản).  
 > **Ranh giới Kết luận & Minh bạch Phạm vi (`BASED ON AVAILABLE POLICY DOCUMENTS`):**
-> - Bộ tài liệu chỉ đại diện cho **thiết kế chính sách (Policy Design)** của các tầng có văn bản (chưa có Đại lý cá nhân/Quản lý cấp trung Manulife, gói trợ cấp Exchange/Pro & biểu HH AIA, hay quy định chung `260005V`/BD Chubb).
+> - Bộ tài liệu chỉ đại diện cho **thiết kế chính sách (Policy Design)** của các tầng có văn bản (chưa có gói trợ cấp Exchange/Pro & biểu HH AIA, hay quy định chung `260005V`/BD Chubb). Đại lý cá nhân & Quản lý cấp trung Manulife đã có văn bản nhưng chưa được đưa vào phần phân tích của tài liệu này — xem trang web (trang 1–2).
 > - Toàn bộ con số tài chính trong tài liệu là **Chi phí & Điểm hòa vốn mô phỏng theo kịch bản chuẩn (`Modeled Payout / Modeled Distribution Cost / Modeled Break-Even Gross Margin`)**, **KHÔNG phải ROI thực tế đã chứng minh** hay bằng chứng tăng trưởng doanh số/chất lượng thực tế (`Observed Performance & Actual ROI = UNKNOWN` do chưa có `VNB Margin`, `OpEx` và dữ liệu cohort của doanh nghiệp đích).
 > - Đề xuất là **kiến trúc tư vấn minh họa (`PROPOSAL / SYNTHETIC ASSUMPTION`)**, chỉ có giá trị định hướng thảo luận; mọi điều kiện tuân thủ pháp lý ở trạng thái **`CONDITIONAL`** cho đến khi Pháp chế & Kế toán đối chiếu toàn văn `44/2026/VBHN-TT-BTC`.
+>
+> **Giả định thay cho thông tin đề bài chưa nêu** (đề bài không cho ngân sách, chỉ tiêu, quy mô kênh hay thứ tự ưu tiên):
+> - **Ngân sách chi phí phân phối:** trần tự đặt **tổng chi ≤ 75% FYP ở kịch bản xấu nhất**, cộng trần pháp lý Điều 52 TT 67/2023 cho thưởng & hỗ trợ (`CONDITIONAL`).
+> - **Quy mô:** 1 Vùng chuẩn 12 tỷ FYP/năm (trang 1–6 của tài liệu này); trang web dùng thêm mô hình 1 khu vực 45 đại lý, 1,2 tỷ FYP/tháng. Không cộng trừ số giữa hai mô hình.
+> - **Chất lượng:** K2 82% kịch bản chuẩn, 62% kịch bản xấu.
+> - **ROI:** chưa có biên lợi nhuận (VNB) và chi phí vận hành của doanh nghiệp → đo bằng chi phí / FYP, chi phí / phí còn duy trì và ngưỡng hòa vốn mô phỏng.
+> - **Ưu tiên:** trọng số 30% Doanh số / 25% Chất lượng / 25% Tài chính / 10% Con người / 10% Triển khai (đổi được, xem độ nhạy trang 6).
+> - Có số thật thì thay vào mô hình là tính lại; cấu trúc đề xuất không đổi.
+> - **Công cụ tính:** mô hình Excel tham chiếu (14 sheet, công thức mở) phủ 7 văn bản đầu và mô hình Vùng 12 tỷ; phần Chính sách Lai và mô hình khu vực 45 đại lý trên trang web tính bằng Python engine có bộ kiểm thử, chưa đưa vào Excel.
 
 ---
 
@@ -21,6 +30,7 @@
 ### Khuyến nghị Trung tâm: Kiến trúc `Balanced Hybrid` (Cân bằng Doanh số — Chất lượng — Dòng tiền)
 - **Định vị:** Kết hợp các cơ chế chứng minh xuất sắc nhất từ cả 3 hãng (Bảo vệ thực chất + Chặn T+1 + Khóa gián tiếp từ Chubb; Kỷ luật tái tục & SYC cao từ AIA; Trả chậm 3 năm `30/30/40%` + Sàn/Trần định phí + Chuyển đổi HKD từ Manulife), đồng thời **loại bỏ 3 nguồn gây vỡ chi phí lớn nhất thị trường** (Direct Override >100% FYC, Phí cố định quá cao kèm chuỗi gián tiếp vô hạn tầng, và thưởng tăng trưởng thuần QoQ).
 - **Tác động mô phỏng trên kịch bản 1 Vùng chuẩn (`12 tỷ FYP/năm`, `K2 = 82%`, `MODEL_OUTPUT — KHÔNG PHẢI ROI THỰC TẾ`):** Hạ tổng chi phí phân phối toàn hệ thống mô phỏng xuống **`59.44% FYP`** (chi tiền mặt Năm 1 mô phỏng `54.45% FYP`, thấp hơn `15.99` điểm % so với kịch bản AIA Alpha chưa gồm Exchange/Pro và `44.76` điểm % so với kịch bản Chubb Life trong cùng giả định sản lượng). Rổ thưởng đại lý mô phỏng đạt `5.91% FYP` ở kịch bản năng suất trung bình (`15tr FYC/M`, và dưới `~19% FYP` ở nhóm năng suất cao), giữ biên đệm rộng dưới ngưỡng tham chiếu `30%` của Điều 52 *(cần Pháp chế & Kế toán kiểm chứng phạm vi tính rổ pháp định theo toàn văn `44/2026/VBHN-TT-BTC`)*.
+- **Đọc đúng lợi thế chi phí:** so sánh chi phí trong tài liệu này gồm AIA và Chubb; Manulife chỉ công bố được tầng `PSM+/HKD`, nên tài liệu **không kết luận "rẻ nhất thị trường"**. Lợi thế bền của đề xuất là **chi phí co giãn theo chất lượng**: khi K2 rơi từ 82% xuống 62%, tổng chi tự giảm từ `59.44%` xuống `45.42% FYP`, trong khi chi phí trên mỗi đồng phí còn sống đến Năm 2 gần như đứng yên (`72.48%` → `73.27%`) — trang 6.
 
 ---
 
@@ -116,5 +126,5 @@
 ### 4 Quyết định Cần Ban Lãnh đạo / Chị Nhi Xác nhận cho Bước 2
 1. **Ưu tiên chiến lược (Trọng số):** Xác nhận bộ trọng số ưu tiên (`30% Doanh số / 25% Chất lượng / 25% Tài chính / 10% Con người / 10% Triển khai`) hay muốn nghiêng mạnh hơn về Growth hoặc Quality?
 2. **Mức độ chấp nhận định phí & Khẩu vị đầu tư Toàn thời gian:** Có triển khai nhánh đại lý toàn thời gian (gói hỗ trợ gắn `SOP + FNA` giữ lại M12) song song với nhánh truyền thống hay tập trung một khung chuẩn?
-3. **Cung cấp đầu vào Tài chính & Đối thủ bổ sung:** Chia sẻ giả định biên sản phẩm (`VNB Margin` / `OpEx`) của doanh nghiệp và bổ sung chính sách Đại lý Manulife / AIA Exchange (nếu cần tinh chỉnh cạnh tranh tuyển dụng trực tiếp).
+3. **Cung cấp đầu vào Tài chính & Đối thủ bổ sung:** Chia sẻ giả định biên sản phẩm (`VNB Margin` / `OpEx`) của doanh nghiệp và bổ sung chính sách AIA Exchange (chính sách Đại lý Manulife đã có, đang so sánh trên trang web; nếu cần tinh chỉnh cạnh tranh tuyển dụng trực tiếp).
 4. **Phê duyệt chuyển sang Bước 2:** Mở rộng sang **MAPA chi tiết theo cohort, Kế hoạch Marketing Tuyển dụng & Tìm kiếm Khách hàng, và HTML Interactive Simulator** cho PO tự tinh chỉnh tham số.
