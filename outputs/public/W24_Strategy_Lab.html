@@ -1324,12 +1324,14 @@ function execCostChart(rows) {
 const DE_BAI = "Phân tích các chính sách thu nhập giữa các công ty, và đề xuất chính sách phù hợp tại thị trường VN, nhằm thúc đẩy gia tăng doanh số, chất lượng kinh doanh và hiệu quả về mặt chi phí (ROI).";
 const DOC_SHORT = {"AIAVAD 2604-069": "Chuyên viên tư vấn (Alpha)", "AIAVAD 2601-034": "Cấp quản lý (CQL)", "AIAVAD 2601-035": "Lãnh đạo vùng PAF+",
   "CHH0DCEB260007V": "Đại lý", "CHH0DCEB260008V": "Phí dịch vụ cấp quản lý", "CHH0DCEB260003V": "Phí dịch vụ giám đốc vùng",
-  "0046M01_2026": "Chính sách chi trả Đại lý", "0047M01_2026": "Biểu phí dịch vụ UM+", "0048M01_2026": "Biểu phí PSM+ & hộ kinh doanh"};
+  "0048M01_2026": "Biểu phí PSM+ & hộ kinh doanh"};
+/* Văn bản mật KHÔNG được ghi mã trong template (template nhúng cả vào bản công khai) — tên rút gọn tự suy từ tên file */
+const docShort = f => DOC_SHORT[f.file_id] || f.name.replace(/^[^_]*_\d{4}_/, "").replace(/\.pdf$/i, "");
 const docCo = fid => /^AIA/.test(fid) ? "AIA" : /^CHH/.test(fid) ? "Chubb Life" : /M01/.test(fid) ? "Manulife" : "Khác";
 function execBriefHtml() {
   const pdfs = DATA.pdfs || [], cos = ["AIA", "Chubb Life", "Manulife"];
-  const item = f => f.url ? `<a href="${f.url}#page=1" title="${esc(f.name)}">${DOC}${esc(DOC_SHORT[f.file_id] || f.name)} <span class="pg">· ${f.pages} tr</span></a>`
-    : `<span class="lock" title="${esc(f.name)}">🔒 ${esc(DOC_SHORT[f.file_id] || f.name)} <span class="pg">· ${f.pages} tr · mật, chỉ lưu local</span></span>`;
+  const item = f => f.url ? `<a href="${f.url}#page=1" title="${esc(f.name)}">${DOC}${esc(docShort(f))} <span class="pg">· ${f.pages} tr</span></a>`
+    : `<span class="lock" title="${esc(f.name)}">🔒 ${esc(docShort(f))} <span class="pg">· ${f.pages} tr · mật, chỉ lưu local</span></span>`;
   const hidden = DATA.public_build && cos.includes("Manulife") ? '<span class="lock">🔒 2 văn bản ghi “thông tin mật” — không đưa lên bản công khai</span>' : "";
   return `<div class="card xbrief">
     <div><span class="lb">Đề bài</span><blockquote>“${esc(DE_BAI)}”</blockquote>
