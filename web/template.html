@@ -253,7 +253,7 @@ footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1p
       <li><b>Quy mô:</b> trang 1–3 dùng 1 khu vực <b>45 đại lý, 1,2 tỷ FYP/tháng</b> (1 lãnh đạo, 2 trưởng ban, 6 trưởng nhóm); nhóm Phân tích sâu dùng 1 vùng 12 tỷ FYP/năm. Hai mô hình khác nhau — không cộng trừ số giữa chúng.</li>
       <li><b>Chất lượng:</b> K2 85% là kịch bản chuẩn, K2 65% là kịch bản xấu.</li>
       <li><b>ROI:</b> chưa có biên lợi nhuận (VNB) và chi phí vận hành của công ty → đo bằng <b>chi phí / FYP</b> và <b>chi phí / phí còn duy trì</b>, không phải ROI thực tế.</li>
-      <li><b>Ưu tiên:</b> trọng số rubric trang 2 = hành vi 25% · tài chính 25% · cạnh tranh thu nhập 20% · đơn giản 15% · vận hành & pháp lý 15%.</li>
+      <li><b>Ưu tiên:</b> điểm tổng ở trang 2 cộng 5 tiêu chí theo mức quan trọng — đại lý bán đúng & giữ hợp đồng <b>25%</b> · an toàn chi phí <b>25%</b> · thu nhập đủ cạnh tranh để tuyển & giữ người <b>20%</b> · chính sách đơn giản, đại lý tự tính được <b>15%</b> · dễ vận hành & đúng luật <b>15%</b>.</li>
     </ul>
     <p class="small muted">Có số thật (ngân sách, chỉ tiêu, cơ cấu lực lượng) thì thay vào mô hình là tính lại — không cần đổi cấu trúc đề xuất.</p>
   </details>
@@ -459,7 +459,7 @@ function renderOverview() {
     .concat(plans.map(p => ({name: PLAN_META[p].name, v: planAgent(p, k2, 15).total_3y, cls: cls(p)}))).sort((x, y) => y.v - x.v);
   const dA = aia.earned_pct_fyp - e.earned_pct_fyp;
   const close = rank[0].e.key !== key
-    ? `<p class="small muted">Theo rubric (góc nhìn “${esc(PRESETS[state.weightsPreset].name)}”), ${esc(rank[0].e.name)} được ${fmt(rank[0].total, 2)} điểm, ${esc(PLAN_META[key].name)} được ${fmt(me.total, 2)}. Chênh lệch nhỏ, chủ yếu do sàn K2 — xem tab Chấm điểm.</p>` : "";
+    ? `<p class="small muted">Theo bảng chấm điểm (góc nhìn “${esc(PRESETS[state.weightsPreset].name)}”), ${esc(rank[0].e.name)} được ${fmt(rank[0].total, 2)} điểm, ${esc(PLAN_META[key].name)} được ${fmt(me.total, 2)}. Chênh lệch nhỏ, chủ yếu do sàn K2 — xem tab Chấm điểm.</p>` : "";
   $("p-overview").innerHTML = `
   <p class="finding" aria-live="polite">${esc(PLAN_META[key].name)}: chi phí ${pct(e.earned_pct_fyp)} FYP, ${dA >= 0 ? "thấp hơn AIA " + fmt(dA, 1) : "cao hơn AIA " + fmt(-dA, 1)} điểm; đại lý trung bình nhận ${fmt(ag)} triệu trong 3 năm (AIA ${fmt(agA)}, Chubb ${fmt(agC)}).</p>
   <p class="muted" style="max-width:90ch;margin:0 0 18px">${esc(PLAN_META[key].desc)}</p>
@@ -475,7 +475,7 @@ function renderOverview() {
   </div>
   <div class="grid g2" style="margin-top:20px">
     <div><h3 style="margin-top:0">Điều kiện tự đặt cho phương án</h3><ul class="checks">${cons.map(c => `<li><span class="${c.ok ? (c.cond ? "cond" : "ok") : "no"}">${c.ok ? "✓" : "✗"}</span><span>${esc(c.txt)}</span></li>`).join("")}</ul></div>
-    <div><h3 style="margin-top:0">Điểm rubric: ${fmt(me.total, 2)}/5, xếp ${rank.findIndex(t => t.e.key === key) + 1}/${rank.length}</h3>${close}<p class="small muted">Mọi con số là mô phỏng trên một vùng chuẩn 12 tỷ FYP/năm (20 đại lý × 15 triệu FYC/tháng, 4 quản lý, 1 lãnh đạo vùng). Pháp lý: CONDITIONAL, chờ đối chiếu toàn văn 44/2026/VBHN-TT-BTC.</p></div>
+    <div><h3 style="margin-top:0">Điểm chấm tổng hợp: ${fmt(me.total, 2)}/5, xếp ${rank.findIndex(t => t.e.key === key) + 1}/${rank.length}</h3>${close}<p class="small muted">Mọi con số là mô phỏng trên một vùng chuẩn 12 tỷ FYP/năm (20 đại lý × 15 triệu FYC/tháng, 4 quản lý, 1 lãnh đạo vùng). Pháp lý: CONDITIONAL, chờ đối chiếu toàn văn 44/2026/VBHN-TT-BTC.</p></div>
   </div>`;
 }
 
@@ -661,7 +661,7 @@ function renderRubric() {
   <h3>Độ nhạy: phương án dẫn đầu ở từng góc nhìn</h3>
   <div class="tbl-wrap"><table><thead><tr><th>Góc nhìn</th><th>Dẫn đầu</th><th>Dẫn đầu nếu bỏ Q3</th><th>Thứ tự</th></tr></thead><tbody>
   ${sens.map(s => `<tr><td>${esc(s.name)}</td><td><b>${esc(s.win)}</b></td><td>${esc(s.win2)}</td><td class="small">${s.list.map(t => esc(t.e.name) + " " + fmt(t.total, 2)).join(" · ")}</td></tr>`).join("")}</tbody></table></div>
-  <p class="note">Rubric do người làm bài thiết kế (chưa được hiệu chỉnh độc lập). Điểm tương đối thay đổi khi thêm/bớt phương án. Tiêu chí định tính (Q2, I1) có nêu căn cứ để người đọc tự đánh giá lại. Q1 và R4 thưởng cho việc cắt thưởng mạnh khi K2 thấp; Q3 đo mặt trái của cơ chế đó (cú sốc thu nhập). Cột “nếu bỏ Q3” cho thấy kết luận phụ thuộc Q3 đến đâu.</p>`;
+  <p class="note">Bảng chấm điểm do người làm bài thiết kế (chưa được hiệu chỉnh độc lập). Điểm tương đối thay đổi khi thêm/bớt phương án. Tiêu chí định tính (Q2, I1) có nêu căn cứ để người đọc tự đánh giá lại. Q1 và R4 thưởng cho việc cắt thưởng mạnh khi K2 thấp; Q3 đo mặt trái của cơ chế đó (cú sốc thu nhập). Cột “nếu bỏ Q3” cho thấy kết luận phụ thuộc Q3 đến đâu.</p>`;
   document.querySelectorAll("#wSeg button").forEach(b => b.onclick = () => {
     state.weightsPreset = b.dataset.w; if (PRESETS[b.dataset.w].w) state.weights = Object.assign({}, PRESETS[b.dataset.w].w); renderAll(); });
   document.querySelectorAll("#p-rubric input[data-p]").forEach(i => i.oninput = () => {
@@ -760,7 +760,7 @@ function renderMethod() {
     ${tr("Thưởng đại lý (% FYP)", "lớp B ÷ 12.000 — so ngưỡng tham chiếu 30% Điều 52 (CONDITIONAL)", e.art52_bonus_pct_fyp)}
     ${tr("Biên gộp hòa vốn (%)", "tổng chi phí % FYP + OpEx " + state.opex + "%", e.breakeven_gross_margin_pct)}
   </tbody></table></div>
-  <h3>4. Điểm rubric</h3>
+  <h3>4. Bảng chấm điểm</h3>
   <p class="small">Mỗi tiêu chí: điểm = 1 + 4 × (giá trị − kém nhất) ÷ (tốt nhất − kém nhất) trong nhóm 5 chính sách đang so (tiêu chí “thấp hơn tốt hơn” thì đảo chiều). Điểm trụ = trung bình các tiêu chí của trụ. Tổng = Σ (điểm trụ × trọng số) ÷ Σ trọng số. Hai tiêu chí định tính chấm 1–5 kèm lý do và mã quy tắc.</p>
   <h3>5. “Cần bán thêm bao nhiêu”</h3>
   <p class="small">Lợi nhuận = (biên đóng góp − OpEx) × FYP − chi phí phân phối. Khi FYP tăng (1 + u) nhờ thêm đại lý cùng năng suất, mọi chi phí tăng theo tỷ lệ trừ phí cơ bản lãnh đạo vùng. Giải u sao cho lợi nhuận phương án đang xem = lợi nhuận phương án Cân bằng ở FYP hiện tại.</p>`;
@@ -964,7 +964,15 @@ function renderT2() {
   <div class="tbl-wrap"><table><thead><tr><th>Phương án</th><th>Bẫy</th><th>Đo được</th><th>Nguồn</th></tr></thead><tbody>
   ${TR.map(t => `<tr><td>${esc(SNAME[t.scheme])}${confTag(t)}</td><td><b>${esc(t.trap)}</b>${lblTag(t.label)}</td><td class="small">${esc(t.value_text)}</td><td class="small">${linkifyCites(t.citation)}</td></tr>`).join("")}
   </tbody></table></div>
-  <h3>Rubric 5 trụ cột</h3>
+  <h3>Bảng chấm điểm 5 tiêu chí</h3>
+  <p class="small" style="margin:0 0 6px">Mỗi phương án được chấm từ 1 đến 5 điểm (5 = tốt nhất) theo 5 tiêu chí. Con số trong ngoặc là <b>trọng số</b> — mức quan trọng của tiêu chí khi cộng thành điểm tổng ở dòng cuối.</p>
+  <ul class="small" style="margin:0 0 10px;padding-left:20px">
+    <li><b>Định hướng hành vi</b> — chính sách có khiến đại lý bán đúng nhu cầu, giữ hợp đồng không: chi trả có giảm khi tỷ lệ duy trì (K2) xấu đi, có “vách đá” làm thu nhập rơi đột ngột không.</li>
+    <li><b>An toàn tài chính / ROI</b> — tổng chi trên doanh thu phí, kể cả khi năng suất giảm một nửa hoặc mọi đại lý cùng đạt chỉ tiêu; bao nhiêu tiền được giữ lại trả chậm.</li>
+    <li><b>Sức cạnh tranh thu nhập</b> — đại lý và quản lý nhận bao nhiêu so với hãng trả cao nhất ở 4 mốc quy mô, tức có tuyển và giữ được người không.</li>
+    <li><b>Độ đơn giản & dễ tính</b> — số khoản thưởng / phí; càng ít khoản, đại lý càng tự tính được thu nhập của mình.</li>
+    <li><b>Vận hành & Pháp lý</b> — dễ triển khai và tuân thủ quy định; đây là đánh giá có dẫn chứng, không phải công thức.</li>
+  </ul>
   <div class="tbl-wrap"><table><thead><tr><th>Trụ cột (trọng số)</th>${SC4.map(s => `<th>${esc(SNAME[s])}</th>`).join("")}</tr></thead><tbody>
   ${pillars.map(p => { const w = (RB.find(r => r.pillar === p) || {}).weight || 0; return `<tr><th scope="row">${esc(p)} (${fmt(w * 100)}%)</th>${SC4.map(s => { const r = RB.find(x => x.scheme === s && x.pillar === p); return `<td title="${r ? esc(r.evidence) : ""}">${r ? fmt(r.score, 2) : "—"}${r && r.method === "judgement" ? ' <span class="small muted">(đánh giá)</span>' : ""}</td>`; }).join("")}</tr>`; }).join("")}
   <tr class="hl"><th scope="row">Điểm có trọng số (1–5)</th>${SC4.map(s => `<td><b>${RB.some(r => r.scheme === s) ? fmt(ws(s), 2) : "—"}</b></td>`).join("")}</tr></tbody></table></div>${DATA.public_build ? '<p class="note">Bản công khai: các số Manulife tính từ 2 văn bản ghi "thông tin mật" (Đại Lý, UM+) đã được lược bỏ (DEC-14); Manulife PSM/SM (0048M01) vẫn hiển thị ở tab 1.</p>' : ""}
@@ -988,7 +996,7 @@ function renderT3() {
       <li><b>Chốt chặn K2 ≥80%</b>: trợ cấp chỉ khi K2 ≥80%; phần trả chậm nhận đủ khi ≥80%, 50% khi 75–<80%, 0 dưới 75%.</li>
       <li><b>Giảm (chưa xóa) bẫy đội phẳng</b>: override trực tiếp đủ tỷ lệ tới 60tr FYC/tháng, phần vượt 50%.</li>
       <li><b>Trần chi phí</b>: tổng chi / FYP ≤ 75% ở kịch bản xấu nhất.</li></ul><p class="small"><b>Rủi ro còn mở:</b> vách đá trợ cấp ở K2 80% và quota; lách vùng (đăng ký mã vùng thấp) — xem 03 mục 6.</p></div>
-    <div class="card"><h3 style="margin-top:0">Điểm Rubric (1–5)</h3>${barRows(SC4.filter(s => RB.some(r => r.scheme === s)).map(s => ({name: SNAME[s], v: ws(s), cls: s === "Hybrid" ? "me" : ""})), "", 2)}<p class="small muted">Tự chấm, cần kiểm toán độc lập.</p></div>
+    <div class="card"><h3 style="margin-top:0">Điểm chấm tổng hợp (1–5, xem trang 2)</h3>${barRows(SC4.filter(s => RB.some(r => r.scheme === s)).map(s => ({name: SNAME[s], v: ws(s), cls: s === "Hybrid" ? "me" : ""})), "", 2)}<p class="small muted">Tự chấm, cần kiểm toán độc lập.</p></div>
   </div>
   <h3>Chọn vùng</h3>
   <div class="seg" id="t3Reg">${regs.map(r => `<button type="button" data-r="${r}" aria-pressed="${r === reg}">${esc((RG.find(x => x.region === r) || {}).region_name || r)}</button>`).join("")}</div>
