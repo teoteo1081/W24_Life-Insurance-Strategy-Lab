@@ -70,7 +70,7 @@ Mọi hoạt động nghiên cứu, xây dựng mô hình và trình bày trong 
 
 ---
 
-> **Ghi chú số liệu 1.2:** các con số trong ma trận trên là tại thời điểm phiên bản 1.1. Hiện hành: **9 PDF / 135 trang** (thêm 0046M01 & 0047M01 của Manulife — ghi "thông tin mật", DEC-14), **133 quy tắc** trong `business-rules-catalog.csv`. Đề xuất ở REQ-02 nay là Chính sách Đề xuất 2026 (mục 2, P0-3).
+> **Ghi chú số liệu 1.2:** các con số trong ma trận trên là tại thời điểm phiên bản 1.1. Hiện hành: **9 PDF / 135 trang** (thêm 2 văn bản Manulife cấp đại lý và quản lý nhóm — ghi "thông tin mật", DEC-14), **133 quy tắc** trong `business-rules-catalog.csv`. Đề xuất ở REQ-02 nay là Chính sách Đề xuất 2026 (mục 2, P0-3).
 
 ---
 
