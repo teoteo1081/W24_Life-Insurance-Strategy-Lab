@@ -861,11 +861,11 @@ function renderT2() {
   <h2>2 · MAPA, Trade-off & ROI 3 tầng</h2>
   <p class="note">Khu vực Mốc 4 dùng chung: 45 đại lý, 1,2 tỷ FYP/tháng, 1 lãnh đạo + 2 trưởng ban + 6 trưởng nhóm. <b>"ROI" ở đây là chi phí / FYP và chi phí / phí còn duy trì — không phải ROI thực tế</b> (VNB, biên lợi nhuận thật chưa có). Số Chính sách Lai là đề xuất.</p>
   <div class="grid g2">
-    <div class="card"><h3 style="margin-top:0">Tầng 1 — Tổng chi / FYP (K2 85%)</h3>${barRows(sc.map(s => ({name: SNAME[s], v: v(s, "cost_pct_fyp", 85), cls: cls(s)})), "%", 1)}<p class="small muted">Trần đề xuất 75% FYP.</p></div>
+    <div class="card"><h3 style="margin-top:0">Tầng 1 — Tổng chi / FYP (K2 85%)</h3>${barRows(sc.map(s => ({name: SNAME[s], v: v(s, "cost_pct_fyp", 85), cls: cls(s)})), "%", 1)}<p class="small muted">Trần đề xuất 75% FYP, kiểm ở kịch bản xấu nhất (cột "Kịch bản xấu nhất" dưới đây — gồm trường hợp mọi đại lý đạt quota).</p></div>
     <div class="card"><h3 style="margin-top:0">Tầng 2 — Chi trả giảm khi K2 sập 85% → 65%</h3>${barRows(sc.map(s => ({name: SNAME[s], v: v(s, "payout_drop_k2_85_to_65", 0), cls: cls(s)})), "%", 1)}<p class="small muted">Cao = chi trả gắn chặt chất lượng.</p></div>
   </div>
-  <div class="tbl-wrap" style="margin-top:12px"><table><thead><tr><th>Phương án</th><th>Tổng chi / FYP</th><th>Khi năng suất −50%</th><th>Chi phí / phí còn duy trì (K2 85%)</th><th>(K2 65%)</th><th>Tầng 3 — tiền mặt năm 1</th><th>Trả các năm sau</th><th>Phần cố định</th></tr></thead><tbody>
-  ${sc.map(s => `<tr class="${s === "Hybrid" ? "hl" : ""}"><th scope="row">${esc(SNAME[s])}${confTag(R.find(x => x.scheme === s))}</th><td>${pct(v(s, "cost_pct_fyp", 85))}</td><td>${pct(v(s, "cost_pct_fyp_half_production", 85))}</td><td>${pct(v(s, "cost_per_persisted_pct", 85))}</td><td>${pct(v(s, "cost_per_persisted_pct", 65))}</td><td>${pct(v(s, "cash_y1_share", 85))}</td><td>${pct(v(s, "deferred_share", 85))}</td><td>${pct(v(s, "fixed_share", 85))}</td></tr>`).join("")}
+  <div class="tbl-wrap" style="margin-top:12px"><table><thead><tr><th>Phương án</th><th>Tổng chi / FYP</th><th>Khi năng suất −50%</th><th>Chi phí / phí còn duy trì (K2 85%)</th><th>(K2 65%)</th><th>Kịch bản xấu nhất</th><th>Tầng 3 — tiền mặt năm 1</th><th>Trả các năm sau</th><th>Phần cố định</th></tr></thead><tbody>
+  ${sc.map(s => `<tr class="${s === "Hybrid" ? "hl" : ""}"><th scope="row">${esc(SNAME[s])}${confTag(R.find(x => x.scheme === s))}</th><td>${pct(v(s, "cost_pct_fyp", 85))}</td><td>${pct(v(s, "cost_pct_fyp_half_production", 85))}</td><td>${pct(v(s, "cost_per_persisted_pct", 85))}</td><td>${pct(v(s, "cost_per_persisted_pct", 65))}</td><td title="${esc((R.find(x => x.scheme === s && x.metric === "cost_pct_fyp_worst_case") || {}).note || "")}">${pct(v(s, "cost_pct_fyp_worst_case", 85))}</td><td>${pct(v(s, "cash_y1_share", 85))}</td><td>${pct(v(s, "deferred_share", 85))}</td><td>${pct(v(s, "fixed_share", 85))}</td></tr>`).join("")}
   </tbody></table></div>
   <h3>Bẫy hành vi & điểm gãy</h3>
   <div class="tbl-wrap"><table><thead><tr><th>Phương án</th><th>Bẫy</th><th>Đo được</th><th>Nguồn</th></tr></thead><tbody>
@@ -893,8 +893,8 @@ function renderT3() {
       <li><b>Full-time</b> (cam kết): thưởng tháng 100% + trợ cấp 3tr/tháng khi đạt quota vùng, ≥2 HĐ/tháng và K2 ≥80%.</li>
       <li><b>Part-time</b> (thuần biến phí): thưởng tháng 70%, không trợ cấp.</li>
       <li><b>Chốt chặn K2 ≥80%</b>: trợ cấp chỉ khi K2 ≥80%; phần trả chậm nhận đủ khi ≥80%, 50% khi 75–<80%, 0 dưới 75%.</li>
-      <li><b>Chống đội phẳng</b>: override trực tiếp đủ tỷ lệ tới 60tr FYC/tháng, phần vượt 50%.</li>
-      <li><b>Trần chi phí</b>: tổng chi / FYP ≤ 75%.</li></ul></div>
+      <li><b>Giảm (chưa xóa) bẫy đội phẳng</b>: override trực tiếp đủ tỷ lệ tới 60tr FYC/tháng, phần vượt 50%.</li>
+      <li><b>Trần chi phí</b>: tổng chi / FYP ≤ 75% ở kịch bản xấu nhất.</li></ul><p class="small"><b>Rủi ro còn mở:</b> vách đá trợ cấp ở K2 80% và quota; lách vùng (đăng ký mã vùng thấp) — xem 03 mục 6.</p></div>
     <div class="card"><h3 style="margin-top:0">Điểm Rubric (1–5)</h3>${barRows(SC4.filter(s => RB.some(r => r.scheme === s)).map(s => ({name: SNAME[s], v: ws(s), cls: s === "Hybrid" ? "me" : ""})), "", 2)}<p class="small muted">Tự chấm, cần kiểm toán độc lập.</p></div>
   </div>
   <h3>Chọn vùng</h3>

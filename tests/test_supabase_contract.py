@@ -73,7 +73,7 @@ class TestPayload(unittest.TestCase):
         t = self.payload["tables"]
         self.assertEqual(len(t["role_benefit_matrix"]), 84)
         self.assertEqual(len(t["pdf_bookmarks"]), 131)
-        for k, n in (("roi_analysis", 48), ("rubric_scores", 20), ("behavior_traps", 18), ("hybrid_regional", 30)):   # Giai đoạn 2
+        for k, n in (("roi_analysis", 56), ("rubric_scores", 20), ("behavior_traps", 20), ("hybrid_regional", 30)):   # Giai đoạn 2
             self.assertEqual(len(t[k]), n, k)
         self.assertEqual(set(t), set(self.S.TABLE_KEYS))
         self.assertEqual(len(t["glossary_terms"]), len(json.loads((REPO / "knowledge/sources/glossary.json").read_text(encoding="utf-8"))["entries"]))

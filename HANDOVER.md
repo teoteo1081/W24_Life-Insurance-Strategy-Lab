@@ -4,6 +4,12 @@
 
 ## Trạng thái hiện hành
 
+**2026-11-27 (khuya) — Sửa theo tự kiểm toán `41bec2d` (AGY tự kiểm, KHÔNG phải kiểm toán độc lập) — commit LOCAL, không push.**
+- Trần 75% giờ kiểm ở kịch bản XẤU NHẤT: Mốc 4 chuẩn (26,7tr/ĐL) thấp hơn quota 30tr nên trợ cấp Full-time không bật. Kết quả Lai: chuẩn 59,9% · mọi ĐL đạt quota 69,4% · V2/V3 năng suất ngang V1 71,2% → vẫn ĐẠT, nhưng chỉ dư 3,8 điểm %.
+- Rubric: đếm khoản phí Lai cùng quy tắc tuyến quản lý (7 khoản, trước đây tự đếm 5); An toàn tài chính chấm theo kịch bản xấu nhất → điểm Lai **3,80** (trước 4,01). AIA 3,15 · Chubb 3,05 · Manulife 3,37 không đổi. Ghi rõ thiên lệch: bậc đệm K2 và trần đội phẳng được thêm sau khi đo bằng rubric.
+- Thêm bẫy hành vi cho Lai: vách đá K2 80→79% của đại lý Full-time (−23,6%), vách đá quota 30→29,9tr. 03 thêm rủi ro lách vùng kèm 3 lựa chọn kiểm soát (TJ chọn); đổi "Chống" thành "Giảm (chưa xóa)" bẫy đội phẳng.
+- Snapshot và HTML dựng lại sau commit code, nên `model_version` trỏ đúng SHA, không còn `-dirty`.
+
 **2026-11-27 (đêm) — Giai đoạn 2 + 3 trên baseline `90e7d10` (Codex PASS) — commit LOCAL, KHÔNG push (DEC-14); chờ agy kiểm trực quan, Codex kiểm toán.**
 - Giai đoạn 2 — `scripts/build_phase2.py` (engine đã kiểm toán KHÔNG sửa) sinh:
   - `02_Phan_Tich_MAPA_TradeOff_Va_ROI.md` (rubric 99,1): khu vực Mốc 4 dùng chung (45 ĐL, 1,2 tỷ FYP/tháng). Tổng chi / FYP ở K2 85%: AIA 58,4% · Chubb 88,1% · Manulife 50,8% · Lai 59,9%. Chi trả giảm khi K2 sập 85→65%: 14,2 / 21,3 / 6,7 / 26,7%. Có 18 bẫy hành vi (tự bán vs quản lý, đội phẳng, vách đá K2 80→79, định phí, cổng tuyển mới; MBA Pro Vàng = HYPOTHESIS). Negative Proof quét 9/9 PDF cho 0050M01 và Chubb 260005V/006V/009V. "ROI" = chi phí/FYP, KHÔNG phải ROI thực tế.

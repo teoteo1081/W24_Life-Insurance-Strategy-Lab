@@ -82,6 +82,19 @@ class TestPhase2Outputs(unittest.TestCase):
     def test_cost_cap_75_pct(self) -> None:
         self.assertTrue(self.d["cost_cap_ok"])
         self.assertLessEqual(self.d["org"]["Hybrid"]["k85"]["cost_pct"], H.COST_CAP_PCT_FYP)
+        # trần phải giữ ở kịch bản XẤU NHẤT (tự kiểm toán 41bec2d: kịch bản chuẩn không bật trợ cấp Full-time)
+        worst = self.d["org"]["Hybrid"]["worst"]["cost_pct"]
+        self.assertLessEqual(worst, 75.0)
+        self.assertGreaterEqual(worst, max(sc["cost_pct"] for sc in self.d["org"]["Hybrid"]["scenarios"].values()))
+        self.assertIn("V2, năng suất ngang V1", self.d["org"]["Hybrid"]["scenarios"])
+        self.assertGreater(self.d["org"]["Hybrid"]["quota"]["fixed_share"], self.d["org"]["Hybrid"]["k85"]["fixed_share"])   # trợ cấp bật khi đạt quota
+
+    def test_agent_cliffs_disclosed_and_simplicity_counted_uniformly(self) -> None:
+        keys = {t["id"] for t in self.d["traps"]}
+        self.assertIn("Hybrid|agent_k2_cliff", keys)
+        self.assertIn("Hybrid|quota_cliff", keys)
+        p4 = next(r for r in self.d["rubric"] if r["scheme"] == "Hybrid" and r["pillar"].startswith("Độ đơn giản"))
+        self.assertTrue(p4["evidence"].startswith("7 khoản"), p4["evidence"])
 
     def test_all_numbers_finite(self) -> None:
         for tbl in ("roi", "traps", "rubric", "regional"):

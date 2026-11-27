@@ -187,7 +187,13 @@ def compute() -> dict:
     # ---------- ROI 3 tầng ----------
     for s in SCHEMES:
         o85, o65, half = org_cost(s, 85.0, base), org_cost(s, 65.0, base), org_cost(s, 85.0, base, prod=0.5)
-        out["org"][s] = {"k85": o85, "k65": o65, "half": half}
+        quota = org_cost(s, 85.0, base, prod=H.FT_QUOTA_FYP_MONTH / load_milestones()[3].fyp_per_agent)   # mọi ĐL đạt quota 30tr
+        scen = {"Mốc 4 chuẩn (26,7tr/ĐL)": o85, "Mọi ĐL đạt quota 30tr": quota}
+        if s == "Hybrid":   # cùng năng suất V1 nhưng ngưỡng vùng thấp hơn → trợ cấp & bậc thưởng bật sớm hơn
+            for reg in ("V2", "V3"):
+                scen[f"{reg}, năng suất ngang V1"] = org_cost(s, 85.0, base, region=reg)
+        wname = max(scen, key=lambda k: scen[k]["cost_pct"])
+        out["org"][s] = {"k85": o85, "k65": o65, "half": half, "quota": quota, "scenarios": scen, "worst": scen[wname], "worst_name": wname}
         conf = "restricted" if s in CONF else "public"
         lab = "PROPOSAL" if s == "Hybrid" else "MODEL_OUTPUT"
         for k2, o in ((85, o85), (65, o65)):
@@ -196,6 +202,10 @@ def compute() -> dict:
                                     ("fixed_share", "% chi trả", o["fixed_share"])):
                 out["roi"].append({"id": f"{s}|{metric}|{k2}", "scheme": s, "metric": metric, "k2": k2, "value": round(fin(v), 2), "unit": unit,
                                    "label": lab, "note": "", "confidentiality": conf})
+        for metric, v, note in (("cost_pct_fyp_quota_productivity", quota["cost_pct"], "Mọi đại lý đạt quota 30tr FYP/tháng"),
+                                ("cost_pct_fyp_worst_case", scen[wname]["cost_pct"], f"Kịch bản chi phí cao nhất: {wname}")):
+            out["roi"].append({"id": f"{s}|{metric}|85", "scheme": s, "metric": metric, "k2": 85, "value": round(fin(v), 2), "unit": "% FYP",
+                               "label": lab, "note": note, "confidentiality": conf})
         out["roi"].append({"id": f"{s}|cost_pct_fyp_half_production|85", "scheme": s, "metric": "cost_pct_fyp_half_production", "k2": 85,
                            "value": round(half["cost_pct"], 2), "unit": "% FYP", "label": lab, "note": "Năng suất giảm 50% (kiểm rủi ro định phí)", "confidentiality": conf})
         elastic = (o85["total"] - o65["total"]) / o85["total"] * 100
@@ -242,6 +252,16 @@ def compute() -> dict:
     trap("Manulife", "mba_pro_sensitivity", "Độ nhạy danh hiệu MBA Pro (Vàng)", (yes["total_earned"] - no["total_earned"]) / 12,
          f"UM+ Mốc 2: không danh hiệu {vn(no['total_earned'] / 12)} → MBA Pro Vàng {vn(yes['total_earned'] / 12)} tr/th (phí hoạt động 50%→100% + phí dài hạn 100%)",
          "[0047M01_2026 : 2], [0047M01_2026 : 5]", "HYPOTHESIS")
+    a80 = H.hybrid_agent_12m(30, 2, 80.0, "V1", "FULL_TIME", base)["total_earned"]
+    a79 = H.hybrid_agent_12m(30, 2, 79.0, "V1", "FULL_TIME", base)["total_earned"]
+    trap("Hybrid", "agent_k2_cliff", "Vách đá K2 của đại lý Full-time", (a80 - a79) / a80 * 100,
+         f"Đại lý Full-time 30tr FYP: K2 80% → 79% làm thu nhập năm giảm {vn((a80 - a79) / a80 * 100)}% ({vn(a80 / 12)} → {vn(a79 / 12)} tr/th) vì mất trọn trợ cấp",
+         "PROPOSAL (hybrid_scheme.py)", "PROPOSAL")
+    q1 = H.hybrid_agent_12m(30, 2, 85.0, "V1", "FULL_TIME", base)["total_earned"]
+    q0 = H.hybrid_agent_12m(29.9, 2, 85.0, "V1", "FULL_TIME", base)["total_earned"]
+    trap("Hybrid", "quota_cliff", "Vách đá quota & dồn hợp đồng", (q1 - q0) / 12,
+         f"FYP 30 → 29,9tr/tháng: thu nhập {vn(q1 / 12)} → {vn(q0 / 12)} tr/th — động cơ dồn/chuyển hợp đồng giữa các tháng để chạm quota (HYPOTHESIS về hành vi)",
+         "PROPOSAL (hybrid_scheme.py)", "PROPOSAL")
     aia_norec = calc_aia_cql_12m([fy5] * 12, [5] * 12, fy_pct=85.0, tot_pct=85.0, quarterly_new_recruits=[0, 0, 0, 0])["total_earned"]
     aia_rec = manager("AIA", m2.fyp_per_agent, 85.0, base)["total"]
     trap("AIA", "recruit_gate", "Cổng tuyển mới", (aia_rec - aia_norec) / 12,
@@ -257,7 +277,7 @@ def compute() -> dict:
     components = {"AIA": (11, "2601-034 mục A.I–A.VI + B (7) [AIAVAD 2601-034 : 3-6]; 2601-035 mục A.1–A.4 (4) [AIAVAD 2601-035 : 3-5]"),
                   "Chubb": (13, "0008V mục II.1–II.5 (5) [CHH0DCEB260008V : 3]; 0003V mục II.1–II.8 (8) [CHH0DCEB260003V : 4]"),
                   "Manulife": (9, "0047M01 A.I–A.V (5) [0047M01_2026 : 1-5]; 0048M01 A.I–A.IV (4) [0048M01_2026 : 1-3]"),
-                  "Hybrid": (5, "override trực tiếp, gián tiếp 2 đời, trả chậm 3 năm, phí cơ bản lãnh đạo, override vùng (hybrid_scheme.py)")}
+                  "Hybrid": (7, "cùng quy tắc đếm khoản phí tuyến quản lý trong code: override trực tiếp, gián tiếp đời 1, gián tiếp đời 2, trả chậm quản lý, phí cơ bản lãnh đạo, override lãnh đạo, trả chậm lãnh đạo (hybrid_scheme.py)")}
     ops = {"AIA": (3.0, "Chấm công ≥50% (CQL) / ≥70% (PAF+), khóa học bắt buộc, trả chậm tới 2030 cần TOT ≥85% — nhiều cổng hành chính [AIAVAD 2601-034 : 3-5]"),
            "Chubb": (2.5, "RD phải có biên bản nghiệm thu dịch vụ hàng tháng; 9 trường hợp tạm giữ phí; 3 văn bản quy định chung không có trong nguồn (260005V/006V/009V) [CHH0DCEB260003V : 12-15]"),
            "Manulife": (3.5, "Hai hình thức hợp đồng PSM+/HKD cùng biểu phí, chuyển đổi bảo lưu kết quả; HKD tự xuất hóa đơn — tách rủi ro thuế [0048M01_2026 : 5-6]; điều kiện 'Đội ngũ chuyên cần' 4 buổi/tháng [0047M01_2026 : 3]"),
@@ -266,14 +286,15 @@ def compute() -> dict:
         o85, o65, half = o[s]["k85"], o[s]["k65"], o[s]["half"]
         drop = (o85["total"] - o65["total"]) / o85["total"] * 100
         p1 = round((lin(drop, 30.0, 0.0) + lin(flat[s], 1.0, 3.0) + lin(cliff[s], 5.0, 30.0)) / 3, 2)
-        p2 = round((lin(o85["cost_pct"], 60.0, 100.0) + lin(half["cost_pct"], 70.0, 130.0) + lin(o85["deferred_share"], 15.0, 0.0)) / 3, 2)
+        wc = o[s]["worst"]
+        p2 = round((lin(wc["cost_pct"], 60.0, 100.0) + lin(half["cost_pct"], 70.0, 130.0) + lin(o85["deferred_share"], 15.0, 0.0)) / 3, 2)
         p3 = round(1 + 4 * sum(inc[s][i] / mx[i] for i in range(4)) / 4, 2)
         p4 = lin(components[s][0], 4, 14)
         p5 = ops[s][0]
         rows = [("Định hướng hành vi", 0.25, p1, "computed",
                  f"Chi trả giảm {vn(drop)}% khi K2 85%→65% (≥30% = 5 điểm); tỷ lệ đội phẳng/có cấu trúc {vn(flat[s], 2)}× (≤1 = 5, ≥3 = 1); vách đá K2 80→79% {vn(cliff[s])}% (≤5% = 5, ≥30% = 1)"),
                 ("An toàn tài chính / ROI", 0.25, p2, "computed",
-                 f"Chi phí {vn(o85['cost_pct'])}% FYP (≤60% = 5, ≥100% = 1); năng suất −50% → {vn(half['cost_pct'])}% (≤70% = 5, ≥130% = 1); trả chậm {vn(o85['deferred_share'])}% (≥15% = 5)"),
+                 f"Chi phí kịch bản xấu nhất ({o[s]['worst_name']}) {vn(wc['cost_pct'])}% FYP (≤60% = 5, ≥100% = 1); năng suất −50% → {vn(half['cost_pct'])}% (≤70% = 5, ≥130% = 1); trả chậm {vn(o85['deferred_share'])}% (≥15% = 5)"),
                 ("Sức cạnh tranh thu nhập", 0.20, p3, "computed",
                  "Trung bình thu nhập 4 mốc / mức cao nhất trong 4 phương án: " + " · ".join(f"M{i + 1} {vn(inc[s][i] / mx[i] * 100, 0)}%" for i in range(4))),
                 ("Độ đơn giản & dễ tính", 0.15, p4, "computed", f"{components[s][0]} khoản phí tuyến quản lý (≤4 = 5, ≥14 = 1): {components[s][1]}"),
@@ -301,7 +322,8 @@ def compute() -> dict:
                                         "quota_fyp_month": None if quota is None else round(quota, 2),
                                         "income_vnd_m_month": round(r["total"] / 12, 2), "cash_y1_vnd_m_month": round(r["cash"] / 12, 2),
                                         "label": "PROPOSAL", "confidentiality": "public"})
-    out["cost_cap_ok"] = o["Hybrid"]["k85"]["cost_pct"] <= H.COST_CAP_PCT_FYP
+    out["cost_cap_ok"] = o["Hybrid"]["worst"]["cost_pct"] <= H.COST_CAP_PCT_FYP
+    out["cost_cap_headroom"] = round(H.COST_CAP_PCT_FYP - o["Hybrid"]["worst"]["cost_pct"], 2)
     out["params"] = {"k2_gate": H.K2_GATE_PCT, "cost_cap": H.COST_CAP_PCT_FYP, "ft_quota": H.FT_QUOTA_FYP_MONTH, "ft_cc": H.FT_MIN_CC_MONTH,
                      "ft_allowance": H.FT_ALLOWANCE_MONTH, "pt_mult": H.PART_TIME_RATE_MULT, "leader_target": H.LEADER_TARGET_FYP_MONTH,
                      "song_hanh": {k: (list(v) if isinstance(v, tuple) else v) for k, v in base.__dict__.items()}}
@@ -333,7 +355,15 @@ def write_reports(d: dict) -> None:
         drop = (a["total"] - b["total"]) / a["total"] * 100
         w(f"| {names[s]} | {vn(a['cost_pct'])}% | {vn(h['cost_pct'])}% | {vn(a['cost_per_persisted_pct'])}% | {vn(b['cost_per_persisted_pct'])}% | {vn(drop)}% | {vn(a['cash_share'])}% | {vn(a['deferred_share'])}% | {vn(a['fixed_share'])}% | {SCHEME_SRC[s]} | `{'PROPOSAL' if s == 'Hybrid' else 'MODEL_OUTPUT'}` |")
     w("")
-    w(f"- **Tầng 1:** trần đề xuất 75% FYP. Chính sách Lai {vn(o['Hybrid']['k85']['cost_pct'])}% → {'**ĐẠT**' if d['cost_cap_ok'] else '**VƯỢT**'} trần.")
+    w("**Kiểm trần theo kịch bản** (Mốc 4 chuẩn cho mỗi ĐL 26,7tr FYP — DƯỚI quota 30tr, nên trợ cấp Full-time không bật; vì vậy phải kiểm thêm kịch bản đạt quota):")
+    w("")
+    w("| Phương án | Kịch bản | Tổng chi / FYP | Phần cố định | Nguồn | Nhãn |")
+    w("|---|---|---:|---:|---|---|")
+    for s in SCHEMES:
+        for nm, sc in o[s]["scenarios"].items():
+            w(f"| {names[s]} | {nm}{' **(xấu nhất)**' if nm == o[s]['worst_name'] else ''} | {vn(sc['cost_pct'])}% | {vn(sc['fixed_share'])}% | {SCHEME_SRC[s]} | `{'PROPOSAL' if s == 'Hybrid' else 'MODEL_OUTPUT'}` |")
+    w("")
+    w(f"- **Tầng 1:** trần đề xuất 75% FYP, kiểm ở kịch bản xấu nhất. Chính sách Lai {vn(o['Hybrid']['worst']['cost_pct'])}% ({o['Hybrid']['worst_name']}) → {'**ĐẠT**' if d['cost_cap_ok'] else '**VƯỢT**'} trần, khoảng dư chỉ {vn(d['cost_cap_headroom'])} điểm %. Rủi ro định phí thật của Chính sách Lai là khi **nhiều** đại lý đạt quota, không phải khi năng suất giảm.")
     w("- **Tầng 2:** chi phí trên mỗi đồng phí còn duy trì sang năm 2 = chi phí ÷ (FYP × K2). Khi K2 sập 85%→65%, phương án gắn thưởng với K2 tốt thì chi trả **giảm theo**; phương án yếu thì chi phí trên phí còn lại **tăng vọt**.")
     w("- **Tầng 3:** phần trả các năm sau (AIA thưởng năm 15/25/60% đến 2030; Manulife phí dài hạn 30/30/40%, M-Star năm trả tháng 2 năm sau; Lai trả chậm khi K2 ≥80%) giữ người và giảm áp lực tiền mặt năm 1.")
     w("")
@@ -361,6 +391,9 @@ def write_reports(d: dict) -> None:
     w("")
     for s in SCHEMES:
         w(f"- **{names[s]}:** " + "; ".join(f"*{r['pillar']}* — {r['evidence']} (`{r['label']}`)" for r in d["rubric"] if r["scheme"] == s))
+    w("")
+    w("> **Lưu ý thiên lệch:** bậc đệm K2 75–80% và trần đội phẳng của Chính sách Lai được thêm SAU khi đo bằng chính rubric này — thiết kế đã được hiệu chỉnh theo thước đo, nên rubric không phải phép thử khách quan cho Chính sách Lai. "
+      "Độ nhạy (tự kiểm toán): chấm Vận hành & Pháp lý của Lai ở 2,0 (chưa đối chiếu pháp lý) thì điểm giảm 0,225.")
     w("")
     w("> 3 trụ cột đầu tính bằng công thức công khai ở trên; *Độ đơn giản* đếm khoản phí theo mục lục văn bản; *Vận hành & Pháp lý* là đánh giá có dẫn chứng (`JUDGEMENT`). "
       "Điểm Chính sách Lai là **tự chấm của bên thiết kế** — cần kiểm toán độc lập (Codex) trước khi dùng làm kết luận.")
@@ -409,10 +442,10 @@ def write_reports(d: dict) -> None:
     w(f"| Đường ray **Full-time** (cam kết) | Thưởng tháng 100% bậc Song Hành + trợ cấp cam kết {vn(P['ft_allowance'])}tr/tháng khi FYP ≥ quota vùng, ≥{P['ft_cc']} HĐ/tháng và K2 ≥{int(P['k2_gate'])}% | Nuôi quân có điều kiện như AIA Exchange nhưng có cổng chất lượng; phần cố định nhỏ |")
     w(f"| Đường ray **Part-time** (thuần biến phí) | Thưởng tháng {int(P['pt_mult'] * 100)}% bậc Song Hành, không trợ cấp | Không phát sinh định phí cho người bán không đều |")
     w(f"| **Chốt chặn K2 ≥ {int(P['k2_gate'])}%** | Trợ cấp Full-time chỉ khi K2 ≥{int(P['k2_gate'])}%; phần trả chậm nhận ĐỦ khi K2 ≥{int(P['k2_gate'])}%, 50% khi 75–<80%, 0 khi <75%; thưởng tháng theo hệ số K2 liên tục (sàn {vn(P['song_hanh']['k2_hard_floor_pct'], 0)}%) | Bản thử đầu (cắt hết dưới 80%) tạo vách đá −37,5% ở quản lý nhóm — lớn nhất trong 4 phương án; bậc đệm 75–80% giảm vách đá mà vẫn khóa phần thưởng lớn vào chất lượng |")
-    w(f"| Chống bẫy đội phẳng | Override nhóm trực tiếp đủ tỷ lệ tới {vn(H.DIRECT_FULL_RATE_CAP_FYC, 0)}tr FYC/tháng (không giãn theo vùng), phần vượt {int(H.DIRECT_EXCESS_RATE_SHARE * 100)}% | Cả 3 hãng trả cho đội phẳng nhiều hơn đội có quản lý con (mục 2 của 02) |")
+    w(f"| Giảm (chưa xóa) bẫy đội phẳng | Override nhóm trực tiếp đủ tỷ lệ tới {vn(H.DIRECT_FULL_RATE_CAP_FYC, 0)}tr FYC/tháng (không giãn theo vùng), phần vượt {int(H.DIRECT_EXCESS_RATE_SHARE * 100)}% | Cả 3 hãng trả cho đội phẳng nhiều hơn đội có quản lý con (mục 2 của 02); với Chính sách Lai tỷ lệ vẫn > 1 — chỉ giảm, chưa xóa |")
     w(f"| Quản lý | Override {vn(P['song_hanh']['mgr_direct_base_rate'] * 100)}% × hệ số K2 (trần {vn(P['song_hanh']['mgr_direct_max_rate'] * 100)}%) FYC nhóm; gián tiếp 2 đời ({vn(P['song_hanh']['mgr_indirect_l1_rate'] * 100)}% / ½), cổng FYC nhóm ≥ {vn(P['song_hanh']['mgr_indirect_gate_fyc'])}tr × hệ số vùng; trả chậm {vn(P['song_hanh']['mgr_deferred_3y_rate'] * 100)}% FYC nhóm | Học cổng 15tr của Chubb, bỏ chuỗi gián tiếp vô hạn |")
     w(f"| Lãnh đạo vùng | Phí cơ bản {vn(P['song_hanh']['rd_base_monthly'])}tr × % đạt chỉ tiêu (sàn 30%, trần 140%) + override {vn(P['song_hanh']['rd_direct_fyc_rate'] * 100, 2)}% FYC vùng × K2; {vn(P['song_hanh']['rd_deferred_3y_share'] * 100, 0)}% override trả chậm | Học Manulife: phí cơ bản gắn chỉ tiêu, không cố định cứng |")
-    w(f"| Trần chi phí | Tổng chi / FYP ≤ {int(P['cost_cap'])}% ở kịch bản chuẩn | Kiểm tự động: {vn(o['Hybrid']['k85']['cost_pct'])}% → {'ĐẠT' if d['cost_cap_ok'] else 'VƯỢT'} |")
+    w(f"| Trần chi phí | Tổng chi / FYP ≤ {int(P['cost_cap'])}% ở kịch bản XẤU NHẤT | Kiểm tự động: chuẩn {vn(o['Hybrid']['k85']['cost_pct'])}%; xấu nhất ({o['Hybrid']['worst_name']}) {vn(o['Hybrid']['worst']['cost_pct'])}% → {'ĐẠT' if d['cost_cap_ok'] else 'VƯỢT'}, dư {vn(d['cost_cap_headroom'])} điểm % |")
     w("")
     w("## 2. Bảng hệ số vùng (Regional Tiering) — `PROPOSAL`")
     w("")
@@ -463,6 +496,10 @@ def write_reports(d: dict) -> None:
     w("1. Hệ số vùng và danh sách tỉnh mỗi vùng — cần dữ liệu năng suất thật theo tỉnh để hiệu chỉnh (hiện là `PROPOSAL`).")
     w(f"2. Trợ cấp Full-time {vn(P['ft_allowance'])}tr/tháng và quota — phần cố định duy nhất; nếu tỷ lệ đạt quota thấp, chi phí thấp hơn mô hình.")
     w("3. Pháp lý: tỷ lệ thưởng/FYP và hợp đồng hộ kinh doanh cần Pháp chế đối chiếu toàn văn trước khi ban hành.")
+    vr = {reg: next(r for r in d["regional"] if r["region"] == reg and r["track"] == "FULL_TIME" and r["milestone_id"] == "M1" and r["basis"] == "national_fyp")["income_vnd_m_month"] for reg in H.REGIONS}
+    w(f"4. **Rủi ro lách vùng (chưa có kiểm soát — TJ chọn):** cùng năng suất, đại lý V3 nhận {vn(vr['V3'])} so với V1 {vn(vr['V1'])} tr/tháng và chi phí tổ chức tăng lên mức kịch bản xấu nhất ở 02 — tạo động cơ đăng ký mã vùng thấp hơn nơi bán thật. "
+      "Lựa chọn: (a) gắn vùng theo địa chỉ bên mua bảo hiểm của từng hợp đồng; (b) gắn theo văn phòng quản lý, kiểm tra chéo tỷ lệ hợp đồng ngoài vùng; (c) trần: đại lý vượt 120% quota vùng 3 tháng liên tiếp chuyển sang ngưỡng vùng trên.")
+    w("5. Vách đá cấp đại lý còn lại (mục 2 của 02): mất K2 80% hoặc thiếu 0,1tr quota làm mất trọn trợ cấp. Giữ nguyên vì là chốt chặn TJ chỉ định; nếu muốn mềm hơn, TJ quyết có cho trợ cấp giảm dần hay không.")
     w("")
     w("## 7. Tự chấm rubric 100 điểm (`qa/data-ingestion-rubric.md`)")
     w("")
