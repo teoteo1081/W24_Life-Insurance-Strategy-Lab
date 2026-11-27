@@ -223,6 +223,7 @@ table.t1 tr.msrow{cursor:pointer}table.t1 tr.msrow:hover td{background:var(--tin
 }
 .basis{font-size:12px;color:var(--muted);display:block}.hl{background:var(--accent-soft)}
 @media (max-width:760px){.glbtn{float:none;display:inline-block;margin:0 0 10px}}
+details.rules{margin:6px 0}details.rules>summary{cursor:pointer;font-size:13.5px;color:var(--accent)}details.rules>div{margin-top:6px}
 details.cond{margin-top:4px}
 details.cond>summary{cursor:pointer;font-size:13.5px;color:var(--accent);list-style:none}
 details.cond>summary::-webkit-details-marker{display:none}
@@ -253,9 +254,16 @@ details.assume>summary{cursor:pointer;font-size:14.5px}details.assume ul{margin:
 .xdocs a,.xdocs span.lock{display:block;font-size:13px;line-height:1.35;padding:3px 0;text-decoration:none}.xdocs a:hover{text-decoration:underline}
 .xdocs .pg{color:var(--muted);font-size:12px;white-space:nowrap}.xdocs span.lock{color:var(--muted)}
 @media (max-width:980px){.xbrief{grid-template-columns:1fr}}@media (max-width:520px){.xdocs{grid-template-columns:1fr}}
+.controls .scope{margin:8px 0 0;max-width:110ch;color:var(--muted)}
 .xsum{font-size:14px;margin:6px 0 0}.xnext{margin-top:14px}.xnext ol{margin:6px 0 4px;padding-left:22px}.xnext li{margin:4px 0}
 @media (max-width:980px){.xk{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.xk{grid-template-columns:1fr}}
+dialog#guide{max-width:min(860px,calc(100vw - 32px));width:100%;max-height:calc(100vh - 48px);padding:0;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink)}
+dialog#guide::backdrop{background:rgb(0 0 0 / .45)}
+#guide .gd{padding:18px 22px 22px}#guide .gdh{display:flex;justify-content:space-between;align-items:center;gap:12px;position:sticky;top:-18px;background:var(--surface);padding:6px 0}
+#guide h2{margin:0;font-size:20px}#guide h3{margin:16px 0 4px;font-size:16px}#guide p,#guide li{font-size:15px}#guide ol,#guide ul{margin:4px 0;padding-left:22px}
+#guide .tldr{background:var(--accent-soft);border-radius:8px;padding:8px 14px}
+@media (max-width:520px){#guide .gd{padding:12px 14px 16px}}
 footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1px solid var(--line);margin-top:24px}
 </style>
 </head>
@@ -273,6 +281,7 @@ footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1p
 <div id="sideResize" role="separator" aria-orientation="vertical" aria-label="Kéo để đổi độ rộng thanh bên (nhấp đúp để về mặc định)" tabindex="0" title="Kéo để đổi độ rộng · nhấp đúp để về mặc định"></div>
 <main class="main" id="main" tabindex="-1"><div class="wrap">
 <header class="top">
+  <button type="button" class="btn glbtn" id="guideOpen" aria-haspopup="dialog">? Hướng dẫn</button>
   <button type="button" class="btn glbtn" id="glOpen">📖 Từ điển &amp; 9 PDF</button>
   <div id="hero">
   <h1>Chính sách thu nhập đại lý: trả ngang thị trường, chi phí co giãn theo chất lượng</h1>
@@ -296,6 +305,7 @@ footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1p
     <div class="ctl" id="planBox"><span class="lbl">Phương án (mô hình 1 vùng 12 tỷ)</span><div class="seg" id="planSeg"></div></div>
     <div class="ctl"><label class="lbl" for="k2">Kịch bản K2: <span class="k2v" id="k2v"></span></label><input type="range" id="k2" min="50" max="95" step="1" value="82" aria-label="Kịch bản K2"></div>
   </div>
+  <p class="scope small" id="scopeNote"><b>Lưu ý quy mô:</b> nhóm Phân tích sâu dùng <b>mô hình 1 vùng 12 tỷ FYP/năm</b> (20 đại lý × 15tr FYC/tháng, 4 quản lý, 1 lãnh đạo vùng) để so các phương án tiền thân. Trang ★ và trang 1–3 dùng <b>mô hình khu vực 45 đại lý, 1,2 tỷ FYP/tháng, K2 85%</b> cho Chính sách Đề xuất 2026. Hai mô hình khác quy mô và cơ cấu, nên % chi phí khác nhau (ví dụ Song Hành 66,6% ở đây so với 59,9% ở trang ★) — không phải số bị mâu thuẫn; đừng cộng trừ số giữa hai mô hình.</p>
 </div>
 <section class="panel on" id="p-exec"></section>
 <section class="panel" id="p-answer"></section>
@@ -314,6 +324,7 @@ footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1p
 <section class="panel" id="p-assume"></section>
 <section class="panel" id="p-glossary"></section>
 <footer id="foot"></footer>
+<dialog id="guide" aria-labelledby="guideTitle"><div class="gd"><div class="gdh"><h2 id="guideTitle">Hướng dẫn sử dụng & cách đọc báo cáo</h2><button type="button" class="btn" id="guideClose" aria-label="Đóng hướng dẫn">✕</button></div><div id="guideBody"></div></div></dialog>
 </div></main>
 <aside class="pdfpane" id="pdfpane" hidden aria-label="Tài liệu bằng chứng">
   <div class="pdfbar"><span class="t" id="pdfTitle"></span><a id="pdfNew" target="_blank" rel="noopener">Mở tab mới</a><button type="button" id="pdfClose" aria-label="Đóng tài liệu">✕</button></div>
@@ -355,7 +366,7 @@ new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(brandTree))).obs
 brandTree(document.body);
 /* ---------- Trạng thái ---------- */
 const PLAN_META = {
-  song_hanh: {name: "Song Hành", star: true, desc: "Đề xuất. Ở K2 tốt (khoảng 75–90%) không tầng nào bị trả thấp hơn đối thủ trả thấp nhất; thưởng tái tục 50% như AIA; trả chậm 3 năm ở tầng quản lý và vùng. Chi phí thấp hơn nhờ cấu trúc: thưởng gắn K2, cắt chuỗi gián tiếp nhiều tầng, không phí cố định cao."},
+  song_hanh: {name: "Song Hành", star: true, desc: "Bản tiền thân của Chính sách Đề xuất 2026, tính trên mô hình 1 vùng 12 tỷ FYP/năm. Ở K2 tốt (khoảng 75–90%) không tầng nào bị trả thấp hơn đối thủ trả thấp nhất; thưởng tái tục 50% như AIA; trả chậm 3 năm ở tầng quản lý và vùng. Chi phí thấp hơn nhờ cấu trúc: thưởng gắn K2, cắt chuỗi gián tiếp nhiều tầng, không phí cố định cao."},
   theo_chat: {name: "Song Hành siết K2", desc: "Biến thể của Song Hành, chỉ khác một điểm chính: sàn K2 65% (dưới mức này không có thưởng), giữ T+1 khi K2 dưới 70%, thưởng tháng thấp hơn 8%. Rẻ hơn khi K2 xấu, đổi lại thu nhập đại lý rơi đột ngột quanh ngưỡng 65%."},
   can_bang: {name: "Tiết kiệm tối đa", desc: "Phương án ban đầu. Chi phí thấp nhất, nhưng mọi tầng đều bị trả thấp hơn đối thủ: rủi ro mất đại lý và quản lý giỏi. Dùng làm mốc so sánh."},
   custom: {name: "Tự chỉnh", desc: "Bắt đầu từ Song Hành; kéo thông số ở tab “Tự chỉnh”."}
@@ -370,14 +381,24 @@ const agentComp = (s, k2, f) => DATA.competitors.agent3y[s][String(k2)][String(f
 const mnlLeader = k2 => DATA.competitors.manulife_leader[String(k2)];
 const evUrl = (sid, page) => DATA.evidence_base + "/evidence/" + sid + ".pdf" + (page ? "#page=" + page : "");
 const RULES = Object.fromEntries(DATA.knowledge.rules.map(r => [r.id, r]));
-function ruleChip(id) {
+/* Nhãn bằng chứng dễ đọc: "Hãng · tên văn bản · tr.N" (mã quy tắc để trong tooltip). raw = true: hiện mã (thư viện tra cứu). */
+const RULE_CO = id => /^AIA/.test(id) ? "AIA" : /^CHB/.test(id) ? "Chubb Life" : /^MNL/.test(id) ? "Manulife" : "Pháp lý";
+function ruleChip(id, raw) {
   const base = id.replace(/\/\d{3}$/, "").replace(/\.\.\d{3}$/, "");
   const r = RULES[base];
-  if (!r || !r.refs.length) return `<span class="ev" title="${esc(r ? r.ref : "")}">${esc(id)}</span>`;
-  const f = r.refs[0];
+  if (!r || !r.refs.length) return `<span class="ev" title="Mã quy tắc ${esc(id)}${r ? " — " + esc(r.ref) : ""}">${esc(raw ? id : RULE_CO(id) + " · văn bản pháp lý / tóm tắt")}</span>`;
+  const f = r.refs[0], pdf = (DATA.pdfs || []).find(x => x.sid === f.sid);
+  const label = raw ? id : RULE_CO(id) + " · " + (pdf ? docShort(pdf) : "văn bản mật");
+  const tip = `Mã quy tắc ${id} — ${r.type}${pdf ? " · " + pdf.name : ""}`;
   if (!(DATA.knowledge.sources.find(s => s.id === f.sid) || {}).url)   // văn bản mật: không có bản online để mở
-    return `<span class="ev nolink" title="${esc(r.type)} — ${esc(r.ref)} (văn bản mật, không mở online)">${esc(id)}${f.page ? " · tr." + f.page : ""}</span>`;
-  return `<a class="ev" target="_blank" rel="noopener" href="${evUrl(f.sid, f.page)}" title="${esc(r.type)} — ${esc(r.ref)}">${DOC}${esc(id)}${f.page ? " · tr." + f.page : ""}</a>`;
+    return `<span class="ev nolink" title="${esc(tip)} (văn bản mật, không mở online)">${esc(label)}${f.page ? " · tr." + f.page : ""}</span>`;
+  return `<a class="ev" target="_blank" rel="noopener" href="${evUrl(f.sid, f.page)}" title="${esc(tip)}">${DOC}${esc(label)}${f.page ? " · tr." + f.page : ""}</a>`;
+}
+/* Danh sách bằng chứng dài: gấp mặc định, mỗi văn bản + trang chỉ hiện 1 lần */
+function ruleList(ids, what) {
+  const seen = new Set(), chips = ids.map(id => ruleChip(id)).filter(h => !seen.has(h) && seen.add(h));
+  if (!chips.length) return "";
+  return `<details class="rules"><summary>Xem ${ids.length} điều khoản trích dẫn từ PDF${what ? " — " + esc(what) : ""}</summary><div>${chips.join("")}</div><p class="small muted">Mỗi nút mở đúng trang văn bản gốc bên phải; rê chuột để xem mã quy tắc và loại điều khoản.</p></details>`;
 }
 
 /* ---------- Số liệu cho một kịch bản ---------- */
@@ -596,7 +617,7 @@ function renderPackage() {
         <div class="small muted">Kỳ xét: ${esc(r.Measurement_Period)} · Trả: ${esc(r.Payment_Timing)}${!blank(r.Vesting_Schedule) ? " · Lịch trả / trả chậm: " + esc(r.Vesting_Schedule) : ""}</div>
         ${!blank(r.Clawback_Recovery_Rule) ? `<div class="small muted">Thu hồi: ${esc(r.Clawback_Recovery_Rule)}</div>` : ""}
         </details>
-        <div>${ids.map(ruleChip).join("")}</div></div>`;
+        ${ids.length ? ruleList(ids) : ""}</div>`;
     }).join("");
   };
   const cats = CATS.filter(([c]) => comps.some(r => r.Category_A_to_H === c) || mine.some(m => m.cat === c));
@@ -621,7 +642,7 @@ function renderPackage() {
     <tr class="totrow"><th>${esc(totLabel)}</th>${tot.map((v, i) => `<td class="n ${i === 0 ? "plancol" : ""}" style="font-size:18px;font-weight:700">${v == null ? "<span class='muted small' style='font-weight:400'>❓</span>" : fmt(v) + " tr"}</td>`).join("")}</tr>
     ${cats.map(([cat, n]) => `<tr><th>${esc(n)}</th>${cos.map(([co]) => `<td class="${co === "PLAN" ? "plancol" : ""}">${cell(co, cat)}</td>`).join("")}</tr>`).join("")}
   </tbody></table></div>
-  <p class="note">Tổng gói: một người trên cây tổ chức chuẩn (đại lý 15tr FYC/tháng; quản lý nhóm 75tr FYC/tháng; vùng 12 tỷ FYP/năm), gồm khoản trả chậm. ${tier === "ind" ? "Quản lý gián tiếp: phần thu nhập gián tiếp thêm ngoài phí nhóm trực tiếp." : ""} Phúc lợi phi tiền mặt chưa quy ra tiền. Nội dung đối thủ lấy từ kho 44 cấu phần thu nhập, đã thêm dấu tiếng Việt để dễ đọc; bản trích xuất gốc không dấu giữ nguyên trong repo làm bằng chứng. Mã quy tắc mở đúng trang tài liệu để đối chiếu.</p>
+  <p class="note">Tổng gói: một người trên cây tổ chức chuẩn (đại lý 15tr FYC/tháng; quản lý nhóm 75tr FYC/tháng; vùng 12 tỷ FYP/năm), gồm khoản trả chậm. ${tier === "ind" ? "Quản lý gián tiếp: phần thu nhập gián tiếp thêm ngoài phí nhóm trực tiếp." : ""} Phúc lợi phi tiền mặt chưa quy ra tiền. Nội dung đối thủ lấy từ kho 44 cấu phần thu nhập, đã thêm dấu tiếng Việt để dễ đọc. Bấm “Xem … điều khoản trích dẫn” để mở đúng trang tài liệu gốc.</p>
   <details style="margin-top:12px"><summary><b>Điều kiện lên cấp và giữ cấp (${roles.length} chức danh)</b></summary>
     <div class="tbl-wrap" style="margin-top:8px"><table><thead><tr><th>Hãng · chức danh</th><th>Điều kiện lên cấp</th><th>Điều kiện giữ cấp / giáng cấp</th><th>Phạm vi quản lý</th></tr></thead><tbody>
     ${roles.map(r => `<tr><td><b>${esc(r.Company.split(" ")[0])} · ${esc(r.Role_Code)}</b><div class="small muted">${esc(r.Role_Title_VN_EN)}</div></td><td class="small">${esc(r.Entry_Promotion_Condition)}</td><td class="small">${esc(r.Maintenance_Demotion_Condition)}</td><td class="small">${esc(r.Managed_Scope_Direct_Indirect)}</td></tr>`).join("")}
@@ -639,7 +660,7 @@ function renderTiers() {
   const U = `<span class='muted' title="Manulife tầng này: ${MNL_GAP}">❓ chưa tính ở mô hình này</span>`;
   const agentRows = [["AIA Alpha 2026", "var(--s-aia)", f => agentComp("AIA", k2, f).total_3y], ["Chubb Life 2026", "var(--s-chubb)", f => agentComp("CHUBB", k2, f).total_3y],
     [PLAN_META[key].name, "var(--s-plan)", f => planAgent(key, k2, f).total_3y, "plan"]];
-  const ruleList = DATA.knowledge.rules.filter(r => pref[state.tier].some(p => r.id.startsWith(p)));
+  const rules = DATA.knowledge.rules.filter(r => pref[state.tier].some(p => r.id.startsWith(p)));
   $("p-tiers").innerHTML = `
   <div class="ctl" style="margin-bottom:10px"><span class="lbl">Tầng</span><div class="seg" id="tierSeg">${Object.entries(tiers).map(([k, n]) => `<button type="button" data-tier="${k}" aria-pressed="${state.tier === k}">${n}</button>`).join("")}</div></div>
   <h2>Thu nhập mỗi người / năm theo tầng (triệu VND, K2 = ${k2}%)</h2>
@@ -658,8 +679,8 @@ function renderTiers() {
       <div class="tbl-wrap"><table><thead><tr><th>FYC/tháng</th>${agentRows.map(r => `<th class="n">${esc(r[0])}</th>`).join("")}</tr></thead><tbody>
       ${[5, 15, 35].map(f => `<tr><td>${f}tr</td>${agentRows.map(r => `<td class="n">${fmt(r[2](f))}</td>`).join("")}</tr>`).join("")}</tbody></table></div></div>
   </div>
-  <h3>Bằng chứng — ${esc(tiers[state.tier])} (${ruleList.length} quy tắc)</h3>
-  <div>${ruleList.map(r => ruleChip(r.id)).join("")}</div>`;
+  <h3>Bằng chứng — ${esc(tiers[state.tier])}</h3>
+  ${ruleList(rules.map(r => r.id), tiers[state.tier])}`;
   document.querySelectorAll("#tierSeg button").forEach(b => b.onclick = () => { state.tier = b.dataset.tier; renderTiers(); });
 }
 
@@ -716,7 +737,7 @@ function renderRubric() {
   <div class="tbl-wrap"><table><thead><tr><th>Tiêu chí</th>${sc.ents.map(e => `<th class="n"><span class="dot" style="background:${e.color}"></span>${esc(e.name)}</th>`).join("")}</tr></thead><tbody>
   ${Object.entries(PILLARS).map(([p, n]) => `<tr><th colspan="${sc.ents.length + 1}">${n} — trọng số ${w[p]}%</th></tr>` + sc.rows.filter(r => r.c.p === p).map(r => {
     const top = Math.max(...r.vals.map(v => v.score));
-    return `<tr><td>${esc(r.c.id)} · ${esc(r.c.name)}${r.c.note ? `<div class="small muted">${esc(r.c.note)}</div>` : ""}</td>${r.vals.map(v => `<td class="n ${Math.abs(v.score - top) < 1e-9 ? "win" : ""}" title="${esc(v.note || "")}"><span class="score">${fmt(v.score, 1)}</span><div class="small muted">${r.c.qual ? esc(v.note) : fmt(v.raw, r.c.unit === "%" ? 1 : 0) + (r.c.unit === "%" ? "%" : r.c.unit === "/3" ? "/3" : "tr")}</div>${v.rules ? v.rules.map(ruleChip).join("") : ""}</td>`).join("")}</tr>`;
+    return `<tr><td>${esc(r.c.id)} · ${esc(r.c.name)}${r.c.note ? `<div class="small muted">${esc(r.c.note)}</div>` : ""}</td>${r.vals.map(v => `<td class="n ${Math.abs(v.score - top) < 1e-9 ? "win" : ""}" title="${esc(v.note || "")}"><span class="score">${fmt(v.score, 1)}</span><div class="small muted">${r.c.qual ? esc(v.note) : fmt(v.raw, r.c.unit === "%" ? 1 : 0) + (r.c.unit === "%" ? "%" : r.c.unit === "/3" ? "/3" : "tr")}</div>${v.rules ? v.rules.map(id => ruleChip(id)).join("") : ""}</td>`).join("")}</tr>`;
   }).join("")).join("")}
   <tr><th>Tổng điểm</th>${sc.totals.map(t => `<th class="n ${t === best ? "win" : ""}">${fmt(t.total, 2)}</th>`).join("")}</tr>
   </tbody></table></div>
@@ -777,9 +798,9 @@ function renderCompare() {
   const m = DATA.knowledge.adopt_matrix;
   $("p-compare").innerHTML = `
   <h2>Học gì từ đối thủ: Áp dụng / Cải tiến / Tránh</h2>
-  <p class="muted small">Mỗi cơ chế dẫn về quy tắc gốc; bấm mã quy tắc để mở đúng trang tài liệu.</p>
+  <p class="muted small">Mỗi cơ chế dẫn về điều khoản gốc; bấm nút nguồn để mở đúng trang tài liệu.</p>
   <div class="tbl-wrap"><table><thead><tr><th>#</th><th>Cơ chế</th><th>Quyết định</th><th>Lý do</th><th>Bằng chứng</th></tr></thead><tbody>
-  ${m.map(x => `<tr><td>${x.no}</td><td><b>${esc(x.mechanism)}</b><div class="small muted">${esc(x.company)}</div></td><td><span class="tag ${x.decision}">${x.decision}</span></td><td class="small">${esc(x.why)}</td><td>${x.rules.map(ruleChip).join("") || "<span class='muted small'>chưa có tài liệu</span>"}</td></tr>`).join("")}
+  ${m.map(x => `<tr><td>${x.no}</td><td><b>${esc(x.mechanism)}</b><div class="small muted">${esc(x.company)}</div></td><td><span class="tag ${x.decision}">${({ADOPT: "Áp dụng", ADAPT: "Cải tiến", AVOID: "Tránh", INVESTIGATE: "Cần tìm hiểu"})[x.decision] || esc(x.decision)}</span></td><td class="small">${esc(x.why)}</td><td>${x.rules.map(id => ruleChip(id)).join("") || "<span class='muted small'>chưa có tài liệu</span>"}</td></tr>`).join("")}
   </tbody></table></div>`;
 }
 
@@ -797,6 +818,7 @@ function renderMethod() {
   $("p-method").innerHTML = `
   <h2>Các con số được tính thế nào — ${esc(PLAN_META[key].name)}, K2 = ${k2}%</h2>
   <p class="muted small">Mọi bảng dưới đây tính lại ngay khi đổi phương án, K2 hay thông số. Đơn vị: triệu VND.</p>
+  ${typeof st !== "undefined" && st.n ? `<p class="small"><span class="badge ${st.ok === st.n ? "good" : "bad"}">${st.ok === st.n ? "✓" : "✗"} Kiểm khớp số: ${st.ok}/${st.n} ca mẫu</span> Bộ tính trên trang này cho kết quả trùng với mô hình gốc ở ${st.ok}/${st.n} ca kiểm tra mẫu (kiểm lại mỗi lần mở trang).</p>` : ""}
   <h3>1. Thu nhập 3 năm của một đại lý trung bình (15tr FYC/tháng)</h3>
   <div class="tbl-wrap"><table><thead><tr><th>Khoản</th><th>Công thức</th><th class="n">Năm 1</th><th class="n">Năm 2</th><th class="n">Năm 3</th></tr></thead><tbody>
     <tr><td>Hoa hồng FYC</td><td class="small muted">15 × 12 tháng</td>${yrs.map(() => `<td class="n">180,0</td>`).join("")}</tr>
@@ -849,7 +871,7 @@ function renderEvidence() {
   <p class="note">Độ phủ: ${fmt(cov.pages)} trang trong ${cov.docs.length} tài liệu đã đọc và phân loại (tự kiểm của người trích xuất). Thư viện ${K.rules.length} quy tắc trích từ ${cov.ruled.length} tài liệu (${fmt(cov.ruledPages)} trang)${cov.unruled.length ? `; ${cov.unruled.length} tài liệu bổ sung sau (${cov.unruled.map(f => esc(f.file_id)).join(", ")} — ${fmt(cov.pages - cov.ruledPages)} trang) mới dùng cho bảng so sánh ở trang 1–2 và ma trận quyền lợi, <b>chưa trích thành quy tắc</b> nên cột quy tắc để “—”` : ""}.${DATA.public_build ? ' Bản công khai: 2 văn bản Manulife ghi "thông tin mật" đã được lược khỏi danh sách.' : ""} Một số quy tắc phụ thuộc văn bản chưa có (ví dụ Chubb 260005V, biểu hoa hồng AIA) nên chưa lập trình được — hiển thị đúng trạng thái, không giấu.</p>
   <h2 style="margin-top:20px">Kiểm mẫu độc lập 14 quy tắc ↔ trang PDF</h2>
   <div class="tbl-wrap"><table><thead><tr><th>Quy tắc</th><th>Trang</th><th>Kết quả</th><th>Bằng chứng trên trang</th></tr></thead><tbody>
-  ${K.spot_check.map(s => `<tr><td>${ruleChip(s.rule)}</td><td class="small">${esc(s.where)}</td><td>${esc(s.result)}</td><td class="small">${esc(s.evidence)}</td></tr>`).join("")}</tbody></table></div>
+  ${K.spot_check.map(s => `<tr><td>${ruleChip(s.rule, true)}</td><td class="small">${esc(s.where)}</td><td>${esc(s.result)}</td><td class="small">${esc(s.evidence)}</td></tr>`).join("")}</tbody></table></div>
   <p class="note">14/14 khớp nội dung; số trang trong quy tắc trùng chỉ số trang PDF nên link mở đúng chỗ. Mẫu nhỏ (14/${K.rules.length}), không thay kiểm toán đầy đủ.</p>
   <h2 style="margin-top:20px">Thư viện ${K.rules.length} quy tắc</h2>
   <div class="filters"><input id="rq" placeholder="Tìm: K2, override, clawback…" aria-label="Tìm quy tắc">
@@ -859,7 +881,7 @@ function renderEvidence() {
   const draw = () => {
     const q = $("rq").value.toLowerCase(), c = $("rc").value, st = $("rs").value;
     const rows = K.rules.filter(r => (!c || r.id.startsWith(c)) && (!st || r.calc === st) && (!q || JSON.stringify(r).toLowerCase().includes(q)));
-    $("rtb").innerHTML = rows.map(r => `<tr><td>${ruleChip(r.id)}</td><td class="small">${esc(r.tier)}</td><td class="small">${esc(r.type)}</td><td class="small">${esc(r.rate)}${r.threshold && r.threshold !== "0" && r.threshold !== "N/A" ? "<div class='muted'>Ngưỡng: " + esc(r.threshold) + "</div>" : ""}${r.cap && r.cap !== "N/A" ? "<div class='muted'>Trần: " + esc(r.cap) + "</div>" : ""}</td>
+    $("rtb").innerHTML = rows.map(r => `<tr><td>${ruleChip(r.id, true)}</td><td class="small">${esc(r.tier)}</td><td class="small">${esc(r.type)}</td><td class="small">${esc(r.rate)}${r.threshold && r.threshold !== "0" && r.threshold !== "N/A" ? "<div class='muted'>Ngưỡng: " + esc(r.threshold) + "</div>" : ""}${r.cap && r.cap !== "N/A" ? "<div class='muted'>Trần: " + esc(r.cap) + "</div>" : ""}</td>
       <td class="small"><span class="badge ${r.calc === "TESTED_PASS" ? "good" : r.calc === "BLOCKED" ? "bad" : "warn"}">${esc(r.calc)}</span><div class="muted">${esc(r.src_ver)}</div></td></tr>`).join("") || `<tr><td colspan="5" class="muted">Không có quy tắc khớp bộ lọc.</td></tr>`;
     if (typeof glossify === "function") glossify($("rtb"));   // giữ tooltip sau mỗi lần lọc (agy UX #1)
   };
@@ -902,7 +924,7 @@ function selfTest() {
 }
 function renderAll() {
   $("k2v").textContent = state.k2 + "%";
-  $("planSeg").innerHTML = Object.entries(PLAN_META).map(([k, m]) => `<button type="button" data-plan="${k}" aria-pressed="${state.plan === k}">${esc(m.name)}${m.star ? ' <span class="tag ADAPT">đề xuất</span>' : ""}</button>`).join("");
+  $("planSeg").innerHTML = Object.entries(PLAN_META).map(([k, m]) => `<button type="button" data-plan="${k}" aria-pressed="${state.plan === k}">${esc(m.name)}${m.star ? ' <span class="tag">tiền thân</span>' : ""}</button>`).join("");
   document.querySelectorAll("#planSeg button").forEach(b => b.onclick = () => { state.plan = b.dataset.plan; renderAll(); });
   $("k2").value = state.k2;
   /* Nhóm "Phân tích sâu" gập mặc định (máy tính) để menu chính chỉ còn đề bài + 3 trang + phụ lục */
@@ -937,7 +959,7 @@ function showTab() {
   $("planCtl").hidden = !usesK2;
   $("planBox").hidden = !usesPlan;
   $("sideNote").textContent = !deep ? "Bấm vào mã [văn bản : trang] ở bất kỳ đâu để mở đúng trang tài liệu gốc bên phải."
-    : PLAN_META[state.plan].star ? "Song Hành là phương án đề xuất. Kéo K2 hoặc đổi phương án — các trang Phân tích sâu tính lại ngay." : "Đang xem: " + PLAN_META[state.plan].name + ".";
+    : PLAN_META[state.plan].star ? "Song Hành là bản tiền thân của Chính sách Đề xuất 2026 (mô hình 1 vùng 12 tỷ). Kéo K2 hoặc đổi phương án — các trang Phân tích sâu tính lại ngay." : "Đang xem: " + PLAN_META[state.plan].name + ".";
 }
 /* Thanh bên: kéo mép phải để đổi độ rộng, nút ghim để cố định / tự ẩn (giống W02 WordLoop) */
 (function sideCtl() {
@@ -1056,6 +1078,12 @@ function renderT2() {
   <div class="tbl-wrap"><table><thead><tr><th>Phương án</th><th>Hoa hồng 25%</th><th>30% (chuẩn)</th><th>40% (bảo vệ thuần)</th><th>40% — kịch bản xấu nhất</th><th>Quỹ thưởng còn trả</th></tr></thead><tbody>
   ${sc.map(s => `<tr class="${s === "Hybrid" ? "hl" : ""}"><th scope="row">${esc(SNAME[s])}${confTag(R.find(x => x.scheme === s))}</th><td>${pct(v(s, "cost_pct_fyp_fyc25", 85))}</td><td>${pct(v(s, "cost_pct_fyp_fyc30", 85))}</td><td><b>${pct(v(s, "cost_pct_fyp_fyc40", 85))}</b></td><td>${pct(v(s, "cost_pct_fyp_worst_fyc40", 85))}</td><td>${s === "Hybrid" && v(s, "pool_paid_share_worst_fyc40", 85) != null ? pct(v(s, "pool_paid_share_worst_fyc40", 85)) : "—"}</td></tr>`).join("")}
   </tbody></table></div>` : ""}
+  ${sc.some(s => v(s, "art52_agent_bonus_pct_fyp", 85) != null) ? `<h3>Kiểm trần pháp lý thưởng & hỗ trợ đại lý</h3>
+  <p class="small muted" style="max-width:100ch">Điều 52 Thông tư 67/2023: tổng thưởng + hỗ trợ đại lý (không gồm hoa hồng) ≤ 30% phí năm đầu thực thu với hợp đồng đóng phí định kỳ <span class="badge warn">CONDITIONAL</span> — chờ đối chiếu toàn văn hợp nhất 44/2026/VBHN-TT-BTC.</p>
+  <div class="tbl-wrap"><table><thead><tr><th>Phương án</th><th>Thưởng + hỗ trợ / FYP (K2 85%)</th><th>Kịch bản xấu nhất</th><th>So với trần 30%</th></tr></thead><tbody>
+  ${sc.map(s => { const a = v(s, "art52_agent_bonus_pct_fyp", 85), w = v(s, "art52_agent_bonus_pct_fyp_worst", 85); return a == null ? "" : `<tr class="${s === "Hybrid" ? "hl" : ""}"><th scope="row">${esc(SNAME[s])}${confTag(R.find(x => x.scheme === s))}</th><td>${pct(a)}</td><td>${pct(w)}</td><td>${Math.max(a, w ?? 0) <= 30 ? '<span class="badge good">✓ Trong trần</span>' : '<span class="badge bad">✗ Vượt trần</span>'}</td></tr>`; }).join("")}
+  </tbody></table></div>
+  <p class="small" style="max-width:100ch"><b>Từ 01/01/2027 (TT 96/2026, sửa Điều 52):</b> thêm trần <b>7% phí thực thu</b> cho hợp đồng <b>đóng phí một lần</b> <span class="badge warn">SOURCE_CLAIM</span>. Mô hình hiện chỉ tính hợp đồng đóng phí định kỳ; khi bán sản phẩm đóng phí một lần, thưởng & hỗ trợ trên phần phí đó phải tách riêng và chặn ở 7%.</p>` : ""}
   <h3>Bẫy hành vi & điểm gãy</h3>
   <div class="tbl-wrap"><table><thead><tr><th>Phương án</th><th>Bẫy</th><th>Đo được</th><th>Nguồn</th></tr></thead><tbody>
   ${TR.map(t => `<tr><td>${esc(SNAME[t.scheme])}${confTag(t)}</td><td><b>${esc(t.trap)}</b>${lblTag(t.label)}</td><td class="small">${esc(t.value_text)}</td><td class="small">${linkifyCites(t.citation)}</td></tr>`).join("")}
@@ -1131,7 +1159,8 @@ function execBriefHtml() {
   const hidden = DATA.public_build && cos.includes("Manulife") ? '<span class="lock">🔒 2 văn bản ghi “thông tin mật” — không đưa lên bản công khai</span>' : "";
   return `<div class="card xbrief">
     <div><span class="lb">Đề bài</span><blockquote>“${esc(DE_BAI)}”</blockquote>
-      <p class="small muted" style="margin:8px 0 0">Đề bài không nêu ngân sách, chỉ tiêu hay quy mô — các giả định đang dùng nằm ở trang “Trả lời đề bài”.</p></div>
+      <p class="small muted" style="margin:8px 0 0">Đề bài không nêu ngân sách, chỉ tiêu hay quy mô — bài tự đặt giả định: trần tổng chi 75% FYP, khu vực 45 đại lý · 1,2 tỷ FYP/tháng, K2 85% (chuẩn) / 65% (xấu), ROI đo bằng chi phí / FYP.</p>
+      <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px"><button type="button" class="go" data-go="answer">Xem đủ giả định đang dùng</button><button type="button" class="go" id="guideOpen2">? Hướng dẫn đọc báo cáo</button></div></div>
     <div><span class="lb">Tài liệu nguồn · ${pdfs.length} PDF, ${fmt(pdfs.reduce((a, f) => a + f.pages, 0))} trang — bấm để mở bên phải</span>
       <div class="xdocs">${cos.map(c => `<div><h4>${c}</h4>${pdfs.filter(f => docCo(f.file_id) === c).map(item).join("")}${c === "Manulife" ? hidden : ""}</div>`).join("")}</div>
       <div style="margin-top:8px"><button type="button" class="go" data-go="glossary">Từ điển & mục lục từng PDF</button></div></div>
@@ -1432,6 +1461,50 @@ document.addEventListener("click", ev => {
   if (!a || a.id === "pdfNew" || ev.ctrlKey || ev.metaKey || ev.shiftKey || ev.button !== 0) return;
   ev.preventDefault(); openPdf(a.href);
 });
+/* ---------- Hướng dẫn sử dụng & cách đọc báo cáo (5 phần). Số đọc từ dữ liệu; bản công khai tự bỏ Manulife. ---------- */
+function guideHtml() {
+  const R = DB("roi_analysis"), v = (s, m) => { const r = R.find(x => x.scheme === s && x.metric === m && +x.k2 === 85); return r ? +r.value : null; };
+  const c = s => v(s, "cost_pct_fyp"), d = s => { const r = R.find(x => x.scheme === s && x.metric === "payout_drop_k2_85_to_65"); return r ? +r.value : null; }, hasM = c("Manulife") != null;
+  const nPdf = (DATA.pdfs || []).length, nReg = new Set(DB("hybrid_regional").map(r => r.region)).size;
+  const comps = ["AIA", "Chubb"].concat(hasM ? ["Manulife"] : []);
+  const maxDropComp = comps.reduce((a, b) => (d(b) ?? -1) > (d(a) ?? -1) ? b : a);
+  return `
+  <h3>1 · Đề bài & mục tiêu</h3>
+  <p>“${esc(DE_BAI)}”</p>
+  <p>Bài so sánh chính sách thu nhập đại lý 2026 của <b>AIA (kênh Alpha), Chubb Life và Manulife</b> trên ${nPdf} văn bản gốc${DATA.public_build ? " công khai được" : ""}, rồi đề xuất <b>Chính sách Đề xuất 2026</b> cho thị trường Việt Nam: tăng doanh số, giữ chất lượng hợp đồng, kiểm soát chi phí.</p>
+  <h3>2 · Kết luận chốt (3 dòng)</h3>
+  <div class="tldr"><ol>
+    <li><b>Các hãng:</b> Chubb Life trả cao và trả ngay nhất (tổng chi ${pct(c("Chubb"))} FYP); AIA Alpha cân bằng (${pct(c("AIA"))}) nhưng lên quản lý nhóm thu ít hơn tự bán${hasM ? `; Manulife rẻ nhất (${pct(c("Manulife"))}) nhưng quản lý cấp đầu thu rất thấp` : ""}.</li>
+    <li><b>Nút thắt chung:</b> chi trả của các hãng chưa gắn đủ chặt với chất lượng hợp đồng — khi K2 từ 85% xuống 65%, hãng co mạnh nhất (${esc(SNAME[maxDropComp])}) chỉ giảm ${pct(d(maxDropComp))} chi trả; phần lớn tiền vẫn được trả ngay, không giữ lại.</li>
+    <li><b>Đề xuất:</b> trả ngang thị trường (${pct(c("Hybrid"))} FYP) nhưng chi trả giảm ${pct(d("Hybrid"))} khi K2 xấu, giữ lại phần trả chậm, và tổng chi không vượt trần 75% FYP kể cả kịch bản xấu nhất.</li>
+  </ol></div>
+  <h3>3 · Phương pháp & giả định cốt lõi</h3>
+  <ul>
+    <li><b>4 mốc chuẩn (L1–L4):</b> so mọi hãng ở cùng quy mô — L1 đại lý cá nhân 30tr FYP/tháng · L2 nhóm 6 người 150tr · L3 ban 15 người 450tr · L4 khu vực 45 người 1,2 tỷ. Mỗi hãng được đặt vào chức danh tương ứng theo điều kiện thăng cấp trong văn bản của họ.</li>
+    <li><b>Chất lượng:</b> K2 (tỷ lệ duy trì hợp đồng năm 2) là <b>giả định</b> 85% (chuẩn) và 65% (xấu), không phải số đo thật; chính sách dùng K2 làm điều kiện chi thưởng.</li>
+    <li><b>ROI tạm tính (proxy):</b> tổng chi trả / FYP và chi phí / phí còn duy trì. Đây chưa phải ROI thật — cần ghép <b>cơ cấu sản phẩm (product mix) và chi phí vượt định mức từ bộ phận Định phí (Actuarial)</b> để tính giá trị hợp đồng mới (VNB).</li>
+    <li><b>${nReg} vùng:</b> chỉ tiêu và trợ cấp nhân hệ số 100% · 89% · 78% · 70% theo lương tối thiểu vùng I–IV (Nghị định 293/2025).</li>
+    <li><b>Hai quy mô mô hình:</b> trang ★ và 1–3 dùng khu vực 45 đại lý; nhóm “Phân tích sâu” dùng 1 vùng 12 tỷ FYP/năm để so các phương án tiền thân — đừng so số % giữa hai nhóm.</li>
+  </ul>
+  <h3>4 · Cách đọc bằng chứng & thuật ngữ</h3>
+  <ul>
+    <li>Mã dạng <b>[Mã văn bản : trang]</b> (ví dụ [AIAVAD 2604-069 : 3]) và các nút 📄 mở <b>đúng trang PDF gốc</b> ở khung bên phải.</li>
+    <li>Chữ có gạch chân chấm (K2, FYC, FYP…) — rê chuột hoặc chạm để xem giải nghĩa. Nút <b>📖 Từ điển</b> mở bảng tra đầy đủ và mục lục từng PDF.</li>
+    <li>Nhãn: <span class="tag ADAPT">PROPOSAL</span> = đề xuất, chưa ban hành · <span class="badge warn">CONDITIONAL</span> = chờ đối chiếu văn bản pháp lý · <span class="badge">MODEL_OUTPUT</span> = kết quả mô phỏng.${DATA.public_build ? " Bản công khai đã lược 2 văn bản Manulife ghi “thông tin mật”." : ""}</li>
+  </ul>
+  <h3>5 · Lộ trình đọc nhanh 3 phút</h3>
+  <ol>
+    <li><b>★ Tổng quan điều hành (1 phút):</b> đề bài, 4 con số chính, 2 biểu đồ, 3 bước tiếp theo.</li>
+    <li><b>Trang 2 · Hiệu quả chi phí (1 phút):</b> chi phí, độ nhạy, trần pháp lý, bẫy hành vi.</li>
+    <li><b>Trang 1 hoặc 3 (1 phút):</b> trang 1 nếu muốn xem từng hãng trả bao nhiêu ở mỗi mốc; trang 3 nếu muốn xem cơ chế đề xuất và 4 vùng.</li>
+  </ol>
+  <p class="small muted">Tra cứu sau: Phụ lục (thuật ngữ, PDF) và nhóm “Phân tích sâu & công cụ” (trả lời đề bài chi tiết, cách tính, thư viện quy tắc, tự chỉnh thông số).</p>`;
+}
+function openGuide() { $("guideBody").innerHTML = guideHtml(); const d = $("guide"); if (d.showModal) d.showModal(); else d.setAttribute("open", ""); }
+$("guideOpen").onclick = openGuide;
+$("guideClose").onclick = () => $("guide").close ? $("guide").close() : $("guide").removeAttribute("open");
+$("guide").addEventListener("click", ev => { if (ev.target.id === "guide") $("guideClose").onclick(); });
+document.addEventListener("click", ev => { if (ev.target.closest && ev.target.closest("#guideOpen2")) openGuide(); });
 $("glOpen").onclick = () => {
   state.tab = "glossary"; showTab();
   if (window.matchMedia("(max-width:980px)").matches) {   // agy UX #3: cuộn tới từ điển, trừ chiều cao thanh dính
