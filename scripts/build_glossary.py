@@ -77,7 +77,7 @@ E = [
     ("ROI", "Return on Investment", INT, "Hiệu quả trên chi phí bỏ ra", "Chỉ số", ["Chung"], None, [],
      "ROI", "Đề bài yêu cầu; repo chỉ có chi phí mô phỏng, không phải ROI thực tế"),
     ("MAPA", "Manpower × Active × Productivity × Average case size", INT, "Công thức doanh số: nhân lực × tỷ lệ hoạt động × năng suất × quy mô hợp đồng", "Chỉ số", ["Chung"], None, [],
-     "Agency sales driver tree", "Thuật ngữ dự án W24 (mapa_forward trong engine)"),
+     "Agency sales driver tree", "Thuật ngữ nội bộ của bài phân tích (cây động lực doanh số)"),
     ("OpEx", "Operating Expenses", INT, "Chi phí vận hành văn phòng của công ty", "Chỉ số", ["Chung"], None, [],
      "OpEx", "Không có trong 9 PDF; repo giả định 15–25% FYP"),
     # ---------------- Khoản thu nhập ----------------

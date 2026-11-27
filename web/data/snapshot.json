@@ -2320,7 +2320,7 @@
     "vietnamese": "Công thức doanh số: nhân lực × tỷ lệ hoạt động × năng suất × quy mô hợp đồng",
     "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
     "market_equivalent": "Agency sales driver tree",
-    "note": "Thuật ngữ dự án W24 (mapa_forward trong engine)",
+    "note": "Thuật ngữ nội bộ của bài phân tích (cây động lực doanh số)",
     "term_group": "Chỉ số",
     "companies": [
      "Chung"

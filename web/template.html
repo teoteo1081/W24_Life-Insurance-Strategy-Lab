@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <!--__SUPABASE_META__-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chiến lược Thu nhập Đại lý</title>
+<title>Chiến lược Thu nhập Đại lý 2026</title>
 <meta name="robots" content="noindex, nofollow">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -197,8 +197,8 @@ details.pdfdoc{margin:6px 0;padding:6px 10px;border:1px solid var(--line);border
 .glbtn{float:right;margin-left:12px}
 .navsep{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin:12px 0 2px;padding:6px 8px;border:0;border-top:1px solid var(--line);background:transparent;text-align:left;cursor:pointer;font-family:inherit;width:100%}
 .navsep:hover{color:var(--ink)}
-@media (min-width:981px){#tabs.refclosed button.ref{display:none}}
-@media (max-width:980px){.navsep{display:none}}
+#tabs.refclosed button.ref{display:none}
+@media (max-width:980px){.navsep{margin:0;border-top:0;white-space:nowrap;flex:0 0 auto;text-transform:none;letter-spacing:0;font-size:13px}}
 /* Trang "Trả lời đề bài" */
 .ans{display:grid;gap:14px}
 .ans .q{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:16px 18px}
@@ -263,7 +263,7 @@ footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1p
 <a class="skip" href="#main">Bỏ qua menu, tới nội dung</a>
 <div class="app" id="app">
 <aside class="side" aria-label="Điều hướng">
-  <div class="brand"><span>Chiến lược thu nhập đại lý · Bước 1</span><button type="button" class="pin" id="pinBtn" aria-pressed="true" aria-label="Ghim thanh bên"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5M9 10.76V6h6v4.76l2.5 2.74V17h-11v-3.5z"/><path d="M8 2h8"/></svg></button></div>
+  <div class="brand"><span>Chiến lược Thu nhập Đại lý 2026</span><button type="button" class="pin" id="pinBtn" aria-pressed="true" aria-label="Ghim thanh bên"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5M9 10.76V6h6v4.76l2.5 2.74V17h-11v-3.5z"/><path d="M8 2h8"/></svg></button></div>
   <div class="side-title">Trang</div>
   <nav class="navl" id="tabs" aria-label="Các trang"></nav>
   <button type="button" class="btn" id="presentBtn" aria-pressed="false">Chế độ trình bày</button>
@@ -276,7 +276,7 @@ footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1p
   <button type="button" class="btn glbtn" id="glOpen">📖 Từ điển &amp; 9 PDF</button>
   <div id="hero">
   <h1>Chính sách thu nhập đại lý: trả ngang thị trường, chi phí co giãn theo chất lượng</h1>
-  <p class="sub">So sánh chính sách 2026 của AIA (kênh Alpha), Chubb Life và Manulife, và đề xuất Chính sách Lai cho thị trường Việt Nam: chi trả giảm mạnh nhất khi tỷ lệ duy trì hợp đồng (K2) xấu đi, và giữ lại nhiều tiền trả chậm nhất.</p>
+  <p class="sub">So sánh chính sách 2026 của AIA (kênh Alpha), Chubb Life và Manulife, và đề xuất Chính sách Đề xuất 2026 cho thị trường Việt Nam: chi trả giảm mạnh nhất khi tỷ lệ duy trì hợp đồng (K2) xấu đi, và giữ lại nhiều tiền trả chậm nhất.</p>
   <div class="req"><b>Đề bài:</b> “Phân tích các chính sách thu nhập giữa các công ty, và đề xuất chính sách phù hợp tại thị trường VN, nhằm thúc đẩy gia tăng doanh số, chất lượng kinh doanh và hiệu quả về mặt chi phí (ROI).”</div>
   <details class="assume"><summary><b>Đề bài không nêu ngân sách, chỉ tiêu hay quy mô — các giả định đang dùng</b></summary>
     <ul class="small">
@@ -329,7 +329,7 @@ window.W24_LOCAL_SNAPSHOT = /*__LOCAL_SNAPSHOT__*/null;</script>
 const DATA = /*__DATA_JSON__*/null;
 const GOLDEN = /*__GOLDEN_JSON__*/null;
 /* Mô hình 1 vùng 12 tỷ (nhóm Phân tích sâu) chỉ có Manulife tầng lãnh đạo vùng; tầng đại lý/UM+ nằm ở mô hình 45 đại lý (trang 0–2) */
-const MNL_GAP = DATA.public_build ? "không công bố ở bản công khai (văn bản ghi thông tin mật)" : "chưa đưa vào mô hình 1 vùng này — xem trang 0–2";
+const MNL_GAP = DATA.public_build ? "không công bố ở bản công khai (văn bản ghi thông tin mật)" : "chưa đưa vào mô hình 1 vùng này — xem trang 1–2";
 const E = window.W24Engine;
 const fmt = (x, d = 0) => (x == null || !isFinite(x)) ? "—" : x.toLocaleString("vi-VN", {minimumFractionDigits: d, maximumFractionDigits: d});
 const DOC = '<svg aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" style="vertical-align:-2px;margin-right:4px"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M4 1.75h5.5L12.5 5v9.25H4zM9.5 1.75V5h3M6 8.5h4.5M6 11h4.5"/></svg>';
@@ -337,6 +337,22 @@ const pct = (x, d = 1) => fmt(x, d) + "%";
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
 const $ = id => document.getElementById(id);
 
+/* Tên hiển thị thống nhất. Dữ liệu (snapshot, từ điển, engine) giữ khóa ngắn "Chubb"/"Hybrid" để lọc & nối bảng —
+   chỉ CHỮ HIỂN THỊ được chuẩn hóa, ở một chỗ, cho mọi nội dung vẽ vào trang (bảng, biểu đồ SVG, tooltip, bộ lọc). */
+const brand = t => String(t).replace(/Chính sách Lai(?: \(đề xuất\))?/g, "Chính sách Đề xuất 2026").replace(/\bChubb\b(?! Life)/g, "Chubb Life")
+  .replace(/trần quỹ thu nhập cây đại lý/g, "trần tổng chi trả hệ thống đại lý");
+const BRAND_ATTRS = ["title", "aria-label", "data-co", "data-tip"];
+function brandTree(root) {
+  if (root.nodeType === 3) { const v = brand(root.nodeValue); if (v !== root.nodeValue) root.nodeValue = v; return; }
+  if (root.nodeType !== 1 || /^(SCRIPT|STYLE|INPUT|TEXTAREA)$/.test(root.tagName)) return;
+  const fixAttrs = el => BRAND_ATTRS.forEach(a => { const v = el.getAttribute(a); if (v && brand(v) !== v) el.setAttribute(a, brand(v)); });
+  fixAttrs(root); root.querySelectorAll("[title],[aria-label],[data-co],[data-tip]").forEach(fixAttrs);
+  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {acceptNode: n => n.parentElement && n.parentElement.closest("script,style,textarea") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT});
+  const ns = []; while (w.nextNode()) ns.push(w.currentNode);
+  ns.forEach(n => { const v = brand(n.nodeValue); if (v !== n.nodeValue) n.nodeValue = v; });
+}
+new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(brandTree))).observe(document.body, {childList: true, subtree: true});
+brandTree(document.body);
 /* ---------- Trạng thái ---------- */
 const PLAN_META = {
   song_hanh: {name: "Song Hành", star: true, desc: "Đề xuất. Ở K2 tốt (khoảng 75–90%) không tầng nào bị trả thấp hơn đối thủ trả thấp nhất; thưởng tái tục 50% như AIA; trả chậm 3 năm ở tầng quản lý và vùng. Chi phí thấp hơn nhờ cấu trúc: thưởng gắn K2, cắt chuỗi gián tiếp nhiều tầng, không phí cố định cao."},
@@ -481,8 +497,9 @@ function lineChart(series, opt) {
 }
 
 /* ---------- Các tab ---------- */
-const TABS = [["exec", "Tổng quan điều hành", ["p-exec"]], ["answer", "Trả lời đề bài", ["p-answer"]], ["t1", "Soi tiền & Quyền lợi", ["p-t1"]], ["t2", "MAPA, Trade-off & ROI", ["p-t2"]], ["t3", "Chính sách Lai & Vùng", ["p-t3"]],
-  ["glossary", "Phụ lục: Từ điển & PDF", ["p-glossary"]],
+const TABS = [["exec", "Tổng quan điều hành", ["p-exec"]], ["t1", "So sánh Thu nhập & Quyền lợi", ["p-t1"]], ["t2", "Phân tích Hành vi & Hiệu quả chi phí", ["p-t2"]],
+  ["t3", "Chính sách Đề xuất 2026 & Phân vùng", ["p-t3"]], ["glossary", "Phụ lục: Từ điển & Tài liệu gốc", ["p-glossary"]],
+  ["answer", "Trả lời đề bài (chi tiết)", ["p-answer"], "ref"],
   ["overview", "Tổng quan mô hình 1 vùng", ["p-overview"], "ref"], ["package", "Gói thu nhập theo cấp", ["p-package"], "ref"],
   ["learn", "Học từ đối thủ", ["p-compare"], "ref"], ["money", "Thu nhập & chi phí", ["p-tiers", "p-cost"], "ref"],
   ["rubric", "Chấm điểm 5 phương án", ["p-rubric"], "ref"], ["evidence", "Bằng chứng", ["p-evidence"], "ref"],
@@ -690,7 +707,7 @@ function renderRubric() {
   });
   $("p-rubric").innerHTML = `
   <h2>Chấm điểm 5 chính sách (K2 = ${k2}%)</h2>
-  <p class="callout small"><b>Trang này khác bảng điểm ở trang 2.</b> Trang 2 chấm đề xuất cuối cùng (<b>Chính sách Lai</b>) với AIA, Chubb, Manulife. Trang này là công cụ thiết kế: so <b>3 biến thể của bộ tham số Song Hành</b> (nền của Chính sách Lai) với AIA và Chubb, cho kéo K2 và trọng số để thấy kết quả đổi thế nào. Biến thể dẫn đầu thay đổi theo trọng số — đó là lý do Chính sách Lai giữ Song Hành và bổ sung chốt chặn K2, phân vùng.</p>
+  <p class="callout small"><b>Trang này khác bảng điểm ở trang 2.</b> Trang 2 chấm đề xuất cuối cùng (<b>Chính sách Đề xuất 2026</b>) với AIA, Chubb, Manulife. Trang này là công cụ thiết kế: so <b>3 biến thể của bộ tham số Song Hành</b> (nền của Chính sách Đề xuất 2026) với AIA và Chubb, cho kéo K2 và trọng số để thấy kết quả đổi thế nào. Biến thể dẫn đầu thay đổi theo trọng số — đó là lý do Chính sách Đề xuất 2026 giữ Song Hành và bổ sung chốt chặn K2, phân vùng.</p>
   <p class="muted small">Mỗi tiêu chí đo bằng số từ mô hình (hoặc định tính có bằng chứng), quy về thang 1–5 <b>tương đối trong nhóm so sánh</b>: tốt nhất = 5, kém nhất = 1. Trụ = trung bình tiêu chí; tổng = trung bình trụ theo trọng số. Pháp lý là <b>cổng bắt buộc</b>, không cộng điểm: mọi phương án đang ở trạng thái <span class="badge warn">CONDITIONAL</span> chờ đối chiếu toàn văn 44/2026/VBHN-TT-BTC.</p>
   <div class="card" style="margin:10px 0">
     <div class="ctl"><span class="lbl">Góc nhìn chấm điểm</span><div class="seg" id="wSeg">${Object.entries(PRESETS).map(([k, p]) => `<button type="button" data-w="${k}" aria-pressed="${state.weightsPreset === k}">${esc(p.name)}</button>`).join("")}</div></div>
@@ -731,7 +748,7 @@ function renderTune() {
   const d = (a, b, suf) => { const x = a - b; return `<span class="${Math.abs(x) < 1e-9 ? "muted" : ""}">${x > 0 ? "+" : ""}${fmt(x, 1)}${suf}</span>`; };
   $("p-tune").innerHTML = `
   <h2>Tự chỉnh thông số (bắt đầu từ Song Hành)</h2>
-  <p class="muted small">Kéo thanh trượt: trang tính lại ngay bằng engine JS đã kiểm khớp Python. Huy hiệu đỏ = vi phạm điều kiện. ${state.plan !== "custom" ? "<b>Chọn “Tự chỉnh” ở thanh Phương án để xem kết quả này ở mọi tab.</b>" : ""}</p>
+  <p class="muted small">Kéo thanh trượt: trang tính lại ngay. Huy hiệu đỏ = vi phạm điều kiện. ${state.plan !== "custom" ? "<b>Chọn “Tự chỉnh” ở thanh Phương án để xem kết quả này ở mọi tab.</b>" : ""}</p>
   <div class="grid g2">
     <div class="card"><div class="sliders">${TUNE.map((t, i) => `<div class="sl"><div class="row"><span>${esc(t[2])}</span><b>${show(t, get(t))}</b></div><input type="range" data-i="${i}" aria-label="${esc(t[2])}" min="${t[3]}" max="${t[4]}" step="${t[5]}" value="${get(t)}"></div>`).join("")}</div>
       <div style="margin-top:10px"><button type="button" class="ev" id="resetTune">Về Song Hành</button></div></div>
@@ -790,7 +807,7 @@ function renderMethod() {
     <tr><td>Thưởng tái tục</td><td class="small muted">hoa hồng tái tục × ${fmt(p.agent_ryc_bonus_rate * 100, 0)}% nếu K2 ≥ 75%</td>${yrs.map(r => `<td class="n">${fmt(r.b.ryc, 1)}</td>`).join("")}</tr>
     <tr><th>Tổng</th><th></th>${yrs.map(r => `<th class="n">${fmt(180 + r.syc + r.b.total, 1)}</th>`).join("")}</tr>
   </tbody></table></div>
-  <p class="small muted">Hệ số K2 của phương án: ≥ 85% → 1,20 · ≥ 80% → 1,10 · ≥ 75% → 1,00 · ≥ 70% → 0,85 · ≥ sàn ${p.k2_hard_floor_pct}% → 0,60 · dưới sàn → 0. Đối thủ dùng đúng công thức trong tài liệu của họ (engine Python, mỗi hàm gắn mã quy tắc — xem tab Bằng chứng).</p>
+  <p class="small muted">Hệ số K2 của phương án: ≥ 85% → 1,20 · ≥ 80% → 1,10 · ≥ 75% → 1,00 · ≥ 70% → 0,85 · ≥ sàn ${p.k2_hard_floor_pct}% → 0,60 · dưới sàn → 0. Đối thủ dùng đúng công thức trong tài liệu của họ (mỗi công thức gắn mã quy tắc — xem tab Bằng chứng).</p>
   <h3>2. Tổng chi phí toàn hệ thống — 1 vùng 12.000tr FYP/năm</h3>
   <div class="tbl-wrap"><table><thead><tr><th>Lớp chi phí</th><th class="n">${esc(PLAN_META[key].name)}</th><th class="n">AIA Alpha 2026</th><th class="n">Chubb Life 2026</th></tr></thead><tbody>
     ${layerNames.map((n, i) => `<tr><td>${n}</td><td class="n">${fmt(mine[i], 1)}</td><td class="n">${fmt(lay(a)[i], 1)}</td><td class="n">${fmt(lay(c)[i], 1)}</td></tr>`).join("")}
@@ -890,7 +907,7 @@ function renderAll() {
   $("k2").value = state.k2;
   /* Nhóm "Phân tích sâu" gập mặc định (máy tính) để menu chính chỉ còn đề bài + 3 trang + phụ lục */
   $("tabs").innerHTML = TABS.map(([k, n, , grp], i) => (grp === "ref" && (!TABS[i - 1] || TABS[i - 1][3] !== "ref") ? `<button type="button" class="navsep" id="refToggle" aria-expanded="${state.refOpen}">${state.refOpen ? "▾" : "▸"} Phân tích sâu &amp; công cụ (${TABS.filter(t => t[3] === "ref").length})</button>` : "")
-    + `<button type="button" data-tab="${k}" class="${grp === "ref" ? "ref" : ""}" ${state.tab === k ? 'aria-current="page"' : ""}><span class="stepn">${k === "exec" ? "★" : k === "glossary" ? "📖" : grp === "ref" ? "·" : i - 1}</span>${k === "glossary" ? `Phụ lục: Từ điển & ${(DATA.pdfs || []).length} PDF` : n}</button>`).join("");
+    + `<button type="button" data-tab="${k}" class="${grp === "ref" ? "ref" : ""}" ${state.tab === k ? 'aria-current="page"' : ""}><span class="stepn">${k === "exec" ? "★" : k === "glossary" ? "📖" : grp === "ref" ? "·" : i}</span>${n}</button>`).join("");
   $("glOpen").textContent = `📖 Từ điển & ${(DATA.pdfs || []).length} PDF`;
   document.querySelectorAll("#tabs button[data-tab]").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; showTab(); window.scrollTo(0, 0); });
   $("refToggle").onclick = () => {   // chỉ đổi hiện/ẩn — không vẽ lại cả trang (trước đây ~160ms, gây giật)
@@ -955,7 +972,7 @@ const st = selfTest();
 DATA.db = DATA.db || ((window.W24_LOCAL_SNAPSHOT || {}).tables) || {};
 const DB = n => (DATA.db && DATA.db[n]) || [];
 const CO3 = ["AIA", "Chubb", "Manulife"], SC4 = ["AIA", "Chubb", "Manulife", "Hybrid"];
-const SNAME = {AIA: "AIA Alpha", Chubb: "Chubb Life", Manulife: "Manulife", Hybrid: "Chính sách Lai (đề xuất)"};
+const SNAME = {AIA: "AIA Alpha", Chubb: "Chubb Life", Manulife: "Manulife", Hybrid: "Chính sách Đề xuất 2026"};
 const MS_LABEL = {M1: "Mốc 1 — Cá nhân · 30tr FYP/tháng", M2: "Mốc 2 — Nhóm 6 người · 150tr", M3: "Mốc 3 — Ban 15 người · 450tr", M4: "Mốc 4 — Khu vực 45 người · 1,2 tỷ"};
 const BASIS = {personal_income: "thu nhập cá nhân (gồm tự bán)", net_management_fee: "phí quản lý thuần (không gồm tự bán)"};
 const confTag = r => r && r.confidentiality === "restricted" ? ' <span class="tag AVOID" title="Dựa trên 0046M01/0047M01 — thông tin mật, chỉ lưu local">mật</span>' : "";
@@ -983,7 +1000,7 @@ function execSummaryHtml() {
   if (!es || !es.agent || !es.agent.length) return "";
   const vtag = v => /^Thơm/.test(v) ? "good" : /^(Không|Thấp)/.test(v) ? "bad" : "";
   return `<details class="exsum"><summary><b>Tóm tắt nhanh — 2 góc nhìn</b> <span class="muted small">(đại lý/quản lý “kèo thơm hay không?” · công ty: tổng chi & stress test) — bấm để mở</span></summary>
-  <p class="small muted">Chỉ tổng hợp số engine đã có, không tính lại. K2 85%, hoa hồng năm đầu 30% FYP, triệu đồng. Tháng = năm / 12, Quý = năm / 4 — bình quân quy đổi, đã gồm thưởng quý/năm/M-Star/MDRT nếu có. L1 = thu nhập cá nhân gồm tái tục; L2–L4 = phí quản lý thuần. Chính sách Lai: Vùng I, Full-time. “Kèo thơm?” so với mức thấp nhất của các hãng cùng tầng (≥1,2 lần = thơm).${DATA.public_build ? ' Bản công khai: Manulife tầng 1–3 đã lược.' : ""}</p>
+  <p class="small muted">Tổng hợp từ kết quả mô hình, không tính lại. K2 85%, hoa hồng năm đầu 30% FYP, triệu đồng. Tháng = năm / 12, Quý = năm / 4 — bình quân quy đổi, đã gồm thưởng quý/năm/M-Star/MDRT nếu có. L1 = thu nhập cá nhân gồm tái tục; L2–L4 = phí quản lý thuần. Chính sách Đề xuất 2026: Vùng I, Full-time. “Kèo thơm?” so với mức thấp nhất của các hãng cùng tầng (≥1,2 lần = thơm).${DATA.public_build ? ' Bản công khai: Manulife tầng 1–3 đã lược.' : ""}</p>
   <div class="tbl-wrap"><table class="exsum-t"><thead><tr><th>Tầng</th><th>Hãng · chức danh</th><th class="n">Tháng</th><th class="n">Quý</th><th class="n">Năm</th><th>Kèo thơm?</th><th>Nhận xét</th></tr></thead><tbody>
   ${es.agent.map(r => `<tr class="${r.scheme === "Hybrid" ? "hl" : ""}"><td class="small">${esc(r.tier)}</td><td><b>${esc(r.name)}</b><div class="small muted">${esc(r.title)}</div></td><td class="n">${fmt(r.month, 1)}</td><td class="n">${fmt(r.quarter, 1)}</td><td class="n">${fmt(r.year, 0)}</td><td><span class="badge ${vtag(r.verdict)}">${esc(r.verdict)}</span></td><td class="small">${linkifyCites(r.comment)}</td></tr>`).join("")}
   </tbody></table></div>
@@ -991,7 +1008,7 @@ function execSummaryHtml() {
   <div class="tbl-wrap"><table><thead><tr><th>Chính sách</th><th class="n">Tổng chi / tháng</th><th class="n">/ quý</th><th class="n">/ năm</th><th class="n">Tổng chi / FYP</th><th>Đỉnh stress test</th><th class="n">Chi trả giảm khi K2 85→65%</th><th class="n">Trả chậm</th><th>Nhận xét cho Ban Giám đốc</th></tr></thead><tbody>
   ${es.company.map(r => `<tr class="${r.scheme === "Hybrid" ? "hl" : ""}"><td><b>${esc(r.name)}</b></td><td class="n">${fmt(r.month, 1)}</td><td class="n">${fmt(r.quarter, 1)}</td><td class="n">${fmt(r.year, 0)}</td><td class="n"><b>${pct(r.cost_pct)}</b></td><td class="small">${pct(r.peak_pct)} — ${esc(r.peak_note)}</td><td class="n">${pct(r.drop_pct)}</td><td class="n">${pct(r.deferred_pct)}</td><td class="small">${esc(r.comment)}</td></tr>`).join("")}
   </tbody></table></div>
-  <p class="note">Tổng chi / FYP là chi phí mô phỏng của quỹ thu nhập cây đại lý — không phải ROI thực tế (thiếu biên lợi nhuận VNB). Bản Markdown cùng số: <code>outputs/interview/00_Executive_Summary_Keo_Thom.md</code>.</p></details>`;
+  <p class="note">Tổng chi / FYP là chi phí mô phỏng của tổng chi trả hệ thống đại lý — không phải ROI thực tế (thiếu biên lợi nhuận VNB).</p></details>`;
 }
 function renderT1() {
   const B = DB("benchmark_results");
@@ -1006,7 +1023,7 @@ function renderT1() {
     return h;
   }).join("");
   $("p-t1").innerHTML = `
-  <h2>1 · Soi tiền & quyền lợi theo 4 mốc quy mô</h2>
+  <h2>1 · So sánh Thu nhập & Quyền lợi theo 4 mốc quy mô</h2>
   ${execSummaryHtml()}
   <p class="note"><b>Mốc 1</b> = thu nhập cá nhân của đại lý (gồm hoa hồng tự bán). <b>Mốc 2–4</b> = <b>phí quản lý thuần, không gồm hoa hồng tự bán</b> — vì vậy Mốc 2 của AIA và Manulife có thể thấp hơn Mốc 1. Đơn vị: triệu đồng/tháng, K2 85%, trước thuế. Bấm vào từng mốc để mở bảng quyền lợi ngang hàng 6 dòng; mọi ô có link <b>[Mã văn bản : trang]</b>.</p>
   <div class="tbl-wrap"><table class="t1"><thead><tr><th>Mốc</th>${CO3.map(co => `<th>${esc(SNAME[co])}</th>`).join("")}</tr></thead><tbody>${rowsHtml}</tbody></table></div>
@@ -1025,17 +1042,17 @@ function renderT2() {
   const ws = s => RB.filter(r => r.scheme === s).reduce((a, r) => a + r.weight * r.score, 0);
   const cls = s => s === "Hybrid" ? "me" : "";
   $("p-t2").innerHTML = `
-  <h2>2 · MAPA, Trade-off & ROI 3 tầng</h2>${DATA.public_build ? '<p class="callout small"><span class="badge warn">Bản công khai</span> Trang này <b>không có Manulife</b>: chi phí toàn khu vực của Manulife tính từ 2 văn bản ghi "thông tin mật" nên đã được lược. So sánh chi phí dưới đây chỉ gồm AIA, Chubb và đề xuất.</p>' : ""}
-  <p class="note">Khu vực Mốc 4 dùng chung: 45 đại lý, 1,2 tỷ FYP/tháng, 1 lãnh đạo + 2 trưởng ban + 6 trưởng nhóm. <b>"ROI" ở đây là chi phí / FYP và chi phí / phí còn duy trì — không phải ROI thực tế</b> (VNB, biên lợi nhuận thật chưa có). Số Chính sách Lai là đề xuất.</p>
+  <h2>2 · Phân tích Hành vi & Hiệu quả chi phí</h2>${DATA.public_build ? '<p class="callout small"><span class="badge warn">Bản công khai</span> Trang này <b>không có Manulife</b>: chi phí toàn khu vực của Manulife tính từ 2 văn bản ghi "thông tin mật" nên đã được lược. So sánh chi phí dưới đây chỉ gồm AIA, Chubb và đề xuất.</p>' : ""}
+  <p class="note">Khu vực Mốc 4 dùng chung: 45 đại lý, 1,2 tỷ FYP/tháng, 1 lãnh đạo + 2 trưởng ban + 6 trưởng nhóm. <b>"ROI" ở đây là chi phí / FYP và chi phí / phí còn duy trì — không phải ROI thực tế</b> (VNB, biên lợi nhuận thật chưa có). Số Chính sách Đề xuất 2026 là đề xuất.</p>
   <div class="grid g2">
     <div class="card"><h3 style="margin-top:0">Tầng 1 — Tổng chi / FYP (K2 85%)</h3>${barRows(sc.map(s => ({name: SNAME[s], v: v(s, "cost_pct_fyp", 85), cls: cls(s)})), "%", 1)}<p class="small muted">Trần đề xuất 75% FYP, kiểm ở kịch bản xấu nhất (cột "Kịch bản xấu nhất" dưới đây — gồm trường hợp mọi đại lý đạt quota).</p></div>
-    <div class="card"><h3 style="margin-top:0">Tầng 2 — Chi trả giảm khi K2 sập 85% → 65%</h3>${barRows(sc.map(s => ({name: SNAME[s], v: v(s, "payout_drop_k2_85_to_65", 0), cls: cls(s)})), "%", 1)}<p class="small muted">Cao = chi trả gắn chặt chất lượng.</p></div>
+    <div class="card"><h3 style="margin-top:0">Tầng 2 — Độ nhạy chi trả khi K2 giảm (85% → 65%)</h3>${barRows(sc.map(s => ({name: SNAME[s], v: v(s, "payout_drop_k2_85_to_65", 0), cls: cls(s)})), "%", 1)}<p class="small muted">Cao = chi trả gắn chặt chất lượng.</p></div>
   </div>
   <div class="tbl-wrap" style="margin-top:12px"><table><thead><tr><th>Phương án</th><th>Tổng chi / FYP</th><th>Khi năng suất −50%</th><th>Chi phí / phí còn duy trì (K2 85%)</th><th>(K2 65%)</th><th>Kịch bản xấu nhất</th><th>Tầng 3 — tiền mặt năm 1</th><th>Trả các năm sau</th><th>Phần cố định</th></tr></thead><tbody>
   ${sc.map(s => `<tr class="${s === "Hybrid" ? "hl" : ""}"><th scope="row">${esc(SNAME[s])}${confTag(R.find(x => x.scheme === s))}</th><td>${pct(v(s, "cost_pct_fyp", 85))}</td><td>${pct(v(s, "cost_pct_fyp_half_production", 85))}</td><td>${pct(v(s, "cost_per_persisted_pct", 85))}</td><td>${pct(v(s, "cost_per_persisted_pct", 65))}</td><td title="${esc((R.find(x => x.scheme === s && x.metric === "cost_pct_fyp_worst_case") || {}).note || "")}">${pct(v(s, "cost_pct_fyp_worst_case", 85))}</td><td>${pct(v(s, "cash_y1_share", 85))}</td><td>${pct(v(s, "deferred_share", 85))}</td><td>${pct(v(s, "fixed_share", 85))}</td></tr>`).join("")}
   </tbody></table></div>
-  ${sc.some(s => v(s, "cost_pct_fyp_fyc40", 85) != null) ? `<h3>Nếu bán nghiêng bảo vệ thuần? Độ nhạy theo tỷ lệ hoa hồng năm đầu</h3>
-  <p class="small muted" style="max-width:100ch">Hơn một nửa hợp đồng mới 2026 là bảo vệ thuần/tử kỳ (số tóm tắt IAV) — loại có hoa hồng năm đầu cao (~40% FYP). Chính sách Lai tính thưởng và phí quản lý trên <b>FYC chuẩn hóa = FYP × 30%</b> (hoa hồng vẫn trả theo sản phẩm), và có <b>trần quỹ thu nhập cây đại lý 75% FYP</b>: vượt trần thì thưởng + phí quản lý co theo cùng tỷ lệ. Ba hãng trả trên FYC thật theo văn bản của họ. Trần 75% là trần quỹ thu nhập đại lý, không phải tổng chi phí khai thác trên báo cáo tài chính (còn văn phòng, marketing, kênh ngân hàng).</p>
+  ${sc.some(s => v(s, "cost_pct_fyp_fyc40", 85) != null) ? `<h3>Độ nhạy theo cơ cấu sản phẩm (Tỷ lệ hoa hồng năm đầu)</h3>
+  <p class="small muted" style="max-width:100ch">Hơn một nửa hợp đồng mới 2026 là bảo vệ thuần/tử kỳ (số tóm tắt IAV) — loại có hoa hồng năm đầu cao (~40% FYP). Chính sách Đề xuất 2026 tính thưởng và phí quản lý trên <b>FYC chuẩn hóa = FYP × 30%</b> (hoa hồng vẫn trả theo sản phẩm), và có <b>trần tổng chi trả hệ thống đại lý 75% FYP</b>: vượt trần thì thưởng + phí quản lý co theo cùng tỷ lệ. Ba hãng trả trên FYC thật theo văn bản của họ. Trần 75% là trần quỹ thu nhập đại lý, không phải tổng chi phí khai thác trên báo cáo tài chính (còn văn phòng, marketing, kênh ngân hàng).</p>
   <div class="tbl-wrap"><table><thead><tr><th>Phương án</th><th>Hoa hồng 25%</th><th>30% (chuẩn)</th><th>40% (bảo vệ thuần)</th><th>40% — kịch bản xấu nhất</th><th>Quỹ thưởng còn trả</th></tr></thead><tbody>
   ${sc.map(s => `<tr class="${s === "Hybrid" ? "hl" : ""}"><th scope="row">${esc(SNAME[s])}${confTag(R.find(x => x.scheme === s))}</th><td>${pct(v(s, "cost_pct_fyp_fyc25", 85))}</td><td>${pct(v(s, "cost_pct_fyp_fyc30", 85))}</td><td><b>${pct(v(s, "cost_pct_fyp_fyc40", 85))}</b></td><td>${pct(v(s, "cost_pct_fyp_worst_fyc40", 85))}</td><td>${s === "Hybrid" && v(s, "pool_paid_share_worst_fyc40", 85) != null ? pct(v(s, "pool_paid_share_worst_fyc40", 85)) : "—"}</td></tr>`).join("")}
   </tbody></table></div>` : ""}
@@ -1055,11 +1072,11 @@ function renderT2() {
   <div class="tbl-wrap"><table><thead><tr><th>Trụ cột (trọng số)</th>${SC4.map(s => `<th>${esc(SNAME[s])}</th>`).join("")}</tr></thead><tbody>
   ${pillars.map(p => { const w = (RB.find(r => r.pillar === p) || {}).weight || 0; return `<tr><th scope="row">${esc(p)} (${fmt(w * 100)}%)</th>${SC4.map(s => { const r = RB.find(x => x.scheme === s && x.pillar === p); return `<td title="${r ? esc(r.evidence) : ""}">${r ? fmt(r.score, 2) : "—"}${r && r.method === "judgement" ? ' <span class="small muted">(đánh giá)</span>' : ""}</td>`; }).join("")}</tr>`; }).join("")}
   <tr class="hl"><th scope="row">Điểm có trọng số (1–5)</th>${SC4.map(s => `<td><b>${RB.some(r => r.scheme === s) ? fmt(ws(s), 2) : "—"}</b></td>`).join("")}</tr></tbody></table></div>${DATA.public_build ? '<p class="note">Bản công khai: các số Manulife tính từ 2 văn bản ghi "thông tin mật" (Đại Lý, UM+) đã được lược bỏ; Manulife PSM/SM (0048M01) vẫn hiển thị ở tab 1.</p>' : ""}
-  <p class="note">3 trụ cột đầu tính bằng công thức công khai (rê chuột vào điểm để xem căn cứ); "Độ đơn giản" đếm khoản phí theo mục lục văn bản; "Vận hành & Pháp lý" là đánh giá có dẫn chứng. Điểm Chính sách Lai là tự chấm của bên thiết kế — cần kiểm toán độc lập. Chi tiết: <code>outputs/interview/02_Phan_Tich_MAPA_TradeOff_Va_ROI.md</code>.</p>`;
+  <p class="note">3 trụ cột đầu tính bằng công thức công khai (rê chuột vào điểm để xem căn cứ); "Độ đơn giản" đếm khoản phí theo mục lục văn bản; "Vận hành & Pháp lý" là đánh giá có dẫn chứng. Điểm Chính sách Đề xuất 2026 là tự chấm của bên thiết kế — cần kiểm toán độc lập.</p>`;
 }
 /* ---------- Tab ★ Tổng quan điều hành: 1 màn hình kiểu Power BI. Chỉ ĐỌC DATA.exec_summary + DB (snapshot) — không tính lại công thức. ---------- */
 const XCOL = {AIA: "var(--s-aia)", Chubb: "var(--s-chubb)", Manulife: "var(--s-mnl)", Hybrid: "var(--s-plan)"};
-const XNAME = {AIA: "AIA", Chubb: "Chubb", Manulife: "Manulife", Hybrid: "Chính sách Lai"};
+const XNAME = SNAME;   // biểu đồ dùng đúng tên như bảng
 const niceMax = x => { const m = Math.pow(10, Math.floor(Math.log10(x || 1))), f = x / m; return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * m; };
 function execAgentChart(rows, per) {
   const tiers = ["M1", "M2", "M3", "M4"], sch = ["AIA", "Chubb", "Manulife", "Hybrid"];
@@ -1081,10 +1098,10 @@ function execAgentChart(rows, per) {
     g += `<text x="${L + i * gw + gw / 2}" y="${H - 22}" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--ink)">L${i + 1}</text><text x="${L + i * gw + gw / 2}" y="${H - 8}" text-anchor="middle" font-size="11" fill="var(--muted)">${["Cá nhân", "Nhóm", "Ban", "Khu vực"][i]}</text>`;
   });
   g += `<line x1="${L}" x2="${W - R}" y1="${T + ph}" y2="${T + ph}" stroke="var(--muted)"/><text x="${L}" y="12" font-size="11" fill="var(--muted)">triệu đồng / ${{month: "tháng", quarter: "quý", year: "năm"}[per]}</text>`;
-  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Thu nhập 4 tầng L1–L4 của AIA, Chubb, Manulife và Chính sách Lai">${g}</svg>`;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Thu nhập 4 tầng L1–L4 của AIA, Chubb, Manulife và Chính sách Đề xuất 2026">${g}</svg>`;
 }
 function execCostChart(rows) {
-  const W = 560, L = 118, R = 64, T = 26, RH = 40, H = T + rows.length * RH + 26, pw = W - L - R, CAP = 75;
+  const W = 560, L = 168, R = 64, T = 26, RH = 40, H = T + rows.length * RH + 26, pw = W - L - R, CAP = 75;
   const xmax = Math.max(100, Math.ceil(Math.max(...rows.map(r => r.peak_pct), CAP) / 20) * 20), x = v => L + v / xmax * pw;
   let g = "";
   for (let v = 0; v <= xmax; v += 20) g += `<line x1="${x(v)}" x2="${x(v)}" y1="${T - 4}" y2="${T + rows.length * RH}" stroke="var(--line)"/><text x="${x(v)}" y="${H - 8}" text-anchor="middle" font-size="11" fill="var(--muted)">${v}%</text>`;
@@ -1114,7 +1131,7 @@ function execBriefHtml() {
   const hidden = DATA.public_build && cos.includes("Manulife") ? '<span class="lock">🔒 2 văn bản ghi “thông tin mật” — không đưa lên bản công khai</span>' : "";
   return `<div class="card xbrief">
     <div><span class="lb">Đề bài</span><blockquote>“${esc(DE_BAI)}”</blockquote>
-      <p class="small muted" style="margin:8px 0 0">Đề bài không nêu ngân sách, chỉ tiêu hay quy mô — các giả định đang dùng nằm ở trang 0.</p></div>
+      <p class="small muted" style="margin:8px 0 0">Đề bài không nêu ngân sách, chỉ tiêu hay quy mô — các giả định đang dùng nằm ở trang “Trả lời đề bài”.</p></div>
     <div><span class="lb">Tài liệu nguồn · ${pdfs.length} PDF, ${fmt(pdfs.reduce((a, f) => a + f.pages, 0))} trang — bấm để mở bên phải</span>
       <div class="xdocs">${cos.map(c => `<div><h4>${c}</h4>${pdfs.filter(f => docCo(f.file_id) === c).map(item).join("")}${c === "Manulife" ? hidden : ""}</div>`).join("")}</div>
       <div style="margin-top:8px"><button type="button" class="go" data-go="glossary">Từ điển & mục lục từng PDF</button></div></div>
@@ -1137,11 +1154,11 @@ function renderExec() {
   const go = (t, label) => `<button type="button" class="go" data-go="${t}">${label} →</button>`;
   $("p-exec").innerHTML = `
   <h2>Tổng quan điều hành</h2>
-  <p class="lede">Đề xuất <b>Chính sách Lai</b> — thiết kế thu nhập đại lý cho thị trường Việt Nam: trả ngang thị trường, chi phí co giãn theo chất lượng hợp đồng. Khu vực chuẩn 45 đại lý, 1,2 tỷ FYP/tháng, giả định tỷ lệ duy trì K2 85%. Số liệu là mô phỏng <span class="tag ADAPT">MODEL_OUTPUT</span>.</p>
+  <p class="lede">Đề xuất <b>Chính sách Đề xuất 2026</b> — thiết kế thu nhập đại lý cho thị trường Việt Nam: trả ngang thị trường, chi phí co giãn theo chất lượng hợp đồng. Khu vực chuẩn 45 đại lý, 1,2 tỷ FYP/tháng, giả định tỷ lệ duy trì K2 85%. Số liệu là mô phỏng <span class="tag ADAPT">MODEL_OUTPUT</span>.</p>
   ${execBriefHtml()}
   <div class="xk">
     <div class="card"><span class="lb">Tổng chi / FYP · Mốc 4 chuẩn</span><span class="v">${pct(hy.cost_pct, 1)}</span><span class="s">≈ ${fmt(hy.month, 1)} tr/tháng · ${fmt(hy.year, 0)} tr/năm</span><span class="s">${others.map(r => `${esc(XNAME[r.scheme])} ${pct(r.cost_pct, 1)}`).join(" · ")}${cheaper.length ? ` — ${cheaper.map(r => esc(XNAME[r.scheme])).join(", ")} rẻ hơn khi chất lượng tốt` : ""}</span></div>
-    <div class="card"><span class="lb">Đỉnh stress test <span class="badge ${safe ? "good" : "bad"}">${safe ? "✓ An toàn" : "✗ Vượt trần"}</span></span><span class="v">${pct(worst, 1)} <small>/ trần 75%</small></span><span class="s">Kịch bản xấu nhất, hoa hồng chuẩn 30% FYP.</span>${worst40 != null ? `<span class="s">Bán nghiêng bảo vệ thuần (hoa hồng 40%): ${pct(worst40, 1)} — trần quỹ chặn đúng mức.</span>` : ""}</div>
+    <div class="card"><span class="lb">Đỉnh stress test <span class="badge ${safe ? "good" : "bad"}">${safe ? "✓ An toàn" : "✗ Vượt trần"}</span></span><span class="v">${pct(worst, 1)} <small>/ trần 75%</small></span><span class="s">Kịch bản xấu nhất, hoa hồng chuẩn 30% FYP.</span>${worst40 != null ? `<span class="s">Bán nghiêng bảo vệ thuần (hoa hồng 40%): ${pct(worst40, 1)} — trần chặn đúng mức.</span>` : ""}</div>
     <div class="card"><span class="lb">Điểm chấm 5 tiêu chí ${scored[0] === "Hybrid" ? '<span class="badge good">Dẫn đầu</span>' : ""}</span><span class="v">${fmt(wsc("Hybrid"), 2)} <small>/ 5</small></span><span class="s">${scored.filter(s => s !== "Hybrid").map(s => `${esc(XNAME[s])} ${fmt(wsc(s), 2)}`).join(" · ")}</span><span class="s">Bên thiết kế tự chấm — cần kiểm định độc lập.</span></div>
     <div class="card"><span class="lb">Cơ chế cốt lõi</span><span class="mech">2 đường ray · K2 ≥ 80% · ${nReg} vùng</span><span class="s">Full-time / Part-time · trợ cấp & phần trả chậm chỉ chi khi K2 ≥ 80% · hệ số vùng theo lương tối thiểu (NĐ 293/2025).</span></div>
   </div>
@@ -1149,15 +1166,15 @@ function renderExec() {
     <div class="card"><div class="hd"><h3>Góc nhìn đại lý / quản lý — thu nhập 4 tầng</h3><div class="seg" id="xPer">${[["month", "Tháng"], ["quarter", "Quý"], ["year", "Năm"]].map(([k, n]) => `<button type="button" data-p="${k}" aria-pressed="${per === k}">${n}</button>`).join("")}</div></div>
       <div class="xleg">${["AIA", "Chubb", "Manulife", "Hybrid"].map(s => `<span><i style="background:${XCOL[s]}"></i>${esc(XNAME[s])}</span>`).join("")}</div>
       ${execAgentChart(es.agent, per)}
-      <p class="xsum"><b>Kèo thơm ở tầng nào:</b> Chính sách Lai thơm ở ${good.join(", ") || "—"}${low.length ? `; <b>${low.join(", ")} thấp hơn cả các hãng</b> (đánh đổi có chủ đích: ít phí cố định, trả chậm)` : ""}.${notGood.length ? ` Không thơm: ${notGood.join(", ")} (quản lý thu ít hơn tự bán).` : ""}</p>
+      <p class="xsum"><b>Kèo thơm ở tầng nào:</b> Chính sách Đề xuất 2026 thơm ở ${good.join(", ") || "—"}${low.length ? `; <b>${low.join(", ")} thấp hơn cả các hãng</b> (đánh đổi có chủ đích: ít phí cố định, trả chậm)` : ""}.${notGood.length ? ` Không thơm: ${notGood.join(", ")} (quản lý thu ít hơn tự bán).` : ""}</p>
       <p class="small muted" style="margin:4px 0 0">L1 = thu nhập cá nhân; L2–L4 = phí quản lý thuần. Rê chuột vào cột để xem chức danh.${DATA.public_build ? " Bản công khai: Manulife L1–L3 đã lược (văn bản ghi thông tin mật)." : ""}</p></div>
     <div class="card"><div class="hd"><h3>Góc nhìn công ty — Tổng chi / FYP</h3></div>
       <div class="xleg"><span><i style="background:var(--s-plan)"></i>Tổng chi (K2 85%)</span><span>◇ Đỉnh stress test</span><span><i style="background:var(--bad);width:3px"></i>Trần 75%</span></div>
       ${execCostChart(co)}
-      <p class="small muted" style="margin:4px 0 0">◇ = kịch bản xấu nhất, gồm trường hợp bán nghiêng bảo vệ thuần (hoa hồng 40%). Trần 75% là trần quỹ thu nhập cây đại lý, không phải tổng chi phí khai thác trên báo cáo tài chính.${DATA.public_build ? " Bản công khai không có Manulife." : ""}</p></div>
+      <p class="small muted" style="margin:4px 0 0">◇ = kịch bản xấu nhất, gồm trường hợp bán nghiêng bảo vệ thuần (hoa hồng 40%). Trần 75% là trần tổng chi trả hệ thống đại lý, không phải tổng chi phí khai thác trên báo cáo tài chính.${DATA.public_build ? " Bản công khai không có Manulife." : ""}</p></div>
   </div>
   <div class="card xnext"><h3 style="margin:0">Quyết định & 3 bước tiếp theo</h3>
-    <p class="small" style="margin:4px 0 0"><b>Đề nghị:</b> duyệt Chính sách Lai ở dạng thí điểm — chưa ban hành toàn quốc khi chưa có số thật về giá trị hợp đồng mới (VNB) và tỷ lệ duy trì.</p>
+    <p class="small" style="margin:4px 0 0"><b>Đề nghị:</b> duyệt Chính sách Đề xuất 2026 ở dạng thí điểm — chưa ban hành toàn quốc khi chưa có số thật về giá trị hợp đồng mới (VNB) và tỷ lệ duy trì.</p>
     <ol class="small">
       <li><b>Ghép cơ cấu sản phẩm & chi phí vượt định mức từ bộ phận Định phí (Actuarial)</b> → tính VNB thật, thay thước đo "chi phí / FYP" bằng ROI thật.</li>
       <li><b>Thí điểm tại 1 văn phòng Vùng I và 1 văn phòng Vùng III</b>, mỗi nơi ghép với 1 văn phòng đối chứng giữ chính sách cũ. Sau 1 quý đọc số sớm: FYP / đại lý hoạt động, tỷ lệ hoạt động, phí kỳ 2. K2 chỉ đo đủ ở tháng 13–15.</li>
@@ -1181,7 +1198,7 @@ function renderAnswer() {
   const go = (t, label) => `<button type="button" class="go" data-go="${t}">${label} →</button>`;
   const names = comps.map(s => SNAME[s]).join(", ");
   $("p-answer").innerHTML = `
-  <h2>0 · Trả lời đề bài</h2>
+  <h2>Trả lời đề bài</h2>
   <p class="muted" style="max-width:90ch;margin:0 0 14px">Đề bài có 3 câu hỏi. Mỗi thẻ dưới đây trả lời một câu: một kết luận, vài con số và lý do hợp với thị trường Việt Nam. Bấm nút ở cuối thẻ để xem chi tiết. Số liệu là mô phỏng trên 1 khu vực 45 đại lý, 1,2 tỷ FYP/tháng (xem “các giả định đang dùng” ở trên).</p>
   <div class="ans">
   <div class="q"><h3>Câu 1 · Phân tích — các công ty trả thu nhập thế nào?</h3>
@@ -1191,9 +1208,9 @@ function renderAnswer() {
       <li><b>AIA Alpha:</b> dồn tiền cho mở rộng lực lượng toàn thời gian; lãnh đạo vùng có phí cố định cao và chuỗi phí gián tiếp nhiều tầng. Tổng chi ${fmt(c85("AIA"), 1)}% FYP.</li>
       <li><b>Chubb Life:</b> trả rất cao và trả ngay cho người bán giỏi và quản lý trực tiếp, gần như không giữ lại trả chậm → tổng chi ${fmt(c85("Chubb"), 1)}% FYP.</li>
       ${comps.includes("Manulife") ? `<li><b>Manulife:</b> tổng chi thấp nhất nhóm (${fmt(c85("Manulife"), 1)}% FYP) nhưng ${mnlTrap ? esc(mnlTrap.value_text.replace(/→/g, "—")) : "quản lý nhận ít"} — rủi ro không ai muốn lên làm quản lý.</li>` : `<li><b>Manulife:</b> bản công khai chỉ có tầng lãnh đạo vùng (PSM/SM); hai tầng dưới thuộc văn bản ghi "thông tin mật".</li>`}
-    </ul>${go("t1", "Trang 1 · Soi tiền & quyền lợi theo 4 mốc")}</div>
+    </ul>${go("t1", "Trang 1 · So sánh thu nhập & quyền lợi theo 4 mốc")}</div>
   <div class="q"><h3>Câu 2 · Đề xuất — chính sách nào hợp thị trường Việt Nam?</h3>
-    <p class="a">Chính sách Lai: giữ thu nhập đại lý ngang thị trường, nhưng mọi khoản thưởng lớn đều gắn với tỷ lệ duy trì hợp đồng (K2) và một phần được trả chậm. <span class="tag ADAPT">PROPOSAL</span></p>
+    <p class="a">Chính sách Đề xuất 2026: giữ thu nhập đại lý ngang thị trường, nhưng mọi khoản thưởng lớn đều gắn với tỷ lệ duy trì hợp đồng (K2) và một phần được trả chậm. <span class="tag ADAPT">PROPOSAL</span></p>
     <ul>
       <li><b>Hai đường ray đại lý:</b> Full-time — thưởng tháng đủ 100% cộng trợ cấp 3 tr/tháng khi đạt quota, ≥2 hợp đồng/tháng và K2 ≥80%; Part-time — thưởng 70%, không trợ cấp.</li>
       <li><b>Quản lý:</b> phí quản lý nhân hệ số K2; gián tiếp tối đa 2 đời và phải qua ngưỡng doanh số nhóm; một phần trả chậm 3 năm.</li>
@@ -1201,7 +1218,7 @@ function renderAnswer() {
       <li><b>4 vùng theo lương tối thiểu vùng (Nghị định 293/2025):</b> chỉ tiêu và trợ cấp nhân hệ số 100% · 89% · 78% · 70% — đúng tỷ lệ lương tối thiểu vùng I–IV năm 2026, nên có căn cứ pháp lý thay vì con số tự đặt.</li>
     </ul>
     <p class="vn"><b>Vì sao hợp Việt Nam:</b> (1) hợp đồng mới nhỏ đi và hơn một nửa là bảo vệ thuần <span class="muted">(số tóm tắt IAV/Bộ Tài chính)</span> → ngưỡng thưởng thấp, không tính phí đóng thêm vào doanh số; (2) Điều 52 Thông tư 67/2023 giới hạn thưởng & hỗ trợ ở 20–30% FYP → không thể đua thưởng, phải cạnh tranh bằng cấu trúc; (3) thu nhập và sức mua giữa thành phố lớn và tỉnh khác nhau → hệ số vùng neo lương tối thiểu vùng; thu nhập bình quân đầu người 2025 của thành phố lớn bằng 84–87% Hà Nội/TP.HCM, cả nước 73% <span class="muted">(số tóm tắt của Cục Thống kê)</span>.</p>
-    ${go("t3", "Trang 3 · Chính sách Lai & vùng")}</div>
+    ${go("t3", "Trang 3 · Chính sách Đề xuất 2026 & vùng")}</div>
   <div class="q"><h3>Câu 3 · Tác động — doanh số, chất lượng, chi phí (ROI)?</h3>
     <p class="a">Chất lượng và chi phí đã đo được: đề xuất co chi trả mạnh nhất khi chất lượng xấu đi. Doanh số chưa đo được — cần thí điểm.</p>
     <div class="kpis">
@@ -1212,9 +1229,9 @@ function renderAnswer() {
     </div>
     <ul>
       <li><b>Chất lượng:</b> đại lý và quản lý bán ẩu (K2 thấp) tự mất phần lớn thưởng; trợ cấp Full-time chỉ trả khi K2 ≥80%.</li>
-      <li><b>Chi phí / ROI:</b> ở K2 85%, đề xuất ${lo85 === "Hybrid" ? "có tổng chi thấp nhất" : `<b>không</b> rẻ nhất — ${esc(SNAME[lo85])} thấp hơn (${fmt(c85(lo85), 1)}%)`}; ở K2 65%, đề xuất ${lo65 === "Hybrid" ? "<b>thấp nhất</b>" : `cao hơn ${esc(SNAME[lo65])} (${fmt(c65(lo65), 1)}%)`}. So với: ${esc(names)}. Đây là chi phí mô phỏng, chưa phải ROI thật (thiếu biên lợi nhuận VNB của công ty).${v("Hybrid", "cost_pct_fyp_fyc40", 85) != null ? ` <b>Nếu bán nghiêng bảo vệ thuần</b> (hoa hồng 40%): đề xuất tốn ${fmt(v("Hybrid", "cost_pct_fyp_fyc40", 85), 1)}% FYP${minBy(all, s => v(s, "cost_pct_fyp_fyc40", 85) ?? 1e9) === "Hybrid" ? " — <b>thấp nhất</b>" : ""}, vì thưởng tính trên FYC chuẩn hóa; kịch bản xấu nhất bị trần quỹ 75% chặn lại, quỹ thưởng còn trả ${fmt(v("Hybrid", "pool_paid_share_worst_fyc40", 85), 0)}%.` : ""}</li>
+      <li><b>Chi phí / ROI:</b> ở K2 85%, đề xuất ${lo85 === "Hybrid" ? "có tổng chi thấp nhất" : `<b>không</b> rẻ nhất — ${esc(SNAME[lo85])} thấp hơn (${fmt(c85(lo85), 1)}%)`}; ở K2 65%, đề xuất ${lo65 === "Hybrid" ? "<b>thấp nhất</b>" : `cao hơn ${esc(SNAME[lo65])} (${fmt(c65(lo65), 1)}%)`}. So với: ${esc(names)}. Đây là chi phí mô phỏng, chưa phải ROI thật (thiếu biên lợi nhuận VNB của công ty).${v("Hybrid", "cost_pct_fyp_fyc40", 85) != null ? ` <b>Nếu bán nghiêng bảo vệ thuần</b> (hoa hồng 40%): đề xuất tốn ${fmt(v("Hybrid", "cost_pct_fyp_fyc40", 85), 1)}% FYP${minBy(all, s => v(s, "cost_pct_fyp_fyc40", 85) ?? 1e9) === "Hybrid" ? " — <b>thấp nhất</b>" : ""}, vì thưởng tính trên FYC chuẩn hóa; kịch bản xấu nhất bị trần tổng chi 75% chặn lại, quỹ thưởng còn trả ${fmt(v("Hybrid", "pool_paid_share_worst_fyc40", 85), 0)}%.` : ""}</li>
       <li><b>Doanh số:</b> <span class="badge warn">Giả thuyết</span> mô hình chưa đo được doanh số tăng thêm. Cơ chế kỳ vọng: thưởng nhập môn 6 tháng đầu với ngưỡng thấp, đường ray Full-time có trợ cấp gắn quota, thưởng đều đặn theo quý. <b>Cách đo:</b> thí điểm 6–12 tháng ở một vùng, ghép cặp với một vùng đối chứng tương đồng (quy mô, năng suất, K2 lịch sử) giữ chính sách cũ — chuẩn ngành, tránh hiệu ứng “mới lạ” của vài tháng đầu. Đọc sớm sau 3 tháng: FYP trên mỗi đại lý hoạt động, tỷ lệ đại lý hoạt động, số hợp đồng / đại lý, tỷ lệ hủy trong 21 ngày cân nhắc, tỷ lệ đóng phí kỳ 2. K2 (tỷ lệ duy trì năm 2) chỉ đo được sau khoảng 13 tháng — theo dõi đến tháng 13–15 rồi mới chốt áp dụng toàn quốc.</li>
-    </ul>${go("t2", "Trang 2 · MAPA, trade-off & ROI")}</div>
+    </ul>${go("t2", "Trang 2 · Phân tích hành vi & hiệu quả chi phí")}</div>
   </div>`;
   document.querySelectorAll("#p-answer [data-go]").forEach(b => b.onclick = () => { state.tab = b.dataset.go; showTab(); window.scrollTo(0, 0); });
   postRender("p-answer");
@@ -1228,8 +1245,8 @@ function renderT3() {
   const regs = [...new Set(RG.map(r => r.region))];
   const ws = s => RB.filter(r => r.scheme === s).reduce((a, r) => a + r.weight * r.score, 0);
   $("p-t3").innerHTML = `
-  <h2>3 · Đề xuất Chính sách Lai & phân vùng VN 2026</h2>
-  <p class="note"><span class="tag ADAPT">PROPOSAL</span> Không phải chính sách đã ban hành. Kế thừa bộ tham số Song Hành; hệ số vùng là đề xuất của TJ. Chi tiết: <code>outputs/interview/03_De_Xuat_Chinh_Sach_Lai_VN2026.md</code>.</p>
+  <h2>3 · Chính sách Đề xuất 2026 & Phân vùng</h2>
+  <p class="note"><span class="tag ADAPT">PROPOSAL</span> Không phải chính sách đã ban hành. Kế thừa bộ tham số Song Hành; hệ số vùng là đề xuất của TJ.</p>
   <div class="grid g2">
     <div class="card"><h3 style="margin-top:0">Khung chính sách</h3><ul class="small">
       <li><b>Full-time</b> (cam kết): thưởng tháng 100% + trợ cấp 3tr/tháng × hệ số vùng khi đạt quota vùng, ≥2 HĐ/tháng và K2 ≥80%.</li>
@@ -1338,7 +1355,7 @@ const GL_COS = ["Tất cả", "Chung", "AIA", "Chubb", "Manulife"];
 function glRows() {
   const q = (state.glQ || "").trim().toLowerCase(), co = state.glCo || "Tất cả", gr = state.glGr || "Tất cả";
   const rows = GL.filter(e => (co === "Tất cả" || e.companies.includes(co)) && (gr === "Tất cả" || e.group === gr)
-    && (!q || [e.abbr, e.english, e.vietnamese, e.market_equivalent, e.note].join(" ").toLowerCase().includes(q)));
+    && (!q || brand([e.abbr, e.english, e.vietnamese, e.market_equivalent, e.note].join(" ")).toLowerCase().includes(q)));
   $("glCount").textContent = `${rows.length}/${GL.length} thuật ngữ`;
   $("glBody").innerHTML = rows.map(e => {
     // Trang xuất hiện ĐẦU TIÊN mỗi hãng; các văn bản khác cùng hãng gom vào "+n"
@@ -1354,10 +1371,10 @@ function renderGlossary() {
   const pdfs = DATA.pdfs || [], pages = pdfs.reduce((a, f) => a + f.pages, 0);
   $("p-glossary").innerHTML = `
   <h2>Phụ lục tra cứu: Từ điển thuật ngữ & ${pdfs.length} PDF nguồn</h2>
-  <p class="note">Nguồn duy nhất: <code>knowledge/sources/glossary.json</code> (${GL.length} thuật ngữ, 6 trường). Trích dẫn <b>[Mã văn bản : trang]</b> là trang xuất hiện đầu tiên, do script tìm trên text PDF. Bấm để mở đúng trang. Tooltip trên mọi trang đọc từ cùng file này.</p>
+  <p class="note">Tra cứu thuật ngữ chuẩn ngành kèm trích dẫn trang văn bản gốc.</p>
   <div class="glbar">
     <label class="small">Tìm nhanh <input type="search" id="glQ" placeholder="VD: K2, Trưởng nhóm, PAF…" value="${esc(state.glQ || "")}"></label>
-    <label class="small">Công ty <select id="glCo">${GL_COS.map(c => `<option${(state.glCo || "Tất cả") === c ? " selected" : ""}>${c}</option>`).join("")}</select></label>
+    <label class="small">Công ty <select id="glCo">${GL_COS.map(c => `<option value="${c}"${(state.glCo || "Tất cả") === c ? " selected" : ""}>${c}</option>`).join("")}</select></label>
     <label class="small">Nhóm <select id="glGr">${GL_GROUPS.map(c => `<option${(state.glGr || "Tất cả") === c ? " selected" : ""}>${c}</option>`).join("")}</select></label>
     <span class="small muted" id="glCount" aria-live="polite"></span>
   </div>
@@ -1433,7 +1450,7 @@ $("resetAll").onclick = () => {
     custom: JSON.parse(JSON.stringify(DATA.plans.song_hanh)), margin: 85, opex: 20});
   renderAll();
 };
-$("foot").innerHTML = `<p title="Kiểm tra khi mở trang: engine JS khớp Python ${st.ok}/${st.n} ca mẫu · dữ liệu dựng ngày ${esc(DATA.generated)}"><b>W24 Strategy Lab</b> · Dữ liệu chuẩn hóa 2026 · ${DATA.knowledge.rules.length} quy tắc · ${(DATA.pdfs || []).length} tài liệu nguồn</p><p>Tài liệu gốc thuộc quyền của các công ty phát hành; trang này dùng cho mục đích phân tích, không phải tài liệu chính thức của AIA, Chubb Life hay Manulife.</p>`;
+$("foot").innerHTML = `<p title="Tự kiểm khi mở trang: ${st.ok}/${st.n} ca mẫu khớp · dữ liệu dựng ngày ${esc(DATA.generated)}"><b>W24 Strategy Lab</b> · Dữ liệu chuẩn hóa 2026 · ${DATA.knowledge.rules.length} quy tắc · ${(DATA.pdfs || []).length} tài liệu nguồn</p><p>Tài liệu gốc thuộc quyền của các công ty phát hành; trang này dùng cho mục đích phân tích, không phải tài liệu chính thức của AIA, Chubb Life hay Manulife.</p>`;
 if (/^#(glossary|tu-dien)$/.test(location.hash)) state.tab = "glossary";   // link thẳng tới Phụ lục tra cứu
 else if (TABS.some(t => "#" + t[0] === location.hash)) state.tab = location.hash.slice(1);   // #t1 / #t2 / #t3 …
 renderAll();
