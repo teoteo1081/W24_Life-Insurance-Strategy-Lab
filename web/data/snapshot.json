@@ -1,7 +1,7 @@
 {
  "meta": {
-  "model_version": "9dea455-dirty",
-  "synced_at": "2026-11-27T07:23:52+00:00",
+  "model_version": "16856dc",
+  "synced_at": "2026-11-27T07:25:50+00:00",
   "contract": "supabase/schema.sql v2",
   "weighted_scores": {
    "AIA": 3.15,
@@ -19,7 +19,7 @@
   "benchmark_results": [
    {
     "id": "M1|ALL|AIA|primary|SA",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "milestone_label": "Mốc 1 — Cá nhân",
     "producing_agents": 1,
@@ -37,11 +37,11 @@
     "label": "MODEL_OUTPUT",
     "note": "FYC/tái tục theo giả định A1, A7",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M1|ALL|Chubb|primary|AR",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "milestone_label": "Mốc 1 — Cá nhân",
     "producing_agents": 1,
@@ -59,11 +59,11 @@
     "label": "MODEL_OUTPUT",
     "note": "FYC/RYC theo giả định A1, A7",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M1|ALL|Manulife|primary|Đại Lý",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "milestone_label": "Mốc 1 — Cá nhân",
     "producing_agents": 1,
@@ -81,11 +81,11 @@
     "label": "MODEL_OUTPUT",
     "note": "Không danh hiệu Manulife Pro (base case)",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|ALL|AIA|primary|SUM",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "milestone_label": "Mốc 2 — Nhóm 6 người",
     "producing_agents": 5,
@@ -103,11 +103,11 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|ALL|Chubb|primary|UM",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "milestone_label": "Mốc 2 — Nhóm 6 người",
     "producing_agents": 5,
@@ -125,11 +125,11 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|ALL|Manulife|primary|UM+",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "milestone_label": "Mốc 2 — Nhóm 6 người",
     "producing_agents": 5,
@@ -147,11 +147,11 @@
     "label": "MODEL_OUTPUT",
     "note": "Không danh hiệu MBA Pro (base case)",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|ALL|AIA|primary|SDM",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "milestone_label": "Mốc 3 — Ban 15 người",
     "producing_agents": 15,
@@ -169,11 +169,11 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|ALL|Chubb|primary|DM",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "milestone_label": "Mốc 3 — Ban 15 người",
     "producing_agents": 15,
@@ -191,11 +191,11 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|ALL|Manulife|primary|UM+",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "milestone_label": "Mốc 3 — Ban 15 người",
     "producing_agents": 15,
@@ -213,11 +213,11 @@
     "label": "MODEL_OUTPUT",
     "note": "Không danh hiệu MBA Pro (base case)",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|ALL|AIA|primary|PAF",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "milestone_label": "Mốc 4 — Khu vực 45 người",
     "producing_agents": 45,
@@ -235,11 +235,11 @@
     "label": "MODEL_OUTPUT",
     "note": "Dual Career: không có gián tiếp cấp 2–4",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|ALL|Chubb|primary|RD",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "milestone_label": "Mốc 4 — Khu vực 45 người",
     "producing_agents": 45,
@@ -257,11 +257,11 @@
     "label": "MODEL_OUTPUT",
     "note": "RD bổ nhiệm theo hợp đồng; so sánh chính theo DEC-14",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|ALL|Manulife|primary|PSM/SM",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "milestone_label": "Mốc 4 — Khu vực 45 người",
     "producing_agents": 45,
@@ -279,11 +279,11 @@
     "label": "MODEL_OUTPUT",
     "note": "PSM+ bổ nhiệm; đạt 100% chỉ tiêu là giả định A8",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|ALL|Chubb|secondary|DM",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "milestone_label": "Mốc 4 — Khu vực 45 người",
     "producing_agents": 45,
@@ -301,11 +301,11 @@
     "label": "MODEL_OUTPUT",
     "note": "Tuyến quản lý truyền thống — nếu chưa lên BD",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|ALL|Chubb|secondary|BD",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "milestone_label": "Mốc 4 — Khu vực 45 người",
     "producing_agents": 45,
@@ -323,11 +323,11 @@
     "label": "UNKNOWN",
     "note": "Chức danh đạt bằng chỉ tiêu; biểu phí BD không có trong 9 PDF",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|ALL|Manulife|secondary|UM+",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "milestone_label": "Mốc 4 — Khu vực 45 người",
     "producing_agents": 45,
@@ -345,13 +345,13 @@
     "label": "MODEL_OUTPUT",
     "note": "Tuyến quản lý truyền thống",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    }
   ],
   "role_benefit_matrix": [
    {
     "id": "M1|primary|AIA|1",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "matrix_table": "primary",
     "company": "AIA",
@@ -362,11 +362,11 @@
     "citation": "[AIAVAD 2604-069 : 18]",
     "label": "ASSUMPTION",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M1|primary|Chubb|1",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -377,11 +377,11 @@
     "citation": "[CHH0DCEB260007V : 13-19]",
     "label": "ASSUMPTION",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M1|primary|Manulife|1",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -392,11 +392,11 @@
     "citation": "[0046M01_2026 : 9]",
     "label": "ASSUMPTION",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M1|primary|AIA|2",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "matrix_table": "primary",
     "company": "AIA",
@@ -407,11 +407,11 @@
     "citation": "[AIAVAD 2601-034 : 8]",
     "label": "VERIFIED FACT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M1|primary|Chubb|2",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -422,11 +422,11 @@
     "citation": "[CHH0DCEB260008V : 3]",
     "label": "VERIFIED FACT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M1|primary|Manulife|2",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -437,11 +437,11 @@
     "citation": "[0047M01_2026 : 1]",
     "label": "VERIFIED FACT",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M1|primary|AIA|3",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "matrix_table": "primary",
     "company": "AIA",
@@ -452,11 +452,11 @@
     "citation": "[AIAVAD 2601-034 : 4]",
     "label": "VERIFIED FACT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M1|primary|Chubb|3",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -467,11 +467,11 @@
     "citation": "[CHH0DCEB260008V : 7]",
     "label": "VERIFIED FACT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M1|primary|Manulife|3",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -482,11 +482,11 @@
     "citation": "[0047M01_2026 : 1]",
     "label": "VERIFIED FACT",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M1|primary|AIA|4",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "matrix_table": "primary",
     "company": "AIA",
@@ -497,11 +497,11 @@
     "citation": "[AIAVAD 2604-069 : 5-7]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M1|primary|Chubb|4",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -512,11 +512,11 @@
     "citation": "[CHH0DCEB260007V : 4-6]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M1|primary|Manulife|4",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -527,11 +527,11 @@
     "citation": "[0046M01_2026 : 4-8]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M1|primary|AIA|5",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "matrix_table": "primary",
     "company": "AIA",
@@ -542,11 +542,11 @@
     "citation": "[AIAVAD 2604-069 : 6]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M1|primary|Chubb|5",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -557,11 +557,11 @@
     "citation": "[CHH0DCEB260007V : 6-7]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M1|primary|Manulife|5",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -572,11 +572,11 @@
     "citation": "[0046M01_2026 : 2-8]",
     "label": "VERIFIED FACT",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M1|primary|AIA|6",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "matrix_table": "primary",
     "company": "AIA",
@@ -587,11 +587,11 @@
     "citation": "[AIAVAD 2604-069 : 3], [AIAVAD 2601-034 : 8]",
     "label": "VERIFIED FACT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M1|primary|Chubb|6",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -602,11 +602,11 @@
     "citation": "[CHH0DCEB260007V : 4], [CHH0DCEB260007V : 7]",
     "label": "VERIFIED FACT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M1|primary|Manulife|6",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M1",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -617,11 +617,11 @@
     "citation": "[0046M01_2026 : 1], [0047M01_2026 : 6]",
     "label": "VERIFIED FACT",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|primary|AIA|1",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "matrix_table": "primary",
     "company": "AIA",
@@ -632,11 +632,11 @@
     "citation": "",
     "label": "ASSUMPTION",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|primary|Chubb|1",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -647,11 +647,11 @@
     "citation": "",
     "label": "ASSUMPTION",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|primary|Manulife|1",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -662,11 +662,11 @@
     "citation": "",
     "label": "ASSUMPTION",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|primary|AIA|2",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "matrix_table": "primary",
     "company": "AIA",
@@ -677,11 +677,11 @@
     "citation": "[AIAVAD 2601-034 : 3]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|primary|Chubb|2",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -692,11 +692,11 @@
     "citation": "[CHH0DCEB260008V : 5]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|primary|Manulife|2",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -707,11 +707,11 @@
     "citation": "[0047M01_2026 : 1-2]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|primary|AIA|3",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "matrix_table": "primary",
     "company": "AIA",
@@ -722,11 +722,11 @@
     "citation": "[AIAVAD 2601-034 : 4]",
     "label": "ASSUMPTION",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|primary|Chubb|3",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -737,11 +737,11 @@
     "citation": "[CHH0DCEB260008V : 7]",
     "label": "ASSUMPTION",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|primary|Manulife|3",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -752,11 +752,11 @@
     "citation": "[0047M01_2026 : 1]",
     "label": "ASSUMPTION",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|primary|AIA|4",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "matrix_table": "primary",
     "company": "AIA",
@@ -767,11 +767,11 @@
     "citation": "[AIAVAD 2601-034 : 4-5]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|primary|Chubb|4",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -782,11 +782,11 @@
     "citation": "[CHH0DCEB260008V : 6]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|primary|Manulife|4",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -797,11 +797,11 @@
     "citation": "[0047M01_2026 : 5]",
     "label": "ASSUMPTION",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|primary|AIA|5",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "matrix_table": "primary",
     "company": "AIA",
@@ -812,11 +812,11 @@
     "citation": "[AIAVAD 2601-034 : 3-7]",
     "label": "VERIFIED FACT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|primary|Chubb|5",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -827,11 +827,11 @@
     "citation": "[CHH0DCEB260008V : 9-10]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|primary|Manulife|5",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -842,11 +842,11 @@
     "citation": "[0047M01_2026 : 1-6]",
     "label": "VERIFIED FACT",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|primary|AIA|6",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "matrix_table": "primary",
     "company": "AIA",
@@ -857,11 +857,11 @@
     "citation": "[AIAVAD 2601-034 : 3-5]",
     "label": "VERIFIED FACT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|primary|Chubb|6",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -872,11 +872,11 @@
     "citation": "[CHH0DCEB260008V : 5-10]",
     "label": "VERIFIED FACT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M2|primary|Manulife|6",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M2",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -887,11 +887,11 @@
     "citation": "[0047M01_2026 : 2-3], [0047M01_2026 : 6]",
     "label": "VERIFIED FACT",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|primary|AIA|1",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "matrix_table": "primary",
     "company": "AIA",
@@ -902,11 +902,11 @@
     "citation": "",
     "label": "ASSUMPTION",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|primary|Chubb|1",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -917,11 +917,11 @@
     "citation": "",
     "label": "ASSUMPTION",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|primary|Manulife|1",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -932,11 +932,11 @@
     "citation": "",
     "label": "ASSUMPTION",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|primary|AIA|2",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "matrix_table": "primary",
     "company": "AIA",
@@ -947,11 +947,11 @@
     "citation": "[AIAVAD 2601-034 : 3]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|primary|Chubb|2",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -962,11 +962,11 @@
     "citation": "[CHH0DCEB260008V : 5]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|primary|Manulife|2",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -977,11 +977,11 @@
     "citation": "[0047M01_2026 : 1-2]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|primary|AIA|3",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "matrix_table": "primary",
     "company": "AIA",
@@ -992,11 +992,11 @@
     "citation": "[AIAVAD 2601-034 : 4]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|primary|Chubb|3",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -1007,11 +1007,11 @@
     "citation": "[CHH0DCEB260008V : 7]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|primary|Manulife|3",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -1022,11 +1022,11 @@
     "citation": "[0047M01_2026 : 1]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|primary|AIA|4",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "matrix_table": "primary",
     "company": "AIA",
@@ -1037,11 +1037,11 @@
     "citation": "[AIAVAD 2601-034 : 4-5]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|primary|Chubb|4",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -1052,11 +1052,11 @@
     "citation": "[CHH0DCEB260008V : 6]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|primary|Manulife|4",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -1067,11 +1067,11 @@
     "citation": "[0047M01_2026 : 5]",
     "label": "ASSUMPTION",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|primary|AIA|5",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "matrix_table": "primary",
     "company": "AIA",
@@ -1082,11 +1082,11 @@
     "citation": "[AIAVAD 2601-034 : 3-7]",
     "label": "VERIFIED FACT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|primary|Chubb|5",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -1097,11 +1097,11 @@
     "citation": "[CHH0DCEB260008V : 9-10]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|primary|Manulife|5",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -1112,11 +1112,11 @@
     "citation": "[0047M01_2026 : 1-6]",
     "label": "VERIFIED FACT",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|primary|AIA|6",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "matrix_table": "primary",
     "company": "AIA",
@@ -1127,11 +1127,11 @@
     "citation": "[AIAVAD 2601-034 : 3-5]",
     "label": "VERIFIED FACT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|primary|Chubb|6",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -1142,11 +1142,11 @@
     "citation": "[CHH0DCEB260008V : 5-10]",
     "label": "VERIFIED FACT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M3|primary|Manulife|6",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M3",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -1157,11 +1157,11 @@
     "citation": "[0047M01_2026 : 2-3], [0047M01_2026 : 6]",
     "label": "VERIFIED FACT",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|primary|AIA|1",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "primary",
     "company": "AIA",
@@ -1172,11 +1172,11 @@
     "citation": "",
     "label": "ASSUMPTION",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|primary|Chubb|1",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -1187,11 +1187,11 @@
     "citation": "",
     "label": "ASSUMPTION",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|primary|Manulife|1",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -1202,11 +1202,11 @@
     "citation": "",
     "label": "ASSUMPTION",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|primary|AIA|2",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "primary",
     "company": "AIA",
@@ -1217,11 +1217,11 @@
     "citation": "[AIAVAD 2601-035 : 3-4], [AIAVAD 2601-035 : 2]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|primary|Chubb|2",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -1232,11 +1232,11 @@
     "citation": "[CHH0DCEB260003V : 5-7]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|primary|Manulife|2",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -1247,11 +1247,11 @@
     "citation": "[0048M01_2026 : 1-2]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|primary|AIA|3",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "primary",
     "company": "AIA",
@@ -1262,11 +1262,11 @@
     "citation": "[AIAVAD 2601-035 : 2]",
     "label": "VERIFIED FACT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|primary|Chubb|3",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -1277,11 +1277,11 @@
     "citation": "[CHH0DCEB260003V : 10-11]",
     "label": "ASSUMPTION",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|primary|Manulife|3",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -1292,11 +1292,11 @@
     "citation": "[0048M01_2026 : 2]",
     "label": "ASSUMPTION",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|primary|AIA|4",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "primary",
     "company": "AIA",
@@ -1307,11 +1307,11 @@
     "citation": "[AIAVAD 2601-035 : 4-5]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|primary|Chubb|4",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -1322,11 +1322,11 @@
     "citation": "[CHH0DCEB260003V : 8-9]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|primary|Manulife|4",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -1337,11 +1337,11 @@
     "citation": "[0048M01_2026 : 2-5]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|primary|AIA|5",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "primary",
     "company": "AIA",
@@ -1352,11 +1352,11 @@
     "citation": "[AIAVAD 2601-035 : 3-5]",
     "label": "VERIFIED FACT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|primary|Chubb|5",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -1367,11 +1367,11 @@
     "citation": "[CHH0DCEB260003V : 9-10]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|primary|Manulife|5",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -1382,11 +1382,11 @@
     "citation": "[0048M01_2026 : 1-5]",
     "label": "VERIFIED FACT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|primary|AIA|6",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "primary",
     "company": "AIA",
@@ -1397,11 +1397,11 @@
     "citation": "[AIAVAD 2601-035 : 3-4]",
     "label": "VERIFIED FACT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|primary|Chubb|6",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "primary",
     "company": "Chubb",
@@ -1412,11 +1412,11 @@
     "citation": "[CHH0DCEB260003V : 7], [CHH0DCEB260003V : 13], [CHH0DCEB260003V : 3]",
     "label": "VERIFIED FACT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|primary|Manulife|6",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "primary",
     "company": "Manulife",
@@ -1427,11 +1427,11 @@
     "citation": "[0048M01_2026 : 1-4]",
     "label": "VERIFIED FACT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|secondary|Chubb|1",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "secondary",
     "company": "Chubb",
@@ -1442,11 +1442,11 @@
     "citation": "",
     "label": "ASSUMPTION",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|secondary|Manulife|1",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "secondary",
     "company": "Manulife",
@@ -1457,11 +1457,11 @@
     "citation": "",
     "label": "ASSUMPTION",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|secondary|Chubb|2",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "secondary",
     "company": "Chubb",
@@ -1472,11 +1472,11 @@
     "citation": "[CHH0DCEB260008V : 5]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|secondary|Manulife|2",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "secondary",
     "company": "Manulife",
@@ -1487,11 +1487,11 @@
     "citation": "[0047M01_2026 : 1-2]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|secondary|Chubb|3",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "secondary",
     "company": "Chubb",
@@ -1502,11 +1502,11 @@
     "citation": "[CHH0DCEB260008V : 7]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|secondary|Manulife|3",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "secondary",
     "company": "Manulife",
@@ -1517,11 +1517,11 @@
     "citation": "[0047M01_2026 : 1]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|secondary|Chubb|4",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "secondary",
     "company": "Chubb",
@@ -1532,11 +1532,11 @@
     "citation": "[CHH0DCEB260008V : 6]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|secondary|Manulife|4",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "secondary",
     "company": "Manulife",
@@ -1547,11 +1547,11 @@
     "citation": "[0047M01_2026 : 5]",
     "label": "ASSUMPTION",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|secondary|Chubb|5",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "secondary",
     "company": "Chubb",
@@ -1562,11 +1562,11 @@
     "citation": "[CHH0DCEB260008V : 9-10]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|secondary|Manulife|5",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "secondary",
     "company": "Manulife",
@@ -1577,11 +1577,11 @@
     "citation": "[0047M01_2026 : 1-6]",
     "label": "VERIFIED FACT",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|secondary|Chubb|6",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "secondary",
     "company": "Chubb",
@@ -1592,11 +1592,11 @@
     "citation": "[CHH0DCEB260008V : 5-10], [CHH0DCEB260007V : 7]",
     "label": "VERIFIED FACT",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "M4|secondary|Manulife|6",
-    "model_version": "9dea455-dirty",
+    "model_version": "16856dc",
     "milestone_id": "M4",
     "matrix_table": "secondary",
     "company": "Manulife",
@@ -1607,7 +1607,7 @@
     "citation": "[0047M01_2026 : 2-3]",
     "label": "VERIFIED FACT",
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    }
   ],
   "glossary_terms": [
@@ -1677,7 +1677,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "FYC",
@@ -1745,7 +1745,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "FYC tín chỉ",
@@ -1783,7 +1783,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "SYC",
@@ -1807,7 +1807,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "RYC",
@@ -1845,7 +1845,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "K2",
@@ -1883,7 +1883,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "TLDTHD",
@@ -1907,7 +1907,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "FY",
@@ -1945,7 +1945,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "TOT",
@@ -1983,7 +1983,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "P13",
@@ -2007,7 +2007,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "EHC",
@@ -2045,7 +2045,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "3MAA",
@@ -2083,7 +2083,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "1mAA",
@@ -2115,7 +2115,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "CC",
@@ -2146,7 +2146,7 @@
      }
     ],
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "NTT",
@@ -2170,7 +2170,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "FNA",
@@ -2201,7 +2201,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "SOP",
@@ -2232,7 +2232,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "MDRT",
@@ -2264,7 +2264,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "APE",
@@ -2280,7 +2280,7 @@
     "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
     "citations": [],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "VNB",
@@ -2296,7 +2296,7 @@
     "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
     "citations": [],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "ROI",
@@ -2312,7 +2312,7 @@
     "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
     "citations": [],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "MAPA",
@@ -2328,7 +2328,7 @@
     "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
     "citations": [],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "OpEx",
@@ -2344,7 +2344,7 @@
     "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
     "citations": [],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "HT KTN",
@@ -2368,7 +2368,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "HQKD",
@@ -2392,7 +2392,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "CLKD",
@@ -2416,7 +2416,7 @@
      }
     ],
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "KDXS",
@@ -2440,7 +2440,7 @@
      }
     ],
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "M-Star",
@@ -2464,7 +2464,7 @@
      }
     ],
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "JFW",
@@ -2495,7 +2495,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "Override",
@@ -2511,7 +2511,7 @@
     "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
     "citations": [],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "CVTV",
@@ -2549,7 +2549,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "SA (AIA)",
@@ -2580,7 +2580,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "SA (Manulife)",
@@ -2604,7 +2604,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "SE",
@@ -2642,7 +2642,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "Exchange",
@@ -2673,7 +2673,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "Exchange Pro",
@@ -2704,7 +2704,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "CQL",
@@ -2742,7 +2742,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "UM+",
@@ -2781,7 +2781,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "UM",
@@ -2835,7 +2835,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "SUM",
@@ -2873,7 +2873,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "SM (Chubb)",
@@ -2904,7 +2904,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "DM",
@@ -2957,7 +2957,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "SDM",
@@ -2995,7 +2995,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "BM",
@@ -3011,7 +3011,7 @@
     "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
     "citations": [],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "AR",
@@ -3042,7 +3042,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "AL",
@@ -3073,7 +3073,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "AMD",
@@ -3111,7 +3111,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "BD",
@@ -3142,7 +3142,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "RD",
@@ -3166,7 +3166,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "PAF+",
@@ -3204,7 +3204,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "PAF",
@@ -3235,7 +3235,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "AF",
@@ -3259,7 +3259,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "RF",
@@ -3283,7 +3283,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "AFF",
@@ -3321,7 +3321,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "PSM+",
@@ -3345,7 +3345,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "PSM / SM (Manulife)",
@@ -3369,7 +3369,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "PSSM / SSM",
@@ -3393,7 +3393,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "MBA Pro",
@@ -3417,7 +3417,7 @@
      }
     ],
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "Manulife Pro",
@@ -3448,7 +3448,7 @@
      }
     ],
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "Hybrid",
@@ -3464,7 +3464,7 @@
     "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
     "citations": [],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "Regional Tiering",
@@ -3480,7 +3480,7 @@
     "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
     "citations": [],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "Full-time",
@@ -3496,7 +3496,7 @@
     "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
     "citations": [],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "Part-time",
@@ -3512,7 +3512,7 @@
     "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
     "citations": [],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "Quota",
@@ -3528,7 +3528,7 @@
     "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
     "citations": [],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "Rubric",
@@ -3544,7 +3544,7 @@
     "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
     "citations": [],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "HKD",
@@ -3568,7 +3568,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "HĐDV QLĐL",
@@ -3592,7 +3592,7 @@
      }
     ],
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "HĐDV QLCC",
@@ -3616,7 +3616,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "Champion Hubb",
@@ -3647,7 +3647,7 @@
      }
     ],
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "abbr": "GTF",
@@ -3671,7 +3671,7 @@
      }
     ],
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    }
   ],
   "pdf_bookmarks": [
@@ -3687,7 +3687,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2604-069|1",
@@ -3701,7 +3701,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2604-069|2",
@@ -3715,7 +3715,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2604-069|3",
@@ -3729,7 +3729,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2604-069|4",
@@ -3743,7 +3743,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2604-069|5",
@@ -3757,7 +3757,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2604-069|6",
@@ -3771,7 +3771,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2604-069|7",
@@ -3785,7 +3785,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2604-069|8",
@@ -3799,7 +3799,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2604-069|9",
@@ -3813,7 +3813,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2604-069|10",
@@ -3827,7 +3827,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|0",
@@ -3841,7 +3841,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|1",
@@ -3855,7 +3855,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|2",
@@ -3869,7 +3869,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|3",
@@ -3883,7 +3883,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|4",
@@ -3897,7 +3897,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|5",
@@ -3911,7 +3911,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|6",
@@ -3925,7 +3925,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|7",
@@ -3939,7 +3939,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|8",
@@ -3953,7 +3953,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|9",
@@ -3967,7 +3967,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|10",
@@ -3981,7 +3981,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|11",
@@ -3995,7 +3995,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|12",
@@ -4009,7 +4009,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|13",
@@ -4023,7 +4023,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|14",
@@ -4037,7 +4037,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|15",
@@ -4051,7 +4051,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|16",
@@ -4065,7 +4065,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|17",
@@ -4079,7 +4079,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|18",
@@ -4093,7 +4093,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|19",
@@ -4107,7 +4107,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|20",
@@ -4121,7 +4121,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|21",
@@ -4135,7 +4135,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|22",
@@ -4149,7 +4149,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|23",
@@ -4163,7 +4163,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|24",
@@ -4177,7 +4177,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|25",
@@ -4191,7 +4191,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|26",
@@ -4205,7 +4205,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|27",
@@ -4219,7 +4219,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-034|28",
@@ -4233,7 +4233,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-035|0",
@@ -4247,7 +4247,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-035|1",
@@ -4261,7 +4261,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-035|2",
@@ -4275,7 +4275,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-035|3",
@@ -4289,7 +4289,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-035|4",
@@ -4303,7 +4303,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-035|5",
@@ -4317,7 +4317,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-035|6",
@@ -4331,7 +4331,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-035|7",
@@ -4345,7 +4345,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-035|8",
@@ -4359,7 +4359,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-035|9",
@@ -4373,7 +4373,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-035|10",
@@ -4387,7 +4387,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-035|11",
@@ -4401,7 +4401,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-035|12",
@@ -4415,7 +4415,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIAVAD 2601-035|13",
@@ -4429,7 +4429,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-AIA-ALP-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0046M01_2026|0",
@@ -4443,7 +4443,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0046M01_2026|1",
@@ -4457,7 +4457,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0046M01_2026|2",
@@ -4471,7 +4471,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0046M01_2026|3",
@@ -4485,7 +4485,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0046M01_2026|4",
@@ -4499,7 +4499,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0046M01_2026|5",
@@ -4513,7 +4513,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0046M01_2026|6",
@@ -4527,7 +4527,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0046M01_2026|7",
@@ -4541,7 +4541,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0046M01_2026|8",
@@ -4555,7 +4555,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0046M01_2026|9",
@@ -4569,7 +4569,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0046M01_2026|10",
@@ -4583,7 +4583,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0046M01_2026|11",
@@ -4597,7 +4597,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0046M01_2026|12",
@@ -4611,7 +4611,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0047M01_2026|0",
@@ -4625,7 +4625,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0047M01_2026|1",
@@ -4639,7 +4639,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0047M01_2026|2",
@@ -4653,7 +4653,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0047M01_2026|3",
@@ -4667,7 +4667,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0047M01_2026|4",
@@ -4681,7 +4681,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0047M01_2026|5",
@@ -4695,7 +4695,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0047M01_2026|6",
@@ -4709,7 +4709,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0047M01_2026|7",
@@ -4723,7 +4723,7 @@
     "method": "text_heading",
     "evidence_url": null,
     "confidentiality": "restricted",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0048M01_2026|0",
@@ -4737,7 +4737,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-MNL-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0048M01_2026|1",
@@ -4751,7 +4751,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-MNL-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0048M01_2026|2",
@@ -4765,7 +4765,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-MNL-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0048M01_2026|3",
@@ -4779,7 +4779,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-MNL-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0048M01_2026|4",
@@ -4793,7 +4793,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-MNL-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0048M01_2026|5",
@@ -4807,7 +4807,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-MNL-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "0048M01_2026|6",
@@ -4821,7 +4821,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-MNL-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260007V|0",
@@ -4835,7 +4835,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260007V|1",
@@ -4849,7 +4849,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260007V|2",
@@ -4863,7 +4863,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260007V|3",
@@ -4877,7 +4877,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260007V|4",
@@ -4891,7 +4891,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260007V|5",
@@ -4905,7 +4905,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260007V|6",
@@ -4919,7 +4919,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260007V|7",
@@ -4933,7 +4933,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260007V|8",
@@ -4947,7 +4947,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260007V|9",
@@ -4961,7 +4961,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260007V|10",
@@ -4975,7 +4975,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260007V|11",
@@ -4989,7 +4989,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260007V|12",
@@ -5003,7 +5003,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260007V|13",
@@ -5017,7 +5017,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260007V|14",
@@ -5031,7 +5031,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-001.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260008V|0",
@@ -5045,7 +5045,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260008V|1",
@@ -5059,7 +5059,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260008V|2",
@@ -5073,7 +5073,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260008V|3",
@@ -5087,7 +5087,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260008V|4",
@@ -5101,7 +5101,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260008V|5",
@@ -5115,7 +5115,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260008V|6",
@@ -5129,7 +5129,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260008V|7",
@@ -5143,7 +5143,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260008V|8",
@@ -5157,7 +5157,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260008V|9",
@@ -5171,7 +5171,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260008V|10",
@@ -5185,7 +5185,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260008V|11",
@@ -5199,7 +5199,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260008V|12",
@@ -5213,7 +5213,7 @@
     "method": "text_heading",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-002.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|0",
@@ -5227,7 +5227,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|1",
@@ -5241,7 +5241,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|2",
@@ -5255,7 +5255,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|3",
@@ -5269,7 +5269,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|4",
@@ -5283,7 +5283,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|5",
@@ -5297,7 +5297,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|6",
@@ -5311,7 +5311,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|7",
@@ -5325,7 +5325,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|8",
@@ -5339,7 +5339,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|9",
@@ -5353,7 +5353,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|10",
@@ -5367,7 +5367,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|11",
@@ -5381,7 +5381,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|12",
@@ -5395,7 +5395,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|13",
@@ -5409,7 +5409,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|14",
@@ -5423,7 +5423,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|15",
@@ -5437,7 +5437,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|16",
@@ -5451,7 +5451,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|17",
@@ -5465,7 +5465,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|18",
@@ -5479,7 +5479,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|19",
@@ -5493,7 +5493,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "CHH0DCEB260003V|20",
@@ -5507,7 +5507,7 @@
     "method": "visual_toc_p2",
     "evidence_url": "https://tj-w24-evidence.tj-wordloop.workers.dev/evidence/SRC-POL-CHB-003.pdf",
     "confidentiality": "public",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "synced_at": "2026-11-27T07:25:50+00:00"
    }
   ],
   "roi_analysis": [
@@ -5521,8 +5521,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|cost_per_persisted_pct|85",
@@ -5534,8 +5534,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|cash_y1_share|85",
@@ -5547,8 +5547,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|deferred_share|85",
@@ -5560,8 +5560,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|fixed_share|85",
@@ -5573,8 +5573,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|cost_pct_fyp|65",
@@ -5586,8 +5586,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|cost_per_persisted_pct|65",
@@ -5599,8 +5599,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|cash_y1_share|65",
@@ -5612,8 +5612,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|deferred_share|65",
@@ -5625,8 +5625,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|fixed_share|65",
@@ -5638,8 +5638,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|cost_pct_fyp_quota_productivity|85",
@@ -5651,8 +5651,8 @@
     "label": "MODEL_OUTPUT",
     "note": "Mọi đại lý đạt quota 30tr FYP/tháng",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|cost_pct_fyp_worst_case|85",
@@ -5664,8 +5664,8 @@
     "label": "MODEL_OUTPUT",
     "note": "Kịch bản chi phí cao nhất: Mốc 4 chuẩn (26,7tr/ĐL)",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|cost_pct_fyp_half_production|85",
@@ -5677,8 +5677,8 @@
     "label": "MODEL_OUTPUT",
     "note": "Năng suất giảm 50% (kiểm rủi ro định phí)",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|payout_drop_k2_85_to_65|0",
@@ -5690,8 +5690,8 @@
     "label": "MODEL_OUTPUT",
     "note": "Chi trả giảm bao nhiêu khi K2 sập 85%→65% (cao = gắn chất lượng)",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|cost_pct_fyp|85",
@@ -5703,8 +5703,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|cost_per_persisted_pct|85",
@@ -5716,8 +5716,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|cash_y1_share|85",
@@ -5729,8 +5729,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|deferred_share|85",
@@ -5742,8 +5742,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|fixed_share|85",
@@ -5755,8 +5755,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|cost_pct_fyp|65",
@@ -5768,8 +5768,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|cost_per_persisted_pct|65",
@@ -5781,8 +5781,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|cash_y1_share|65",
@@ -5794,8 +5794,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|deferred_share|65",
@@ -5807,8 +5807,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|fixed_share|65",
@@ -5820,8 +5820,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|cost_pct_fyp_quota_productivity|85",
@@ -5833,8 +5833,8 @@
     "label": "MODEL_OUTPUT",
     "note": "Mọi đại lý đạt quota 30tr FYP/tháng",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|cost_pct_fyp_worst_case|85",
@@ -5846,8 +5846,8 @@
     "label": "MODEL_OUTPUT",
     "note": "Kịch bản chi phí cao nhất: Mốc 4 chuẩn (26,7tr/ĐL)",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|cost_pct_fyp_half_production|85",
@@ -5859,8 +5859,8 @@
     "label": "MODEL_OUTPUT",
     "note": "Năng suất giảm 50% (kiểm rủi ro định phí)",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|payout_drop_k2_85_to_65|0",
@@ -5872,8 +5872,8 @@
     "label": "MODEL_OUTPUT",
     "note": "Chi trả giảm bao nhiêu khi K2 sập 85%→65% (cao = gắn chất lượng)",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|cost_pct_fyp|85",
@@ -5885,8 +5885,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|cost_per_persisted_pct|85",
@@ -5898,8 +5898,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|cash_y1_share|85",
@@ -5911,8 +5911,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|deferred_share|85",
@@ -5924,8 +5924,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|fixed_share|85",
@@ -5937,8 +5937,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|cost_pct_fyp|65",
@@ -5950,8 +5950,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|cost_per_persisted_pct|65",
@@ -5963,8 +5963,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|cash_y1_share|65",
@@ -5976,8 +5976,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|deferred_share|65",
@@ -5989,8 +5989,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|fixed_share|65",
@@ -6002,8 +6002,8 @@
     "label": "MODEL_OUTPUT",
     "note": "",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|cost_pct_fyp_quota_productivity|85",
@@ -6015,8 +6015,8 @@
     "label": "MODEL_OUTPUT",
     "note": "Mọi đại lý đạt quota 30tr FYP/tháng",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|cost_pct_fyp_worst_case|85",
@@ -6028,8 +6028,8 @@
     "label": "MODEL_OUTPUT",
     "note": "Kịch bản chi phí cao nhất: Mọi ĐL đạt quota 30tr",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|cost_pct_fyp_half_production|85",
@@ -6041,8 +6041,8 @@
     "label": "MODEL_OUTPUT",
     "note": "Năng suất giảm 50% (kiểm rủi ro định phí)",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|payout_drop_k2_85_to_65|0",
@@ -6054,8 +6054,8 @@
     "label": "MODEL_OUTPUT",
     "note": "Chi trả giảm bao nhiêu khi K2 sập 85%→65% (cao = gắn chất lượng)",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|cost_pct_fyp|85",
@@ -6067,8 +6067,8 @@
     "label": "PROPOSAL",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|cost_per_persisted_pct|85",
@@ -6080,8 +6080,8 @@
     "label": "PROPOSAL",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|cash_y1_share|85",
@@ -6093,8 +6093,8 @@
     "label": "PROPOSAL",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|deferred_share|85",
@@ -6106,8 +6106,8 @@
     "label": "PROPOSAL",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|fixed_share|85",
@@ -6119,8 +6119,8 @@
     "label": "PROPOSAL",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|cost_pct_fyp|65",
@@ -6132,8 +6132,8 @@
     "label": "PROPOSAL",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|cost_per_persisted_pct|65",
@@ -6145,8 +6145,8 @@
     "label": "PROPOSAL",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|cash_y1_share|65",
@@ -6158,8 +6158,8 @@
     "label": "PROPOSAL",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|deferred_share|65",
@@ -6171,8 +6171,8 @@
     "label": "PROPOSAL",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|fixed_share|65",
@@ -6184,8 +6184,8 @@
     "label": "PROPOSAL",
     "note": "",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|cost_pct_fyp_quota_productivity|85",
@@ -6197,8 +6197,8 @@
     "label": "PROPOSAL",
     "note": "Mọi đại lý đạt quota 30tr FYP/tháng",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|cost_pct_fyp_worst_case|85",
@@ -6210,8 +6210,8 @@
     "label": "PROPOSAL",
     "note": "Kịch bản chi phí cao nhất: V3, điểm gãy cao nhất của lưới quét (123,75tr FYP/ĐL, K2 85%)",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|cost_pct_fyp_half_production|85",
@@ -6223,8 +6223,8 @@
     "label": "PROPOSAL",
     "note": "Năng suất giảm 50% (kiểm rủi ro định phí)",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|payout_drop_k2_85_to_65|0",
@@ -6236,8 +6236,8 @@
     "label": "PROPOSAL",
     "note": "Chi trả giảm bao nhiêu khi K2 sập 85%→65% (cao = gắn chất lượng)",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    }
   ],
   "rubric_scores": [
@@ -6251,8 +6251,8 @@
     "evidence": "Chi trả giảm 14,2% khi K2 85%→65% (≥30% = 5 điểm); tỷ lệ đội phẳng/có cấu trúc 3,21× (≤1 = 5, ≥3 = 1); vách đá K2 80→79% 7,7% (≤5% = 5, ≥30% = 1)",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|An toàn tài chính / ROI",
@@ -6264,8 +6264,8 @@
     "evidence": "Chi phí kịch bản xấu nhất (Mốc 4 chuẩn (26,7tr/ĐL)) 58,4% FYP (≤60% = 5, ≥100% = 1); năng suất −50% → 54,3% (≤70% = 5, ≥130% = 1); trả chậm 2,6% (≥15% = 5)",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|Sức cạnh tranh thu nhập",
@@ -6277,8 +6277,8 @@
     "evidence": "Trung bình thu nhập 4 mốc / mức cao nhất trong 4 phương án: M1 78% · M2 36% · M3 32% · M4 100%",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|Độ đơn giản & dễ tính",
@@ -6290,8 +6290,8 @@
     "evidence": "11 khoản phí tuyến quản lý (≤4 = 5, ≥14 = 1): 2601-034 mục A.I–A.VI + B (7) [AIAVAD 2601-034 : 3-6]; 2601-035 mục A.1–A.4 (4) [AIAVAD 2601-035 : 3-5]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|Vận hành & Pháp lý",
@@ -6303,8 +6303,8 @@
     "evidence": "Chấm công ≥50% (CQL) / ≥70% (PAF+), khóa học bắt buộc, trả chậm tới 2030 cần TOT ≥85% — nhiều cổng hành chính [AIAVAD 2601-034 : 3-5]",
     "label": "JUDGEMENT",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|Định hướng hành vi",
@@ -6316,8 +6316,8 @@
     "evidence": "Chi trả giảm 21,3% khi K2 85%→65% (≥30% = 5 điểm); tỷ lệ đội phẳng/có cấu trúc 1,80× (≤1 = 5, ≥3 = 1); vách đá K2 80→79% 16,7% (≤5% = 5, ≥30% = 1)",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|An toàn tài chính / ROI",
@@ -6329,8 +6329,8 @@
     "evidence": "Chi phí kịch bản xấu nhất (Mốc 4 chuẩn (26,7tr/ĐL)) 88,1% FYP (≤60% = 5, ≥100% = 1); năng suất −50% → 73,4% (≤70% = 5, ≥130% = 1); trả chậm 0,0% (≥15% = 5)",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|Sức cạnh tranh thu nhập",
@@ -6342,8 +6342,8 @@
     "evidence": "Trung bình thu nhập 4 mốc / mức cao nhất trong 4 phương án: M1 97% · M2 100% · M3 100% · M4 71%",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|Độ đơn giản & dễ tính",
@@ -6355,8 +6355,8 @@
     "evidence": "13 khoản phí tuyến quản lý (≤4 = 5, ≥14 = 1): 0008V mục II.1–II.5 (5) [CHH0DCEB260008V : 3]; 0003V mục II.1–II.8 (8) [CHH0DCEB260003V : 4]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|Vận hành & Pháp lý",
@@ -6368,8 +6368,8 @@
     "evidence": "RD phải có biên bản nghiệm thu dịch vụ hàng tháng; 9 trường hợp tạm giữ phí; 3 văn bản quy định chung không có trong nguồn (260005V/006V/009V) [CHH0DCEB260003V : 12-15]",
     "label": "JUDGEMENT",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|Định hướng hành vi",
@@ -6381,8 +6381,8 @@
     "evidence": "Chi trả giảm 6,7% khi K2 85%→65% (≥30% = 5 điểm); tỷ lệ đội phẳng/có cấu trúc 2,23× (≤1 = 5, ≥3 = 1); vách đá K2 80→79% 1,2% (≤5% = 5, ≥30% = 1)",
     "label": "MODEL_OUTPUT",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|An toàn tài chính / ROI",
@@ -6394,8 +6394,8 @@
     "evidence": "Chi phí kịch bản xấu nhất (Mọi ĐL đạt quota 30tr) 51,4% FYP (≤60% = 5, ≥100% = 1); năng suất −50% → 44,9% (≤70% = 5, ≥130% = 1); trả chậm 4,2% (≥15% = 5)",
     "label": "MODEL_OUTPUT",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|Sức cạnh tranh thu nhập",
@@ -6407,8 +6407,8 @@
     "evidence": "Trung bình thu nhập 4 mốc / mức cao nhất trong 4 phương án: M1 77% · M2 23% · M3 22% · M4 77%",
     "label": "MODEL_OUTPUT",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|Độ đơn giản & dễ tính",
@@ -6420,8 +6420,8 @@
     "evidence": "9 khoản phí tuyến quản lý (≤4 = 5, ≥14 = 1): 0047M01 A.I–A.V (5) [0047M01_2026 : 1-5]; 0048M01 A.I–A.IV (4) [0048M01_2026 : 1-3]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|Vận hành & Pháp lý",
@@ -6433,8 +6433,8 @@
     "evidence": "Hai hình thức hợp đồng PSM+/HKD cùng biểu phí, chuyển đổi bảo lưu kết quả; HKD tự xuất hóa đơn — tách rủi ro thuế [0048M01_2026 : 5-6]; điều kiện 'Đội ngũ chuyên cần' 4 buổi/tháng [0047M01_2026 : 3]",
     "label": "JUDGEMENT",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|Định hướng hành vi",
@@ -6446,8 +6446,8 @@
     "evidence": "Chi trả giảm 26,7% khi K2 85%→65% (≥30% = 5 điểm); tỷ lệ đội phẳng/có cấu trúc 1,61× (≤1 = 5, ≥3 = 1); vách đá K2 80→79% 21,9% (≤5% = 5, ≥30% = 1)",
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|An toàn tài chính / ROI",
@@ -6459,8 +6459,8 @@
     "evidence": "Chi phí kịch bản xấu nhất (V3, điểm gãy cao nhất của lưới quét (123,75tr FYP/ĐL, K2 85%)) 73,1% FYP (≤60% = 5, ≥100% = 1); năng suất −50% → 56,1% (≤70% = 5, ≥130% = 1); trả chậm 11,3% (≥15% = 5)",
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|Sức cạnh tranh thu nhập",
@@ -6472,8 +6472,8 @@
     "evidence": "Trung bình thu nhập 4 mốc / mức cao nhất trong 4 phương án: M1 100% · M2 56% · M3 50% · M4 67%",
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|Độ đơn giản & dễ tính",
@@ -6485,8 +6485,8 @@
     "evidence": "5 khoản phí tuyến quản lý (≤4 = 5, ≥14 = 1): cùng đơn vị đếm với 3 hãng — 1 khoản = 1 mục chi trả có công thức riêng (các đời gián tiếp cùng công thức gộp 1 như [AIAVAD 2601-034 : 4]; phần giữ lại của cùng khoản không tính riêng): override trực tiếp; phí gián tiếp (đời 1–2); thưởng trả chậm quản lý (quỹ riêng 12% FYC); phí cơ bản lãnh đạo; override lãnh đạo (gồm phần trả chậm giữ lại) (hybrid_scheme.py)",
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|Vận hành & Pháp lý",
@@ -6498,8 +6498,8 @@
     "evidence": "Ít khoản, một cổng K2 ≥80% thống nhất; CHƯA đối chiếu pháp lý (TT 67/2023, NĐ 97/2026 — CONDITIONAL); trợ cấp Full-time cần quy trình xác nhận quota/CC",
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    }
   ],
   "behavior_traps": [
@@ -6512,8 +6512,8 @@
     "citation": "[AIAVAD 2601-034 : 3-5]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|flat_team",
@@ -6524,8 +6524,8 @@
     "citation": "[AIAVAD 2601-034 : 3-5]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|k2_cliff_80",
@@ -6536,8 +6536,8 @@
     "citation": "[AIAVAD 2601-034 : 3-5]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|self_vs_manage",
@@ -6548,8 +6548,8 @@
     "citation": "[CHH0DCEB260008V : 5-7]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|flat_team",
@@ -6560,8 +6560,8 @@
     "citation": "[CHH0DCEB260008V : 5-7]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|k2_cliff_80",
@@ -6572,8 +6572,8 @@
     "citation": "[CHH0DCEB260008V : 5-7]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|self_vs_manage",
@@ -6584,8 +6584,8 @@
     "citation": "[0047M01_2026 : 1-2]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|flat_team",
@@ -6596,8 +6596,8 @@
     "citation": "[0047M01_2026 : 1-2]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|k2_cliff_80",
@@ -6608,8 +6608,8 @@
     "citation": "[0047M01_2026 : 1-2]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|self_vs_manage",
@@ -6620,8 +6620,8 @@
     "citation": "PROPOSAL (hybrid_scheme.py)",
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|flat_team",
@@ -6632,8 +6632,8 @@
     "citation": "PROPOSAL (hybrid_scheme.py)",
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|k2_cliff_80",
@@ -6644,8 +6644,8 @@
     "citation": "PROPOSAL (hybrid_scheme.py)",
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|fixed_cost",
@@ -6656,8 +6656,8 @@
     "citation": "[AIAVAD 2601-035 : 3]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Chubb|fixed_cost",
@@ -6668,8 +6668,8 @@
     "citation": "[CHH0DCEB260003V : 5-6]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|fixed_cost",
@@ -6680,8 +6680,8 @@
     "citation": "[0048M01_2026 : 1]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|fixed_cost",
@@ -6692,8 +6692,8 @@
     "citation": "PROPOSAL",
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Manulife|mba_pro_sensitivity",
@@ -6704,8 +6704,8 @@
     "citation": "[0047M01_2026 : 2], [0047M01_2026 : 5]",
     "label": "HYPOTHESIS",
     "confidentiality": "restricted",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|agent_k2_cliff",
@@ -6716,8 +6716,8 @@
     "citation": "PROPOSAL (hybrid_scheme.py)",
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "Hybrid|quota_cliff",
@@ -6728,8 +6728,8 @@
     "citation": "PROPOSAL (hybrid_scheme.py)",
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "AIA|recruit_gate",
@@ -6740,8 +6740,8 @@
     "citation": "[AIAVAD 2601-034 : 4-5]",
     "label": "MODEL_OUTPUT",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    }
   ],
   "hybrid_regional": [
@@ -6760,8 +6760,8 @@
     "cash_y1_vnd_m_month": 23.23,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V1|PART_TIME|M1|national_fyp",
@@ -6778,8 +6778,8 @@
     "cash_y1_vnd_m_month": 19.86,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V1|MANAGER|M2|national_fyp",
@@ -6796,8 +6796,8 @@
     "cash_y1_vnd_m_month": 19.28,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V1|MANAGER|M3|national_fyp",
@@ -6814,8 +6814,8 @@
     "cash_y1_vnd_m_month": 32.77,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V1|LEADER|M4|national_fyp",
@@ -6832,8 +6832,8 @@
     "cash_y1_vnd_m_month": 66.78,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V1|FULL_TIME|M1|regional_fyp",
@@ -6850,8 +6850,8 @@
     "cash_y1_vnd_m_month": 23.23,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V1|PART_TIME|M1|regional_fyp",
@@ -6868,8 +6868,8 @@
     "cash_y1_vnd_m_month": 19.86,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V1|MANAGER|M2|regional_fyp",
@@ -6886,8 +6886,8 @@
     "cash_y1_vnd_m_month": 19.28,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V1|MANAGER|M3|regional_fyp",
@@ -6904,8 +6904,8 @@
     "cash_y1_vnd_m_month": 32.77,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V1|LEADER|M4|regional_fyp",
@@ -6922,8 +6922,8 @@
     "cash_y1_vnd_m_month": 66.78,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V2|FULL_TIME|M1|national_fyp",
@@ -6940,8 +6940,8 @@
     "cash_y1_vnd_m_month": 22.71,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V2|PART_TIME|M1|national_fyp",
@@ -6958,8 +6958,8 @@
     "cash_y1_vnd_m_month": 19.86,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V2|MANAGER|M2|national_fyp",
@@ -6976,8 +6976,8 @@
     "cash_y1_vnd_m_month": 19.28,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V2|MANAGER|M3|national_fyp",
@@ -6994,8 +6994,8 @@
     "cash_y1_vnd_m_month": 32.77,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V2|LEADER|M4|national_fyp",
@@ -7012,8 +7012,8 @@
     "cash_y1_vnd_m_month": 66.78,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V2|FULL_TIME|M1|regional_fyp",
@@ -7030,8 +7030,8 @@
     "cash_y1_vnd_m_month": 19.17,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V2|PART_TIME|M1|regional_fyp",
@@ -7048,8 +7048,8 @@
     "cash_y1_vnd_m_month": 16.39,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V2|MANAGER|M2|regional_fyp",
@@ -7066,8 +7066,8 @@
     "cash_y1_vnd_m_month": 15.9,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V2|MANAGER|M3|regional_fyp",
@@ -7084,8 +7084,8 @@
     "cash_y1_vnd_m_month": 27.04,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V2|LEADER|M4|regional_fyp",
@@ -7102,8 +7102,8 @@
     "cash_y1_vnd_m_month": 64.96,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V3|FULL_TIME|M1|national_fyp",
@@ -7120,8 +7120,8 @@
     "cash_y1_vnd_m_month": 23.5,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V3|PART_TIME|M1|national_fyp",
@@ -7138,8 +7138,8 @@
     "cash_y1_vnd_m_month": 20.73,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V3|MANAGER|M2|national_fyp",
@@ -7156,8 +7156,8 @@
     "cash_y1_vnd_m_month": 19.28,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V3|MANAGER|M3|national_fyp",
@@ -7174,8 +7174,8 @@
     "cash_y1_vnd_m_month": 32.77,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V3|LEADER|M4|national_fyp",
@@ -7192,8 +7192,8 @@
     "cash_y1_vnd_m_month": 66.78,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V3|FULL_TIME|M1|regional_fyp",
@@ -7210,8 +7210,8 @@
     "cash_y1_vnd_m_month": 15.68,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V3|PART_TIME|M1|regional_fyp",
@@ -7228,8 +7228,8 @@
     "cash_y1_vnd_m_month": 13.41,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V3|MANAGER|M2|regional_fyp",
@@ -7246,8 +7246,8 @@
     "cash_y1_vnd_m_month": 13.01,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V3|MANAGER|M3|regional_fyp",
@@ -7264,8 +7264,8 @@
     "cash_y1_vnd_m_month": 22.12,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    },
    {
     "id": "V3|LEADER|M4|regional_fyp",
@@ -7282,8 +7282,8 @@
     "cash_y1_vnd_m_month": 63.39,
     "label": "PROPOSAL",
     "confidentiality": "public",
-    "model_version": "9dea455-dirty",
-    "synced_at": "2026-11-27T07:23:52+00:00"
+    "model_version": "16856dc",
+    "synced_at": "2026-11-27T07:25:50+00:00"
    }
   ]
  }
