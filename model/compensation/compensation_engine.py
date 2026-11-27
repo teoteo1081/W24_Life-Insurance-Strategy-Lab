@@ -456,8 +456,17 @@ def calc_aia_cql_12m(
     indirect_gen2_base_12m: float = 0.0,
     new_um_base_monthly: float = 0.0,
     rounding_mode: str = "HalfUp",
+    indirect_gen3_base_12m: float = 0.0,
+    indirect_gen4_base_12m: float = 0.0,
 ) -> Dict[str, float]:
-    """Full 12-month AIA Alpha CQL Manager calculation (Million VND)."""
+    """Full 12-month AIA Alpha CQL Manager calculation (Million VND).
+
+    Indirect fee (2601-034 p.4, muc III): 50% / 25% / 12.5% of fee A of sub-CQL at
+    level 2 / 3 / 4, where A = monthly direct "tuyen dung hieu qua" fee (+ JFW fee).
+    The *_base_12m inputs are the 12-month sums of fee A per level.
+    """
+    indirect_gen3_base_12m = _require_finite_float(indirect_gen3_base_12m, "indirect_gen3_base_12m")
+    indirect_gen4_base_12m = _require_finite_float(indirect_gen4_base_12m, "indirect_gen4_base_12m")
     monthly_team_fyc = _require_vector(monthly_team_fyc, 12, "monthly_team_fyc", allow_negative=True)
     monthly_active_count = _require_int_vector(monthly_active_count, 12, "monthly_active_count", min_val=0)
     tot_pct = _require_percentage(tot_pct, "tot_pct", 100.0)
@@ -512,7 +521,7 @@ def calc_aia_cql_12m(
 
     coach_rate = {"SA": 0.10, "Exchange": 0.20, "ExchangePro": 0.40}.get(new_agent_type, 0.10)
     coaching_fee = new_agent_fyc_12m * coach_rate
-    indirect_fee = indirect_gen2_base_12m * 0.50
+    indirect_fee = indirect_gen2_base_12m * 0.50 + indirect_gen3_base_12m * 0.25 + indirect_gen4_base_12m * 0.125
     new_um_promo_fee = min(30.0, new_um_base_monthly * 1.50) * 12.0 if (fy >= 75 and new_um_base_monthly > 0) else 0.0
 
     cash_y1 = direct_m_total + activity_m_total + premier_q_total + coaching_fee + indirect_fee + new_um_promo_fee
@@ -920,8 +929,15 @@ def calc_chubb_al_12m(
     new_um_indirect_monthly: float = 0.0,
     ch_mgt_gross_12m: float = 0.0,
     new_unit_fee_260009v_12m: float = 0.0,
+    quarterly_ryc_ntt_y2_y5: Optional[List[float]] = None,
+    quarterly_3maa_ntt: Optional[List[int]] = None,
 ) -> Dict[str, float]:
-    """Full 12-month Chubb AL Manager calculation (excl. AL personal sales!)."""
+    """Full 12-month Chubb AL Manager calculation (excl. AL personal sales!).
+
+    CHB-MG-008 (0008V p.9-10): quarterly persistency fee = RYC NTT (policy years 2-5) in quarter
+    x 10% (3MAA NTT 2-4) / 15% (3MAA NTT >=5); requires AL tenure >=13 months and K2 NTT >=65%
+    (no K2 yet counts as met). Omitted inputs mean the fee is not modeled (0), not UNKNOWN->0.
+    """
     monthly_fyc_ntt = _require_vector(monthly_fyc_ntt, 12, "monthly_fyc_ntt", allow_negative=True)
     monthly_ehc_ntt = _require_int_vector(monthly_ehc_ntt, 12, "monthly_ehc_ntt", min_val=0)
     al_tenure_start = _require_int(al_tenure_start, "al_tenure_start", 1)
@@ -941,7 +957,7 @@ def calc_chubb_al_12m(
             qr = 0.50
         elif qf >= 75.0:
             qr = 0.45
-        elif qf >= 55.0:
+        elif qf >= 50.0:  # 0008V p.6: "Từ 50 đến dưới 75" -> 40%
             qr = 0.40
         elif qf >= 35.0:
             qr = 0.35
@@ -984,9 +1000,20 @@ def calc_chubb_al_12m(
     # CH Manager Add-On per 0008V p.12
     ch_mgt_addon = max(0.0, ch_mgt_gross_12m - (new_unit_fee_260009v_12m + promo_dev_fee))
 
+    persistency_total = 0.0
+    if quarterly_ryc_ntt_y2_y5 is not None:
+        ryc_q = _require_vector(quarterly_ryc_ntt_y2_y5, 4, "quarterly_ryc_ntt_y2_y5", allow_negative=True)
+        maa_q = _require_int_vector(quarterly_3maa_ntt if quarterly_3maa_ntt is not None else [0] * 4, 4, "quarterly_3maa_ntt")
+        k2_ok = (k2_ntt is None) or (_require_percentage(k2_ntt, "k2_ntt", 100.0) >= 65.0)
+        for q in range(4):
+            tenure_ok = (al_tenure_start + q * 3 + 2) >= 13
+            rate = 0.15 if maa_q[q] >= 5 else (0.10 if maa_q[q] >= 2 else 0.0)
+            if k2_ok and tenure_ok:
+                persistency_total += ryc_q[q] * rate
+
     ht_m_sum = sum(ht_m)
     total_direct = ht_m_sum + ht_q_total
-    total_all = total_direct + ind_total + recruit_m1_6 + recruit_m7_12 + promo_dev_fee + ch_mgt_addon
+    total_all = total_direct + ind_total + recruit_m1_6 + recruit_m7_12 + promo_dev_fee + ch_mgt_addon + persistency_total
     ntt_sum = sum(monthly_fyc_ntt)
     return {
         "ntt_fyc_12m": round(ntt_sum, 4),
@@ -997,10 +1024,31 @@ def calc_chubb_al_12m(
         "recruit_m7_12_vested": round(recruit_m7_12, 4),
         "promo_dev_fee": round(promo_dev_fee, 4),
         "ch_mgt_addon": round(ch_mgt_addon, 4),
+        "persistency_ryc_quarterly": round(persistency_total, 4),
         "total_earned": round(total_all, 4),
         "cash_paid_y1": round(total_all, 4),
         "direct_override_pct_fyc": round((total_direct / ntt_sum) * 100.0, 2) if ntt_sum > 0 else 0.0,
     }
+
+
+def rd_growth_rate(q_fyp: float, prev_q_fyp: float) -> float:
+    """
+    Chubb RD Quarterly Business Growth payout rate (SRC-POL-CHB-003 p.8, scan), 12 levels:
+    growth >=50%: 27.5% and -2.5 points per 5% step down to 0-<5%: 2.5%; growth <0%: 0%.
+    Notes p.8: current-quarter FYP <360M and growth not negative -> 2.5%;
+    FYP >=360M and comparison-quarter FYP <=0 or none -> 10%.
+    """
+    q_fyp = _require_finite_float(q_fyp, "q_fyp")
+    prev_q_fyp = _require_finite_float(prev_q_fyp, "prev_q_fyp")
+    if prev_q_fyp <= 0.0:
+        return 0.10 if q_fyp >= 360.0 else 0.025
+    g = (q_fyp - prev_q_fyp) / prev_q_fyp
+    if g < 0.0:
+        return 0.0
+    if q_fyp < 360.0:
+        return 0.025
+    steps = min(10, int(math.floor(g / 0.05 + 1e-9)))  # 0-<5% -> 0 ... >=50% -> 10
+    return 0.025 * (steps + 1)
 
 
 def calc_chubb_rd_12m(
@@ -1034,13 +1082,15 @@ def calc_chubb_rd_12m(
         t_mult = 1.0 if training_classes_monthly >= 4 else (0.75 if training_classes_monthly == 3 else (0.50 if training_classes_monthly == 2 else 0.0))
         train_total += t_base * t_mult
 
-        # II.2 Activity (EHC)
+        # II.2 Activity (EHC) — 0003V p.6 (scan): 20+:8.0 | 16-19:6.5 | 12-15:5.0 | 9-11:3.5 | 6-8:2.5 | 4-5:1.5 | <4:0
         e = monthly_direct_ehc[m]
-        act_total += 8.0 if e >= 20 else (6.0 if e >= 16 else (4.5 if e >= 12 else (3.0 if e >= 8 else (1.5 if e >= 4 else 0.0))))
+        act_total += (8.0 if e >= 20 else 6.5 if e >= 16 else 5.0 if e >= 12 else 3.5 if e >= 9
+                      else 2.5 if e >= 6 else 1.5 if e >= 4 else 0.0)
 
-        # II.3 Business (FYP)
+        # II.3 Business (FYP) — 0003V p.6 (scan): 600+:12 | 480:9.5 | 360:7.0 | 270:5.0 | 180:3.5 | 120:2.5 | <120:0
         f = monthly_direct_fyp[m]
-        biz_total += 12.0 if f >= 600 else (9.5 if f >= 480 else (7.0 if f >= 360 else (4.5 if f >= 240 else (2.5 if f >= 120 else 0.0))))
+        biz_total += (12.0 if f >= 600 else 9.5 if f >= 480 else 7.0 if f >= 360 else 5.0 if f >= 270
+                      else 3.5 if f >= 180 else 2.5 if f >= 120 else 0.0)
 
         # II.4 Quality 3MAA x K2 Binary Cliff (50% Q1-Q2 -> 60% Q3-Q4!)
         k2_gate = 1.0 if (k2_pct >= (50.0 if m < 6 else 60.0)) else 0.0
@@ -1057,26 +1107,7 @@ def calc_chubb_rd_12m(
         k2_gate = 1.0 if (k2_pct >= (50.0 if q < 2 else 60.0)) else 0.0
 
         prev_f = base_q_fyp[q]
-        if qf < 360.0:
-            gr_rate = 0.025
-        elif prev_f <= 0.0:
-            gr_rate = 0.10
-        else:
-            g = (qf - prev_f) / prev_f
-            if g >= 0.50:
-                gr_rate = 0.275
-            elif g >= 0.40:
-                gr_rate = 0.225
-            elif g >= 0.30:
-                gr_rate = 0.175
-            elif g >= 0.20:
-                gr_rate = 0.125
-            elif g >= 0.10:
-                gr_rate = 0.075
-            elif g >= 0.0:
-                gr_rate = 0.05
-            else:
-                gr_rate = 0.025
+        gr_rate = rd_growth_rate(qf, prev_f)
         growth_q_total += qc * gr_rate * k2_gate
 
         ryc_r = 0.30 if k2_pct >= 70 else (0.25 if k2_pct >= 60 else (0.20 if k2_pct >= 55 else (0.15 if k2_pct >= 50 else 0.10)))

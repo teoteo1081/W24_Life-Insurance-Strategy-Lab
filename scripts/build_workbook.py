@@ -659,7 +659,7 @@ def build_workbook(out_path: Path = DEFAULT_OUT_XLSX, allow_overwrite_v1: bool =
         chb_k2 = f"IF({k2}>=80,1.2,IF({k2}>=70,1,IF({k2}>=60,0.75,IF({k2}>=50,0.5,0.25))))"
         af = f"ABS({fm})"
         chb_mr = f"IF({ten}>=15,IF({af}>=40,IF({act}>=4,0.6,0.5),IF({af}>=30,IF({act}>=4,0.5,0.4),IF({af}>=20,IF({act}>=4,0.4,0.3),IF({af}>=10,IF({act}>=4,0.3,0.2),IF({af}>=5,IF({act}>=4,0.2,0.1),0))))),IF({af}>=20,IF({act}>=4,0.35,0.25),IF({af}>=10,IF({act}>=4,0.3,0.2),IF({af}>=5,IF({act}>=4,0.2,0.1),0))))"
-        chb_qr = f"IF({fm}*3>=100,0.5,IF({fm}*3>=75,0.45,IF({fm}*3>=55,0.4,IF({fm}*3>=35,0.35,IF({fm}*3>=15,0.3,0)))))"
+        chb_qr = f"IF({fm}*3>=100,0.5,IF({fm}*3>=75,0.45,IF({fm}*3>=50,0.4,IF({fm}*3>=35,0.35,IF({fm}*3>=15,0.3,0)))))"
         ws9.cell(r9, 6, f"=B{r9}*{chb_mr}*{chb_k2}*(1+IF({fm}>0,{chb_qr},0))").number_format = "#,##0.00"
         ws9.cell(r9, 7, f"=IF({fm}<15,0,IF({fm}<30,0.3,0.5))*{sub}*12").number_format = "#,##0.00"
         ws9.cell(r9, 8, f"=IF(B{r9}=0,0,F{r9}/B{r9})").number_format = "0.0%"
@@ -716,14 +716,14 @@ def build_workbook(out_path: Path = DEFAULT_OUT_XLSX, allow_overwrite_v1: bool =
         ws9.cell(r9, 6, f"=IF(AND({k2}>=70,{ach}>=0.85),MIN(12*{base_mnl},0.75*E{r9}),0)").number_format = "#,##0.00"
         ws9.cell(r9, 7, f"=D{r9}+E{r9}+F{r9}").number_format = "#,##0.00"
 
-        # H, I, J, K: Chubb RD (Fixed Training+Act+Biz; 3MAA with Q1-2 50% vs Q3-4 60% Cliff; Growth 7.5% at +15% QoQ x Cliff)
-        rd_fix = f"12*(IF({fyp_m}>=400,25,12.5)+IF({ehc_m}>=20,8,IF({ehc_m}>=16,6,IF({ehc_m}>=12,4.5,IF({ehc_m}>=8,3,IF({ehc_m}>=4,1.5,0)))))+IF({fyp_m}>=600,12,IF({fyp_m}>=480,9.5,IF({fyp_m}>=360,7,IF({fyp_m}>=240,4.5,IF({fyp_m}>=120,2.5,0))))))"
+        # H, I, J, K: Chubb RD (Fixed Training+Act+Biz; 3MAA with Q1-2 50% vs Q3-4 60% Cliff; Growth 10% at +15% QoQ (0003V p.8 band 15-<20%) x Cliff)
+        rd_fix = f"12*(IF({fyp_m}>=400,25,12.5)+IF({ehc_m}>=20,8,IF({ehc_m}>=16,6.5,IF({ehc_m}>=12,5,IF({ehc_m}>=9,3.5,IF({ehc_m}>=6,2.5,IF({ehc_m}>=4,1.5,0))))))+IF({fyp_m}>=600,12,IF({fyp_m}>=480,9.5,IF({fyp_m}>=360,7,IF({fyp_m}>=270,5,IF({fyp_m}>=180,3.5,IF({fyp_m}>=120,2.5,0)))))))"
         rd_3m_r = f"IF({ehc_m}>=12,0.12,IF({ehc_m}>=10,0.1,IF({ehc_m}>=8,0.08,IF({ehc_m}>=6,0.06,IF({ehc_m}>=4,0.04,IF({ehc_m}>=2,0.02,0))))))"
         rd_g_q12 = f"IF({k2}>=50,1,0)"
         rd_g_q34 = f"IF({k2}>=60,1,0)"
         ws9.cell(r9, 8, f"={rd_fix}").number_format = "#,##0.00"
         ws9.cell(r9, 9, f"=6*{fyc_m}*{rd_3m_r}*({rd_g_q12}+{rd_g_q34})").number_format = "#,##0.00"
-        ws9.cell(r9, 10, f"=6*{fyc_m}*IF({fyp_m}*3<360,0.025,0.075)*({rd_g_q12}+{rd_g_q34})").number_format = "#,##0.00"
+        ws9.cell(r9, 10, f"=6*{fyc_m}*IF({fyp_m}*3<360,0.025,0.1)*({rd_g_q12}+{rd_g_q34})").number_format = "#,##0.00"
         ws9.cell(r9, 11, f"=H{r9}+I{r9}+J{r9}").number_format = "#,##0.00"
 
         # L, M: Proposal Regional Leader
@@ -856,10 +856,10 @@ def build_workbook(out_path: Path = DEFAULT_OUT_XLSX, allow_overwrite_v1: bool =
             ws11.cell(idx, 5, f"=C{idx}*0.60*{chb_k2}*1.5")
             # Indirect: 2 sub-mgrs monthly HT KTN (1800 * 0.60 * K2) * 50%
             ws11.cell(idx, 6, f"=(C{idx}/2)*0.60*{chb_k2}*0.5")
-            # RD: Fixed (25+8+12)*12=540 + 3MAA (20>=12 -> 12% x cliff) + Growth (+15% -> 7.5% x cliff)
+            # RD: Fixed (25+8+12)*12=540 + 3MAA (20>=12 -> 12% x cliff) + Growth (+15% -> 10% x cliff, 0003V p.8 band 15-<20%)
             g12 = f"IF({k2c}>=50,1,0)"
             g34 = f"IF({k2c}>=60,1,0)"
-            ws11.cell(idx, 7, f"=540+(C{idx}/2)*(0.12+0.075)*({g12}+{g34})")
+            ws11.cell(idx, 7, f"=540+(C{idx}/2)*(0.12+0.1)*({g12}+{g34})")
             ws11.cell(idx, 8, 0.0)
 
         else:  # W24_Proposed_Balanced

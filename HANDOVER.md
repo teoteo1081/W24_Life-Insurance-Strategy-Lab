@@ -4,6 +4,13 @@
 
 ## Trạng thái hiện hành
 
+**2026-11-27 — Giai đoạn 1 (Bảng soi tiền 3 cấp quản lý) xong, CHỜ TJ DUYỆT, chưa commit.**
+- Sản phẩm: `outputs/interview/01_Bang_So_Sanh_Thu_Nhap_Va_Evidence.md`, sinh bằng `python scripts/build_interview_income_table.py` (không gõ tay số).
+- Đối chiếu lại 7 PDF gốc (SHA-256 khớp registry; Chubb RD đọc bằng ảnh trang). Sửa engine + workbook: F1 Chubb AL quý ngưỡng 50tr; F2–F4 Chubb RD bảng EHC, bảng FYP, bảng tăng trưởng 12 bậc; F5 thêm phí RYC của AL (CHB-MG-008); F6 thêm gián tiếp AIA cấp 3–4. Test mới `tests/test_pdf_table_fixes.py`.
+- Hệ quả: Chubb ở K2 82% = **99,96% FYP** (trước 99,21%). Song Hành không đổi (mục tiêu tầng lãnh đạo vẫn theo Manulife).
+- Kiểm: 54/55 unittest đạt; 1 fail và quality gate fail **chỉ vì thiếu `private/sources/`** trong checkout này (PDF có ở thư mục Downloads, hash khớp). Excel COM 12.0: 0 lỗi, 20/20 golden, 12/12 parity Python–Excel; `v1.xlsx` không còn giống vì chứa số sai cũ (chưa ghi đè, cần TJ quyết).
+- TJ cần quyết: cấu trúc tổ chức A5; cấp 3 so ở tuyến quản lý trung gian hay lãnh đạo vùng; FYC/FYP 30%; có thay `v1.xlsx` bằng bản đã sửa không.
+
 **Sản phẩm trình bày cho chị Nhi:** `outputs/interactive/W24_Strategy_Lab.html` (1 file, mở trực tiếp hoặc qua localhost; dựng lại bằng `py -3 scripts/build_html.py`).
 - Slicer phương án (Song Hành ⭐ / Cân bằng / Thưởng Theo Chất / Tự chỉnh), thanh K2 50–95%, 9 tab: Tổng quan, Thu nhập theo tầng, Chi phí & ROI, Chấm điểm, Tự chỉnh thông số, So sánh cơ chế, Cách tính, Bằng chứng, Giả định & giới hạn.
 - Phương án đề xuất tính trực tiếp bằng `web/engine.js`; `tests/test_web_parity.py` so 240 ca với Python (đạt, lệch < 0,02tr do làm tròn). Trang tự kiểm 60 ca mẫu khi mở.

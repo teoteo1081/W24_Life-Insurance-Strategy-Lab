@@ -173,12 +173,14 @@ class TestEnterpriseProposalAndMAPAGoldenCases(unittest.TestCase):
         ent_prop = calc_enterprise_hierarchy_cost("W24_Proposed_Balanced", k2_pct=82.0)
         ent_aia26 = calc_enterprise_hierarchy_cost("AIA_Alpha_2026", k2_pct=82.0)
         # Independent hand calculations for 12,000M FYP (3,600M FYC):
-        # Chubb: 3600 + 2527.20 + 3888.00 + 648.00 + 1242.00 = 11,905.20 -> 99.21% FYP; Art52 = 2527.2/12000 = 21.06%
+        # Chubb: 3600 + 2527.20 + 3888.00 + 648.00 + 1332.00 = 11,995.20 -> 99.96% FYP; Art52 = 2527.2/12000 = 21.06%
+        #   RD layer 1332 = training 300 + activity 96 + business 144 + 3MAA 432 + growth 360 (900 FYC/Q x 10% x 4Q:
+        #   +15% QoQ falls in the 15-<20% band = 10.0% per CHH0DCEB260003V p.8; was 7.5% / 1242 before the 2026-11-27 fix).
         # Proposal: 3600 + 709.632 + 1188.00 + 207.90 + 828.45 + 598.32 = 7,132.302 -> 59.44% FYP; CashY1 = 54.45%; Art52 = 5.91%
         # AIA 2026: 3600 + 1227.60 + 1692.00 + 216.00 + 1717.70 + 360.00 = 8,813.30 -> 73.44% FYP; CashY1 = 70.44%
         self.assertEqual(ent_chb["annual_fyp"], 12000.0)
         self.assertEqual(ent_chb["layer_a_commission"], 3600.0)
-        assert_close(ent_chb["earned_pct_fyp"], 99.21, label="GT-16a Chubb 82% Earned % FYP (independent hand calc)")
+        assert_close(ent_chb["earned_pct_fyp"], 99.96, label="GT-16a Chubb 82% Earned % FYP (independent hand calc)")
         assert_close(ent_chb["art52_bonus_pct_fyp"], 21.06, label="GT-16a2 Chubb 82% Art.52 modeled ratio")
         assert_close(ent_prop["earned_pct_fyp"], 59.44, label="GT-16b1 Proposal 82% Earned % FYP (independent hand calc)")
         assert_close(ent_prop["cash_y1_pct_fyp"], 54.45, label="GT-16b2 Proposal 82% Cash Y1 % FYP")
