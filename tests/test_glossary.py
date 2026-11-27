@@ -21,7 +21,7 @@ class TestGlossary(unittest.TestCase):
             with self.subTest(abbr=e["abbr"]):
                 for k in REQUIRED:
                     self.assertTrue(str(e.get(k, "")).strip(), k)
-                self.assertIn(e["group"], ("Chỉ số", "Chức danh", "Tuyến hợp đồng", "Khoản thu nhập"))
+                self.assertIn(e["group"], ("Chỉ số", "Chức danh", "Tuyến hợp đồng", "Khoản thu nhập", "Đề xuất W24"))
 
     def test_citations_point_to_pages_containing_the_term(self) -> None:
         reg = {r["Source_ID"]: r for r in csv.DictReader(open(REPO / "knowledge/sources/source-registry.csv", encoding="utf-8"))}

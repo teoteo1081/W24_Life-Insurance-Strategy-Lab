@@ -1,8 +1,22 @@
 # HANDOVER.md — Điểm Bàn giao & Single Source of Truth (Trạng thái Hiện hành)
 
-**Cập nhật lần cuối** 2026-11-27 (chiều) — Giai đoạn 1: khóa dữ liệu 9 PDF, ma trận quyền lợi 4 mốc
+**Cập nhật lần cuối** 2026-11-27 (đêm) — Giai đoạn 2 (phân tích & Chính sách Lai) + Giai đoạn 3 (web 3 tab, 8 bảng Supabase)
 
 ## Trạng thái hiện hành
+
+**2026-11-27 (đêm) — Giai đoạn 2 + 3 trên baseline `90e7d10` (Codex PASS) — commit LOCAL, KHÔNG push (DEC-14); chờ agy kiểm trực quan, Codex kiểm toán.**
+- Giai đoạn 2 — `scripts/build_phase2.py` (engine đã kiểm toán KHÔNG sửa) sinh:
+  - `02_Phan_Tich_MAPA_TradeOff_Va_ROI.md` (rubric 99,1): khu vực Mốc 4 dùng chung (45 ĐL, 1,2 tỷ FYP/tháng). Tổng chi / FYP ở K2 85%: AIA 58,4% · Chubb 88,1% · Manulife 50,8% · Lai 59,9%. Chi trả giảm khi K2 sập 85→65%: 14,2 / 21,3 / 6,7 / 26,7%. Có 18 bẫy hành vi (tự bán vs quản lý, đội phẳng, vách đá K2 80→79, định phí, cổng tuyển mới; MBA Pro Vàng = HYPOTHESIS). Negative Proof quét 9/9 PDF cho 0050M01 và Chubb 260005V/006V/009V. "ROI" = chi phí/FYP, KHÔNG phải ROI thực tế.
+  - Rubric 5 trụ cột (25/25/20/15/15; 3 trụ cột đầu tính bằng công thức công khai, "Vận hành & Pháp lý" là đánh giá): AIA 3,15 · Chubb 3,05 · Manulife 3,37 · Lai 4,01 (tự chấm, chưa kiểm toán độc lập).
+  - `03_De_Xuat_Chinh_Sach_Lai_VN2026.md` (rubric 97,3, `PROPOSAL`): `model/compensation/hybrid_scheme.py`. Gồm 2 đường ray Full-time (trợ cấp 3tr khi đạt quota vùng, ≥2 HĐ, K2 ≥80%) / Part-time (thưởng 70%, thuần biến phí). Phần trả chậm nhận đủ khi K2 ≥80%, 50% khi 75–<80%, 0 khi dưới 75%; bậc đệm này được thêm sau khi bản đầu đo ra vách đá −37,5%. Override đội phẳng vượt 60tr FYC chỉ hưởng 50%. Trần 75% FYP: ĐẠT. Hệ số vùng V1 100% · V2 82,5% · V3 67,5%, giữ nguyên CC và K2. Khác biệt Bắc–Trung–Nam = HYPOTHESIS.
+- Giai đoạn 3:
+  - `web/template.html` được kế thừa, không viết lại. Thêm 3 tab đầu: (1) Soi tiền & Quyền lợi — bảng 4 mốc, bấm để bung ma trận 6 dòng có trích dẫn; (2) MAPA, Trade-off & ROI; (3) Chính sách Lai & Vùng — bộ chọn Vùng 1/2/3 và cơ sở năng suất. 9 trang cũ chuyển xuống nhóm "Tham khảo (bản trước)". Deep link `#t1/#t2/#t3`.
+  - Đã sửa 3 lỗi UX agy báo: glossify lại sau khi lọc tab Bằng chứng; bỏ chữ "K2 " lặp trên thanh dính mobile; `.tag` nowrap, ô tìm rộng hơn, nút 📖 trên mobile cuộn tới `#p-glossary`.
+  - Từ điển: 70 thuật ngữ (+6 thuộc nhóm "Đề xuất W24").
+  - Supabase contract v2: thêm 4 bảng `roi_analysis` (48 dòng), `rubric_scores` (20), `behavior_traps` (18), `hybrid_regional` (30), RLS phủ đủ 8 bảng. Không có `.env` nên sync chạy `--dry-run` → snapshot.
+  - Dòng restricted: 54 dòng của GĐ1 + 22 dòng Manulife của GĐ2. Phải lọc bỏ hết trước khi bất kỳ bản nào được Public.
+- Kiểm: run_checks PASS; pytest 110 passed; `tests/test_hybrid_scheme.py` (14 test) — 8/8 đột biến bị bắt. Chrome headless đã render đủ 3 tab. Khổ 390px vẫn bị tràn ngang ở ảnh headless (hiện tượng đã ghi nhận từ trước).
+- TJ cần quyết: (1) hệ số vùng và danh sách tỉnh từng vùng; (2) mức trợ cấp Full-time 3tr và quota; (3) có dùng điểm Lai 4,01 làm kết luận trước khi Codex kiểm toán độc lập hay không.
 
 **2026-11-27 (tối) — Đóng 2 P2 của Codex trên `2543e02` (commit local, không push).**
 - P2 #1: thêm `TestAiaStarRecruitBoundaries` — ranh giới người mới 3 sao (≥1 mọi quý) và 4–5 sao (≥1 Q1, ≥2 từ Q2) [AIAVAD 2601-034 : 4-5]. Thử đột biến: đổi 3 sao thành ≥2 → 3 test đỏ; bỏ yêu cầu 2 người từ Q2 → 2 test đỏ.

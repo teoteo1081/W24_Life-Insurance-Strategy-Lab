@@ -1,0 +1,133 @@
+"""W24 Chính sách Lai VN 2026 (Hybrid Scheme) — PROPOSAL, không phải chính sách đã ban hành.
+
+Kế thừa bộ tham số "Song Hành" đã hiệu chỉnh (scripts/calibrate_song_hanh.py) và hàm đại lý của engine
+(calc_proposal_agent_12m, proposal_k2_factor). KHÔNG sửa compensation_engine.py (đã qua kiểm toán).
+
+Ba điểm mới (TJ yêu cầu 2026-11-27):
+ 1. Hai đường ray đại lý:
+    - FULL_TIME (cam kết): thưởng tháng 100% bậc Song Hành + trợ cấp cam kết cố định mỗi tháng đạt quota FYP vùng,
+      ≥ CC tối thiểu và K2 ≥ 80% (hoặc chưa có K2).
+    - PART_TIME (thuần biến phí): thưởng tháng = PART_TIME_RATE_MULT × bậc Song Hành, không trợ cấp.
+ 2. Chốt chặn K2 ≥ 80%: trợ cấp cam kết chỉ trả khi K2 ≥ 80%; phần trả chậm (quản lý, lãnh đạo) nhận ĐỦ khi K2 ≥ 80%,
+    50% khi 75–<80%, 0 khi <75% (bậc đệm giảm vách đá). Thưởng tháng theo hệ số K2 liên tục của Song Hành (sàn 60%).
+    Override nhóm trực tiếp đủ tỷ lệ tới 60tr FYC/tháng (không giãn theo vùng), phần vượt 50% — chống bẫy giữ đội phẳng.
+ 3. Hệ số vùng (Regional Tiering, PROPOSAL của TJ): giãn MỌI ngưỡng FYP/FYC (quota, bậc thưởng, cổng gián tiếp,
+    chỉ tiêu lãnh đạo) theo hệ số vùng; GIỮ NGUYÊN yêu cầu CC và K2 ≥ 80%. Không đổi tỷ lệ %.
+Ràng buộc chi phí: tổng chi / FYP ≤ COST_CAP_PCT_FYP ở kịch bản chuẩn (kiểm trong scripts/build_phase2.py).
+"""
+from __future__ import annotations
+
+import math
+from dataclasses import replace
+from typing import Dict, Optional
+
+from model.compensation.compensation_engine import ProposalParams, calc_proposal_agent_12m, proposal_k2_factor
+
+# ---------------- Tham số đề xuất (PROPOSAL — TJ có thể chỉnh) ----------------
+REGIONS = {
+    "V1": {"name": "Vùng 1 — TP.HCM, Hà Nội", "coef": 1.000},
+    "V2": {"name": "Vùng 2 — Đà Nẵng, Hải Phòng, Cần Thơ, Bình Dương, Đồng Nai…", "coef": 0.825},   # giữa 80–85%
+    "V3": {"name": "Vùng 3 — các tỉnh còn lại", "coef": 0.675},                                     # giữa 65–70%
+}
+K2_GATE_PCT = 80.0                 # chốt chặn trợ cấp & trả chậm
+COST_CAP_PCT_FYP = 75.0            # trần tổng chi / FYP
+FT_QUOTA_FYP_MONTH = 30.0          # quota FYP/tháng của Full-time ở Vùng 1 (= Mốc 1)
+FT_MIN_CC_MONTH = 2                # số hợp đồng tối thiểu/tháng — KHÔNG giãn theo vùng
+FT_ALLOWANCE_MONTH = 3.0           # trợ cấp cam kết/tháng (triệu) — phần cố định duy nhất của đại lý
+PART_TIME_RATE_MULT = 0.70         # thưởng tháng Part-time = 70% bậc Song Hành
+LEADER_TARGET_FYP_MONTH = 1000.0   # chỉ tiêu FYP/tháng của lãnh đạo vùng ở Vùng 1
+INDIRECT_GEN2_SHARE = 0.5          # gián tiếp đời 2 = ½ tỷ lệ đời 1 (như Chubb/Manulife), tối đa 2 đời
+K2_RAMP_FROM_PCT = 75.0            # trả chậm: K2 ≥80% nhận 100%; 75–<80% nhận 50%; <75% = 0 (giảm vách đá đo được ở 02)
+K2_RAMP_SHARE = 0.5
+DIRECT_FULL_RATE_CAP_FYC = 60.0    # override đủ tỷ lệ tới 60tr FYC nhóm trực tiếp/tháng (cố định mọi vùng); phần vượt 50% — chống bẫy đội phẳng
+DIRECT_EXCESS_RATE_SHARE = 0.5
+
+
+def song_hanh_params() -> ProposalParams:
+    """Bộ tham số Song Hành đã hiệu chỉnh (cùng nguồn với trang HTML)."""
+    from scripts.calibrate_song_hanh import main as calibrate   # tránh import vòng khi chỉ dùng hằng số
+    raw = calibrate()["params"]
+    return ProposalParams(**{k: (tuple(v) if isinstance(v, list) else v) for k, v in raw.items()})
+
+
+def _fin(x: float, name: str) -> float:
+    if not isinstance(x, (int, float)) or not math.isfinite(x):
+        raise ValueError(f"{name} must be finite")
+    return float(x)
+
+
+def _coef(region: str) -> float:
+    if region not in REGIONS:
+        raise ValueError(f"region must be one of {list(REGIONS)}")
+    return REGIONS[region]["coef"]
+
+
+def _k2_ok(k2: Optional[float]) -> bool:
+    return k2 is None or k2 >= K2_GATE_PCT
+
+
+def _deferred_vest(k2: Optional[float]) -> float:
+    """Tỷ lệ được nhận phần trả chậm: 100% khi K2 ≥ 80% (hoặc chưa có K2), 50% khi 75–<80%, 0 khi <75%."""
+    if _k2_ok(k2):
+        return 1.0
+    return K2_RAMP_SHARE if k2 >= K2_RAMP_FROM_PCT else 0.0
+
+
+def regional_params(base: ProposalParams, region: str, track: str) -> ProposalParams:
+    c = _coef(region)
+    if track not in ("FULL_TIME", "PART_TIME"):
+        raise ValueError("track must be FULL_TIME or PART_TIME")
+    mult = 1.0 if track == "FULL_TIME" else PART_TIME_RATE_MULT
+    return replace(base, name=f"Hybrid_{region}_{track}",
+                   agent_m_tier_thresholds=tuple(round(t * c, 4) for t in base.agent_m_tier_thresholds),
+                   agent_m_tier_rates=tuple(round(r * mult, 6) for r in base.agent_m_tier_rates),
+                   mgr_indirect_gate_fyc=round(base.mgr_indirect_gate_fyc * c, 4))
+
+
+def hybrid_agent_12m(fyp_month: float, cc_month: int, k2: Optional[float], region: str, track: str,
+                     base: ProposalParams, fyc_rate: float = 0.30, syc_month: float = 0.0) -> Dict[str, float]:
+    fyp_month = _fin(fyp_month, "fyp_month")
+    p = regional_params(base, region, track)
+    fyc = fyp_month * fyc_rate
+    r = calc_proposal_agent_12m([fyc] * 12, [syc_month] * 12, k2_pct=k2, params=p)
+    quota = FT_QUOTA_FYP_MONTH * _coef(region)
+    allow_months = 12 if (track == "FULL_TIME" and fyp_month >= quota and cc_month >= FT_MIN_CC_MONTH and _k2_ok(k2)) else 0
+    allowance = FT_ALLOWANCE_MONTH * allow_months
+    total = r["total_earned"] + allowance
+    return {"fyc_total": r["fyc_total"], "bonuses": round(r["total_bonuses_earned"], 4), "allowance_fixed": round(allowance, 4),
+            "total_earned": round(total, 4), "cash_paid_y1": round(r["cash_paid_y1"] + allowance, 4),
+            "paid_next_years": round(r["deferred_post_y1"] + r["accrued_t_plus_1_unpaid"], 4), "quota_fyp_month": round(quota, 4),
+            "quota_met": allow_months > 0}
+
+
+def hybrid_manager_12m(direct_fyc_month: float, sub_direct_fyc_months: tuple, grand_sub_direct_fyc_months: tuple,
+                       k2: Optional[float], region: str, base: ProposalParams) -> Dict[str, float]:
+    """Quản lý trực tiếp (UM/BM): override nhóm trực tiếp × hệ số K2 (trần), gián tiếp 2 đời có cổng FYC vùng, trả chậm khi K2 ≥ 80%."""
+    c = _coef(region)
+    k2f = proposal_k2_factor(k2, base.k2_hard_floor_pct, allow_new_no_k2=k2 is None)
+    rate = min(base.mgr_direct_max_rate, base.mgr_direct_base_rate * k2f)
+    cap = DIRECT_FULL_RATE_CAP_FYC          # không giãn theo vùng: trần nhắm vào quy mô đội phẳng, không phải năng suất
+    d_fyc = _fin(direct_fyc_month, "direct_fyc_month")
+    direct = (min(d_fyc, cap) + max(0.0, d_fyc - cap) * DIRECT_EXCESS_RATE_SHARE) * 12 * rate
+    gate_ok = direct_fyc_month >= base.mgr_indirect_gate_fyc * c
+    gen1 = sum(f * 12 * rate for f in sub_direct_fyc_months) * base.mgr_indirect_l1_rate if gate_ok else 0.0
+    gen2 = sum(f * 12 * rate for f in grand_sub_direct_fyc_months) * base.mgr_indirect_l1_rate * INDIRECT_GEN2_SHARE if gate_ok else 0.0
+    deferred = direct_fyc_month * 12 * base.mgr_deferred_3y_rate * _deferred_vest(k2)
+    cash = direct + gen1 + gen2
+    return {"direct_override": round(direct, 4), "indirect": round(gen1 + gen2, 4), "deferred_3y": round(deferred, 4),
+            "fixed": 0.0, "cash_paid_y1": round(cash, 4), "paid_next_years": round(deferred, 4), "total_earned": round(cash + deferred, 4)}
+
+
+def hybrid_leader_12m(org_fyp_month: float, org_fyc_month: float, k2: Optional[float], region: str, base: ProposalParams) -> Dict[str, float]:
+    """Lãnh đạo vùng: phí cơ bản theo % đạt chỉ tiêu vùng (sàn 30%, trần 140%) + override toàn vùng × K2; phần trả chậm khi K2 ≥ 80%."""
+    c = _coef(region)
+    ach = _fin(org_fyp_month, "org_fyp_month") / (LEADER_TARGET_FYP_MONTH * c)
+    base_fee = 0.0 if ach < 0.30 else base.rd_base_monthly * 12 * min(1.40, ach * 1.25)
+    k2f = proposal_k2_factor(k2, base.k2_hard_floor_pct, allow_new_no_k2=k2 is None)
+    var = _fin(org_fyc_month, "org_fyc_month") * 12 * base.rd_direct_fyc_rate * k2f
+    deferred_pool = var * base.rd_deferred_3y_share
+    deferred = deferred_pool * _deferred_vest(k2)
+    cash = base_fee + var - deferred_pool
+    return {"base_fixed": round(base_fee, 4), "override": round(var, 4), "deferred_3y": round(deferred, 4),
+            "fixed": round(base_fee, 4), "cash_paid_y1": round(cash, 4), "paid_next_years": round(deferred, 4),
+            "total_earned": round(cash + deferred, 4), "target_achievement": round(ach, 4)}

@@ -1,5 +1,5 @@
 -- =============================================================================
--- W24 Life Insurance Strategy Lab — Supabase Data Contract (v1, 2026-11-27)
+-- W24 Life Insurance Strategy Lab — Supabase Data Contract (v2, 2026-11-27: + 4 bảng Giai đoạn 2)
 -- =============================================================================
 -- Kiến trúc tách lớp: Python (engine + script sinh) là NGUỒN SỰ THẬT; Supabase chỉ LƯU kết quả đã sinh;
 -- HTML chỉ ĐỌC (web/data-loader.js). Sửa lỗi = sửa Python → chạy lại scripts/sync_to_supabase.py.
@@ -86,7 +86,7 @@ create table if not exists public.glossary_terms (
   company_and_memo   text not null,
   market_equivalent  text not null,
   note               text not null,
-  term_group         text not null check (term_group in ('Chỉ số','Chức danh','Tuyến hợp đồng','Khoản thu nhập')),
+  term_group         text not null check (term_group in ('Chỉ số','Chức danh','Tuyến hợp đồng','Khoản thu nhập','Đề xuất W24')),
   companies          text[] not null,
   english_status     text not null,
   citations          jsonb not null default '[]'::jsonb,  -- [{company,file_id,source_id,page,method}]
@@ -114,6 +114,70 @@ create table if not exists public.pdf_bookmarks (
   constraint page_within_doc check (page <= page_count)
 );
 
+-- =============================================================================
+-- Giai đoạn 2 (v2, 2026-11-27): phân tích ROI 3 tầng, Rubric 5 trụ cột, bẫy hành vi, Chính sách Lai theo vùng.
+-- Nguồn: scripts/build_phase2.py (compute). "ROI" = chi phí / FYP, KHÔNG phải ROI thực tế.
+-- =============================================================================
+create table if not exists public.roi_analysis (
+  id               text primary key,                      -- '<scheme>|<metric>|<k2>'
+  model_version    text not null,
+  scheme           text not null check (scheme in ('AIA','Chubb','Manulife','Hybrid')),
+  metric           text not null,
+  k2               numeric not null,                      -- 0 = chỉ số không gắn một mức K2
+  value            numeric not null,
+  unit             text not null,
+  label            text not null check (label in ('MODEL_OUTPUT','PROPOSAL')),
+  note             text,
+  confidentiality  text not null default 'public' check (confidentiality in ('public','restricted')),
+  synced_at        timestamptz not null default now()
+);
+
+create table if not exists public.rubric_scores (
+  id               text primary key,                      -- '<scheme>|<pillar>'
+  model_version    text not null,
+  scheme           text not null check (scheme in ('AIA','Chubb','Manulife','Hybrid')),
+  pillar           text not null,
+  weight           numeric not null check (weight > 0 and weight <= 1),
+  score            numeric not null check (score between 1 and 5),
+  method           text not null check (method in ('computed','judgement')),
+  evidence         text not null,
+  label            text not null check (label in ('MODEL_OUTPUT','JUDGEMENT','PROPOSAL')),
+  confidentiality  text not null default 'public' check (confidentiality in ('public','restricted')),
+  synced_at        timestamptz not null default now()
+);
+
+create table if not exists public.behavior_traps (
+  id               text primary key,                      -- '<scheme>|<trap key>'
+  model_version    text not null,
+  scheme           text not null check (scheme in ('AIA','Chubb','Manulife','Hybrid')),
+  trap             text not null,
+  metric_value     numeric,
+  value_text       text not null,
+  citation         text not null,
+  label            text not null check (label in ('MODEL_OUTPUT','PROPOSAL','HYPOTHESIS')),
+  confidentiality  text not null default 'public' check (confidentiality in ('public','restricted')),
+  synced_at        timestamptz not null default now()
+);
+
+create table if not exists public.hybrid_regional (
+  id                   text primary key,                  -- '<region>|<track>|<milestone>|<basis>'
+  model_version        text not null,
+  region               text not null check (region in ('V1','V2','V3')),
+  region_name          text not null,
+  coefficient          numeric not null check (coefficient > 0 and coefficient <= 1),
+  track                text not null check (track in ('FULL_TIME','PART_TIME','MANAGER','LEADER')),
+  milestone_id         text not null check (milestone_id in ('M1','M2','M3','M4')),
+  role                 text not null,
+  basis                text not null check (basis in ('national_fyp','regional_fyp')),
+  fyp_month            numeric not null check (fyp_month > 0),
+  quota_fyp_month      numeric,
+  income_vnd_m_month   numeric not null,
+  cash_y1_vnd_m_month  numeric not null,
+  label                text not null check (label = 'PROPOSAL'),
+  confidentiality      text not null default 'public' check (confidentiality in ('public','restricted')),
+  synced_at            timestamptz not null default now()
+);
+
 create index if not exists benchmark_results_mid_idx on public.benchmark_results (milestone_id, company);
 create index if not exists role_benefit_matrix_mid_idx on public.role_benefit_matrix (milestone_id, matrix_table);
 create index if not exists pdf_bookmarks_file_idx on public.pdf_bookmarks (file_id, seq);
@@ -122,7 +186,8 @@ create index if not exists pdf_bookmarks_file_idx on public.pdf_bookmarks (file_
 do $$
 declare t text;
 begin
-  foreach t in array array['benchmark_results','role_benefit_matrix','glossary_terms','pdf_bookmarks'] loop
+  foreach t in array array['benchmark_results','role_benefit_matrix','glossary_terms','pdf_bookmarks',
+                           'roi_analysis','rubric_scores','behavior_traps','hybrid_regional'] loop
     execute format('alter table public.%I enable row level security', t);
     execute format('alter table public.%I force row level security', t);
     execute format('drop policy if exists %I on public.%I', t || '_read_public', t);

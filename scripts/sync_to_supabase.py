@@ -36,7 +36,8 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 SNAPSHOT = REPO / "web" / "data" / "snapshot.json"
 CONFIDENTIAL_FILES = ("0046M01_2026", "0047M01_2026")          # DEC-14: văn bản ghi "thông tin mật"
-TABLE_KEYS = {"benchmark_results": "id", "role_benefit_matrix": "id", "glossary_terms": "abbr", "pdf_bookmarks": "id"}
+TABLE_KEYS = {"benchmark_results": "id", "role_benefit_matrix": "id", "glossary_terms": "abbr", "pdf_bookmarks": "id",
+              "roi_analysis": "id", "rubric_scores": "id", "behavior_traps": "id", "hybrid_regional": "id"}   # v2: Giai đoạn 2
 
 
 # ---------------- helpers ----------------
@@ -165,9 +166,17 @@ def build_payload(synced_at: str | None = None) -> dict:
                               "page_count": f["page_count"], "seq": i, "title": b["title"], "page": b["page"], "method": b["method"],
                               "evidence_url": url, "confidentiality": _conf(f["file_id"]), "synced_at": synced_at})
 
-    return {"meta": {"model_version": ver, "synced_at": synced_at, "contract": "supabase/schema.sql v1",
+    # ---- Giai đoạn 2 (scripts/build_phase2.py) — cùng nguồn với 02/03 .md
+    import build_phase2 as P2
+    p2 = P2.compute()
+    stamp = lambda rows: [{**r, "model_version": ver, "synced_at": synced_at} for r in rows]
+    phase2 = {"roi_analysis": stamp(p2["roi"]), "rubric_scores": stamp(p2["rubric"]), "behavior_traps": stamp(p2["traps"]),
+              "hybrid_regional": stamp(p2["regional"])}
+
+    return {"meta": {"model_version": ver, "synced_at": synced_at, "contract": "supabase/schema.sql v2",
+                     "weighted_scores": p2["weighted"], "hybrid_cost_cap_ok": p2["cost_cap_ok"],
                      "confidential_files": list(CONFIDENTIAL_FILES)},
-            "tables": {"benchmark_results": rows, "role_benefit_matrix": matrix, "glossary_terms": glossary, "pdf_bookmarks": bookmarks}}
+            "tables": {"benchmark_results": rows, "role_benefit_matrix": matrix, "glossary_terms": glossary, "pdf_bookmarks": bookmarks, **phase2}}
 
 
 # ---------------- Supabase REST (PostgREST) ----------------

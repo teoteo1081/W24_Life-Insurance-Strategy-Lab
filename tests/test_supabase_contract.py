@@ -13,7 +13,8 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "scripts"))
 SCHEMA = (REPO / "supabase/schema.sql").read_text(encoding="utf-8")
-TABLES = ["benchmark_results", "role_benefit_matrix", "glossary_terms", "pdf_bookmarks"]
+TABLES = ["benchmark_results", "role_benefit_matrix", "glossary_terms", "pdf_bookmarks",
+          "roi_analysis", "rubric_scores", "behavior_traps", "hybrid_regional"]   # v2: + Giai đoạn 2
 
 
 def schema_columns(table: str) -> dict:
@@ -27,12 +28,14 @@ def schema_columns(table: str) -> dict:
 
 
 class TestSchema(unittest.TestCase):
-    def test_four_tables_with_rls_and_no_write_policies(self) -> None:
+    def test_all_tables_with_rls_and_no_write_policies(self) -> None:
         for t in TABLES:
             self.assertIn(f"create table if not exists public.{t} (", SCHEMA)
             self.assertIn("confidentiality", schema_columns(t))
         self.assertIn("enable row level security", SCHEMA)
-        self.assertIn("array['benchmark_results','role_benefit_matrix','glossary_terms','pdf_bookmarks']", SCHEMA)
+        rls = re.search(r"foreach t in array array\[(.*?)\] loop", SCHEMA, re.S)
+        self.assertIsNotNone(rls)
+        self.assertEqual(set(re.findall(r"'(\w+)'", rls.group(1))), set(TABLES))             # RLS phủ ĐỦ mọi bảng dữ liệu (8)
         self.assertNotRegex(SCHEMA.lower(), r"for (insert|update|delete|all)\b")      # chỉ policy SELECT
         self.assertIn("public.w24_is_reader()", SCHEMA)                                   # restricted = allowlist, không phải mọi user
         self.assertIn("revoke insert, update, delete, truncate", SCHEMA)
@@ -70,6 +73,9 @@ class TestPayload(unittest.TestCase):
         t = self.payload["tables"]
         self.assertEqual(len(t["role_benefit_matrix"]), 84)
         self.assertEqual(len(t["pdf_bookmarks"]), 131)
+        for k, n in (("roi_analysis", 48), ("rubric_scores", 20), ("behavior_traps", 18), ("hybrid_regional", 30)):   # Giai đoạn 2
+            self.assertEqual(len(t[k]), n, k)
+        self.assertEqual(set(t), set(self.S.TABLE_KEYS))
         self.assertEqual(len(t["glossary_terms"]), len(json.loads((REPO / "knowledge/sources/glossary.json").read_text(encoding="utf-8"))["entries"]))
         bd = [r for r in t["benchmark_results"] if r["title"] == "BD"][0]
         self.assertEqual(bd["label"], "UNKNOWN")

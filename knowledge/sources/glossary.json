@@ -1815,6 +1815,90 @@
    ]
   },
   {
+   "abbr": "Hybrid",
+   "english": "Hybrid Scheme",
+   "vietnamese": "Chính sách Lai VN 2026 (đề xuất W24): 2 đường ray Full-time / Part-time, chốt K2 ≥80%, trần tổng chi 75% FYP",
+   "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+   "market_equivalent": "Hybrid compensation design",
+   "note": "PROPOSAL — tham số ở model/compensation/hybrid_scheme.py; báo cáo 03_De_Xuat_Chinh_Sach_Lai_VN2026.md",
+   "group": "Đề xuất W24",
+   "companies": [
+    "Chung"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": []
+  },
+  {
+   "abbr": "Regional Tiering",
+   "english": "Regional Tiering",
+   "vietnamese": "Phân vùng hệ số quota: Vùng 1 100%, Vùng 2 82,5%, Vùng 3 67,5%; giữ nguyên số hợp đồng và K2",
+   "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+   "market_equivalent": "Geographic quota adjustment",
+   "note": "PROPOSAL của TJ; hệ số giãn mọi ngưỡng FYP/FYC, không đổi tỷ lệ %",
+   "group": "Đề xuất W24",
+   "companies": [
+    "Chung"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": []
+  },
+  {
+   "abbr": "Full-time",
+   "english": "Full-time committed track",
+   "vietnamese": "Đường ray đại lý cam kết: trợ cấp 3tr/tháng khi đạt quota vùng, ≥2 HĐ/tháng và K2 ≥80%",
+   "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+   "market_equivalent": "Tầng 1B — Đại lý toàn thời gian",
+   "note": "Phần cố định duy nhất của đại lý trong Chính sách Lai",
+   "group": "Đề xuất W24",
+   "companies": [
+    "Chung"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": []
+  },
+  {
+   "abbr": "Part-time",
+   "english": "Part-time variable track",
+   "vietnamese": "Đường ray thuần biến phí: thưởng tháng 70% bậc Song Hành, không trợ cấp",
+   "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+   "market_equivalent": "Tầng 1 — Đại lý cá nhân",
+   "note": "Không phát sinh định phí cho người bán không đều",
+   "group": "Đề xuất W24",
+   "companies": [
+    "Chung"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": []
+  },
+  {
+   "abbr": "Quota",
+   "english": "Sales quota",
+   "vietnamese": "Chỉ tiêu FYP tối thiểu mỗi tháng (Vùng 1: 30tr) để nhận trợ cấp Full-time",
+   "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+   "market_equivalent": "Sales target",
+   "note": "Nhân hệ số vùng: Vùng 2 24,8tr; Vùng 3 20,2tr",
+   "group": "Đề xuất W24",
+   "companies": [
+    "Chung"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": []
+  },
+  {
+   "abbr": "Rubric",
+   "english": "Scoring rubric",
+   "vietnamese": "Thang chấm 5 trụ cột: hành vi 25%, tài chính 25%, cạnh tranh 20%, đơn giản 15%, vận hành & pháp lý 15%",
+   "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
+   "market_equivalent": "Compensation design scorecard",
+   "note": "3 trụ cột tính bằng công thức; Vận hành & Pháp lý là đánh giá; điểm Chính sách Lai là tự chấm",
+   "group": "Đề xuất W24",
+   "companies": [
+    "Chung"
+   ],
+   "english_status": "Diễn giải (văn bản không ghi tiếng Anh)",
+   "citations": []
+  },
+  {
    "abbr": "HKD",
    "english": "— (văn bản không ghi tiếng Anh)",
    "vietnamese": "Hộ Kinh Doanh (Manulife) — lãnh đạo ký hợp đồng như một đơn vị kinh doanh",

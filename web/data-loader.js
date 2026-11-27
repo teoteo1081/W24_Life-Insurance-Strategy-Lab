@@ -15,7 +15,8 @@
  */
 (function (root) {
   "use strict";
-  var TABLES = {benchmark_results: "id", role_benefit_matrix: "id", glossary_terms: "abbr", pdf_bookmarks: "id"};
+  var TABLES = {benchmark_results: "id", role_benefit_matrix: "id", glossary_terms: "abbr", pdf_bookmarks: "id",
+                roi_analysis: "id", rubric_scores: "id", behavior_traps: "id", hybrid_regional: "id"};   // v2: Giai đoạn 2
 
   function meta(name) {
     if (typeof document === "undefined") return "";
