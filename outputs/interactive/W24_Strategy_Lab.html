@@ -29,7 +29,7 @@
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Be Vietnam Pro",system-ui,"Segoe UI",Roboto,Arial,sans-serif;overflow-x:clip}
 a{color:var(--accent)}
 .wrap{max-width:1240px;margin:0 auto;padding-left:max(5vw,16px,env(safe-area-inset-left,0px));padding-right:max(5vw,16px,env(safe-area-inset-right,0px))}
-header.top{padding-block:28px 14px}
+header.top{padding-block:28px 14px;display:flow-root}   /* chứa nút Từ điển (float) — nếu không, trang không có hero thì header cao 0 và thanh điều khiển dính đè nửa dưới nút */
 h1{font:700 clamp(30px,4vw,44px)/1.08 "Be Vietnam Pro",system-ui,sans-serif;letter-spacing:-.02em;margin:0 0 10px;max-width:22ch}
 h2{font:700 22px/1.25 "Be Vietnam Pro",system-ui,sans-serif;letter-spacing:-.01em;margin:0 0 12px}
 h3{font-size:16px;font-weight:600;margin:18px 0 8px}
