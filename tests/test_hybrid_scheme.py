@@ -16,10 +16,13 @@ BASE = H.song_hanh_params()
 
 
 class TestHybridRules(unittest.TestCase):
-    def test_region_coefficients_inside_tj_ranges(self) -> None:
-        self.assertEqual(H.REGIONS["V1"]["coef"], 1.0)
-        self.assertTrue(0.80 <= H.REGIONS["V2"]["coef"] <= 0.85)
-        self.assertTrue(0.65 <= H.REGIONS["V3"]["coef"] <= 0.70)
+    def test_region_coefficients_follow_minimum_wage_decree(self) -> None:
+        # AUD-10 / wheel-check r2 câu 5: neo lương tối thiểu vùng 2026 NĐ 293/2025 (5,31 / 4,73 / 4,14 / 3,70 tr)
+        wages = {"V1": 5.31, "V2": 4.73, "V3": 4.14, "V4": 3.70}
+        self.assertEqual(list(H.REGIONS), list(wages))
+        for reg, w in wages.items():
+            with self.subTest(reg=reg):
+                self.assertAlmostEqual(H.REGIONS[reg]["coef"], w / wages["V1"], delta=0.005)
 
     def test_full_time_allowance_gates(self) -> None:
         ok = H.hybrid_agent_12m(30, 2, 85.0, "V1", "FULL_TIME", BASE)
@@ -30,30 +33,31 @@ class TestHybridRules(unittest.TestCase):
         self.assertEqual(H.hybrid_agent_12m(30, 2, 85.0, "V1", "PART_TIME", BASE)["allowance_fixed"], 0)     # Part-time
 
     def test_regional_quota_keeps_cc_and_k2(self) -> None:
-        v3 = H.hybrid_agent_12m(20.25, 2, 85.0, "V3", "FULL_TIME", BASE)
+        v3 = H.hybrid_agent_12m(30 * 0.78, 2, 85.0, "V3", "FULL_TIME", BASE)
         self.assertTrue(v3["quota_met"])
-        self.assertFalse(H.hybrid_agent_12m(20.25, 1, 85.0, "V3", "FULL_TIME", BASE)["quota_met"])
-        self.assertFalse(H.hybrid_agent_12m(20.25, 2, 79.0, "V3", "FULL_TIME", BASE)["quota_met"])
+        self.assertFalse(H.hybrid_agent_12m(30 * 0.78, 1, 85.0, "V3", "FULL_TIME", BASE)["quota_met"])
+        self.assertFalse(H.hybrid_agent_12m(30 * 0.78, 2, 79.0, "V3", "FULL_TIME", BASE)["quota_met"])
 
     def test_allowance_scales_with_region(self) -> None:
-        self.assertAlmostEqual(H.hybrid_agent_12m(20.25, 2, 85.0, "V3", "FULL_TIME", BASE)["allowance_fixed"], 3.0 * 0.675 * 12, 6)
-        self.assertAlmostEqual(H.hybrid_agent_12m(24.75, 2, 85.0, "V2", "FULL_TIME", BASE)["allowance_fixed"], 3.0 * 0.825 * 12, 6)
+        for reg, c in (("V2", 0.89), ("V3", 0.78), ("V4", 0.70)):
+            with self.subTest(reg=reg):
+                self.assertAlmostEqual(H.hybrid_agent_12m(30 * c, 2, 85.0, reg, "FULL_TIME", BASE)["allowance_fixed"], 3.0 * c * 12, 6)
 
     def test_all_agent_thresholds_scale_with_region(self) -> None:
-        # Codex P2 (9dea455): V3 FYC năm 360tr ≥ MDRT vùng 270tr → phải có thưởng MDRT; ở V1 (ngưỡng 400) thì không
+        # Codex P2 (9dea455): vùng thấp nhất (V4, hệ số 0,70) FYC năm 360tr ≥ MDRT vùng 280tr → phải có thưởng MDRT; ở V1 (ngưỡng 400) thì không
         from model.compensation.compensation_engine import ProposalParams, calc_proposal_agent_12m
         d = ProposalParams()
         self.assertEqual((d.agent_q_consistency_min_fyc, d.agent_mdrt_fyc_threshold, d.agent_onboarding_min_fyc), (4.0, 400.0, 8.0))   # mặc định = hành vi cũ
-        v3 = H.regional_params(BASE, "V3", "FULL_TIME")
-        self.assertAlmostEqual(v3.agent_mdrt_fyc_threshold, 270.0)
-        self.assertAlmostEqual(v3.agent_q_consistency_min_fyc, 2.7)
-        self.assertAlmostEqual(v3.agent_onboarding_min_fyc, 5.4)
+        v3 = H.regional_params(BASE, "V4", "FULL_TIME")
+        self.assertAlmostEqual(v3.agent_mdrt_fyc_threshold, 280.0)
+        self.assertAlmostEqual(v3.agent_q_consistency_min_fyc, 2.8)
+        self.assertAlmostEqual(v3.agent_onboarding_min_fyc, 5.6)
         fyp = 360 / 12 / 0.30
-        r3 = H.hybrid_agent_12m(fyp, 2, 85.0, "V3", "FULL_TIME", BASE)
+        r3 = H.hybrid_agent_12m(fyp, 2, 85.0, "V4", "FULL_TIME", BASE)
         r1 = H.hybrid_agent_12m(fyp, 2, 85.0, "V1", "FULL_TIME", BASE)
         self.assertGreater(r3["paid_next_years"], 0.0)          # 30% MDRT trả chậm → có MDRT
         self.assertEqual(r1["paid_next_years"], 0.0)
-        # ngưỡng nhất quán: FYC 3,5tr/tháng ở V3 (≥ bậc 1 vùng 3,375) nhận thưởng nhất quán khi ngưỡng giãn còn 2,7; ngưỡng 4,0 cố định thì không
+        # ngưỡng nhất quán: FYC 3,5tr/tháng ở V4 (≥ bậc 1 vùng 3,5) nhận thưởng nhất quán khi ngưỡng giãn còn 2,8; ngưỡng 4,0 cố định thì không
         from dataclasses import replace
         scaled = calc_proposal_agent_12m([3.5] * 12, [0.0] * 12, k2_pct=85.0, params=v3)
         fixed = calc_proposal_agent_12m([3.5] * 12, [0.0] * 12, k2_pct=85.0, params=replace(v3, agent_q_consistency_min_fyc=4.0))
@@ -109,7 +113,7 @@ class TestHybridRules(unittest.TestCase):
             with self.subTest(mgr=bad), self.assertRaises((ValueError, TypeError)):
                 H.hybrid_manager_12m(bad, (), (), 85.0, "V1", BASE)
         with self.assertRaises(ValueError):
-            H.hybrid_agent_12m(30, 2, 85.0, "V4", "FULL_TIME", BASE)
+            H.hybrid_agent_12m(30, 2, 85.0, "V5", "FULL_TIME", BASE)
         with self.assertRaises(ValueError):
             H.hybrid_agent_12m(30, 2, 85.0, "V1", "SOMETIMES", BASE)
 
@@ -138,7 +142,7 @@ class TestPhase2Outputs(unittest.TestCase):
             with self.subTest(reg=reg):
                 self.assertLessEqual(o["cost_pct"], 75.0)
         self.assertEqual([x for x in self.d["sweep"] if x["cost_pct"] > 75.0], [])
-        # quét dày ngoài lưới: FYP 5–600tr/ĐL bước 2,5 × K2 80/85/90/95 × 3 vùng
+        # quét dày ngoài lưới: FYP 5–600tr/ĐL bước 2,5 × K2 80/85/90/95 × mọi vùng
         worst = max(self.P2.org_cost("Hybrid", k2, BASE, prod=(5 + 2.5 * i) / (1200 / 45), region=reg)["cost_pct"]
                     for reg in H.REGIONS for k2 in (80.0, 85.0, 90.0, 95.0) for i in range(239))
         self.assertLessEqual(worst, 75.0)
@@ -156,6 +160,15 @@ class TestPhase2Outputs(unittest.TestCase):
         self.assertGreater(rows[("Chubb", 0.40)]["std"], rows[("Chubb", 0.30)]["std"])   # đối thủ trả trên FYC thật
         for r in self.d["fyc_sensitivity"]:
             self.assertTrue(all(math.isfinite(r[k]) for k in ("std", "worst", "pool_scale_std", "pool_scale_worst")))
+
+    def test_article52_basket_under_30pct(self) -> None:
+        # AUD-03 (audit r1): Chính sách Lai chưa từng được kiểm Điều 52 trên mô hình 45 ĐL — thưởng + trợ cấp đại lý ≤ 30% FYP
+        for s in ("AIA", "Chubb", "Manulife", "Hybrid"):
+            for key in ("k85", "worst"):
+                with self.subTest(s=s, key=key):
+                    v = self.d["org"][s][key]["art52_pct"]
+                    self.assertTrue(math.isfinite(v) and 0.0 <= v <= 30.0, v)
+        self.assertGreater(self.d["org"]["Hybrid"]["worst"]["art52_pct"], self.d["org"]["Hybrid"]["k85"]["art52_pct"])   # trợ cấp + MDRT bật ở kịch bản xấu
 
     def test_agent_cliffs_disclosed_and_simplicity_counted_uniformly(self) -> None:
         keys = {t["id"] for t in self.d["traps"]}

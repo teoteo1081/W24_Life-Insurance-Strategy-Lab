@@ -11,7 +11,7 @@ Ba điểm mới (TJ yêu cầu 2026-11-27):
  2. Chốt chặn K2 ≥ 80%: trợ cấp cam kết chỉ trả khi K2 ≥ 80%; phần trả chậm (quản lý, lãnh đạo) nhận ĐỦ khi K2 ≥ 80%,
     50% khi 75–<80%, 0 khi <75% (bậc đệm giảm vách đá). Thưởng tháng theo hệ số K2 liên tục của Song Hành (sàn 60%).
     Override nhóm trực tiếp đủ tỷ lệ tới 60tr FYC/tháng (không giãn theo vùng), phần vượt 50% — chống bẫy giữ đội phẳng.
- 3. Hệ số vùng (Regional Tiering, PROPOSAL của TJ): giãn MỌI ngưỡng FYP/FYC (quota, bậc thưởng, cổng gián tiếp,
+ 3. Hệ số vùng 4 bậc theo lương tối thiểu vùng NĐ 293/2025 (PROPOSAL): giãn MỌI ngưỡng FYP/FYC (quota, bậc thưởng, cổng gián tiếp,
     chỉ tiêu lãnh đạo) theo hệ số vùng; GIỮ NGUYÊN yêu cầu CC và K2 ≥ 80%. Không đổi tỷ lệ %.
 Ràng buộc chi phí: tổng chi / FYP ≤ COST_CAP_PCT_FYP ở kịch bản chuẩn (kiểm trong scripts/build_phase2.py).
 """
@@ -24,10 +24,14 @@ from typing import Dict, Optional
 from model.compensation.compensation_engine import ProposalParams, calc_proposal_agent_12m, proposal_k2_factor
 
 # ---------------- Tham số đề xuất (PROPOSAL — TJ có thể chỉnh) ----------------
+# Hệ số vùng neo theo LƯƠNG TỐI THIỂU VÙNG 2026 — NĐ 293/2025/NĐ-CP (`SOURCE_CLAIM`, wheel-check r2 câu 5):
+# Vùng I 5,31 · II 4,73 · III 4,14 · IV 3,70 tr/tháng → 100% / 89,1% / 78,0% / 69,7% (làm tròn 100/89/78/70).
+# Danh sách địa bàn mỗi vùng theo phụ lục NĐ 293/2025 (34 tỉnh/thành sau NQ 202/2025/QH15). Thay bộ tự đặt 100/82,5/67,5% (audit r1 AUD-10).
 REGIONS = {
-    "V1": {"name": "Vùng 1 — TP.HCM, Hà Nội", "coef": 1.000},
-    "V2": {"name": "Vùng 2 — Đà Nẵng, Hải Phòng, Cần Thơ, Bình Dương, Đồng Nai…", "coef": 0.825},   # giữa 80–85%
-    "V3": {"name": "Vùng 3 — các tỉnh còn lại", "coef": 0.675},                                     # giữa 65–70%
+    "V1": {"name": "Vùng I theo NĐ 293/2025 (gồm nội thành Hà Nội, TP.HCM)", "coef": 1.00},
+    "V2": {"name": "Vùng II theo NĐ 293/2025", "coef": 0.89},
+    "V3": {"name": "Vùng III theo NĐ 293/2025", "coef": 0.78},
+    "V4": {"name": "Vùng IV theo NĐ 293/2025", "coef": 0.70},
 }
 K2_GATE_PCT = 80.0                 # chốt chặn trợ cấp & trả chậm
 COST_CAP_PCT_FYP = 75.0            # trần tổng chi / FYP
