@@ -4,7 +4,7 @@ KHÔNG tính lại công thức nào. Một nguồn cho cả file Markdown và k
 Quy ước số:
 - Góc nhìn đại lý: thu nhập NĂM từ engine (đã gồm thưởng quý, thưởng năm, M-Star, MDRT nếu chính sách có); Tháng = Năm / 12,
   Quý = Năm / 4 (bình quân quy đổi, không phải dòng tiền từng tháng). Mốc 1 = thu nhập cá nhân gồm tái tục (giả định A7);
-  Mốc 2–4 = phí quản lý thuần (không gồm tự bán) — cùng cơ sở Trang 1. Chính sách Lai: Vùng I, đại lý Full-time.
+  Mốc 2–4 = phí quản lý thuần (không gồm tự bán) — cùng cơ sở Trang 1. Chính sách Đề xuất 2026: Vùng I, đại lý Full-time.
 - Góc nhìn công ty: khu vực Mốc 4 (45 đại lý, 1,2 tỷ FYP/tháng = 14,4 tỷ/năm), K2 85%. Tổng chi = tổng chi/FYP × FYP năm.
 
 Dùng:  python scripts/build_exec_summary.py [--full-out <đường dẫn ngoài repo>]
@@ -24,7 +24,7 @@ SNAP = REPO / "web" / "data" / "snapshot.json"
 ORG_FYP_Y = 1200.0 * 12          # Mốc 4: 1,2 tỷ FYP/tháng (knowledge/policies/scale-milestones.json)
 TIERS = [("M1", "L1 · Cá nhân 30tr FYP/tháng"), ("M2", "L2 · Nhóm 150tr (5 ĐL)"), ("M3", "L3 · Ban 450tr (15 ĐL)"), ("M4", "L4 · Khu vực 1,2 tỷ (45 ĐL)")]
 CO = ["AIA", "Chubb", "Manulife", "Hybrid"]
-NAME = {"AIA": "AIA Alpha", "Chubb": "Chubb Life", "Manulife": "Manulife", "Hybrid": "Chính sách Lai (đề xuất)"}
+NAME = {"AIA": "AIA Alpha", "Chubb": "Chubb Life", "Manulife": "Manulife", "Hybrid": "Chính sách Đề xuất 2026"}
 HYB_ROW = {"M1": ("FULL_TIME", "Đại lý Full-time"), "M2": ("MANAGER", "Trưởng nhóm"), "M3": ("MANAGER", "Trưởng ban"), "M4": ("LEADER", "Lãnh đạo khu vực")}
 
 # Nhận xét cơ chế (JUDGEMENT) cho các văn bản KHÔNG mật; Manulife tầng 1–3 lấy câu từ dòng dữ liệu mật (behavior_traps) nên tự lọc ở bản công khai.
@@ -54,7 +54,7 @@ COMPANY = {
     "AIA": "Rẻ ở K2 tốt nhưng CHƯA gồm gói Exchange/Pro (UNKNOWN); bán nghiêng bảo vệ thuần thì vọt lên nhiều nhất.",
     "Chubb": "Đắt nhất, trả ngay gần như toàn bộ, không giữ lại trả chậm — rủi ro dòng tiền khi chất lượng xấu.",
     "Manulife": "Rẻ nhất ở K2 tốt nhưng chi phí gần như không co khi chất lượng xấu; quản lý nhận ít hơn tự bán.",
-    "Hybrid": "Ngang thị trường ở K2 tốt, co mạnh nhất khi K2 xấu, giữ lại nhiều trả chậm nhất; đỉnh bị trần quỹ 75% chặn.",
+    "Hybrid": "Ngang thị trường ở K2 tốt, co mạnh nhất khi K2 xấu, giữ lại nhiều trả chậm nhất; đỉnh bị trần tổng chi 75% chặn.",
 }
 
 
@@ -123,12 +123,12 @@ def build(tables: dict) -> dict:
 
 def to_markdown(es: dict, full: bool) -> str:
     L = ["# Tóm tắt nhanh — 2 góc nhìn (Executive Summary · “Kèo thơm hay không?”)", ""]
-    L.append("> Tổng hợp số engine hiện có (`web/data/snapshot.json`), **không tính lại công thức**. Số 3 hãng = `MODEL_OUTPUT`, Chính sách Lai = `PROPOSAL`; "
+    L.append("> Tổng hợp số engine hiện có (`web/data/snapshot.json`), **không tính lại công thức**. Số 3 hãng = `MODEL_OUTPUT`, Chính sách Đề xuất 2026 = `PROPOSAL`; "
              "nhận xét = `JUDGEMENT`. Mô hình: K2 85%, hoa hồng năm đầu 30% FYP, trước thuế, triệu đồng."
-             + ("" if full else " **Bản này đã lược Manulife tầng 1–3** (2 văn bản ghi \"thông tin mật\", DEC-14)."))
+             + ("" if full else " **Bản này đã lược Manulife tầng 1–3** (2 văn bản ghi \"thông tin mật\")."))
     L += ["", "## Bảng 1 — Góc nhìn Đại lý / Quản lý", "",
           "Tháng = thu nhập năm / 12, Quý = năm / 4 (bình quân quy đổi, **đã gồm** thưởng quý, thưởng năm, M-Star, MDRT nếu có — không phải dòng tiền từng tháng). "
-          "L1 = thu nhập cá nhân gồm tái tục; L2–L4 = phí quản lý thuần (không gồm tự bán). Chính sách Lai: Vùng I, đại lý Full-time. "
+          "L1 = thu nhập cá nhân gồm tái tục; L2–L4 = phí quản lý thuần (không gồm tự bán). Chính sách Đề xuất 2026: Vùng I, đại lý Full-time. "
           "**Kèo thơm?** = so với mức thấp nhất của các hãng cùng tầng: ≥ 1,2 lần → *Thơm*; thấp hơn → *Thấp hơn cả các hãng*; còn lại *Trung bình*; "
           "ở L2, nếu lên quản lý nhóm mà thu ít hơn tự bán → *Không thơm*.", "",
           "| Tầng | Hãng · chức danh | Tháng | Quý | Năm | Kèo thơm? | Nhận xét |", "|---|---|---:|---:|---:|---|---|"]
@@ -141,7 +141,7 @@ def to_markdown(es: dict, full: bool) -> str:
         L.append(f"| {r['name']} | {vn(r['month'])} | {vn(r['quarter'])} | {vn(r['year'], 0)} | {vn(r['cost_pct'])}% | {vn(r['peak_pct'])}% — {r['peak_note']} | "
                  f"{vn(r['drop_pct'])}% | {vn(r['deferred_pct'])}% | {r['comment']} |")
     L += ["", "**Đọc nhanh:** “đỉnh stress test” là chi phí cao nhất trong các kịch bản đã chạy (mọi đại lý đạt quota, lưới điểm gãy, hoặc bán nghiêng bảo vệ thuần — hoa hồng 40%). "
-          "Tổng chi / FYP là chi phí mô phỏng của quỹ thu nhập cây đại lý, **không phải ROI thực tế** (thiếu biên lợi nhuận VNB, chi phí vận hành của công ty).", ""]
+          "Tổng chi / FYP là chi phí mô phỏng của tổng chi trả hệ thống đại lý, **không phải ROI thực tế** (thiếu biên lợi nhuận VNB, chi phí vận hành của công ty).", ""]
     return "\n".join(L)
 
 
