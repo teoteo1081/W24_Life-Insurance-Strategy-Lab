@@ -8,7 +8,7 @@ Validates without requiring manual AI rereading:
    valid Section-32 3-status enums, required Source_ID_And_Page).
 3. Lookup table integrity (AIA PAF+ 1,300 rows & Annual == Sum M01..M12; Chubb 113 rows;
    HSBH 10 ordered age bands).
-4. Role Mapping (36 roles) & Total Rewards Inventory (44 components x 33 cols) integrity.
+4. Role Mapping (36 roles x 19 cols incl. verbatim title, track, citation) & Total Rewards Inventory (44 components x 33 cols) integrity.
 5. JSON Schema structural validity.
 6. Public Repository Confidentiality & Hygiene checks (rejects absolute local user paths,
    secret/token patterns, and protected skill markers in tracked text files).
@@ -231,7 +231,7 @@ def validate_inventories_and_schema(repo: Path) -> List[str]:
     errs: List[str] = []
     with open(repo / "knowledge/policies/role-organization-mapping.csv", encoding="utf-8") as f:
         r_rows = list(csv.reader(f))
-    if len(r_rows) - 1 < 1 or set(len(x) for x in r_rows) != {16}:
+    if len(r_rows) - 1 < 1 or set(len(x) for x in r_rows) != {19}:
         errs.append(f"role-organization-mapping.csv invalid width/rows: {len(r_rows)-1}")
 
     with open(repo / "knowledge/compensation/total-rewards-inventory.csv", encoding="utf-8") as f:

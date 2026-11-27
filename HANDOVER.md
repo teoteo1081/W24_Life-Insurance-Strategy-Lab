@@ -1,15 +1,17 @@
 # HANDOVER.md — Điểm Bàn giao & Single Source of Truth (Trạng thái Hiện hành)
 
-**Cập nhật lần cuối** 2026-11-26 (đêm) — Trang HTML tương tác, phương án Song Hành, bằng chứng trên R2
+**Cập nhật lần cuối** 2026-11-27 (chiều) — Giai đoạn 1: khóa dữ liệu 9 PDF, ma trận quyền lợi 4 mốc
 
 ## Trạng thái hiện hành
 
-**2026-11-27 — Giai đoạn 1 (Bảng soi tiền 3 cấp quản lý) xong, CHỜ TJ DUYỆT, chưa commit.**
-- Sản phẩm: `outputs/interview/01_Bang_So_Sanh_Thu_Nhap_Va_Evidence.md`, sinh bằng `python scripts/build_interview_income_table.py` (không gõ tay số).
-- Đối chiếu lại 7 PDF gốc (SHA-256 khớp registry; Chubb RD đọc bằng ảnh trang). Sửa engine + workbook: F1 Chubb AL quý ngưỡng 50tr; F2–F4 Chubb RD bảng EHC, bảng FYP, bảng tăng trưởng 12 bậc; F5 thêm phí RYC của AL (CHB-MG-008); F6 thêm gián tiếp AIA cấp 3–4. Test mới `tests/test_pdf_table_fixes.py`.
-- Hệ quả: Chubb ở K2 82% = **99,96% FYP** (trước 99,21%). Song Hành không đổi (mục tiêu tầng lãnh đạo vẫn theo Manulife).
-- Kiểm: 54/55 unittest đạt; 1 fail và quality gate fail **chỉ vì thiếu `private/sources/`** trong checkout này (PDF có ở thư mục Downloads, hash khớp). Excel COM 12.0: 0 lỗi, 20/20 golden, 12/12 parity Python–Excel; `v1.xlsx` không còn giống vì chứa số sai cũ (chưa ghi đè, cần TJ quyết).
-- TJ cần quyết: cấu trúc tổ chức A5; cấp 3 so ở tuyến quản lý trung gian hay lãnh đạo vùng; FYC/FYP 30%; có thay `v1.xlsx` bằng bản đã sửa không.
+**2026-11-27 (chiều) — Giai đoạn 1 khóa dữ liệu 9/9 PDF — TJ ĐÃ DUYỆT (DEC-14), commit LOCAL, KHÔNG push; chờ Codex kiểm toán độc lập trước Giai đoạn 2.**
+- Nguồn: 9/9 PDF trong `private/sources/` (gitignore) khớp SHA-256 registry; thêm `SRC-POL-MNL-002` (0046M01 Đại Lý, 11 tr.) và `SRC-POL-MNL-003` (0047M01 UM+, 8 tr.), bổ sung lúc 11:47–11:50. `SRC-GAP-002` thu hẹp: còn thiếu biểu hoa hồng theo sản phẩm, 0013M04/2024 (chức danh), 0050M01/2026 (MBA Pro), 0011M04/2024 (Manulife Pro).
+- Engine: `calc_manulife_agent_12m` (0046M01 B.III–B.VIII), `calc_manulife_um_12m` (0047M01 A.I–A.V), `manulife_agent_k2_factor`; test `tests/test_manulife_agent_um.py`. 3 P2 Codex đã sửa (MISSING_INPUT 3MAA, `K2_NO_K2_YET` ≠ UNKNOWN, câu 3 sao ≥1 / 4–5 sao ≥2).
+- Báo cáo: `00_Role_Mapping_Audit.md` (100/100), `00_Role_And_Benefit_Matrix.md` (4 mốc × 3 hãng × 6 dòng, 100/100), `01_Bang_So_Sanh_Thu_Nhap_Va_Evidence.md` (98,9/100); mục lục 9 PDF `knowledge/sources/pdf-bookmarks.json` (131 mục, PDF không có bookmark gắn sẵn).
+- Kết quả 4 mốc (tr/tháng; Mốc 2–4 = phí quản lý thuần, không gồm tự bán): AIA SA 18,1 / SUM 17,6 / SDM 25,7 / PAF 136,3 · Chubb AR 22,5 / UM 54,2 / DM 86,6 / **RD 186,6** (Mốc 4 chính; DM 134,6 phụ; BD ❓) · Manulife Đại Lý 17,8 / UM+ 11,0 / 18,2 / **PSM/SM 105,1** (Mốc 4 chính; UM+ 28,9 phụ).
+- Excel: sheet mới `15_Manulife_Agent_UMplus`; Excel COM 12.0: 15 sheet, 940 công thức, 0 lỗi, 24/24 golden, 12/12 parity, `overall_pass=True`; `v1.xlsx` đã thay. `run_checks.py` PASS; `pytest` 78 passed (đã cài pytest theo yêu cầu TJ).
+- Lưu ý quyền: 0046M01 (D.3) và 0047M01 (B.4) ghi "thông tin mật, không được tiết lộ". Bảng tỷ lệ trích từ 2 file này nằm trong output; cần TJ quyết trước khi push lên repo PUBLIC.
+- Đã quyết (DEC-14): phạm vi 9 PDF; base case Manulife không MBA Pro (độ nhạy ở GĐ2); Mốc 4 chính PAF · RD · PSM/SM; chỉ commit local, không push. Bước tiếp: Codex kiểm toán commit Giai đoạn 1.
 
 **Sản phẩm trình bày cho chị Nhi:** `outputs/interactive/W24_Strategy_Lab.html` (1 file, mở trực tiếp hoặc qua localhost; dựng lại bằng `py -3 scripts/build_html.py`).
 - Slicer phương án (Song Hành ⭐ / Cân bằng / Thưởng Theo Chất / Tự chỉnh), thanh K2 50–95%, 9 tab: Tổng quan, Thu nhập theo tầng, Chi phí & ROI, Chấm điểm, Tự chỉnh thông số, So sánh cơ chế, Cách tính, Bằng chứng, Giả định & giới hạn.

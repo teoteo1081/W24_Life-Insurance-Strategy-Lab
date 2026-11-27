@@ -878,17 +878,38 @@ def calc_chubb_ar_12m(
     }
 
 
-def calc_chubb_al_htktn_month(fyc_ntt: float, ehc_ntt: int, k2_ntt: Optional[float], al_tenure_months: int = 15) -> float:
+K2_NO_K2_YET = "NO_K2_YET"
+"""Explicit status: the direct team has no K2 yet (chưa phát sinh K2). Distinct from None, which means UNKNOWN."""
+
+
+def _chubb_al_k2_status(k2_ntt: Any) -> Tuple[str, Optional[float]]:
+    """Classify Chubb AL direct-team K2: ('NO_K2_YET', None) or ('OBSERVED', pct). None/UNKNOWN raises."""
+    if isinstance(k2_ntt, str):
+        if k2_ntt == K2_NO_K2_YET:
+            return K2_NO_K2_YET, None
+        raise ValueError(f"k2_ntt string must be {K2_NO_K2_YET!r}, got {k2_ntt!r}")
+    if k2_ntt is None:
+        raise ValueError(
+            "k2_ntt is None (UNKNOWN). Pass the observed K2 % or K2_NO_K2_YET when the direct team has no K2 yet "
+            "(0008V p.5, p.10); UNKNOWN is never converted to a factor."
+        )
+    return "OBSERVED", _require_percentage(k2_ntt, "k2_ntt", 100.0)
+
+
+def calc_chubb_al_htktn_month(fyc_ntt: float, ehc_ntt: int, k2_ntt: Any, al_tenure_months: int = 15) -> float:
     """
     Chubb AL Monthly HT KTN (SRC-POL-CHB-002 p.5-6) INCLUDING symmetric negative FYC clawback!
     If fyc_ntt < 0 (valid cancellation/clawback adjustment), lookup tier on abs(fyc_ntt) and return negative fee!
+    k2_ntt: observed K2 % of the direct team, or K2_NO_K2_YET ("chưa có phát sinh K2" -> 100%, p.5).
+    None means UNKNOWN and raises ValueError.
     """
     fyc_ntt = _require_finite_float(fyc_ntt, "fyc_ntt")  # Negative allowed for valid symmetric clawback!
     ehc_ntt = _require_int(ehc_ntt, "ehc_ntt", 0)
     al_tenure_months = _require_int(al_tenure_months, "al_tenure_months", 1)
     abs_f = abs(fyc_ntt)
     high_ehc = ehc_ntt >= 4
-    k2_fac = chubb_k2_factor(k2_ntt, allow_new_no_k2=(al_tenure_months < 15))
+    status, k2_val = _chubb_al_k2_status(k2_ntt)
+    k2_fac = 1.00 if status == K2_NO_K2_YET else chubb_k2_factor(k2_val, allow_new_no_k2=False)
     if al_tenure_months >= 15:
         if abs_f >= 40.0:
             rate = 0.60 if high_ehc else 0.50
@@ -917,7 +938,7 @@ def calc_chubb_al_htktn_month(fyc_ntt: float, ehc_ntt: int, k2_ntt: Optional[flo
 def calc_chubb_al_12m(
     monthly_fyc_ntt: List[float],
     monthly_ehc_ntt: List[int],
-    k2_ntt: Optional[float],
+    k2_ntt: Any,  # observed K2 % or K2_NO_K2_YET; None = UNKNOWN -> ValueError
     al_tenure_start: int = 15,
     sub_l1_htktn_monthly: Optional[List[float]] = None,
     sub_l2_htktn_monthly: Optional[List[float]] = None,
@@ -936,7 +957,8 @@ def calc_chubb_al_12m(
 
     CHB-MG-008 (0008V p.9-10): quarterly persistency fee = RYC NTT (policy years 2-5) in quarter
     x 10% (3MAA NTT 2-4) / 15% (3MAA NTT >=5); requires AL tenure >=13 months and K2 NTT >=65%
-    (no K2 yet counts as met). Omitted inputs mean the fee is not modeled (0), not UNKNOWN->0.
+    (K2_NO_K2_YET counts as met, p.10). Pass both inputs or neither: neither = fee not modeled;
+    only one of them = MISSING_INPUT ValueError (a missing 3MAA is never treated as 0).
     """
     monthly_fyc_ntt = _require_vector(monthly_fyc_ntt, 12, "monthly_fyc_ntt", allow_negative=True)
     monthly_ehc_ntt = _require_int_vector(monthly_ehc_ntt, 12, "monthly_ehc_ntt", min_val=0)
@@ -1001,10 +1023,17 @@ def calc_chubb_al_12m(
     ch_mgt_addon = max(0.0, ch_mgt_gross_12m - (new_unit_fee_260009v_12m + promo_dev_fee))
 
     persistency_total = 0.0
+    if (quarterly_ryc_ntt_y2_y5 is None) != (quarterly_3maa_ntt is None):
+        raise ValueError(
+            "MISSING_INPUT: CHB-MG-008 needs both quarterly_ryc_ntt_y2_y5 and quarterly_3maa_ntt "
+            "(0008V p.9-10); a missing 3MAA is UNKNOWN, not 0."
+        )
     if quarterly_ryc_ntt_y2_y5 is not None:
         ryc_q = _require_vector(quarterly_ryc_ntt_y2_y5, 4, "quarterly_ryc_ntt_y2_y5", allow_negative=True)
-        maa_q = _require_int_vector(quarterly_3maa_ntt if quarterly_3maa_ntt is not None else [0] * 4, 4, "quarterly_3maa_ntt")
-        k2_ok = (k2_ntt is None) or (_require_percentage(k2_ntt, "k2_ntt", 100.0) >= 65.0)
+        maa_q = _require_int_vector(quarterly_3maa_ntt, 4, "quarterly_3maa_ntt")
+        status, k2_val = _chubb_al_k2_status(k2_ntt)
+        # 0008V p.10: "Trường hợp AL chưa phát sinh K2 NTT xem như đạt K2."
+        k2_ok = status == K2_NO_K2_YET or k2_val >= 65.0
         for q in range(4):
             tenure_ok = (al_tenure_start + q * 3 + 2) >= 13
             rate = 0.15 if maa_q[q] >= 5 else (0.10 if maa_q[q] >= 2 else 0.0)
@@ -1223,6 +1252,228 @@ def calc_manulife_psm_12m(
         "vest_y3_40pct": round(lt_deferred * 0.40, 4),
         "cash_paid_y1": round(cash_y1, 4),
         "total_earned": round(total_earned, 4),
+    }
+
+
+# =============================================================================
+# 5b. MANULIFE AGENT (0046M01/2026/ASBD) & UM+ (0047M01/2026/ASBD)
+# =============================================================================
+
+def manulife_agent_k2_factor(k2: Any, month_idx_1_to_12: int) -> float:
+    """0046M01 p.1 muc A.I: he so nhan TLDTHD cho THUONG dai ly (khac bang cua UM+/PSM+).
+    Truoc 04/2026: <40% = TLDTHD thuc dat | 40-<55: 50% | 55-<65: 75% | >=65: 100%.
+    Tu 04/2026:   <50% = TLDTHD/2 | 50-<60: 50% | 60-<65: 70% | 65-<70: 90% | >=70: 100%.
+    "Chua co TLDTHD" = 100%: truyen K2_NO_K2_YET; None = UNKNOWN -> ValueError.
+    """
+    month_idx_1_to_12 = _require_int(month_idx_1_to_12, "month_idx_1_to_12", 1, 12)
+    status, v = _chubb_al_k2_status(k2)
+    if status == K2_NO_K2_YET:
+        return 1.0
+    if month_idx_1_to_12 <= 3:
+        return v / 100.0 if v < 40 else (0.50 if v < 55 else (0.75 if v < 65 else 1.00))
+    return (v / 100.0) / 2.0 if v < 50 else (0.50 if v < 60 else (0.70 if v < 65 else (0.90 if v < 70 else 1.00)))
+
+
+def _manulife_um_k2_factor(k2: Any, month_idx_1_to_12: int) -> float:
+    """0047M01 p.2 (= bang 0048M01 p.2): he so nhan TLDTHD cap bao cao truc tiep cua UM+."""
+    status, v = _chubb_al_k2_status(k2)
+    return 1.0 if status == K2_NO_K2_YET else manulife_k2_factor(v, month_idx_1_to_12, allow_new_no_k2=False)
+
+
+MANULIFE_PRO_TITLES = (None, "Bac", "Vang", "BachKim")
+
+
+def calc_manulife_agent_12m(
+    monthly_fyc: List[float],
+    monthly_fyp: List[float],
+    monthly_cc: List[int],
+    k2: Any,
+    tenure_months_start: int = 13,
+    pro_title: Optional[str] = None,
+    clkd_factor: float = 1.0,
+    monthly_ryc: Optional[List[float]] = None,
+    monthly_new_recruit_productive: Optional[List[bool]] = None,
+) -> Dict[str, Any]:
+    """Manulife agent 12 thang theo 0046M01/2026/ASBD (trieu VND).
+
+    Hoa hong co ban KHONG co trong 0046M01 (muc C.1 p.9 dan chieu thong bao theo san pham): FYC/RYC la dau vao.
+    B.III thuong nang suat thang [p.4]; B.IV xuat sac thang (chi Manulife Pro) [p.4-5]; B.V nang suat quy [p.5-6];
+    B.VI KDXS nam (chi Pro Vang/Bach Kim, tra cham 50/30/20) [p.6-7]; B.VII M-Star quy/nam [p.7-8];
+    B.VIII KKPTKDHT [p.8]. B.I/B.II (dai ly moi) khong mo hinh o day (chi cho 2 thang dau).
+    pro_title: None (khong co danh hieu — tieu chi 0011M04/2024 khong co trong nguon) | 'Bac' | 'Vang' | 'BachKim'.
+    """
+    fyc = _require_vector(monthly_fyc, 12, "monthly_fyc", allow_negative=True)
+    fyp = _require_vector(monthly_fyp, 12, "monthly_fyp", allow_negative=True)
+    cc = _require_int_vector(monthly_cc, 12, "monthly_cc", min_val=0)
+    tenure_months_start = _require_int(tenure_months_start, "tenure_months_start", 1)
+    clkd_factor = _require_rate_0_to_1(clkd_factor, "clkd_factor", allow_zero=True)
+    if pro_title not in MANULIFE_PRO_TITLES:
+        raise ValueError(f"pro_title must be one of {MANULIFE_PRO_TITLES}")
+    ryc = _require_vector(monthly_ryc if monthly_ryc is not None else [0.0] * 12, 12, "monthly_ryc", allow_negative=True)
+    recruit = monthly_new_recruit_productive if monthly_new_recruit_productive is not None else [False] * 12
+    if len(recruit) != 12 or not all(isinstance(x, bool) for x in recruit):
+        raise ValueError("monthly_new_recruit_productive must be 12 booleans")
+
+    pre = [fyc[0], fyc[0]] if tenure_months_start >= 3 else [0.0, 0.0]
+    monthly_bonus = [0.0] * 12
+    excellence = [0.0] * 12
+    kkpt = [0.0] * 12
+    for m in range(12):
+        tenure = tenure_months_start + m
+        roll = sum((pre + fyc[: m + 1])[-3:])
+        le6 = tenure <= 6
+        tiers = [(100.0, 0.50), (80.0, 0.35), (60.0, 0.30), (45.0, 0.25), (30.0, 0.20), (15.0, 0.15), (10.0, 0.10), (5.0, 0.05)]
+        rate = 0.0
+        for thr, r in tiers:
+            if (thr == 100.0 and le6) or (thr == 5.0 and not le6):
+                continue
+            if roll >= thr:
+                rate = r
+                break
+        k2f = manulife_agent_k2_factor(k2, m + 1)
+        if cc[m] >= 1:
+            monthly_bonus[m] = rate * fyc[m] * k2f * clkd_factor
+        if pro_title is not None:
+            col = {"Bac": 0, "Vang": 1, "BachKim": 2}[pro_title]
+            table = [(100.0, (None, None, 16.0)), (80.0, (None, None, 12.0)), (60.0, (None, 7.0, 10.0)), (45.0, (None, 5.0, 8.0)),
+                     (30.0, (3.0, 3.0, 4.0)), (15.0, (1.5, 1.5, 2.0))]
+            amt = 0.0
+            for thr, amts in table:
+                if fyp[m] >= thr and amts[col] is not None:
+                    amt = amts[col]
+                    break
+            excellence[m] = amt * k2f * clkd_factor
+        if recruit[m] and cc[m] >= 1 and fyc[m] >= 4.0:
+            kkpt[m] = min(3.0, 0.20 * fyc[m]) * k2f * clkd_factor
+
+    quarterly = [0.0] * 4
+    mstar_q = [0.0] * 4
+    mstar_targets = [160.0, 430.0, 750.0, 1073.6452]
+    mstar_amts = [(5.0, 8.0), (8.0, 12.0), (10.0, 15.0), (0.0, 20.0)]
+    for q in range(4):
+        qf = sum(fyc[q * 3:(q + 1) * 3])
+        tenure_end = tenure_months_start + q * 3 + 2
+        excellent = all(monthly_bonus[q * 3 + i] > 0 for i in range(3)) or pro_title in ("Vang", "BachKim")
+        qtiers = [(120.0, 0.10), (100.0, 0.08), (80.0, 0.06), (60.0, 0.05), (45.0, 0.04), (30.0, 0.03), (15.0, 0.02)]
+        rate = 0.0
+        for thr, r in qtiers:
+            if thr == 15.0 and tenure_end > 6:
+                continue
+            if qf >= thr:
+                rate = r
+                break
+        if excellent:
+            rate *= 2.0
+        k2q = manulife_agent_k2_factor(k2, (q + 1) * 3)
+        quarterly[q] = rate * qf * k2q * clkd_factor
+        cum = sum(fyp[: (q + 1) * 3])
+        active_all = all(cc[q * 3 + i] >= 1 and fyc[q * 3 + i] >= 4.0 for i in range(3))
+        ach = cum / mstar_targets[q]
+        if active_all and ach >= 1.0:
+            mstar_q[q] = mstar_amts[q][1] * k2q * clkd_factor
+        elif active_all and ach >= 0.90:
+            mstar_q[q] = mstar_amts[q][0] * k2q * clkd_factor
+    fyp_y = sum(fyp)
+    m_y = 100.0 if fyp_y >= 3000.0 else (75.0 if fyp_y >= 2000.0 else (55.0 if fyp_y >= 1073.6452 else 0.0))
+    mstar_y = max(0.0, m_y * manulife_agent_k2_factor(k2, 12) * clkd_factor - sum(mstar_q))
+
+    kdxs = 0.0
+    status, k2v = _chubb_al_k2_status(k2)
+    k2_ok_70 = status == K2_NO_K2_YET or k2v >= 70.0
+    cc_y, fyc_y = sum(cc), sum(fyc)
+    if pro_title == "BachKim" and cc_y >= 24 and fyp_y >= 600.0 and k2_ok_70:
+        kdxs = min(100.0, 0.15 * fyc_y) * clkd_factor
+    elif pro_title in ("Vang", "BachKim"):
+        need_cc, need_fyp = (15, 360.0) if tenure_months_start > 12 else (10, 240.0)
+        if cc_y >= need_cc and fyp_y >= need_fyp and k2_ok_70:
+            kdxs = min(100.0, 0.10 * fyc_y) * clkd_factor
+
+    cash_bonus = sum(monthly_bonus) + sum(excellence) + sum(quarterly) + sum(mstar_q) + mstar_y + sum(kkpt)
+    total = fyc_y + sum(ryc) + cash_bonus + kdxs
+    return {
+        "fyc_total": round(fyc_y, 4),
+        "ryc_total": round(sum(ryc), 4),
+        "bonus_monthly_productivity": round(sum(monthly_bonus), 4),
+        "bonus_monthly_excellence_pro": round(sum(excellence), 4),
+        "bonus_quarterly_productivity": round(sum(quarterly), 4),
+        "bonus_mstar_quarterly": round(sum(mstar_q), 4),
+        "bonus_mstar_annual": round(mstar_y, 4),
+        "bonus_kkptkdht": round(sum(kkpt), 4),
+        "bonus_annual_kdxs_deferred_50_30_20": round(kdxs, 4),
+        "total_bonuses_earned": round(cash_bonus + kdxs, 4),
+        "total_earned": round(total, 4),
+        "cash_paid_y1": round(total - kdxs, 4),
+        "monthly_bonus_by_month": [round(x, 6) for x in monthly_bonus],
+        "quarterly_bonus_by_quarter": [round(x, 6) for x in quarterly],
+    }
+
+
+def calc_manulife_um_12m(
+    monthly_level_fyc: List[Sequence[float]],
+    monthly_direct_producing: List[int],
+    monthly_direct_bonus_base: List[float],
+    k2_direct: Any,
+    mba_pro_title: Optional[str] = None,
+    monthly_direct_new_agent_bonus: Optional[List[float]] = None,
+    attendance_ok: bool = True,
+) -> Dict[str, float]:
+    """Manulife UM+ 12 thang theo 0047M01/2026/ASBD (trieu VND).
+
+    monthly_level_fyc[m] = (FYC cap 1, cap 2, cap 3, cap 4) trong thang; cap 1 KHONG gom FYC cua chinh UM+ [p.1].
+    A.I nang suat nhom [p.1]: cap 1 theo FYC cap 1: >=48: 20% | 24-<48: 16% | 7-<24: 14% | <7: 10%; cap 2-4 = 1/2 ty le cap lien tren.
+    A.II hoat dong nhom [p.1-2]: ty le theo so DL/UM+ cap 1 co san xuat (>=4tr FYC & >=1 CC) x tong thuong nang suat
+         thang + quy (0046M01 B.III, B.V) cua cap 1 nhan trong thang x he so TLDTHD [p.2].
+         MBA Pro: >=6:125% | 4-5:100% | 2-3:75% | 1:30%; UM+ khac: 60/50/40/30%.
+    A.III phat trien DL moi Manulife Pro [p.3-4]: MBA Pro 100% / khac 50% x thuong DL moi cua cap 1 x he so TLDTHD.
+    A.V hop tac dai han [p.5-6]: chi MBA Pro (Bac 80 | Vang 100 | BachKim 125%) x tong (A.II + A.III) cua thang du dieu kien;
+         tra cham 30/30/40%. Tieu chi MBA Pro (0050M01/2026) khong co trong nguon -> mba_pro_title=None la gia dinh.
+    A.IV phat trien nhom moi (210%, tran 30tr) chi phat sinh khi co DL thang cap UM lan dau — khong mo hinh o day.
+    attendance_ok: dieu kien "Doi ngu chuyen can" >=4 buoi/thang [p.3]; False -> khong nhan phi.
+    """
+    if len(monthly_level_fyc) != 12:
+        raise ValueError("monthly_level_fyc must have 12 months")
+    levels = [_require_vector(list(x), 4, f"monthly_level_fyc[{i}]", allow_negative=True) for i, x in enumerate(monthly_level_fyc)]
+    prod = _require_int_vector(monthly_direct_producing, 12, "monthly_direct_producing", min_val=0)
+    base = _require_vector(monthly_direct_bonus_base, 12, "monthly_direct_bonus_base", allow_negative=True)
+    newb = _require_vector(monthly_direct_new_agent_bonus if monthly_direct_new_agent_bonus is not None else [0.0] * 12, 12,
+                           "monthly_direct_new_agent_bonus", allow_negative=True)
+    titles = {None: 0.0, "Bac": 0.80, "Vang": 1.00, "BachKim": 1.25}
+    if mba_pro_title not in titles:
+        raise ValueError(f"mba_pro_title must be one of {list(titles)}")
+    if not isinstance(attendance_ok, bool):
+        raise ValueError("attendance_ok must be bool")
+    is_mba = mba_pro_title is not None
+    a1 = a2 = a3 = lt_base = 0.0
+    for m in range(12):
+        if not attendance_ok:
+            continue
+        c1 = levels[m][0]
+        r = 0.20 if c1 >= 48 else (0.16 if c1 >= 24 else (0.14 if c1 >= 7 else 0.10))
+        fee1 = 0.0
+        for lv in range(4):
+            fee1 += levels[m][lv] * r / (2 ** lv)
+        a1 += fee1
+        n = prod[m]
+        if is_mba:
+            r2 = 1.25 if n >= 6 else (1.00 if n >= 4 else (0.75 if n >= 2 else (0.30 if n >= 1 else 0.0)))
+        else:
+            r2 = 0.60 if n >= 6 else (0.50 if n >= 4 else (0.40 if n >= 2 else (0.30 if n >= 1 else 0.0)))
+        k2f = _manulife_um_k2_factor(k2_direct, m + 1)
+        fee2 = r2 * base[m] * k2f
+        fee3 = (1.00 if is_mba else 0.50) * newb[m] * k2f
+        a2 += fee2
+        a3 += fee3
+        if n >= 2 and (fee2 + fee3) > 0:
+            lt_base += fee2 + fee3
+    lt = titles[mba_pro_title] * lt_base
+    cash = a1 + a2 + a3
+    return {
+        "a1_team_productivity": round(a1, 4),
+        "a2_team_activity": round(a2, 4),
+        "a3_new_agent_development": round(a3, 4),
+        "a5_long_term_deferred_30_30_40": round(lt, 4),
+        "cash_paid_y1": round(cash, 4),
+        "total_earned": round(cash + lt, 4),
     }
 
 

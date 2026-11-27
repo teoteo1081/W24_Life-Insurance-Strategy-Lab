@@ -20,58 +20,124 @@
       "type": "string",
       "description": "Mã định danh duy nhất của scheme (VD: AIA-ALPHA-CVTV-2026, CHUBB-AGENCY-2026, PROP-BALANCED-V1)"
     },
-    "company": { "type": "string" },
+    "company": {
+      "type": "string"
+    },
     "channel": {
       "type": "string",
       "description": "Kênh phân phối (VD: Alpha, Agency, Exchange, Champion Hubb, Proposal)"
     },
     "target_tier": {
       "type": "string",
-      "enum": ["Individual_Agent", "Mid_Management", "Senior_Executive_Leader", "Hybrid_Multi_Tier"]
+      "enum": [
+        "Individual_Agent",
+        "Mid_Management",
+        "Senior_Executive_Leader",
+        "Hybrid_Multi_Tier"
+      ]
     },
     "rank_codes": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "description": "Danh sách mã cấp bậc áp dụng (VD: SA, UM, SUM, DM, SDM, PAF+, PSM+, HKD, AR, AL, BD, RD)"
     },
     "document_type": {
       "type": "string",
-      "enum": ["Official_Policy", "Proposal", "Synthetic_Scenario"]
+      "enum": [
+        "Official_Policy",
+        "Proposal",
+        "Synthetic_Scenario"
+      ]
     },
-    "version": { "type": "string" },
-    "effective_date": { "type": "string", "format": "date" },
-    "expiry_date": { "type": ["string", "null"] },
+    "version": {
+      "type": "string"
+    },
+    "effective_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "expiry_date": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "verification_status": {
       "type": "string",
-      "enum": ["VERIFIED_FACT", "SOURCE_CLAIM", "ASSUMPTION", "PROPOSAL", "CONFLICTING_EVIDENCE"]
+      "enum": [
+        "VERIFIED_FACT",
+        "SOURCE_CLAIM",
+        "ASSUMPTION",
+        "PROPOSAL",
+        "CONFLICTING_EVIDENCE"
+      ]
     },
     "source_ids": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "minItems": 1
     },
     "metric_definitions": {
       "type": "object",
       "description": "Chuẩn hóa định nghĩa chỉ số để quy đổi về cùng hệ quy chiếu giữa các công ty",
       "properties": {
-        "fyp_includes_topup_pct": { "type": "number", "minimum": 0, "maximum": 1 },
-        "fyp_single_premium_weight": { "type": "number", "minimum": 0, "maximum": 1 },
-        "fyc_credit_ratio_note": { "type": "string" },
+        "fyp_includes_topup_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "fyp_single_premium_weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "fyc_credit_ratio_note": {
+          "type": "string"
+        },
         "active_agent_definition": {
           "type": "object",
           "properties": {
-            "metric_name": { "type": "string", "description": "VD: 1mAA, 1mAA_4mFYC, EHC, 3MAA" },
-            "min_policies_per_month": { "type": "number" },
-            "min_fyc_vnd_per_month": { "type": ["number", "null"] },
-            "min_fyp_vnd_per_policy": { "type": ["number", "null"] }
+            "metric_name": {
+              "type": "string",
+              "description": "VD: 1mAA, 1mAA_4mFYC, EHC, 3MAA"
+            },
+            "min_policies_per_month": {
+              "type": "number"
+            },
+            "min_fyc_vnd_per_month": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "min_fyp_vnd_per_policy": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
           }
         },
         "persistency_definition": {
           "type": "object",
           "properties": {
-            "metric_name": { "type": "string", "description": "VD: AIA FY (14M), AIA TOT, Manulife TLDTHD (K2), Chubb K2 / P13" },
-            "window_months": { "type": ["integer", "null"] },
-            "rounding_decimals": { "type": "integer" }
+            "metric_name": {
+              "type": "string",
+              "description": "VD: AIA FY (14M), AIA TOT, Manulife TLDTHD (K2), Chubb K2 / P13"
+            },
+            "window_months": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "rounding_decimals": {
+              "type": "integer"
+            }
           }
         }
       }
@@ -81,16 +147,53 @@
       "description": "Biểu tỷ lệ FYC/RYC theo dòng sản phẩm và năm hợp đồng (chịu ràng buộc trần pháp lý)",
       "items": {
         "type": "object",
-        "required": ["product_group", "y1_rate_pct", "legal_cap_rule_id"],
+        "required": [
+          "product_group",
+          "y1_rate_pct",
+          "legal_cap_rule_id"
+        ],
         "properties": {
-          "product_group": { "type": "string" },
-          "y1_rate_pct": { "type": "number", "minimum": 0, "maximum": 0.4 },
-          "y2_rate_pct": { "type": ["number", "null"] },
-          "y3_rate_pct": { "type": ["number", "null"] },
-          "y4_5_rate_pct": { "type": ["number", "null"] },
-          "y6_plus_rate_pct": { "type": ["number", "null"] },
-          "topup_y1_rate_pct": { "type": ["number", "null"] },
-          "legal_cap_rule_id": { "type": "string" }
+          "product_group": {
+            "type": "string"
+          },
+          "y1_rate_pct": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 0.4
+          },
+          "y2_rate_pct": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "y3_rate_pct": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "y4_5_rate_pct": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "y6_plus_rate_pct": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "topup_y1_rate_pct": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "legal_cap_rule_id": {
+            "type": "string"
+          }
         }
       }
     },
@@ -99,54 +202,149 @@
       "description": "Danh sách các khoản thu nhập / thưởng / trợ cấp / override cấu hình được",
       "items": {
         "type": "object",
-        "required": ["rule_id", "income_type", "calc_mode", "calculation_base", "period", "source_page"],
+        "required": [
+          "rule_id",
+          "income_type",
+          "calc_mode",
+          "calculation_base",
+          "period",
+          "source_page"
+        ],
         "properties": {
-          "rule_id": { "type": "string" },
+          "rule_id": {
+            "type": "string"
+          },
           "income_type": {
             "type": "string",
             "enum": [
-              "FYC", "RYC", "Allowance", "Recruitment_Incentive", "Activation_Bonus",
-              "Production_Bonus", "Performance_Bonus", "Quality_Bonus", "Leadership_Bonus",
-              "Direct_Override", "Indirect_Override", "Promotion_Bonus", "Retention_Deferred", "Contest"
+              "FYC",
+              "RYC",
+              "Allowance",
+              "Recruitment_Incentive",
+              "Activation_Bonus",
+              "Production_Bonus",
+              "Performance_Bonus",
+              "Quality_Bonus",
+              "Leadership_Bonus",
+              "Direct_Override",
+              "Indirect_Override",
+              "Promotion_Bonus",
+              "Retention_Deferred",
+              "Contest"
             ]
           },
           "calc_mode": {
             "type": "string",
-            "enum": ["flat_rate", "marginal_tiered", "retroactive_tiered", "fixed_amount", "multiplier_on_component", "excess_over_target", "max_of_components"]
+            "enum": [
+              "flat_rate",
+              "marginal_tiered",
+              "retroactive_tiered",
+              "fixed_amount",
+              "multiplier_on_component",
+              "excess_over_target",
+              "max_of_components"
+            ]
           },
-          "calculation_base": { "type": "string" },
-          "period": { "type": "string", "enum": ["Monthly", "Quarterly", "Annual", "Milestone", "Multi_Year_Deferred"] },
+          "calculation_base": {
+            "type": "string"
+          },
+          "period": {
+            "type": "string",
+            "enum": [
+              "Monthly",
+              "Quarterly",
+              "Annual",
+              "Milestone",
+              "Multi_Year_Deferred"
+            ]
+          },
           "tiers": {
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
-                "min_inclusive": { "type": "number" },
-                "max_exclusive": { "type": ["number", "null"] },
-                "rate_pct": { "type": ["number", "null"] },
-                "fixed_vnd": { "type": ["number", "null"] }
+                "min_inclusive": {
+                  "type": "number"
+                },
+                "max_exclusive": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "rate_pct": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "fixed_vnd": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
               }
             }
           },
-          "quality_multiplier_id": { "type": ["string", "null"] },
-          "attendance_or_sop_gate": { "type": ["object", "null"] },
-          "cap_vnd": { "type": ["number", "null"] },
+          "quality_multiplier_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "attendance_or_sop_gate": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "cap_vnd": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
           "vesting_schedule": {
-            "type": ["array", "null"],
+            "type": [
+              "array",
+              "null"
+            ],
             "description": "Lịch trả chậm nhiều năm (VD: [0.15, 0.25, 0.60] hoặc [0.30, 0.30, 0.40])",
             "items": {
               "type": "object",
               "properties": {
-                "year_offset": { "type": "integer" },
-                "payout_share": { "type": "number" },
-                "min_persistency_gate": { "type": ["number", "null"] }
+                "year_offset": {
+                  "type": "integer"
+                },
+                "payout_share": {
+                  "type": "number"
+                },
+                "min_persistency_gate": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
               }
             }
           },
-          "clawback_months": { "type": ["integer", "null"] },
-          "stacking_group": { "type": "string" },
-          "source_page": { "type": "string" },
-          "po_editable": { "type": "boolean", "default": false }
+          "clawback_months": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "stacking_group": {
+            "type": "string"
+          },
+          "source_page": {
+            "type": "string"
+          },
+          "po_editable": {
+            "type": "boolean",
+            "default": false
+          }
         }
       }
     },
@@ -156,10 +354,171 @@
       "properties": {
         "mapa_drivers_targeted": {
           "type": "array",
-          "items": { "type": "string", "enum": ["Manpower", "Active_Ratio", "Productivity", "Average_Case_Size", "Persistency_K2"] }
+          "items": {
+            "type": "string",
+            "enum": [
+              "Manpower",
+              "Active_Ratio",
+              "Productivity",
+              "Average_Case_Size",
+              "Persistency_K2"
+            ]
+          }
         },
-        "fixed_cost_exposure": { "type": "string", "enum": ["Low", "Medium", "High"] },
-        "cashflow_timing_risk": { "type": "string", "enum": ["Low", "Medium", "High"] }
+        "fixed_cost_exposure": {
+          "type": "string",
+          "enum": [
+            "Low",
+            "Medium",
+            "High"
+          ]
+        },
+        "cashflow_timing_risk": {
+          "type": "string",
+          "enum": [
+            "Low",
+            "Medium",
+            "High"
+          ]
+        }
+      }
+    },
+    "role_titles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/role_title"
+      },
+      "description": "Cây chức danh GỐC của hãng (giữ nguyên tên và tuyến). Không ép về tên chung; đối chiếu ngang hàng qua scale_milestones."
+    },
+    "scale_milestones": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/scale_milestone"
+      },
+      "description": "Mốc quy mô đội ngũ & doanh số dùng chung cho mọi hãng (plug-and-play: hãng mới chỉ cần role_titles + quy tắc thăng cấp có trích dẫn)."
+    }
+  },
+  "$defs": {
+    "citation": {
+      "type": "string",
+      "pattern": "^\\[[^\\]:]+ : [0-9]+(-[0-9]+)?\\]",
+      "description": "Bắt buộc theo AGENTS.md luật 2 & 4: [FileName : PageNumber], FileName là mã duy nhất xuất hiện trong tên file nguồn."
+    },
+    "role_title": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role_code",
+        "raw_title_verbatim",
+        "track_type",
+        "citation"
+      ],
+      "properties": {
+        "role_code": {
+          "type": "string"
+        },
+        "raw_title_verbatim": {
+          "type": "string",
+          "description": "Tên chức danh nguyên văn trong văn bản gốc; không dịch, không chuẩn hóa."
+        },
+        "track_type": {
+          "type": "string",
+          "enum": [
+            "AGENT_INDIVIDUAL",
+            "AGENT_FULLTIME_PROGRAM",
+            "AGENT_SERVICING_RESERVE",
+            "MANAGER_DIRECT_LINE",
+            "LEADER_FOUNDER_TRACK",
+            "LEADER_AMD_SERVICE",
+            "LEADER_SENIOR_SERVICE",
+            "LEADER_ENTITY_HKD",
+            "NOT_IN_CORPUS"
+          ]
+        },
+        "citation": {
+          "$ref": "#/$defs/citation"
+        },
+        "promotion_rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "metric",
+              "threshold",
+              "citation"
+            ],
+            "properties": {
+              "metric": {
+                "type": "string"
+              },
+              "threshold": {
+                "type": [
+                  "number",
+                  "string"
+                ]
+              },
+              "citation": {
+                "$ref": "#/$defs/citation"
+              }
+            }
+          }
+        },
+        "maintenance_rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "metric",
+              "threshold",
+              "citation"
+            ],
+            "properties": {
+              "metric": {
+                "type": "string"
+              },
+              "threshold": {
+                "type": [
+                  "number",
+                  "string"
+                ]
+              },
+              "citation": {
+                "$ref": "#/$defs/citation"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scale_milestone": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "milestone_id",
+        "producing_agents",
+        "org_fyp_month_vnd_m",
+        "label"
+      ],
+      "properties": {
+        "milestone_id": {
+          "type": "string",
+          "pattern": "^M[1-9]$"
+        },
+        "label": {
+          "type": "string"
+        },
+        "producing_agents": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "org_fyp_month_vnd_m": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "structure": {
+          "type": "string",
+          "description": "Cấu trúc giả định (ASSUMPTION): số nhóm, quản lý con."
+        }
       }
     }
   }

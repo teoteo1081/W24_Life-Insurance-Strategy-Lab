@@ -1,0 +1,742 @@
+{
+ "$comment": "Mục lục trang của 9 PDF nguồn. Không file nào có bookmark gắn sẵn (get_toc() = 0) nên dựng từ dòng tiêu đề trong text; bản scan CHH0DCEB260003V lấy từ trang MỤC LỤC (tr.2) đọc bằng mắt. Dùng cho web: mở PDF tại #page=N.",
+ "generated_by": "scripts/build_benefit_matrix.py",
+ "files": [
+  {
+   "file_id": "AIAVAD 2604-069",
+   "source_id": "SRC-POL-AIA-ALP-001",
+   "file_name": "(Ref AIAVAD 2604-069) - Chính sách thu nhập năm 2026 dành cho CVTV_Alpha.pdf",
+   "local_relative_path": "private/sources/AIA-Alpha/(Ref AIAVAD 2604-069) - Chính sách thu nhập năm 2026 dành cho CVTV_Alpha.pdf",
+   "page_count": 23,
+   "bookmarks": [
+    {
+     "title": "PHỤ LỤC 1: CHÍNH SÁCH DÀNH CHO CHUYÊN VIÊN – NĂM 2026",
+     "page": 2,
+     "method": "text_heading"
+    },
+    {
+     "title": "I. CHÍNH SÁCH THU NHẬP",
+     "page": 3,
+     "method": "text_heading"
+    },
+    {
+     "title": "II. CHÍNH SÁCH THĂNG TIẾN",
+     "page": 8,
+     "method": "text_heading"
+    },
+    {
+     "title": "III. ĐIỀU KIỆN DUY TRÌ HỢP ĐỒNG",
+     "page": 9,
+     "method": "text_heading"
+    },
+    {
+     "title": "IV. ĐIỀU KIỆN CHUYỂN THÀNH “CHUYÊN VIÊN TƯ VẤN HỖ TRỢ PHỤC VỤ” (SE)",
+     "page": 10,
+     "method": "text_heading"
+    },
+    {
+     "title": "V. GIA HẠN HỢP ĐỒNG ĐỐI VỚI CVTV (SA/ UM+)/ CVTV HỖ TRỢ PHỤC VỤ (SE)",
+     "page": 11,
+     "method": "text_heading"
+    },
+    {
+     "title": "VI. QUY ĐỊNH CÁCH TÍNH DOANH SỐ VÀ CHI TRẢ",
+     "page": 11,
+     "method": "text_heading"
+    },
+    {
+     "title": "VII. QUY ĐỊNH VỀ TỶ LỆ DUY TRÌ PHÍ NĂM ĐẦU (AIA FY)",
+     "page": 14,
+     "method": "text_heading"
+    },
+    {
+     "title": "VIII. ĐỊNH NGHĨA, THUẬT NGỮ VÀ VIẾT TẮT",
+     "page": 17,
+     "method": "text_heading"
+    },
+    {
+     "title": "PHỤ LỤC 2: PHÍ DỊCH VỤ DOANH SỐ HOẠT ĐỘNG JFW HÀNG THÁNG",
+     "page": 21,
+     "method": "text_heading"
+    },
+    {
+     "title": "PHỤ LỤC 3: CHÍNH SÁCH ĐỒNG HÀNH CÙNG CHUYÊN VIÊN MỚI 3",
+     "page": 22,
+     "method": "text_heading"
+    }
+   ]
+  },
+  {
+   "file_id": "AIAVAD 2601-034",
+   "source_id": "SRC-POL-AIA-ALP-002",
+   "file_name": "(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+   "local_relative_path": "private/sources/AIA-Alpha/(Ref AIAVAD 2601-034)_Chính sách thu nhập năm 2026 dành cho CQL 2026_Alpha (cập nhật Huấn luyện).pdf",
+   "page_count": 21,
+   "bookmarks": [
+    {
+     "title": "PHỤ LỤC 1: CHÍNH SÁCH DÀNH CHO CẤP QUẢN LÝ – 2026",
+     "page": 2,
+     "method": "text_heading"
+    },
+    {
+     "title": "A. CHÍNH SÁCH THU NHẬP DÀNH CHO CẤP QUẢN LÝ",
+     "page": 3,
+     "method": "text_heading"
+    },
+    {
+     "title": "I. PHÍ DỊCH VỤ TUYỂN DỤNG HIỆU QUẢ HÀNG THÁNG",
+     "page": 3,
+     "method": "text_heading"
+    },
+    {
+     "title": "II. PHÍ DỊCH VỤ TUYỂN DỤNG CHẤT LƯỢNG HÀNG THÁNG",
+     "page": 3,
+     "method": "text_heading"
+    },
+    {
+     "title": "III. PHÍ DỊCH VỤ ĐÀO TẠO NHÓM TUYỂN DỤNG HIỆU QUẢ HÀNG THÁNG",
+     "page": 4,
+     "method": "text_heading"
+    },
+    {
+     "title": "IV. PHÍ DỊCH VỤ TUYỂN DỤNG CHUYÊN VIÊN TƯ VẤN THĂNG TIẾN",
+     "page": 4,
+     "method": "text_heading"
+    },
+    {
+     "title": "V. PHÍ DỊCH VỤ NÂNG CAO KỸ NĂNG NHÓM TUYỂN DỤNG TRỰC TIẾP HÀNG QUÝ",
+     "page": 4,
+     "method": "text_heading"
+    },
+    {
+     "title": "1. DANH HIỆU CQL NGOẠI HẠNG QUÝ",
+     "page": 4,
+     "method": "text_heading"
+    },
+    {
+     "title": "2. PHÍ DỊCH VỤ NÂNG CAO KỸ NĂNG NHÓM TUYỂN DỤNG TRỰC TIẾP HÀNG QUÝ",
+     "page": 5,
+     "method": "text_heading"
+    },
+    {
+     "title": "VI. PHÍ DỊCH VỤ NÂNG CAO KỸ NĂNG NHÓM TUYỂN DỤNG TRỰC TIẾP HÀNG NĂM",
+     "page": 5,
+     "method": "text_heading"
+    },
+    {
+     "title": "B. CHÍNH SÁCH ĐỒNG HÀNH CÙNG CVTV MỚI",
+     "page": 6,
+     "method": "text_heading"
+    },
+    {
+     "title": "C. CHÍNH SÁCH THĂNG TIẾN",
+     "page": 8,
+     "method": "text_heading"
+    },
+    {
+     "title": "I. THĂNG TIẾN LÊN VAI TRÒ UM+",
+     "page": 8,
+     "method": "text_heading"
+    },
+    {
+     "title": "II. SDM THĂNG TIẾN LÊN PAF+",
+     "page": 8,
+     "method": "text_heading"
+    },
+    {
+     "title": "III. QUY ĐỊNH CHUNG",
+     "page": 9,
+     "method": "text_heading"
+    },
+    {
+     "title": "D. ĐIỀU KIỆN DUY TRÌ CHỨC DANH",
+     "page": 10,
+     "method": "text_heading"
+    },
+    {
+     "title": "E. QUY ĐỊNH VỀ BÁO CÁO ĐỒNG CẤP",
+     "page": 11,
+     "method": "text_heading"
+    },
+    {
+     "title": "I. SƠ ĐỒ CẤU TRÚC NHÓM",
+     "page": 12,
+     "method": "text_heading"
+    },
+    {
+     "title": "II. THUẬT NGỮ VÀ VIẾT TẮT",
+     "page": 12,
+     "method": "text_heading"
+    },
+    {
+     "title": "III. HỢP ĐỒNG THAY THẾ: VUI LÒNG THAM KHẢO MEMO HIỆN HÀNH VỀ HỢP ĐỒNG",
+     "page": 14,
+     "method": "text_heading"
+    },
+    {
+     "title": "IV. QUY ĐỊNH VỀ CÁCH TÍNH CHỈ TIÊU DOANH SỐ (FYP, FYC TÍN CHỈ, HỢP ĐỒNG…)",
+     "page": 14,
+     "method": "text_heading"
+    },
+    {
+     "title": "V. QUI ĐỊNH VỀ XÉT TRẢ VÀ THU HỒI KHOẢN PHÍ DỊCH VỤ",
+     "page": 14,
+     "method": "text_heading"
+    },
+    {
+     "title": "VI. QUY ĐỊNH VỀ CHẤM CÔNG HÀNG THÁNG",
+     "page": 15,
+     "method": "text_heading"
+    },
+    {
+     "title": "VII. DANH SÁCH KHÓA HỌC",
+     "page": 16,
+     "method": "text_heading"
+    },
+    {
+     "title": "VIII. NGHỈ THAI SẢN:",
+     "page": 16,
+     "method": "text_heading"
+    },
+    {
+     "title": "A. CÔNG THỨC TÍNH TỶ LỆ DUY TRÌ PHÍ THÁNG",
+     "page": 17,
+     "method": "text_heading"
+    },
+    {
+     "title": "B. MỘT SỐ QUY ĐỊNH CHUNG:",
+     "page": 17,
+     "method": "text_heading"
+    },
+    {
+     "title": "C. VÍ DỤ MINH HỌA:",
+     "page": 18,
+     "method": "text_heading"
+    },
+    {
+     "title": "D. QUY ĐỊNH LÀM TRÒN",
+     "page": 21,
+     "method": "text_heading"
+    }
+   ]
+  },
+  {
+   "file_id": "AIAVAD 2601-035",
+   "source_id": "SRC-POL-AIA-ALP-003",
+   "file_name": "(Ref AIAVAD 2601-035)_Chính sách thu nhập năm 2026 dành cho PAF+ 2026_Alpha_To SPVP (cập nhật Huấn luyện).pdf",
+   "local_relative_path": "private/sources/AIA-Alpha/(Ref AIAVAD 2601-035)_Chính sách thu nhập năm 2026 dành cho PAF+ 2026_Alpha_To SPVP (cập nhật Huấn luyện).pdf",
+   "page_count": 18,
+   "bookmarks": [
+    {
+     "title": "PHỤ LỤC 1 - CHÍNH SÁCH DÀNH CHO PAF+ – 2026",
+     "page": 3,
+     "method": "text_heading"
+    },
+    {
+     "title": "A. CHÍNH SÁCH THU NHẬP DÀNH CHO PAF+",
+     "page": 3,
+     "method": "text_heading"
+    },
+    {
+     "title": "1. PHÍ DỊCH VỤ HIỆU QUẢ ĐÀO TẠO CƠ BẢN HÀNG THÁNG",
+     "page": 3,
+     "method": "text_heading"
+    },
+    {
+     "title": "2. PHÍ DỊCH VỤ HIỆU QUẢ ĐÀO TẠO CHUYÊN NGHIỆP HÀNG THÁNG",
+     "page": 4,
+     "method": "text_heading"
+    },
+    {
+     "title": "3. PHÍ DỊCH VỤ HIỆU QUẢ ĐÀO TẠO CHUYÊN NGHIỆP HÀNG QUÝ",
+     "page": 4,
+     "method": "text_heading"
+    },
+    {
+     "title": "4. PHÍ DỊCH VỤ HIỆU QUẢ ĐÀO TẠO CHUYÊN NGHIỆP THÂM NIÊN",
+     "page": 5,
+     "method": "text_heading"
+    },
+    {
+     "title": "B. CHÍNH SÁCH THĂNG TIẾN",
+     "page": 6,
+     "method": "text_heading"
+    },
+    {
+     "title": "C. ĐIỀU KIỆN DUY TRÌ CHỨC DANH",
+     "page": 7,
+     "method": "text_heading"
+    },
+    {
+     "title": "D. QUY ĐỊNH VỀ BÁO CÁO ĐỒNG CẤP",
+     "page": 8,
+     "method": "text_heading"
+    },
+    {
+     "title": "E. ĐỊNH NGHĨA VÀ QUY ĐỊNH CHUNG",
+     "page": 9,
+     "method": "text_heading"
+    },
+    {
+     "title": "A. CÔNG THỨC TÍNH TỈ LỆ DUY TRÌ PHÍ THÁNG",
+     "page": 15,
+     "method": "text_heading"
+    },
+    {
+     "title": "B. MỘT SỐ QUY ĐỊNH CHUNG:",
+     "page": 15,
+     "method": "text_heading"
+    },
+    {
+     "title": "C. VÍ DỤ MINH HỌA:",
+     "page": 16,
+     "method": "text_heading"
+    },
+    {
+     "title": "D. QUY ĐỊNH LÀM TRÒN",
+     "page": 18,
+     "method": "text_heading"
+    }
+   ]
+  },
+  {
+   "file_id": "0046M01_2026",
+   "source_id": "SRC-POL-MNL-002",
+   "file_name": "0046M01_2026_Chinh sach chi tra danh cho Dai Ly.pdf",
+   "local_relative_path": "private/sources/Manulife/0046M01_2026_Chinh sach chi tra danh cho Dai Ly.pdf",
+   "page_count": 11,
+   "bookmarks": [
+    {
+     "title": "A. HỆ SỐ NHÂN CÁC KHOẢN THƯỞNG",
+     "page": 1,
+     "method": "text_heading"
+    },
+    {
+     "title": "II. Hệ số nhân thưởng Chất lượng kinh doanh (",
+     "page": 1,
+     "method": "text_heading"
+    },
+    {
+     "title": "B. CÁC KHOẢN THƯỞNG",
+     "page": 2,
+     "method": "text_heading"
+    },
+    {
+     "title": "I. Thưởng Đại Lý mới",
+     "page": 2,
+     "method": "text_heading"
+    },
+    {
+     "title": "III. Thưởng năng suất tháng",
+     "page": 4,
+     "method": "text_heading"
+    },
+    {
+     "title": "IV. Thưởng năng suất xuất sắc tháng (dành cho Đại Lý Manulife Pro)",
+     "page": 4,
+     "method": "text_heading"
+    },
+    {
+     "title": "V. Thưởng năng suất quý",
+     "page": 5,
+     "method": "text_heading"
+    },
+    {
+     "title": "VI. Thưởng kinh doanh xuất sắc năm",
+     "page": 6,
+     "method": "text_heading"
+    },
+    {
+     "title": "VII. Thưởng M-Star",
+     "page": 7,
+     "method": "text_heading"
+    },
+    {
+     "title": "VIII. Thưởng Khuyến khích phát triển Kinh doanh mới hàng tháng",
+     "page": 8,
+     "method": "text_heading"
+    },
+    {
+     "title": "C. HOA HỒNG, HỖ TRỢ VÀ CÁC QUYỀN LỢI KHÁC",
+     "page": 9,
+     "method": "text_heading"
+    },
+    {
+     "title": "D. QUY ĐỊNH CHUNG",
+     "page": 9,
+     "method": "text_heading"
+    },
+    {
+     "title": "E. ĐỊNH NGHĨA",
+     "page": 10,
+     "method": "text_heading"
+    }
+   ]
+  },
+  {
+   "file_id": "0047M01_2026",
+   "source_id": "SRC-POL-MNL-003",
+   "file_name": "0047M01_2026_Bieu phi dich vu danh cho UM+.pdf",
+   "local_relative_path": "private/sources/Manulife/0047M01_2026_Bieu phi dich vu danh cho UM+.pdf",
+   "page_count": 8,
+   "bookmarks": [
+    {
+     "title": "A. CÁC KHOẢN PHÍ DỊCH VỤ",
+     "page": 1,
+     "method": "text_heading"
+    },
+    {
+     "title": "I. Phí dịch vụ theo năng suất nhóm hàng tháng",
+     "page": 1,
+     "method": "text_heading"
+    },
+    {
+     "title": "II. Phí dịch vụ theo hoạt động nhóm hàng tháng",
+     "page": 1,
+     "method": "text_heading"
+    },
+    {
+     "title": "III. Phí dịch vụ phát triển Đại Lý mới Manulife Pro",
+     "page": 3,
+     "method": "text_heading"
+    },
+    {
+     "title": "IV. Phí dịch vụ phát triển nhóm mới",
+     "page": 4,
+     "method": "text_heading"
+    },
+    {
+     "title": "V. Phí dịch vụ hợp tác dài hạn",
+     "page": 5,
+     "method": "text_heading"
+    },
+    {
+     "title": "B. QUI ĐỊNH CHUNG",
+     "page": 6,
+     "method": "text_heading"
+    },
+    {
+     "title": "C. ĐỊNH NGHĨA",
+     "page": 7,
+     "method": "text_heading"
+    }
+   ]
+  },
+  {
+   "file_id": "0048M01_2026",
+   "source_id": "SRC-POL-MNL-001",
+   "file_name": "0048M01_2026_Bieu phi dich vu danh cho PSM+ & HKD.pdf",
+   "local_relative_path": "private/sources/Manulife/0048M01_2026_Bieu phi dich vu danh cho PSM+ & HKD.pdf",
+   "page_count": 6,
+   "bookmarks": [
+    {
+     "title": "A. CÁC KHOẢN PHÍ DỊCH VỤ",
+     "page": 1,
+     "method": "text_heading"
+    },
+    {
+     "title": "I. Phí dịch vụ cơ bản hàng tháng",
+     "page": 1,
+     "method": "text_heading"
+    },
+    {
+     "title": "II. Phí dịch vụ theo năng suất tháng",
+     "page": 1,
+     "method": "text_heading"
+    },
+    {
+     "title": "III. Phí dịch vụ theo hoạt động quý",
+     "page": 2,
+     "method": "text_heading"
+    },
+    {
+     "title": "IV. Phí dịch vụ hợp tác dài hạn",
+     "page": 3,
+     "method": "text_heading"
+    },
+    {
+     "title": "C. QUY ĐỊNH CHUNG",
+     "page": 5,
+     "method": "text_heading"
+    },
+    {
+     "title": "D. ĐỊNH NGHĨA",
+     "page": 6,
+     "method": "text_heading"
+    }
+   ]
+  },
+  {
+   "file_id": "CHH0DCEB260007V",
+   "source_id": "SRC-POL-CHB-001",
+   "file_name": "CHH0DCEB260007V - Chính sách thu nhập dành cho Đại lý bảo hiểm - Kênh Đại lý.pdf",
+   "local_relative_path": "private/sources/Chubb-Life/CHH0DCEB260007V - Chính sách thu nhập dành cho Đại lý bảo hiểm - Kênh Đại lý.pdf",
+   "page_count": 19,
+   "bookmarks": [
+    {
+     "title": "I. QUY ĐỊNH CHUNG",
+     "page": 3,
+     "method": "text_heading"
+    },
+    {
+     "title": "1. MỤC ĐÍCH",
+     "page": 3,
+     "method": "text_heading"
+    },
+    {
+     "title": "2. PHẠM VI ÁP DỤNG",
+     "page": 3,
+     "method": "text_heading"
+    },
+    {
+     "title": "3. HIỆU LỰC THI HÀNH",
+     "page": 3,
+     "method": "text_heading"
+    },
+    {
+     "title": "4. BẢNG TÓM TẮT CHẾ ĐỘ THU NHẬP",
+     "page": 3,
+     "method": "text_heading"
+    },
+    {
+     "title": "II. CÁC KHOẢN THU NHẬP",
+     "page": 4,
+     "method": "text_heading"
+    },
+    {
+     "title": "1. HOA HỒNG ĐẠI LÝ",
+     "page": 4,
+     "method": "text_heading"
+    },
+    {
+     "title": "2. THƯỞNG HIỆU QUẢ KINH DOANH CÁ NHÂN THEO THÁNG",
+     "page": 4,
+     "method": "text_heading"
+    },
+    {
+     "title": "3. THƯỞNG HIỆU QUẢ KINH DOANH CÁ NHÂN THEO QUÝ",
+     "page": 5,
+     "method": "text_heading"
+    },
+    {
+     "title": "4. THƯỞNG HOẠT ĐỘNG ĐẠI LÝ MỚI",
+     "page": 6,
+     "method": "text_heading"
+    },
+    {
+     "title": "5. THƯỞNG DUY TRÌ CHẤT LƯỢNG HĐBH THEO QUÝ",
+     "page": 6,
+     "method": "text_heading"
+    },
+    {
+     "title": "III. ĐIỀU KIỆN THĂNG CẤP VÀ DUY TRÌ VỊ TRÍ",
+     "page": 7,
+     "method": "text_heading"
+    },
+    {
+     "title": "1. ĐIỀU KIỆN THĂNG CẤP",
+     "page": 7,
+     "method": "text_heading"
+    },
+    {
+     "title": "2. ĐIỀU KIỆN DUY TRÌ VỊ TRÍ",
+     "page": 8,
+     "method": "text_heading"
+    },
+    {
+     "title": "3. QUY ĐỊNH TÍNH TOÁN CHỈ TIÊU THĂNG CẤP VÀ DUY TRÌ VỊ TRÍ",
+     "page": 8,
+     "method": "text_heading"
+    }
+   ]
+  },
+  {
+   "file_id": "CHH0DCEB260008V",
+   "source_id": "SRC-POL-CHB-002",
+   "file_name": "CHH0DCEB260008V - Chính sách về phí dịch vụ dành cho cấp Quản lý kinh doanh, Hỗ trợ kinh doanh - Kênh Đại lý.pdf",
+   "local_relative_path": "private/sources/Chubb-Life/CHH0DCEB260008V - Chính sách về phí dịch vụ dành cho cấp Quản lý kinh doanh, Hỗ trợ kinh doanh - Kênh Đại lý.pdf",
+   "page_count": 14,
+   "bookmarks": [
+    {
+     "title": "1. PHÍ DỊCH VỤ HỖ TRỢ TUYỂN DỤNG VÀ ĐỒNG HÀNH CÙNG ĐẠI DIỆN KINH DOANH MỚI ... 4",
+     "page": 2,
+     "method": "text_heading"
+    },
+    {
+     "title": "I. QUY ĐỊNH CHUNG",
+     "page": 3,
+     "method": "text_heading"
+    },
+    {
+     "title": "1. MỤC ĐÍCH",
+     "page": 3,
+     "method": "text_heading"
+    },
+    {
+     "title": "2. PHẠM VI ÁP DỤNG",
+     "page": 3,
+     "method": "text_heading"
+    },
+    {
+     "title": "3. HIỆU LỰC THI HÀNH",
+     "page": 3,
+     "method": "text_heading"
+    },
+    {
+     "title": "4. BẢNG TÓM TẮT CÁC KHOẢN CHI TRẢ",
+     "page": 3,
+     "method": "text_heading"
+    },
+    {
+     "title": "II. CÁC KHOẢN PHÍ DỊCH VỤ",
+     "page": 4,
+     "method": "text_heading"
+    },
+    {
+     "title": "1. PHÍ DỊCH VỤ HỖ TRỢ TUYỂN DỤNG VÀ ĐỒNG HÀNH CÙNG ĐẠI DIỆN KINH DOANH MỚI",
+     "page": 4,
+     "method": "text_heading"
+    },
+    {
+     "title": "2. PHÍ DỊCH VỤ HỖ TRỢ KHAI THÁC NHÓM",
+     "page": 5,
+     "method": "text_heading"
+    },
+    {
+     "title": "3. PHÍ DỊCH VỤ QUẢN LÝ NHÓM THEO THÁNG",
+     "page": 7,
+     "method": "text_heading"
+    },
+    {
+     "title": "4. PHÍ DỊCH VỤ ĐÀO TẠO NÂNG CAO CHẤT LƯỢNG QUẢN LÝ",
+     "page": 8,
+     "method": "text_heading"
+    },
+    {
+     "title": "5. PHÍ DỊCH VỤ DUY TRÌ CHẤT LƯỢNG HỢP ĐỒNG BẢO HIỂM",
+     "page": 9,
+     "method": "text_heading"
+    },
+    {
+     "title": "PHỤ ĐÍNH III – CHAMPION HUBB VAI TRÒ QUẢN LÝ",
+     "page": 11,
+     "method": "text_heading"
+    }
+   ]
+  },
+  {
+   "file_id": "CHH0DCEB260003V",
+   "source_id": "SRC-POL-CHB-003",
+   "file_name": "CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+   "local_relative_path": "private/sources/Chubb-Life/CHH0DCEB260003V-Chính sách về phí dịch vụ dành cho giám đốc vùng đièu hành.pdf",
+   "page_count": 15,
+   "bookmarks": [
+    {
+     "title": "I. QUY ĐỊNH CHUNG",
+     "page": 3,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "1. MỤC ĐÍCH",
+     "page": 3,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "2. HỆ THỐNG CẤP BẬC",
+     "page": 3,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "3. PHẠM VI ÁP DỤNG",
+     "page": 3,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "4. HIỆU LỰC THI HÀNH",
+     "page": 3,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "5. MỐI QUAN HỆ BÁO CÁO",
+     "page": 4,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "6. BẢNG TÓM TẮT CÁC KHOẢN CHI TRẢ",
+     "page": 4,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "II. CÁC KHOẢN PHÍ DỊCH VỤ",
+     "page": 5,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "1. PHÍ DỊCH VỤ ĐÀO TẠO TIÊU CHUẨN THÁNG",
+     "page": 5,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "2. PHÍ DỊCH VỤ QUẢN LÝ HOẠT ĐỘNG THÁNG",
+     "page": 6,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "3. PHÍ DỊCH VỤ QUẢN LÝ KINH DOANH THÁNG",
+     "page": 6,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "4. PHÍ DỊCH VỤ QUẢN LÝ CHẤT LƯỢNG HOẠT ĐỘNG ĐẠI LÝ BẢO HIỂM THÁNG",
+     "page": 7,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "5. PHÍ DỊCH VỤ QUẢN LÝ VÀ PHÁT TRIỂN KINH DOANH QUÝ",
+     "page": 8,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "6. PHÍ DỊCH VỤ QUẢN LÝ CHẤT LƯỢNG PHỤC VỤ KHÁCH HÀNG QUÝ",
+     "page": 9,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "7. PHÍ DỊCH VỤ ĐÀO TẠO VÀ PHÁT TRIỂN ĐỘI NGŨ TRỰC THUỘC",
+     "page": 10,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "8. PHÍ DỊCH VỤ QUẢN LÝ ĐỘI NGŨ TRỰC THUỘC",
+     "page": 11,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "III. QUY ĐỊNH VỀ NGHIỆM THU PHÍ DỊCH VỤ",
+     "page": 12,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "IV. CHỈ TIÊU THĂNG CẤP VÀ DUY TRÌ CẤP BẬC",
+     "page": 12,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "1. CHỈ TIÊU THĂNG CẤP",
+     "page": 12,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "2. CHỈ TIÊU DUY TRÌ CẤP BẬC",
+     "page": 13,
+     "method": "visual_toc_p2"
+    },
+    {
+     "title": "V. QUY ĐỊNH KHÁC",
+     "page": 13,
+     "method": "visual_toc_p2"
+    }
+   ]
+  }
+ ]
+}

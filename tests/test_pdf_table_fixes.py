@@ -8,8 +8,10 @@ import math
 import unittest
 
 from model.compensation.compensation_engine import (
+    K2_NO_K2_YET,
     calc_aia_cql_12m,
     calc_chubb_al_12m,
+    calc_chubb_al_htktn_month,
     calc_chubb_rd_12m,
     rd_growth_rate,
 )
@@ -91,7 +93,44 @@ class TestChubbAlPersistencyFee(unittest.TestCase):
 
     def test_rejects_non_finite_ryc(self) -> None:
         with self.assertRaises(ValueError):
-            calc_chubb_al_12m([45.0] * 12, [5] * 12, k2_ntt=85.0, quarterly_ryc_ntt_y2_y5=[math.nan, 1.0, 1.0, 1.0])
+            calc_chubb_al_12m([45.0] * 12, [5] * 12, k2_ntt=85.0, quarterly_ryc_ntt_y2_y5=[math.nan, 1.0, 1.0, 1.0],
+                              quarterly_3maa_ntt=[5] * 4)
+
+    def test_missing_3maa_is_missing_input_not_zero(self) -> None:
+        # Audit P2 #1: RYC without 3MAA used to return 0 fee silently.
+        with self.assertRaisesRegex(ValueError, "MISSING_INPUT"):
+            calc_chubb_al_12m([45.0] * 12, [5] * 12, k2_ntt=85.0, quarterly_ryc_ntt_y2_y5=[30.0] * 4)
+        with self.assertRaisesRegex(ValueError, "MISSING_INPUT"):
+            calc_chubb_al_12m([45.0] * 12, [5] * 12, k2_ntt=85.0, quarterly_3maa_ntt=[5] * 4)
+
+
+class TestChubbAlK2Status(unittest.TestCase):
+    """Audit P2 #2: NO_K2_YET (0008V p.5: factor 100%; p.10: counts as met) vs None = UNKNOWN."""
+
+    BASE = dict(monthly_fyc_ntt=[45.0] * 12, monthly_ehc_ntt=[5] * 12, al_tenure_start=15)
+
+    def test_no_k2_yet_runs_end_to_end_for_15_month_manager(self) -> None:
+        r = calc_chubb_al_12m(**self.BASE, k2_ntt=K2_NO_K2_YET,
+                              quarterly_ryc_ntt_y2_y5=[30.0] * 4, quarterly_3maa_ntt=[5] * 4)
+        # Monthly: 45 x 60% (>=40M, EHC>=4, >=15M tenure, p.5) x 100% (no K2 yet, p.5) = 27.0 / month
+        self.assertAlmostEqual(r["ht_ktn_monthly"], 27.0 * 12, places=6)
+        # Persistency: no K2 yet counts as met (p.10): 30 x 15% x 4 quarters = 18.0
+        self.assertAlmostEqual(r["persistency_ryc_quarterly"], 18.0, places=6)
+
+    def test_no_k2_yet_differs_from_observed_k2(self) -> None:
+        r_obs = calc_chubb_al_12m(**self.BASE, k2_ntt=85.0)
+        self.assertAlmostEqual(r_obs["ht_ktn_monthly"], 45.0 * 0.60 * 1.20 * 12, places=6)
+
+    def test_none_is_unknown_and_raises(self) -> None:
+        for tenure in (5, 15):
+            with self.subTest(tenure=tenure), self.assertRaisesRegex(ValueError, "UNKNOWN"):
+                calc_chubb_al_12m([45.0] * 12, [5] * 12, k2_ntt=None, al_tenure_start=tenure)
+        with self.assertRaisesRegex(ValueError, "UNKNOWN"):
+            calc_chubb_al_htktn_month(45.0, 5, None, 15)
+
+    def test_unknown_status_string_rejected(self) -> None:
+        with self.assertRaises(ValueError):
+            calc_chubb_al_12m(**self.BASE, k2_ntt="N/A")
 
 
 class TestAiaCqlIndirectLevels(unittest.TestCase):

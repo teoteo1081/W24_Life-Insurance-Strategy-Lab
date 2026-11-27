@@ -4,7 +4,7 @@ W24 Reproducible Workbook Verification & Excel COM Perturbation Audit (Sections 
 Verifies on TEMPORARY COPIES (never mutating outputs/working/W24_Compensation_Reference_Model_v1.xlsx):
 1. Structural audit: sheet count, formula count, zero formula errors across all sheets.
 2. Live Microsoft Excel COM recalculation (`CalculateFullRebuild`) via `scripts/recalc_excel_com.ps1`.
-3. All 20 Live Excel Golden Tests on `14_QA_Golden_Tests` == PASS.
+3. All Live Excel Golden Tests on `14_QA_Golden_Tests` (20 core + Manulife XL-GT-21..24) == PASS.
 4. All 12 Enterprise Cost scenarios on `11_Hierarchy_Dist_Cost` == 100% parity vs Python engine.
 5. LIVE INPUT PERTURBATION PROOF IN EXCEL COM:
    - Mutates `'04_Policy_Parameters'!C19` from 0.16 -> 0.20 and `'04_Policy_Parameters'!C5`
@@ -88,7 +88,8 @@ def inspect_workbook(xlsx_path: Path) -> dict:
     gt_pass = 0
     gt_fail = 0
     gt_values = {}
-    for r in range(5, 25):
+    r = 5
+    while ws14.cell(r, 1).value:   # đọc đến hết danh sách golden (20 gốc + Manulife XL-GT-21..24)
         tid = ws14.cell(r, 1).value
         st = ws14.cell(r, 8).value
         gt_values[tid] = ws14.cell(r, 6).value
@@ -96,6 +97,7 @@ def inspect_workbook(xlsx_path: Path) -> dict:
             gt_pass += 1
         else:
             gt_fail += 1
+        r += 1
 
     ws11 = wb["11_Hierarchy_Dist_Cost"]
     parity_pass = 0
@@ -234,7 +236,7 @@ def main() -> int:
             "same_sheet_names": same_sheets,
             "rebuilt_formula_count": base_audit["formula_count"],
             "v1_formula_count": v1_audit["formula_count"],
-            "same_20_golden_values": same_gt,
+            "same_golden_values": same_gt,
             "same_12_enterprise_cost_values": same_ent,
             "functional_reproducibility_pass": same_sheets and same_gt and same_ent,
             "note": "Functional reproducibility verified; byte-for-byte XLSX hash differs due to zip timestamps/metadata.",

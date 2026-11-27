@@ -1,0 +1,33 @@
+{
+  "$comment": "4 mốc quy mô dùng chung cho mọi hãng (TJ yêu cầu 2026-11-27). Số người = đại lý sản xuất + quản lý; quản lý không tự bán (ASSUMPTION A3).",
+  "scale_milestones": [
+    {
+      "milestone_id": "M1",
+      "label": "Mốc 1 — Cá nhân",
+      "producing_agents": 1,
+      "org_fyp_month_vnd_m": 30.0,
+      "structure": "1 đại lý, không có đội"
+    },
+    {
+      "milestone_id": "M2",
+      "label": "Mốc 2 — Nhóm 6 người",
+      "producing_agents": 5,
+      "org_fyp_month_vnd_m": 150.0,
+      "structure": "1 quản lý + 5 đại lý trực tiếp"
+    },
+    {
+      "milestone_id": "M3",
+      "label": "Mốc 3 — Ban 15 người",
+      "producing_agents": 15,
+      "org_fyp_month_vnd_m": 450.0,
+      "structure": "1 quản lý + 5 đại lý trực tiếp + 2 quản lý con × 5 đại lý"
+    },
+    {
+      "milestone_id": "M4",
+      "label": "Mốc 4 — Khu vực 45 người",
+      "producing_agents": 45,
+      "org_fyp_month_vnd_m": 1200.0,
+      "structure": "1 quản lý + 5 trực tiếp + 2 ban con (mỗi ban như Mốc 3) + 2 nhóm con × 5"
+    }
+  ]
+}

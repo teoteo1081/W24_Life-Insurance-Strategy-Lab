@@ -1006,13 +1006,13 @@ def build_workbook(out_path: Path = DEFAULT_OUT_XLSX, allow_overwrite_v1: bool =
     # SHEET 14: 14_QA_Golden_Tests (20 Live Excel Formula Assertions!)
     # =========================================================================
     ws14 = wb.create_sheet("14_QA_Golden_Tests")
-    style_title(ws14, 1, "LIVE EXCEL GOLDEN TEST SUITE (20 FORMULA ASSERTIONS — VERIFIED VIA MICROSOFT EXCEL 12.0 COM)", 8)
+    style_title(ws14, 1, "LIVE EXCEL GOLDEN TEST SUITE (24 FORMULA ASSERTIONS — VERIFIED VIA MICROSOFT EXCEL COM)", 8)
     ws14["A3"] = "Overall Test Summary:"
     ws14["A3"].font = FONT_BOLD
-    ws14["B3"] = '=COUNTIF(H5:H24,"PASS")&"/"&COUNTA(H5:H24)&" PASS"'
+    ws14["B3"] = '=COUNTIF(H5:H28,"PASS")&"/"&COUNTA(H5:H28)&" PASS"'
     ws14["B3"].font = FONT_BOLD; ws14["B3"].fill = FILL_PASS
     ws14["D3"] = "Failed Tests:"
-    ws14["E3"] = '=COUNTIF(H5:H24,"FAIL")'
+    ws14["E3"] = '=COUNTIF(H5:H28,"FAIL")'
     ws14["E3"].font = FONT_BOLD
 
     write_table_header(ws14, 4, ["Test_ID", "Category", "Assertion Description", "Target Sheet", "Expected (Hand Calc)", "Excel Formula Actual", "Abs Diff", "Status"])
@@ -1038,6 +1038,57 @@ def build_workbook(out_path: Path = DEFAULT_OUT_XLSX, allow_overwrite_v1: bool =
         ("XL-GT-19", "Chubb RD Cliff", "L02 (K2=55%): Q1-2 Pass & Q3-4 Cliff=0 -> 3MAA = 86.40M", "09_Mgr_Senior_Comp", 86.40, "='09_Mgr_Senior_Comp'!I14"),
         ("XL-GT-20", "MAPA Identity", "MAPA Reverse Manpower for 25,200M FYP = 200.0", "13_MAPA_And_Financial", 200.0, "='13_MAPA_And_Financial'!B6"),
     ]
+    # ---- Sheet 15: Manulife Đại Lý (0046M01/2026) & UM+ (0047M01/2026) — công thức Excel độc lập, so với Python ----
+    sys.path.insert(0, str(REPO / "scripts")); sys.path.insert(0, str(REPO))
+    import build_interview_income_table as _T  # noqa: E402
+    from w24_milestones import load_milestones as _lm  # noqa: E402
+    _ms = _lm()
+    ws15 = wb.create_sheet("15_Manulife_Agent_UMplus")
+    style_title(ws15, 1, "MANULIFE — ĐẠI LÝ (0046M01/2026/ASBD) & QUẢN LÝ ĐẠI LÝ UM+ (0047M01/2026/ASBD) THEO 4 MỐC", 11)
+    ws15["A2"] = "Nguồn: 0046M01 p.1 (hệ số TLDTHD), p.4 (thưởng năng suất tháng), p.5 (thưởng quý); 0047M01 p.1 (năng suất nhóm cấp 1-4), p.2 (hoạt động nhóm, hệ số TLDTHD). Đơn vị: triệu VND/năm. Không danh hiệu Manulife Pro / MBA Pro (tiêu chí không có trong nguồn)."
+    ws15["A2"].font = FONT_NORM
+    write_table_header(ws15, 4, ["Mốc", "FYC/đại lý/tháng", "Số ĐL trực tiếp", "FYC cấp 2/tháng", "FYC cấp 3/tháng", "K2 (%)",
+                                 "Thưởng ĐL năm (tháng+quý)", "UM+ A.I năm", "UM+ A.II năm", "UM+ tổng năm", "Python tổng năm"])
+    _rows = []
+    for _i, _m in enumerate(_ms, 5):
+        fpa = _m.fyp_per_agent * 0.30
+        c2 = 5 * _m.direct_managers * fpa
+        c3 = 5 * _m.grand_sub_units * fpa
+        ws15.cell(_i, 1, _m.label)
+        ws15.cell(_i, 2, round(fpa, 6)).font = FONT_BLUE
+        ws15.cell(_i, 3, _m.direct_agents).font = FONT_BLUE
+        ws15.cell(_i, 4, round(c2, 6)).font = FONT_BLUE
+        ws15.cell(_i, 5, round(c3, 6)).font = FONT_BLUE
+        ws15.cell(_i, 6, 85.0).font = FONT_BLUE
+        b, c, d, e, k = f"B{_i}", f"C{_i}", f"D{_i}", f"E{_i}", f"F{_i}"
+        kag_pre = f"IF({k}<40,{k}/100,IF({k}<55,0.5,IF({k}<65,0.75,1)))"
+        kag_post = f"IF({k}<50,{k}/200,IF({k}<60,0.5,IF({k}<65,0.7,IF({k}<70,0.9,1))))"
+        kum_pre = f"IF({k}>=75,1.15,IF({k}>=70,1.1,IF({k}>=65,1.05,IF({k}>=60,1,IF({k}>=55,0.9,IF({k}>=50,0.75,{k}/100))))))"
+        kum_post = f"IF({k}>=80,1.1,IF({k}>=75,1.05,IF({k}>=70,1,IF({k}>=65,0.9,IF({k}>=60,0.7,IF({k}>=50,0.5,{k}/200))))))"
+        r3 = f"3*{b}"
+        rm = f"IF({r3}>=100,0.5,IF({r3}>=80,0.35,IF({r3}>=60,0.3,IF({r3}>=45,0.25,IF({r3}>=30,0.2,IF({r3}>=15,0.15,IF({r3}>=10,0.1,0)))))))"
+        rq = f"IF({r3}>=120,0.1,IF({r3}>=100,0.08,IF({r3}>=80,0.06,IF({r3}>=60,0.05,IF({r3}>=45,0.04,IF({r3}>=30,0.03,0))))))*IF({rm}>0,2,1)"
+        ws15.cell(_i, 7, f"={b}*{rm}*(3*{kag_pre}+9*{kag_post})+{r3}*{rq}*({kag_pre}+3*{kag_post})").number_format = "#,##0.000"
+        if _m.mid == "M1":
+            ws15.cell(_i, 8, "—"); ws15.cell(_i, 9, "—"); ws15.cell(_i, 10, "—")
+            py = _T.mnl_agent_m1(_m)
+            pyv = py["bonus_monthly_productivity"] + py["bonus_quarterly_productivity"]
+            ws15.cell(_i, 11, round(pyv, 4)).number_format = "#,##0.000"
+            _rows.append((f"XL-GT-21", "Manulife Đại Lý", f"{_m.label}: thưởng năng suất tháng+quý 0046M01 = {pyv:.3f}", pyv, f"='15_Manulife_Agent_UMplus'!G{_i}"))
+            continue
+        c1 = f"({c}*{b})"
+        r1 = f"IF({c1}>=48,0.2,IF({c1}>=24,0.16,IF({c1}>=7,0.14,0.1)))"
+        ws15.cell(_i, 8, f"=12*({c1}*{r1}+{d}*{r1}/2+{e}*{r1}/4)").number_format = "#,##0.000"
+        r2 = f"IF({c}>=6,0.6,IF({c}>=4,0.5,IF({c}>=2,0.4,IF({c}>=1,0.3,0))))"
+        ws15.cell(_i, 9, f"={r2}*{c}*({b}*{rm}*(3*{kag_pre}*{kum_pre}+9*{kag_post}*{kum_post})+{r3}*{rq}*({kag_pre}*{kum_pre}+3*{kag_post}*{kum_post}))").number_format = "#,##0.000"
+        ws15.cell(_i, 10, f"=H{_i}+I{_i}").number_format = "#,##0.000"
+        pyv = _T.mnl_um(_m)[0]["total_earned"]
+        ws15.cell(_i, 11, round(pyv, 4)).number_format = "#,##0.000"
+        _rows.append((f"XL-GT-{20 + len(_rows) + 1}", "Manulife UM+", f"{_m.label}: tổng phí UM+ 0047M01 = {pyv:.3f}", pyv, f"='15_Manulife_Agent_UMplus'!J{_i}"))
+    set_col_widths(ws15, {1: 26, 2: 14, 3: 12, 4: 14, 5: 14, 6: 8, 7: 18, 8: 14, 9: 14, 10: 14, 11: 14})
+    for _tid, _cat, _desc, _pv, _f in _rows:
+        golden_excel.append((_tid, _cat, _desc, "15_Manulife_Agent_UMplus", round(_pv, 3), _f))
+
     for i, gt in enumerate(golden_excel, 5):
         ws14.cell(i, 1, gt[0]).font = FONT_BOLD
         ws14.cell(i, 2, gt[1])

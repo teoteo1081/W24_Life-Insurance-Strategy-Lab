@@ -1,194 +1,188 @@
-# 01 — Bảng soi tiền 3 cấp quản lý & Evidence
+# 01 — Bảng soi tiền theo 4 mốc quy mô & Evidence
 
-> **Trạng thái:** `MODEL_OUTPUT` trên kịch bản chuẩn (`ASSUMPTION`) — chờ TJ duyệt (Giai đoạn 1).
-> Không phải thu nhập thực tế đã quan sát, không phải ROI thực tế.
-> Sinh tự động bởi `scripts/build_interview_income_table.py` từ `model/compensation/compensation_engine.py`; không gõ tay số.
-> Đơn vị: **triệu VNĐ / tháng** = thu nhập được hưởng cả năm (Earned, gồm phần trả chậm) ÷ 12, **trước thuế TNCN**.
+> **Trạng thái:** `MODEL_OUTPUT` trên kịch bản chuẩn (`ASSUMPTION`) — chờ TJ duyệt Giai đoạn 1. Không phải thu nhập thực tế, không phải ROI thực tế.
+> Sinh bởi `scripts/build_interview_income_table.py` từ engine; chức danh từng mốc suy từ điều kiện thăng cấp (`scripts/w24_milestones.py`). Kiểm kê nguồn & Negative Proof: `outputs/interview/00_Role_Mapping_Audit.md`.
+> Đơn vị: **triệu VNĐ / tháng** = thu nhập được hưởng cả năm (gồm phần trả chậm) ÷ 12, **trước thuế TNCN**.
 
-## 1. Kết luận nhanh
+## 1. Kết luận nhanh — mỗi ô ghi chức danh, thu nhập, nguồn điều kiện thăng cấp, nguồn biểu phí
 
-| Cấp (kịch bản) | AIA Alpha | Chubb Life | Manulife | Chi phí quản lý / FYP tổ chức (AIA · Chubb) |
-|---|---:|---:|---:|---|
-| Cấp 1 — Trưởng nhóm (UM): 5 ĐL, 150tr FYP/th | **17,6** | **54,2** | ❓ chưa có tài liệu | 11,7% · 36,1% |
-| Cấp 2 — Trưởng ban (BM): 15 ĐL, 450tr FYP/th | **25,7** | **86,6** | ❓ chưa có tài liệu | 5,7% · 19,2% |
-| Cấp 3 — Trưởng khu vực (DM): 45 ĐL, 1,2 tỷ FYP/th | **37,2** | **134,6** | ❓ chưa có tài liệu | 3,1% · 11,2% |
-| Cấp 3B — cùng khu vực, nếu xếp vào tuyến **lãnh đạo vùng** (AIA PAF+ DSRF · Chubb RD · Manulife PSM) | **144,8** | **186,6** | **105,1** | 12,1% · 15,5% · MNL 8,8% |
+| Mốc | Hãng | Chức danh · tr/tháng (Mốc 1: thu nhập cá nhân; Mốc 2–4: phí quản lý thuần) | Nguồn điều kiện thăng cấp | Nguồn biểu phí tính tiền | Ghi chú / lý do ❓ | Nhãn |
+|---|---|---|---|---|---|---|
+| Mốc 1 — Cá nhân | AIA | **SA** · 18,1 | [AIAVAD 2601-034 : 8] (SA→UM chưa đạt: cần ≥2 người tuyển trong 6 tháng) | [AIAVAD 2604-069 : 3-7] | Hoa hồng FYC/tái tục theo giả định A1, A7 (biểu hoa hồng AIA không có trong nguồn) | `MODEL_OUTPUT` |
+| Mốc 1 — Cá nhân | Chubb | **AR** · 22,5 | [CHH0DCEB260007V : 7] (AR→UM chưa đạt: cần 2 đại lý giới thiệu đạt 3MAA) | [CHH0DCEB260007V : 4-7], hoa hồng [CHH0DCEB260007V : 13-19] | Tỷ lệ hoa hồng theo sản phẩm có trong Phụ đính II; cơ cấu sản phẩm theo A1 | `MODEL_OUTPUT` |
+| Mốc 1 — Cá nhân | Manulife | **Đại Lý** · 17,8 | — điều kiện lên UM+ ở 0013M04/2024 (không có trong nguồn) [0047M01_2026 : 6] | [0046M01_2026 : 1-8] | Hoa hồng cơ bản theo thông báo sản phẩm [0046M01_2026 : 9] → giả định A1, A7 | `MODEL_OUTPUT` |
+| Mốc 2 — Nhóm 6 người | AIA | **SUM** · 17,6 | [AIAVAD 2601-034 : 8] (đạt SUM; DM cần ≥1 UM+ trực tiếp) | [AIAVAD 2601-034 : 3-5] | Phí CQL không phân biệt UM/SUM | `MODEL_OUTPUT` |
+| Mốc 2 — Nhóm 6 người | Chubb | **UM** · 54,2 | [CHH0DCEB260007V : 7] (SM cần ≥1 AL trực tiếp) | [CHH0DCEB260008V : 5-10] | — | `MODEL_OUTPUT` |
+| Mốc 2 — Nhóm 6 người | Manulife | **UM+** · 11,0 | — bậc trong UM+ theo 0013M04/2024 (không có) [0047M01_2026 : 6] | [0047M01_2026 : 1-3] | Không có danh hiệu MBA Pro (tiêu chí 0050M01/2026 không có) → không có phí dài hạn A.V | `MODEL_OUTPUT` |
+| Mốc 3 — Ban 15 người | AIA | **SDM** · 25,7 | [AIAVAD 2601-034 : 8] (PAF cần ≥3 UM+ trực tiếp) | [AIAVAD 2601-034 : 3-5] | — | `MODEL_OUTPUT` |
+| Mốc 3 — Ban 15 người | Chubb | **DM** · 86,6 | [CHH0DCEB260007V : 7] (BD cần 3MAA ≥20, ≥4 AL trực tiếp) | [CHH0DCEB260008V : 5-10] | — | `MODEL_OUTPUT` |
+| Mốc 3 — Ban 15 người | Manulife | **UM+** · 18,2 | — như Mốc 2 [0047M01_2026 : 6] | [0047M01_2026 : 1-3] | Cấp 2 = ½ tỷ lệ cấp 1 | `MODEL_OUTPUT` |
+| Mốc 4 — Khu vực 45 người | AIA | **PAF** · 136,3 | [AIAVAD 2601-034 : 8] (SDM→PAF đạt); [AIAVAD 2601-035 : 6] (AF cần ≥5 UM+) | [AIAVAD 2601-035 : 2-5] + phí CQL trực tiếp [AIAVAD 2601-034 : 3-5] | Không còn phí gián tiếp cấp 2–4 [AIAVAD 2601-035 : 2] | `MODEL_OUTPUT` |
+| Mốc 4 — Khu vực 45 người | Chubb | **RD** (bổ nhiệm) · 186,6 — *so sánh chính* | RD bổ nhiệm theo hợp đồng [CHH0DCEB260003V : 3]; chức danh đạt bằng chỉ tiêu là BD [CHH0DCEB260007V : 7] | [CHH0DCEB260003V : 5-10] | Phụ (tuyến quản lý truyền thống): DM 134,6 [CHH0DCEB260008V : 5-10]. BD: biểu phí không có trong nguồn — Negative Proof `00_Role_Mapping_Audit.md` mục 4.3 | `MODEL_OUTPUT` |
+| Mốc 4 — Khu vực 45 người | Manulife | **PSM/SM** (bổ nhiệm) · 105,1 — *so sánh chính* | PSM+ bổ nhiệm; điều kiện bậc ở 0013M04/2024 (không có) [0048M01_2026 : 5] | [0048M01_2026 : 1-5] | Đạt 100% chỉ tiêu là giả định A8. Phụ: UM+ 28,9 [0047M01_2026 : 1-3] | `MODEL_OUTPUT` |
 
-**Đọc nhanh (`MODEL_OUTPUT`):**
-- Ở tuyến quản lý trung gian (UM/BM/DM), **Chubb trả gấp khoảng 3,1–3,6 lần AIA** với cùng đội ngũ và doanh số. Lý do: Chubb tính phí trực tiếp 60% FYC nhóm × hệ số K2 120% và cộng thêm 50% phí tháng mỗi quý; AIA trả 8–24% FYC nhóm.
-- **AIA đặt 2 cửa khóa:** thưởng quý (3–5 sao) đòi tuyển mới **≥2 CVTV có hoạt động mỗi quý** (Q1 ≥1); thưởng năm trả chậm 15/25/60% vào 2028–2030 và đòi FY nhóm ≥75%, TOT ≥85%.
-- **Manulife:** 7 PDF chỉ có biểu phí **PSM+/HKD** (tuyến lãnh đạo vùng). Biểu phí UM/SUM/DM của Manulife **không có trong tài liệu** (`SRC-GAP-002`) nên cấp 1–3 là `UNKNOWN`, không điền 0.
-- **HKD không rẻ hơn cho công ty theo văn bản:** PSM+ và HKD dùng **cùng một biểu phí** (0048M01 mục A). Khác biệt chỉ ở hợp đồng và thuế (mục C.9–C.10): PSM+ được công ty khấu trừ TNCN; HKD tự xuất hóa đơn và tự nộp thuế. Lợi ích thuế của HKD là `UNKNOWN` cho đến khi Pháp chế/Thuế đối chiếu.
+> **Mốc 2–4 là PHÍ QUẢN LÝ THUẦN, KHÔNG gồm hoa hồng/thưởng tự bán của quản lý** (giả định A3). Vì vậy Mốc 2 của AIA (17,6) và Manulife (11,0) thấp hơn Mốc 1 (đại lý tự bán 30tr FYP). Nếu quản lý vẫn tự bán như Mốc 1, cộng thêm khoảng: AIA 18,1, Chubb 22,5, Manulife 17,8 tr/tháng. Mốc 4 so sánh chính theo tuyến lãnh đạo vùng (AIA PAF · Chubb RD · Manulife PSM/SM) — TJ chọn ngày 2026-11-27; số tuyến quản lý truyền thống (Chubb DM · Manulife UM+) ở cột ghi chú.
 
-## 2. Giả định chuẩn dùng cho mọi hãng (`ASSUMPTION`)
+### 1.1. Giải trình các ô ❓ và số tham chiếu
 
-| # | Giả định | Giá trị | Vì sao / ảnh hưởng |
+**Manulife.** Đã có đủ 3 văn bản: `0046M01_2026` (Đại Lý), `0047M01_2026` (UM+), `0048M01_2026` (PSM+/HKD). Còn 3 chỗ phải giả định, có ghi trong bảng: (a) hoa hồng cơ bản theo từng sản phẩm không có trong 0046M01 `[0046M01_2026 : 9]`; (b) bậc cụ thể trong UM+ và điều kiện lên PSM+ nằm ở 0013M04/2024 `[0047M01_2026 : 6]`; (c) danh hiệu Manulife Pro / MBA Pro (0011M04/2024, 0050M01/2026) — mặc định **không có danh hiệu** nên không có thưởng KDXS năm, thưởng xuất sắc tháng, phí dài hạn A.V. Nhật ký tìm kiếm: `00_Role_Mapping_Audit.md` mục 4.3.
+
+**Chubb BD Mốc 4.** Khu vực 45 người đạt điều kiện DM → BD `[CHH0DCEB260007V : 7]`. BD thuộc Ban Điều hành và Phát triển Kinh doanh (AMD) `[CHH0DCEB260003V : 3]`, không còn là AL nên không hưởng biểu phí AL (bảng tóm tắt 0008V chỉ có AR/UM/SM/DM `[CHH0DCEB260008V : 3]`). Biểu phí của chính BD không nằm trong file nào: 0003V áp dụng cho RD `[CHH0DCEB260003V : 3]` và chỉ nhắc tên 6 khoản phí của BD để làm căn cứ tính phí cho RD quản lý `[CHH0DCEB260003V : 10-11]`. Hai số DM (134,6) và RD (186,6) là **tham chiếu**: DM là nếu người đó chưa nhận thăng cấp, RD là chức danh do công ty bổ nhiệm theo hợp đồng, không phải chức danh đạt được bằng chỉ tiêu.
+
+**Đọc nhanh:**
+- Cùng quy mô, **chức danh đạt được khác nhau**: nhóm 5 đại lý đủ điều kiện **SUM** ở AIA nhưng chỉ **UM** ở Chubb; ban 15 đại lý là **SDM** (AIA) và **DM** (Chubb); khu vực 45 đại lý lên **PAF** (AIA) và **BD** (Chubb).
+- Ở tuyến quản lý (Mốc 2–3), **Chubb trả khoảng 3,1–3,4 lần AIA** cho cùng đội ngũ: Chubb trả 60% FYC nhóm × 120% (K2 ≥80%) + 50% mỗi quý; AIA trả 8–24% FYC nhóm.
+- Ở Mốc 4, AIA chuyển sang tuyến **PAF+** có phí cố định và vẫn giữ phí CQL trên nhóm trực tiếp ("con đường sự nghiệp kép"), nhưng **mất phí gián tiếp cấp 2–4** `[AIAVAD 2601-035 : 2]`.
+- **AIA thưởng quý cần người mới có hoạt động:** **3 sao cần ≥1 người/quý**; **4–5 sao cần ≥1 ở Q1/2026 và ≥2 từ Q2/2026** `[AIAVAD 2601-034 : 4]`.
+- **Manulife UM+ trả thấp nhất ở tuyến quản lý**: 11,0 / 18,2 / 28,9 tr/tháng ở Mốc 2/3/4 — chỉ 10–20% FYC cấp 1 (`[0047M01_2026 : 1]`) và phí hoạt động tính trên **thưởng** của đại lý chứ không trên FYC (`[0047M01_2026 : 1-2]`). Không có danh hiệu MBA Pro thì mất phí dài hạn.
+
+### 1.2. Ghi chú độ nhạy — Manulife có danh hiệu MBA Pro / Manulife Pro (chạy ở Giai đoạn 2, `HYPOTHESIS`)
+
+Base case = **không có danh hiệu** (tiêu chí ở 0050M01/2026 và 0011M04/2024, không có trong 9 PDF). Nếu có MBA Pro: phí hoạt động nhóm UM+ tăng từ 50% lên 100% (4–5 người sản xuất) hoặc 125% (≥6) `[0047M01_2026 : 2]`, phí phát triển đại lý mới từ 50% lên 100% `[0047M01_2026 : 3]`, thêm phí hợp tác dài hạn 80/100/125% × (A.II + A.III), trả chậm 30/30/40% `[0047M01_2026 : 5-6]`. Đại lý có Manulife Pro: thêm thưởng xuất sắc tháng và thưởng KDXS năm `[0046M01_2026 : 4-7]`.
+
+## 2. Giả định chung (`ASSUMPTION`)
+
+| # | Giả định | Giá trị | Ghi chú |
 |---|---|---|---|
-| A1 | FYC / FYP | 30% | Giả định chung của repo. Thiếu biểu hoa hồng AIA và memo FYC tín chỉ (`SRC-GAP-001`); cơ cấu sản phẩm thật chưa có. AIA tính trên **FYC tín chỉ**, ở đây coi = FYC. |
-| A2 | Tỷ lệ duy trì | K2 = 85% cho cả 3 hãng | AIA dùng **FY** (14 tháng) và **TOT**; Manulife dùng **TLDTHD**; Chubb dùng **K2 NTT**. Coi cả ba = 85%. Công thức gốc của từng hãng nằm ở văn bản chưa có (260005V, 0016M03/2024). |
-| A3 | Quản lý không tự bán | 0 doanh số cá nhân | So sánh thuần thu nhập quản lý. Lưu ý: FYC nhóm trực tiếp của AIA **có** gồm bán cá nhân của CQL, của Chubb thì **không**. |
-| A4 | Đại lý hoạt động | Cả đội hoạt động mọi tháng; mỗi đại lý ≥1 HĐ và ≥4tr FYC | FYC mỗi đại lý: 9tr (cấp 1–2), 8tr (cấp 3). Chubb: coi mọi đại lý đạt **EHC** và **3MAA**; định nghĩa EHC nằm ở 260005V (chưa có). |
-| A5 | Cấu trúc tổ chức | Cấp 1: 1 nhóm 5 người. Cấp 2: nhóm trực tiếp 5 + 2 UM con × 5. Cấp 3: nhóm trực tiếp 5 + 2 BM con (mỗi BM như cấp 2) + 2 UM con = 45 | Thu nhập phụ thuộc mạnh vào cấu trúc; xem độ nhạy ở mục 5. |
-| A6 | Tuyển dụng (AIA) | CVTV mới có hoạt động/quý ở nhóm trực tiếp: [1, 2, 2, 2] | Cần để đạt danh hiệu 3–5 sao quý. Không cộng FYC và phí đồng hành của người mới (giữ quy mô 5 người). |
-| A7 | Thâm niên | Quản lý ≥15 tháng, ổn định cả năm 2026 | Chubb AL ≥15 tháng được bảng phí cao hơn; phí RYC cần ≥13 tháng. |
-| A8 | RYC (chỉ Chubb dùng) | RYC/năm = FYP năm × K2 × 20% + FYP năm × K2 × 0.92 × 10% | Giả định tái tục chung của repo (`scripts/agent_income_multiyear.py`); chỉ tính HĐ năm 2–3 nên thấp hơn thực tế. |
-| A10 | Cấp 3B | AIA PAF+ bậc DSRF năm 1 (chỉ tiêu 12.000tr FYP/năm); Manulife PSM/SM phí cơ bản 35tr, đạt 100% chỉ tiêu FYP và 1mAA; Chubb RD FYP đi ngang so với cùng kỳ | Chọn bậc PAF+ có chỉ tiêu gần nhất mà không vượt 14.400tr/năm. Bảng chỉ tiêu Manulife và quy định cấp bậc (0013M04/2024) không có. |
-| A9 | Thời điểm | Cả năm 2026; hệ số K2 Manulife đổi từ 04/2026 | Manulife: tháng 1–3 hệ số 115%, từ tháng 4 hệ số 110% ở K2 85%. |
+| A1 | FYC / FYP | 30% | Thiếu biểu hoa hồng AIA và memo FYC tín chỉ (00 mục 4). AIA tính trên **FYC tín chỉ**, coi = FYC. |
+| A2 | Tỷ lệ duy trì | K2 = FY = TLDTHD = 85% | Công thức gốc từng hãng nằm ở văn bản không có trong nguồn (260005V, 0016M03/2024). |
+| A3 | Quản lý tự bán | 2 HĐ / 6 tháng (để giữ điều kiện AIA), FYC không đáng kể | So sánh thuần thu nhập quản lý ở Mốc 2–4. |
+| A4 | Hoạt động | Mọi đại lý hoạt động mỗi tháng, ≥1 HĐ và ≥4tr FYC; Chubb: mọi đại lý đạt EHC/3MAA | Định nghĩa EHC ở 260005V (không có trong nguồn). |
+| A5 | Cấu trúc | Theo `knowledge/policies/scale-milestones.json` | Mốc 2: 1 QL + 5 ĐL; Mốc 3: + 2 quản lý con × 5; Mốc 4: 5 trực tiếp + 2 ban con + 2 nhóm con. |
+| A6 | Tuyển mới | CVTV mới có hoạt động/quý: [1, 2, 2, 2] | Đủ cho 4–5 sao AIA và 3MAA mới của Chubb. |
+| A7 | Tái tục | RYC/năm = FYP × K2 × 20% + FYP × K2 × 0.92 × 10% | Giả định chung của repo; chỉ HĐ năm 2–3. |
+| A8 | Mốc 4 | AIA PAF năm 1; Manulife PSM/SM phí cơ bản 35tr, đạt 100% chỉ tiêu; Chubb RD FYP đi ngang | Bảng chỉ tiêu Manulife không có trong nguồn. |
 
-## 3. Quy đổi chức danh ngang hàng
+## 3. Chi tiết từng mốc — mỗi con số kèm trích dẫn
 
-| Cấp trong bài | AIA Alpha | Chubb Life | Manulife | Nguồn |
-|---|---|---|---|---|
-| Cấp 1 — Trưởng nhóm | UM (CQL) | AL — UM | UM — ❓ không có tài liệu | 2601-034 tr.2; 0008V tr.3 |
-| Cấp 2 — Trưởng ban | SUM (CQL) | AL — SM | SUM — ❓ | như trên |
-| Cấp 3 — Trưởng khu vực | DM (CQL) | AL — DM | DM — ❓ | như trên |
-| Cấp 3B — Lãnh đạo vùng | PAF+ (DSRF) | RD | PSM/SM hoặc HKD1/2 | 2601-035; 0003V; 0048M01 |
+### Mốc 1 — Cá nhân — 1 đại lý, 30,0tr FYP/tháng (FYC 9,0tr)
 
-Biểu phí CQL của AIA **không phân biệt UM/SUM/DM**: cấp bậc chỉ ảnh hưởng điều kiện thăng/giữ cấp và việc được hưởng gián tiếp. Chubb phân biệt theo cấp ở phí gián tiếp: UM chỉ có L1, SM có L1–L2, DM có L1–L3 (0008V tr.7).
+| Hãng · chức danh | Khoản | tr/tháng | Công thức với số của kịch bản | Trích dẫn | Nhãn |
+|---|---|---:|---|---|---|
+| AIA · SA | Hoa hồng trực tiếp (FYC) | 9,0 | FYC 9,0/tháng (A1) | — | `ASSUMPTION` |
+| AIA · SA | Hoa hồng tái tục năm 2–3 | 7,4 | A7 | — | `ASSUMPTION` |
+| AIA · SA | Trợ cấp cố định | — | Không có cho SA (trợ cấp Exchange/Pro nằm ở văn bản riêng, không có trong nguồn) | [AIAVAD 2604-069 : 3] | `VERIFIED FACT` |
+| AIA · SA | Thưởng sản xuất quý | 1,1 | % theo FYC tín chỉ quý × hệ số FY | [AIAVAD 2604-069 : 5] | `MODEL_OUTPUT` |
+| AIA · SA | Thưởng Chuyên viên Ngoại hạng quý | 0,5 | Theo danh hiệu sao quý | [AIAVAD 2604-069 : 6] | `MODEL_OUTPUT` |
+| AIA · SA | Thưởng chất lượng phục vụ (SYC) quý | 0,0 | % SYC quý | [AIAVAD 2604-069 : 6] | `MODEL_OUTPUT` |
+| AIA · SA | Thưởng sản xuất năm | 0,0 | % FYC năm × hệ số FY | [AIAVAD 2604-069 : 7] | `MODEL_OUTPUT` |
+| **AIA · SA** | **Tổng** | **18,1** | FYC + SYC + thưởng + tái tục năm 3 | [AIAVAD 2604-069 : 5-7] | `MODEL_OUTPUT` |
+| Chubb · AR | Hoa hồng trực tiếp (FYC) | 9,0 | FYC 9,0/tháng (A1); tỷ lệ theo sản phẩm ở Phụ đính II | [CHH0DCEB260007V : 13-19] | `ASSUMPTION` |
+| Chubb · AR | Hoa hồng tái tục (RYC) | 7,4 | A7 | — | `ASSUMPTION` |
+| Chubb · AR | Trợ cấp cố định | — | Không có trong bảng tóm tắt 5 khoản thu nhập | [CHH0DCEB260007V : 3] | `VERIFIED FACT` |
+| Chubb · AR | Thưởng HQKD tháng | 3,8 | FYC × 35% (FYC 3 tháng 27,0tr: bậc 20–<40) × 120% (K2 ≥80%) | [CHH0DCEB260007V : 4] | `MODEL_OUTPUT` |
+| Chubb · AR | Thưởng HQKD quý | 1,1 | 30% tổng thưởng tháng trong quý (3 tháng đạt EHC) | [CHH0DCEB260007V : 5-6] | `MODEL_OUTPUT` |
+| Chubb · AR | Thưởng duy trì HĐ quý (RYC) | 1,1 | 15% RYC năm 2–5 (3 lượt EHC/quý, K2 ≥65%) | [CHH0DCEB260007V : 6-7] | `MODEL_OUTPUT` |
+| **Chubb · AR** | **Tổng** | **22,5** | FYC + RYC + thưởng | [CHH0DCEB260007V : 4-7] | `MODEL_OUTPUT` |
+| Manulife · Đại Lý | Hoa hồng trực tiếp (FYC) | 9,0 | FYC 9,0/tháng (A1); bảng hoa hồng theo thông báo sản phẩm (không có) | [0046M01_2026 : 9] | `ASSUMPTION` |
+| Manulife · Đại Lý | Hoa hồng tái tục | 7,4 | A7 | — | `ASSUMPTION` |
+| Manulife · Đại Lý | Trợ cấp cố định | — | Không có trong 8 khoản thưởng B.I–B.VIII | [0046M01_2026 : 2-8] | `VERIFIED FACT` |
+| Manulife · Đại Lý | Thưởng năng suất tháng | 1,3 | FYC × 15% (FYC 3 tháng 27,0tr ≥15) × hệ số TLDTHD 100% | [0046M01_2026 : 4] | `MODEL_OUTPUT` |
+| Manulife · Đại Lý | Thưởng năng suất quý | 0,0 | FYC quý 27,0tr < 30tr (mức 2, >6 tháng) → 0 | [0046M01_2026 : 5] | `MODEL_OUTPUT` |
+| Manulife · Đại Lý | M-Star quý/năm | 0,0 | FYP lũy kế quý 1 = 90,0tr < 90% × 160tr → 0 | [0046M01_2026 : 7-8] | `MODEL_OUTPUT` |
+| **Manulife · Đại Lý** | **Tổng** | **17,8** | FYC + tái tục + thưởng; không danh hiệu Manulife Pro | [0046M01_2026 : 4-8] | `MODEL_OUTPUT` |
 
-## 4.1. Cấp 1 — Trưởng nhóm (UM): 5 ĐL, 150tr FYP/th
+### Mốc 2 — Nhóm 6 người — 5 đại lý, 150,0tr FYP/tháng; FYC nhóm trực tiếp 45,0tr
 
-FYC tổ chức = 45,0tr/tháng. FYC nhóm trực tiếp của người quản lý = 45,0tr/tháng.
+| Hãng · chức danh | Khoản | tr/tháng | Công thức với số của kịch bản | Trích dẫn | Nhãn |
+|---|---|---:|---|---|---|
+| AIA · SUM | Hoa hồng trực tiếp | — | Quản lý không tự bán đáng kể (A3) | — | `ASSUMPTION` |
+| AIA · SUM | Trợ cấp cố định | — | Không có trong chính sách CQL | [AIAVAD 2601-034 : 3-7] | `VERIFIED FACT` |
+| AIA · SUM | Phí tuyển dụng hiệu quả tháng | 8,1 | FYC nhóm 45,0 × 18% (≥20tr, FY ≥80%) | [AIAVAD 2601-034 : 3] | `MODEL_OUTPUT` |
+| AIA · SUM | Phí tuyển dụng chất lượng tháng | 3,6 | FYC nhóm × 8% (≥4 lượt hoạt động) × 100% (FY ≥70%) | [AIAVAD 2601-034 : 3] | `MODEL_OUTPUT` |
+| AIA · SUM | Phí quý (4 sao) | 3,6 | FYC quý 135,0 × 8% (≥80tr, ≥9 lượt, người mới theo A6) | [AIAVAD 2601-034 : 4-5] | `MODEL_OUTPUT` |
+| AIA · SUM | Phí năm (trả chậm 15/25/60%) | 2,2 | FYC năm 540,0 × 5% (≥3 quý 4 sao); trả 2028–2030 nếu TOT ≥85% | [AIAVAD 2601-034 : 5] | `MODEL_OUTPUT` |
+| **AIA · SUM** | **Tổng** | **17,6** | tiền mặt 2026: 15,3 | [AIAVAD 2601-034 : 3-5] | `MODEL_OUTPUT` |
+| Chubb · UM | Hoa hồng trực tiếp | — | Quản lý không tự bán đáng kể (A3) | — | `ASSUMPTION` |
+| Chubb · UM | Trợ cấp cố định | — | Không có trong bảng tóm tắt 5 khoản của AL | [CHH0DCEB260008V : 3] | `VERIFIED FACT` |
+| Chubb · UM | HT KTN tháng | 32,4 | FYC NTT 45,0 × 60% (≥40tr, EHC ≥4, ≥15 tháng) × 120% (K2 ≥80%) | [CHH0DCEB260008V : 5] | `MODEL_OUTPUT` |
+| Chubb · UM | HT KTN quý | 16,2 | Phí tháng trong quý × 50% (FYC NTT quý 135,0 ≥100tr) | [CHH0DCEB260008V : 6] | `MODEL_OUTPUT` |
+| Chubb · UM | Duy trì chất lượng HĐ (RYC) | 5,6 | RYC NTT quý 111,7 (A7) × 15% (3MAA ≥5, K2 ≥65%) | [CHH0DCEB260008V : 9-10] | `MODEL_OUTPUT` |
+| **Chubb · UM** | **Tổng** | **54,2** | trả tiền mặt trong năm | [CHH0DCEB260008V : 5-10] | `MODEL_OUTPUT` |
+| Manulife · UM+ | Hoa hồng trực tiếp | — | Quản lý không tự bán đáng kể (A3) | — | `ASSUMPTION` |
+| Manulife · UM+ | Trợ cấp cố định | — | Không có trong biểu phí UM+ (5 khoản A.I–A.V) | [0047M01_2026 : 1-6] | `VERIFIED FACT` |
+| Manulife · UM+ | Phí năng suất nhóm (cấp 1–4) | 7,2 | Cấp 1 FYC 45,0 × 16% (24–<48) + cấp 2 0,0 × 8% + cấp 3 0,0 × 4% | [0047M01_2026 : 1] | `MODEL_OUTPUT` |
+| Manulife · UM+ | Phí hoạt động nhóm | 3,8 | 50% (5 người sản xuất) × thưởng năng suất của cấp 1 × TLDTHD 115% (T1–3) / 110% | [0047M01_2026 : 1-2] | `MODEL_OUTPUT` |
+| Manulife · UM+ | Phí hợp tác dài hạn | 0,0 | Chỉ cho MBA Pro (tiêu chí 0050M01/2026 không có) → 0 | [0047M01_2026 : 5] | `ASSUMPTION` |
+| **Manulife · UM+** | **Tổng** | **11,0** | trả tiền mặt trong năm | [0047M01_2026 : 1-3] | `MODEL_OUTPUT` |
 
-| Khoản (tr/tháng) | AIA Alpha | Chubb Life | Manulife |
-|---|---:|---:|---:|
-| (1) Phí dịch vụ trực tiếp hàng tháng | 11,7 | 32,4 | ❓ |
-| (2) Trợ cấp / phí cố định | — *(không có khoản này)* | — *(không có khoản này)* | ❓ |
-| (3) Override gián tiếp (trên quản lý con) | — | — | ❓ |
-| (4) Thưởng quý quy đổi tháng | 3,6 | 16,2 | ❓ |
-| (5) Thưởng năm quy đổi tháng (**trả chậm**) | 2,2 | — *(không có khoản này)* | ❓ |
-| (6) Phí duy trì HĐ theo RYC | — *(không có khoản này)* | 5,6 | ❓ |
-| **Tổng được hưởng / tháng** | **17,6** | **54,2** | ❓ |
-| Trong đó tiền mặt năm 2026 | 15,3 | 54,2 | ❓ |
-| % FYP tổ chức | 11,7% | 36,1% | ❓ |
+### Mốc 3 — Ban 15 người — 15 đại lý, 450,0tr FYP/tháng; FYC nhóm trực tiếp 45,0tr
 
-**Evidence từng con số:**
+| Hãng · chức danh | Khoản | tr/tháng | Công thức với số của kịch bản | Trích dẫn | Nhãn |
+|---|---|---:|---|---|---|
+| AIA · SDM | Hoa hồng trực tiếp | — | Quản lý không tự bán đáng kể (A3) | — | `ASSUMPTION` |
+| AIA · SDM | Trợ cấp cố định | — | Không có trong chính sách CQL | [AIAVAD 2601-034 : 3-7] | `VERIFIED FACT` |
+| AIA · SDM | Phí tuyển dụng hiệu quả tháng | 8,1 | FYC nhóm 45,0 × 18% (≥20tr, FY ≥80%) | [AIAVAD 2601-034 : 3] | `MODEL_OUTPUT` |
+| AIA · SDM | Phí tuyển dụng chất lượng tháng | 3,6 | FYC nhóm × 8% (≥4 lượt hoạt động) × 100% (FY ≥70%) | [AIAVAD 2601-034 : 3] | `MODEL_OUTPUT` |
+| AIA · SDM | Phí gián tiếp (CQL con) | 8,1 | 50% × phí A của 2 CQL con (8,1/tháng mỗi người) | [AIAVAD 2601-034 : 4] | `MODEL_OUTPUT` |
+| AIA · SDM | Phí quý (4 sao) | 3,6 | FYC quý 135,0 × 8% (≥80tr, ≥9 lượt, người mới theo A6) | [AIAVAD 2601-034 : 4-5] | `MODEL_OUTPUT` |
+| AIA · SDM | Phí năm (trả chậm 15/25/60%) | 2,2 | FYC năm 540,0 × 5% (≥3 quý 4 sao); trả 2028–2030 nếu TOT ≥85% | [AIAVAD 2601-034 : 5] | `MODEL_OUTPUT` |
+| **AIA · SDM** | **Tổng** | **25,7** | tiền mặt 2026: 23,4 | [AIAVAD 2601-034 : 3-5] | `MODEL_OUTPUT` |
+| Chubb · DM | Hoa hồng trực tiếp | — | Quản lý không tự bán đáng kể (A3) | — | `ASSUMPTION` |
+| Chubb · DM | Trợ cấp cố định | — | Không có trong bảng tóm tắt 5 khoản của AL | [CHH0DCEB260008V : 3] | `VERIFIED FACT` |
+| Chubb · DM | HT KTN tháng | 32,4 | FYC NTT 45,0 × 60% (≥40tr, EHC ≥4, ≥15 tháng) × 120% (K2 ≥80%) | [CHH0DCEB260008V : 5] | `MODEL_OUTPUT` |
+| Chubb · DM | Quản lý nhóm L1 | 32,4 | 50% × HT KTN tháng của 2 AL con (32,4/tháng mỗi người) | [CHH0DCEB260008V : 7] | `MODEL_OUTPUT` |
+| Chubb · DM | HT KTN quý | 16,2 | Phí tháng trong quý × 50% (FYC NTT quý 135,0 ≥100tr) | [CHH0DCEB260008V : 6] | `MODEL_OUTPUT` |
+| Chubb · DM | Duy trì chất lượng HĐ (RYC) | 5,6 | RYC NTT quý 111,7 (A7) × 15% (3MAA ≥5, K2 ≥65%) | [CHH0DCEB260008V : 9-10] | `MODEL_OUTPUT` |
+| **Chubb · DM** | **Tổng** | **86,6** | trả tiền mặt trong năm | [CHH0DCEB260008V : 5-10] | `MODEL_OUTPUT` |
+| Manulife · UM+ | Hoa hồng trực tiếp | — | Quản lý không tự bán đáng kể (A3) | — | `ASSUMPTION` |
+| Manulife · UM+ | Trợ cấp cố định | — | Không có trong biểu phí UM+ (5 khoản A.I–A.V) | [0047M01_2026 : 1-6] | `VERIFIED FACT` |
+| Manulife · UM+ | Phí năng suất nhóm (cấp 1–4) | 14,4 | Cấp 1 FYC 45,0 × 16% (24–<48) + cấp 2 90,0 × 8% + cấp 3 0,0 × 4% | [0047M01_2026 : 1] | `MODEL_OUTPUT` |
+| Manulife · UM+ | Phí hoạt động nhóm | 3,8 | 50% (5 người sản xuất) × thưởng năng suất của cấp 1 × TLDTHD 115% (T1–3) / 110% | [0047M01_2026 : 1-2] | `MODEL_OUTPUT` |
+| Manulife · UM+ | Phí hợp tác dài hạn | 0,0 | Chỉ cho MBA Pro (tiêu chí 0050M01/2026 không có) → 0 | [0047M01_2026 : 5] | `ASSUMPTION` |
+| **Manulife · UM+** | **Tổng** | **18,2** | trả tiền mặt trong năm | [0047M01_2026 : 1-3] | `MODEL_OUTPUT` |
 
-| Hãng · khoản | tr/tháng | File PDF · mục · trang | Công thức với số của kịch bản |
-|---|---:|---|---|
-| AIA · (1a) tuyển dụng hiệu quả | 8,1 | AIAV/AD/2601-034 — CS thu nhập 2026 cho CQL Alpha · A.I · tr.3 | FYC nhóm 45,0 × 18% (bậc ≥20tr, FY ≥80%) |
-| AIA · (1b) tuyển dụng chất lượng | 3,6 | AIAV/AD/2601-034 — CS thu nhập 2026 cho CQL Alpha · A.II · tr.3 | FYC nhóm 45,0 × 8% (≥4 lượt CVTV hoạt động) × hệ số FY 100% (FY ≥70%) |
-| AIA · (4) quý | 3,6 | AIAV/AD/2601-034 — CS thu nhập 2026 cho CQL Alpha · A.V.1–2 · tr.4–5 | FYC quý 135,0 × 8% (4 sao: FYC quý, lượt hoạt động quý, CVTV mới ≥1 Q1 / ≥2 Q2+, FY ≥75%) |
-| AIA · (5) năm, trả chậm | 2,2 | AIAV/AD/2601-034 — CS thu nhập 2026 cho CQL Alpha · A.VI · tr.5 | FYC năm 540,0 × 5% (4 sao toàn năm = ≥3 quý). Trả 15% (01/2028), 25% (01/2029), 60% (01/2030) nếu còn là CQL và TOT ≥85% |
-| Chubb · (1) HT KTN tháng | 32,4 | CHH0DCEB260008V — Phí dịch vụ cấp Quản lý KD (AL) · II.2.1 · tr.5 | FYC NTT 45,0 × 60% (≥40tr, EHC ≥4, ≥15 tháng QL) × 120% (K2 NTT ≥80%) |
-| Chubb · (4) HT KTN quý | 16,2 | CHH0DCEB260008V — Phí dịch vụ cấp Quản lý KD (AL) · II.2.2 · tr.6 | Tổng phí HT KTN tháng trong quý × 50% (FYC NTT quý 135,0 ≥100tr) |
-| Chubb · (6) duy trì chất lượng HĐ | 5,6 | CHH0DCEB260008V — Phí dịch vụ cấp Quản lý KD (AL) · II.5 · tr.9–10 | RYC NTT quý 111,7 (A8) × 15% (3MAA NTT ≥5), K2 NTT ≥65%, ≥13 tháng |
-| AIA · (2) / Chubb · (2) trợ cấp cố định | — | 2601-034 mục A–B; 0008V tr.3 bảng tóm tắt | Văn bản không có khoản trợ cấp cố định cho CQL/AL (`VERIFIED FACT`: đã đọc đủ mục lục) |
-| Manulife · mọi khoản | ❓ | — | Biểu phí UM/SUM/DM của Manulife không có trong 7 PDF (`SRC-GAP-002`) → `UNKNOWN` |
+### Mốc 4 — Khu vực 45 người — 45 đại lý, 1.200,0tr FYP/tháng (FYC 360,0tr)
 
-## 4.2. Cấp 2 — Trưởng ban (BM): 15 ĐL, 450tr FYP/th
+| Hãng · chức danh | Khoản | tr/tháng | Công thức với số của kịch bản | Trích dẫn | Nhãn |
+|---|---|---:|---|---|---|
+| AIA · PAF | Phí cơ bản (cố định theo chức danh) | 24,0 | 20tr × 120% (đạt ≥115% chỉ tiêu FYP tháng) × hệ số chuyên cần 100% | [AIAVAD 2601-035 : 3] | `MODEL_OUTPUT` |
+| AIA · PAF | Phí chuyên môn tháng | 38,5 | FYC × (6% × hệ số FY 120% + 3,5% theo 1mAA) | [AIAVAD 2601-035 : 4] | `MODEL_OUTPUT` |
+| AIA · PAF | Phí chuyên môn quý | 34,2 | FYC quý × (5% × 120% + 3,5%) khi đạt ≥130% chỉ tiêu | [AIAVAD 2601-035 : 4-5] | `MODEL_OUTPUT` |
+| AIA · PAF | Phí vượt chỉ tiêu | 24,0 | (FYP năm − 1.800) × 5%, tối đa = phí cơ bản năm | [AIAVAD 2601-035 : 5] | `MODEL_OUTPUT` |
+| AIA · PAF | Phí CQL trên nhóm trực tiếp (Dual Career) | 15,6 | Như CQL: FYC nhóm 40,0 × 18% + 8% + quý 4 sao + năm 5%; KHÔNG có gián tiếp cấp 2–4 | [AIAVAD 2601-035 : 2] | `MODEL_OUTPUT` |
+| **AIA · PAF** | **Tổng** | **136,3** | PAF+ + CQL trực tiếp | [AIAVAD 2601-035 : 2-5] | `MODEL_OUTPUT` |
+| Chubb · BD | Mọi khoản | ❓ | Biểu phí dành cho BD (0003V chỉ dẫn chiếu "Chính sách 2026 dành cho BD") | Không có trong nguồn — Negative Proof: `00_Role_Mapping_Audit.md` mục 4.3 | `UNKNOWN` |
+| Chubb · tham chiếu: nếu vẫn là DM (AL) | Tổng | 134,6 | HT KTN tháng + quý + L1 (4 AL con) + L2 (4 UM) + RYC | [CHH0DCEB260008V : 5-10] | `MODEL_OUTPUT` |
+| Chubb · tham chiếu: RD (bổ nhiệm theo hợp đồng) | Tổng | 186,6 | Đào tạo 25 + hoạt động 8 + kinh doanh 12 + 12% FYC + tăng trưởng 2,5% (đi ngang) + 30% RYC; riêng RYC 89,4 | [CHH0DCEB260003V : 5-10] | `MODEL_OUTPUT` |
+| Manulife · UM+ | Phí năng suất nhóm (cấp 1–4) | 25,6 | Cấp 1 FYC 40,0 × 16% + cấp 2 160,0 × 8% + cấp 3 160,0 × 4% | [0047M01_2026 : 1] | `MODEL_OUTPUT` |
+| Manulife · UM+ | Phí hoạt động nhóm | 3,3 | 50% (5 người sản xuất) × thưởng năng suất của cấp 1 × hệ số TLDTHD | [0047M01_2026 : 1-2] | `MODEL_OUTPUT` |
+| **Manulife · UM+** | **Tổng** | **28,9** | Bậc trong UM+ / điều kiện lên PSM+ ở 0013M04/2024 (không có trong nguồn) | [0047M01_2026 : 1-3] | `MODEL_OUTPUT` |
+| Manulife · tham chiếu nếu được bổ nhiệm PSM/SM | Phí cơ bản | 45,5 | 35tr × 100% đạt chỉ tiêu × 130% (A8) | [0048M01_2026 : 1] | `ASSUMPTION` |
+| Manulife · PSM/SM | Phí năng suất tháng | 24,0 | FYC × 6% (<115% chỉ tiêu) × TLDTHD 115% (T1–3) / 110% (từ T4) | [0048M01_2026 : 1-2] | `MODEL_OUTPUT` |
+| Manulife · PSM/SM | Phí hoạt động quý | 10,0 | FYC quý × 2,5% (đạt 100% 1mAA) × hệ số TLDTHD | [0048M01_2026 : 2-3] | `MODEL_OUTPUT` |
+| Manulife · PSM/SM | Phí hợp tác dài hạn (trả chậm 30/30/40%) | 25,5 | 75% × (năng suất + hoạt động), trần 12 × 35tr | [0048M01_2026 : 3-5] | `MODEL_OUTPUT` |
+| **Manulife · PSM/SM** | **Tổng** | **105,1** | HKD cùng biểu phí; khác cách nộp thuế | [0048M01_2026 : 1-6] | `MODEL_OUTPUT` |
 
-FYC tổ chức = 135,0tr/tháng. FYC nhóm trực tiếp của người quản lý = 45,0tr/tháng.
+## 4. Đã kiểm chứng & đã sửa
 
-| Khoản (tr/tháng) | AIA Alpha | Chubb Life | Manulife |
-|---|---:|---:|---:|
-| (1) Phí dịch vụ trực tiếp hàng tháng | 11,7 | 32,4 | ❓ |
-| (2) Trợ cấp / phí cố định | — *(không có khoản này)* | — *(không có khoản này)* | ❓ |
-| (3) Override gián tiếp (trên quản lý con) | 8,1 | 32,4 | ❓ |
-| (4) Thưởng quý quy đổi tháng | 3,6 | 16,2 | ❓ |
-| (5) Thưởng năm quy đổi tháng (**trả chậm**) | 2,2 | — *(không có khoản này)* | ❓ |
-| (6) Phí duy trì HĐ theo RYC | — *(không có khoản này)* | 5,6 | ❓ |
-| **Tổng được hưởng / tháng** | **25,7** | **86,6** | ❓ |
-| Trong đó tiền mặt năm 2026 | 23,4 | 86,6 | ❓ |
-| % FYP tổ chức | 5,7% | 19,2% | ❓ |
-
-**Evidence từng con số:**
-
-| Hãng · khoản | tr/tháng | File PDF · mục · trang | Công thức với số của kịch bản |
-|---|---:|---|---|
-| AIA · (1a) tuyển dụng hiệu quả | 8,1 | AIAV/AD/2601-034 — CS thu nhập 2026 cho CQL Alpha · A.I · tr.3 | FYC nhóm 45,0 × 18% (bậc ≥20tr, FY ≥80%) |
-| AIA · (1b) tuyển dụng chất lượng | 3,6 | AIAV/AD/2601-034 — CS thu nhập 2026 cho CQL Alpha · A.II · tr.3 | FYC nhóm 45,0 × 8% (≥4 lượt CVTV hoạt động) × hệ số FY 100% (FY ≥70%) |
-| AIA · (3) gián tiếp | 8,1 | AIAV/AD/2601-034 — CS thu nhập 2026 cho CQL Alpha · A.III · tr.4 | 50% × phí A của 2 CQL con (8,1/tháng mỗi người); A = phí tuyển dụng hiệu quả tháng của CQL con |
-| AIA · (4) quý | 3,6 | AIAV/AD/2601-034 — CS thu nhập 2026 cho CQL Alpha · A.V.1–2 · tr.4–5 | FYC quý 135,0 × 8% (4 sao: FYC quý, lượt hoạt động quý, CVTV mới ≥1 Q1 / ≥2 Q2+, FY ≥75%) |
-| AIA · (5) năm, trả chậm | 2,2 | AIAV/AD/2601-034 — CS thu nhập 2026 cho CQL Alpha · A.VI · tr.5 | FYC năm 540,0 × 5% (4 sao toàn năm = ≥3 quý). Trả 15% (01/2028), 25% (01/2029), 60% (01/2030) nếu còn là CQL và TOT ≥85% |
-| Chubb · (1) HT KTN tháng | 32,4 | CHH0DCEB260008V — Phí dịch vụ cấp Quản lý KD (AL) · II.2.1 · tr.5 | FYC NTT 45,0 × 60% (≥40tr, EHC ≥4, ≥15 tháng QL) × 120% (K2 NTT ≥80%) |
-| Chubb · (3) quản lý nhóm | 32,4 | CHH0DCEB260008V — Phí dịch vụ cấp Quản lý KD (AL) · II.3 · tr.7 | L1 50% × HT KTN tháng của 2 AL con (32,4/tháng mỗi người); tỷ lệ L theo FYC NTT của chính AL (45,0 ≥30tr) |
-| Chubb · (4) HT KTN quý | 16,2 | CHH0DCEB260008V — Phí dịch vụ cấp Quản lý KD (AL) · II.2.2 · tr.6 | Tổng phí HT KTN tháng trong quý × 50% (FYC NTT quý 135,0 ≥100tr) |
-| Chubb · (6) duy trì chất lượng HĐ | 5,6 | CHH0DCEB260008V — Phí dịch vụ cấp Quản lý KD (AL) · II.5 · tr.9–10 | RYC NTT quý 111,7 (A8) × 15% (3MAA NTT ≥5), K2 NTT ≥65%, ≥13 tháng |
-| AIA · (2) / Chubb · (2) trợ cấp cố định | — | 2601-034 mục A–B; 0008V tr.3 bảng tóm tắt | Văn bản không có khoản trợ cấp cố định cho CQL/AL (`VERIFIED FACT`: đã đọc đủ mục lục) |
-| Manulife · mọi khoản | ❓ | — | Biểu phí UM/SUM/DM của Manulife không có trong 7 PDF (`SRC-GAP-002`) → `UNKNOWN` |
-
-## 4.3. Cấp 3 — Trưởng khu vực (DM): 45 ĐL, 1,2 tỷ FYP/th
-
-FYC tổ chức = 360,0tr/tháng. FYC nhóm trực tiếp của người quản lý = 40,0tr/tháng.
-
-| Khoản (tr/tháng) | AIA Alpha | Chubb Life | Manulife |
-|---|---:|---:|---:|
-| (1) Phí dịch vụ trực tiếp hàng tháng | 10,4 | 28,8 | ❓ |
-| (2) Trợ cấp / phí cố định | — *(không có khoản này)* | — *(không có khoản này)* | ❓ |
-| (3) Override gián tiếp (trên quản lý con) | 21,6 | 86,4 | ❓ |
-| (4) Thưởng quý quy đổi tháng | 3,2 | 14,4 | ❓ |
-| (5) Thưởng năm quy đổi tháng (**trả chậm**) | 2,0 | — *(không có khoản này)* | ❓ |
-| (6) Phí duy trì HĐ theo RYC | — *(không có khoản này)* | 5,0 | ❓ |
-| **Tổng được hưởng / tháng** | **37,2** | **134,6** | ❓ |
-| Trong đó tiền mặt năm 2026 | 35,2 | 134,6 | ❓ |
-| % FYP tổ chức | 3,1% | 11,2% | ❓ |
-
-**Evidence từng con số:**
-
-| Hãng · khoản | tr/tháng | File PDF · mục · trang | Công thức với số của kịch bản |
-|---|---:|---|---|
-| AIA · (1a) tuyển dụng hiệu quả | 7,2 | AIAV/AD/2601-034 — CS thu nhập 2026 cho CQL Alpha · A.I · tr.3 | FYC nhóm 40,0 × 18% (bậc ≥20tr, FY ≥80%) |
-| AIA · (1b) tuyển dụng chất lượng | 3,2 | AIAV/AD/2601-034 — CS thu nhập 2026 cho CQL Alpha · A.II · tr.3 | FYC nhóm 40,0 × 8% (≥4 lượt CVTV hoạt động) × hệ số FY 100% (FY ≥70%) |
-| AIA · (3) gián tiếp | 21,6 | AIAV/AD/2601-034 — CS thu nhập 2026 cho CQL Alpha · A.III · tr.4 | 50% × phí A của 4 CQL con (7,2/tháng mỗi người) + 25% × phí A của 4 UM cấp dưới nữa; A = phí tuyển dụng hiệu quả tháng của CQL con |
-| AIA · (4) quý | 3,2 | AIAV/AD/2601-034 — CS thu nhập 2026 cho CQL Alpha · A.V.1–2 · tr.4–5 | FYC quý 120,0 × 8% (4 sao: FYC quý, lượt hoạt động quý, CVTV mới ≥1 Q1 / ≥2 Q2+, FY ≥75%) |
-| AIA · (5) năm, trả chậm | 2,0 | AIAV/AD/2601-034 — CS thu nhập 2026 cho CQL Alpha · A.VI · tr.5 | FYC năm 480,0 × 5% (4 sao toàn năm = ≥3 quý). Trả 15% (01/2028), 25% (01/2029), 60% (01/2030) nếu còn là CQL và TOT ≥85% |
-| Chubb · (1) HT KTN tháng | 28,8 | CHH0DCEB260008V — Phí dịch vụ cấp Quản lý KD (AL) · II.2.1 · tr.5 | FYC NTT 40,0 × 60% (≥40tr, EHC ≥4, ≥15 tháng QL) × 120% (K2 NTT ≥80%) |
-| Chubb · (3) quản lý nhóm | 86,4 | CHH0DCEB260008V — Phí dịch vụ cấp Quản lý KD (AL) · II.3 · tr.7 | L1 50% × HT KTN tháng của 4 AL con (28,8/tháng mỗi người) + L2 25% × HT KTN tháng của 4 UM báo cáo cấp 1; tỷ lệ L theo FYC NTT của chính AL (40,0 ≥30tr) |
-| Chubb · (4) HT KTN quý | 14,4 | CHH0DCEB260008V — Phí dịch vụ cấp Quản lý KD (AL) · II.2.2 · tr.6 | Tổng phí HT KTN tháng trong quý × 50% (FYC NTT quý 120,0 ≥100tr) |
-| Chubb · (6) duy trì chất lượng HĐ | 5,0 | CHH0DCEB260008V — Phí dịch vụ cấp Quản lý KD (AL) · II.5 · tr.9–10 | RYC NTT quý 99,3 (A8) × 15% (3MAA NTT ≥5), K2 NTT ≥65%, ≥13 tháng |
-| AIA · (2) / Chubb · (2) trợ cấp cố định | — | 2601-034 mục A–B; 0008V tr.3 bảng tóm tắt | Văn bản không có khoản trợ cấp cố định cho CQL/AL (`VERIFIED FACT`: đã đọc đủ mục lục) |
-| Manulife · mọi khoản | ❓ | — | Biểu phí UM/SUM/DM của Manulife không có trong 7 PDF (`SRC-GAP-002`) → `UNKNOWN` |
-
-## 4.4. Cấp 3B — cùng khu vực 45 ĐL / 1,2 tỷ FYP/tháng, xếp vào tuyến lãnh đạo vùng
-
-Đây là **tầng duy nhất có tài liệu của cả 3 hãng**. Khác cấp 3 ở trên: người quản lý ký hợp đồng dịch vụ quản lý cấp cao, có phí cơ bản/cố định và hưởng trên toàn tổ chức.
-
-| Khoản (tr/tháng) | AIA PAF+ DSRF | Chubb RD | Manulife PSM (35tr) |
-|---|---:|---:|---:|
-| (2) Phí cơ bản / cố định | 86,7 | 45,0 | 45,5 |
-| (1) Phí theo năng suất / chất lượng tháng | 30,9 | 43,2 | 24,0 |
-| (4) Phí quý | 17,2 | 9,0 | 10,0 |
-| (5) Năm / dài hạn | 10,0 *(thưởng vượt chỉ tiêu)* | — | 25,5 *(trả chậm 30/30/40)* |
-| (6) Theo RYC | — | 89,4 | — |
-| **Tổng / tháng** | **144,8** | **186,6** | **105,1** |
-| % FYP | 12,1% | 15,5% | 8,8% |
-
-**Evidence:**
-
-| Hãng · khoản | File · mục · trang | Công thức / giả định riêng |
-|---|---|---|
-| AIA PAF+ | AIAV/AD/2601-035 — CS thu nhập 2026 cho PAF+ Alpha · tr.4–6 (phí), tr.9–10 (chỉ tiêu) | Bậc DSRF năm 1: phí cơ bản 80tr × 120% ở tháng đạt ≥115% chỉ tiêu FYP tháng, × 100% ở tháng đạt 55–115% (chỉ tiêu tháng có hệ số mùa vụ, bảng tr.9–10); phí chuyên môn tháng/quý theo % FYC × hệ số FY 120% (FY ≥75%); phí vượt chỉ tiêu = (FYP năm − 12.000) × 5%, tối đa bằng phí cơ bản năm. **Chưa cộng** phần Dual Career (PAF+ đồng thời nhận phí CQL, `AIA-PF-001` chưa mô hình). |
-| Chubb RD | CHH0DCEB260003V — Phí dịch vụ Giám đốc vùng (RD), bản scan · II.1–II.6 · tr.5–10 | Đào tạo 25tr (FYP theo cấp báo cáo ≥400tr, ≥4 lớp); hoạt động 8tr (EHC ≥20); kinh doanh 12tr (FYP ≥600tr); chất lượng 12% FYC (3MAA ≥12) × 100% (K2 ≥60%); tăng trưởng quý **2,5%** (tăng trưởng 0% — giả định FYP đi ngang); RYC × 30% (K2 ≥70%, RYC theo A8). **Chưa cộng** phí trên BD (II.7–II.8) vì thiếu chính sách BD. |
-| Manulife PSM | 0048M01/2026/ASBD — Biểu phí dịch vụ PSM+ & HKD · A.I–A.IV · tr.1–5 | Phí cơ bản 35tr × **100% đạt chỉ tiêu FYP** × 130%; năng suất 6% FYC (<115%) × hệ số TLDTHD (115% tháng 1–3, 110% từ tháng 4); hoạt động quý 2,5% (đạt 100% chỉ tiêu 1mAA); dài hạn 75% × (năng suất + hoạt động), trần 12 × 35tr, trả 30/30/40% trong 3 năm. **Bảng chỉ tiêu FYP/1mAA không có** → % đạt là `ASSUMPTION`. |
-
-## 5. Độ nhạy — những giả định làm đổi kết luận
-
-| Thay đổi | AIA | Chubb | Ý nghĩa |
-|---|---:|---:|---|
-| Cấp 1, **không tuyển mới** trong năm | 11,7 (từ 17,6) | 54,2 (không đổi) | AIA khóa thưởng quý & năm vào tuyển dụng; Chubb không. |
-| Cấp 2, cả 15 ĐL **trực tiếp** (không có UM con) | 82,4 (từ 25,7) | 162,6 (từ 86,6) | Cả hai hãng trả **nhiều hơn** khi quản lý giữ đội phẳng → động cơ không phát triển quản lý con. |
-
-## 6. Đã kiểm chứng gì & đã sửa gì so với bản cũ
-
-Đối chiếu với **7 PDF gốc** (SHA-256 khớp `knowledge/sources/source-registry.csv`). Bản Chubb RD là bản scan nên được đọc bằng ảnh trang.
-
-| # | Phát hiện | Bằng chứng | Xử lý |
+| # | Nội dung | Trích dẫn | Nhãn |
 |---|---|---|---|
-| F1 | Chubb AL — phí HT KTN quý: engine và workbook dùng ngưỡng **55tr**, PDF ghi **50tr** cho bậc 40% | 0008V tr.6 "Từ 50 đến dưới 75 → 40%"; catalog `CHB-MG-004` ghi đúng | Đã sửa engine + workbook; test `tests/test_pdf_table_fixes.py` |
-| F2 | Chubb RD — phí quản lý hoạt động theo EHC: engine sai mức tiền và ngưỡng (6,0/4,5/3,0 tại 16/12/8) | 0003V tr.6: 8,0 / 6,5 / 5,0 / 3,5 / 2,5 / 1,5 tại 20/16/12/9/6/4; catalog `CHB-RD-003` ghi đúng | Đã sửa engine + workbook; test |
-| F3 | Chubb RD — phí quản lý kinh doanh theo FYP: engine có bậc 240→4,5 không tồn tại, thiếu 270→5,0 và 180→3,5 | 0003V tr.6; catalog `CHB-RD-004` ghi đúng | Đã sửa engine + workbook; test |
-| F4 | Chubb RD — phí tăng trưởng quý: engine 7 bậc; 0–5% trả 5% (PDF 2,5%), tăng trưởng âm trả 2,5% (PDF 0%) | 0003V tr.8: 12 bậc, bước 2,5% mỗi 5% tăng trưởng | Đã sửa engine (`rd_growth_rate`); golden GT-16a: Chubb 99,21% → **99,96%** FYP ở K2 82% |
-| F5 | Chubb AL — **thiếu** phí duy trì chất lượng HĐ (10–15% RYC NTT) dù catalog ghi `IMPLEMENTED` | 0008V tr.9–10, `CHB-MG-008` | Đã thêm tham số tùy chọn (mặc định không phát sinh → kết quả cũ giữ nguyên) |
-| F6 | AIA CQL — engine chỉ có gián tiếp cấp 2 (50%), **thiếu cấp 3 (25%) và cấp 4 (12,5%)** | 2601-034 tr.4 mục III | Đã thêm tham số tùy chọn |
-| F7 | Bộ 7 PDF **không có** biểu phí Manulife cấp UM/SUM/DM | `SRC-GAP-002` | Giữ `UNKNOWN`, không điền 0 |
-| F8 | "HKD tối ưu thuế & chi phí" chưa có căn cứ trong tài liệu | 0048M01: cùng biểu phí cho PSM+ và HKD; mục C.9–C.10 chỉ khác cách khấu trừ thuế | Ghi `HYPOTHESIS` — cần Pháp chế/Thuế |
+| F1–F4 | Chubb AL quý 50tr; Chubb RD bảng EHC, bảng FYP, tăng trưởng 12 bậc — đã sửa engine + workbook (ca3304c) | [CHH0DCEB260008V : 6], [CHH0DCEB260003V : 6-8] | `VERIFIED FACT` |
+| F5–F6 | Thêm phí RYC của AL (CHB-MG-008) và gián tiếp AIA cấp 3–4 (ca3304c) | [CHH0DCEB260008V : 9-10], [AIAVAD 2601-034 : 4] | `VERIFIED FACT` |
+| P2 #1 | Có RYC mà thiếu 3MAA → báo `MISSING_INPUT`, không coi là 0 (có test) | [CHH0DCEB260008V : 10] | `VERIFIED FACT` |
+| P2 #2 | `K2_NO_K2_YET` (chưa phát sinh → hệ số 100%, coi như đạt) tách khỏi `None` = UNKNOWN (báo lỗi); test xuyên suốt hàm cho AL 15 tháng | [CHH0DCEB260008V : 5], [CHH0DCEB260008V : 10] | `VERIFIED FACT` |
+| P2 #3 | Điều kiện người mới AIA: 3 sao ≥1; 4–5 sao ≥1 ở Q1, ≥2 từ Q2 | [AIAVAD 2601-034 : 4] | `VERIFIED FACT` |
+| G1 | PAF+ Dual Career: cộng phí CQL trực tiếp, bỏ gián tiếp cấp 2–4; chức danh Mốc 4 suy từ điều kiện (PAF) thay vì chọn tay | [AIAVAD 2601-035 : 2], [AIAVAD 2601-034 : 8] | `VERIFIED FACT` |
+| G2 | Mâu thuẫn tên tiếng Việt UM/SUM/DM giữa các trang AIA — giữ mã làm khóa | [AIAVAD 2604-069 : 17] | `VERIFIED FACT` |
+| G3 | Nạp 0046M01 (Đại Lý) và 0047M01 (UM+) — engine `calc_manulife_agent_12m`, `calc_manulife_um_12m`, test riêng | [0046M01_2026 : 1-9], [0047M01_2026 : 1-6] | `VERIFIED FACT` |
 
-Đã kiểm khớp, không sửa: AIA CQL (A.I–A.VI, B), Chubb AL tháng / L1–L3 / hệ số K2, Chubb RD đào tạo và chất lượng 3MAA, Manulife A.I–A.IV.
+## 5. Quyết định của TJ (2026-11-27, DEC-14)
 
-## 7. TJ cần quyết trước Giai đoạn 2
+1. Chấp nhận phạm vi 9/9 PDF; giữ đánh dấu thiếu tài liệu cho Chubb BD và các memo ngoài phạm vi. Mốc 2–4 ghi rõ là **phí quản lý thuần**.
+2. Manulife: base case **không có MBA Pro / Manulife Pro**; kịch bản có danh hiệu là ghi chú độ nhạy, chạy ở Giai đoạn 2.
+3. Mốc 4: so sánh chính **AIA PAF · Chubb RD · Manulife PSM/SM**; số phụ **Chubb DM · Manulife UM+**.
+4. Bảo mật: chỉ commit local, **không push** (0046M01 D.3 và 0047M01 B.4 ghi thông tin mật).
 
-1. **Cấu trúc A5** (cấp 2 = 5 trực tiếp + 2 UM con; cấp 3 = 5 + 2 BM + 2 UM) có đúng ý TJ không? Nếu TJ muốn "phẳng" thì số đổi mạnh (mục 5).
-2. **Cấp 3 so ở tuyến nào:** quản lý trung gian (AIA DM · Chubb DM · Manulife ❓) hay lãnh đạo vùng (PAF+ · RD · PSM — đủ 3 hãng)?
-3. **FYC/FYP = 30%** cho cả 3 hãng, hay TJ có cơ cấu sản phẩm thật để quy đổi?
+## 6. Tự chấm rubric 100 điểm (`qa/data-ingestion-rubric.md`)
 
+| # | Tiêu chí (`qa/data-ingestion-rubric.md`) | Điểm | Tối đa | Căn cứ đo được |
+|---|---|---:|---:|---|
+| 1 | Độ phủ nguồn 9/9 file | 25.0 | 25 | 9/9 file mở được và khớp SHA-256; bản scan soát 15/15 trang |
+| 2 | Chức danh gốc & tuyến | 25.0 | 25 | 12/12 chức danh có tên nguyên văn khớp trang trích (hoặc đối chiếu bằng mắt với bản scan) và có `track_type` |
+| 3 | Trích dẫn `[File : Trang]` cho từng con số | 18.9 | 20 | 71/75 dòng có số mang trích dẫn đúng mẫu |
+| 4 | Negative Proof | 15.0 | 15 | 1/1 kết luận "không có trong tài liệu" kèm nhật ký tìm kiếm |
+| 5 | Tách Fact / Assumption | 15.0 | 15 | 99/99 dòng có nhãn phân loại |
+| | **Tổng** | **98.9** | **100** | **PASS** (ngưỡng 90) — `SELF_VERIFIED`, chưa phải kiểm toán độc lập |
+
+Tiêu chí 1–2 dựa trên kiểm kê của `00_Role_Mapping_Audit.md` (9/9 file khớp hash, 15/15 trang scan; chức danh mỗi mốc suy từ điều kiện có trích dẫn). Tiêu chí 3 đếm các dòng có số ở mục 3; dòng giả định thuần (hoa hồng theo A1, tái tục theo A7) không có trang nguồn nên bị trừ điểm.
