@@ -154,7 +154,9 @@ def knowledge(manifest: dict) -> dict:
                         "confidentiality": r["Confidentiality"], "rights": r["Redistribution_Rights_Status"],
                         "verification": r["Verification_Status"],
                         "url": manifest["files"].get(sid, {}).get("url")})
-    pdf_ids = [s["id"] for s in sources if s["url"]]
+    # Mọi văn bản chính sách (PDF) — kể cả văn bản mật không có URL trên kho bằng chứng (0046M01/0047M01):
+    # trước đây lọc theo URL nên quy tắc MNL-AG/MG mất refs và trang Bằng chứng báo sai "chưa trích quy tắc" (AUD-08).
+    pdf_ids = [s["id"] for s in sources if s["id"].startswith("SRC-POL-")]
     out_rules = []
     for r in rules:
         refs = []

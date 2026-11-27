@@ -51,17 +51,17 @@
 
 | Chính sách / Kịch bản *(1 Vùng = 12 tỷ FYP/Y, 20 ĐL × 15tr FYC/M, 4 QL, 1 Vùng)* | Persistency (`K2 / FY`) | Tổng Chi phí Ghi nhận (`% FYP`) | Chi tiền mặt Năm 1 (`% FYP`) | Quỹ Thưởng ĐL (`Trần Đ.52 ≤30%`) | Chi phí / 1đ Phí còn sống Năm 2 (`%`) | **Break-Even Gross Margin** *(với OpEx 20%)* |
 |---|---:|---:|---:|---:|---:|---:|
-| **Chubb Life Agency 2026** | **82%** | **99.21%** | 99.21% | 21.06% *(riêng ĐL top chạm 26–33%!)* | 120.99% | **119.21%** *(cần lãi tái tục Y2+ bù!)* |
+| **Chubb Life Agency 2026** | **82%** | **99.96%** | 99.96% | 21.06% *(riêng ĐL top chạm 26–33%!)* | 121.90% | **119.96%** *(cần lãi tái tục Y2+ bù!)* |
 | **AIA Alpha 2026** *(chưa gồm `Exchange/Pro`!)* | **82%** | **73.44%** | 70.44% | 10.23% | 89.57% | **93.44%** |
 | **AIA Alpha 2027** *(chưa gồm `Exchange/Pro`!)* | **82%** | **72.98%** | 69.98% | 9.77% | 89.00% | **92.98%** |
 | **W24 Proposed Balanced (`PROPOSAL`)** | **82%** | **59.44%** | **54.45%** | **5.91% (dưới ngưỡng mô phỏng)** | **72.48%** | **79.44%** *(rẻ hơn Chubb **-39.8 điểm %**!)* |
 | --- | --- | --- | --- | --- | --- | --- |
-| **Chubb Life Agency 2026** | **72%** | **89.40%** | 89.40% | 17.55% | 124.17% | **109.40%** |
+| **Chubb Life Agency 2026** | **72%** | **90.15%** | 90.15% | 17.55% | 125.21% | **110.15%** |
 | **AIA Alpha 2026** | **72%** | **62.25%** | 62.25% | 8.37% | 86.46% | **82.25%** |
 | **AIA Alpha 2027** | **72%** | **61.79%** | 61.79% | 7.90% | 85.82% | **81.79%** |
 | **W24 Proposed Balanced (`PROPOSAL`)** | **72%** | **49.94%** | **49.94%** | **4.57% (dưới ngưỡng mô phỏng)** | **69.36%** | **69.94%** |
 | --- | --- | --- | --- | --- | --- | --- |
-| **Chubb Life Agency 2026** | **62%** | **77.14%** | 77.14% | 13.16% | **124.42%** *(tăng chi phí/phí sống!)* | **97.14%** |
+| **Chubb Life Agency 2026** | **62%** | **77.89%** | 77.89% | 13.16% | **125.63%** *(tăng chi phí/phí sống!)* | **97.89%** |
 | **AIA Alpha 2026** | **62%** | **55.89%** | 55.89% | 3.91% | 90.14% | **75.89%** |
 | **AIA Alpha 2027 (Vách đá `<70%→0%`)** | **62%** | **51.98%** | 51.98% | **0.00%** | 83.84% | **71.98%** |
 | **W24 Proposed Balanced (`PROPOSAL`)** | **62%** | **45.42%** | **45.42%** | **3.23% (dưới ngưỡng mô phỏng)** | **73.27%** | **65.42%** *(tự ổn định tốt nhất!)* |
@@ -70,5 +70,5 @@
 
 ### Kết luận Tài chính Mô phỏng & Ranh giới ROI (`Modeled Break-Even ≠ Actual ROI`)
 1. **Tuyệt đối tách bạch Chi phí/Điểm hòa vốn Mô phỏng với ROI Thực tế (`UNKNOWN`):** Các con số trên đo **Modeled Distribution Cost (% FYP)**, **Modeled Cost per Persisted Year-2 FYP**, và **Modeled Break-Even Gross Margin** trên 1 kịch bản vùng chuẩn `12 tỷ FYP` với giả định `Home Office OpEx = 20%` (`ASSUMPTION`). Tài liệu này **KHÔNG chứng minh ROI thực tế** hay mức tăng doanh số/chất lượng thực tế cho đến khi nạp `VNB Margin`, `OpEx` thực và dữ liệu cohort của doanh nghiệp mục tiêu.
-2. **Tính tự ổn định chi phí theo chất lượng (`Downside Cost Resilience`):** Khi K2 tụt từ `82%` xuống `62%`, `Cost / Persisted Y2 FYP` mô phỏng ở Chubb tăng lên `124.42%`, còn ở **W24 Proposed Balanced** giữ ổn định quanh `69.36% – 73.27%`.
-3. **Hiệu quả Dòng tiền Năm 1 mô phỏng & Điều kiện Pháp lý (`CONDITIONAL`):** Nhờ trả chậm 3 năm (`30/30/40%` gắn `K2 ≥75%`), chi tiền mặt Năm 1 mô phỏng giảm còn `54.45% FYP` (thấp hơn `15.99` điểm % so với kịch bản AIA và `44.76` điểm % so với kịch bản Chubb). Cột `Art.52` chỉ kiểm tra tỷ lệ **rổ thưởng đại lý mô phỏng / FYP kịch bản**; cần Pháp chế & Kế toán xác nhận phân loại chi phí pháp định theo toàn văn **`44/2026/VBHN-TT-BTC`** (`DEC-03`).
+2. **Tính tự ổn định chi phí theo chất lượng (`Downside Cost Resilience`):** Khi K2 tụt từ `82%` xuống `62%`, `Cost / Persisted Y2 FYP` mô phỏng ở Chubb tăng lên `125.63%`, còn ở **W24 Proposed Balanced** giữ ổn định quanh `69.36% – 73.27%`.
+3. **Hiệu quả Dòng tiền Năm 1 mô phỏng & Điều kiện Pháp lý (`CONDITIONAL`):** Nhờ trả chậm 3 năm (`30/30/40%` gắn `K2 ≥75%`), chi tiền mặt Năm 1 mô phỏng giảm còn `54.45% FYP` (thấp hơn `15.99` điểm % so với kịch bản AIA và `45.51` điểm % so với kịch bản Chubb). Cột `Art.52` chỉ kiểm tra tỷ lệ **rổ thưởng đại lý mô phỏng / FYP kịch bản**; cần Pháp chế & Kế toán xác nhận phân loại chi phí pháp định theo toàn văn **`44/2026/VBHN-TT-BTC`** (`DEC-03`).

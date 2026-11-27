@@ -126,7 +126,11 @@ body.resizing{cursor:col-resize;user-select:none}body.resizing iframe{pointer-ev
   .app.unpinned .side{position:fixed;left:0;top:0;z-index:30;width:var(--sidew,232px);transform:translateX(calc(-100% + 12px));transition:transform .18s ease}
   .app.unpinned .side:hover,.app.unpinned .side:focus-within{transform:none;box-shadow:6px 0 24px rgba(0,0,0,.28)}
   .app.unpinned #sideResize{display:none}
+  /* Dải mép trái khi bỏ ghim: có dấu › để biết rê chuột vào đây */
+  .app.unpinned .side::after{content:"›";position:absolute;right:0;top:50%;width:12px;text-align:center;font-size:16px;color:var(--muted);transform:translateY(-50%)}
+  .app.unpinned .side:hover::after,.app.unpinned .side:focus-within::after{content:""}
 }
+@media (max-width:980px){.controls{position:static}}
 .side{position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--tint);border-right:1px solid var(--line);padding:16px 10px 20px}
 .brand{font-weight:800;font-size:15px;line-height:1.3;padding:2px 8px 12px;border-bottom:1px solid var(--line);margin-bottom:6px}
 .side-title{font-size:13px;font-weight:700;color:var(--muted);padding:12px 8px 4px}
@@ -237,14 +241,6 @@ footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1p
 <div class="app" id="app">
 <aside class="side" aria-label="Điều hướng">
   <div class="brand"><span>Chiến lược thu nhập đại lý · Bước 1</span><button type="button" class="pin" id="pinBtn" aria-pressed="true" aria-label="Ghim thanh bên"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5M9 10.76V6h6v4.76l2.5 2.74V17h-11v-3.5z"/><path d="M8 2h8"/></svg></button></div>
-  <div id="planCtl">
-  <div id="planBox">
-  <div class="side-title">Phương án</div>
-  <div class="navl" id="planSeg"></div>
-  </div>
-  <div class="side-title"><label for="k2">Kịch bản K2: <span class="k2v" id="k2v"></span></label></div>
-  <input type="range" id="k2" min="50" max="95" step="1" value="82" aria-label="Kịch bản K2">
-  </div>
   <div class="side-title">Trang</div>
   <nav class="navl" id="tabs" aria-label="Các trang"></nav>
   <button type="button" class="btn" id="presentBtn" aria-pressed="false">Chế độ trình bày</button>
@@ -271,6 +267,13 @@ footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1p
   </details>
   </div>
 </header>
+<!-- Điều khiển nằm cạnh nội dung nó làm thay đổi (chỉ hiện ở trang dùng tới) — không làm thanh bên đổi độ dài -->
+<div class="controls" id="planCtl" hidden>
+  <div class="ctl-row">
+    <div class="ctl" id="planBox"><span class="lbl">Phương án (mô hình 1 vùng 12 tỷ)</span><div class="seg" id="planSeg"></div></div>
+    <div class="ctl"><label class="lbl" for="k2">Kịch bản K2: <span class="k2v" id="k2v"></span></label><input type="range" id="k2" min="50" max="95" step="1" value="82" aria-label="Kịch bản K2"></div>
+  </div>
+</div>
 <section class="panel on" id="p-answer"></section>
 <section class="panel" id="p-t1"></section>
 <section class="panel" id="p-t2"></section>
@@ -301,6 +304,8 @@ window.W24_LOCAL_SNAPSHOT = /*__LOCAL_SNAPSHOT__*/null;</script>
 "use strict";
 const DATA = /*__DATA_JSON__*/null;
 const GOLDEN = /*__GOLDEN_JSON__*/null;
+/* Mô hình 1 vùng 12 tỷ (nhóm Phân tích sâu) chỉ có Manulife tầng lãnh đạo vùng; tầng đại lý/UM+ nằm ở mô hình 45 đại lý (trang 0–2) */
+const MNL_GAP = DATA.public_build ? "không công bố ở bản công khai (văn bản ghi thông tin mật)" : "chưa đưa vào mô hình 1 vùng này — xem trang 0–2";
 const E = window.W24Engine;
 const fmt = (x, d = 0) => (x == null || !isFinite(x)) ? "—" : x.toLocaleString("vi-VN", {minimumFractionDigits: d, maximumFractionDigits: d});
 const DOC = '<svg aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" style="vertical-align:-2px;margin-right:4px"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M4 1.75h5.5L12.5 5v9.25H4zM9.5 1.75V5h3M6 8.5h4.5M6 11h4.5"/></svg>';
@@ -330,6 +335,8 @@ function ruleChip(id) {
   const r = RULES[base];
   if (!r || !r.refs.length) return `<span class="ev" title="${esc(r ? r.ref : "")}">${esc(id)}</span>`;
   const f = r.refs[0];
+  if (!(DATA.knowledge.sources.find(s => s.id === f.sid) || {}).url)   // văn bản mật: không có bản online để mở
+    return `<span class="ev nolink" title="${esc(r.type)} — ${esc(r.ref)} (văn bản mật, không mở online)">${esc(id)}${f.page ? " · tr." + f.page : ""}</span>`;
   return `<a class="ev" target="_blank" rel="noopener" href="${evUrl(f.sid, f.page)}" title="${esc(r.type)} — ${esc(r.ref)}">${DOC}${esc(id)}${f.page ? " · tr." + f.page : ""}</a>`;
 }
 
@@ -479,7 +486,7 @@ function renderOverview() {
   <p class="muted" style="max-width:90ch;margin:0 0 18px">${esc(PLAN_META[key].desc)}</p>
   <div class="grid g2">
     <div class="card"><h3 style="margin-top:0">Tổng chi phí phân phối, % FYP (K2 ${k2}%)</h3>${barRows(costItems, "%", 1)}<p class="small muted" style="margin-bottom:0">Thấp hơn là tốt hơn. AIA chưa gồm gói Exchange/Exchange Pro.</p></div>
-    <div class="card"><h3 style="margin-top:0">Thu nhập 3 năm của đại lý trung bình, triệu VND</h3>${barRows(incItems, "", 0)}<p class="small muted" style="margin-bottom:0">Đại lý 15 triệu FYC/tháng, gồm hoa hồng, tái tục và thưởng. Manulife không có tài liệu tầng đại lý.</p></div>
+    <div class="card"><h3 style="margin-top:0">Thu nhập 3 năm của đại lý trung bình, triệu VND</h3>${barRows(incItems, "", 0)}<p class="small muted" style="margin-bottom:0">Đại lý 15 triệu FYC/tháng, gồm hoa hồng, tái tục và thưởng. Manulife tầng đại lý: ${MNL_GAP}.</p></div>
   </div>
   <h2 style="margin-top:28px">Trả lời 3 vế của đề bài</h2>
   <div class="verdicts">
@@ -536,7 +543,7 @@ function renderPackage() {
       return xs.map(m => `<div class="pk"><b>${esc(m.name)}</b><div>${esc(m.rate)}</div><details class="cond"><summary>Điều kiện &amp; cách trả</summary><div class="small muted">Điều kiện: ${esc(m.cond)}</div><div class="small muted">Trả: ${esc(m.timing)}</div></details></div>`).join("") || "<span class='muted small'>—</span>";
     }
     const xs = comps.filter(r => r.Company.startsWith(co) && r.Category_A_to_H === cat);
-    if (!xs.length) return co === "Manulife" && tier !== "leader" ? "<span class='muted small'>❓ chưa có tài liệu</span>" : "<span class='muted small'>—</span>";
+    if (!xs.length) return co === "Manulife" && tier !== "leader" ? `<span class='muted small' title="Manulife tầng này: ${MNL_GAP}">❓ chưa tính ở mô hình này</span>` : "<span class='muted small'>—</span>";
     return xs.map(r => {
       const gates = [["K2/chất lượng", r.Quality_Persistency_Gate], ["Chấm công", r.Activity_Attendance_Gate], ["Đào tạo", r.Training_Compliance_Gate]]
         .filter(g => !blank(g[1])).map(g => g[0] + ": " + g[1]).join(" · ");
@@ -563,7 +570,7 @@ function renderPackage() {
   const named = cos.map(([co, n], i) => ({n: co === "PLAN" ? PLAN_META[key].name : n.split(" (")[0], v: tot[i]})).filter(x => x.v != null);
   const me = named[0], comp2 = named.slice(1), hi = comp2.reduce((a, b) => b.v > a.v ? b : a), lo = comp2.reduce((a, b) => b.v < a.v ? b : a);
   const pos = me.v >= hi.v - 0.5 ? "cao nhất" : me.v >= lo.v - 0.5 ? "không thấp hơn đối thủ trả thấp nhất" : "thấp hơn cả các đối thủ";
-  const take = `Ở cấp ${PKG_TIERS[tier].toLowerCase()}, ${hi.n} trả cao nhất (${fmt(hi.v)} ${unit}), ${lo.n} thấp nhất (${fmt(lo.v)} tr). ${me.n} ${fmt(me.v)} tr — ${pos}.${tier !== "leader" ? " Manulife không có tài liệu ở cấp này." : ""}`;
+  const take = `Ở cấp ${PKG_TIERS[tier].toLowerCase()}, ${hi.n} trả cao nhất (${fmt(hi.v)} ${unit}), ${lo.n} thấp nhất (${fmt(lo.v)} tr). ${me.n} ${fmt(me.v)} tr — ${pos}.${tier !== "leader" ? ` Manulife ở cấp này: ${MNL_GAP}.` : ""}`;
   $("p-package").innerHTML = `
   <h2>Gói thu nhập theo cấp: ${esc(PKG_TIERS[tier])}</h2>
   <p class="takeaway">${esc(take)}</p>
@@ -588,7 +595,7 @@ function renderTiers() {
   const tiers = {agent: "Đại lý cá nhân", mgr: "Quản lý trực tiếp", ind: "Thu nhập gián tiếp (quản lý cấp cao)", leader: "Lãnh đạo vùng"};
   const pref = {agent: ["AIA-CV", "CHB-AG", "CHB-CH"], mgr: ["AIA-MG", "CHB-MG"], ind: ["AIA-MG-003", "AIA-PF-004", "CHB-MG-005", "MNL-PM-003"], leader: ["AIA-PF", "CHB-RD", "MNL-PM"]};
   const row = (name, color, vals, cls) => `<tr class="${cls || ""}"><td><span class="dot" style="background:${color}"></span>${esc(name)}</td>${vals.map(v => `<td class="n">${typeof v === "string" ? v : fmt(v)}</td>`).join("")}</tr>`;
-  const U = "<span class='muted'>❓ chưa có tài liệu</span>";
+  const U = `<span class='muted' title="Manulife tầng này: ${MNL_GAP}">❓ chưa tính ở mô hình này</span>`;
   const agentRows = [["AIA Alpha 2026", "var(--s-aia)", f => agentComp("AIA", k2, f).total_3y], ["Chubb Life 2026", "var(--s-chubb)", f => agentComp("CHUBB", k2, f).total_3y],
     [PLAN_META[key].name, "var(--s-plan)", f => planAgent(key, k2, f).total_3y, "plan"]];
   const ruleList = DATA.knowledge.rules.filter(r => pref[state.tier].some(p => r.id.startsWith(p)));
@@ -605,7 +612,7 @@ function renderTiers() {
   <div class="grid g2" style="margin-top:12px">
     <div class="card"><h3 style="margin-top:0">Đại lý: tổng thu nhập 3 năm theo năng suất</h3>
       ${lineChart(agentRows.map(r => ({name: r[0], color: r[1], w: r[3] ? 3 : 2, pts: DATA.fyc_levels.map(f => [f, r[2](f)])})), {xlabel: "FYC mỗi tháng (triệu VND)", xticks: DATA.fyc_levels, label: "Thu nhập 3 năm của đại lý theo năng suất", y0: 0})}
-      <p class="small muted">Gồm FYC, hoa hồng tái tục (giả định chung 20%/10%) và thưởng. Manulife: không có tài liệu tầng đại lý.</p></div>
+      <p class="small muted">Gồm FYC, hoa hồng tái tục (giả định chung 20%/10%) và thưởng. Manulife tầng đại lý: ${MNL_GAP}.</p></div>
     <div class="card"><h3 style="margin-top:0">Đại lý 3 năm tại các mức năng suất</h3>
       <div class="tbl-wrap"><table><thead><tr><th>FYC/tháng</th>${agentRows.map(r => `<th class="n">${esc(r[0])}</th>`).join("")}</tr></thead><tbody>
       ${[5, 15, 35].map(f => `<tr><td>${f}tr</td>${agentRows.map(r => `<td class="n">${fmt(r[2](f))}</td>`).join("")}</tr>`).join("")}</tbody></table></div></div>
@@ -829,7 +836,7 @@ function renderAssume() {
       <li>K2 là kịch bản do người xem chọn, không phải kết quả dự báo của thiết kế.</li>
       <li>Biên đóng góp và OpEx trong tab Chi phí là số giả định để thử; cần số thật của công ty.</li></ul></div>
     <div class="card"><h3 style="margin-top:0">Chưa biết (UNKNOWN) — không quy về 0</h3><ul class="small">
-      <li>Manulife tầng đại lý và quản lý cấp trung: không có tài liệu.</li>
+      <li>Manulife tầng đại lý và quản lý cấp trung: ${MNL_GAP}.</li>
       <li>AIA: biểu hoa hồng sản phẩm, quy đổi FYC tín chỉ, gói trợ cấp Exchange/Exchange Pro — chi phí AIA trong mô hình đang thấp hơn thực tế.</li>
       <li>Chubb: quy định chung 260005V/006V/009V và chính sách BD.</li>
       <li>VNB margin, OpEx thật, tác động của thu nhập lên doanh số/tuyển dụng (không có dữ liệu — mô hình không giả vờ dự báo).</li></ul></div>
@@ -862,7 +869,13 @@ function renderAll() {
     + `<button type="button" data-tab="${k}" class="${grp === "ref" ? "ref" : ""}" ${state.tab === k ? 'aria-current="page"' : ""}><span class="stepn">${k === "glossary" ? "📖" : grp === "ref" ? "·" : i}</span>${k === "glossary" ? `Phụ lục: Từ điển & ${(DATA.pdfs || []).length} PDF` : n}</button>`).join("");
   $("glOpen").textContent = `📖 Từ điển & ${(DATA.pdfs || []).length} PDF`;
   document.querySelectorAll("#tabs button[data-tab]").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; showTab(); window.scrollTo(0, 0); });
-  $("refToggle").onclick = () => { state.refOpen = !state.refOpen; renderAll(); };
+  $("refToggle").onclick = () => {   // chỉ đổi hiện/ẩn — không vẽ lại cả trang (trước đây ~160ms, gây giật)
+    state.refOpen = !state.refOpen;
+    $("refToggle").setAttribute("aria-expanded", state.refOpen);
+    $("refToggle").firstChild.textContent = (state.refOpen ? "▾" : "▸") + " Phân tích sâu & công cụ (" + TABS.filter(t => t[3] === "ref").length + ")";
+    const t = TABS.find(x => x[0] === state.tab) || TABS[0];
+    $("tabs").classList.toggle("refclosed", !state.refOpen && t[3] !== "ref");
+  };
   renderOverview(); renderPackage(); renderTiers(); renderCost(); renderRubric(); renderTune(); renderCompare(); renderMethod(); renderAssume(); renderGlossary(); renderT1(); renderT2(); renderT3(); renderAnswer();
   if ($("rtb")) renderEvidence();   // đã mở trang Bằng chứng: vẽ lại khi dữ liệu (vd. Supabase) đổi số tài liệu
   showTab();
@@ -898,7 +911,8 @@ function showTab() {
     pin.setAttribute("aria-pressed", pref.pinned);
     pin.title = pref.pinned ? "Bỏ ghim: thanh bên tự ẩn, rê chuột vào mép trái để mở" : "Ghim thanh bên";
   };
-  pin.onclick = () => { pref.pinned = !pref.pinned; apply(); save(); };
+  // Nhả focus sau khi bấm: nếu không, quy tắc "đang có focus thì giữ mở" khiến thanh bên không bao giờ thu vào
+  pin.onclick = () => { pref.pinned = !pref.pinned; apply(); save(); pin.blur(); };
   rz.onpointerdown = ev => {
     ev.preventDefault(); rz.setPointerCapture(ev.pointerId); document.body.classList.add("resizing");
     rz.onpointermove = e => { pref.w = e.clientX; apply(); };
@@ -1043,7 +1057,7 @@ function renderAnswer() {
     <ul>
       <li><b>Chất lượng:</b> đại lý và quản lý bán ẩu (K2 thấp) tự mất phần lớn thưởng; trợ cấp Full-time chỉ trả khi K2 ≥80%.</li>
       <li><b>Chi phí / ROI:</b> ở K2 85%, đề xuất ${lo85 === "Hybrid" ? "có tổng chi thấp nhất" : `<b>không</b> rẻ nhất — ${esc(SNAME[lo85])} thấp hơn (${fmt(c85(lo85), 1)}%)`}; ở K2 65%, đề xuất ${lo65 === "Hybrid" ? "<b>thấp nhất</b>" : `cao hơn ${esc(SNAME[lo65])} (${fmt(c65(lo65), 1)}%)`}. So với: ${esc(names)}. Đây là chi phí mô phỏng, chưa phải ROI thật (thiếu biên lợi nhuận VNB của công ty).</li>
-      <li><b>Doanh số:</b> <span class="badge warn">Giả thuyết</span> mô hình chưa đo được doanh số tăng thêm. Cơ chế kỳ vọng: thưởng nhập môn 6 tháng đầu với ngưỡng thấp, đường ray Full-time có trợ cấp gắn quota, thưởng đều đặn theo quý. <b>Cách đo:</b> thí điểm 3 tháng ở một vùng, so với vùng đối chứng giữ chính sách cũ — FYP trên mỗi đại lý hoạt động, tỷ lệ đại lý hoạt động, K2.</li>
+      <li><b>Doanh số:</b> <span class="badge warn">Giả thuyết</span> mô hình chưa đo được doanh số tăng thêm. Cơ chế kỳ vọng: thưởng nhập môn 6 tháng đầu với ngưỡng thấp, đường ray Full-time có trợ cấp gắn quota, thưởng đều đặn theo quý. <b>Cách đo:</b> thí điểm 3 tháng ở một vùng, so với vùng đối chứng tương đồng giữ chính sách cũ. Trong 3 tháng đo các chỉ báo sớm: FYP trên mỗi đại lý hoạt động, tỷ lệ đại lý hoạt động, số hợp đồng / đại lý, tỷ lệ hủy trong 21 ngày cân nhắc, tỷ lệ đóng phí kỳ 2. K2 (tỷ lệ duy trì năm 2) chỉ đo được sau khoảng 13 tháng — theo dõi tiếp nhóm thí điểm đến tháng 13–15 rồi mới chốt áp dụng toàn quốc.</li>
     </ul>${go("t2", "Trang 2 · MAPA, trade-off & ROI")}</div>
   </div>`;
   document.querySelectorAll("#p-answer [data-go]").forEach(b => b.onclick = () => { state.tab = b.dataset.go; showTab(); window.scrollTo(0, 0); });
