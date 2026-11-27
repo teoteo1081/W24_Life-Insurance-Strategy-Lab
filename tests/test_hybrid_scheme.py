@@ -35,6 +35,30 @@ class TestHybridRules(unittest.TestCase):
         self.assertFalse(H.hybrid_agent_12m(20.25, 1, 85.0, "V3", "FULL_TIME", BASE)["quota_met"])
         self.assertFalse(H.hybrid_agent_12m(20.25, 2, 79.0, "V3", "FULL_TIME", BASE)["quota_met"])
 
+    def test_allowance_scales_with_region(self) -> None:
+        self.assertAlmostEqual(H.hybrid_agent_12m(20.25, 2, 85.0, "V3", "FULL_TIME", BASE)["allowance_fixed"], 3.0 * 0.675 * 12, 6)
+        self.assertAlmostEqual(H.hybrid_agent_12m(24.75, 2, 85.0, "V2", "FULL_TIME", BASE)["allowance_fixed"], 3.0 * 0.825 * 12, 6)
+
+    def test_all_agent_thresholds_scale_with_region(self) -> None:
+        # Codex P2 (9dea455): V3 FYC năm 360tr ≥ MDRT vùng 270tr → phải có thưởng MDRT; ở V1 (ngưỡng 400) thì không
+        from model.compensation.compensation_engine import ProposalParams, calc_proposal_agent_12m
+        d = ProposalParams()
+        self.assertEqual((d.agent_q_consistency_min_fyc, d.agent_mdrt_fyc_threshold, d.agent_onboarding_min_fyc), (4.0, 400.0, 8.0))   # mặc định = hành vi cũ
+        v3 = H.regional_params(BASE, "V3", "FULL_TIME")
+        self.assertAlmostEqual(v3.agent_mdrt_fyc_threshold, 270.0)
+        self.assertAlmostEqual(v3.agent_q_consistency_min_fyc, 2.7)
+        self.assertAlmostEqual(v3.agent_onboarding_min_fyc, 5.4)
+        fyp = 360 / 12 / 0.30
+        r3 = H.hybrid_agent_12m(fyp, 2, 85.0, "V3", "FULL_TIME", BASE)
+        r1 = H.hybrid_agent_12m(fyp, 2, 85.0, "V1", "FULL_TIME", BASE)
+        self.assertGreater(r3["paid_next_years"], 0.0)          # 30% MDRT trả chậm → có MDRT
+        self.assertEqual(r1["paid_next_years"], 0.0)
+        # ngưỡng nhất quán: FYC 3,5tr/tháng ở V3 (≥ bậc 1 vùng 3,375) nhận thưởng nhất quán khi ngưỡng giãn còn 2,7; ngưỡng 4,0 cố định thì không
+        from dataclasses import replace
+        scaled = calc_proposal_agent_12m([3.5] * 12, [0.0] * 12, k2_pct=85.0, params=v3)
+        fixed = calc_proposal_agent_12m([3.5] * 12, [0.0] * 12, k2_pct=85.0, params=replace(v3, agent_q_consistency_min_fyc=4.0))
+        self.assertGreater(scaled["total_bonuses_earned"], fixed["total_bonuses_earned"])
+
     def test_part_time_earns_less_than_full_time(self) -> None:
         ft = H.hybrid_agent_12m(30, 2, 85.0, "V1", "FULL_TIME", BASE)
         pt = H.hybrid_agent_12m(30, 2, 85.0, "V1", "PART_TIME", BASE)
@@ -89,12 +113,26 @@ class TestPhase2Outputs(unittest.TestCase):
         self.assertIn("V2, năng suất ngang V1", self.d["org"]["Hybrid"]["scenarios"])
         self.assertGreater(self.d["org"]["Hybrid"]["quota"]["fixed_share"], self.d["org"]["Hybrid"]["k85"]["fixed_share"])   # trợ cấp bật khi đạt quota
 
+    def test_cost_cap_holds_at_every_region_quota_and_breakpoint(self) -> None:
+        # Codex P1 (9dea455): V3, 45 ĐL đúng quota 20,25tr từng vượt 76,2%
+        for reg, meta in H.REGIONS.items():
+            o = self.P2.org_cost("Hybrid", 85.0, BASE, prod=H.FT_QUOTA_FYP_MONTH * meta["coef"] / (1200 / 45), region=reg)
+            with self.subTest(reg=reg):
+                self.assertLessEqual(o["cost_pct"], 75.0)
+        self.assertEqual([x for x in self.d["sweep"] if x["cost_pct"] > 75.0], [])
+        # quét dày ngoài lưới: FYP 5–600tr/ĐL bước 2,5 × K2 80/85/90/95 × 3 vùng
+        worst = max(self.P2.org_cost("Hybrid", k2, BASE, prod=(5 + 2.5 * i) / (1200 / 45), region=reg)["cost_pct"]
+                    for reg in H.REGIONS for k2 in (80.0, 85.0, 90.0, 95.0) for i in range(239))
+        self.assertLessEqual(worst, 75.0)
+        self.assertLessEqual(worst, self.d["org"]["Hybrid"]["worst"]["cost_pct"] + 0.5)   # lưới không bỏ sót đỉnh đáng kể
+
     def test_agent_cliffs_disclosed_and_simplicity_counted_uniformly(self) -> None:
         keys = {t["id"] for t in self.d["traps"]}
         self.assertIn("Hybrid|agent_k2_cliff", keys)
         self.assertIn("Hybrid|quota_cliff", keys)
         p4 = next(r for r in self.d["rubric"] if r["scheme"] == "Hybrid" and r["pillar"].startswith("Độ đơn giản"))
-        self.assertTrue(p4["evidence"].startswith("7 khoản"), p4["evidence"])
+        self.assertTrue(p4["evidence"].startswith("5 khoản"), p4["evidence"])          # cùng đơn vị đếm với 3 hãng (Codex P2 9dea455)
+        self.assertIn("gộp 1", p4["evidence"])
 
     def test_all_numbers_finite(self) -> None:
         for tbl in ("roi", "traps", "rubric", "regional"):

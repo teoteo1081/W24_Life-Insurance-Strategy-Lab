@@ -33,7 +33,7 @@ K2_GATE_PCT = 80.0                 # chốt chặn trợ cấp & trả chậm
 COST_CAP_PCT_FYP = 75.0            # trần tổng chi / FYP
 FT_QUOTA_FYP_MONTH = 30.0          # quota FYP/tháng của Full-time ở Vùng 1 (= Mốc 1)
 FT_MIN_CC_MONTH = 2                # số hợp đồng tối thiểu/tháng — KHÔNG giãn theo vùng
-FT_ALLOWANCE_MONTH = 3.0           # trợ cấp cam kết/tháng (triệu) — phần cố định duy nhất của đại lý
+FT_ALLOWANCE_MONTH = 3.0           # trợ cấp cam kết/tháng (triệu) ở Vùng 1; vùng khác × hệ số vùng — phần cố định duy nhất của đại lý
 PART_TIME_RATE_MULT = 0.70         # thưởng tháng Part-time = 70% bậc Song Hành
 LEADER_TARGET_FYP_MONTH = 1000.0   # chỉ tiêu FYP/tháng của lãnh đạo vùng ở Vùng 1
 INDIRECT_GEN2_SHARE = 0.5          # gián tiếp đời 2 = ½ tỷ lệ đời 1 (như Chubb/Manulife), tối đa 2 đời
@@ -81,7 +81,11 @@ def regional_params(base: ProposalParams, region: str, track: str) -> ProposalPa
     return replace(base, name=f"Hybrid_{region}_{track}",
                    agent_m_tier_thresholds=tuple(round(t * c, 4) for t in base.agent_m_tier_thresholds),
                    agent_m_tier_rates=tuple(round(r * mult, 6) for r in base.agent_m_tier_rates),
-                   mgr_indirect_gate_fyc=round(base.mgr_indirect_gate_fyc * c, 4))
+                   mgr_indirect_gate_fyc=round(base.mgr_indirect_gate_fyc * c, 4),
+                   # Codex P2 (9dea455): MỌI ngưỡng FYP/FYC của đại lý giãn theo vùng, kể cả nhất quán / MDRT / nhập môn
+                   agent_q_consistency_min_fyc=round(base.agent_q_consistency_min_fyc * c, 4),
+                   agent_mdrt_fyc_threshold=round(base.agent_mdrt_fyc_threshold * c, 4),
+                   agent_onboarding_min_fyc=round(base.agent_onboarding_min_fyc * c, 4))
 
 
 def hybrid_agent_12m(fyp_month: float, cc_month: int, k2: Optional[float], region: str, track: str,
@@ -92,7 +96,7 @@ def hybrid_agent_12m(fyp_month: float, cc_month: int, k2: Optional[float], regio
     r = calc_proposal_agent_12m([fyc] * 12, [syc_month] * 12, k2_pct=k2, params=p)
     quota = FT_QUOTA_FYP_MONTH * _coef(region)
     allow_months = 12 if (track == "FULL_TIME" and fyp_month >= quota and cc_month >= FT_MIN_CC_MONTH and _k2_ok(k2)) else 0
-    allowance = FT_ALLOWANCE_MONTH * allow_months
+    allowance = FT_ALLOWANCE_MONTH * _coef(region) * allow_months   # trợ cấp tỷ lệ theo hệ số vùng (Codex P1 9dea455: V3 đạt quota vượt trần 75%)
     total = r["total_earned"] + allowance
     return {"fyc_total": r["fyc_total"], "bonuses": round(r["total_bonuses_earned"], 4), "allowance_fixed": round(allowance, 4),
             "total_earned": round(total, 4), "cash_paid_y1": round(r["cash_paid_y1"] + allowance, 4),

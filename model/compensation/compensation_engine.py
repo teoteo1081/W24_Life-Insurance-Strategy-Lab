@@ -1498,6 +1498,9 @@ class ProposalParams:
     agent_m_tier_thresholds: Tuple[float, float, float, float, float] = (5.0, 12.0, 22.0, 35.0, 55.0)
     agent_q_consistency_3m: float = 0.12   # +12% on monthly bonus when 3M active
     agent_annual_mdrt_rate: float = 0.10   # +10% on annual FYC >= 400M (MDRT tier)
+    agent_q_consistency_min_fyc: float = 4.0     # FYC/tháng tối thiểu cả 3 tháng để nhận thưởng nhất quán (mặc định = hành vi cũ)
+    agent_mdrt_fyc_threshold: float = 400.0      # ngưỡng FYC năm của thưởng MDRT (mặc định = hành vi cũ)
+    agent_onboarding_min_fyc: float = 8.0        # ngưỡng FYC/tháng của thưởng nhập môn M1–M6 (mặc định = hành vi cũ)
     agent_ryc_bonus_rate: float = 0.25     # +25% on Y2 SYC/RYC when K2 >= 75%
     mgr_direct_base_rate: float = 0.30     # Direct override base rate before K2 multiplier
     mgr_direct_max_rate: float = 0.36      # Direct override max 36% FYC NTT (vs Chubb 108%!)
@@ -1522,6 +1525,8 @@ def _validate_proposal_params(p: ProposalParams) -> None:
         raise ValueError("ProposalParams.agent_m_tier_thresholds must be strictly increasing")
     _require_rate_0_to_1(p.agent_q_consistency_3m, "ProposalParams.agent_q_consistency_3m")
     _require_rate_0_to_1(p.agent_annual_mdrt_rate, "ProposalParams.agent_annual_mdrt_rate")
+    for _f in ("agent_q_consistency_min_fyc", "agent_mdrt_fyc_threshold", "agent_onboarding_min_fyc"):
+        _require_non_negative_float(getattr(p, _f), "ProposalParams." + _f)
     _require_rate_0_to_1(p.agent_ryc_bonus_rate, "ProposalParams.agent_ryc_bonus_rate")
     _require_rate_0_to_1(p.mgr_direct_base_rate, "ProposalParams.mgr_direct_base_rate")
     _require_rate_0_to_1(p.mgr_direct_max_rate, "ProposalParams.mgr_direct_max_rate")
@@ -1584,19 +1589,19 @@ def calc_proposal_agent_12m(
     onb_m12 = 0.0
     if is_new_agent:
         for m in range(6):
-            if monthly_fyc[m] >= 8.0:
+            if monthly_fyc[m] >= p.agent_onboarding_min_fyc:
                 onb_cash += 1.5
                 onb_m12 += 1.5
 
     q_cons = 0.0
     for q in range(4):
         sl = monthly_fyc[q * 3 : (q + 1) * 3]
-        if all(x >= 4.0 for x in sl):
+        if all(x >= p.agent_q_consistency_min_fyc for x in sl):
             q_cons += sum(m_bonuses[q * 3 : (q + 1) * 3]) * p.agent_q_consistency_3m
 
     fyc_y = sum(monthly_fyc)
     syc_y = sum(monthly_syc)
-    mdrt_b = (fyc_y * p.agent_annual_mdrt_rate * k2_fac) if fyc_y >= 400.0 else 0.0
+    mdrt_b = (fyc_y * p.agent_annual_mdrt_rate * k2_fac) if fyc_y >= p.agent_mdrt_fyc_threshold else 0.0
     ryc_b = (syc_y * p.agent_ryc_bonus_rate) if (k2_pct is not None and k2_pct >= 75.0) else 0.0
 
     # Defer 30% of annual MDRT bonus into Y2 gated on K2 >= 75%

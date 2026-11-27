@@ -4,6 +4,16 @@
 
 ## Trạng thái hiện hành
 
+**2026-11-27 (khuya) — Đóng 1 P1 + 2 P2 của Codex trên `9dea455` — commit LOCAL, không push.**
+- P1 (V3 đạt đúng quota 20,25tr từng vượt trần: 76,2%):
+  - Trợ cấp Full-time nay = 3tr × hệ số vùng (V2 2,48tr · V3 2,03tr) — **thay đổi thiết kế, cần TJ xác nhận**.
+  - Kiểm trần thêm "mọi ĐL đạt đúng quota vùng" cho V1/V2/V3 (69,4 / 70,3 / 71,4%) và lưới quét 195 điểm gãy (3 vùng × năng suất quanh quota, các bậc thưởng, nhất quán, MDRT × K2 80/85/95%): 0 điểm vượt.
+  - Điểm cao nhất 73,1% (V3, 123,75tr FYP/ĐL) → khoảng dư chỉ 1,9 điểm %. Test quét dày FYP 5–600tr bước 2,5 (K2 80–95) xác nhận không vượt.
+- P2 đơn vị đếm: một quy tắc cho cả 4 phương án (1 khoản = 1 mục chi trả có công thức riêng; các đời gián tiếp cùng công thức gộp 1 như [AIAVAD 2601-034 : 4]; phần giữ lại của cùng khoản không tính riêng). Lai = 5 khoản → điểm Lai **3,91** (AIA 3,15 · Chubb 3,05 · Manulife 3,37). Trụ cột Vận hành & Pháp lý vẫn là JUDGEMENT.
+- P2 phân vùng: thêm vào `ProposalParams` 3 tham số `agent_q_consistency_min_fyc` (4) / `agent_mdrt_fyc_threshold` (400) / `agent_onboarding_min_fyc` (8). Mặc định giữ hành vi cũ, nên Song Hành và parity 240 ca không đổi. Chính sách Lai giãn cả 3 ngưỡng theo vùng (V3: 2,7 / 270 / 5,4).
+- Test: `tests/test_hybrid_scheme.py` 18 test, đột biến 3/3 bị bắt.
+- agy (audit `9dea455`, Desktop & offline PASS): sửa 3 điểm mobile — `scroll-margin-top:165px` + nút 📖 trừ chiều cao thanh dính khi cuộn; `code` tự xuống dòng (tab 2/3 hết tràn ngang); ô `#rq` rộng như ô tìm từ điển.
+
 **2026-11-27 (khuya) — Sửa theo tự kiểm toán `41bec2d` (AGY tự kiểm, KHÔNG phải kiểm toán độc lập) — commit LOCAL, không push.**
 - Trần 75% giờ kiểm ở kịch bản XẤU NHẤT: Mốc 4 chuẩn (26,7tr/ĐL) thấp hơn quota 30tr nên trợ cấp Full-time không bật. Kết quả Lai: chuẩn 59,9% · mọi ĐL đạt quota 69,4% · V2/V3 năng suất ngang V1 71,2% → vẫn ĐẠT, nhưng chỉ dư 3,8 điểm %.
 - Rubric: đếm khoản phí Lai cùng quy tắc tuyến quản lý (7 khoản, trước đây tự đếm 5); An toàn tài chính chấm theo kịch bản xấu nhất → điểm Lai **3,80** (trước 4,01). AIA 3,15 · Chubb 3,05 · Manulife 3,37 không đổi. Ghi rõ thiên lệch: bậc đệm K2 và trần đội phẳng được thêm sau khi đo bằng rubric.

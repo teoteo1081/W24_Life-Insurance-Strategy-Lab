@@ -158,6 +158,7 @@ body.present #tabs button[data-tab="tune"],body.present #planSeg button[data-pla
   .navl button{white-space:nowrap;min-height:36px;padding:6px 10px;flex:0 0 auto}
   .side input[type=range]{margin:2px 0}
   .side .btn{display:none}
+  section.panel,#p-glossary{scroll-margin-top:165px}   /* agy: thanh dính không che nội dung khi cuộn tới */
 }
 
 .takeaway{font-size:17px;font-weight:600;line-height:1.45;margin:0 0 14px;padding:10px 14px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;max-width:100ch}
@@ -165,6 +166,8 @@ abbr[title]{text-decoration:underline dotted;text-underline-offset:3px;cursor:he
 abbr.gl{text-decoration:none;border-bottom:1px dotted currentColor;cursor:help}
 abbr.gl:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
 #gltip{position:fixed;z-index:60;padding:8px 10px;border-radius:8px;background:var(--ink);color:var(--bg);font-size:13.5px;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.25);pointer-events:none}
+code{overflow-wrap:anywhere;word-break:break-word}   /* agy: đường dẫn dài tự xuống dòng trên 360–390px */
+#rq{min-width:min(22em,80vw)}   /* agy polish: không cụt placeholder */
 .glbar{display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin:8px 0 12px}.glbar input{min-width:min(22em,80vw)}.glbar input,.glbar select{display:block;margin-top:4px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);font:inherit}
 .gltable td,.gltable th{vertical-align:top}.ev.nolink{opacity:.75;cursor:not-allowed}
 details.more{display:inline}details.more>summary{display:inline;cursor:pointer}
@@ -890,7 +893,7 @@ function renderT3() {
   <p class="note"><span class="tag ADAPT">PROPOSAL</span> Không phải chính sách đã ban hành. Kế thừa bộ tham số Song Hành; hệ số vùng là đề xuất của TJ. Chi tiết: <code>outputs/interview/03_De_Xuat_Chinh_Sach_Lai_VN2026.md</code>.</p>
   <div class="grid g2">
     <div class="card"><h3 style="margin-top:0">Khung chính sách</h3><ul class="small">
-      <li><b>Full-time</b> (cam kết): thưởng tháng 100% + trợ cấp 3tr/tháng khi đạt quota vùng, ≥2 HĐ/tháng và K2 ≥80%.</li>
+      <li><b>Full-time</b> (cam kết): thưởng tháng 100% + trợ cấp 3tr/tháng × hệ số vùng khi đạt quota vùng, ≥2 HĐ/tháng và K2 ≥80%.</li>
       <li><b>Part-time</b> (thuần biến phí): thưởng tháng 70%, không trợ cấp.</li>
       <li><b>Chốt chặn K2 ≥80%</b>: trợ cấp chỉ khi K2 ≥80%; phần trả chậm nhận đủ khi ≥80%, 50% khi 75–<80%, 0 dưới 75%.</li>
       <li><b>Giảm (chưa xóa) bẫy đội phẳng</b>: override trực tiếp đủ tỷ lệ tới 60tr FYC/tháng, phần vượt 50%.</li>
@@ -900,7 +903,7 @@ function renderT3() {
   <h3>Chọn vùng</h3>
   <div class="seg" id="t3Reg">${regs.map(r => `<button type="button" data-r="${r}" aria-pressed="${r === reg}">${esc((RG.find(x => x.region === r) || {}).region_name || r)}</button>`).join("")}</div>
   <div class="seg" id="t3Basis" style="margin-top:8px"><button type="button" data-b="regional_fyp" aria-pressed="${basis === "regional_fyp"}">Năng suất điển hình của vùng</button><button type="button" data-b="national_fyp" aria-pressed="${basis === "national_fyp"}">Cùng năng suất Vùng 1</button></div>
-  <p class="small" style="margin-top:10px">Hệ số quota vùng: <b>${fmt((meta.coefficient || 0) * 100, 1)}%</b> · giữ nguyên ≥2 HĐ/tháng và K2 ≥80%.</p>
+  <p class="small" style="margin-top:10px">Hệ số vùng: <b>${fmt((meta.coefficient || 0) * 100, 1)}%</b> — giãn mọi ngưỡng FYP/FYC (quota, bậc thưởng, nhất quán, MDRT, cổng gián tiếp, chỉ tiêu lãnh đạo) và trợ cấp (${fmt(3 * (meta.coefficient || 0), 2)}tr/tháng) · giữ nguyên ≥2 HĐ/tháng và K2 ≥80%.</p>
   <div class="tbl-wrap"><table><thead><tr><th>Vai trò</th><th>FYP/tháng (tr)</th><th>Quota / chỉ tiêu (tr FYP/tháng)</th><th>Thu nhập (tr/tháng)</th><th>Tiền mặt năm 1 (tr/tháng)</th><th>So với cùng năng suất V1</th></tr></thead><tbody>
   ${rows.map(r => { const n = nat.find(x => x.track === r.track && x.milestone_id === r.milestone_id); const base = RG.find(x => x.region === "V1" && x.basis === "national_fyp" && x.track === r.track && x.milestone_id === r.milestone_id);
     return `<tr><th scope="row">${esc(r.milestone_id)} · ${esc(r.role)}</th><td>${fmt(r.fyp_month, 1)}</td><td>${r.quota_fyp_month == null ? "—" : fmt(r.quota_fyp_month, 1)}</td><td><b>${fmt(r.income_vnd_m_month, 1)}</b></td><td>${fmt(r.cash_y1_vnd_m_month, 1)}</td><td class="small">${base ? pct((r.income_vnd_m_month / base.income_vnd_m_month - 1) * 100, 0) : "—"}</td></tr>`; }).join("")}
@@ -1075,7 +1078,10 @@ document.addEventListener("click", ev => {
 });
 $("glOpen").onclick = () => {
   state.tab = "glossary"; showTab();
-  if (window.matchMedia("(max-width:980px)").matches) $("p-glossary").scrollIntoView({block: "start"});   // agy UX #3
+  if (window.matchMedia("(max-width:980px)").matches) {   // agy UX #3: cuộn tới từ điển, trừ chiều cao thanh dính
+    const side = document.querySelector(".side");
+    window.scrollTo(0, $("p-glossary").getBoundingClientRect().top + window.scrollY - (side ? side.offsetHeight : 0) - 8);
+  }
   else window.scrollTo(0, 0);
 };
 $("presentBtn").onclick = () => {
