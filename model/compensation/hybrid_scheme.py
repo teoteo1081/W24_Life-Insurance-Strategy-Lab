@@ -40,6 +40,8 @@ FT_MIN_CC_MONTH = 2                # số hợp đồng tối thiểu/tháng —
 FT_ALLOWANCE_MONTH = 3.0           # trợ cấp cam kết/tháng (triệu) ở Vùng 1; vùng khác × hệ số vùng — phần cố định duy nhất của đại lý
 PART_TIME_RATE_MULT = 0.70         # thưởng tháng Part-time = 70% bậc Song Hành
 LEADER_TARGET_FYP_MONTH = 1000.0   # chỉ tiêu FYP/tháng của lãnh đạo vùng ở Vùng 1
+LEADER_OVERRIDE_FYC_RATE = 0.115   # override toàn khu vực của lãnh đạo (Song Hành: 8,05%) — nâng để thu nhập lãnh đạo Mốc 4 không thấp hơn
+                                   # mức thấp nhất của 3 hãng (Manulife PSM/SM 105,1 tr/tháng); 70% vẫn trả chậm 3 năm theo K2 (DEC-17, PROPOSAL)
 INDIRECT_GEN2_SHARE = 0.5          # gián tiếp đời 2 = ½ tỷ lệ đời 1 (như Chubb/Manulife), tối đa 2 đời
 K2_RAMP_FROM_PCT = 75.0            # trả chậm: K2 ≥80% nhận 100%; 75–<80% nhận 50%; <75% = 0 (giảm vách đá đo được ở 02)
 K2_RAMP_SHARE = 0.5
@@ -158,7 +160,7 @@ def hybrid_leader_12m(org_fyp_month: float, org_fyc_month: float, k2: Optional[f
     ach = _fin(org_fyp_month, "org_fyp_month") / (LEADER_TARGET_FYP_MONTH * c)
     base_fee = 0.0 if ach < 0.30 else base.rd_base_monthly * 12 * min(1.40, ach * 1.25)
     k2f = proposal_k2_factor(k2, base.k2_hard_floor_pct, allow_new_no_k2=k2 is None)
-    var = _fin(org_fyc_month, "org_fyc_month") * 12 * base.rd_direct_fyc_rate * k2f
+    var = _fin(org_fyc_month, "org_fyc_month") * 12 * LEADER_OVERRIDE_FYC_RATE * k2f
     deferred_pool = var * base.rd_deferred_3y_share
     deferred = deferred_pool * _deferred_vest(k2)
     cash = base_fee + var - deferred_pool

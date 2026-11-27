@@ -12,7 +12,7 @@
 | Giảm (chưa xóa) bẫy đội phẳng | Override nhóm trực tiếp đủ tỷ lệ tới 60tr FYC/tháng (không giãn theo vùng), phần vượt 50% | Cả 3 hãng trả cho đội phẳng nhiều hơn đội có quản lý con (mục 2 của 02); với Chính sách Đề xuất 2026 tỷ lệ vẫn > 1 — chỉ giảm, chưa xóa |
 | Quản lý | Override 35,7% × hệ số K2 (trần 42,8%) FYC nhóm; gián tiếp 2 đời (35,0% / ½), cổng FYC nhóm ≥ 15,0tr × hệ số vùng; trả chậm 17,8% FYC nhóm | Học cổng 15tr của Chubb, bỏ chuỗi gián tiếp vô hạn |
 | Lãnh đạo vùng | Phí cơ bản 40,2tr × % đạt chỉ tiêu (sàn 30%, trần 140%) + override 8,05% FYC vùng × K2; 70% override trả chậm | Học Manulife: phí cơ bản gắn chỉ tiêu, không cố định cứng |
-| Trần chi phí | Tổng chi / FYP ≤ 75% ở kịch bản XẤU NHẤT | Kiểm tự động: chuẩn 59,9%; xấu nhất (V4, điểm gãy cao nhất của lưới quét (128,33tr FYP/ĐL, K2 85%)) 73,0% → ĐẠT, dư 2,0 điểm % |
+| Trần chi phí | Tổng chi / FYP ≤ 75% ở kịch bản XẤU NHẤT | Kiểm tự động: chuẩn 61,1%; xấu nhất (V4, điểm gãy cao nhất của lưới quét (128,33tr FYP/ĐL, K2 85%)) 74,2% → ĐẠT, dư 0,8 điểm % |
 
 ## 2. Bảng hệ số vùng (Regional Tiering) — `PROPOSAL`
 
@@ -35,7 +35,7 @@ Hai cách đọc: **cùng FYP** (cùng năng suất ở mọi vùng) và **FYP v
 | M1 · Đại lý Part-time | 19,9 | 19,9 | 19,9 | 17,7 | 19,9 | 15,5 | 20,7 | 13,9 | PROPOSAL (hybrid_scheme.py) `PROPOSAL` |
 | M2 · Trưởng nhóm (phí thuần) | 27,3 | 27,3 | 27,3 | 24,3 | 27,3 | 21,3 | 27,3 | 19,1 | PROPOSAL (hybrid_scheme.py) `PROPOSAL` |
 | M3 · Trưởng ban (phí thuần) | 40,8 | 40,8 | 40,8 | 36,3 | 40,8 | 31,8 | 40,8 | 28,6 | PROPOSAL (hybrid_scheme.py) `PROPOSAL` |
-| M4 · Lãnh đạo khu vực (phí thuần) | 91,1 | 91,1 | 91,1 | 87,3 | 91,1 | 83,5 | 91,1 | 80,7 | PROPOSAL (hybrid_scheme.py) `PROPOSAL` |
+| M4 · Lãnh đạo khu vực (phí thuần) | 106,0 | 106,0 | 106,0 | 100,6 | 106,0 | 95,1 | 106,0 | 91,1 | PROPOSAL (hybrid_scheme.py) `PROPOSAL` |
 
 ## 4. Đáp ứng khác biệt vùng miền (`HYPOTHESIS` — repo không có dữ liệu hành vi theo vùng)
 
@@ -49,7 +49,7 @@ Hai cách đọc: **cùng FYP** (cùng năng suất ở mọi vùng) và **FYP v
 
 | Phương án | Điểm có trọng số (1–5) |
 |---|---:|
-| **Chính sách Đề xuất 2026** | 3,91 — PROPOSAL (hybrid_scheme.py) `PROPOSAL` |
+| **Chính sách Đề xuất 2026** | 3,96 — PROPOSAL (hybrid_scheme.py) `PROPOSAL` |
 | Manulife | 3,37 — [0046M01_2026 : 1-8], [0047M01_2026 : 1-3], [0048M01_2026 : 1-5] `MODEL_OUTPUT` |
 | AIA Alpha | 3,15 — [AIAVAD 2601-034 : 3-6], [AIAVAD 2601-035 : 2-5], [AIAVAD 2604-069 : 3-7] `MODEL_OUTPUT` |
 | Chubb Life | 3,05 — [CHH0DCEB260007V : 4-7], [CHH0DCEB260008V : 5-10], [CHH0DCEB260003V : 5-10] `MODEL_OUTPUT` |

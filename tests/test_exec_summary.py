@@ -53,7 +53,7 @@ class TestExecSummary(unittest.TestCase):
         v = {(r["milestone_id"], r["scheme"]): r["verdict"] for r in self.full["agent"]}
         self.assertTrue(v[("M2", "AIA")].startswith("Không thơm"))        # quản lý thu ít hơn tự bán (behavior_traps)
         self.assertEqual(v[("M2", "Chubb")], "Thơm")
-        self.assertEqual(v[("M4", "Hybrid")], "Thấp hơn cả các hãng")       # lãnh đạo Lai thấp hơn mọi hãng — công bố, không giấu
+        self.assertEqual(v[("M4", "Hybrid")], "Trung bình")                 # DEC-17: override lãnh đạo 11,5% → không còn thấp hơn mọi hãng
 
     def test_repo_copy_is_full(self) -> None:   # DEC-16: repo công khai toàn bộ
         with tempfile.TemporaryDirectory() as d:

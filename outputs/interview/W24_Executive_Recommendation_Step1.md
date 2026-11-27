@@ -9,16 +9,16 @@
 | Vế đề bài | Kết luận | Số chính (K2 85%, khu vực 45 đại lý) | Xem |
 |---|---|---|---|
 | Phân tích chính sách các công ty | Ở đại lý cá nhân các hãng trả gần ngang nhau; khác biệt nằm ở tầng quản lý và ở việc chi trả có co theo chất lượng hay không. | AIA Alpha 58,4% FYP · Chubb Life 88,1% FYP · Manulife 50,8% FYP | Trang 2 |
-| Đề xuất phù hợp VN | **Chính sách Đề xuất 2026** `PROPOSAL`: trả ngang thị trường, mọi khoản thưởng lớn gắn K2, giữ lại phần trả chậm, hệ số vùng theo lương tối thiểu. | Tổng chi 59,9% FYP · điểm 5 tiêu chí 3,91/5 | Trang 5 |
-| Doanh số | `HYPOTHESIS` — mô hình chưa đo được doanh số tăng thêm; cơ chế kỳ vọng: đường ray Full-time có trợ cấp gắn quota, thưởng đều đặn. Cần thí điểm. | — | Trang 3, 7 |
-| Chất lượng | Chi trả co mạnh nhất khi K2 xấu đi. | Khi K2 85% → 65%: đề xuất −26,7%; hãng co mạnh nhất Chubb Life −21,3% | Trang 3 |
-| Chi phí / ROI | Không rẻ nhất khi chất lượng tốt (AIA Alpha 58,4%, Manulife 50,8% thấp hơn), nhưng an toàn nhất khi xấu: đỉnh stress test không vượt trần 75% FYP. ROI hiện là proxy (chi phí / FYP), chưa phải VNB. | Xấu nhất 73,0%; bán nghiêng bảo vệ thuần 75,0% | Trang 6 |
+| Đề xuất phù hợp VN | **Chính sách Đề xuất 2026** `PROPOSAL`: trả ngang thị trường, mọi khoản thưởng lớn gắn K2, giữ lại phần trả chậm, hệ số vùng theo lương tối thiểu. | Tổng chi 61,1% FYP · điểm 5 tiêu chí 3,96/5 | Trang 5 |
+| Doanh số | Đề xuất trả cao hơn AIA Alpha, Manulife nên phải bán thêm mới hòa vốn phần phí giữ lại sau chi trả kênh đại lý; rẻ hơn Chubb Life ngay ở cùng FYP. Đây là chỉ tiêu tối thiểu của thí điểm — mức tăng thật vẫn `HYPOTHESIS`. | 4 nhóm năng suất: so với AIA Alpha: thêm đại lý +21,8% hoặc tăng năng suất +18,0% FYP; so với Manulife: thêm đại lý +35,8% hoặc tăng năng suất +29,5% FYP `PROPOSAL` | Trang 3, 7 |
+| Chất lượng | Chi trả co mạnh nhất khi K2 xấu đi. | Khi K2 85% → 65%: đề xuất −27,9%; hãng co mạnh nhất Chubb Life −21,3% | Trang 3 |
+| Chi phí / ROI | Không rẻ nhất khi chất lượng tốt (AIA Alpha 58,4%, Manulife 50,8% thấp hơn), nhưng an toàn nhất khi xấu: đỉnh stress test không vượt trần 75% FYP. ROI hiện là proxy (chi phí / FYP), chưa phải VNB. | Xấu nhất 74,2%; bán nghiêng bảo vệ thuần 75,0% | Trang 6 |
 
 ## Trang 1 — Tóm tắt điều hành
 
 - **Khuyến nghị:** duyệt **Chính sách Đề xuất 2026** ở dạng **thí điểm** (6–12 tháng, ghép cặp với văn phòng đối chứng), chưa ban hành toàn quốc khi chưa có VNB và K2 thật.
-- **Vì sao:** chi trả ngang thị trường để giữ và tuyển người; chi trả **giảm 26,7%** khi K2 từ 85% xuống 65% (cao nhất nhóm); **11,3%** chi trả được giữ lại trả chậm; tổng chi **59,9% FYP** (≈ 718,9 triệu/tháng · 8.627 triệu/năm cho khu vực 1,2 tỷ FYP/tháng) `PROPOSAL` `MODEL_OUTPUT`.
-- **Đánh đổi đã công bố:** lãnh đạo khu vực của đề xuất nhận **91,1 triệu/tháng — thấp hơn cả các hãng** (ít phí cố định, phần lớn override trả chậm); có các “vách đá” thu nhập (K2 80%, quota) cần làm mượt ở bước 2 (trang 5).
+- **Vì sao:** chi trả ngang thị trường để giữ và tuyển người; chi trả **giảm 27,9%** khi K2 từ 85% xuống 65% (cao nhất nhóm); **12,5%** chi trả được giữ lại trả chậm; tổng chi **61,1% FYP** (≈ 733,8 triệu/tháng · 8.806 triệu/năm cho khu vực 1,2 tỷ FYP/tháng) `PROPOSAL` `MODEL_OUTPUT`.
+- **Đánh đổi đã công bố:** lãnh đạo khu vực của đề xuất nhận **106,0 triệu/tháng — không thấp hơn mức thấp nhất của các hãng**, trong đó 70% override toàn khu vực trả chậm 3 năm theo K2 (ít phí cố định); có các “vách đá” thu nhập (K2 80%, quota) cần làm mượt ở bước 2 (trang 5).
 
 **Khung giả định đang dùng** (đề bài không nêu ngân sách, chỉ tiêu, quy mô) `ASSUMPTION`:
 
@@ -40,7 +40,7 @@ So mọi hãng ở cùng quy mô: **L1** đại lý 30 triệu FYP/tháng · **L
 | L1 · Cá nhân 30tr FYP/tháng | SA **18,1** — Trung bình | AR **22,5** — Thơm | Đại Lý **17,8** — Trung bình | Đại lý Full-time **23,2** — Thơm |
 | L2 · Nhóm 150tr (5 ĐL) | SUM **17,6** — Không thơm (quản lý thu ít hơn tự bán) | UM **54,2** — Thơm | UM+ **11,0** — Không thơm (quản lý thu ít hơn tự bán) | Trưởng nhóm **27,3** — Thơm |
 | L3 · Ban 450tr (15 ĐL) | SDM **25,6** — Thơm | DM **86,6** — Thơm | UM+ **18,2** — Trung bình | Trưởng ban **40,8** — Thơm |
-| L4 · Khu vực 1,2 tỷ (45 ĐL) | PAF **136,3** — Thơm | RD **186,6** — Thơm | PSM/SM **105,1** — Trung bình | Lãnh đạo khu vực **91,1** — Thấp hơn cả các hãng |
+| L4 · Khu vực 1,2 tỷ (45 ĐL) | PAF **136,3** — Thơm | RD **186,6** — Thơm | PSM/SM **105,1** — Trung bình | Lãnh đạo khu vực **106,0** — Trung bình |
 
 **Đọc bảng:** “Thơm” = cao hơn mức thấp nhất của các hãng cùng tầng ≥ 1,2 lần; “Không thơm” = lên quản lý nhóm mà thu ít hơn tự bán. Trích dẫn trang văn bản gốc nằm ở cột nhận xét của *Tóm tắt nhanh 2 góc nhìn* (`outputs/interview/00_Executive_Summary_Keo_Thom.md`) và trên trang tương tác.
 
@@ -52,12 +52,13 @@ So mọi hãng ở cùng quy mô: **L1** đại lý 30 triệu FYP/tháng · **L
 
 | Mục tiêu | AIA Alpha | Chubb Life | Manulife | Chính sách Đề xuất 2026 |
 |---|---|---|---|---|
-| Chi trả giảm khi K2 85% → 65% (cao = gắn chất lượng) | 14,2% | 21,3% | 6,7% | 26,7% |
-| Chi phí / phí còn duy trì, K2 85% | 68,7% | 103,6% | 59,8% | 70,5% |
-| Chi phí / phí còn duy trì, K2 65% | 77,0% | 106,7% | 73,0% | 67,5% |
-| Tổng chi / FYP, K2 85% | 58,4% | 88,1% | 50,8% | 59,9% |
+| Chi trả giảm khi K2 85% → 65% (cao = gắn chất lượng) | 14,2% | 21,3% | 6,7% | 27,9% |
+| Chi phí / phí còn duy trì, K2 85% | 68,7% | 103,6% | 59,8% | 71,9% |
+| Chi phí / phí còn duy trì, K2 65% | 77,0% | 106,7% | 73,0% | 67,8% |
+| Tổng chi / FYP, K2 85% | 58,4% | 88,1% | 50,8% | 61,1% |
 
 - **Doanh số** `HYPOTHESIS`: thu nhập đại lý Full-time và quản lý không thấp hơn thị trường (trang 2) là điều kiện giữ và tuyển người; mức tăng FYP thật chỉ đo được bằng thí điểm (trang 7).
+- **Doanh số cần đạt để hòa vốn** `PROPOSAL`: đo bằng phần FYP giữ lại sau chi trả kênh đại lý (không phải lợi nhuận — biên lợi nhuận thật `UNKNOWN`), cơ cấu 4 nhóm năng suất (7 không hoạt động / 13 × 10tr / 15 × 20tr / 10 × 77tr FYP/tháng) — so với AIA Alpha: thêm đại lý +21,8% hoặc tăng năng suất +18,0% FYP; so với Manulife: thêm đại lý +35,8% hoặc tăng năng suất +29,5% FYP. Thí điểm phải vượt mức này mới coi là thắng.
 - **Chất lượng:** trợ cấp Full-time chỉ trả khi K2 ≥ 80%; phí quản lý nhân hệ số K2; trả chậm nhận đủ khi K2 ≥ 80%, một nửa khi 75–80%, mất khi dưới 75% `PROPOSAL`.
 - **Chi phí:** xem trang 6 — gồm kịch bản năng suất giảm một nửa và danh mục nghiêng bảo vệ thuần.
 
@@ -118,9 +119,9 @@ Từ 01/01/2027, TT 96/2026 thêm trần **7% phí thực thu** cho hợp đồn
 | AIA Alpha | 58,4% | 54,3% | 58,4% | 79,4% | 88,6% | 97,4% | 2,6% | 3,4% |
 | Chubb Life | 88,1% | 73,4% | 88,1% | 116,2% | 116,2% | 100,0% | 0,0% | 4,3% |
 | Manulife | 50,8% | 44,9% | 51,4% | 74,8% | 75,0% | 95,8% | 4,2% | 7,5% |
-| Chính sách Đề xuất 2026 | 59,9% | 56,1% | 73,0% | 69,9% | 75,0% | 88,7% | 11,3% | 7,8% |
+| Chính sách Đề xuất 2026 | 61,1% | 57,4% | 74,2% | 71,2% | 75,0% | 87,5% | 12,5% | 7,7% |
 
-- Khi bán nghiêng bảo vệ thuần (hoa hồng 40%), đề xuất chạm đúng trần 75% ở kịch bản xấu nhất; quỹ thưởng vẫn trả 89% `MODEL_OUTPUT`.
+- Khi bán nghiêng bảo vệ thuần (hoa hồng 40%), đề xuất chạm đúng trần 75% ở kịch bản xấu nhất; quỹ thưởng vẫn trả 86% `MODEL_OUTPUT`.
 - **Giới hạn ROI:** đây là chi phí mô phỏng trên FYP, chưa phải lợi nhuận. Muốn ra ROI thật cần: cơ cấu sản phẩm, biên VNB theo sản phẩm, chi phí vượt định mức (expense overrun) và chi phí vận hành văn phòng — do bộ phận Định phí (Actuarial) cung cấp.
 
 ## Trang 7 — Lộ trình & tham số hiệu chỉnh

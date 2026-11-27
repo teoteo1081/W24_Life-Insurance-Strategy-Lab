@@ -23,7 +23,7 @@ Tháng = thu nhập năm / 12, Quý = năm / 4 (bình quân quy đổi, **đã g
 | L4 · Khu vực 1,2 tỷ (45 ĐL) | AIA Alpha · PAF | 136,3 | 409,0 | 1.636 | Thơm | Ăn tiền nhất: phí cố định 20–130tr/tháng + chuỗi gián tiếp nhiều tầng [AIAVAD 2601-035 : 2-5]. Dễ bị cắt: chỉ tiêu 5 năm. |
 | L4 · Khu vực 1,2 tỷ (45 ĐL) | Chubb Life · RD | 186,6 | 559,7 | 2.239 | Thơm | Ăn tiền nhất: tăng trưởng quý 2,5–27,5% FYC + tái tục [CHH0DCEB260003V : 5-10]. Dễ bị cắt: vách đá K2 50→60% (Q3/2026); bắt buộc biên bản nghiệm thu. |
 | L4 · Khu vực 1,2 tỷ (45 ĐL) | Manulife · PSM/SM | 105,1 | 315,2 | 1.261 | Trung bình | Ăn tiền nhất: phí cơ bản 35tr × % đạt chỉ tiêu (sàn 30%, trần 150%) [0048M01_2026 : 1]. Dễ bị cắt: phần trả chậm 3 năm cần K2 ≥70%. |
-| L4 · Khu vực 1,2 tỷ (45 ĐL) | Chính sách Đề xuất 2026 · Lãnh đạo khu vực | 91,1 | 273,4 | 1.094 | Thấp hơn cả các hãng | Ăn tiền nhất: phí cơ bản × % đạt chỉ tiêu (sàn 30%, trần 140%) + override vùng (PROPOSAL). Dễ bị cắt: 70% override trả chậm, mất nếu K2 <75%. |
+| L4 · Khu vực 1,2 tỷ (45 ĐL) | Chính sách Đề xuất 2026 · Lãnh đạo khu vực | 106,0 | 318,1 | 1.272 | Trung bình | Ăn tiền nhất: phí cơ bản × % đạt chỉ tiêu (sàn 30%, trần 140%) + override vùng (PROPOSAL). Dễ bị cắt: 70% override trả chậm, mất nếu K2 <75%. |
 
 ## Bảng 2 — Góc nhìn Công ty (khu vực Mốc 4: 45 đại lý, 1,2 tỷ FYP/tháng)
 
@@ -32,6 +32,6 @@ Tháng = thu nhập năm / 12, Quý = năm / 4 (bình quân quy đổi, **đã g
 | AIA Alpha | 700,3 | 2.101,0 | 8.404 | 58,4% | 88,6% — Hoa hồng 40% FYP — kịch bản chi phí cao nhất | 14,2% | 2,6% | Rẻ ở K2 tốt nhưng CHƯA gồm gói Exchange/Pro (UNKNOWN); bán nghiêng bảo vệ thuần thì vọt lên nhiều nhất. |
 | Chubb Life | 1.057,0 | 3.170,9 | 12.684 | 88,1% | 116,2% — Hoa hồng 40% FYP — kịch bản chi phí cao nhất | 21,3% | 0,0% | Đắt nhất, trả ngay gần như toàn bộ, không giữ lại trả chậm — rủi ro dòng tiền khi chất lượng xấu. |
 | Manulife | 609,7 | 1.829,2 | 7.317 | 50,8% | 75,0% — Hoa hồng 40% FYP — kịch bản chi phí cao nhất | 6,7% | 4,2% | Rẻ nhất ở K2 tốt nhưng chi phí gần như không co khi chất lượng xấu; quản lý nhận ít hơn tự bán. |
-| Chính sách Đề xuất 2026 | 718,9 | 2.156,8 | 8.627 | 59,9% | 75,0% — Hoa hồng 40% FYP — kịch bản chi phí cao nhất | 26,7% | 11,3% | Ngang thị trường ở K2 tốt, co mạnh nhất khi K2 xấu, giữ lại nhiều trả chậm nhất; đỉnh bị trần tổng chi 75% chặn. |
+| Chính sách Đề xuất 2026 | 733,8 | 2.201,4 | 8.806 | 61,1% | 75,0% — Hoa hồng 40% FYP — kịch bản chi phí cao nhất | 27,9% | 12,5% | Ngang thị trường ở K2 tốt, co mạnh nhất khi K2 xấu, giữ lại nhiều trả chậm nhất; đỉnh bị trần tổng chi 75% chặn. |
 
 **Đọc nhanh:** “đỉnh stress test” là chi phí cao nhất trong các kịch bản đã chạy (mọi đại lý đạt quota, lưới điểm gãy, hoặc bán nghiêng bảo vệ thuần — hoa hồng 40%). Tổng chi / FYP là chi phí mô phỏng của tổng chi trả hệ thống đại lý, **không phải ROI thực tế** (thiếu biên lợi nhuận VNB, chi phí vận hành của công ty).

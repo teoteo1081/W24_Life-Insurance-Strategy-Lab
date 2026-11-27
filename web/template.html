@@ -1101,6 +1101,13 @@ function renderT2() {
   <div class="tbl-wrap" style="margin-top:12px"><table><thead><tr><th>Phương án</th><th>Tổng chi / FYP</th><th>Khi năng suất −50%</th><th>Chi phí / phí còn duy trì (K2 85%)</th><th>(K2 65%)</th><th>Kịch bản xấu nhất</th><th>Tầng 3 — tiền mặt năm 1</th><th>Trả các năm sau</th><th>Phần cố định</th></tr></thead><tbody>
   ${sc.map(s => `<tr class="${s === "Hybrid" ? "hl" : ""}"><th scope="row">${esc(SNAME[s])}${confTag(R.find(x => x.scheme === s))}</th><td>${pct(v(s, "cost_pct_fyp", 85))}</td><td>${pct(v(s, "cost_pct_fyp_half_production", 85))}</td><td>${pct(v(s, "cost_per_persisted_pct", 85))}</td><td>${pct(v(s, "cost_per_persisted_pct", 65))}</td><td title="${esc((R.find(x => x.scheme === s && x.metric === "cost_pct_fyp_worst_case") || {}).note || "")}">${pct(v(s, "cost_pct_fyp_worst_case", 85))}</td><td>${pct(v(s, "cash_y1_share", 85))}</td><td>${pct(v(s, "deferred_share", 85))}</td><td>${pct(v(s, "fixed_share", 85))}</td></tr>`).join("")}
   </tbody></table></div>
+  ${sc.some(s => v(s, "cost_pct_fyp_mix4", 85) != null) ? `<h3>Khi đại lý bán không đều (4 nhóm năng suất)</h3>
+  <p class="small muted" style="max-width:100ch">${MIX_NOTE} Bán không đều làm mọi phương án tốn hơn vì nhóm Top chạm bậc thưởng cao.</p>
+  <div class="tbl-wrap"><table><thead><tr><th>Phương án</th><th>Mọi đại lý bán đều 26,7tr</th><th>4 nhóm năng suất</th><th>Chênh lệch</th></tr></thead><tbody>
+  ${sc.map(s => { const a = v(s, "cost_pct_fyp", 85), m = v(s, "cost_pct_fyp_mix4", 85); return m == null ? "" : `<tr class="${s === "Hybrid" ? "hl" : ""}"><th scope="row">${esc(SNAME[s])}</th><td>${pct(a)}</td><td><b>${pct(m)}</b></td><td>+${fmt(m - a, 1)} điểm %</td></tr>`; }).join("")}
+  </tbody></table></div>
+  <h3>Vế doanh số — phải bán thêm bao nhiêu để hòa vốn</h3>
+  ${breakevenHtml(R)}` : ""}
   ${sc.some(s => v(s, "cost_pct_fyp_fyc40", 85) != null) ? `<h3>Độ nhạy theo cơ cấu sản phẩm (Tỷ lệ hoa hồng năm đầu)</h3>
   <p class="small muted" style="max-width:100ch">Hơn một nửa hợp đồng mới 2026 là bảo vệ thuần/tử kỳ (số tóm tắt IAV) — loại có hoa hồng năm đầu cao (~40% FYP). Chính sách Đề xuất 2026 tính thưởng và phí quản lý trên <b>FYC chuẩn hóa = FYP × 30%</b> (hoa hồng vẫn trả theo sản phẩm), và có <b>trần tổng chi trả hệ thống đại lý 75% FYP</b>: vượt trần thì thưởng + phí quản lý co theo cùng tỷ lệ. Ba hãng trả trên FYC thật theo văn bản của họ. Trần 75% là trần quỹ thu nhập đại lý, không phải tổng chi phí khai thác trên báo cáo tài chính (còn văn phòng, marketing, kênh ngân hàng).</p>
   <div class="tbl-wrap"><table><thead><tr><th>Phương án</th><th>Hoa hồng 25%</th><th>30% (chuẩn)</th><th>40% (bảo vệ thuần)</th><th>40% — kịch bản xấu nhất</th><th>Quỹ thưởng còn trả</th></tr></thead><tbody>
@@ -1243,6 +1250,23 @@ function renderExec() {
   document.querySelectorAll("#p-exec [data-go]").forEach(b => b.onclick = () => { state.tab = b.dataset.go; showTab(); window.scrollTo(0, 0); });
 }
 /* ---------- Trang 0: Trả lời đề bài — 3 câu hỏi, mỗi câu 1 kết luận + số + lý do hợp VN. Số đọc từ DB (bản công khai tự bỏ Manulife). ---------- */
+/* Vế doanh số: hòa vốn phần FYP giữ lại sau chi trả kênh đại lý (build_phase2 mục 1b) — chỉ đọc snapshot */
+const MIX_NOTE = "Giả định 4 nhóm năng suất: 7 đại lý không hoạt động / 13 × 10tr / 15 × 20tr / 10 × 77tr FYP/tháng — cùng tổng 45 đại lý × 1,2 tỷ FYP/tháng.";
+function breakevenRows(R) {
+  return ["AIA", "Chubb", "Manulife"].map(c => {
+    const g = m => { const r = R.find(x => x.id === `Hybrid|${m}|${c}|mix4`); return r ? +r.value : null; };
+    return {c, ag: g("breakeven_fyp_more_agents_pct"), pr: g("breakeven_fyp_productivity_pct"), ex: g("breakeven_extra_cost_bn_year")};
+  }).filter(r => r.ag != null);
+}
+function breakevenHtml(R) {
+  const rows = breakevenRows(R);
+  if (!rows.length) return "";
+  const cell = x => x == null ? "chưa hòa vốn trong +100%" : x <= 0 ? "có lợi ngay ở cùng FYP" : "+" + fmt(x, 1) + "% FYP";
+  return `<div class="tbl-wrap"><table><thead><tr><th>So với cơ chế của</th><th>Chênh chi trả / năm (cùng FYP)</th><th>Hòa vốn bằng thêm đại lý</th><th>Hòa vốn bằng tăng năng suất</th></tr></thead><tbody>
+  ${rows.map(r => `<tr><th scope="row">${esc(SNAME[r.c])}</th><td>${r.ex == null ? "—" : r.ex >= 0 ? "chi thêm " + fmt(r.ex, 2) + " tỷ" : "tiết kiệm " + fmt(-r.ex, 2) + " tỷ"}</td><td><b>${cell(r.ag)}</b></td><td><b>${cell(r.pr)}</b></td></tr>`).join("")}
+  </tbody></table></div>
+  <p class="small muted" style="max-width:100ch">${MIX_NOTE} Hòa vốn = phần FYP còn lại sau chi trả kênh đại lý bằng mức của cơ chế so sánh — <b>không phải lợi nhuận</b> (chưa trừ văn phòng, marketing; biên lợi nhuận thật chưa có dữ liệu). Thí điểm phải vượt mức này mới coi là thắng. <span class="badge">PROPOSAL</span></p>`;
+}
 function renderAnswer() {
   const R = DB("roi_analysis"), B = DB("benchmark_results"), TR = DB("behavior_traps");
   const v = (s, m, k) => { const r = R.find(x => x.scheme === s && x.metric === m && +x.k2 === k); return r ? +r.value : null; };
@@ -1278,7 +1302,7 @@ function renderAnswer() {
     <p class="vn"><b>Vì sao hợp Việt Nam:</b> (1) hợp đồng mới nhỏ đi và hơn một nửa là bảo vệ thuần <span class="muted">(số tóm tắt IAV/Bộ Tài chính)</span> → ngưỡng thưởng thấp, không tính phí đóng thêm vào doanh số; (2) Điều 52 Thông tư 67/2023 giới hạn thưởng & hỗ trợ ở 20–30% FYP → không thể đua thưởng, phải cạnh tranh bằng cấu trúc; (3) thu nhập và sức mua giữa thành phố lớn và tỉnh khác nhau → hệ số vùng neo lương tối thiểu vùng; thu nhập bình quân đầu người 2025 của thành phố lớn bằng 84–87% Hà Nội/TP.HCM, cả nước 73% <span class="muted">(số tóm tắt của Cục Thống kê)</span>.</p>
     ${go("t3", "Trang 3 · Chính sách Đề xuất 2026 & vùng")}</div>
   <div class="q"><h3>Câu 3 · Tác động — doanh số, chất lượng, chi phí (ROI)?</h3>
-    <p class="a">Chất lượng và chi phí đã đo được: đề xuất co chi trả mạnh nhất khi chất lượng xấu đi. Doanh số chưa đo được — cần thí điểm.</p>
+    <p class="a">Chất lượng và chi phí đã đo được: đề xuất co chi trả mạnh nhất khi chất lượng xấu đi. Với doanh số, mô hình tính được <b>mức phải bán thêm để hòa vốn</b>; mức tăng thật cần thí điểm.</p>
     <div class="kpis">
       <div><b>−${fmt(drop("Hybrid"), 1)}%</b><span>chi trả khi K2 85% → 65% (đối thủ mạnh nhất: −${fmt(drop(topDropComp), 1)}%)</span></div>
       <div><b>${fmt(c85("Hybrid"), 1)}%</b><span>tổng chi / FYP ở K2 85%</span></div>
@@ -1288,7 +1312,10 @@ function renderAnswer() {
     <ul>
       <li><b>Chất lượng:</b> đại lý và quản lý bán ẩu (K2 thấp) tự mất phần lớn thưởng; trợ cấp Full-time chỉ trả khi K2 ≥80%.</li>
       <li><b>Chi phí / ROI:</b> ở K2 85%, đề xuất ${lo85 === "Hybrid" ? "có tổng chi thấp nhất" : `<b>không</b> rẻ nhất — ${esc(SNAME[lo85])} thấp hơn (${fmt(c85(lo85), 1)}%)`}; ở K2 65%, đề xuất ${lo65 === "Hybrid" ? "<b>thấp nhất</b>" : `cao hơn ${esc(SNAME[lo65])} (${fmt(c65(lo65), 1)}%)`}. So với: ${esc(names)}. Đây là chi phí mô phỏng, chưa phải ROI thật (thiếu biên lợi nhuận VNB của công ty).${v("Hybrid", "cost_pct_fyp_fyc40", 85) != null ? ` <b>Nếu bán nghiêng bảo vệ thuần</b> (hoa hồng 40%): đề xuất tốn ${fmt(v("Hybrid", "cost_pct_fyp_fyc40", 85), 1)}% FYP${minBy(all, s => v(s, "cost_pct_fyp_fyc40", 85) ?? 1e9) === "Hybrid" ? " — <b>thấp nhất</b>" : ""}, vì thưởng tính trên FYC chuẩn hóa; kịch bản xấu nhất bị trần tổng chi 75% chặn lại, quỹ thưởng còn trả ${fmt(v("Hybrid", "pool_paid_share_worst_fyc40", 85), 0)}%.` : ""}</li>
-      <li><b>Doanh số:</b> <span class="badge warn">Giả thuyết</span> mô hình chưa đo được doanh số tăng thêm. Cơ chế kỳ vọng: thưởng nhập môn 6 tháng đầu với ngưỡng thấp, đường ray Full-time có trợ cấp gắn quota, thưởng đều đặn theo quý. <b>Cách đo:</b> thí điểm 6–12 tháng ở một vùng, ghép cặp với một vùng đối chứng tương đồng (quy mô, năng suất, K2 lịch sử) giữ chính sách cũ — chuẩn ngành, tránh hiệu ứng “mới lạ” của vài tháng đầu. Đọc sớm sau 3 tháng: FYP trên mỗi đại lý hoạt động, tỷ lệ đại lý hoạt động, số hợp đồng / đại lý, tỷ lệ hủy trong 21 ngày cân nhắc, tỷ lệ đóng phí kỳ 2. K2 (tỷ lệ duy trì năm 2) chỉ đo được sau khoảng 13 tháng — theo dõi đến tháng 13–15 rồi mới chốt áp dụng toàn quốc.</li>
+      <li><b>Doanh số — mức phải đạt:</b> ${(() => { const b = breakevenRows(R), need = b.filter(r => r.ag > 0), ahead = b.filter(r => r.ag <= 0);
+        return !b.length ? "—" : (need.length ? need.map(r => `so với ${esc(SNAME[r.c])}: thêm đại lý <b>+${fmt(r.ag, 1)}%</b> hoặc tăng năng suất <b>${r.pr == null ? "chưa hòa vốn trong +100%" : "+" + fmt(r.pr, 1) + "%"}</b> FYP`).join("; ") : "")
+          + (ahead.length ? `${need.length ? "; " : ""}rẻ hơn ${ahead.map(r => esc(SNAME[r.c])).join(", ")} ngay ở cùng FYP` : "") + " (cơ cấu 4 nhóm năng suất; hòa vốn phần FYP còn lại sau chi trả kênh đại lý, không phải lợi nhuận)."; })()}</li>
+      <li><b>Doanh số — có đạt được không:</b> <span class="badge warn">Giả thuyết</span> mô hình chưa đo được doanh số tăng thêm. Cơ chế kỳ vọng: thưởng nhập môn 6 tháng đầu với ngưỡng thấp, đường ray Full-time có trợ cấp gắn quota, thưởng đều đặn theo quý. <b>Cách đo:</b> thí điểm 6–12 tháng ở một vùng, ghép cặp với một vùng đối chứng tương đồng (quy mô, năng suất, K2 lịch sử) giữ chính sách cũ — chuẩn ngành, tránh hiệu ứng “mới lạ” của vài tháng đầu. Đọc sớm sau 3 tháng: FYP trên mỗi đại lý hoạt động, tỷ lệ đại lý hoạt động, số hợp đồng / đại lý, tỷ lệ hủy trong 21 ngày cân nhắc, tỷ lệ đóng phí kỳ 2. K2 (tỷ lệ duy trì năm 2) chỉ đo được sau khoảng 13 tháng — theo dõi đến tháng 13–15 rồi mới chốt áp dụng toàn quốc.</li>
     </ul>${go("t2", "Trang 2 · Phân tích hành vi & hiệu quả chi phí")}</div>
   </div>`;
   document.querySelectorAll("#p-answer [data-go]").forEach(b => b.onclick = () => { state.tab = b.dataset.go; showTab(); window.scrollTo(0, 0); });

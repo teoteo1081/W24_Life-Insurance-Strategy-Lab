@@ -64,6 +64,19 @@ def render(tables: dict, full: bool) -> str:
         if r["region"] not in [x["region"] for x in regions]:
             regions.append({"region": r["region"], "name": r.get("region_name") or r["region"], "coef": r.get("coefficient")})
     pct = lambda x, d=1: "—" if x is None else f"{vn(x, d)}%"
+
+    def be(metric, comp, basis="mix4"):
+        """Hòa vốn doanh số (build_phase2 mục 1b): phần FYP giữ lại sau chi trả kênh đại lý bằng phương án so sánh."""
+        r = next((r for r in R if r["id"] == f"Hybrid|{metric}|{comp}|{basis}"), None)
+        return None if r is None else ES.fin(r["value"])
+    be_comps = [s for s in comps if be("breakeven_fyp_more_agents_pct", s) is not None]
+    be_need = [s for s in be_comps if be("breakeven_fyp_more_agents_pct", s) > 0]
+    be_ahead = [s for s in be_comps if s not in be_need]
+    plus = lambda x: "chưa hòa vốn trong +100%" if x is None else f"+{vn(x)}%"
+    be_txt = "; ".join(f"so với {NAME[s]}: thêm đại lý {plus(be('breakeven_fyp_more_agents_pct', s))} hoặc tăng năng suất {plus(be('breakeven_fyp_productivity_pct', s))} FYP"
+                       for s in be_need)
+    m4 = {r["scheme"]: r["month"] for r in es["agent"] if r["milestone_id"] == "M4"}
+    lead_lo = min((m4[s] for s in comps if s in m4), default=None)
     L: list[str] = []
     a = L.append
 
@@ -89,7 +102,9 @@ def render(tables: dict, full: bool) -> str:
       + " · ".join(f"{NAME[s]} {pct(v(s, 'cost_pct_fyp'))} FYP" for s in comps) + " | Trang 2 |")
     a(f"| Đề xuất phù hợp VN | **{PROPOSAL}** `PROPOSAL`: trả ngang thị trường, mọi khoản thưởng lớn gắn K2, giữ lại phần trả chậm, hệ số vùng theo lương tối thiểu. | "
       f"Tổng chi {pct(v('Hybrid', 'cost_pct_fyp'))} FYP · điểm 5 tiêu chí {vn(ws['Hybrid'], 2)}/5 | Trang 5 |")
-    a(f"| Doanh số | `HYPOTHESIS` — mô hình chưa đo được doanh số tăng thêm; cơ chế kỳ vọng: đường ray Full-time có trợ cấp gắn quota, thưởng đều đặn. Cần thí điểm. | — | Trang 3, 7 |")
+    a(f"| Doanh số | Đề xuất trả cao hơn {', '.join(NAME[s] for s in be_need) or 'không hãng nào'} nên phải bán thêm mới hòa vốn phần phí giữ lại sau chi trả kênh đại lý"
+      f"{'; rẻ hơn ' + ', '.join(NAME[s] for s in be_ahead) + ' ngay ở cùng FYP' if be_ahead else ''}. Đây là chỉ tiêu tối thiểu của thí điểm — mức tăng thật vẫn `HYPOTHESIS`. | "
+      f"4 nhóm năng suất: {be_txt or '—'} `PROPOSAL` | Trang 3, 7 |")
     a(f"| Chất lượng | Chi trả co mạnh nhất khi K2 xấu đi. | Khi K2 85% → 65%: đề xuất −{pct(drop('Hybrid'))}; hãng co mạnh nhất {NAME[top_drop]} −{pct(drop(top_drop))} | Trang 3 |")
     a(f"| Chi phí / ROI | {'Không rẻ nhất khi chất lượng tốt (' + ', '.join(NAME[s] + ' ' + pct(v(s, 'cost_pct_fyp')) for s in cheaper) + ' thấp hơn)' if cheaper else 'Rẻ nhất ở K2 85%'}, "
       f"nhưng an toàn nhất khi xấu: đỉnh stress test không vượt trần 75% FYP. ROI hiện là proxy (chi phí / FYP), chưa phải VNB. | "
@@ -103,8 +118,10 @@ def render(tables: dict, full: bool) -> str:
     a(f"- **Vì sao:** chi trả ngang thị trường để giữ và tuyển người; chi trả **giảm {pct(drop('Hybrid'))}** khi K2 từ 85% xuống 65% (cao nhất nhóm); "
       f"**{pct(v('Hybrid', 'deferred_share'))}** chi trả được giữ lại trả chậm; tổng chi **{pct(v('Hybrid', 'cost_pct_fyp'))} FYP** "
       f"(≈ {vn(hy['month'])} triệu/tháng · {vn(hy['year'], 0)} triệu/năm cho khu vực 1,2 tỷ FYP/tháng) `PROPOSAL` `MODEL_OUTPUT`.")
-    a(f"- **Đánh đổi đã công bố:** lãnh đạo khu vực của đề xuất nhận **{vn(next(r['month'] for r in es['agent'] if r['scheme'] == 'Hybrid' and r['milestone_id'] == 'M4'))} triệu/tháng — thấp hơn cả các hãng** "
-      "(ít phí cố định, phần lớn override trả chậm); có các “vách đá” thu nhập (K2 80%, quota) cần làm mượt ở bước 2 (trang 5).")
+    lead_txt = ("thấp hơn cả các hãng" if lead_lo is not None and m4["Hybrid"] < lead_lo else
+                "không thấp hơn mức thấp nhất của các hãng" if lead_lo is not None else "")
+    a(f"- **Đánh đổi đã công bố:** lãnh đạo khu vực của đề xuất nhận **{vn(m4['Hybrid'])} triệu/tháng — {lead_txt}**, trong đó 70% override toàn khu vực trả chậm 3 năm theo K2 "
+      "(ít phí cố định); có các “vách đá” thu nhập (K2 80%, quota) cần làm mượt ở bước 2 (trang 5).")
     a("")
     a("**Khung giả định đang dùng** (đề bài không nêu ngân sách, chỉ tiêu, quy mô) `ASSUMPTION`:")
     a("")
@@ -152,6 +169,9 @@ def render(tables: dict, full: bool) -> str:
     a("| Tổng chi / FYP, K2 85% | " + " | ".join(pct(v(s, "cost_pct_fyp")) for s in schemes) + " |")
     a("")
     a("- **Doanh số** `HYPOTHESIS`: thu nhập đại lý Full-time và quản lý không thấp hơn thị trường (trang 2) là điều kiện giữ và tuyển người; mức tăng FYP thật chỉ đo được bằng thí điểm (trang 7).")
+    if be_need:
+        a(f"- **Doanh số cần đạt để hòa vốn** `PROPOSAL`: đo bằng phần FYP giữ lại sau chi trả kênh đại lý (không phải lợi nhuận — biên lợi nhuận thật `UNKNOWN`), cơ cấu 4 nhóm năng suất "
+          f"(7 không hoạt động / 13 × 10tr / 15 × 20tr / 10 × 77tr FYP/tháng) — {be_txt}. Thí điểm phải vượt mức này mới coi là thắng.")
     a("- **Chất lượng:** trợ cấp Full-time chỉ trả khi K2 ≥ 80%; phí quản lý nhân hệ số K2; trả chậm nhận đủ khi K2 ≥ 80%, một nửa khi 75–80%, mất khi dưới 75% `PROPOSAL`.")
     a(f"- **Chi phí:** xem trang 6 — gồm kịch bản năng suất giảm một nửa và danh mục nghiêng bảo vệ thuần.")
     a("")

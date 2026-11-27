@@ -33,6 +33,10 @@ OUT03 = REPO / "outputs" / "interview" / "03_De_Xuat_Chinh_Sach_Lai_VN2026.md"
 FYC_RATE = 0.30
 SCHEMES = ("AIA", "Chubb", "Manulife", "Hybrid")
 RECRUITS = [1, 2, 2, 2]
+# Phân bổ năng suất 4 nhóm (ASSUMPTION — khung Inactive / Low 10tr / Core 15–20tr / Top-MDRT 50–100tr của docs/research/wheel-check-r2.md câu 4);
+# giữ nguyên tổng 45 ĐL và 1,2 tỷ FYP/tháng của Mốc 4 để chỉ đo tác động của việc bán KHÔNG đều.
+PRODUCTIVITY_MIX = [("Không hoạt động", 7, 0.0), ("Thấp", 13, 10.0), ("Nòng cốt", 15, 20.0), ("Top / MDRT", 10, 77.0)]
+MIX = [(n, f) for _, n, f in PRODUCTIVITY_MIX]
 CONF = {"Manulife"}   # số Manulife dựa trên 0046M01/0047M01 → restricted (DEC-14)
 
 
@@ -117,34 +121,42 @@ def leader(scheme, org_fyp_m, org_agents, k2, base, region="V1", psm_ach=1.0, fy
     return {"total": r["total_earned"], "cash": r["cash_paid_y1"], "fixed": r["fixed"]}
 
 
-def org_cost(scheme, k2, base, prod=1.0, region="V1", fyc_rate=FYC_RATE):
+def org_cost(scheme, k2, base, prod=1.0, region="V1", fyc_rate=FYC_RATE, mix=None):
     """Khu vực Mốc 4: 45 ĐL × FYP/ĐL; lãnh đạo (5 trực tiếp) + 2 trưởng ban (5 + 2 UM) + 2 UM trực tiếp + 4 UM dưới ban.
-    Chi phí NĂM ĐẦU: hoa hồng FYC + thưởng + phí quản lý; KHÔNG gồm hoa hồng/thưởng tái tục (cùng quy ước enterprise model)."""
+    Chi phí NĂM ĐẦU: hoa hồng FYC + thưởng + phí quản lý; KHÔNG gồm hoa hồng/thưởng tái tục (cùng quy ước enterprise model).
+    mix: [(số ĐL, FYP/tháng)] — phân bổ năng suất không đều (tổng 45 ĐL); None = mọi ĐL bán đều FYP Mốc 4. prod nhân mọi nhóm.
+    Quản lý & lãnh đạo tính trên FYP nhóm/khu vực (mỗi nhóm trộn đủ các mức năng suất), nên chỉ phần đại lý thay đổi theo mix."""
     m4 = load_milestones()[3]
-    fpa = m4.fyp_per_agent * prod
-    org_fyp = fpa * m4.agents
-    parts = [("45 đại lý", agent(scheme, fpa, k2, base, region, fyc_rate=fyc_rate), m4.agents),
-             ("6 trưởng nhóm", manager(scheme, fpa, k2, base, region=region, rank="UM", fyc_rate=fyc_rate), 6),
-             ("2 trưởng ban", manager(scheme, fpa, k2, base, n_sub=2, region=region, rank="DM", fyc_rate=fyc_rate), 2),
-             ("lãnh đạo khu vực", leader(scheme, org_fyp, m4.agents, k2, base, region, psm_ach=prod, fyc_rate=fyc_rate), 1)]
+    groups = [(m4.agents, m4.fyp_per_agent)] if mix is None else [(int(n), float(f)) for n, f in mix]
+    if sum(n for n, _ in groups) != m4.agents or any(n < 0 or f < 0 for n, f in groups):
+        raise ValueError("mix must cover exactly the 45 agents with non-negative FYP")
+    groups = [(n, fin(f * prod)) for n, f in groups]
+    org_fyp = sum(n * f for n, f in groups)
+    fpa = org_fyp / m4.agents
+    ag = [(("45 đại lý" if mix is None else f"{n} đại lý × {vn(f)}tr"), agent(scheme, f, k2, base, region, fyc_rate=fyc_rate), n) for n, f in groups if n]
+    parts = ag + [("6 trưởng nhóm", manager(scheme, fpa, k2, base, region=region, rank="UM", fyc_rate=fyc_rate), 6),
+                  ("2 trưởng ban", manager(scheme, fpa, k2, base, n_sub=2, region=region, rank="DM", fyc_rate=fyc_rate), 2),
+                  ("lãnh đạo khu vực", leader(scheme, org_fyp, m4.agents, k2, base, region, psm_ach=prod, fyc_rate=fyc_rate), 1)]
     tot = sum(r["total"] * n for _, r, n in parts)
     cash = sum(r["cash"] * n for _, r, n in parts)
     fixed = sum(r["fixed"] * n for _, r, n in parts)
     fyp_y = org_fyp * 12
     scale = 1.0
     if scheme == "Hybrid":   # trần quỹ thu nhập cây đại lý: co thưởng + phí quản lý biến đổi theo cùng tỷ lệ (AUD-03)
-        comm = parts[0][1]["commission"] * m4.agents
+        comm = sum(r["commission"] * n for _, r, n in ag)
         scale = H.pool_cap_scale(tot, comm, fixed, fyp_y)
         if scale < 1.0:
             var_tot, var_cash = tot - comm - fixed, cash - comm - fixed
             parts = [(nm, {**r, "total": r["total"] * (comm + fixed + var_tot * scale) / tot}, n) for nm, r, n in parts]
             tot, cash = comm + fixed + var_tot * scale, comm + fixed + var_cash * scale
+    agent_tot = sum(r["total"] * n for _, r, n in parts[:len(ag)])
     return {"total": tot, "cash": cash, "fixed": fixed, "fyp_y": fyp_y, "cost_pct": tot / fyp_y * 100, "cash_share": cash / tot * 100,
             "deferred_share": (tot - cash) / tot * 100, "fixed_share": fixed / tot * 100,
             "cost_per_persisted_pct": tot / (fyp_y * k2 / 100) * 100,
             "parts": {name: r["total"] * n for name, r, n in parts}, "pool_scale": scale,
             # Rổ Điều 52 TT 67/2023 (cùng định nghĩa engine enterprise): thưởng + hỗ trợ của ĐẠI LÝ, không gồm hoa hồng; phí quản lý là phí dịch vụ (NĐ 97/2026)
-            "art52_pct": (parts[0][1]["total"] - fpa * fyc_rate * 12) * m4.agents / fyp_y * 100}
+            "art52_pct": (agent_tot - org_fyp * fyc_rate * 12) / fyp_y * 100,
+            "agent_income_m": {f: r["total"] / 12 for (_, r, _n), (_n2, f) in zip(parts[:len(ag)], [g for g in groups if g[0]])}}
 
 
 SCHEME_SRC = {"AIA": "[AIAVAD 2601-034 : 3-6], [AIAVAD 2601-035 : 2-5], [AIAVAD 2604-069 : 3-7]",
@@ -283,6 +295,45 @@ def compute() -> dict:
                     out["roi"].append({"id": f"{s}|{metric}|85", "scheme": s, "metric": metric, "k2": 85, "value": round(fin(v) * 100, 2),
                                        "unit": "% thưởng & phí quản lý được trả", "label": lab,
                                        "note": "100% = trần 75% không phải cắt; <100% = quỹ thưởng tự co để giữ trần", "confidentiality": conf})
+
+    # ---------- Phân bổ năng suất 4 nhóm & hòa vốn doanh số ----------
+    out["mix"] = {s: org_cost(s, 85.0, base, mix=MIX) for s in SCHEMES}
+    for s in SCHEMES:
+        conf = "restricted" if s in CONF else "public"
+        lab = "PROPOSAL" if s == "Hybrid" else "MODEL_OUTPUT"
+        for metric, v, note in (("cost_pct_fyp_mix4", out["mix"][s]["cost_pct"], "Phân bổ năng suất 4 nhóm (7 không hoạt động / 13 × 10tr / 15 × 20tr / 10 × 77tr), cùng tổng 1,2 tỷ FYP"),
+                                ("art52_agent_bonus_pct_fyp_mix4", out["mix"][s]["art52_pct"], "Rổ Điều 52 ở phân bổ năng suất 4 nhóm")):
+            out["roi"].append({"id": f"{s}|{metric}|85", "scheme": s, "metric": metric, "k2": 85, "value": round(fin(v), 2), "unit": "% FYP",
+                               "label": lab, "note": note, "confidentiality": conf})
+    out["breakeven"] = []
+    grid = [1 + 0.005 * i for i in range(201)]                  # tăng năng suất 0 → +100%
+    for basis, mix in (("uniform", None), ("mix4", MIX)):
+        keep = [(g, g * (1 - org_cost("Hybrid", 85.0, base, prod=g, mix=mix)["cost_pct"] / 100)) for g in grid]
+        c_new = 1 - keep[0][1]
+        fyp_y = org_cost("Hybrid", 85.0, base, mix=mix)["fyp_y"]
+        for comp in ("AIA", "Chubb", "Manulife"):
+            c_old = org_cost(comp, 85.0, base, mix=mix)["cost_pct"] / 100
+            target = 1 - c_old
+            agents_pct = (target / (1 - c_new) - 1) * 100       # thêm ĐL cùng cơ cấu → tỷ lệ chi phí gần như giữ nguyên
+            if target <= keep[0][1]:
+                prod_pct = stable_pct = 0.0
+            else:
+                prod_pct = next(((g - 1) * 100 for g, v in keep if v >= target), None)
+                stable_pct = next(((g - 1) * 100 for i, (g, _) in enumerate(keep) if all(v >= target for _, v in keep[i:])), None)
+            row = {"basis": basis, "vs": comp, "cost_new_pct": c_new * 100, "cost_old_pct": c_old * 100,
+                   "extra_cost_bn_year": (c_new - c_old) * fyp_y / 1000, "agents_pct": agents_pct,
+                   "prod_pct": prod_pct, "prod_stable_pct": stable_pct}
+            out["breakeven"].append(row)
+            conf = "restricted" if comp in CONF else "public"
+            for metric, v, unit in (("breakeven_fyp_more_agents_pct", agents_pct, "% FYP thêm"),
+                                    ("breakeven_fyp_productivity_pct", prod_pct, "% FYP thêm"),
+                                    ("breakeven_extra_cost_bn_year", row["extra_cost_bn_year"], "tỷ/năm")):
+                if v is None:
+                    continue   # không hòa vốn trong lưới +100% → không ghi số (không biến UNKNOWN thành 0)
+                out["roi"].append({"id": f"Hybrid|{metric}|{comp}|{basis}", "scheme": "Hybrid", "metric": metric, "k2": 85, "value": round(fin(v), 2),
+                                   "unit": unit, "label": "PROPOSAL", "confidentiality": conf,
+                                   "note": f"So với {comp} — {'mọi ĐL bán đều 26,7tr' if basis == 'uniform' else 'phân bổ năng suất 4 nhóm'}; "
+                                           "hòa vốn = phần FYP còn lại sau chi trả kênh đại lý bằng phương án so sánh (không phải lợi nhuận)"})
 
     # ---------- Bẫy hành vi ----------
     def trap(s, key, title, value, text, cite, label="MODEL_OUTPUT"):
@@ -465,6 +516,33 @@ def write_reports(d: dict) -> None:
     w("- **Tầng 2:** chi phí trên mỗi đồng phí còn duy trì sang năm 2 = chi phí ÷ (FYP × K2). Khi K2 sập 85%→65%, phương án gắn thưởng với K2 tốt thì chi trả **giảm theo**; phương án yếu thì chi phí trên phí còn lại **tăng vọt**.")
     w("- **Tầng 3:** phần trả các năm sau (AIA thưởng năm 15/25/60% đến 2030; Manulife phí dài hạn 30/30/40%, M-Star năm trả tháng 2 năm sau; Chính sách Đề xuất 2026 trả chậm khi K2 ≥80%) giữ người và giảm áp lực tiền mặt năm 1.")
     w("")
+    w("## 1b. Vế doanh số — phải bán thêm bao nhiêu để hòa vốn (`PROPOSAL`)")
+    w("")
+    w("**Cách đo (chỉ dùng số của mô hình, không giả định biên lợi nhuận — biên lợi nhuận thật = `UNKNOWN`):** phần phí giữ lại sau chi trả kênh đại lý = FYP × (1 − tổng chi/FYP). "
+      "Hòa vốn = mức FYP mà phần giữ lại của Chính sách Đề xuất 2026 bằng phần giữ lại nếu công ty trả theo cơ chế của từng hãng ở mức FYP hiện tại (1,2 tỷ/tháng). "
+      "Đây **không phải lợi nhuận**: chưa trừ chi phí văn phòng, marketing, dự phòng nghiệp vụ.")
+    w("")
+    w("- **Thêm đại lý** (giữ cơ cấu năng suất): tỷ lệ chi phí gần như không đổi → FYP cần thêm = (1 − chi phí hãng) ÷ (1 − chi phí đề xuất) − 1.")
+    w("- **Tăng năng suất mỗi đại lý**: thưởng lũy tiến làm tỷ lệ chi phí đổi theo — mô hình tính lại từng bước +0,5%; cột \"bền\" là mức mà từ đó trở lên luôn hòa vốn (qua được vách quota 30tr).")
+    w("")
+    w("| Cơ cấu đại lý | So với | Chi phí hãng | Chi phí đề xuất | Chi thêm (tỷ/năm, cùng FYP) | Hòa vốn bằng thêm ĐL | Hòa vốn bằng năng suất | Năng suất (bền) | Nguồn | Nhãn |")
+    w("|---|---|---:|---:|---:|---:|---:|---:|---|---|")
+    pc = lambda x: "chưa hòa vốn trong +100%" if x is None else ("đã có lợi ở cùng FYP" if x <= 0 else f"+{vn(x)}%")
+    for r in d.get("breakeven", []):
+        w(f"| {'Bán đều 26,7tr/ĐL' if r['basis'] == 'uniform' else '4 nhóm năng suất'} | {names[r['vs']]} | {vn(r['cost_old_pct'])}% | {vn(r['cost_new_pct'])}% | "
+          f"{vn(r['extra_cost_bn_year'], 2)} | {pc(r['agents_pct'])} | {pc(r['prod_pct'])} | {pc(r['prod_stable_pct'])} | PROPOSAL (hybrid_scheme.py) | `PROPOSAL` |")
+    w("")
+    if d.get("mix"):
+        mx = d["mix"]
+        w("**Phân bổ năng suất 4 nhóm** (`ASSUMPTION`, cùng tổng 45 ĐL × 1,2 tỷ FYP/tháng): " + " · ".join(f"{n} ĐL «{nm}» {vn(f)}tr" for nm, n, f in PRODUCTIVITY_MIX) +
+          ". Khi bán không đều, tổng chi/FYP tăng ở mọi phương án vì nhóm Top chạm bậc thưởng cao: " +
+          " · ".join(f"{names[s]} {vn(d['org'][s]['k85']['cost_pct'])}% → {vn(mx[s]['cost_pct'])}%" for s in SCHEMES) +
+          f". Chính sách Đề xuất 2026 vẫn dưới trần {int(H.COST_CAP_PCT_FYP)}%; thu nhập đại lý theo nhóm (tr/tháng, năm đầu): " +
+          " · ".join(f"{vn(f)}tr → {vn(v)}" for f, v in mx["Hybrid"]["agent_income_m"].items()) + ".")
+        w("")
+    w("**Chỉ tiêu đo cho thí điểm** (không cần giả định thêm): số đại lý có hợp đồng trong tháng, FYP/đại lý hoạt động, tỷ lệ đại lý đạt quota, K2 (≥ 85%), "
+      "tỷ lệ đại lý mới còn hoạt động sau 13 tháng, và tổng chi/FYP so với trần 75% — đo hằng tháng ở văn phòng thí điểm và văn phòng đối chứng.")
+    w("")
     w("## 2. Bẫy hành vi (Gaming) & điểm gãy")
     w("")
     w("| Hãng | Bẫy | Đo được | Trích dẫn | Nhãn |")
@@ -639,7 +717,7 @@ def main() -> int:
     d["negative_proof"] = negative_proof()
     d["ev02"] = d["ev03"] = {"numeric": 1, "cited": 0, "labelled": 0}
     write_reports(d)                       # lượt 1: sinh bảng
-    d["ev02"], d["ev03"] = measure(OUT02, sections=[1, 2]), measure(OUT03, sections=[2, 3, 5])
+    d["ev02"], d["ev03"] = measure(OUT02, sections=[1, 2, 3]), measure(OUT03, sections=[2, 3, 5])
     write_reports(d)                       # lượt 2: rubric đo trên chính bảng đã sinh
     if min(d["rubric02"], d["rubric03"]) < 90:
         raise SystemExit(f"rubric FAIL 02={d['rubric02']} 03={d['rubric03']}")
