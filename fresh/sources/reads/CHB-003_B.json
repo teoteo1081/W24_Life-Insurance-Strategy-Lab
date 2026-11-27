@@ -1,0 +1,460 @@
+{
+  "doc_id": "CHB-003",
+  "reader": "B",
+  "title_verbatim": "CHÍNH SÁCH VỀ PHÍ DỊCH VỤ DÀNH CHO GIÁM ĐỐC VÙNG ĐIỀU HÀNH VÀ PHÁT TRIỂN KINH DOANH - KÊNH ĐẠI LÝ (Số: CHHODCEB260003V) — CÔNG TY TNHH BẢO HIỂM NHÂN THỌ CHUBB VIỆT NAM",
+  "effective": "\"Chính sách này có hiệu lực thi hành từ ngày 01 tháng 01 năm 2026. Để rõ ràng, RD sẽ được tính toán và nhận phí dịch vụ kể từ ngày hiệu lực của Chính sách này.\" Thay thế \"Chính sách thu nhập dành cho Ban Điều hành và Phát triển Kinh doanh\" số CHHODCEB250001V hiệu lực từ ngày 01/01/2025 — trang 3 (mục I.4), tiếp trang 4",
+  "roles": [
+    {"title_verbatim": "Giám đốc, Phát triển Kinh doanh (Business Director, Agency Development)", "abbr": "BD", "page": 3, "how_obtained": "\"Cấp bậc cụ thể ... được ghi nhận tại các Hợp đồng/ Phụ lục Hợp đồng hoặc theo quyết định của Công ty trong từng thời điểm\"; văn bản không nêu điều kiện đạt BD. Chính sách này không áp dụng phí dịch vụ cho BD (mục I.3 chỉ áp dụng cho RD)."},
+    {"title_verbatim": "Giám đốc Vùng, Điều hành và Phát triển Kinh doanh (Regional Director, Agency Management and Development)", "abbr": "RD", "page": 3, "how_obtained": "ghi nhận tại Hợp đồng/Phụ lục Hợp đồng hoặc theo quyết định của Công ty; \"Phí dịch vụ tại Chính sách này áp dụng cho RD; hoặc các Bên cung cấp dịch vụ khác theo thỏa thuận\""}
+  ],
+  "rules": [
+    {
+      "rule_no": 1,
+      "role": "RD",
+      "item": "Phí dịch vụ đào tạo tiêu chuẩn Tháng",
+      "base": "Mức phí dịch vụ tiêu chuẩn theo Tháng (theo FYP theo cấp báo cáo, triệu đồng) × Tỷ lệ nhận phí dịch vụ (theo số lớp đào tạo đạt chuẩn trong Tháng); kỳ Tháng",
+      "conditions": [
+        "Phí dịch vụ = Mức phí dịch vụ tiêu chuẩn theo Tháng * Tỷ lệ nhận phí dịch vụ",
+        "a. Mức phí dịch vụ tiêu chuẩn theo Tháng theo FYP theo cấp báo cáo (Đơn vị: triệu đồng): Từ 400 trở lên → 25,0; Dưới 400 → 12,5",
+        "FYP theo cấp báo cáo của RD xác định theo tỷ lệ: Trực tiếp 100%; Báo cáo cấp 1 50%; Báo cáo cấp 2 25%; Báo cáo cấp 3 12,5%",
+        "b. Tỷ lệ nhận phí dịch vụ theo số lượng lớp đào tạo đạt chuẩn mà RD tổ chức và/hoặc hỗ trợ đào tạo trong Tháng",
+        "Lưu ý: Lớp đào tạo đạt chuẩn được tính phí dịch vụ phải có số lượng học viên tham dự đạt từ bốn (4) học viên trở lên"
+      ],
+      "table": [
+        ["Bảng 1 - Mức", "FYP theo cấp báo cáo (triệu đồng)", "Phí dịch vụ (triệu đồng)"],
+        ["1", "Từ 400 trở lên", "25,0"],
+        ["2", "Dưới 400", "12,5"],
+        ["Bảng 2 - Nhánh", "Trực tiếp", "Báo cáo cấp 1", "Báo cáo cấp 2", "Báo cáo cấp 3"],
+        ["Tỷ lệ FYP", "100%", "50%", "25%", "12,5%"],
+        ["Bảng 3 - Mức", "Số lượng lớp đào tạo đạt chuẩn", "Tỷ lệ nhận phí dịch vụ"],
+        ["1", "Từ 4 trở lên", "100%"],
+        ["2", "3", "75%"],
+        ["3", "2", "50%"],
+        ["4", "Dưới 2", "0%"]
+      ],
+      "rate_or_amount": "25,0 hoặc 12,5 triệu đồng × 100%/75%/50%/0%",
+      "payment_timing": "Định kỳ chi trả: hàng Tháng; chuyển khoản trong 07 ngày làm việc đầu tiên của Tháng kế tiếp liền kề (mục V.15)",
+      "clawback_or_forfeit": "Xem quy tắc chung V.13 (không chi trả) và V.16 (tạm giữ)",
+      "page": "5",
+      "quote": "Từ 400 trở lên 25,0; Dưới 400 12,5 ... Từ 4 trở lên 100%; 3 75%; 2 50%; Dưới 2 0%",
+      "uncertain": false,
+      "note": "Kỳ đo FYP theo cấp báo cáo (Tháng?) văn bản không nêu rõ trong bảng; mục V.8 nói FYP ghi nhận theo cấu trúc RD tại Ngày khóa sổ mỗi Tháng. Không nêu kỳ đo FYP cho bảng mức phí tiêu chuẩn."
+    },
+    {
+      "rule_no": 2,
+      "role": "RD",
+      "item": "Phí dịch vụ quản lý hoạt động Tháng",
+      "base": "Số lượng EHC đạt được trong Tháng (nhánh trực tiếp theo mục V.1); số tiền cố định",
+      "conditions": [
+        "Mức phí dịch vụ hàng Tháng được chi trả theo hiệu quả công việc, thể hiện thông qua chỉ tiêu số lượng EHC đạt được trong Tháng"
+      ],
+      "table": [
+        ["Mức", "Số lượng EHC", "Phí dịch vụ (triệu đồng)"],
+        ["1", "Từ 20 trở lên", "8,0"],
+        ["2", "Từ 16 đến 19", "6,5"],
+        ["3", "Từ 12 đến 15", "5,0"],
+        ["4", "Từ 9 đến 11", "3,5"],
+        ["5", "Từ 6 đến 8", "2,5"],
+        ["6", "Từ 4 đến 5", "1,5"],
+        ["7", "Dưới 4", "0,0"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Định kỳ chi trả: hàng Tháng",
+      "clawback_or_forfeit": "Xem V.13, V.16",
+      "page": "6",
+      "quote": "Từ 20 trở lên 8,0 ... Từ 4 đến 5 1,5; Dưới 4 0,0",
+      "uncertain": false,
+      "note": "EHC không được định nghĩa trong văn bản này (dẫn chiếu Quy định chung CHHODCEB260005V/260006V)."
+    },
+    {
+      "rule_no": 3,
+      "role": "RD",
+      "item": "Phí dịch vụ quản lý kinh doanh Tháng",
+      "base": "FYP thực đạt trong Tháng của Đội ngũ Trực thuộc mà RD được phân công quản lý (triệu đồng); số tiền cố định",
+      "conditions": [
+        "chỉ tiêu FYP thực đạt trong Tháng của Đội ngũ Trực thuộc mà RD được phân công quản lý",
+        "Đơn vị: triệu đồng"
+      ],
+      "table": [
+        ["Mức", "FYP (triệu đồng)", "Phí dịch vụ (triệu đồng)"],
+        ["1", "Từ 600 trở lên", "12,0"],
+        ["2", "Từ 480 đến dưới 600", "9,5"],
+        ["3", "Từ 360 đến dưới 480", "7,0"],
+        ["4", "Từ 270 đến dưới 360", "5,0"],
+        ["5", "Từ 180 đến dưới 270", "3,5"],
+        ["6", "Từ 120 đến dưới 180", "2,5"],
+        ["7", "Dưới 120", "0,0"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Định kỳ chi trả: hàng Tháng",
+      "clawback_or_forfeit": "Xem V.13, V.16",
+      "page": "6",
+      "quote": "Từ 600 trở lên 12,0; Từ 480 đến dưới 600 9,5 ... Dưới 120 0,0",
+      "uncertain": false,
+      "note": "FYP không bao gồm Phí Bảo hiểm đóng thêm (V.6)."
+    },
+    {
+      "rule_no": 4,
+      "role": "RD",
+      "item": "Phí dịch vụ quản lý chất lượng Hoạt động Đại lý Bảo hiểm Tháng",
+      "base": "FYC trong Tháng × Tỷ lệ chi trả (theo số lượng 3MAA) × Hệ số chất lượng (theo tỷ lệ K2)",
+      "conditions": [
+        "Phí dịch vụ = FYC trong Tháng * Tỷ lệ chi trả * Hệ số chất lượng",
+        "a. Tỷ lệ chi trả theo số lượng 3MAA",
+        "b. Hệ số chất lượng theo tỷ lệ K2: Quý 1/2026 và Quý 2/2026: Từ 50% trở lên → 100%, Dưới 50% → 0%; Từ Quý 3/2026 trở đi: Từ 60% trở lên → 100%, Dưới 60% → 0%",
+        "Trường hợp chưa phát sinh K2 thì hệ số chất lượng là 100%"
+      ],
+      "table": [
+        ["Bảng a - Mức", "Số lượng 3MAA", "Tỷ lệ chi trả"],
+        ["1", "Từ 12 trở lên", "12%"],
+        ["2", "Từ 10 đến 11", "10%"],
+        ["3", "Từ 8 đến 9", "8%"],
+        ["4", "Từ 6 đến 7", "6%"],
+        ["5", "Từ 4 đến 5", "4%"],
+        ["6", "Từ 2 đến 3", "2%"],
+        ["7", "Dưới 2", "0%"],
+        ["Bảng b - Mức", "Tỷ lệ K2 Quý 1/2026 và Quý 2/2026", "Tỷ lệ K2 Từ Quý 3/2026 trở đi", "Hệ số chất lượng"],
+        ["1", "Từ 50% trở lên", "Từ 60% trở lên", "100%"],
+        ["2", "Dưới 50%", "Dưới 60%", "0%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Định kỳ chi trả: hàng Tháng",
+      "clawback_or_forfeit": "Hệ số chất lượng 0% khi K2 dưới ngưỡng; xem V.13, V.16",
+      "page": "7",
+      "quote": "Phí dịch vụ = FYC trong Tháng * Tỷ lệ chi trả * Hệ số chất lượng ... Từ 12 trở lên 12%",
+      "uncertain": false,
+      "note": "3MAA định nghĩa tại V.10 (trang 14). K2 xác định theo cấu trúc tại Ngày khóa sổ kỳ xét phí dịch vụ (V.9); định nghĩa K2 không có trong văn bản."
+    },
+    {
+      "rule_no": 5,
+      "role": "RD",
+      "item": "Phí dịch vụ quản lý và phát triển kinh doanh Quý",
+      "base": "FYC trong Quý × Tỷ lệ chi trả (theo tỷ lệ tăng trưởng FYP Quý) × Hệ số chất lượng (theo K2)",
+      "conditions": [
+        "Phí dịch vụ = FYC trong Quý * Tỷ lệ chi trả * Hệ số chất lượng",
+        "a. Tỷ lệ chi trả theo tỷ lệ tăng trưởng FYP Quý (bảng 12 mức)",
+        "Lưu ý: Trường hợp RD có FYP trong Quý hiện tại dưới 360 triệu đồng và không âm trưởng thì tỷ lệ chi trả là 2,5%",
+        "Lưu ý: Trường hợp RD có FYP trong Quý hiện tại từ 360 triệu đồng trở lên, đồng thời FYP trong Quý trước liền kề hoặc FYP trong Quý cùng kỳ Năm trước nhỏ hơn hoặc bằng không, hoặc chưa phát sinh, thì tỷ lệ chi trả là 10%",
+        "b. (i) RD có thời gian cung cấp dịch vụ từ 12 Tháng trở xuống: Tỷ lệ tăng trưởng FYP Quý = FYP trong Quý hiện tại / FYP trong Quý trước liền kề − 1",
+        "b. (ii) RD có thời gian cung cấp dịch vụ trên 12 Tháng: Tỷ lệ tăng trưởng FYP Quý = FYP trong Quý hiện tại / FYP trong Quý cùng kỳ Năm trước − 1",
+        "FYP ghi nhận tính tăng trưởng: Đóng phí một lần 10%; Các sản phẩm bảo hiểm còn lại 100%",
+        "FYP tính tăng trưởng không bao gồm Phí Bảo hiểm đóng thêm của các sản phẩm có giá trị tài khoản đóng thêm (ví dụ: EPUL và các sản phẩm liên kết đầu tư tương tự)",
+        "\"FYP trong Quý hiện tại\", \"FYP trong Quý trước liền kề\" và \"FYP trong Quý cùng kỳ Năm trước\" đều được tính toán theo cấu trúc của RD tại Ngày khóa sổ Quý hiện tại",
+        "c. Hệ số chất lượng theo K2: Quý 1/2026 và Quý 2/2026: Từ 50% trở lên → 100%, Dưới 50% → 0%; Từ Quý 3/2026 trở đi: Từ 60% trở lên → 100%, Dưới 60% → 0%. Trường hợp chưa phát sinh K2 thì hệ số chất lượng là 100%",
+        "Tỷ lệ tăng trưởng FYP làm tròn đến 2 chữ số thập phân (V.7)"
+      ],
+      "table": [
+        ["Bảng a - Mức", "Tỷ lệ tăng trưởng FYP", "Tỷ lệ chi trả"],
+        ["1", "Từ 50% trở lên", "27,5%"],
+        ["2", "Từ 45% đến dưới 50%", "25,0%"],
+        ["3", "Từ 40% đến dưới 45%", "22,5%"],
+        ["4", "Từ 35% đến dưới 40%", "20,0%"],
+        ["5", "Từ 30% đến dưới 35%", "17,5%"],
+        ["6", "Từ 25% đến dưới 30%", "15,0%"],
+        ["7", "Từ 20% đến dưới 25%", "12,5%"],
+        ["8", "Từ 15% đến dưới 20%", "10,0%"],
+        ["9", "Từ 10% đến dưới 15%", "7,5%"],
+        ["10", "Từ 5% đến dưới 10%", "5,0%"],
+        ["11", "Từ 0% đến dưới 5%", "2,5%"],
+        ["12", "Dưới 0%", "0,0%"],
+        ["Bảng FYP tính tăng trưởng - Sản phẩm", "FYP tính tăng trưởng"],
+        ["Đóng phí một lần", "10%"],
+        ["Các sản phẩm bảo hiểm còn lại", "100%"],
+        ["Bảng c - Mức", "Tỷ lệ K2 Quý 1/2026 và Quý 2/2026", "Tỷ lệ K2 Từ Quý 3/2026 trở đi", "Hệ số chất lượng"],
+        ["1", "Từ 50% trở lên", "Từ 60% trở lên", "100%"],
+        ["2", "Dưới 50%", "Dưới 60%", "0%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Định kỳ chi trả: hàng Quý (Tháng 3, Tháng 6, Tháng 9 và Tháng 12)",
+      "clawback_or_forfeit": "Xem V.13, V.16",
+      "page": "8-9",
+      "quote": "Trường hợp RD có FYP trong Quý hiện tại dưới 360 triệu đồng và không âm trưởng thì tỷ lệ chi trả là 2,5%.",
+      "uncertain": false,
+      "note": "Lưu ý 2,5% (FYP Quý < 360 triệu và không âm trưởng) mâu thuẫn tiềm ẩn với bảng: một RD có tăng trưởng cao (vd 50%) nhưng FYP < 360 triệu có bị giới hạn ở 2,5% không — văn bản không nói rõ là mức trần hay mức thay thế; cách hiểu tự nhiên là áp 2,5% thay cho bảng. Từ \"không âm trưởng\" không định nghĩa (hiểu là tăng trưởng ≥ 0%?)."
+    },
+    {
+      "rule_no": 6,
+      "role": "RD",
+      "item": "Phí dịch vụ quản lý chất lượng phục vụ Khách hàng Quý",
+      "base": "RYC trong Quý × Tỷ lệ chi trả (theo tỷ lệ K2 tại ngày khóa sổ Quý)",
+      "conditions": [
+        "Phí dịch vụ = RYC trong Quý * Tỷ lệ chi trả",
+        "a. RYC trong Quý được xét trên RYC phát sinh từ Năm Hợp đồng Bảo hiểm thứ 2 đến Năm Hợp đồng Bảo hiểm thứ 5",
+        "b. Tỷ lệ chi trả được xác định theo tỷ lệ K2 tại ngày khóa sổ Quý",
+        "Lưu ý: Trường hợp RD không phát sinh K2 nhưng có phát sinh RYC thì tỷ lệ chi trả áp dụng là 15%"
+      ],
+      "table": [
+        ["Mức", "Tỷ lệ K2", "Tỷ lệ chi trả"],
+        ["1", "Từ 70% trở lên", "30%"],
+        ["2", "Từ 60% đến dưới 70%", "25%"],
+        ["3", "Từ 55% đến dưới 60%", "20%"],
+        ["4", "Từ 50% đến dưới 55%", "15%"],
+        ["5", "Dưới 50%", "10%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Định kỳ chi trả: hàng Quý (Tháng 3, Tháng 6, Tháng 9 và Tháng 12)",
+      "clawback_or_forfeit": "Xem V.13, V.16",
+      "page": "9-10",
+      "quote": "Phí dịch vụ = RYC trong Quý * Tỷ lệ chi trả ... Từ 70% trở lên 30% ... Dưới 50% 10%",
+      "uncertain": false,
+      "note": "Không có hệ số chất lượng cho khoản này; mức thấp nhất vẫn 10% khi K2 dưới 50%."
+    },
+    {
+      "rule_no": 7,
+      "role": "RD quản lý",
+      "item": "Phí dịch vụ đào tạo và phát triển Đội ngũ Trực thuộc",
+      "base": "Tổng các khoản phí dịch vụ quản lý của BD được phát triển × Tỷ lệ chi trả (theo EHC nhánh trực tiếp trong Tháng của RD quản lý)",
+      "conditions": [
+        "Trường hợp RD quản lý phát triển được Đội ngũ Trực thuộc thăng cấp lên BD (\"BD được phát triển\")",
+        "chi trả trong vòng 12 Tháng kể từ Tháng thăng cấp hoặc đến khi BD được phát triển tiếp tục được thăng cấp vượt cấp của RD quản lý, hoặc đến khi BD được phát triển không còn báo cáo trực tiếp cho RD quản lý, áp dụng theo thời gian nào đến trước",
+        "Phí dịch vụ = Tổng các khoản phí dịch vụ quản lý của BD được phát triển * Tỷ lệ chi trả",
+        "Tổng các khoản phí dịch vụ quản lý của BD được phát triển gồm: a. Phí dịch vụ quản lý hoạt động Tháng; b. Phí dịch vụ quản lý kinh doanh Tháng; c. Phí dịch vụ quản lý chất lượng Hoạt động Đại lý Bảo hiểm Tháng; d. Phí dịch vụ quản lý chất lượng Hoạt động Đại lý Bảo hiểm Quý; e. Phí dịch vụ quản lý và phát triển kinh doanh Quý; f. Phí dịch vụ quản lý chất lượng phục vụ Khách hàng Quý"
+      ],
+      "table": [
+        ["Mức", "EHC nhánh trực tiếp của RD quản lý", "Tỷ lệ chi trả"],
+        ["1", "Từ 5 trở lên", "50,0%"],
+        ["2", "Từ 2 đến 4", "25,0%"],
+        ["3", "Dưới 2", "0,0%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Định kỳ chi trả: hàng Tháng",
+      "clawback_or_forfeit": "\"từ Tháng BD được phát triển thăng cấp vượt cấp hoặc không còn báo cáo trực tiếp thì RD quản lý không được tiếp tục nhận phí dịch vụ này\"; xem V.13, V.16",
+      "page": "10-11",
+      "quote": "Phí dịch vụ = Tổng các khoản phí dịch vụ quản lý của BD được phát triển * Tỷ lệ chi trả ... Từ 5 trở lên 50,0%",
+      "uncertain": false,
+      "note": "Danh sách d. \"Phí dịch vụ quản lý chất lượng Hoạt động Đại lý Bảo hiểm Quý\" không có trong các khoản tại mục II/bảng tóm tắt (chỉ có bản Tháng). Phí dịch vụ của BD do chính sách khác quy định (văn bản không nêu)."
+    },
+    {
+      "rule_no": 8,
+      "role": "RD quản lý",
+      "item": "Phí dịch vụ quản lý Đội ngũ Trực thuộc",
+      "base": "Tổng các khoản phí dịch vụ quản lý của BD/RD con × Tỷ lệ chi trả (theo EHC nhánh trực tiếp trong Tháng của RD quản lý)",
+      "conditions": [
+        "Công ty chi trả cho RD quản lý khoản phí dịch vụ hàng Tháng để tiếp tục quản lý, bồi dưỡng, và hỗ trợ các BD/RD báo cáo trực tiếp (\"BD/RD con\")",
+        "Phí dịch vụ = Tổng các khoản phí dịch vụ quản lý của BD/RD con * Tỷ lệ chi trả",
+        "Tổng các khoản phí dịch vụ quản lý của BD/RD con được sử dụng để tính toán tương tự Mục II.7",
+        "RD quản lý sẽ không được tính phí dịch vụ này trên các BD/RD con đã được xét tại Mục II.7",
+        "RD quản lý có RD báo cáo trực tiếp sẽ được duy trì báo cáo đồng cấp tối đa 24 Tháng. Sau thời gian này, nếu RD quản lý chưa thăng cấp lên cấp bậc cao hơn thì RD báo cáo trực tiếp sẽ được chuyển lên báo cáo cho quản lý cấp trên liền kề"
+      ],
+      "table": [
+        ["Mức", "EHC nhánh trực tiếp của RD quản lý", "Tỷ lệ chi trả"],
+        ["1", "Từ 5 trở lên", "25,0%"],
+        ["2", "Từ 2 đến 4", "12,5%"],
+        ["3", "Dưới 2", "0,0%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Định kỳ chi trả: hàng Tháng",
+      "clawback_or_forfeit": "Không tính trên BD/RD con đã xét tại Mục II.7; xem V.13, V.16",
+      "page": "11-12",
+      "quote": "Phí dịch vụ = Tổng các khoản phí dịch vụ quản lý của BD/RD con * Tỷ lệ chi trả ... Từ 5 trở lên 25,0%; Từ 2 đến 4 12,5%",
+      "uncertain": false,
+      "note": "Không nêu giới hạn thời gian nhận (khác Mục II.7 có 12 Tháng)."
+    },
+    {
+      "rule_no": 9,
+      "role": "RD",
+      "item": "Quy định về nghiệm thu phí dịch vụ",
+      "base": "Các khoản Phí dịch vụ tại Mục II",
+      "conditions": [
+        "thanh toán theo định kỳ hàng Tháng và hàng Quý dựa trên kết quả nghiệm thu dịch vụ hoàn thành, được thể hiện trên \"Báo cáo nghiệm thu dịch vụ\" có sự xác nhận của RD và Công ty",
+        "RD cần hoàn thành các dịch vụ trong phạm vi công việc yêu cầu và chỉ tiêu được quy định tại Chính sách này, và nhận phí dịch vụ theo mức chỉ tiêu thực đạt"
+      ],
+      "table": [],
+      "rate_or_amount": "",
+      "payment_timing": "hàng Tháng và hàng Quý",
+      "clawback_or_forfeit": "Không xác nhận Báo cáo nghiệm thu → tạm giữ (V.16.i)",
+      "page": "12",
+      "quote": "được thể hiện trên \"Báo cáo nghiệm thu dịch vụ\" có sự xác nhận của RD và Công ty",
+      "uncertain": false,
+      "note": ""
+    },
+    {
+      "rule_no": 10,
+      "role": "RD",
+      "item": "Chỉ tiêu thăng cấp",
+      "base": "Nhánh trực tiếp (V.1); giai đoạn xét 6 Tháng",
+      "conditions": [
+        "RD được xét thăng cấp lên cấp bậc cao hơn khi: (i) đạt đầy đủ các chỉ tiêu như bảng; (ii) hoàn tất các khóa học theo quy định của Công ty trong từng giai đoạn và (iii) không vi phạm quy chế/quy định của Công ty",
+        "(*) Số lượng Đội ngũ Trực thuộc thăng cấp lên BD (\"BD được phát triển\") và/hoặc số lượng RD giới thiệu cho cấp quản lý (\"RD được giới thiệu\") xét trong thời gian 24 Tháng qua; và tại thời điểm xét BD được phát triển và RD được giới thiệu vẫn còn làm việc và duy trì cấp bậc bằng hoặc cao hơn cấp bậc khi thăng cấp/ bắt đầu cung cấp dịch vụ",
+        "Lưu ý: Kết quả của BD được phát triển được ghi nhận xét tính thăng cấp và duy trì cho RD quản lý trong vòng 24 Tháng kể từ Tháng BD được phát triển thăng cấp"
+      ],
+      "table": [
+        ["STT", "Chỉ tiêu thăng cấp", "Yêu cầu"],
+        ["1", "Thời gian tại vị trí (Tháng)", "12"],
+        ["2", "Giai đoạn xét chỉ tiêu (Tháng)", "6"],
+        ["3", "FYP tích lũy (triệu đồng)", "9.000"],
+        ["4", "Số lượng EHC tích lũy", "300"],
+        ["5", "Tỷ lệ K2", "60%"],
+        ["6", "Số lượng DM báo cáo trực tiếp", "2"],
+        ["7", "Số lượng Đội ngũ Trực thuộc thăng cấp lên BD và/hoặc số lượng RD giới thiệu cho cấp quản lý (*)", "4"],
+        ["8", "Định kỳ xét", "Tháng 3, 6, 9, 12"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Định kỳ xét: Tháng 3, 6, 9, 12",
+      "clawback_or_forfeit": "",
+      "page": "12-13",
+      "quote": "FYP tích lũy (triệu đồng) 9.000; Số lượng EHC tích lũy 300; Tỷ lệ K2 60%; Số lượng DM báo cáo trực tiếp 2",
+      "uncertain": false,
+      "note": "Hệ thống cấp bậc chỉ có BD và RD (RD là cao nhất) — văn bản không nêu RD thăng lên cấp bậc nào. \"DM\" không được định nghĩa trong văn bản."
+    },
+    {
+      "rule_no": 11,
+      "role": "RD",
+      "item": "Chỉ tiêu duy trì cấp bậc",
+      "base": "Xét trên nhánh trực tiếp hoặc toàn nhánh; giai đoạn 6 Tháng",
+      "conditions": [
+        "Tại Ngày khóa sổ mỗi Quý, RD có thời gian cung cấp dịch vụ từ 3 Tháng trở lên cần đạt tất cả các chỉ tiêu thuộc 1 trong 2 yêu cầu (i) xét trên nhánh trực tiếp hoặc (ii) xét trên toàn nhánh",
+        "Trường hợp tại ngày khóa sổ Quý, RD có thời gian cung cấp dịch vụ từ 3 Tháng đến dưới 6 Tháng, chỉ tiêu FYP và EHC sẽ xét tích lũy trong giai đoạn tương ứng"
+      ],
+      "table": [
+        ["STT", "Chỉ tiêu duy trì", "Yêu cầu - Xét trên nhánh trực tiếp", "Yêu cầu - Xét trên toàn nhánh"],
+        ["1", "Thời gian tại vị trí (Tháng)", "6", "6"],
+        ["2", "Giai đoạn xét chỉ tiêu (Tháng)", "6", "6"],
+        ["3", "FYP tích lũy (triệu đồng)", "750", "3.000"],
+        ["4", "Số lượng EHC tích lũy", "25", "100"],
+        ["5", "Tỷ lệ K2", "50%", "50%"],
+        ["6", "Định kỳ xét", "Tháng 3, 6, 9, 12", "Tháng 3, 6, 9, 12"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Định kỳ xét: Tháng 3, 6, 9, 12",
+      "clawback_or_forfeit": "RD không đạt điều kiện duy trì sẽ bị giáng cấp xuống cấp bậc thấp hơn hoặc chấm dứt Hợp đồng",
+      "page": "13",
+      "quote": "FYP tích lũy (triệu đồng) 750 | 3.000; Số lượng EHC tích lũy 25 | 100; Tỷ lệ K2 50% | 50%",
+      "uncertain": false,
+      "note": "Bảng ghi Thời gian tại vị trí 6 Tháng nhưng đoạn văn áp dụng từ 3 Tháng trở lên — không rõ quan hệ."
+    },
+    {
+      "rule_no": 12,
+      "role": "AMD",
+      "item": "Chi trả 25% khoản thưởng/phí dịch vụ Tháng và Quý đang tạm giữ của AMD trong Năm 2024 và Năm 2025",
+      "base": "25% khoản thưởng/phí dịch vụ Tháng và Quý đang tạm giữ (nếu có); tỷ lệ K2 toàn nhánh của AMD",
+      "conditions": [
+        "được xét chi trả tại Tháng (T+15) dựa trên tỷ lệ K2 toàn nhánh của AMD"
+      ],
+      "table": [
+        ["Mức", "Tỷ lệ K2 toàn nhánh", "Tỷ lệ chi trả"],
+        ["1", "Từ 60% trở lên", "100%"],
+        ["2", "Từ 50% đến dưới 60%", "60%"],
+        ["3", "Dưới 50%", "0%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Tháng (T+15)",
+      "clawback_or_forfeit": "K2 toàn nhánh dưới 50% → 0% (phần còn lại văn bản không nêu xử lý)",
+      "page": "14",
+      "quote": "Đối với 25% khoản thưởng/phí dịch vụ Tháng và Quý đang tạm giữ của AMD trong Năm 2024 và Năm 2025 (nếu có) sẽ được xét chi trả tại Tháng (T+15)",
+      "uncertain": false,
+      "note": "\"T\" không được định nghĩa (có lẽ là Tháng phát sinh khoản tạm giữ). Cơ chế tạm giữ 25% thuộc chính sách cũ, không mô tả trong văn bản này."
+    },
+    {
+      "rule_no": 13,
+      "role": "RD",
+      "item": "Trường hợp không chi trả phí dịch vụ",
+      "base": "Tình trạng RD tại Ngày khóa sổ của Tháng chi trả phí dịch vụ tương ứng",
+      "conditions": [
+        "(i) RD đã tự ý ngừng cung cấp dịch vụ hoặc đã gửi thư đề nghị chấm dứt (các) hợp đồng đã giao kết với Công ty",
+        "(ii) Công ty đã ban hành thông báo/quyết định về việc chấm dứt (các) hợp đồng đã giao kết với RD hoặc thông báo yêu cầu hoàn tất các nghĩa vụ liên quan đến việc chấm dứt (các) hợp đồng dù vì bất kỳ lý do nào",
+        "(iii) RD không còn giữ cấp bậc trong Ban Điều hành và Phát triển Kinh Doanh vì bất kỳ lý do nào",
+        "(iv) RD thuộc diện bị xử lý vi phạm theo Quy chế xử lý vi phạm Đại lý của Công ty"
+      ],
+      "table": [],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "Các khoản phí dịch vụ sẽ không được chi trả",
+      "page": "14",
+      "quote": "Các khoản phí dịch vụ sẽ không được chi trả nếu vào Ngày khóa sổ của Tháng chi trả phí dịch vụ tương ứng mà RD thuộc một trong các trường hợp sau",
+      "uncertain": false,
+      "note": ""
+    },
+    {
+      "rule_no": 14,
+      "role": "RD",
+      "item": "Quy định thời gian chi trả phí dịch vụ",
+      "base": "",
+      "conditions": [],
+      "table": [],
+      "rate_or_amount": "",
+      "payment_timing": "Phí dịch vụ sẽ được chuyển khoản vào tài khoản mà RD đăng ký với Công ty trong vòng bảy (07) ngày làm việc (không tính thứ 7, Chủ Nhật và các Ngày lễ chính thức) đầu tiên của Tháng kế tiếp liền kề",
+      "clawback_or_forfeit": "",
+      "page": "14",
+      "quote": "trong vòng bảy (07) ngày làm việc (không tính thứ 7, Chủ Nhật và các Ngày lễ chính thức) đầu tiên của Tháng kế tiếp liền kề",
+      "uncertain": false,
+      "note": ""
+    },
+    {
+      "rule_no": 15,
+      "role": "RD",
+      "item": "Quy định về tạm giữ phí dịch vụ và hoàn trả phí dịch vụ tạm giữ",
+      "base": "",
+      "conditions": [
+        "a. Tổng phí dịch vụ thuần sau thuế tại mỗi đợt chi trả của RD thấp hơn mức tối thiểu 100.000 đồng",
+        "b. RD chưa hoàn tất cung cấp hồ sơ, chứng từ để giao kết Hợp đồng dịch vụ và/hoặc chưa hoàn tất ký xác nhận hợp đồng/phụ lục trong thời gian quy định",
+        "c. RD chưa cung cấp mã số thuế và/hoặc tài khoản ngân hàng",
+        "d. RD chưa hoàn tất các bài thi theo yêu cầu từ Bộ phận Huấn luyện và Đào tạo Phát triển Kinh doanh Toàn quốc",
+        "e. RD chưa hoàn tất các thủ tục chấm dứt, thay đổi phạm vi dịch vụ hoặc nghĩa vụ tài chính theo thông báo",
+        "f. RD chưa đạt đủ điều kiện cấp mã số Đại lý sau 2 Tháng kể từ Ngày bắt đầu cung cấp dịch vụ",
+        "g. RD có liên quan đến các vi phạm/khiếu nại/tố cáo/kiện tụng đang được giải quyết",
+        "h. RD bị đình chỉ, tạm đình chỉ hoạt động để phục vụ cho quá trình điều tra và xử lý vi phạm RD Công ty",
+        "i. RD không thực hiện xác nhận Báo cáo nghiệm thu dịch vụ theo quy định của Công ty"
+      ],
+      "table": [],
+      "rate_or_amount": "mức tối thiểu 100.000 đồng (phí dịch vụ thuần sau thuế mỗi đợt)",
+      "payment_timing": "Công ty sẽ hoàn trả phí dịch vụ tạm giữ vào Đợt chi trả phí dịch vụ kế tiếp mà khi đó RD không còn thuộc các trường hợp tạm giữ phí dịch vụ như quy định tại mục V.16",
+      "clawback_or_forfeit": "Tạm giữ (không phải mất quyền)",
+      "page": "14-15",
+      "quote": "Tổng phí dịch vụ thuần sau thuế tại mỗi đợt chi trả của RD thấp hơn mức tối thiểu 100.000 đồng.",
+      "uncertain": false,
+      "note": "\"thấp hơn\" = < 100.000 đồng (không bao gồm biên)."
+    },
+    {
+      "rule_no": 16,
+      "role": "RD",
+      "item": "Quy định khác về cách tính chỉ tiêu (V.1–V.11)",
+      "base": "",
+      "conditions": [
+        "V.1 Trừ trường hợp được quy định khác, các chỉ tiêu tính toán trong Chính sách này được xét dựa trên nhánh trực tiếp của RD",
+        "V.2 Tháng cung cấp dịch vụ đầu tiên được tính từ (i) Ngày bắt đầu đến Ngày khóa sổ của Tháng đó nếu Ngày bắt đầu là ngày 15 của Tháng hoặc trước đó, hoặc từ (ii) Ngày bắt đầu đến Ngày khóa sổ của Tháng liền sau nếu Ngày bắt đầu là ngày 16 của Tháng trở đi",
+        "V.3 Năm cung cấp dịch vụ đầu tiên được tính từ Tháng cung cấp dịch vụ đầu tiên đến Tháng cung cấp dịch vụ thứ 12",
+        "V.4 Trường hợp AR/AL phát triển và thăng cấp lên AMD, Tháng cung cấp dịch vụ đầu tiên được xác định từ ngày gia nhập vị trí AR/AL",
+        "V.5 RD được tham gia vào chương trình Bảo hiểm Sức khỏe và Tai nạn ... theo chính sách của Công ty ban hành trong từng thời điểm",
+        "V.6 FYP tính phí dịch vụ không bao gồm Phí Bảo hiểm đóng thêm của các sản phẩm có giá trị tài khoản đóng thêm (ví dụ: EPUL và các sản phẩm liên kết đầu tư tương tự)",
+        "V.7 Kết quả tính tỷ lệ tăng trưởng FYP và tỷ lệ K2 được làm tròn đến 2 chữ số thập phân. Ví dụ: 99,977% → 99,98%",
+        "V.8 FYC, RYC, FYP và EHC được tính toán và ghi nhận theo cấu trúc của RD tại Ngày khóa sổ mỗi Tháng",
+        "V.9 Tỷ lệ K2 và 3MAA được xác định theo cấu trúc tại Ngày khóa sổ kỳ xét phí dịch vụ",
+        "V.11 RD chịu mọi nghĩa vụ thuế trên khoản phí dịch vụ được nhận",
+        "V.14 Công ty có toàn quyền đánh giá và điều chỉnh Chính sách này hàng Năm và/hoặc vào từng thời điểm"
+      ],
+      "table": [],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "",
+      "page": "13-14",
+      "quote": "Kết quả tính tỷ lệ tăng trưởng FYP và tỷ lệ K2 được làm tròn đến 2 chữ số thập phân.",
+      "uncertain": false,
+      "note": "Ví dụ làm tròn ở trang 13 (V.7)."
+    }
+  ],
+  "definitions": [
+    {"term": "AMD (Ban Điều hành và Phát triển Kinh doanh)", "definition_verbatim": "Ban Điều hành và Phát triển Kinh doanh (\"AMD\") bao gồm (các) cá nhân là Bên cung cấp dịch vụ được Công ty chỉ định để thực hiện công tác quản lý và phát triển các Hoạt động Đại lý Bảo hiểm thông qua việc quản lý hoạt động (các) Văn phòng Kinh doanh và phát triển Đội ngũ Trực thuộc được phân công cho AMD phụ trách.", "page": 3},
+    {"term": "Nhánh trực tiếp", "definition_verbatim": "Nhánh trực tiếp bao gồm bản thân RD và toàn bộ AR/AL mà RD đó trực tiếp quản lý.", "page": 4},
+    {"term": "Toàn nhánh", "definition_verbatim": "Toàn nhánh bao gồm bản thân RD và toàn bộ AMD và AR/AL mà RD đó quản lý.", "page": 4},
+    {"term": "Nhánh báo cáo cấp 1", "definition_verbatim": "Nhánh báo cáo cấp 1 bao gồm toàn bộ AMD mà RD đó trực tiếp quản lý.", "page": 4},
+    {"term": "Nhánh báo cáo cấp 2", "definition_verbatim": "Nhánh báo cáo cấp 2 bao gồm toàn bộ AMD mà RD đó gián tiếp quản lý thông qua 1 cấp AMD.", "page": 4},
+    {"term": "Nhánh báo cáo cấp 3", "definition_verbatim": "Nhánh báo cáo cấp 3 bao gồm toàn bộ AMD mà RD đó gián tiếp quản lý thông qua 2 cấp AMD.", "page": 4},
+    {"term": "3MAA", "definition_verbatim": "3MAA là Đại lý chính thức còn làm việc và đạt EHC ít nhất một lần trong 3 Tháng làm việc (Tháng hiện tại và 2 Tháng liền kề trước đó).", "page": 14},
+    {"term": "BD được phát triển", "definition_verbatim": "Trường hợp RD quản lý phát triển được Đội ngũ Trực thuộc thăng cấp lên BD (\"BD được phát triển\")", "page": 10},
+    {"term": "BD/RD con", "definition_verbatim": "các BD/RD báo cáo trực tiếp (\"BD/RD con\")", "page": 11},
+    {"term": "RD được giới thiệu", "definition_verbatim": "số lượng RD giới thiệu cho cấp quản lý (\"RD được giới thiệu\")", "page": 12},
+    {"term": "Lớp đào tạo đạt chuẩn", "definition_verbatim": "Lớp đào tạo đạt chuẩn được tính phí dịch vụ phải có số lượng học viên tham dự đạt từ bốn (4) học viên trở lên.", "page": 5},
+    {"term": "Tháng cung cấp dịch vụ đầu tiên / Ngày bắt đầu", "definition_verbatim": "Tháng cung cấp dịch vụ đầu tiên được tính từ (i) Ngày bắt đầu cung cấp dịch vụ (\"Ngày bắt đầu\") đến Ngày khóa sổ của Tháng đó nếu Ngày bắt đầu là ngày 15 của Tháng hoặc trước đó, hoặc từ (ii) Ngày bắt đầu đến Ngày khóa sổ của Tháng liền sau nếu Ngày bắt đầu là ngày 16 của Tháng trở đi.", "page": 13},
+    {"term": "K2, FYC, FYP, RYC, EHC, DM, AR/AL", "definition_verbatim": "Văn bản không định nghĩa; dẫn chiếu \"Quy định chung dành cho Đội ngũ Kinh doanh Kênh Đại lý, Kênh Đối tác Kinh doanh Infinity và Kênh đối tác Kinh doanh Infinity 2.0\" số CHHODCEB260005V và \"Quy định chung dành cho Bên cung cấp dịch vụ Quản lý Đại lý\" số CHHODCEB260006V hiệu lực từ ngày 01/01/2026.", "page": 3}
+  ],
+  "internal_inconsistencies": [
+    "Trang 11 (Lưu ý mục II.7): danh sách khoản tính gồm \"d. Phí dịch vụ quản lý chất lượng Hoạt động Đại lý Bảo hiểm Quý\" — khoản Quý này không tồn tại trong mục II hay bảng tóm tắt trang 4 (chỉ có bản Tháng, mục II.4).",
+    "Trang 3 vs trang 12: hệ thống cấp bậc chỉ có BD và RD (RD cao nhất), nhưng mục IV.1 quy định \"RD được xét thăng cấp lên cấp bậc cao hơn\" và mục II.8 nói \"nếu RD quản lý chưa thăng cấp lên cấp bậc cao hơn\" — không có cấp bậc cao hơn RD trong văn bản.",
+    "Trang 12: chỉ tiêu thăng cấp dùng \"Số lượng DM báo cáo trực tiếp\" nhưng DM không có trong hệ thống cấp bậc (chỉ BD, RD).",
+    "Trang 13: bảng duy trì ghi \"Thời gian tại vị trí (Tháng) 6\" nhưng đoạn văn áp dụng xét duy trì cho RD có thời gian cung cấp dịch vụ từ 3 Tháng trở lên.",
+    "Trang 8: Lưu ý \"FYP trong Quý hiện tại dưới 360 triệu đồng và không âm trưởng thì tỷ lệ chi trả là 2,5%\" chồng lấn với bảng 12 mức (có thể ghi đè mức cao hơn 2,5%) — văn bản không nói rõ thứ tự ưu tiên.",
+    "Trang 14 (V.12): áp dụng cho \"AMD\" và \"Tháng (T+15)\" — T không được định nghĩa; khoản tạm giữ 25% năm 2024/2025 không được mô tả trong văn bản này."
+  ],
+  "pages_read": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+}

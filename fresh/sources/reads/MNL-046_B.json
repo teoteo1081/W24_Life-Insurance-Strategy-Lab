@@ -1,0 +1,483 @@
+{
+  "doc_id": "MNL-046",
+  "reader": "B",
+  "title_verbatim": "Thông báo – CHÍNH SÁCH CHI TRẢ DÀNH CHO ĐẠI LÝ MANULIFE (VIỆT NAM); V/v: Chính sách chi trả dành cho Đại Lý Manulife (Việt Nam); Số tham chiếu: 0046M01/2026/ASBD; Ngày gửi: 28/01/2026",
+  "effective": "“được áp dụng kể từ ngày 01/01/2026 (“Ngày hiệu lực”) và thay thế Chính sách chi trả dành cho Đại Lý Manulife (Việt Nam) theo Thông báo số 0001M04/2025/ASBD, ngoại trừ có quy định khác đi trong Thông báo này” – trang 1 (nhắc lại tại D.1 trang 9)",
+  "roles": [
+    {"title_verbatim": "Đại Lý (Đại Lý Bảo hiểm có Hợp Đồng Đại Lý Bảo Hiểm với Công Ty)", "abbr": "Đại Lý", "page": 1, "how_obtained": "ký Hợp Đồng Đại Lý Bảo Hiểm với Công Ty"},
+    {"title_verbatim": "Manulife Pro Bạc / Manulife Pro Vàng / Manulife Pro Bạch Kim", "abbr": "Manulife Pro", "page": 4, "how_obtained": "“danh hiệu dành cho các Đại Lý đạt yêu cầu theo quy định tại thông báo 0011M04/2024/ASBD v/v “Tiêu chí đánh giá danh hiệu Manulife Pro”” (E.1, trang 10); tiêu chí không nêu trong văn bản này"},
+    {"title_verbatim": "Đại Lý xuất sắc (dùng cho Thưởng năng suất quý)", "abbr": "Đại Lý xuất sắc", "page": 6, "how_obtained": "“i. Đại Lý đạt Thưởng năng suất tháng (mục B. III) trong 3 tháng liên tục của quý; HOẶC ii. Đại Lý có danh hiệu Manulife Pro Vàng hoặc Manulife Pro Bạch Kim tại tháng cuối quý.”"},
+    {"title_verbatim": "PSM+ có HĐDV QLCC (Hợp đồng Dịch Vụ Quản lý Đại Lý Bảo Hiểm dành cho Quản lý Đại Lý Cấp cao)", "abbr": "PSM+", "page": 7, "how_obtained": "văn bản không nêu cách đạt; chỉ nhắc như điều kiện nhận phần Thưởng KDXS năm trả chậm (B.VI.2.c-d, D.2)"},
+    {"title_verbatim": "Chủ Hộ Kinh Doanh có HĐDV HKD (Hợp đồng Dịch Vụ Quản lý Đại Lý Bảo Hiểm dành cho Hộ Kinh Doanh)", "abbr": "HKD", "page": 7, "how_obtained": "văn bản không nêu cách đạt; chỉ nhắc như điều kiện nhận phần Thưởng KDXS năm trả chậm (B.VI.2.c-d, D.2)"}
+  ],
+  "rules": [
+    {
+      "rule_no": 1,
+      "role": "Tất cả Đại Lý – áp dụng cho các khoản thưởng tại Mục B (theo cách áp dụng từng khoản)",
+      "item": "Hệ số nhân thưởng dựa theo Tỷ lệ duy trì hợp đồng năm 2 (“Hệ số nhân TLDTHD”) – a) Áp dụng trước tháng 04/2026",
+      "base": "TLDTHD năm 2 (thời điểm xét quy định riêng ở từng khoản thưởng)",
+      "conditions": ["Áp dụng trước tháng 04/2026"],
+      "table": [
+        ["TLDTHD năm 2", "Tỷ lệ nhân thưởng"],
+        ["< 40%", "% TLDTHD thực đạt"],
+        ["≥ 40% và < 55%", "50%"],
+        ["≥ 55% và < 65%", "75%"],
+        ["≥ 65%", "100%"],
+        ["Chưa có TLDTHD", "100%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "văn bản không nêu (là hệ số nhân)",
+      "clawback_or_forfeit": "",
+      "page": "1",
+      "quote": "a) Áp dụng trước tháng 04/2026 … < 40% | % TLDTHD thực đạt; ≥ 40% và < 55% | 50%; ≥ 55% và < 65% | 75%; ≥ 65% | 100%",
+      "uncertain": false,
+      "note": "Văn bản không nêu rõ “trước tháng 04/2026” xét theo tháng xét thưởng hay tháng chi trả."
+    },
+    {
+      "rule_no": 2,
+      "role": "Tất cả Đại Lý – áp dụng cho các khoản thưởng tại Mục B",
+      "item": "Hệ số nhân TLDTHD – b) Áp dụng từ tháng 04/2026 trở đi",
+      "base": "TLDTHD năm 2",
+      "conditions": ["Áp dụng từ tháng 04/2026 trở đi"],
+      "table": [
+        ["TLDTHD năm 2", "Tỷ lệ nhân thưởng"],
+        ["< 50%", "% TLDTHD thực đạt/2 (chia 2)"],
+        ["≥ 50% và < 60%", "50%"],
+        ["≥ 60% và < 65%", "70%"],
+        ["≥ 65% và < 70%", "90%"],
+        ["≥ 70%", "100%"],
+        ["Chưa có TLDTHD", "100%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "",
+      "page": "1",
+      "quote": "< 50% | % TLDTHD thực đạt/2 (chia 2); ≥ 50% và < 60% | 50%; ≥ 60% và < 65% | 70%; ≥ 65% và < 70% | 90%; ≥ 70% | 100%",
+      "uncertain": false,
+      "note": "TLDTHD định nghĩa theo thông báo 0016M03/2024/ASBD (E.10) – công thức không có trong văn bản này."
+    },
+    {
+      "rule_no": 3,
+      "role": "Tất cả Đại Lý – áp dụng cho các khoản thưởng tại Mục B",
+      "item": "Hệ số nhân thưởng Chất lượng kinh doanh (“Hệ số nhân CLKD”)",
+      "base": "Quyết định kỷ luật của Bộ phận pháp chế và tuân thủ (tháng xét quy định riêng ở từng khoản)",
+      "conditions": [
+        "Hệ số nhân CLKD được xét dựa trên Quyết định kỷ luật của Bộ phận pháp chế và tuân thủ theo quy định có hiệu lực hiện hành và được ghi nhận trên hệ thống Manulife.",
+        "Trường hợp Đại Lý có nhiều Quyết định kỷ luật được ban hành trong cùng một tháng, Quyết định kỷ luật ở mức cao nhất sẽ được áp dụng."
+      ],
+      "table": [
+        ["Quyết định kỷ luật", "Tỷ lệ nhân thưởng"],
+        ["Không vi phạm kỷ luật", "100% mức thưởng"],
+        ["Thư Nhắc Nhở", "50% mức thưởng"],
+        ["Thư Cảnh Cáo/Chấm dứt Hợp Đồng Đại Lý Bảo Hiểm", "Không đạt thưởng"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "Thư Cảnh Cáo/Chấm dứt HĐĐL: Không đạt thưởng",
+      "page": "1",
+      "quote": "Thư Nhắc Nhở | 50% mức thưởng; Thư Cảnh Cáo/Chấm dứt Hợp Đồng Đại Lý Bảo Hiểm | Không đạt thưởng",
+      "uncertain": false,
+      "note": ""
+    },
+    {
+      "rule_no": 4,
+      "role": "Đại Lý mới (02 tháng làm việc đầu tiên)",
+      "item": "I. Thưởng Đại Lý mới",
+      "base": "Kết quả sản xuất (số Hợp đồng, FYP) và yêu cầu hoạt động & đào tạo của từng tháng: Tháng làm việc đầy đủ đầu tiên (Tháng M0+M1) và Tháng làm việc thứ 2 (Tháng M2). Công thức: Thưởng Đại Lý mới = [Mức thưởng theo bảng dưới] x [Hệ số nhân TLDTHD] x [Hệ số nhân CLKD]",
+      "conditions": [
+        "YÊU CẦU MỖI THÁNG – Yêu cầu sản xuất: 01 Hợp đồng VÀ 10 triệu FYP",
+        "Yêu cầu hoạt động: Tham gia hoạt động “Đội ngũ chuyên cần” tối thiểu 04 buổi/tháng (*)",
+        "VÀ Yêu cầu đào tạo: Hoàn thành chương trình đào tạo “Kinh doanh chất lượng – SBW” 03 ngày hoặc 08 buổi",
+        "Đạt toàn bộ Yêu cầu sản xuất, Yêu cầu hoạt động & đào tạo: 100% mức thưởng; chỉ đạt Yêu cầu sản xuất: 50% mức thưởng; không đạt Yêu cầu sản xuất mà chỉ đạt Yêu cầu hoạt động & đào tạo: không thỏa điều kiện nhận thưởng",
+        "(*) Đối với Đại Lý có Mã số Đại Lý được cấp trước tháng 01/2026: Áp dụng điều kiện tỷ lệ điểm danh tháng 01/2026 ≥ 80% để được xét là hoàn thành Yêu cầu hoạt động của tháng 01/2026, không áp dụng điều kiện tham gia hoạt động “Đội ngũ chuyên cần”",
+        "“Đội ngũ chuyên cần”: tham gia theo hướng dẫn của PSM+ và quét mã QR qua ứng dụng M-PA; chỉ được tính tối đa 1 buổi/ 1 ngày; dữ liệu chốt đến 22h00 ngày liền kề trước ngày cuối tháng",
+        "Đại Lý cần hoàn thành yêu cầu đào tạo trước thời điểm cuối tháng xét thưởng, cụ thể cuối tháng M1 đối với Khoản thưởng của Tháng làm việc đầy đủ đầu tiên và cuối tháng M2 đối với Khoản thưởng của Tháng làm việc thứ 2",
+        "Hệ số nhân TLDTHD xét dựa trên TLDTHD tại cuối tháng M1 (khoản của Tháng làm việc đầy đủ đầu tiên) và cuối tháng M2 (khoản của Tháng làm việc thứ 2)",
+        "Hệ số nhân CLKD xét dựa trên Quyết định kỷ luật ban hành trong tháng M1 / trong tháng M2 tương ứng",
+        "Không áp dụng đối với Đại Lý được tái tuyển dụng dưới 24 tháng tính từ tháng gần nhất Hợp Đồng Đại Lý Bảo Hiểm của Đại Lý chấm dứt hiệu lực (được tính là tháng thứ nhất) đến tháng tái tuyển; hoặc Đại Lý tái tuyển có Mã số Đại Lý cấp trước tháng 01/2026"
+      ],
+      "table": [
+        ["Giai đoạn xét thưởng", "Yêu cầu sản xuất (YÊU CẦU MỖI THÁNG)", "Yêu cầu hoạt động & đào tạo (YÊU CẦU MỖI THÁNG)", "Mức thưởng (đồng)"],
+        ["02 tháng làm việc đầu tiên", "01 Hợp đồng VÀ 10 triệu FYP", "1) Yêu cầu hoạt động: Tham gia hoạt động “Đội ngũ chuyên cần” tối thiểu 04 buổi/tháng (*) VÀ 2) Yêu cầu đào tạo: Hoàn thành chương trình đào tạo “Kinh doanh chất lượng – SBW” 03 ngày hoặc 08 buổi", "1.500.000/ tháng"]
+      ],
+      "rate_or_amount": "1.500.000 đồng/tháng (100%); 50% mức thưởng nếu chỉ đạt Yêu cầu sản xuất",
+      "payment_timing": "Kết thúc Tháng làm việc đầy đủ đầu tiên và Tháng làm việc thứ 2, tính toán và chi trả sử dụng FYP (mục 2 phần E) mà KHÔNG loại trừ Phí bảo hiểm năm thứ nhất của các Hợp đồng chưa bàn giao cho khách hàng và các Hợp đồng đã bàn giao nhưng vẫn còn trong thời gian cân nhắc. Vào Tháng làm việc thứ 3 và thứ 4, khoản thưởng được tính toán lại dựa trên Kết quả sản xuất (FYP, CC) của những Hợp đồng đã qua thời gian cân nhắc (thông báo 0037M10/2024/ASBD).",
+      "clawback_or_forfeit": "Khoản Thưởng Đại Lý mới sẽ bị thu hồi trong trường hợp Hợp Đồng Đại Lý Bảo Hiểm bị chấm dứt vì bất kỳ lý do gì trong vòng 12 tháng làm việc đầu tiên. Tính lại ở tháng 3 và 4 (ngầm hiểu điều chỉnh/thu hồi chênh lệch – văn bản không nói rõ cách xử lý chênh lệch).",
+      "page": "2-3",
+      "quote": "01 Hợp đồng VÀ 10 triệu FYP … tối thiểu 04 buổi/tháng … 1.500.000/ tháng … Trường hợp Đại Lý chỉ đạt Yêu cầu sản xuất, Đại Lý được nhận 50% mức thưởng",
+      "uncertain": false,
+      "note": "Ví dụ ngày chốt dữ liệu “Đội ngũ chuyên cần” ở trang 2 (27/02/2026, 30/03/2026). Ghi chú dùng cụm “tính toán Phí dịch vụ” dù đây là khoản thưởng. Yêu cầu sản xuất ghi “01 Hợp đồng” (không ghi “thực cấp”); việc tính lại dùng CC. Ví dụ các tháng làm việc ở trang 11."
+    },
+    {
+      "rule_no": 5,
+      "role": "Đại Lý mới chưa từng đạt danh hiệu Manulife Pro (02 tháng làm việc đầu tiên)",
+      "item": "II. Thưởng Đại Lý mới xuất sắc (trong giai đoạn 02 tháng làm việc đầu tiên)",
+      "base": "Kết quả sản xuất (số Hợp đồng, FYP) của giai đoạn 02 tháng làm việc đầu tiên. Công thức: Thưởng Đại Lý mới xuất sắc = [Mức thưởng theo bảng dưới] x [Hệ số nhân TLDTHD] x [Hệ số nhân CLKD]",
+      "conditions": [
+        "Yêu cầu Sản xuất: 03 Hợp đồng VÀ 40 triệu FYP",
+        "Yêu cầu hoạt động: Tham gia hoạt động “Đội ngũ chuyên cần” tối thiểu 04 buổi/tháng (*) cho các Tháng làm việc đầy đủ đầu tiên (M0+M1) và Tháng M2",
+        "VÀ Yêu cầu đào tạo: Hoàn thành chương trình đào tạo “Kinh doanh chất lượng – SBW” 03 ngày hoặc 08 buổi",
+        "Khoản thưởng này chỉ áp dụng 1 lần duy nhất cho Đại Lý chưa từng đạt danh hiệu Manulife Pro",
+        "Yêu cầu về Đào tạo và Yêu cầu về Sản xuất được xét trong giai đoạn 02 tháng làm việc đầu tiên. Yêu cầu hoạt động được xét cho từng tháng gồm Tháng M0+M1 và Tháng M2",
+        "(*) Đại Lý có Mã số Đại Lý được cấp trước tháng 01/2026: tỷ lệ điểm danh tháng 01/2026 ≥ 80% thay cho điều kiện “Đội ngũ chuyên cần” của tháng 01/2026",
+        "“Đội ngũ chuyên cần”: tối đa 1 buổi/ 1 ngày; quét QR qua M-PA; dữ liệu chốt đến 22h00 ngày liền kề trước ngày cuối tháng",
+        "Hệ số nhân TLDTHD xét dựa trên TLDTHD tại cuối Tháng M2",
+        "Hệ số nhân CLKD xét dựa trên quyết định kỷ luật ban hành trong Tháng M2",
+        "Không áp dụng đối với Đại Lý được tái tuyển dụng dưới 24 tháng tính từ tháng gần nhất HĐĐL chấm dứt hiệu lực (được tính là tháng thứ nhất) đến tháng tái tuyển; hoặc Đại Lý tái tuyển có Mã số Đại Lý cấp trước tháng 01/2026"
+      ],
+      "table": [
+        ["Yêu cầu Sản xuất", "Yêu cầu Hoạt động & Đào tạo", "Mức thưởng (đồng)"],
+        ["03 Hợp đồng VÀ 40 triệu FYP", "1) Yêu cầu hoạt động: Tham gia hoạt động “Đội ngũ chuyên cần” tối thiểu 04 buổi/tháng (*) cho các Tháng làm việc đầy đủ đầu tiên (M0+M1) và Tháng M2; VÀ 2) Yêu cầu đào tạo: Hoàn thành chương trình đào tạo “Kinh doanh chất lượng – SBW” 03 ngày hoặc 08 buổi.", "5.000.000"]
+      ],
+      "rate_or_amount": "5.000.000 đồng (1 lần)",
+      "payment_timing": "Được tính toán chi trả tại tháng làm việc thứ 4 của Đại Lý, sử dụng Kết quả sản xuất (FYP, CC) của những Hợp đồng đã qua thời gian cân nhắc (thông báo 0037M10/2024/ASBD).",
+      "clawback_or_forfeit": "Bị thu hồi trong trường hợp Hợp Đồng Đại Lý Bảo Hiểm bị chấm dứt vì bất kỳ lý do gì trong vòng 12 tháng làm việc đầu tiên.",
+      "page": "3-4",
+      "quote": "03 Hợp đồng VÀ 40 triệu FYP … 5.000.000 … chỉ áp dụng 1 lần duy nhất cho Đại Lý chưa từng đạt danh hiệu Manulife Pro",
+      "uncertain": false,
+      "note": "Không có quy tắc nhận 50% như Thưởng Đại Lý mới – văn bản không nêu trường hợp đạt một phần. Tháng làm việc thứ 4 ví dụ = Tháng 8/2026 nếu HĐĐL hiệu lực 20/04/2026 (trang 11)."
+    },
+    {
+      "rule_no": 6,
+      "role": "Đại Lý (Mức 1–7: Đại Lý từ hoặc dưới 6 tháng làm việc đầu tiên; Mức 2–8: Đại Lý trên 6 tháng làm việc đầu tiên)",
+      "item": "III. Thưởng năng suất tháng",
+      "base": "Thưởng năng suất tháng = [% Tỷ lệ thưởng năng suất tháng theo bảng dưới] x [FYC của tháng xét thưởng] x [Hệ số nhân TLDTHD] x [Hệ số nhân CLKD]; mức xác định theo FYC trong 3 tháng gần nhất",
+      "conditions": [
+        "Yêu cầu bắt buộc của tháng xét thưởng: Phải có ít nhất 1 hợp đồng thực cấp (ô gộp áp dụng cho tất cả các mức)",
+        "(*) Đại Lý từ hoặc dưới 6 tháng làm việc đầu tiên áp dụng tỷ lệ thưởng năng suất tháng và tiêu chuẩn FYC trong 3 tháng gần nhất từ Mức 1 tới Mức 7",
+        "(**) Đại Lý trên 6 tháng làm việc đầu tiên áp dụng tỷ lệ thưởng năng suất tháng và tiêu chuẩn FYC trong 3 tháng gần nhất từ Mức 2 tới Mức 8",
+        "Hệ số nhân TLDTHD được xét tại cuối tháng xét thưởng",
+        "Hệ số nhân CLKD xét dựa trên quyết định kỷ luật ban hành trong mỗi tháng xét thưởng"
+      ],
+      "table": [
+        ["Mức", "FYC trong 3 tháng gần nhất", "Yêu cầu bắt buộc của tháng xét thưởng", "% Tỷ lệ thưởng năng suất tháng"],
+        ["8", "100 triệu đồng (**)", "Phải có ít nhất 1 hợp đồng thực cấp", "50%"],
+        ["7", "80 triệu đồng", "Phải có ít nhất 1 hợp đồng thực cấp", "35%"],
+        ["6", "60 triệu đồng", "Phải có ít nhất 1 hợp đồng thực cấp", "30%"],
+        ["5", "45 triệu đồng", "Phải có ít nhất 1 hợp đồng thực cấp", "25%"],
+        ["4", "30 triệu đồng", "Phải có ít nhất 1 hợp đồng thực cấp", "20%"],
+        ["3", "15 triệu đồng", "Phải có ít nhất 1 hợp đồng thực cấp", "15%"],
+        ["2", "10 triệu đồng", "Phải có ít nhất 1 hợp đồng thực cấp", "10%"],
+        ["1", "5 triệu đồng (*)", "Phải có ít nhất 1 hợp đồng thực cấp", "5%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "văn bản không nêu",
+      "clawback_or_forfeit": "văn bản không nêu riêng (xem quy định chung D.7, D.10)",
+      "page": "4",
+      "quote": "8 | 100 triệu đồng (**) | 50%; 7 | 80 triệu đồng | 35%; … 1 | 5 triệu đồng (*) | 5%",
+      "uncertain": false,
+      "note": "Cột FYC chỉ ghi con số, không ghi dấu ≥ – văn bản không nêu ngưỡng bao gồm biên hay không (thông thường hiểu là tối thiểu). “Yêu cầu bắt buộc” là một ô gộp dọc cho cả 8 mức."
+    },
+    {
+      "rule_no": 7,
+      "role": "Đại Lý Manulife Pro (Bạc / Vàng / Bạch Kim)",
+      "item": "IV. Thưởng năng suất xuất sắc tháng (dành cho Đại Lý Manulife Pro)",
+      "base": "FYP của tháng xét thưởng (FYP theo mục 2 phần E). Công thức: Thưởng năng suất xuất sắc tháng = [Mức thưởng theo bảng dưới] x [Hệ số nhân TLDTHD] x [Hệ số nhân CLKD]",
+      "conditions": [
+        "Đại Lý nhận 1 mức thưởng duy nhất và cao nhất ở mỗi danh hiệu Manulife Pro tại tháng xét thưởng",
+        "(*) Mức thưởng dựa trên tiêu chuẩn FYP của tháng xét thưởng ≥ 120 triệu chỉ áp dụng cho Đại Lý Manulife Pro Bạch Kim đạt: i. Danh hiệu MDRT của năm hiện tại (dựa trên kết quả sản xuất của năm trước liền kề) hoặc đạt yêu cầu danh hiệu MDRT của năm kế tiếp (xét trên những tiêu chí đạt được tại tháng trước liền kề); VÀ ii. Danh hiệu MDRT Life member (MDRT trọn đời) hoặc đạt danh hiệu MDRT chính thức 5 lần trong giai đoạn 10 năm gần nhất tính cả năm hiện tại",
+        "Hệ số nhân TLDTHD xét dựa trên TLDTHD tại cuối tháng xét thưởng",
+        "Hệ số nhân CLKD xét dựa trên quyết định kỷ luật ban hành trong tháng xét thưởng"
+      ],
+      "table": [
+        ["FYP của tháng xét thưởng", "Manulife Pro Bạc (đồng)", "Manulife Pro Vàng (đồng)", "Manulife Pro Bạch Kim (đồng)"],
+        ["≥ 15 triệu đồng", "1.500.000", "1.500.000", "2.000.000"],
+        ["≥ 30 triệu đồng", "3.000.000", "3.000.000", "4.000.000"],
+        ["≥ 45 triệu đồng", "(ô gộp – vẫn 3.000.000)", "5.000.000", "8.000.000"],
+        ["≥ 60 triệu đồng", "(ô gộp – vẫn 3.000.000)", "7.000.000", "10.000.000"],
+        ["≥ 80 triệu đồng", "(ô gộp – vẫn 3.000.000)", "(ô gộp – vẫn 7.000.000)", "12.000.000"],
+        ["≥ 100 triệu đồng", "(ô gộp – vẫn 3.000.000)", "(ô gộp – vẫn 7.000.000)", "16.000.000"],
+        ["≥ 120 triệu đồng (*)", "(ô gộp – vẫn 3.000.000)", "(ô gộp – vẫn 7.000.000)", "20.000.000"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Ví dụ trang 5: thưởng dựa trên kết quả sản xuất tháng 11/2026 được tính và chi trả trong kỳ thanh toán của thu nhập tháng 01/2027 (Đại Lý nhận thưởng đầu tháng 02/2027) – tức trễ 2 kỳ; văn bản không nêu thành quy tắc chung.",
+      "clawback_or_forfeit": "văn bản không nêu riêng",
+      "page": "4-5",
+      "quote": "≥ 120 triệu đồng (*) … 20.000.000 … chỉ áp dụng cho Đại Lý Manulife Pro Bạch Kim đạt … MDRT",
+      "uncertain": false,
+      "note": "Trên ảnh: cột Manulife Pro Bạc có ô 3.000.000 gộp dọc từ hàng ≥30 triệu đến hàng ≥120 triệu; cột Manulife Pro Vàng có ô 7.000.000 gộp dọc từ hàng ≥60 triệu đến hàng ≥120 triệu (bản chữ tách để trống các ô này). Do đó trần Bạc = 3.000.000, trần Vàng = 7.000.000. Ví dụ điều kiện MDRT và thời điểm chi trả ở trang 5."
+    },
+    {
+      "rule_no": 8,
+      "role": "Đại Lý / Đại Lý xuất sắc (**); Mức 1 chỉ cho Đại Lý từ hoặc dưới 6 tháng làm việc đầu tiên",
+      "item": "V. Thưởng năng suất quý",
+      "base": "Thưởng năng suất quý = [% Tỷ lệ thưởng năng suất quý theo bảng dưới] x [FYC của quý xét thưởng] x [Hệ số nhân CLKD] x [Hệ số nhân TLDTHD]",
+      "conditions": [
+        "(*) Tỷ lệ thưởng năng suất quý và Tiêu chuẩn FYC của quý xét thưởng của Mức 1 chỉ áp dụng đối với Đại Lý từ hoặc dưới 6 tháng làm việc đầu tiên",
+        "(**) Đại Lý xuất sắc là: i. Đại Lý đạt Thưởng năng suất tháng (mục B. III) trong 3 tháng liên tục của quý; HOẶC ii. Đại Lý có danh hiệu Manulife Pro Vàng hoặc Manulife Pro Bạch Kim tại tháng cuối quý",
+        "Hệ số nhân TLDTHD xét dựa trên TLDTHD tại tháng cuối quý",
+        "Hệ số nhân CLKD xét dựa trên quyết định kỷ luật ban hành trong tháng cuối quý"
+      ],
+      "table": [
+        ["Mức", "FYC của quý xét thưởng", "% Tỷ lệ thưởng năng suất quý – Đại Lý", "% Tỷ lệ thưởng năng suất quý – Đại Lý xuất sắc (**)"],
+        ["7", "120 triệu đồng", "10%", "20%"],
+        ["6", "100 triệu đồng", "8%", "16%"],
+        ["5", "80 triệu đồng", "6%", "12%"],
+        ["4", "60 triệu đồng", "5%", "10%"],
+        ["3", "45 triệu đồng", "4%", "8%"],
+        ["2", "30 triệu đồng", "3%", "6%"],
+        ["1 (*)", "15 triệu đồng", "2%", "4%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "văn bản không nêu",
+      "clawback_or_forfeit": "văn bản không nêu riêng",
+      "page": "5-6",
+      "quote": "7 | 120 triệu đồng | 10% | 20% … 1 (*) | 15 triệu đồng | 2% | 4%",
+      "uncertain": false,
+      "note": "Không có dấu ≥ ở cột FYC – văn bản không nêu bao gồm biên. Bản chữ tách ghi Hệ số CLKD “mục A.I” ở ghi chú 4 nhưng ảnh trang 6 ghi “mục A.II” (lấy theo ảnh). Không có yêu cầu hợp đồng thực cấp riêng cho khoản này."
+    },
+    {
+      "rule_no": 9,
+      "role": "Nhóm 1: Đại Lý giữ danh hiệu Manulife Pro Bạch Kim; Nhóm 2: Đại Lý giữ danh hiệu Manulife Pro Vàng trở lên",
+      "item": "VI.1.a) Thưởng Kinh doanh xuất sắc (KDXS) năm (“Thưởng KDSX năm”)",
+      "base": "Thưởng KDSX năm = [Khoản thưởng theo bảng bên dưới] x [Hệ số nhân CLKD]; Khoản thưởng = % x FYC phát sinh trong năm xét thưởng; số hợp đồng, FYP trong năm xét thưởng",
+      "conditions": [
+        "Nhóm 1: Đại Lý giữ danh hiệu Manulife Pro Bạch Kim tại tháng 12 năm xét thưởng; hoặc Đại Lý giữ danh hiệu Manulife Pro Bạch Kim dựa trên kết quả sản xuất tính đến hết tháng 12 năm xét thưởng",
+        "Nhóm 2: Đại Lý giữ danh hiệu Manulife Pro Vàng trở lên tại tháng 12 năm xét thưởng; hoặc Đại Lý giữ danh hiệu Manulife Pro Vàng trở lên dựa trên kết quả sản xuất tính đến hết tháng 12 năm xét thưởng",
+        "TLDTHD ≥ 70% (được chốt tại tháng 12 năm xét thưởng)",
+        "Mức thưởng tối đa 100 triệu đồng",
+        "Hệ số nhân CLKD xét dựa trên quyết định kỷ luật ban hành trong tháng 12 của năm xét thưởng (“Năm Y0”)"
+      ],
+      "table": [
+        ["Nhóm", "Đối tượng áp dụng", "Số lượng hợp đồng trong năm xét thưởng", "FYP trong năm xét thưởng (đồng)", "TLDTHD", "Khoản thưởng (% x FYC phát sinh trong năm xét thưởng)"],
+        ["1", "Tất cả Đại Lý", "24", "600.000.000", "≥ 70%", "15%"],
+        ["2", "Đại Lý trên 12 tháng làm việc đầu tiên", "15", "360.000.000", "≥ 70%", "10%"],
+        ["2", "Đại Lý từ hoặc dưới 12 tháng làm việc đầu tiên", "10", "240.000.000", "≥ 70%", "10%"]
+      ],
+      "rate_or_amount": "Tối đa 100 triệu đồng",
+      "payment_timing": "Tính toán vào tháng 03 năm tiếp theo sử dụng kết quả sản xuất (FYP, CC) của những Hợp đồng đã qua thời gian cân nhắc (0037M10/2024/ASBD); chi trả theo B.VI.2: kỳ thu nhập tháng 03 trong 3 năm tiếp theo – xem quy tắc 11.",
+      "clawback_or_forfeit": "Mất phần trả chậm nếu không đạt điều kiện tại B.VI.2 (TLDTHD, hợp đồng còn hiệu lực).",
+      "page": "6",
+      "quote": "1 | Tất cả Đại Lý | 24 | 600.000.000 | ≥ 70% | 15% … Mức thưởng tối đa 100 triệu đồng",
+      "uncertain": false,
+      "note": "Ô “Nhóm 2” gộp dọc cho 2 hàng (trên 12 tháng / từ hoặc dưới 12 tháng). Cột Số lượng hợp đồng và FYP không ghi dấu ≥ – văn bản không nêu bao gồm biên. Công thức không có Hệ số nhân TLDTHD (TLDTHD là điều kiện ≥70%). Văn bản không nói rõ “trần 100 triệu” áp dụng trước hay sau Hệ số CLKD, và trước hay sau chia 50/30/20."
+    },
+    {
+      "rule_no": 10,
+      "role": "Đại Lý đạt khoản Thưởng KDXS năm dựa trên kết quả sản xuất năm 2026",
+      "item": "VI.1.b) Điều chỉnh khoản Thưởng Kinh doanh xuất sắc năm 2026",
+      "base": "So sánh Thưởng FC năm (mục A1.IV Thông báo số 0042M01/2022/ABD) với Thưởng KDXS năm (B.VI.1.a)",
+      "conditions": [
+        "Điều kiện: chỉ áp dụng cho Đại Lý đạt khoản Thưởng Kinh doanh xuất sắc năm dựa trên kết quả sản xuất năm 2026 theo quy định tại mục B.VI.1.a",
+        "Công Ty sẽ ghi nhận thưởng theo số cao hơn giữa khoản Thưởng FC năm căn cứ theo mục A1.IV Thông báo số 0042M01/2022/ABD và khoản Thưởng Kinh doanh xuất sắc năm quy định tại mục B.VI.1.a",
+        "Hệ số nhân CLKD xét theo quyết định kỷ luật ban hành trong tháng 12 của năm xét thưởng (“Năm Y0”)"
+      ],
+      "table": [],
+      "rate_or_amount": "Khoản điều chỉnh = [Thưởng FC hàng năm theo mục A1.IV của thông báo số 0042M01/2022/ABD] x [Hệ số nhân CLKD] – (TRỪ) Thưởng kinh doanh xuất sắc năm theo mục B.VI.1.a của thông báo này] (chỉ trả khi số dương)",
+      "payment_timing": "Khoản Điều chỉnh (số dương) nếu có sẽ được chi trả 1 lần duy nhất vào kỳ thu nhập tháng 03 năm 2027.",
+      "clawback_or_forfeit": "Phải có HĐĐL / HĐDV QLCC / HĐDV HKD còn hiệu lực tại thời điểm chi trả (B.VI.2.c).",
+      "page": "6-7",
+      "quote": "Công Ty sẽ ghi nhận thưởng theo số cao hơn giữa khoản Thưởng FC năm … và khoản Thưởng Kinh doanh xuất sắc năm … chi trả 1 lần duy nhất vào kỳ thu nhập tháng 03 năm 2027",
+      "uncertain": false,
+      "note": "Công thức Thưởng FC năm thuộc văn bản 0042M01/2022/ABD – không có trong văn bản này. Không rõ “Thưởng KDXS năm” bị trừ là toàn bộ khoản thưởng hay phần đã trả Y1; dấu ngoặc vuông trong công thức không cân (thừa “]”)."
+    },
+    {
+      "rule_no": 11,
+      "role": "Đại Lý đạt Thưởng KDXS năm (kể cả sau đó là PSM+ có HĐDV QLCC hoặc Chủ hộ kinh doanh có HĐDV HKD)",
+      "item": "VI.2) Điều kiện và thời điểm chi trả Thưởng Kinh doanh xuất sắc năm",
+      "base": "Khoản Thưởng KDXS năm tính trên kết quả sản xuất Năm Y0 (B.VI.1.a)",
+      "conditions": [
+        "Chi trả vào kỳ thanh toán của thu nhập tháng 03 trong 3 năm tiếp theo năm xét thưởng",
+        "Tại thời điểm chi trả, Đại Lý phải có Hợp Đồng Đại Lý Bảo Hiểm hoặc HĐDV QLCC hoặc HĐDV HKD ký kết với Công Ty đang còn hiệu lực",
+        "TLDTHD được chốt tại tháng 12 của năm trước liền kề của năm chi trả",
+        "Đối với khoản chi trả năm Y2 và Y3, nếu tại tháng 12 năm trước liền kề năm chi trả, Đại Lý giữ chức danh PSM+ có HĐDV QLCC hoặc là Chủ Hộ Kinh Doanh có HĐDV HKD ký kết với Công Ty có hiệu lực, thì miễn xét điều kiện này (điều kiện TLDTHD)",
+        "Áp dụng cả cho: khoản chi trả năm Y3 (kỳ thu nhập tháng 3/2027) của Thưởng KDXS năm dựa trên kết quả sản xuất năm 2024 (0001M04/2024/ASBD); và khoản chi trả năm Y2 (kỳ thu nhập tháng 3/2027) và Y3 (kỳ thu nhập tháng 3/2028) của Thưởng KDXS năm dựa trên kết quả sản xuất năm 2025 (0001M04/2025/ASBD)"
+      ],
+      "table": [
+        ["Năm chi trả", "Yêu cầu về TLDTHD", "% Tỷ lệ chi trả"],
+        ["Năm Y1", "≥ 70%", "50%"],
+        ["Năm Y2", "≥ 70%", "30%"],
+        ["Năm Y3", "≥ 70%", "20%"]
+      ],
+      "rate_or_amount": "50% / 30% / 20%",
+      "payment_timing": "Kỳ thanh toán của thu nhập tháng 03 các năm Y1, Y2, Y3",
+      "clawback_or_forfeit": "Không đạt TLDTHD ≥ 70% hoặc không còn hợp đồng hiệu lực tại thời điểm chi trả → không được chi trả phần của năm đó (văn bản không nói phần đó có được dời sang năm sau không).",
+      "page": "7, 9",
+      "quote": "Năm Y1 | ≥ 70% | 50%; Năm Y2 | ≥ 70% | 30%; Năm Y3 | ≥ 70% | 20%",
+      "uncertain": false,
+      "note": "D.2 (trang 9) nhắc lại: Công Ty chi trả Thưởng KDXS năm phát sinh trong thời gian HĐĐL có hiệu lực và sau đó Đại Lý là PSM+ có HĐDV QLCC hoặc Chủ hộ kinh doanh có HĐDV HKD, với điều kiện các hợp đồng đó còn duy trì hiệu lực tại thời điểm chi trả."
+    },
+    {
+      "rule_no": 12,
+      "role": "Đại Lý",
+      "item": "VII.1) Thưởng M-Star quý",
+      "base": "FYP cộng dồn từ Tháng 1 dương lịch đến thời điểm xét thưởng – FYP (mục 2 phần E) nhưng có bao gồm thêm 6% Phí bảo hiểm đóng thêm và KHÔNG loại trừ các Hợp đồng chưa bàn giao / còn trong thời gian cân nhắc. Công thức: Thưởng M-star Quý = [Mức thưởng ở bảng bên dưới] x [Hệ số nhân TLDTHD] x [Hệ số nhân CLKD]",
+      "conditions": [
+        "Đại Lý phải có sản xuất tối thiểu 1 Hợp đồng thực cấp và tối thiểu 4 triệu FYC mỗi tháng trong quý để được nhận thưởng M-star quý",
+        "Mức thưởng theo tỷ lệ đạt: Đại Lý đạt ≥90% và <100% Yêu cầu FYP theo tiến độ M-star; Đại Lý đạt ≥100% Yêu cầu FYP theo tiến độ M-star",
+        "Hệ số nhân TLDTHD xét dựa trên TLDTHD tại tháng cuối quý",
+        "Hệ số nhân CLKD xét dựa trên quyết định kỷ luật ban hành trong tháng cuối quý"
+      ],
+      "table": [
+        ["Thời điểm xét thưởng", "Yêu cầu FYP theo tiến độ M-star (FYP cộng dồn từ Tháng 1 dương lịch đến thời điểm xét thưởng)", "Mức thưởng – Đại Lý đạt ≥90% và <100% Yêu cầu FYP theo tiến độ M-star", "Mức thưởng – Đại Lý đạt ≥100% Yêu cầu FYP theo tiến độ M-star"],
+        ["Kết thúc quý 1", "160.000.000 đồng", "5 triệu đồng", "8 triệu đồng"],
+        ["Kết thúc quý 2", "430.000.000 đồng", "8 triệu đồng", "12 triệu đồng"],
+        ["Kết thúc quý 3", "750.000.000 đồng", "10 triệu đồng", "15 triệu đồng"],
+        ["Kết thúc quý 4", "1.073.645.200 đồng", "-", "20 triệu đồng"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Hàng Quý (văn bản không nêu kỳ chi trả cụ thể)",
+      "clawback_or_forfeit": "Công Ty sẽ thu hồi tất cả khoản “Thưởng M-star quý” các Đại Lý đã nhận thưởng trong trường hợp Hợp Đồng Đại Lý Bảo Hiểm bị chấm dứt vì bất kỳ lý do gì trước ngày 01 tháng 03 của năm kế tiếp.",
+      "page": "7-8",
+      "quote": "Kết thúc quý 1 | 160.000.000 đồng | 5 triệu đồng | 8 triệu đồng … Kết thúc quý 4 | 1.073.645.200 đồng | - | 20 triệu đồng",
+      "uncertain": false,
+      "note": "Quý 4 không có mức cho tỷ lệ ≥90% và <100% (ô “-”). Văn bản không nói rõ nếu đã nhận thưởng quý trước thì thưởng quý sau là toàn bộ mức hay phần chênh lệch."
+    },
+    {
+      "rule_no": 13,
+      "role": "Đại Lý",
+      "item": "VII.2) Thưởng M-Star năm",
+      "base": "FYP năm xét thưởng (FYP mục 2 phần E có bao gồm 6% Phí bảo hiểm đóng thêm). Công thức: Thưởng M-star năm = [Mức thưởng theo bảng dưới] x [Hệ số nhân TLDTHD] x [Hệ số nhân CLKD] – (TRỪ) [Tổng tiền thưởng M-star quý thực nhận trong năm]",
+      "conditions": [
+        "Hệ số nhân TLDTHD xét dựa trên TLDTHD tại tháng 12 năm xét thưởng",
+        "Hệ số nhân CLKD xét dựa trên quyết định kỷ luật ban hành trong tháng 12 năm xét thưởng",
+        "Khoản thưởng M-star năm là số dương"
+      ],
+      "table": [
+        ["FYP năm xét thưởng", "Mức thưởng"],
+        ["1.073.645.200 đồng", "55 triệu đồng"],
+        ["2 tỷ đồng", "75 triệu đồng"],
+        ["3 tỷ đồng", "100 triệu đồng"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Được chi trả vào kỳ thu nhập tháng 2 năm tiếp theo.",
+      "clawback_or_forfeit": "văn bản không nêu riêng",
+      "page": "8",
+      "quote": "1.073.645.200 đồng | 55 triệu đồng; 2 tỷ đồng | 75 triệu đồng; 3 tỷ đồng | 100 triệu đồng",
+      "uncertain": false,
+      "note": "Cột FYP không ghi dấu ≥ – văn bản không nêu bao gồm biên. Ghi chú b) không nhắc việc KHÔNG loại trừ HĐ chưa bàn giao như M-star quý – không rõ năm có loại trừ hay không. Không nêu yêu cầu 1 HĐ thực cấp + 4 triệu FYC mỗi tháng cho thưởng năm."
+    },
+    {
+      "rule_no": 14,
+      "role": "Đại Lý (có tuyển mới Đại Lý)",
+      "item": "VIII. Thưởng Khuyến khích phát triển Kinh doanh mới hàng tháng (KKPTKDHT)",
+      "base": "Thưởng KKPTKDHT = [20% x FYC cá nhân phát sinh trong tháng xét thưởng] (tối đa 3 triệu đồng) x [Hệ số nhân TLDTHD] x [Hệ số nhân CLKD]",
+      "conditions": [
+        "Đại Lý phải sản xuất ít nhất 01 hợp đồng thực cấp và ít nhất 4 triệu FYC trong tháng xét thưởng",
+        "và có ít nhất 01 Đại Lý được tuyển mới trong tháng xét thưởng có sản xuất ít nhất 01 hợp đồng và ít nhất 4 triệu FYC trong Tháng làm việc đầy đủ đầu tiên(*)",
+        "(*) không tính Đại Lý mới được tái tuyển dụng dưới 24 tháng tính từ tháng gần nhất HĐĐL của Đại Lý chấm dứt hiệu lực (được tính là tháng thứ nhất) đến tháng tái tuyển; hoặc Đại Lý tái tuyển có Mã số Đại Lý cấp trước tháng 01/2026",
+        "Hệ số nhân TLDTHD xét dựa trên TLDTHD tại cuối tháng xét thưởng",
+        "Hệ số nhân CLKD xét dựa trên quyết định kỷ luật ban hành trong tháng xét thưởng"
+      ],
+      "table": [],
+      "rate_or_amount": "20% x FYC cá nhân phát sinh trong tháng xét thưởng, tối đa 3 triệu đồng",
+      "payment_timing": "Tính toán và chi trả hàng tháng.",
+      "clawback_or_forfeit": "Vào tháng làm việc thứ 3 của Đại Lý được tuyển mới, khoản thưởng sẽ tính toán lại kết quả sản xuất của Đại Lý được tuyển mới sử dụng kết quả sản xuất của những Hợp đồng đã qua thời gian cân nhắc (0037M10/2024/ASBD) và thu hồi khoản chênh lệch (nếu có).",
+      "page": "8",
+      "quote": "[20% x FYC cá nhân phát sinh trong tháng xét thưởng] (tối đa 3 triệu đồng) … ít nhất 01 hợp đồng thực cấp và ít nhất 4 triệu FYC",
+      "uncertain": false,
+      "note": "Văn bản không nói rõ trần 3 triệu áp dụng trước hay sau hệ số nhân (dấu ngoặc đặt trần ngay sau [20% x FYC]). Không rõ thưởng trả 1 lần theo mỗi Đại Lý được tuyển hay mỗi tháng có tuyển mới."
+    },
+    {
+      "rule_no": 15,
+      "role": "Đại Lý",
+      "item": "C. Hoa hồng, hỗ trợ và các quyền lợi khác",
+      "base": "Theo từng sản phẩm bảo hiểm",
+      "conditions": [
+        "Hoa hồng dành cho Đại Lý được áp dụng theo từng sản phẩm bảo hiểm cụ thể theo Thông báo do Công Ty ban hành vào từng thời điểm",
+        "Đại Lý được hưởng các khoản hỗ trợ, các quyền lợi khác, nếu có, theo chính sách, thông báo do Công Ty ban hành vào từng thời điểm"
+      ],
+      "table": [],
+      "rate_or_amount": "văn bản không nêu (theo thông báo sản phẩm riêng)",
+      "payment_timing": "",
+      "clawback_or_forfeit": "",
+      "page": "9",
+      "quote": "Hoa hồng dành cho Đại Lý được áp dụng theo từng sản phẩm bảo hiểm cụ thể theo Thông báo do Công Ty ban hành vào từng thời điểm.",
+      "uncertain": false,
+      "note": "Không có tỷ lệ hoa hồng trong văn bản này."
+    },
+    {
+      "rule_no": 16,
+      "role": "Tất cả Đại Lý",
+      "item": "D. Quy định chung – điều kiện chi trả, loại trừ sản phẩm, thuế, quyền thu hồi",
+      "base": "Tất cả khoản chi trả theo Chính sách",
+      "conditions": [
+        "Các khoản chi trả cho Đại Lý theo Chính sách này chỉ được thanh toán cho các Đại Lý có Hợp Đồng Đại Lý Bảo Hiểm ký kết với Công Ty còn hiệu lực tại ngày Công Ty tính toán các khoản chi trả (D.4)",
+        "Chính sách này KHÔNG TÍNH các chỉ số kinh doanh (FYC/ CC/ FYP/ APE…) của sản phẩm Điểm Tựa Hưu Trí (D.5)",
+        "Đại Lý chịu mọi khoản thuế phát sinh theo quy định pháp luật về thuế hiện hành (nếu có). Khoản chi trả bị thu hồi (nếu có) sẽ cấn trừ vào thu nhập chịu thuế phát sinh của năm thu hồi ngoại trừ có quy định khác (D.6)",
+        "Công Ty có quyền xem xét sửa đổi, thay đổi hoặc mở rộng điều kiện và thời gian của Chính sách (D.8)"
+      ],
+      "table": [],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "Công Ty có quyền thu hồi các khoản thưởng chi trả theo Chính sách này trong trường hợp Công Ty phát hiện Đại Lý đạt điều kiện đã vi phạm bất kỳ chính sách, quy định, hướng dẫn, nguyên tắc nào do Công Ty ban hành làm ảnh hưởng đến kết quả của Chính sách; áp dụng cả khi phát hiện sau khi HĐĐL đã chấm dứt (D.7)",
+      "page": "9",
+      "quote": "Chính sách này KHÔNG TÍNH các chỉ số kinh doanh (FYC/ CC/ FYP/ APE…) của sản phẩm Điểm Tựa Hưu Trí.",
+      "uncertain": false,
+      "note": ""
+    },
+    {
+      "rule_no": 17,
+      "role": "Tất cả Đại Lý",
+      "item": "D.9) Ký quỹ",
+      "base": "Tổng thu nhập trước thuế hàng tháng của Đại Lý",
+      "conditions": [
+        "Hàng tháng, Công Ty sẽ tạm giữ 5% tổng thu nhập trước thuế của Đại Lý để gộp vào khoản ký quỹ cho đến khi tổng số tiền ký quỹ đạt 2.000.000 đồng",
+        "Công Ty sẽ giữ tiền ký quỹ 2.000.000 đồng tại tài khoản ký quỹ",
+        "Tiền ký quỹ tính theo lãi suất không kỳ hạn của Ngân hàng TMCP Ngoại Thương Việt Nam (Vietcombank)",
+        "Tiền ký quỹ được dùng để cấn trừ các khoản nợ hay các khoản thu nhập bị khấu trừ mà Đại Lý chưa hoàn trả cho Công Ty"
+      ],
+      "table": [],
+      "rate_or_amount": "5% tổng thu nhập trước thuế/tháng, đến khi đạt 2.000.000 đồng",
+      "payment_timing": "Lãi được thanh toán cho Đại Lý vào kỳ thu nhập tháng 12 hàng năm (thông báo 0111/2016/CFO). Tiền ký quỹ thanh toán cho Đại Lý theo Quy trình chấm dứt HĐĐL và sau khi Đại Lý hoàn tất thanh toán tất cả công nợ phát sinh.",
+      "clawback_or_forfeit": "Tiền ký quỹ sẽ không được hoàn trả nếu Đại Lý chưa hoàn thành nghĩa vụ bàn giao công việc và trả lại cho Công Ty toàn bộ tài liệu và tài sản của Công Ty mà Đại Lý đang lưu giữ.",
+      "page": "9",
+      "quote": "Hàng tháng, Công Ty sẽ tạm giữ 5% tổng thu nhập trước thuế của Đại Lý để gộp vào khoản ký quỹ cho đến khi tổng số tiền ký quỹ đạt 2.000.000 đồng.",
+      "uncertain": false,
+      "note": ""
+    },
+    {
+      "rule_no": 18,
+      "role": "Tất cả Đại Lý",
+      "item": "D.10) Quy định về thu hồi, khấu trừ Hoa hồng/Thưởng/Hỗ trợ/Quyền lợi khác (“Thu nhập”)",
+      "base": "Hoa hồng/Thu nhập và số lượng hợp đồng của Hợp đồng bị hủy/từ chối/mất hiệu lực",
+      "conditions": [
+        "Hợp đồng bị hủy bỏ toàn bộ/một phần, bị từ chối toàn bộ/một phần mà Công Ty phải hoàn trả phí bảo hiểm cho Bên Mua Bảo Hiểm: thu hồi, khấu trừ các khoản Thu nhập và Số lượng hợp đồng tương ứng",
+        "Khách hàng từ chối tham gia Hợp đồng hoặc Công Ty hủy bỏ toàn bộ/một phần Hợp đồng: các khoản Thu nhập, số lượng hợp đồng sẽ bị thu hồi, khấu trừ lại tương ứng",
+        "Kỳ đóng phí Tháng: 100% hoa hồng bị thu hồi, khấu trừ khi Hợp đồng mất hiệu lực hoặc bị hủy khi khoản phí của kỳ đóng phí tháng lần thứ sáu chưa được thanh toán",
+        "Kỳ đóng phí Quý: 100% hoa hồng bị thu hồi, khấu trừ khi khoản phí của kỳ đóng phí quý lần thứ hai chưa được thanh toán",
+        "Kỳ đóng phí Nửa năm: 100% hoa hồng bị thu hồi, khấu trừ khi khoản phí của kỳ đóng phí nửa năm lần thứ hai chưa được thanh toán"
+      ],
+      "table": [
+        ["Kỳ đóng phí", "Mức thu hồi hoa hồng", "Sự kiện"],
+        ["Tháng", "100% hoa hồng", "mất hiệu lực hoặc bị hủy khi khoản phí bảo hiểm của kỳ đóng phí tháng lần thứ sáu chưa được thanh toán"],
+        ["Quý", "100% hoa hồng", "mất hiệu lực hoặc bị hủy khi khoản phí bảo hiểm của kỳ đóng phí quý lần thứ hai chưa được thanh toán"],
+        ["Nửa năm", "100% hoa hồng", "mất hiệu lực hoặc bị hủy khi khoản phí bảo hiểm của kỳ đóng phí nửa năm lần thứ hai chưa được thanh toán"]
+      ],
+      "rate_or_amount": "100% hoa hồng",
+      "payment_timing": "",
+      "clawback_or_forfeit": "Các khoản thu hồi, khấu trừ hoa hồng/tiền thưởng sẽ được cấn trừ vào Thu nhập mà Đại Lý được nhận và/hoặc được thực hiện theo các phương thức hợp lệ khác mà Công Ty có toàn quyền quyết định.",
+      "page": "9-10",
+      "quote": "100% hoa hồng cho các Hợp đồng bảo hiểm có phí bảo hiểm đóng theo Kỳ đóng phí Tháng sẽ bị thu hồi … kỳ đóng phí tháng lần thứ sáu chưa được thanh toán",
+      "uncertain": false,
+      "note": "Bảng do người đọc dựng lại từ danh sách gạch đầu dòng (văn bản không có bảng). Kỳ đóng phí Năm: văn bản không nêu."
+    }
+  ],
+  "definitions": [
+    {"term": "Manulife Pro", "definition_verbatim": "“Manulife Pro” là danh hiệu dành cho các Đại Lý đạt yêu cầu theo quy định tại thông báo 0011M04/2024/ASBD v/v “Tiêu chí đánh giá danh hiệu Manulife Pro” và/hoặc các thông báo bổ sung, thay thế được ban hành sau này (nếu có) tại từng thời điểm.", "page": 10},
+    {"term": "FYP", "definition_verbatim": "“Phí bảo hiểm thực thu năm thứ nhất để tính toán các khoản thưởng” hay “FYP” là các khoản phí thực thu năm thứ nhất (áp dụng đối với tất cả định kỳ đóng phí) của các Hợp đồng bảo hiểm phát sinh trong một giai đoạn sản xuất bao gồm: Phí bảo hiểm cơ bản, Phí bảo hiểm của Sản phẩm bổ trợ (nếu có) và 6% của Phí bảo hiểm của hợp đồng bảo hiểm đóng phí một lần, nhưng không bao gồm Phí bảo hiểm đóng thêm; TRỪ ĐI phí bảo hiểm thực thu năm thứ nhất của các Hợp đồng bảo hiểm mà bị hủy bỏ trong thời gian cân nhắc, bị hủy bỏ/ vô hiệu theo điều khoản hợp đồng bảo hiểm hoặc theo quy định của pháp luật và bị trừ theo các quy định hiện hành của Công Ty tính đến thời điểm tính toán chốt kết quả; TRỪ ĐI Phí bảo hiểm năm thứ nhất của các Hợp đồng bảo hiểm chưa bàn giao cho khách hàng (chưa nhận Giấy xác nhận bàn giao Hợp đồng bảo hiểm) và các Hợp đồng bảo hiểm đã bàn giao cho khách hàng nhưng vẫn còn trong thời gian cân nhắc dành cho khách hàng theo quy định hiện hành của Công Ty tại thông báo số 0037M10/2024/ASBD hoặc các thông báo thay thế được ban hành sau này (nếu có) tại từng thời điểm.", "page": 10},
+    {"term": "FYC", "definition_verbatim": "“Hoa hồng thực thu năm thứ nhất” hay “FYC” là Hoa hồng năm thứ nhất của các Hợp đồng bảo hiểm phát sinh trong một giai đoạn sản xuất trừ đi khoản hoa hồng năm thứ nhất phải khấu trừ đối với Hợp đồng bảo hiểm bị hủy bỏ, bị từ chối và các khoản hoa hồng bị khấu trừ theo các quy định hiện hành của Công Ty.", "page": 10},
+    {"term": "CC (Hợp đồng thực cấp)", "definition_verbatim": "“Hợp đồng thực cấp” hay “CC” là số lượng Hợp đồng bảo hiểm phát hành trong một giai đoạn sản xuất trừ đi số lượng Hợp đồng bảo hiểm bị hủy bỏ hoặc từ chối trong giai đoạn đó.", "page": 10},
+    {"term": "Hợp đồng bị hủy bỏ", "definition_verbatim": "“Hợp đồng bị hủy bỏ” liên quan đến Hợp đồng bảo hiểm đã được phát hành nhưng sau đó bị Bên mua bảo hiểm hủy bỏ trong thời gian 21 ngày tự do xem xét.", "page": 10},
+    {"term": "Hợp đồng bị từ chối", "definition_verbatim": "“Hợp đồng bị từ chối” liên quan đến Hợp đồng bảo hiểm đã phát hành nhưng sau đó bị vô hiệu, hoặc bị hủy bỏ một phần hoặc toàn bộ theo các quy định pháp luật hoặc theo điều khoản của hợp đồng bảo hiểm.", "page": 10},
+    {"term": "Tháng làm việc không đầy đủ (M0)", "definition_verbatim": "“Tháng làm việc không đầy đủ” là tháng mà Công Ty ký Hợp đồng Đại Lý bảo hiểm với Đại Lý. Kết quả sản xuất của tháng làm việc không đầy đủ này sẽ được ghi nhận để tính các khoản tiền thưởng hoặc phụ cấp trong Tháng làm việc đầy đủ đầu tiên.", "page": 10},
+    {"term": "Tháng M1", "definition_verbatim": "“Tháng M1” là tháng làm việc tiếp theo sau khi Công Ty ký Hợp Đồng Đại Lý Bảo Hiểm với Đại Lý.", "page": 10},
+    {"term": "Tháng làm việc đầy đủ đầu tiên (M0+M1)", "definition_verbatim": "“Tháng làm việc đầy đủ đầu tiên” bao gồm tháng làm việc không đầy đủ và tháng làm việc tiếp theo sau khi Công Ty ký Hợp Đồng Đại Lý Bảo Hiểm với Đại Lý. Kết quả sản xuất của Tháng làm việc đầy đủ đầu tiên sẽ bao gồm kết quả sản xuất của Tháng làm việc không đầy đủ và tháng làm việc tiếp theo.", "page": 10},
+    {"term": "Ví dụ các tháng làm việc (HĐĐL hiệu lực 20/04/2026)", "definition_verbatim": "Tháng làm việc không đầy đủ (M0): Tháng 4/2026; Tháng M1: Tháng 5/2026; Tháng làm việc đầy đủ đầu tiên (M0+M1): Tháng 4 + Tháng 5/2026; Tháng làm việc thứ 2 (M2): Tháng 6/2026; Tháng làm việc thứ 4 (M4): Tháng 8/2026; 2 tháng làm việc đầu tiên (M0+M1+M2): Tháng 4+5+6/2026; 6 tháng làm việc đầu tiên: Từ tháng 4/2026 tới tháng 10/2026; 12 tháng làm việc đầu tiên: Từ tháng 4/2026 tới tháng 4/2027", "page": 11},
+    {"term": "TLDTHD (Tỷ lệ duy trì hợp đồng năm 2)", "definition_verbatim": "“Tỷ lệ duy trì hợp đồng năm 2” hay “TLDTHD” là tỷ lệ duy trì hợp đồng năm 2 với công thức, phương pháp tính toán được áp dụng theo quy định hiện hành của Công Ty tại thông báo số 0016M03/2024/ASBD ban hành ngày 12/03/2024 hoặc các thông báo thay thế được ban hành sau này (nếu có) tại từng thời điểm.", "page": 11},
+    {"term": "Tỷ lệ điểm danh", "definition_verbatim": "“Tỷ lệ điểm danh”: Công thức, phương pháp tính tỷ lệ điểm danh được áp dụng theo quy định hiện hành của Công Ty tại từng thời điểm hoặc các thông báo thay thế được ban hành sau này (nếu có) tại từng thời điểm.", "page": 11},
+    {"term": "Đại Lý xuất sắc (Thưởng năng suất quý)", "definition_verbatim": "(**)Đại Lý xuất sắc là: i. Đại Lý đạt Thưởng năng suất tháng (mục B. III) trong 3 tháng liên tục của quý; HOẶC ii. Đại Lý có danh hiệu Manulife Pro Vàng hoặc Manulife Pro Bạch Kim tại tháng cuối quý.", "page": 6},
+    {"term": "HĐDV QLCC / HĐDV HKD", "definition_verbatim": "Hợp đồng Dịch Vụ Quản lý Đại Lý Bảo Hiểm dành cho Quản lý Đại Lý Cấp cao (“HĐDV QLCC”) hoặc Hợp đồng Dịch Vụ Quản lý Đại Lý Bảo Hiểm dành cho Hộ Kinh Doanh (“HĐDV HKD”)", "page": 7}
+  ],
+  "internal_inconsistencies": [
+    "Trang 6, B.VI.1.a ghi chú v: khoản thưởng “được chi trả theo quy định tại mục B.VI.3” – nhưng Mục B.VI chỉ có 1) và 2); điều kiện chi trả nằm ở B.VI.2 (D.2 trang 9 dẫn đúng “Mục B.VI.2”).",
+    "Trang 6: tên viết tắt không thống nhất – tiêu đề “Thưởng kinh doanh xuất sắc năm (“Thưởng KDSX năm”)” nhưng mục a) ghi “Thưởng Kinh doanh xuất sắc (KDXS) năm”, công thức dùng “Thưởng KDSX năm”.",
+    "Trang 1 Mục A nói hệ số nhân TLDTHD và CLKD áp dụng cho “tất cả các khoản thưởng được quy định tại Mục B”, nhưng công thức Thưởng KDXS năm (trang 6) chỉ nhân Hệ số CLKD, không nhân Hệ số TLDTHD (TLDTHD ≥ 70% dùng làm điều kiện) – văn bản có câu “với cách thức áp dụng được quy định chi tiết theo từng khoản thưởng” nên có thể là chủ ý.",
+    "Trang 7, công thức Khoản điều chỉnh có dấu ngoặc vuông không cân (“… của thông báo này]” thừa dấu “]”), không rõ phạm vi của Hệ số CLKD.",
+    "Trang 9 D.4: chỉ thanh toán cho Đại Lý có HĐĐL còn hiệu lực tại ngày tính toán; nhưng B.VI.2.c (trang 7) và D.2 (trang 9) cho phép chi trả Thưởng KDXS năm khi chỉ còn HĐDV QLCC hoặc HĐDV HKD – ngoại lệ không được D.4 nêu.",
+    "Trang 2 & 3, ghi chú về “Đội ngũ chuyên cần”: “Dữ liệu … dùng để tính toán Phí dịch vụ” – dùng thuật ngữ “Phí dịch vụ” trong khi khoản này là “Thưởng”.",
+    "Trang 11 ví dụ: “6 tháng làm việc đầu tiên: Từ tháng 4/2026 tới tháng 10/2026” (7 tháng dương lịch) và “12 tháng làm việc đầu tiên: Từ tháng 4/2026 tới tháng 4/2027” (13 tháng dương lịch) – tức M0 không được đếm, nhưng định nghĩa không nói rõ; trong khi “Tháng làm việc thứ 4 (M4): Tháng 8/2026” khớp với cách đếm này.",
+    "Lưu ý nguồn (không phải mâu thuẫn trong văn bản): bản chữ tách trang 6 ghi “Hệ số nhân CLKD được quy định tại mục A.I” ở ghi chú 4 Thưởng năng suất quý, nhưng ảnh trang ghi “mục A.II” – đã lấy theo ảnh."
+  ],
+  "pages_read": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}

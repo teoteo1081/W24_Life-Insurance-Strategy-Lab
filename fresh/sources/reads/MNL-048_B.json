@@ -1,0 +1,362 @@
+{
+  "doc_id": "MNL-048",
+  "reader": "B",
+  "title_verbatim": "Thông báo – BIỂU PHÍ DỊCH VỤ DÀNH CHO QUẢN LÝ CẤP CAO VÀ HỘ KINH DOANH (Số tham chiếu: 0048M01/2026/ASBD; Ngày gửi: 23/01/2026)",
+  "effective": "\"có hiệu lực kể từ ngày 01/01/2026 (“Ngày hiệu lực”) và thay thế cho Biểu Phí dịch vụ theo thông báo số 0003M04/2024/ASBD\" – trang 1",
+  "roles": [
+    {"title_verbatim": "Quản Lý Cấp Cao", "abbr": "PSM+", "page": 1, "how_obtained": "văn bản không nêu (ký HĐDV QLCC với Công ty; chức danh theo thông báo số 0013M04/2024/ASBD – trang 5)"},
+    {"title_verbatim": "PSM/SM", "abbr": "PSM/SM", "page": 1, "how_obtained": "văn bản không nêu"},
+    {"title_verbatim": "PSSM/SSM", "abbr": "PSSM/SSM", "page": 1, "how_obtained": "văn bản không nêu"},
+    {"title_verbatim": "Hộ Kinh Doanh", "abbr": "HKD", "page": 1, "how_obtained": "ký Hợp Đồng Dịch Vụ Quản Lý Đại Lý Bảo Hiểm dành cho Hộ Kinh Doanh (“HĐDV HKD”) với Công ty"},
+    {"title_verbatim": "HKD1/2", "abbr": "HKD1/2", "page": 1, "how_obtained": "phân cấp HKD – văn bản không nêu cách đạt"},
+    {"title_verbatim": "HKD3/4", "abbr": "HKD3/4", "page": 1, "how_obtained": "phân cấp HKD – văn bản không nêu cách đạt"}
+  ],
+  "rules": [
+    {
+      "rule_no": 1,
+      "role": "PSM+ và HKD (PSM/SM, PSSM/SSM, HKD1/2, HKD3/4)",
+      "item": "Phí dịch vụ cơ bản hàng tháng",
+      "base": "Phí dịch vụ cơ bản hàng tháng theo chức danh PSM+ và phân cấp HKD x Tỷ lệ hoàn thành chỉ tiêu FYP của PSM+/HKD x 130%; kỳ: tháng",
+      "conditions": [
+        "Phí dịch vụ cơ bản hàng tháng = [Phí dịch vụ cơ bản hàng tháng theo chức danh PSM+ và phân cấp HKD (1)] x [Tỷ lệ hoàn thành chỉ tiêu FYP của PSM+/HKD (2)] x 130%",
+        "Tỷ lệ hoàn thành chỉ tiêu FYP của PSM+/HKD được xác định dựa trên tổng FYP thực đạt của các khu vực do PSM+/HKD quản lý trực tiếp và gián tiếp chia cho tổng chỉ tiêu FYP của PSM+/HKD",
+        "Yêu cầu tỷ lệ hoàn thành chỉ tiêu FYP của PSM+/HKD đạt tối thiểu 30% để được tính Phí dịch vụ cơ bản hàng tháng",
+        "Mức Phí dịch vụ cơ bản hàng tháng tối đa 150% Phí dịch vụ cơ bản hàng tháng theo chức danh PSM+ và phân cấp HKD",
+        "Cấu trúc khu vực do PSM+/HKD quản lý trực tiếp và gián tiếp chốt tại cuối tháng tính toán phí dịch vụ",
+        "Tại thời điểm tính toán phí dịch vụ, PSM+ và HKD phải có HĐDV QLCC hoặc HĐDV HKD ký kết với Công ty đang còn hiệu lực (C.4)"
+      ],
+      "table": [
+        ["Chức danh PSM+", "Phân cấp HKD", "Phí dịch vụ hàng tháng (triệu đồng)"],
+        ["PSM/SM", "HKD1/2", "35"],
+        ["PSSM/SSM", "HKD3/4", "45"]
+      ],
+      "rate_or_amount": "x 130%; tối đa 150% mức theo chức danh/phân cấp",
+      "payment_timing": "văn bản không nêu kỳ chi trả cụ thể (hàng tháng)",
+      "clawback_or_forfeit": "Thu hồi theo C.11 nếu vi phạm chính sách làm ảnh hưởng kết quả",
+      "page": "1",
+      "quote": "x 130% ... Yêu cầu tỷ lệ hoàn thành chỉ tiêu FYP của PSM+/HKD đạt tối thiểu 30% ... tối đa 150% Phí dịch vụ cơ bản hàng tháng theo chức danh PSM+ và phân cấp HKD",
+      "uncertain": false,
+      "note": "Bảng gộp chức danh PSM+ và phân cấp HKD trên cùng hàng (PSM/SM ~ HKD1/2 = 35; PSSM/SSM ~ HKD3/4 = 45). Văn bản không nêu tỷ lệ hoàn thành FYP tính theo tháng hay lũy kế; ngữ cảnh 'hàng tháng'. Trần 150% áp dụng sau khi nhân 130% (tức tỷ lệ hoàn thành FYP > ~115,38% thì chạm trần) – suy luận, văn bản không tự tính."
+    },
+    {
+      "rule_no": 2,
+      "role": "PSM+/HKD quản lý trực tiếp khu vực",
+      "item": "Phí dịch vụ theo năng suất tháng của PSM+/HKD quản lý trực tiếp khu vực",
+      "base": "FYC thực đạt trong tháng của khu vực; kỳ: tháng",
+      "conditions": [
+        "Phí dịch vụ theo năng suất tháng của PSM+/HKD quản lý trực tiếp khu vực = [% Phí dịch vụ theo năng suất tháng của khu vực (a)] x [FYC thực đạt trong tháng của khu vực] x [Hệ số nhân TLDTHD của khu vực (b)]",
+        "% phí theo Tỷ lệ hoàn thành chỉ tiêu FYP tháng đối với mỗi khu vực: < 115% → 6%; ≥ 115% → 8%",
+        "Hệ số nhân TLDTHD xác định dựa trên TLDTHD của mỗi khu vực tại cuối tháng tính toán phí dịch vụ, chia 2 giai đoạn (trước tháng 04/2026 và từ tháng 04/2026 trở đi) – xem rule 3",
+        "Cấu trúc khu vực do PSM+/HKD quản lý trực tiếp chốt tại cuối tháng tính toán phí dịch vụ"
+      ],
+      "table": [
+        ["Tỷ lệ hoàn thành chỉ tiêu FYP tháng đối với mỗi khu vực", "% Phí dịch vụ theo năng suất tháng của khu vực"],
+        ["< 115%", "6%"],
+        ["≥ 115%", "8%"]
+      ],
+      "rate_or_amount": "6% hoặc 8% x FYC tháng x Hệ số nhân TLDTHD",
+      "payment_timing": "văn bản không nêu",
+      "clawback_or_forfeit": "Thu hồi theo C.11",
+      "page": "1-2",
+      "quote": "< 115% 6% ; ≥ 115% 8%",
+      "uncertain": false,
+      "note": "Không có ngưỡng tối thiểu tỷ lệ hoàn thành FYP tháng (bậc < 115% vẫn hưởng 6%)."
+    },
+    {
+      "rule_no": 3,
+      "role": "PSM+/HKD quản lý trực tiếp khu vực",
+      "item": "Hệ số nhân TLDTHD của khu vực (dùng cho Phí dịch vụ theo năng suất tháng – A.II.1.b)",
+      "base": "TLDTHD (Tỷ lệ duy trì hợp đồng năm 2) của mỗi khu vực tại cuối tháng tính toán phí dịch vụ",
+      "conditions": [
+        "Bảng 1: Hệ số nhân TLDTHD áp dụng trước tháng 04/2026",
+        "Bảng 2: Hệ số nhân TLDTHD áp dụng từ tháng 04/2026 trở đi"
+      ],
+      "table": [
+        ["Giai đoạn", "TLDTHD của khu vực", "Hệ số nhân TLDTHD (%)"],
+        ["trước tháng 04/2026", "≥ 75%", "115%"],
+        ["trước tháng 04/2026", "≥ 70% và < 75%", "110%"],
+        ["trước tháng 04/2026", "≥ 65% và < 70%", "105%"],
+        ["trước tháng 04/2026", "≥ 60% và < 65%", "100%"],
+        ["trước tháng 04/2026", "≥ 55% và < 60%", "90%"],
+        ["trước tháng 04/2026", "≥ 50% và < 55%", "75%"],
+        ["trước tháng 04/2026", "< 50%", "TLDTHD thực đạt"],
+        ["trước tháng 04/2026", "Chưa có TLDTHD", "100%"],
+        ["từ tháng 04/2026 trở đi", "≥ 80%", "110%"],
+        ["từ tháng 04/2026 trở đi", "≥ 75% và < 80%", "105%"],
+        ["từ tháng 04/2026 trở đi", "≥ 70% và < 75%", "100%"],
+        ["từ tháng 04/2026 trở đi", "≥ 65% và < 70%", "90%"],
+        ["từ tháng 04/2026 trở đi", "≥ 60% và < 65%", "70%"],
+        ["từ tháng 04/2026 trở đi", "≥ 50% và < 60%", "50%"],
+        ["từ tháng 04/2026 trở đi", "< 50%", "TLDTHD thực đạt/2 (chia 2)"],
+        ["từ tháng 04/2026 trở đi", "Chưa có TLDTHD", "100%"]
+      ],
+      "rate_or_amount": "theo bảng",
+      "payment_timing": "văn bản không nêu",
+      "clawback_or_forfeit": "văn bản không nêu",
+      "page": "2",
+      "quote": "≥ 80% 110% ... ≥ 50% và < 60% 50% ... < 50% TLDTHD thực đạt/2 (chia 2)",
+      "uncertain": false,
+      "note": "Bảng giai đoạn mới gộp bậc ≥ 50% và < 60% (10 điểm %) thành một bậc 50%, khác với giai đoạn cũ có 2 bậc 5 điểm %. 'trước tháng 04/2026' theo tháng tính toán phí – văn bản không nói rõ."
+    },
+    {
+      "rule_no": 4,
+      "role": "PSM+/HKD quản lý gián tiếp khu vực",
+      "item": "Phí dịch vụ theo năng suất tháng của PSM+/HKD quản lý gián tiếp khu vực",
+      "base": "Phí dịch vụ năng suất tháng của cấp báo cáo trực tiếp được nhận; kỳ: tháng",
+      "conditions": [
+        "Cấu trúc PSM+/HKD báo cáo trực tiếp chốt tại cuối tháng tính toán phí dịch vụ"
+      ],
+      "table": [],
+      "rate_or_amount": "50%",
+      "payment_timing": "văn bản không nêu",
+      "clawback_or_forfeit": "Thu hồi theo C.11",
+      "page": "2",
+      "quote": "PSM+/HKD quản lý gián tiếp khu vực nhận 50% trên Phí dịch vụ năng suất tháng của cấp báo cáo trực tiếp được nhận.",
+      "uncertain": false,
+      "note": "Văn bản không nêu giới hạn số cấp gián tiếp (chỉ nói 'cấp báo cáo trực tiếp'); không rõ có lũy tiến qua nhiều tầng hay không."
+    },
+    {
+      "rule_no": 5,
+      "role": "PSM+/HKD quản lý trực tiếp khu vực",
+      "item": "Phí dịch vụ theo hoạt động quý của PSM+/HKD quản lý trực tiếp khu vực",
+      "base": "FYC thực đạt trong quý của khu vực (= tổng FYC thực đạt của các tháng trong quý, chốt cuối mỗi tháng); kỳ: quý",
+      "conditions": [
+        "Phí dịch vụ theo hoạt động quý của PSM+/HKD quản lý trực tiếp khu vực = [% Phí dịch vụ theo hoạt động quý của khu vực (a)] x [FYC thực đạt trong quý của khu vực (b)] x [Hệ số nhân TLDTHD của khu vực (c)]",
+        "Tỷ lệ hoàn thành chỉ tiêu 1mAA_4mFYC quý của từng khu vực = tổng 1mAA_4mFYC thực đạt (bao gồm Đại lý phục vụ (SA)) của các tháng trong quý chia cho tổng chỉ tiêu 1mAA_4mFYC của các tháng trong quý",
+        "1mAA_4mFYC thực đạt (bao gồm SA) từng tháng của khu vực sẽ được chốt tại cuối mỗi tháng",
+        "Tỷ lệ hoàn thành < 90%: văn bản không liệt kê bậc (không có phí)",
+        "Hệ số nhân TLDTHD xác định dựa trên TLDTHD của mỗi khu vực tại cuối quý tính toán phí dịch vụ – bảng giống rule 3 (2 giai đoạn)",
+        "Cấu trúc khu vực do PSM+/HKD quản lý trực tiếp chốt tại tháng cuối quý tính toán phí dịch vụ"
+      ],
+      "table": [
+        ["Tỷ lệ hoàn thành chỉ tiêu 1mAA_4mFYC quý đối với mỗi khu vực", "% Phí dịch vụ theo hoạt động quý"],
+        ["≥ 90% và < 100%", "1,0%"],
+        ["≥ 100% và < 110%", "2,5%"],
+        ["≥ 110% và < 120%", "3,5%"],
+        ["≥ 120%", "5,0%"]
+      ],
+      "rate_or_amount": "1,0% / 2,5% / 3,5% / 5,0% x FYC quý x Hệ số nhân TLDTHD",
+      "payment_timing": "văn bản không nêu",
+      "clawback_or_forfeit": "Thu hồi theo C.11",
+      "page": "2-3",
+      "quote": "≥ 90% và < 100% 1,0% ; ≥ 100% và < 110% 2,5% ; ≥ 110% và < 120% 3,5% ; ≥ 120% 5,0%",
+      "uncertain": false,
+      "note": "Dưới 90% văn bản không nêu – không có bậc."
+    },
+    {
+      "rule_no": 6,
+      "role": "PSM+/HKD quản lý trực tiếp khu vực",
+      "item": "Hệ số nhân TLDTHD của khu vực (dùng cho Phí dịch vụ theo hoạt động quý – A.III.1.c)",
+      "base": "TLDTHD của mỗi khu vực tại cuối quý tính toán phí dịch vụ",
+      "conditions": [
+        "Bảng 1: áp dụng trước tháng 04/2026",
+        "Bảng 2: áp dụng từ tháng 04/2026 trở đi"
+      ],
+      "table": [
+        ["Giai đoạn", "TLDTHD của khu vực", "Hệ số nhân TLDTHD (%)"],
+        ["trước tháng 04/2026", "≥ 75%", "115%"],
+        ["trước tháng 04/2026", "≥ 70% và < 75%", "110%"],
+        ["trước tháng 04/2026", "≥ 65% và < 70%", "105%"],
+        ["trước tháng 04/2026", "≥ 60% và < 65%", "100%"],
+        ["trước tháng 04/2026", "≥ 55% và < 60%", "90%"],
+        ["trước tháng 04/2026", "≥ 50% và < 55%", "75%"],
+        ["trước tháng 04/2026", "< 50%", "TLDTHD thực đạt"],
+        ["trước tháng 04/2026", "Chưa có TLDTHD", "100%"],
+        ["từ tháng 04/2026 trở đi", "≥ 80%", "110%"],
+        ["từ tháng 04/2026 trở đi", "≥ 75% và < 80%", "105%"],
+        ["từ tháng 04/2026 trở đi", "≥ 70% và < 75%", "100%"],
+        ["từ tháng 04/2026 trở đi", "≥ 65% và < 70%", "90%"],
+        ["từ tháng 04/2026 trở đi", "≥ 60% và < 65%", "70%"],
+        ["từ tháng 04/2026 trở đi", "≥ 50% và < 60%", "50%"],
+        ["từ tháng 04/2026 trở đi", "< 50%", "TLDTHD thực đạt/2 (chia 2)"],
+        ["từ tháng 04/2026 trở đi", "Chưa có TLDTHD", "100%"]
+      ],
+      "rate_or_amount": "theo bảng",
+      "payment_timing": "văn bản không nêu",
+      "clawback_or_forfeit": "văn bản không nêu",
+      "page": "3",
+      "quote": "Hệ số nhân TLDTHD được xác định dựa trên TLDTHD của mỗi khu vực tại cuối quý tính toán phí dịch vụ",
+      "uncertain": false,
+      "note": "Giống hệt bảng tháng (rule 3), chỉ khác thời điểm đo (cuối quý). Q1/2026 (trước 04/2026) dùng bảng cũ, từ Q2/2026 dùng bảng mới – suy luận, văn bản không nói theo quý."
+    },
+    {
+      "rule_no": 7,
+      "role": "PSM+/HKD quản lý gián tiếp khu vực",
+      "item": "Phí dịch vụ theo hoạt động quý của PSM+/HKD quản lý gián tiếp khu vực",
+      "base": "phí dịch vụ hoạt động quý của cấp báo cáo trực tiếp được nhận; kỳ: quý",
+      "conditions": [
+        "Cấu trúc PSM+/HKD báo cáo trực tiếp chốt tại tháng cuối quý tính toán phí dịch vụ"
+      ],
+      "table": [],
+      "rate_or_amount": "50%",
+      "payment_timing": "văn bản không nêu",
+      "clawback_or_forfeit": "Thu hồi theo C.11",
+      "page": "3",
+      "quote": "PSM+/HKD quản lý gián tiếp khu vực nhận 50% trên phí dịch vụ hoạt động quý của cấp báo cáo trực tiếp được nhận.",
+      "uncertain": false,
+      "note": ""
+    },
+    {
+      "rule_no": 8,
+      "role": "PSM+/HKD (Điều kiện 2: PSM/SM/PSSM/SSM/HKD1/HKD2/HKD3/HKD4 quản lý trực tiếp khu vực)",
+      "item": "Phí dịch vụ hợp tác dài hạn – Điều kiện xét",
+      "base": "kết quả hoàn thành dịch vụ quản lý đại lý của năm tính toán (“Năm Y0”)",
+      "conditions": [
+        "PSM+/HKD phải thỏa tất cả Yêu cầu về kết quả hoàn thành dịch vụ của 1 trong 2 điều kiện",
+        "Điều kiện 1: Tỷ lệ hoàn thành chỉ tiêu FYP của PSM+/HKD của năm tính toán ≥ 85%",
+        "Điều kiện 1: TLDTHD của PSM+/HKD tại tháng 12 năm tính toán ≥ 70%",
+        "Điều kiện 1 – ghi chú: Tỷ lệ hoàn thành chỉ tiêu FYP của năm = Tổng FYP thực đạt tại các tháng trong năm của toàn bộ các khu vực do PSM+/HKD quản lý trực tiếp và gián tiếp chia cho Tổng chỉ tiêu FYP của PSM+/HKD",
+        "Điều kiện 1 – ghi chú: TLDTHD xác định trên tổng các khu vực do PSM+/HKD quản lý trực tiếp và gián tiếp. Trường hợp chưa có TLDTHD thì được miễn xét điều kiện này",
+        "Điều kiện 2: PSM/SM/PSSM/SSM/HKD1/HKD2/HKD3/HKD4 quản lý trực tiếp khu vực thuộc Top 15 khu vực dẫn đầu về tổng FYP thực đạt trong năm tính toán",
+        "Điều kiện 2: TLDTHD của khu vực tại tháng 12 năm tính toán ≥ 70%",
+        "Điều kiện 2 – ghi chú: Chức danh của PSM+ và phân cấp HKD được xác định tại tháng 12 năm tính toán",
+        "Điều kiện 2 – ghi chú: TLDTHD xác định trên từng khu vực; chưa có TLDTHD thì được miễn xét điều kiện này",
+        "Điều kiện 2 – ghi chú: Các khu vực phải thỏa Yêu cầu về TLDTHD trước khi xét Top 15",
+        "Điều kiện 2 – ghi chú: FYP bằng nhau thì tổng FYC thực đạt năm tính toán và TLDTHD cuối năm tính toán lần lượt là căn cứ xét thứ hạng; xét Top 15 bao gồm cả các PSM+ và HKD đã đạt Điều kiện 1 (nếu có)",
+        "Điều kiện 2 – ghi chú: PSM+/HKD có từ 2 khu vực thuộc Top 15 thì vẫn giữ nguyên vị trí các khu vực này và không đôn khu vực khác lên",
+        "Điều kiện 2 – ghi chú: nhiều hơn từ 2 khu vực thỏa điều kiện và cùng nằm ở vị trí thứ 15 thì tất cả đều được xét đạt",
+        "Thỏa cả 2 điều kiện thì được ưu tiên ghi nhận ở Điều kiện 2"
+      ],
+      "table": [
+        ["Điều kiện", "Yêu cầu về kết quả hoàn thành dịch vụ"],
+        ["1", "• Tỷ lệ hoàn thành chỉ tiêu FYP của PSM+/HKD của năm tính toán ≥ 85% • TLDTHD của PSM+/HKD tại tháng 12 năm tính toán ≥ 70%"],
+        ["2", "• PSM/SM/PSSM/SSM/HKD1/HKD2/HKD3/HKD4 quản lý trực tiếp khu vực thuộc Top 15 khu vực dẫn dầu về tổng FYP thực đạt trong năm tính toán. • TLDTHD của khu vực tại tháng 12 năm tính toán ≥ 70%"]
+      ],
+      "rate_or_amount": "xem rule 9",
+      "payment_timing": "xem rule 10",
+      "clawback_or_forfeit": "xem rule 10",
+      "page": "3-4",
+      "quote": "Tỷ lệ hoàn thành chỉ tiêu FYP của PSM+/HKD của năm tính toán ≥ 85% ... TLDTHD ... tại tháng 12 năm tính toán ≥ 70% ... Top 15 khu vực dẫn dầu về tổng FYP",
+      "uncertain": false,
+      "note": "Văn bản không nêu hệ quả khác biệt giữa ghi nhận ở Điều kiện 1 hay Điều kiện 2 (cách tính phí ở mục 2 giống nhau) – ý nghĩa của 'ưu tiên ghi nhận ở Điều kiện 2' không rõ (có thể liên quan tới việc chiếm suất Top 15). Top 15 là phạm vi toàn công ty? – văn bản không nêu phạm vi xếp hạng."
+    },
+    {
+      "rule_no": 9,
+      "role": "PSM+ và HKD đạt điều kiện Phí dịch vụ hợp tác dài hạn",
+      "item": "Phí dịch vụ hợp tác dài hạn – Cách tính phí dịch vụ",
+      "base": "Tổng [Phí dịch vụ theo năng suất tháng ở mục A.II & Phí dịch vụ theo hoạt động quý ở mục A.III] đã thực nhận trong năm tính toán; kỳ: năm",
+      "conditions": [
+        "75% x Tổng [Phí dịch vụ theo năng suất tháng ở mục A.II & Phí dịch vụ theo hoạt động quý ở mục A.III] của PSM+ và HKD đã thực nhận trong năm tính toán dựa trên các khu vực PSM+/HKD quản lý trực tiếp",
+        "VÀ 25% x Tổng [Phí dịch vụ theo năng suất tháng ở mục A.II & Phí dịch vụ theo hoạt động quý ở mục A.III] của PSM+ và HKD đã thực nhận trong năm tính toán dựa trên các khu vực PSM+/HKD quản lý gián tiếp",
+        "Phí dịch vụ hợp tác dài hạn của 1 năm tính toán tối đa bằng 12 lần Phí dịch vụ cơ bản hàng tháng theo chức danh PSM+ hoặc phân cấp HKD (được quy định tại mục A.I.1) với chức danh và phân cấp chốt tại cuối tháng 12 năm tính toán (Năm Y0)"
+      ],
+      "table": [
+        ["Phần", "Tỷ lệ", "Cơ sở"],
+        ["trực tiếp", "75%", "Tổng phí A.II & A.III đã thực nhận trong năm tính toán dựa trên các khu vực quản lý trực tiếp"],
+        ["gián tiếp", "25%", "Tổng phí A.II & A.III đã thực nhận trong năm tính toán dựa trên các khu vực quản lý gián tiếp"]
+      ],
+      "rate_or_amount": "75% (trực tiếp) và 25% (gián tiếp); trần 12 lần Phí dịch vụ cơ bản hàng tháng theo chức danh/phân cấp (35 hoặc 45 triệu đồng theo bảng A.I)",
+      "payment_timing": "xem rule 10",
+      "clawback_or_forfeit": "xem rule 10",
+      "page": "4",
+      "quote": "75% x Tổng [Phí dịch vụ theo năng suất tháng ở mục A.II & Phí dịch vụ theo hoạt động quý ở mục A.III] ... VÀ 25% x Tổng ... tối đa bằng 12 lần Phí dịch vụ cơ bản hàng tháng",
+      "uncertain": false,
+      "note": "Trần dùng mức Phí dịch vụ cơ bản theo bảng (35/45 triệu), không phải mức sau khi nhân tỷ lệ hoàn thành x 130% – theo cách viết 'theo chức danh PSM+ hoặc phân cấp HKD (được quy định tại mục A.I.1)'. Văn bản viết 'mục A.I.1' nhưng tại A.I đó là Ghi chú 1) (bảng), không có tiểu mục đánh số 1."
+    },
+    {
+      "rule_no": 10,
+      "role": "PSM+ và HKD",
+      "item": "Phí dịch vụ hợp tác dài hạn – Thời gian và điều kiện chi trả",
+      "base": "Khoản Phí dịch vụ hợp tác dài hạn của Năm Y0",
+      "conditions": [
+        "Chi trả vào kỳ thanh toán phí dịch vụ tháng 4 trong 3 năm tiếp theo sau Năm Y0",
+        "(*) TLDTHD được xác định trên tổng các khu vực do PSM+ và HKD quản lý trực tiếp và gián tiếp tại cuối tháng 12 năm liền trước năm chi trả. Trường hợp chưa có TLDTHD thì được miễn xét điều kiện này",
+        "PSM+ và HKD phải có HĐDV QLCC hoặc HĐDV HKD ký kết với Công ty còn hiệu lực tại thời điểm chi trả khoản phí dịch vụ này"
+      ],
+      "table": [
+        ["Năm chi trả", "Tỷ lệ chi trả", "Yêu cầu về TLDTHD (*)"],
+        ["Năm Y1", "30%", "≥ 70%"],
+        ["Năm Y2", "30%", "≥ 70%"],
+        ["Năm Y3", "40%", "≥ 70%"]
+      ],
+      "rate_or_amount": "30% / 30% / 40%",
+      "payment_timing": "Kỳ thanh toán phí dịch vụ tháng 4 của Năm Y1, Y2, Y3",
+      "clawback_or_forfeit": "Không đạt TLDTHD ≥ 70% hoặc không còn HĐDV hiệu lực tại thời điểm chi trả thì không được chi trả phần của năm đó – văn bản không nói rõ phần không chi có bị mất hẳn hay được dồn sang năm sau (văn bản không nêu)",
+      "page": "4-5",
+      "quote": "Năm Y1 30% ≥ 70% ; Năm Y2 30% ≥ 70% ; Năm Y3 40% ≥ 70%",
+      "uncertain": false,
+      "note": ""
+    },
+    {
+      "rule_no": 11,
+      "role": "PSM+ và HKD",
+      "item": "Áp dụng điều kiện/thời điểm chi trả cho các khoản Phí dịch vụ hợp tác dài hạn chuyển tiếp theo thông báo số 0003M04/2024/ASBD",
+      "base": "Phí dịch vụ hợp tác dài hạn dựa trên kết quả hoàn thành dịch vụ năm 2024 và năm 2025 theo thông báo số 0003M04/2024/ASBD",
+      "conditions": [
+        "i. Khoản chi trả Năm Y3 (kỳ thu nhập tháng 4/2027) của Phí dịch vụ hợp tác dài hạn dựa trên kết quả hoàn thành dịch vụ năm 2024 theo thông báo số 0003M04/2024/ASBD",
+        "ii. Khoản chi trả Năm Y2 (kỳ thu nhập tháng 4/2027) và Khoản chi trả Năm Y3 (kỳ thu nhập tháng 4/2028) của Phí dịch vụ hợp tác dài hạn dựa trên kết quả hoàn thành dịch vụ năm 2025 theo thông báo số 0003M04/2024/ASBD"
+      ],
+      "table": [],
+      "rate_or_amount": "văn bản không nêu tỷ lệ (theo thông báo cũ)",
+      "payment_timing": "kỳ thu nhập tháng 4/2027 và 4/2028 như trên",
+      "clawback_or_forfeit": "áp dụng điều kiện TLDTHD ≥ 70% và HĐDV còn hiệu lực như rule 10",
+      "page": "5",
+      "quote": "Khoản chi trả Năm Y3 (kỳ thu nhập tháng 4/2027) ... năm 2024 ... Khoản chi trả Năm Y2 (kỳ thu nhập tháng 4/2027) và Khoản chi trả Năm Y3 (kỳ thu nhập tháng 4/2028) ... năm 2025",
+      "uncertain": false,
+      "note": "Văn bản không nhắc khoản Y2 của năm 2024 (kỳ 4/2026) và Y1 của năm 2025 (kỳ 4/2026) – các khoản trả trong 2026 không được liệt kê ở đây, có thể vẫn theo điều kiện thông báo cũ (văn bản không nêu)."
+    },
+    {
+      "rule_no": 12,
+      "role": "PSM+/HKD+",
+      "item": "Yêu cầu về hoạt động dịch vụ (Quy định chung C.1)",
+      "base": "văn bản không nêu",
+      "conditions": [
+        "Từ tháng 02/2026, PSM+/HKD+ sẽ cần hoàn thành Yêu cầu về hoạt động dịch vụ để nhận các khoản chi trả Phí dịch vụ theo HĐDV QLCC và HĐDV HKD, theo đó chi tiết về phương thức áp dụng sẽ được quy định trong thông báo sau"
+      ],
+      "table": [],
+      "rate_or_amount": "văn bản không nêu",
+      "payment_timing": "từ tháng 02/2026",
+      "clawback_or_forfeit": "văn bản không nêu (chi tiết trong thông báo sau)",
+      "page": "5",
+      "quote": "Từ tháng 02/2026, PSM+/HKD+ sẽ cần hoàn thành Yêu cầu về hoạt động dịch vụ để nhận các khoản chi trả Phí dịch vụ",
+      "uncertain": false,
+      "note": "Điều kiện cổng (gate) chưa định nghĩa trong văn bản này. In đậm trong bản gốc."
+    },
+    {
+      "rule_no": 13,
+      "role": "PSM+ và HKD",
+      "item": "Quy định chung – hiệu lực hợp đồng, chuyển đổi mô hình, thuế, thu hồi (C.4–C.11)",
+      "base": "mọi khoản phí dịch vụ trong Biểu Phí Dịch Vụ",
+      "conditions": [
+        "C.4: Tại thời điểm tính toán phí dịch vụ, PSM+ và HKD phải có HĐDV QLCC hoặc HĐDV HKD ký kết với Công ty đang còn hiệu lực",
+        "C.5: Công ty tiếp tục chi trả khoản phí phát sinh trong thời gian HĐDV QLCC có hiệu lực và kết thúc trước khi ký HĐDV HKD, với điều kiện PSM+ đã chấm dứt HĐDV QLCC và là Chủ Hộ Kinh Doanh có HĐDV HKD còn đang duy trì hiệu lực tại ngày thanh toán",
+        "C.6: tương tự chiều ngược lại HKD → HĐDV QLCC",
+        "C.7/C.8: kết quả sản xuất, kết quả thực hiện dịch vụ và quyền/nghĩa vụ phát sinh trước thời điểm chuyển đổi mô hình nhưng vẫn nằm trong thời gian tính toán phí được tính cho mô hình mới",
+        "C.9: Khoản chi trả cho PSM+ là thu nhập trước thuế; Công ty khấu trừ thuế TNCN; Khoản chi trả bị thu hồi (nếu có) sẽ cấn trừ vào thu nhập chịu thuế phát sinh của năm thu hồi",
+        "C.10: HKD cung cấp hóa đơn/chứng từ và chịu mọi khoản thuế phát sinh tại thời điểm chi trả",
+        "C.11: Công ty có quyền thu hồi các khoản phí dịch vụ nếu phát hiện PSM+ và/hoặc HKD đạt điều kiện đã vi phạm bất kỳ chính sách, quy định, hướng dẫn, nguyên tắc nào làm ảnh hưởng đến kết quả; áp dụng cả khi HĐDV QLCC/HĐDV HKD hoặc Hợp Đồng Đại Lý Bảo Hiểm đã chấm dứt"
+      ],
+      "table": [],
+      "rate_or_amount": "không áp dụng",
+      "payment_timing": "xem điều kiện",
+      "clawback_or_forfeit": "C.11 thu hồi khi vi phạm, kể cả sau khi chấm dứt hợp đồng",
+      "page": "5-6",
+      "quote": "Công ty có quyền thu hồi các khoản phí dịch vụ chi trả theo Biểu Phí Dịch Vụ này trong trường hợp Công ty phát hiện PSM+ và/hoặc HKD đạt điều kiện đã vi phạm",
+      "uncertain": false,
+      "note": "Văn bản không có điều khoản thu hồi phí khi hợp đồng bảo hiểm bị hủy (ngoài việc FYP/FYC đã trừ hợp đồng hủy theo định nghĩa)."
+    }
+  ],
+  "definitions": [
+    {"term": "FYP", "definition_verbatim": "“Phí bảo hiểm thực thu năm thứ nhất để tính phí dịch vụ” hay “FYP” là các khoản Phí bảo hiểm thực thu năm thứ nhất (áp dụng đối với tất cả định kỳ đóng phí) của các Hợp đồng bảo hiểm phát sinh trong một giai đoạn sản xuất bao gồm: Phí bảo hiểm cơ bản, Phí bảo hiểm của Sản phẩm bổ trợ (nếu có) và 6% của Phí bảo hiểm của hợp đồng bảo hiểm đóng phí một lần và 6% Phí bảo hiểm đóng thêm; TRỪ ĐI phí bảo hiểm thực thu năm thứ nhất của các Hợp đồng bảo hiểm bị hủy bỏ trong thời gian tự do xem xét, bị hủy bỏ/vô hiệu theo điều khoản hợp đồng bảo hiểm hoặc theo quy định của pháp luật và bị trừ theo quy định của Công ty.", "page": 6},
+    {"term": "FYC", "definition_verbatim": "“Hoa hồng thực thu năm thứ nhất” hay “FYC” là Hoa hồng năm thứ nhất của các Hợp đồng bảo hiểm phát sinh trong một giai đoạn sản xuất trừ đi khoản hoa hồng năm thứ nhất phải khấu trừ của các hợp đồng bảo hiểm bị hủy bỏ, bị từ chối và các khoản hoa hồng bị khấu trừ theo các quy định hiện hành của Công ty.", "page": 6},
+    {"term": "1mAA_4mFYC", "definition_verbatim": "“1mAA_4mFYC” là số lượng Đại lý có Hợp đồng đại lý bảo hiểm với Công ty còn hiệu lực vào thời điểm cuối tháng và sản xuất ít nhất 1 hợp đồng bảo hiểm thực cấp và sản xuất ít nhất 4 triệu FYC trong tháng.", "page": 6},
+    {"term": "SA", "definition_verbatim": "“SA” là Đại lý phục vụ theo quy định tại thông báo số 01M02/2024/AO hoặc các thông báo thay thế được ban hành sau này (nếu có) tại từng thời điểm.", "page": 6},
+    {"term": "Hợp đồng thực cấp", "definition_verbatim": "“Hợp đồng thực cấp” là số lượng Hợp đồng bảo hiểm do Công ty phát hành trong một giai đoạn sản xuất trừ đi số lượng Hợp đồng bảo hiểm bị hủy bỏ hoặc từ chối trong giai đoạn đó theo các quy định hiện hành của Công ty.", "page": 6},
+    {"term": "Hợp đồng bị hủy bỏ", "definition_verbatim": "“Hợp đồng bị hủy bỏ” liên quan đến Hợp đồng bảo hiểm đã được phát hành nhưng sau đó bị Bên mua bảo hiểm hủy bỏ trong thời gian 21 ngày tự do xem xét.", "page": 6},
+    {"term": "Hợp đồng bị từ chối", "definition_verbatim": "“Hợp đồng bị từ chối” liên quan đến Hợp đồng bảo hiểm đã phát hành nhưng sau đó bị vô hiệu, hoặc bị hủy bỏ một phần hoặc toàn bộ theo các quy định pháp luật hoặc theo điều khoản của hợp đồng bảo hiểm.", "page": 6},
+    {"term": "TLDTHD", "definition_verbatim": "“Tỷ lệ duy trì hợp đồng năm 2” hay “TLDTHD” là tỷ lệ duy trì hợp đồng năm 2 với công thức, phương pháp tính toán được áp dụng theo quy định hiện hành của Công ty tại thông báo số 0016M03/2024/ASBD ban hành ngày 12/03/2024 hoặc các thông báo thay thế được ban hành sau này (nếu có) tại từng thời điểm.", "page": 6},
+    {"term": "Năm Y0", "definition_verbatim": "năm hiện tại hay còn gọi là năm tính toán (“Năm Y0”)", "page": 3},
+    {"term": "Tỷ lệ hoàn thành chỉ tiêu FYP của PSM+/HKD", "definition_verbatim": "Tỷ lệ hoàn thành chỉ tiêu FYP của PSM+/HKD được xác định dựa trên tổng FYP thực đạt của các khu vực do PSM+/HKD quản lý trực tiếp và gián tiếp chia cho tổng chỉ tiêu FYP của PSM+/HKD.", "page": 1},
+    {"term": "Chức danh và từ viết tắt", "definition_verbatim": "Trừ khi được định nghĩa khác đi tại Biểu Phí Dịch Vụ này, các chức danh và từ viết tắt của các chức danh trong thông báo này được quy định trong thông báo số 0013M04/2024/ASBD.", "page": 5}
+  ],
+  "internal_inconsistencies": [
+    "Cấu trúc mục nhảy từ A (Các khoản phí dịch vụ) sang C (Quy định chung), không có mục B (trang 1-5).",
+    "C.1 viết 'PSM+/HKD+' trong khi toàn văn bản dùng 'HKD' (trang 5).",
+    "Ghi chú trần Phí dịch vụ hợp tác dài hạn dẫn chiếu 'mục A.I.1' nhưng mục A.I không có tiểu mục 1 – bảng mức phí nằm ở 'Ghi chú 1)' (trang 4 vs trang 1).",
+    "Công thức Phí dịch vụ cơ bản có hệ số x130% nhưng lại giới hạn tối đa 150% mức theo chức danh – không mâu thuẫn trực tiếp nhưng cần lưu ý thứ tự áp dụng (trang 1).",
+    "Lỗi chính tả trong văn bản: 'Biếu Phí dịch vụ' (trang 1, bản text; ảnh in 'Biểu'), 'dẫn dầu' trong bảng Điều kiện 2 (trang 4), 'nhiều hơn từ 2 khu vực' (trang 4, ghi chú b.vi).",
+    "Mục IV.3.c chỉ liệt kê khoản kỳ 4/2027 và 4/2028 của thông báo cũ; các khoản kỳ 4/2026 (Y2 của năm 2024, Y1 của năm 2025) không được nhắc tới (trang 5).",
+    "Ưu tiên ghi nhận ở Điều kiện 2 khi thỏa cả 2 điều kiện nhưng cách tính phí không phân biệt điều kiện – hệ quả của việc ưu tiên không được nêu (trang 4)."
+  ],
+  "pages_read": [1, 2, 3, 4, 5, 6]
+}

@@ -1,0 +1,300 @@
+{
+  "doc_id": "MNL-047",
+  "reader": "A",
+  "title_verbatim": "Thông báo BIỂU PHÍ DỊCH VỤ DÀNH CHO QUẢN LÝ ĐẠI LÝ (UM+) — Số tham chiếu: 0047M01/2026/ASBD; Ngày gửi: 28/01/2026",
+  "effective": "\"được áp dụng kể từ ngày 01/01/2026 (“Ngày hiệu lực”) và thay thế Biểu Phí Dịch Vụ dành cho Quản Lý Đại Lý theo thông báo số 0002M04/2024/ASBD, ngoại trừ quy định khác đi trong thông báo này\" — trang 1",
+  "roles": [
+    {"title_verbatim": "Quản Lý Đại lý", "abbr": "UM+", "page": 1, "how_obtained": "văn bản không nêu (chức danh theo Thông báo “Hệ thống chức danh & chức vụ Kênh Đại Lý” số 0013M04/2024/ASBD, trang 6)"},
+    {"title_verbatim": "Quản Lý Đại Lý MBA Pro", "abbr": "MBA Pro", "page": 2, "how_obtained": "UM+ đạt Danh hiệu MBA Pro năm hiện tại / năm tiếp theo / chuyển đổi (theo thông báo số 0050M01/2026/ASBD)"},
+    {"title_verbatim": "Trưởng nhóm Kinh doanh", "abbr": "UM", "page": 4, "how_obtained": "Đại lý thỏa điều kiện thăng cấp và được chính thức thăng cấp; “UM mới” = thăng cấp lần đầu trong vòng 12 tháng làm việc đầu tiên"},
+    {"title_verbatim": "Quản lý Cấp cao", "abbr": "PSM+", "page": 6, "how_obtained": "văn bản không nêu"},
+    {"title_verbatim": "Chủ Hộ Kinh Doanh", "abbr": "HKD", "page": 6, "how_obtained": "có Hợp Đồng Dịch Vụ Quản Lý Đại Lý Bảo Hiểm dành cho Hộ Kinh Doanh (HĐDV HKD) ký kết với Công Ty"},
+    {"title_verbatim": "Đại Lý phục vụ", "abbr": "SA", "page": 1, "how_obtained": "theo quy định tại thông báo số 01M02/2024/AO (trang 8)"},
+    {"title_verbatim": "UM+ thuộc Chương trình Phát Triển Quản Lý Đại Lý", "abbr": "UM+ GTF", "page": 5, "how_obtained": "theo thông báo số 0004M04/ASBD/2024"}
+  ],
+  "rules": [
+    {
+      "rule_no": 1,
+      "role": "UM+",
+      "item": "Phí dịch vụ theo năng suất nhóm hàng tháng (A.I)",
+      "base": "% x FYC trong tháng của cấp báo cáo trực tiếp (cấp 1) và gián tiếp (cấp 2, 3, 4); kỳ tháng",
+      "conditions": [
+        "Bậc xác định theo “Điều kiện tổng FYC trong tháng hiện tại của cấp báo cáo trực tiếp (cấp 1) (triệu đồng)”",
+        "FYC của Cấp 1 = tổng FYC của cấp báo cáo trực tiếp (bao gồm FYC của Đại Lý/UM+ đã nghỉ việc và Đại Lý phục vụ (“SA”)), nhưng không bao gồm FYC của bản thân UM+ đó",
+        "FYC của những Đại lý/UM+ báo cáo dưới cấp 4 sẽ không được tính",
+        "Không tính các chỉ số kinh doanh (FYC/ CC/ FYP/ APE…) của sản phẩm Điểm Tựa Hưu Trí (B.5)"
+      ],
+      "table": [
+        ["Cấp báo cáo", "Điều kiện tổng FYC trong tháng hiện tại của cấp báo cáo trực tiếp (cấp 1) (triệu đồng)", "Tỷ lệ (% x FYC trong tháng của tất cả cấp báo cáo trực tiếp)"],
+        ["Cấp 1", "≥ 48", "20%"],
+        ["Cấp 1", "≥ 24 và < 48", "16%"],
+        ["Cấp 1", "≥ 7 và < 24", "14%"],
+        ["Cấp 1", "< 7", "10%"],
+        ["Cấp 2, 3, 4", "Bằng ½ tỷ lệ của cấp liền trên", "Bằng ½ tỷ lệ của cấp liền trên"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "văn bản không nêu (hàng tháng)",
+      "clawback_or_forfeit": "Theo B.9 (thu hồi khi HĐBH bị hủy bỏ/từ chối/mất hiệu lực) và B.10",
+      "page": "1",
+      "quote": "Cấp 1: ≥ 48 → 20%; ≥ 24 và < 48 → 16%; ≥ 7 và < 24 → 14%; < 7 → 10%. Cấp 2, 3, 4: Bằng ½ tỷ lệ của cấp liền trên",
+      "uncertain": false,
+      "note": "Ô 'Bằng ½ tỷ lệ của cấp liền trên' gộp 2 cột trong ảnh. Văn bản không nói rõ cấp 2-4 có tính trên FYC từng cấp đó với tỷ lệ bằng ½ tỷ lệ cấp 1 đạt được (bậc theo FYC cấp 1) hay không. Tiêu đề cột 3 ghi '% x FYC ... cấp báo cáo trực tiếp' trong khi mô tả nói áp dụng cả trực tiếp và gián tiếp. Có thể bị điều kiện bắt buộc điểm danh/“Đội ngũ chuyên cần” (A.II.4) chi phối — văn bản đặt điều kiện đó trong mục A.II nên không rõ phạm vi."
+    },
+    {
+      "rule_no": 2,
+      "role": "UM+ (Quản Lý Đại Lý MBA Pro / Quản Lý Đại Lý khác)",
+      "item": "Phí dịch vụ theo hoạt động nhóm hàng tháng (A.II)",
+      "base": "[% Tỷ lệ Phí dịch vụ theo hoạt động nhóm] x [Tổng “Thưởng năng suất tháng” và “Thưởng năng suất quý” của các Đại Lý/UM+ cấp báo cáo trực tiếp được nhận trong tháng] x [Hệ số nhân TLDTHD]; kỳ tháng",
+      "conditions": [
+        "Tỷ lệ xác định theo Tổng số lượng Đại Lý/UM+ cấp báo cáo trực tiếp có sản xuất trong tháng",
+        "Đại Lý/UM+ có sản xuất: cấp báo cáo trực tiếp (bao gồm SA) có sản xuất tối thiểu 4 triệu FYC và ít nhất 1 hợp đồng thực cấp (CC ≥ 1) trong tháng; và có Hợp đồng Đại Lý Bảo hiểm còn hiệu lực tại thời điểm tính toán",
+        "Quản Lý Đại Lý MBA Pro: Danh hiệu MBA Pro năm hiện tại (theo kết quả năm trước liền kề); hoặc năm tiếp theo (theo kết quả tính tới tháng trước liền kề tháng tính phí dịch vụ); hoặc Danh hiệu MBA Pro chuyển đổi (nếu có) còn hiệu lực tại tháng tính phí dịch vụ",
+        "“Thưởng năng suất tháng” và “Thưởng năng suất quý” tính theo mục B.III và B.V Thông báo số 0046M01/2026/ASBD",
+        "Điều kiện bắt buộc: kỳ phí dịch vụ tháng 01/2026: UM+ phải có tỷ lệ điểm danh ≥ 80% (xem quy tắc 4)",
+        "Từ tháng 02/2026 trở đi: UM+ phải tham gia hoạt động “Đội ngũ chuyên cần” tối thiểu 04 buổi/tháng (xem quy tắc 4)"
+      ],
+      "table": [
+        ["Yêu cầu Tổng số lượng Đại Lý/UM+ cấp báo cáo trực tiếp có sản xuất trong tháng (*)", "% Tỷ lệ — Quản Lý Đại Lý MBA Pro (**)", "% Tỷ lệ — Quản Lý Đại Lý khác"],
+        ["≥ 6", "125%", "60%"],
+        ["4 – 5", "100%", "50%"],
+        ["2 – 3", "75%", "40%"],
+        ["1", "30%", "30%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "văn bản không nêu (hàng tháng)",
+      "clawback_or_forfeit": "Theo B.9, B.10",
+      "page": "1-3",
+      "quote": "≥ 6 → 125% / 60%; 4 – 5 → 100% / 50%; 2 – 3 → 75% / 40%; 1 → 30% / 30%",
+      "uncertain": false,
+      "note": "Trường hợp 0 Đại Lý có sản xuất: văn bản không nêu. Hệ số nhân TLDTHD xem quy tắc 3."
+    },
+    {
+      "rule_no": 3,
+      "role": "UM+",
+      "item": "Hệ số nhân TLDTHD (dùng cho A.II và A.III)",
+      "base": "Tỷ lệ duy trì hợp đồng năm 2 (TLDTHD) cấp báo cáo trực tiếp của UM+ tại cuối tháng tính phí dịch vụ",
+      "conditions": [
+        "a) Áp dụng trước tháng 04/2026",
+        "b) Áp dụng từ tháng 04/2026 trở đi"
+      ],
+      "table": [
+        ["TLDTHD cấp báo cáo trực tiếp", "Hệ số nhân TLDTHD (%) — trước tháng 04/2026", "Hệ số nhân TLDTHD (%) — từ tháng 04/2026 trở đi"],
+        ["(a) ≥ 75%", "115%", ""],
+        ["(a) ≥ 70% và < 75%", "110%", ""],
+        ["(a) ≥ 65% và < 70%", "105%", ""],
+        ["(a) ≥ 60% và < 65%", "100%", ""],
+        ["(a) ≥ 55% và < 60%", "90%", ""],
+        ["(a) ≥ 50% và < 55%", "75%", ""],
+        ["(a) < 50%", "TLDTHD thực đạt", ""],
+        ["(a) Chưa có TLDTHD", "100%", ""],
+        ["(b) ≥ 80%", "", "110%"],
+        ["(b) ≥ 75% và < 80%", "", "105%"],
+        ["(b) ≥ 70% và < 75%", "", "100%"],
+        ["(b) ≥ 65% và < 70%", "", "90%"],
+        ["(b) ≥ 60% và < 65%", "", "70%"],
+        ["(b) ≥ 50% và < 60%", "", "50%"],
+        ["(b) < 50%", "", "TLDTHD thực đạt/2 (chia 2)"],
+        ["(b) Chưa có TLDTHD", "", "100%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "",
+      "page": "2 (lặp lại nguyên văn ở trang 4 cho A.III)",
+      "quote": "Hệ số nhân TLDTHD áp dụng từ tháng 04/2026 trở đi: ≥ 80% → 110% ... ≥ 50% và < 60% → 50%; < 50% → TLDTHD thực đạt/2 (chia 2)",
+      "uncertain": false,
+      "note": "Hai bảng (a) và (b) ở trang 2 và trang 4 giống hệt nhau. Bảng (a) có 6 bậc ≥50%, bảng (b) gộp ≥ 50% và < 60%. TLDTHD theo công thức thông báo số 0016M03/2024/ASBD."
+    },
+    {
+      "rule_no": 4,
+      "role": "UM+",
+      "item": "Điều kiện bắt buộc để được nhận phí dịch vụ (A.II.4 Lưu ý)",
+      "base": "Tỷ lệ điểm danh / số buổi “Đội ngũ chuyên cần” trong tháng",
+      "conditions": [
+        "a) Kỳ phí dịch vụ tháng 01/2026: UM+ phải có tỷ lệ điểm danh ≥ 80%",
+        "b) Kỳ phí dịch vụ từ tháng 02/2026 trở đi: UM+ phải tham gia hoạt động “Đội ngũ chuyên cần” tối thiểu 04 buổi/tháng",
+        "UM+ tham gia các hoạt động theo hướng dẫn của PSM+ và thực hiện quét mã QR xác nhận tham gia qua ứng dụng M-PA",
+        "UM+ chỉ được tính tối đa 1 buổi/ 1 ngày",
+        "Dữ liệu xác nhận chốt đến 22h00 ngày liền kề trước ngày cuối tháng"
+      ],
+      "table": [],
+      "rate_or_amount": "",
+      "payment_timing": "Chốt dữ liệu 22h00 ngày liền kề trước ngày cuối tháng",
+      "clawback_or_forfeit": "Không đạt điều kiện bắt buộc thì không được nhận phí dịch vụ",
+      "page": "3",
+      "quote": "Đối với kỳ phí dịch vụ tháng 01/2026: UM+ phải có tỷ lệ điểm danh ≥ 80% ... tối thiểu 04 buổi/tháng",
+      "uncertain": false,
+      "note": "Đánh số 4) nằm trong mục A.II nên không rõ điều kiện áp dụng riêng cho A.II hay cho mọi khoản phí dịch vụ (cụm từ 'để được nhận phí dịch vụ' chung chung). Ví dụ ở trang 3: PDV tháng 02/2026 chốt 22h00 ngày 27/02/2026; tháng 03/2026 chốt 22h00 ngày 30/03/2026. Tỷ lệ điểm danh: công thức theo quy định Công Ty tại từng thời điểm (trang 8)."
+    },
+    {
+      "rule_no": 5,
+      "role": "UM+ (Quản Lý Đại Lý MBA Pro / Quản Lý Đại Lý khác)",
+      "item": "Phí dịch vụ phát triển Đại Lý mới Manulife Pro (A.III)",
+      "base": "[% Tỷ lệ Phí dịch vụ phát triển Đại lý mới Manulife Pro] x [Tổng “Thưởng Đại Lý mới” và “Thưởng Đại Lý mới xuất sắc” của các Đại Lý/UM+ cấp báo cáo trực tiếp được nhận/thu hồi trong tháng] x [Hệ số nhân TLDTHD]; kỳ tháng",
+      "conditions": [
+        "Quản Lý Đại Lý MBA Pro: Danh hiệu MBA Pro năm hiện tại / năm tiếp theo (tới tháng trước liền kề tháng tính phí dịch vụ) / chuyển đổi (nếu có) còn hiệu lực tại tháng tính phí dịch vụ",
+        "Tỷ lệ 100% cho MBA Pro chỉ áp dụng trên kết quả sản xuất từ 01/01/2026 của các Đại Lý/UM+ thuộc cấp báo cáo trực tiếp có mã số đại lý được cấp từ 01/11/2025 trở đi",
+        "“Thưởng Đại Lý mới” và “Thưởng Đại Lý mới xuất sắc” tính theo mục B.I và B.II thông báo số 0046M01/2026/ASBD",
+        "Thưởng Đại lý mới của tháng làm việc đầy đủ đầu tiên (M0+M1): dựa trên cấu trúc Đại Lý cuối tháng M1",
+        "Thưởng Đại lý mới của tháng làm việc thứ 2 (Tháng M2) và Thưởng Đại lý mới xuất sắc: dựa trên cấu trúc Đại Lý cuối tháng M2",
+        "Hệ số nhân TLDTHD: như quy tắc 3"
+      ],
+      "table": [
+        ["% Tỷ lệ — Quản Lý Đại Lý MBA Pro (a)", "% Tỷ lệ — Quản Lý Đại Lý khác"],
+        ["100%", "50%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "văn bản không nêu (hàng tháng)",
+      "clawback_or_forfeit": "Cơ sở tính gồm thưởng được nhận/thu hồi trong tháng (thu hồi thưởng của đại lý cấp dưới làm giảm phí dịch vụ); B.9, B.10",
+      "page": "3-4",
+      "quote": "% Tỷ lệ Phí dịch vụ phát triển Đại lý mới Manulife Pro: Quản Lý Đại Lý MBA Pro 100%; Quản Lý Đại Lý khác 50%",
+      "uncertain": false,
+      "note": "Văn bản không nói MBA Pro có đại lý cấp mã trước 01/11/2025 thì áp dụng tỷ lệ nào (có thể 50%) — văn bản không nêu."
+    },
+    {
+      "rule_no": 6,
+      "role": "UM+ Quản Lý trực tiếp",
+      "item": "Phí dịch vụ phát triển nhóm mới (A.IV)",
+      "base": "210% x Phí dịch vụ theo năng suất nhóm hàng tháng (mục A.I) trên cấp báo cáo trực tiếp của người UM mới; trong vòng 12 tháng tính từ tháng UM mới được thăng cấp UM lần đầu tiên",
+      "conditions": [
+        "Đại lý báo cáo trực tiếp thỏa điều kiện thăng cấp và được chính thức thăng cấp lên Trưởng nhóm Kinh doanh (“UM”) lần đầu trong vòng 12 tháng làm việc đầu tiên",
+        "Chỉ chi trả cho UM+ Quản Lý trực tiếp, không được mở rộng đến cấp gián tiếp 2,3,4",
+        "Không tính trên các UM+ thuộc Chương trình Phát Triển Quản Lý Đại Lý (“UM+ GTF”) theo thông báo số 0004M04/ASBD/2024"
+      ],
+      "table": [],
+      "rate_or_amount": "210% x Phí dịch vụ theo năng suất nhóm hàng tháng; tối đa 30 triệu đồng/tháng trên mỗi UM mới",
+      "payment_timing": "a) 50% thanh toán ngay vào kỳ thanh toán gần nhất. b) 50% giữ lại và ghi nhận cho UM+ Quản Lý trực tiếp tại tháng phát sinh; vào tháng thứ 7(*): 40% khoản phí dịch vụ đã giữ lại trong 6 tháng đầu tiên; vào tháng thứ 15(*): tất cả phí dịch vụ đang giữ lại. (*) Số tháng tính từ tháng thăng cấp lên chức danh UM của UM mới",
+      "clawback_or_forfeit": "Phần giữ lại chỉ trả nếu người UM mới vẫn còn làm việc và giữ chức danh UM+ tại thời điểm thanh toán, và UM+ Quản Lý trực tiếp vẫn còn giữ chức danh UM+ tại thời điểm thanh toán",
+      "page": "4-5",
+      "quote": "210% x Phí dịch vụ theo năng suất nhóm hàng tháng ... (Mức phí dịch vụ tối đa là 30 triệu đồng/tháng trên mỗi UM mới ...)",
+      "uncertain": false,
+      "note": "Không rõ trần 30 triệu áp dụng trước hay sau khi chia 50/50 (văn bản viết trần cho 'Mức phí dịch vụ' rồi mới chia). 'Phí dịch vụ theo năng suất nhóm hàng tháng trên cấp báo cáo trực tiếp' — không rõ có tính cả cấp 2-4 của UM mới hay chỉ cấp 1."
+    },
+    {
+      "rule_no": 7,
+      "role": "UM+ đạt danh hiệu MBA Pro năm tiếp theo dựa trên kết quả Năm Y0",
+      "item": "Phí dịch vụ hợp tác dài hạn — cách tính (A.V.1)",
+      "base": "[% Tỷ lệ Phí dịch vụ hợp tác dài hạn] x [Tổng “Phí dịch vụ theo hoạt động nhóm hàng tháng ở mục A.II” & “Phí dịch vụ phát triển Đại Lý mới Manulife Pro ở mục A.III” tích lũy trong Năm Y0]; kỳ năm",
+      "conditions": [
+        "Danh hiệu MBA Pro: UM+ đạt danh hiệu MBA Pro năm tiếp theo dựa trên kết quả hoàn thành dịch vụ quản lý đại lý của Năm Y0 (mục A. thông báo số 0050M01/2026/ASBD)",
+        "Chỉ tích lũy các tháng trong Năm Y0 thỏa đồng thời: i) Số lượng Đại Lý/UM+ cấp báo cáo trực tiếp có sản xuất ít nhất 1CC và 4 triệu FYC trong tháng ≥ 2; và ii) Tổng A.II & A.III mà UM+ thực nhận trong tháng >0"
+      ],
+      "table": [
+        ["Danh hiệu MBA Pro (*)", "% Tỷ lệ Phí dịch vụ hợp tác dài hạn"],
+        ["MBA Pro Bạch Kim", "125%"],
+        ["MBA Pro Vàng", "100%"],
+        ["MBA Pro Bạc", "80%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Chi trả trong 3 năm tiếp theo theo A.V.2 (xem quy tắc 9)",
+      "clawback_or_forfeit": "xem quy tắc 9",
+      "page": "5",
+      "quote": "MBA Pro Bạch Kim 125%; MBA Pro Vàng 100%; MBA Pro Bạc 80%",
+      "uncertain": false,
+      "note": "UM+ không đạt danh hiệu MBA Pro: văn bản không nêu tỷ lệ (ngầm hiểu không có)."
+    },
+    {
+      "rule_no": 8,
+      "role": "UM+ có danh hiệu MBA Pro chuyển đổi (theo mục B. thông báo số 0050M01/2026/ASBD)",
+      "item": "Điều chỉnh Phí dịch vụ hợp tác dài hạn năm 2026 (A.V.1.c)",
+      "base": "Phí dịch vụ hợp tác dài hạn năm 2026",
+      "conditions": ["UM+ có danh hiệu MBA Pro chuyển đổi"],
+      "table": [],
+      "rate_or_amount": "Khoản cao hơn giữa Phí dịch vụ hợp tác dài hạn theo mục A.V.1 thông báo này và Phí dịch vụ hợp tác dài hạn theo mục A.V thông báo 0002M04/2024/ASBD",
+      "payment_timing": "như quy tắc 9",
+      "clawback_or_forfeit": "",
+      "page": "5",
+      "quote": "sẽ là khoản thưởng cao hơn giữa khoản Phí dịch vụ hợp tác dài hạn theo mục A.V.1 trong thông báo này và Phí dịch vụ hợp tác dài hạn theo mục A.V trong thông báo 0002M04/2024/ASBD",
+      "uncertain": false,
+      "note": "Văn bản dùng chữ 'khoản thưởng' cho một khoản phí dịch vụ."
+    },
+    {
+      "rule_no": 9,
+      "role": "UM+",
+      "item": "Phí dịch vụ hợp tác dài hạn — điều kiện và thời điểm chi trả (A.V.2)",
+      "base": "Khoản Phí dịch vụ hợp tác dài hạn tích lũy được của Năm Y0",
+      "conditions": [
+        "Yêu cầu TLDTHD cấp báo cáo trực tiếp ≥ 70% mỗi năm chi trả",
+        "TLDTHD cấp báo cáo trực tiếp được xác định tại cuối tháng 12 của năm liền trước năm chi trả",
+        "Chưa có TLDTHD cấp báo cáo trực tiếp tại thời điểm xét: được miễn xét điều kiện này",
+        "Nếu UM+ giữ chức danh PSM+ hoặc là Chủ HKD có HĐDV HKD còn hiệu lực: xét TLDTHD của toàn khu vực/ vùng/ hệ thống của PSM+ hoặc HKD",
+        "Tại thời điểm chi trả, UM+ phải có HĐDV QLĐL hoặc đã chuyển ký HĐDV QLCC hoặc HĐDV HKD ký kết với Công Ty đang còn hiệu lực",
+        "Cũng áp dụng cho: khoản chi trả năm Y3 (kỳ thu nhập tháng 4/2027) của phí dịch vụ hợp tác dài hạn dựa trên kết quả năm 2024, và khoản chi trả năm Y2 (kỳ thu nhập tháng 4/2027) và năm Y3 (kỳ thu nhập tháng 4/2028) dựa trên kết quả năm 2025 theo thông báo số 0002M04/2024/ASBD"
+      ],
+      "table": [
+        ["Năm chi trả", "Tỷ lệ chi trả", "Yêu cầu về TLDTHD cấp báo cáo trực tiếp (*)"],
+        ["Năm Y1", "30%", "≥ 70%"],
+        ["Năm Y2", "30%", "≥ 70%"],
+        ["Năm Y3", "40%", "≥ 70%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Vào kỳ thanh toán của phí dịch vụ tháng 4 trong 3 năm tiếp theo sau Năm Y0",
+      "clawback_or_forfeit": "Không đạt TLDTHD ≥ 70% hoặc không còn hợp đồng hiệu lực thì không được chi trả phần năm đó (văn bản không nói phần không chi có được dồn sang năm sau hay không). Theo B.8: sau khi chuyển sang PSM+ (HĐDV QLCC) hoặc HKD (HĐDV HKD) vẫn tiếp tục chi trả nếu hợp đồng mới còn hiệu lực tại ngày thanh toán",
+      "page": "5-7",
+      "quote": "Năm Y1 30% ≥ 70%; Năm Y2 30% ≥ 70%; Năm Y3 40% ≥ 70%",
+      "uncertain": false,
+      "note": "Kỳ trả 'kỳ thanh toán của phí dịch vụ tháng 4'. B.8 (trang 7): với PSM+ khoản này là thu nhập trước thuế, Công Ty khấu trừ thuế TNCN; với HKD phải cung cấp hóa đơn/chứng từ và tự chịu thuế."
+    },
+    {
+      "rule_no": 10,
+      "role": "UM+",
+      "item": "Thu hồi, khấu trừ phí dịch vụ (B.9, B.10)",
+      "base": "Các khoản phí dịch vụ đã chi trả",
+      "conditions": [
+        "HĐBH bị hủy bỏ/từ chối toàn bộ/một phần mà Công Ty phải hoàn phí: thu hồi, khấu trừ phí dịch vụ và số lượng hợp đồng tương ứng",
+        "Khách hàng từ chối tham gia HĐBH hoặc Công Ty hủy bỏ toàn bộ/ một phần HĐBH: thu hồi, khấu trừ tương ứng",
+        "Kỳ đóng phí tháng: 100% hoa hồng bị thu hồi khi HĐBH mất hiệu lực/bị hủy khi phí kỳ đóng phí tháng lần thứ sáu chưa được thanh toán",
+        "Kỳ đóng phí quý: 100% hoa hồng bị thu hồi khi phí kỳ đóng phí quý lần thứ hai chưa được thanh toán",
+        "Kỳ đóng phí nửa năm: 100% hoa hồng bị thu hồi khi phí kỳ đóng phí nửa năm lần thứ hai chưa được thanh toán",
+        "Công Ty có quyền thu hồi nếu phát hiện UM+ vi phạm chính sách làm ảnh hưởng kết quả, kể cả sau khi HĐDV QLĐL hoặc Hợp Đồng Đại Lý đã chấm dứt"
+      ],
+      "table": [],
+      "rate_or_amount": "100% (các trường hợp mất hiệu lực/hủy ngang)",
+      "payment_timing": "Cấn trừ vào các khoản chi trả UM+ được nhận và/hoặc phương thức hợp lệ khác do Công Ty quyết định; khoản bị thu hồi cấn trừ vào thu nhập chịu thuế của năm thu hồi (B.7)",
+      "clawback_or_forfeit": "như trên",
+      "page": "6-7",
+      "quote": "100% hoa hồng cho các Hợp Đồng Bảo Hiểm có phí bảo hiểm đóng theo kỳ đóng phí tháng sẽ bị thu hồi ... kỳ đóng phí tháng lần thứ sáu chưa được thanh toán",
+      "uncertain": false,
+      "note": "B.9c nói '100% hoa hồng' trong khi văn bản là Biểu phí dịch vụ của UM+ — không rõ áp dụng cho phí dịch vụ của UM+ như thế nào. Không nêu với kỳ đóng phí năm."
+    },
+    {
+      "rule_no": 11,
+      "role": "UM+",
+      "item": "Quy định chung về điều kiện nhận và thuế (B.1, B.5, B.6, B.7)",
+      "base": "Mọi khoản phí dịch vụ trong Biểu Phí Dịch Vụ",
+      "conditions": [
+        "UM+ cần hoàn thành Yêu cầu về hoạt động dịch vụ; chi tiết phương thức và thời điểm áp dụng sẽ quy định trong thông báo sau",
+        "KHÔNG TÍNH các chỉ số kinh doanh (FYC/ CC/ FYP/ APE…) của sản phẩm Điểm Tựa Hưu Trí",
+        "Chỉ thanh toán cho cá nhân có HĐDV QLĐL và Hợp Đồng Đại Lý Bảo Hiểm còn hiệu lực tại ngày Công Ty tính toán, ngoại trừ quy định khác"
+      ],
+      "table": [],
+      "rate_or_amount": "",
+      "payment_timing": "Thu nhập trước thuế; Công Ty tạm khấu trừ thuế TNCN trước khi chi trả",
+      "clawback_or_forfeit": "Mất quyền nếu HĐDV QLĐL/Hợp Đồng Đại Lý không còn hiệu lực tại ngày tính toán (trừ ngoại lệ A.V/B.8)",
+      "page": "6",
+      "quote": "Biểu Phí Dịch Vụ này KHÔNG TÍNH các chỉ số kinh doanh (FYC/ CC/ FYP/ APE…) của sản phẩm Điểm Tựa Hưu Trí",
+      "uncertain": false,
+      "note": "B.1 'Yêu cầu về hoạt động dịch vụ' chưa được định nghĩa — sẽ quy định trong thông báo sau."
+    }
+  ],
+  "definitions": [
+    {"term": "FYC (Hoa hồng thực thu năm thứ nhất)", "definition_verbatim": "là hoa hồng năm thứ nhất của các Hợp Đồng Bảo Hiểm do Công Ty phát hành trong một giai đoạn sản xuất trừ đi khoản hoa hồng năm đầu tiên phải khấu trừ đối với Hợp Đồng Bảo Hiểm bị hủy bỏ, Hợp Đồng Bảo Hiểm bị từ chối và các khoản hoa hồng bị khấu trừ theo các quy định hiện hành khác của Công Ty.", "page": 7},
+    {"term": "Hợp đồng thực cấp (CC)", "definition_verbatim": "là số lượng Hợp Đồng Bảo Hiểm do Công Ty phát hành trong một giai đoạn sản xuất trừ đi số lượng Hợp Đồng Bảo Hiểm bị hủy bỏ và Hợp Đồng Bảo Hiểm bị từ chối trong giai đoạn đó.", "page": 8},
+    {"term": "Hợp đồng bị hủy bỏ", "definition_verbatim": "là Hợp Đồng Bảo Hiểm được phát hành nhưng sau đó bị bên mua bảo hiểm hủy bỏ trong thời gian 21 ngày tự do xem xét.", "page": 8},
+    {"term": "Hợp đồng bị từ chối", "definition_verbatim": "là Hợp Đồng Bảo Hiểm đã phát hành nhưng sau đó bị vô hiệu, hoặc bị hủy bỏ một phần hoặc toàn bộ theo các quy định pháp luật hoặc theo điều khoản của Hợp Đồng Bảo Hiểm.", "page": 8},
+    {"term": "TLDTHD (Tỷ lệ duy trì hợp đồng năm 2)", "definition_verbatim": "là tỷ lệ duy trì hợp đồng năm 2 với công thức, phương pháp tính được áp dụng theo thông báo số 0016M03/2024/ASBD ban hành ngày 12/03/2024 và/hoặc các thông báo bổ sung, thay thế được ban hành sau này (nếu có) tại từng thời điểm.", "page": 8},
+    {"term": "SA", "definition_verbatim": "là Đại lý phục vụ theo quy định tại thông báo số 01M02/2024/AO hoặc các thông báo thay thế được ban hành sau này (nếu có) tại từng thời điểm.", "page": 8},
+    {"term": "Tỷ lệ điểm danh", "definition_verbatim": "công thức, phương pháp tính Tỷ Lệ điểm danh được áp dụng theo quy định của Công Ty tại từng thời điểm.", "page": 8},
+    {"term": "Tổng số lượng Đại Lý/UM+ cấp báo cáo trực tiếp có sản xuất", "definition_verbatim": "tổng số lượng Đại Lý/UM+ cấp báo cáo trực tiếp (bao gồm SA) có sản xuất tối thiểu 4 triệu FYC và ít nhất 1 hợp đồng thực cấp (CC ≥ 1) trong tháng; và có Hợp đồng Đại Lý Bảo hiểm còn hiệu lực tại thời điểm tính toán.", "page": 2},
+    {"term": "UM mới", "definition_verbatim": "Đại lý báo cáo trực tiếp thỏa điều kiện thăng cấp và được chính thức thăng cấp lên Trưởng nhóm Kinh doanh (“UM”) lần đầu trong vòng 12 tháng làm việc đầu tiên (sau đây gọi tắt là “UM mới”)", "page": 4},
+    {"term": "Năm Y0", "definition_verbatim": "kết quả hoàn thành dịch vụ quản lý đại lý của năm hiện tại hay còn gọi là năm tính toán (“Năm Y0”)", "page": 5}
+  ],
+  "internal_inconsistencies": [
+    "Điều kiện bắt buộc điểm danh/“Đội ngũ chuyên cần” (trang 3) được đánh số 4) trong mục A.II nhưng viết là điều kiện 'để được nhận phí dịch vụ' nói chung — phạm vi áp dụng (chỉ A.II hay mọi khoản A.I–A.V) không rõ.",
+    "Mục A.I (trang 1): mô tả 'UM+ sẽ nhận % x FYC của cấp báo cáo trực tiếp và gián tiếp' nhưng tiêu đề cột tỷ lệ ghi '% x FYC trong tháng của tất cả cấp báo cáo trực tiếp'.",
+    "Mục A.V.1.c.ii (trang 5) gọi Phí dịch vụ hợp tác dài hạn là 'khoản thưởng'.",
+    "Mục B.9.c (trang 7) quy định thu hồi '100% hoa hồng' trong Biểu phí dịch vụ của UM+ (không phải hoa hồng) — thuật ngữ không khớp.",
+    "Số thông báo GTF viết '0004M04/ASBD/2024' (trang 5), khác định dạng các số thông báo khác (vd 0002M04/2024/ASBD).",
+    "Mục A.IV (trang 4): trần 30 triệu đồng/tháng nêu trước cơ chế chia 50% trả ngay/50% giữ lại — không rõ trần áp dụng cho tổng hay cho phần trả ngay."
+  ],
+  "pages_read": [1, 2, 3, 4, 5, 6, 7, 8]
+}
