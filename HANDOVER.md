@@ -4,6 +4,11 @@
 
 ## Trạng thái hiện hành
 
+**2026-11-27 (tối) — Đóng 2 P2 của Codex trên `2543e02` (commit local, không push).**
+- P2 #1: thêm `TestAiaStarRecruitBoundaries` — ranh giới người mới 3 sao (≥1 mọi quý) và 4–5 sao (≥1 Q1, ≥2 từ Q2) [AIAVAD 2601-034 : 4-5]. Thử đột biến: đổi 3 sao thành ≥2 → 3 test đỏ; bỏ yêu cầu 2 người từ Q2 → 2 test đỏ.
+- P2 #2: `calc_manulife_agent_12m` không còn cộng M-Star năm vào `cash_paid_y1` (trả tháng 2 năm sau [0046M01_2026 : 8]); thêm `paid_next_years`. Test tái lập ca M-Star năm 20tr; đột biến bị bắt. Không đổi số nào đang trình bày (snapshot khác 0 dòng ngoài mốc thời gian).
+- run_checks PASS; pytest 96 passed. Excel không bị ảnh hưởng (sheet 15 dùng thưởng, không dùng tiền thực trả) — chưa chạy lại COM.
+
 **2026-11-27 (tối) — Kiến trúc tách lớp Supabase (khung, chưa nối project thật, chưa commit).**
 - Data contract `supabase/schema.sql`: 4 bảng (`benchmark_results`, `role_benefit_matrix`, `glossary_terms`, `pdf_bookmarks`), RLS chỉ SELECT; dòng dựa trên 0046M01/0047M01 = `restricted`, chỉ user trong allowlist `w24_readers` đọc được (DEC-14). `region` hiện chỉ `ALL` — V1–V3 chưa có tham số (UNKNOWN).
 - `scripts/sync_to_supabase.py`: dựng payload từ cùng hàm của báo cáo 00/01 (15 + 84 + 64 + 131 dòng, 54 restricted); `--dry-run` ghi `web/data/snapshot.json`; upsert qua REST (urllib, không thêm gói), `--prune` xóa dòng cũ; khóa đọc từ `.env` (gitignore).

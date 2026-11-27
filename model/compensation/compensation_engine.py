@@ -1388,8 +1388,12 @@ def calc_manulife_agent_12m(
         if cc_y >= need_cc and fyp_y >= need_fyp and k2_ok_70:
             kdxs = min(100.0, 0.10 * fyc_y) * clkd_factor
 
-    cash_bonus = sum(monthly_bonus) + sum(excellence) + sum(quarterly) + sum(mstar_q) + mstar_y + sum(kkpt)
-    total = fyc_y + sum(ryc) + cash_bonus + kdxs
+    earned_bonus = sum(monthly_bonus) + sum(excellence) + sum(quarterly) + sum(mstar_q) + mstar_y + sum(kkpt)
+    total = fyc_y + sum(ryc) + earned_bonus + kdxs
+    # Tiền thực trả năm hiện tại: KHÔNG gồm M-Star năm (trả kỳ thu nhập tháng 2 năm sau [0046M01_2026 : 8])
+    # và KDXS năm (trả 50/30/20% trong 3 năm sau [0046M01_2026 : 7]).
+    deferred_next_years = mstar_y + kdxs
+    cash_bonus = earned_bonus
     return {
         "fyc_total": round(fyc_y, 4),
         "ryc_total": round(sum(ryc), 4),
@@ -1402,7 +1406,8 @@ def calc_manulife_agent_12m(
         "bonus_annual_kdxs_deferred_50_30_20": round(kdxs, 4),
         "total_bonuses_earned": round(cash_bonus + kdxs, 4),
         "total_earned": round(total, 4),
-        "cash_paid_y1": round(total - kdxs, 4),
+        "cash_paid_y1": round(total - deferred_next_years, 4),
+        "paid_next_years": round(deferred_next_years, 4),
         "monthly_bonus_by_month": [round(x, 6) for x in monthly_bonus],
         "quarterly_bonus_by_quarter": [round(x, 6) for x in quarterly],
     }

@@ -148,3 +148,50 @@ class TestAiaCqlIndirectLevels(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestAiaStarRecruitBoundaries(unittest.TestCase):
+    """Codex P2 (2543e02): ranh giới người mới cho danh hiệu CQL Ngoại hạng quý [AIAVAD 2601-034 : 4-5].
+
+    3 sao: >=1 người mới mọi quý. 4–5 sao: >=1 ở Q1/2026, >=2 từ Q2/2026. Tỷ lệ 5/8/15% FYC quý nhóm trực tiếp.
+    Không đạt bậc cao vì thiếu người mới thì rơi xuống bậc thấp hơn nếu đủ điều kiện bậc đó.
+    """
+
+    def q(self, fyc_month: float, active_month: int, recruits):
+        r = calc_aia_cql_12m([fyc_month] * 12, [active_month] * 12, fy_pct=85.0, tot_pct=85.0, quarterly_new_recruits=recruits)
+        return r["premier_quarterly"]
+
+    def test_three_star_needs_one_new_agent_every_quarter(self) -> None:
+        # FYC quý 60 (>=50), lượt hoạt động 6 (>=6) -> 3 sao 5% = 3.0 mỗi quý
+        self.assertAlmostEqual(self.q(20.0, 2, [1, 1, 1, 1]), 3.0 * 4, places=6)
+        self.assertAlmostEqual(self.q(20.0, 2, [0, 0, 0, 0]), 0.0, places=6)
+        self.assertAlmostEqual(self.q(20.0, 2, [1, 0, 1, 0]), 3.0 * 2, places=6)
+
+    def test_four_star_needs_one_in_q1_two_from_q2(self) -> None:
+        # FYC quý 90 (>=80), lượt 9 (>=9): Q1 với 1 người -> 4 sao 8% = 7.2; Q2–Q4 với 1 người -> rơi xuống 3 sao 5% = 4.5
+        self.assertAlmostEqual(self.q(30.0, 3, [1, 1, 1, 1]), 7.2 + 4.5 * 3, places=6)
+        self.assertAlmostEqual(self.q(30.0, 3, [1, 2, 2, 2]), 7.2 * 4, places=6)
+
+    def test_five_star_needs_one_in_q1_two_from_q2(self) -> None:
+        # FYC quý 180 (>=170), lượt 15 (>=14): Q1 với 1 người -> 5 sao 15% = 27; Q2–Q4 với 1 người -> 3 sao 5% = 9
+        self.assertAlmostEqual(self.q(60.0, 5, [1, 1, 1, 1]), 27.0 + 9.0 * 3, places=6)
+        self.assertAlmostEqual(self.q(60.0, 5, [1, 2, 2, 2]), 27.0 * 4, places=6)
+
+
+class TestManulifeCashTiming(unittest.TestCase):
+    """Codex P2 (2543e02): M-Star năm trả kỳ thu nhập tháng 2 năm sau [0046M01_2026 : 8] — không thuộc tiền thực trả năm hiện tại."""
+
+    def test_mstar_annual_excluded_from_cash_paid_y1(self) -> None:
+        from model.compensation.compensation_engine import calc_manulife_agent_12m
+        # FYP 200/tháng: M-Star quý 8+12+15+20 = 55; năm FYP 2.400 >= 2 tỷ -> 75 - 55 = 20 (trả tháng 2 năm sau)
+        r = calc_manulife_agent_12m([60.0] * 12, [200.0] * 12, [1] * 12, k2=85.0)
+        self.assertAlmostEqual(r["bonus_mstar_quarterly"], 55.0)
+        self.assertAlmostEqual(r["bonus_mstar_annual"], 20.0)
+        self.assertAlmostEqual(r["paid_next_years"], 20.0)
+        self.assertAlmostEqual(r["total_earned"] - r["cash_paid_y1"], 20.0, places=4)
+
+    def test_kdxs_and_mstar_both_deferred(self) -> None:
+        from model.compensation.compensation_engine import calc_manulife_agent_12m
+        r = calc_manulife_agent_12m([60.0] * 12, [200.0] * 12, [2] * 12, k2=85.0, pro_title="Vang")
+        self.assertAlmostEqual(r["paid_next_years"], r["bonus_mstar_annual"] + r["bonus_annual_kdxs_deferred_50_30_20"], places=4)
+        self.assertAlmostEqual(r["total_earned"] - r["cash_paid_y1"], r["paid_next_years"], places=4)
