@@ -183,6 +183,28 @@ body.present #tabs button[data-tab="tune"],body.present #tabs button[data-tab="r
   section.panel,#p-glossary{scroll-margin-top:165px}   /* agy: thanh dính không che nội dung khi cuộn tới */
 }
 
+/* Điện thoại: menu xổ xuống. Thanh trên cùng chỉ còn [☰ trang hiện tại ▾] [?] [📖] — không còn hàng tab cuộn ngang bị cắt chữ */
+.mbar{display:none}
+@media (max-width:980px){
+  .side{padding:8px 12px;overflow:visible}   /* để danh sách xổ xuống không bị cắt */
+  .mbar{display:flex;align-items:center;gap:8px}
+  #menuBtn{flex:1;min-width:0;display:flex;align-items:center;gap:10px;min-height:44px;padding:6px 12px;border:1px solid var(--field);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit;font-size:16px;font-weight:600;cursor:pointer;text-align:left}
+  #menuCur{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  #menuBtn .mic{color:var(--accent);font-size:18px}#menuBtn .car{color:var(--muted);transition:transform .15s}
+  .side.mopen #menuBtn .car{transform:rotate(180deg)}
+  .mico{flex:0 0 44px;height:44px;border:1px solid var(--field);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit;font-size:18px;font-weight:700;cursor:pointer}
+  #menuBtn:focus-visible,.mico:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .navl,.navl[id]{display:none}
+  .side.mopen .navl{display:flex;flex-direction:column;flex-wrap:nowrap;gap:2px;position:absolute;left:8px;right:8px;top:calc(100% + 4px);z-index:40;
+    max-height:min(72vh,560px);overflow-y:auto;padding:8px;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.35)}
+  .side.mopen .navl button{white-space:normal;min-height:44px;padding:8px 10px;border:0;border-left:3px solid transparent;border-radius:8px;text-align:left;font-size:15.5px}
+  .side.mopen .navl button[aria-current="page"]{border-left-color:var(--accent);background:var(--tint)}
+  .side.mopen .navsep{display:block;margin:6px 0 0;padding:10px 10px;border-top:1px solid var(--line);text-transform:uppercase;letter-spacing:.04em;font-size:12.5px}
+  .mscrim{position:fixed;inset:0;z-index:15;background:rgb(0 0 0 / .35)}
+  header.top .glbtn{display:none}   /* đã có ? và 📖 trên thanh trên cùng */
+  header.top{padding-block:16px 6px}
+  section.panel,#p-glossary{scroll-margin-top:72px}
+}
 .takeaway{font-size:17px;font-weight:600;line-height:1.45;margin:0 0 14px;padding:10px 14px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;max-width:100ch}
 abbr[title]{text-decoration:underline dotted;text-underline-offset:3px;cursor:help}
 abbr.gl{text-decoration:none;border-bottom:1px dotted currentColor;cursor:help}
@@ -272,6 +294,11 @@ footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1p
 <div class="app" id="app">
 <aside class="side" aria-label="Điều hướng">
   <div class="brand"><span>Chiến lược Thu nhập Đại lý 2026</span><button type="button" class="pin" id="pinBtn" aria-pressed="true" aria-label="Ghim thanh bên"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17v5M9 10.76V6h6v4.76l2.5 2.74V17h-11v-3.5z"/><path d="M8 2h8"/></svg></button></div>
+  <div class="mbar">
+    <button type="button" id="menuBtn" aria-expanded="false" aria-controls="tabs" aria-label="Mở danh sách trang"><span class="mic" aria-hidden="true">☰</span><span id="menuCur">Tổng quan điều hành</span><span class="car" aria-hidden="true">▾</span></button>
+    <button type="button" class="mico" id="mGuide" aria-label="Hướng dẫn đọc báo cáo">?</button>
+    <button type="button" class="mico" id="mGl" aria-label="Từ điển và tài liệu gốc">📖</button>
+  </div>
   <div class="side-title">Trang</div>
   <nav class="navl" id="tabs" aria-label="Các trang"></nav>
   <button type="button" class="btn" id="presentBtn" aria-pressed="false">Chế độ trình bày</button>
@@ -950,6 +977,7 @@ function showTab() {
   document.querySelectorAll("#tabs button[data-tab]").forEach(b => b.dataset.tab === state.tab ? b.setAttribute("aria-current", "page") : b.removeAttribute("aria-current"));
   /* Khối tiêu đề + đề bài + giả định chỉ hiện ở trang "Trả lời đề bài"; trang khác vào thẳng nội dung */
   $("hero").hidden = t[0] !== "answer";
+  if ($("menuCur")) $("menuCur").textContent = (t[0] === "exec" ? "★ " : t[0] === "glossary" ? "📖 " : t[3] === "ref" ? "" : TABS.indexOf(t) + " · ") + t[1];
   $("tabs").classList.toggle("refclosed", !state.refOpen && t[3] !== "ref");
   /* Chỉ hiện điều khiển mà trang thật sự dùng (đã thử từng trang: đổi phương án / K2 có làm đổi nội dung không).
      Trang 1–3, Phụ lục, Học từ đối thủ, Bằng chứng: số cố định → ẩn cả hai. Tự chỉnh thông số: chỉ dùng K2. */
@@ -1505,6 +1533,21 @@ $("guideOpen").onclick = openGuide;
 $("guideClose").onclick = () => $("guide").close ? $("guide").close() : $("guide").removeAttribute("open");
 $("guide").addEventListener("click", ev => { if (ev.target.id === "guide") $("guideClose").onclick(); });
 document.addEventListener("click", ev => { if (ev.target.closest && ev.target.closest("#guideOpen2")) openGuide(); });
+/* Menu xổ xuống trên điện thoại */
+(function mobileMenu() {
+  const side = document.querySelector(".side"), btn = $("menuBtn");
+  let scrim = null;
+  const set = open => {
+    side.classList.toggle("mopen", open); btn.setAttribute("aria-expanded", open);
+    if (open && !scrim) { scrim = document.createElement("div"); scrim.className = "mscrim"; scrim.onclick = () => set(false); document.body.append(scrim); }
+    if (!open && scrim) { scrim.remove(); scrim = null; }
+  };
+  btn.onclick = () => set(!side.classList.contains("mopen"));
+  $("tabs").addEventListener("click", ev => { if (ev.target.closest("button[data-tab]")) set(false); });   // chọn trang thì đóng; bấm nhóm Phân tích sâu thì giữ mở
+  document.addEventListener("keydown", ev => { if (ev.key === "Escape" && side.classList.contains("mopen")) { set(false); btn.focus(); } });
+  $("mGuide").onclick = () => { set(false); openGuide(); };
+  $("mGl").onclick = () => { set(false); $("glOpen").click(); };
+})();
 $("glOpen").onclick = () => {
   state.tab = "glossary"; showTab();
   if (window.matchMedia("(max-width:980px)").matches) {   // agy UX #3: cuộn tới từ điển, trừ chiều cao thanh dính
