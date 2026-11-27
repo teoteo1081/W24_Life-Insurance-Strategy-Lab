@@ -1417,7 +1417,7 @@ function execBriefHtml() {
   return `<div class="card xbrief">
     <div><span class="lb">Đề bài</span><blockquote>“${esc(DE_BAI)}”</blockquote>
       <p class="small muted" style="margin:8px 0 0">Đề bài không nêu ngân sách, chỉ tiêu hay quy mô — bài tự đặt giả định: trần tổng chi 75% FYP, khu vực 45 đại lý · 1,2 tỷ FYP/tháng, K2 85% (chuẩn) / 65% (xấu), ROI đo bằng chi phí / FYP.</p>
-      <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px"><button type="button" class="go" data-go="answer">Xem đủ giả định đang dùng</button><button type="button" class="go" id="guideOpen2">? Hướng dẫn đọc báo cáo</button></div></div>
+      <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:8px"><button type="button" class="go" data-go="answer">Xem đủ giả định đang dùng</button><button type="button" class="go" id="guideOpen2">? Hướng dẫn đọc báo cáo</button><a class="go" href="../interview/W24_Tom_Tat_2_Trang.pdf" target="_blank" rel="noopener" style="text-decoration:none">⬇ Bản tóm tắt 2 trang (PDF)</a></div></div>
     <div><span class="lb">Tài liệu nguồn · ${pdfs.length} PDF, ${fmt(pdfs.reduce((a, f) => a + f.pages, 0))} trang — bấm để mở bên phải</span>
       <div class="xdocs">${cos.map(c => `<div><h4>${c}</h4>${pdfs.filter(f => docCo(f.file_id) === c).map(item).join("")}${c === "Manulife" ? hidden : ""}</div>`).join("")}</div>
       <div style="margin-top:8px"><button type="button" class="go" data-go="glossary">Từ điển & mục lục từng PDF</button></div></div>
