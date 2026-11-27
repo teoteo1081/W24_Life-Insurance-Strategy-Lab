@@ -229,6 +229,7 @@ details.cond>summary::-webkit-details-marker{display:none}
 details.cond>summary::before{content:"▸ "}
 details.cond[open]>summary::before{content:"▾ "}
 tr.totrow td,tr.totrow th{border-bottom:2px solid var(--line)}
+details.exsum{margin:0 0 14px;padding:8px 14px;border:1px solid var(--accent);border-radius:10px;background:var(--surface)}details.exsum>summary{cursor:pointer}details.exsum[open]>summary{margin-bottom:8px}
 details.assume{margin:10px 0 0;padding:8px 16px;border:1px solid var(--line);border-radius:8px;max-width:90ch}
 details.assume>summary{cursor:pointer;font-size:14.5px}details.assume ul{margin:8px 0 4px;padding-left:20px}details.assume p{margin:4px 0}
 /* Bảng chấm điểm: ô điểm có ghi chú định tính dài — cho xuống dòng, nếu không bảng phình 2.400px và chỉ thấy cột AIA */
@@ -953,6 +954,22 @@ function matrixTable(mid, table) {
       return c ? `<td class="small" data-co="${esc(co)} · ${esc((cells.find(x => x.company === co) || {}).title || "")}">${linkifyCites(c.value_text)} ${linkifyCites(c.citation)}${lblTag(c.label)}${confTag(c)}</td>` : "<td></td>";
     }).join("")}</tr>`).join("") + "</tbody></table></div>";
 }
+/* Tóm tắt nhanh 2 góc nhìn — dữ liệu do scripts/build_exec_summary.py tổng hợp từ số engine (không tính lại); bản công khai đã lọc dòng mật */
+function execSummaryHtml() {
+  const es = DATA.exec_summary;
+  if (!es || !es.agent || !es.agent.length) return "";
+  const vtag = v => /^Thơm/.test(v) ? "good" : /^(Không|Thấp)/.test(v) ? "bad" : "";
+  return `<details class="exsum"><summary><b>Tóm tắt nhanh — 2 góc nhìn</b> <span class="muted small">(đại lý/quản lý “kèo thơm hay không?” · công ty: tổng chi & stress test) — bấm để mở</span></summary>
+  <p class="small muted">Chỉ tổng hợp số engine đã có, không tính lại. K2 85%, hoa hồng năm đầu 30% FYP, triệu đồng. Tháng = năm / 12, Quý = năm / 4 — bình quân quy đổi, đã gồm thưởng quý/năm/M-Star/MDRT nếu có. L1 = thu nhập cá nhân gồm tái tục; L2–L4 = phí quản lý thuần. Chính sách Lai: Vùng I, Full-time. “Kèo thơm?” so với mức thấp nhất của các hãng cùng tầng (≥1,2 lần = thơm).${DATA.public_build ? ' Bản công khai: Manulife tầng 1–3 đã lược (DEC-14).' : ""}</p>
+  <div class="tbl-wrap"><table class="exsum-t"><thead><tr><th>Tầng</th><th>Hãng · chức danh</th><th class="n">Tháng</th><th class="n">Quý</th><th class="n">Năm</th><th>Kèo thơm?</th><th>Nhận xét</th></tr></thead><tbody>
+  ${es.agent.map(r => `<tr class="${r.scheme === "Hybrid" ? "hl" : ""}"><td class="small">${esc(r.tier)}</td><td><b>${esc(r.name)}</b><div class="small muted">${esc(r.title)}</div></td><td class="n">${fmt(r.month, 1)}</td><td class="n">${fmt(r.quarter, 1)}</td><td class="n">${fmt(r.year, 0)}</td><td><span class="badge ${vtag(r.verdict)}">${esc(r.verdict)}</span></td><td class="small">${linkifyCites(r.comment)}</td></tr>`).join("")}
+  </tbody></table></div>
+  <h3>Góc nhìn công ty — khu vực 45 đại lý, 1,2 tỷ FYP/tháng</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>Chính sách</th><th class="n">Tổng chi / tháng</th><th class="n">/ quý</th><th class="n">/ năm</th><th class="n">Tổng chi / FYP</th><th>Đỉnh stress test</th><th class="n">Chi trả giảm khi K2 85→65%</th><th class="n">Trả chậm</th><th>Nhận xét cho Ban Giám đốc</th></tr></thead><tbody>
+  ${es.company.map(r => `<tr class="${r.scheme === "Hybrid" ? "hl" : ""}"><td><b>${esc(r.name)}</b></td><td class="n">${fmt(r.month, 1)}</td><td class="n">${fmt(r.quarter, 1)}</td><td class="n">${fmt(r.year, 0)}</td><td class="n"><b>${pct(r.cost_pct)}</b></td><td class="small">${pct(r.peak_pct)} — ${esc(r.peak_note)}</td><td class="n">${pct(r.drop_pct)}</td><td class="n">${pct(r.deferred_pct)}</td><td class="small">${esc(r.comment)}</td></tr>`).join("")}
+  </tbody></table></div>
+  <p class="note">Tổng chi / FYP là chi phí mô phỏng của quỹ thu nhập cây đại lý — không phải ROI thực tế (thiếu biên lợi nhuận VNB). Bản Markdown cùng số: <code>outputs/interview/00_Executive_Summary_Keo_Thom.md</code>.</p></details>`;
+}
 function renderT1() {
   const B = DB("benchmark_results");
   const get = (mid, co, cmp, title) => B.find(r => r.milestone_id === mid && r.company === co && r.comparison === cmp && (!title || r.title === title));
@@ -967,6 +984,7 @@ function renderT1() {
   }).join("");
   $("p-t1").innerHTML = `
   <h2>1 · Soi tiền & quyền lợi theo 4 mốc quy mô</h2>
+  ${execSummaryHtml()}
   <p class="note"><b>Mốc 1</b> = thu nhập cá nhân của đại lý (gồm hoa hồng tự bán). <b>Mốc 2–4</b> = <b>phí quản lý thuần, không gồm hoa hồng tự bán</b> — vì vậy Mốc 2 của AIA và Manulife có thể thấp hơn Mốc 1. Đơn vị: triệu đồng/tháng, K2 85%, trước thuế. Bấm vào từng mốc để mở bảng quyền lợi ngang hàng 6 dòng; mọi ô có link <b>[Mã văn bản : trang]</b>.</p>
   <div class="tbl-wrap"><table class="t1"><thead><tr><th>Mốc</th>${CO3.map(co => `<th>${esc(SNAME[co])}</th>`).join("")}</tr></thead><tbody>${rowsHtml}</tbody></table></div>
   <p class="note">Mốc 4 so sánh chính theo tuyến lãnh đạo vùng (AIA PAF · Chubb RD · Manulife PSM/SM — DEC-14). Chubb BD là chức danh đạt bằng chỉ tiêu nhưng biểu phí không có trong bộ tài liệu nguồn. Ô gắn <span class="tag AVOID">mật</span> dựa trên 0046M01/0047M01, chỉ lưu local.</p>`;
@@ -1062,7 +1080,7 @@ function renderAnswer() {
     <ul>
       <li><b>Chất lượng:</b> đại lý và quản lý bán ẩu (K2 thấp) tự mất phần lớn thưởng; trợ cấp Full-time chỉ trả khi K2 ≥80%.</li>
       <li><b>Chi phí / ROI:</b> ở K2 85%, đề xuất ${lo85 === "Hybrid" ? "có tổng chi thấp nhất" : `<b>không</b> rẻ nhất — ${esc(SNAME[lo85])} thấp hơn (${fmt(c85(lo85), 1)}%)`}; ở K2 65%, đề xuất ${lo65 === "Hybrid" ? "<b>thấp nhất</b>" : `cao hơn ${esc(SNAME[lo65])} (${fmt(c65(lo65), 1)}%)`}. So với: ${esc(names)}. Đây là chi phí mô phỏng, chưa phải ROI thật (thiếu biên lợi nhuận VNB của công ty).${v("Hybrid", "cost_pct_fyp_fyc40", 85) != null ? ` <b>Nếu bán nghiêng bảo vệ thuần</b> (hoa hồng 40%): đề xuất tốn ${fmt(v("Hybrid", "cost_pct_fyp_fyc40", 85), 1)}% FYP${minBy(all, s => v(s, "cost_pct_fyp_fyc40", 85) ?? 1e9) === "Hybrid" ? " — <b>thấp nhất</b>" : ""}, vì thưởng tính trên FYC chuẩn hóa; kịch bản xấu nhất bị trần quỹ 75% chặn lại, quỹ thưởng còn trả ${fmt(v("Hybrid", "pool_paid_share_worst_fyc40", 85), 0)}%.` : ""}</li>
-      <li><b>Doanh số:</b> <span class="badge warn">Giả thuyết</span> mô hình chưa đo được doanh số tăng thêm. Cơ chế kỳ vọng: thưởng nhập môn 6 tháng đầu với ngưỡng thấp, đường ray Full-time có trợ cấp gắn quota, thưởng đều đặn theo quý. <b>Cách đo:</b> thí điểm 3 tháng ở một vùng, so với vùng đối chứng tương đồng giữ chính sách cũ. Trong 3 tháng đo các chỉ báo sớm: FYP trên mỗi đại lý hoạt động, tỷ lệ đại lý hoạt động, số hợp đồng / đại lý, tỷ lệ hủy trong 21 ngày cân nhắc, tỷ lệ đóng phí kỳ 2. K2 (tỷ lệ duy trì năm 2) chỉ đo được sau khoảng 13 tháng — theo dõi tiếp nhóm thí điểm đến tháng 13–15 rồi mới chốt áp dụng toàn quốc.</li>
+      <li><b>Doanh số:</b> <span class="badge warn">Giả thuyết</span> mô hình chưa đo được doanh số tăng thêm. Cơ chế kỳ vọng: thưởng nhập môn 6 tháng đầu với ngưỡng thấp, đường ray Full-time có trợ cấp gắn quota, thưởng đều đặn theo quý. <b>Cách đo:</b> thí điểm 6–12 tháng ở một vùng, ghép cặp với một vùng đối chứng tương đồng (quy mô, năng suất, K2 lịch sử) giữ chính sách cũ — chuẩn ngành, tránh hiệu ứng “mới lạ” của vài tháng đầu. Đọc sớm sau 3 tháng: FYP trên mỗi đại lý hoạt động, tỷ lệ đại lý hoạt động, số hợp đồng / đại lý, tỷ lệ hủy trong 21 ngày cân nhắc, tỷ lệ đóng phí kỳ 2. K2 (tỷ lệ duy trì năm 2) chỉ đo được sau khoảng 13 tháng — theo dõi đến tháng 13–15 rồi mới chốt áp dụng toàn quốc.</li>
     </ul>${go("t2", "Trang 2 · MAPA, trade-off & ROI")}</div>
   </div>`;
   document.querySelectorAll("#p-answer [data-go]").forEach(b => b.onclick = () => { state.tab = b.dataset.go; showTab(); window.scrollTo(0, 0); });

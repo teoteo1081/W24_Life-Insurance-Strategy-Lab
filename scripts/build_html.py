@@ -286,6 +286,10 @@ def main(argv=None) -> int:
         data["public_build"] = True
         # Chữ tĩnh trong template (không phải dữ liệu): thay TRƯỚC khi nhúng dữ liệu, để bước quét vẫn bắt được rò rỉ thật.
         tpl = tpl.replace("0046M01/0047M01", '2 văn bản Manulife ghi "thông tin mật"')
+    # Tóm tắt nhanh 2 góc nhìn — cùng nguồn với outputs/interview/00_Executive_Summary_Keo_Thom.md; bản công khai dùng snapshot đã lọc
+    if snap_obj is not None:
+        import build_exec_summary as ES
+        data["exec_summary"] = ES.build(snap_obj["tables"])
     engine = (REPO / "web/engine.js").read_text(encoding="utf-8")
     payload = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     html = tpl.replace("/*__ENGINE_JS__*/", engine).replace("/*__DATA_JSON__*/null", payload)
