@@ -206,7 +206,7 @@ details.pdfdoc{margin:6px 0;padding:6px 10px;border:1px solid var(--line);border
 .ans .q .a{font-size:18px;font-weight:700;line-height:1.4;margin:0 0 10px;max-width:70ch}
 .ans .q ul{margin:0 0 10px;padding-left:20px;max-width:90ch}.ans .q li{margin:3px 0}
 .ans .q .vn{font-size:14.5px;background:var(--tint);border-radius:8px;padding:8px 12px;margin:0 0 10px;max-width:90ch}
-.ans .go{font:inherit;font-size:14px;font-weight:600;color:var(--accent);background:transparent;border:1px solid var(--accent);border-radius:999px;padding:4px 12px;cursor:pointer}
+.ans .go,#p-exec .go{font:inherit;font-size:14px;font-weight:600;color:var(--accent);background:transparent;border:1px solid var(--accent);border-radius:999px;padding:4px 12px;cursor:pointer}
 .ans .kpis{display:flex;flex-wrap:wrap;gap:10px 22px;margin:0 0 10px}.ans .kpis div{min-width:9em}.ans .kpis b{display:block;font-size:22px;font-variant-numeric:tabular-nums}.ans .kpis span{font-size:13px;color:var(--muted)}
 table.t1 tr.msrow{cursor:pointer}table.t1 tr.msrow:hover td{background:var(--tint)}table.t1 td.mx{background:var(--tint);padding:10px}
 .mshint{display:inline-block;margin-top:6px;font-size:12.5px;font-weight:600;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:1px 9px;white-space:nowrap}
@@ -246,6 +246,13 @@ details.assume>summary{cursor:pointer;font-size:14.5px}details.assume ul{margin:
 .xc svg{display:block;width:100%;height:auto;font-variant-numeric:tabular-nums}
 .xc svg .hit:hover{opacity:.82}.xleg{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:13px;color:var(--muted);margin:2px 0 4px}
 .xleg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.xbrief{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:14px 22px;margin:0 0 14px;padding:14px 16px}
+.xbrief .lb{font-size:13px;color:var(--muted);font-weight:600;display:block;margin-bottom:4px}
+.xbrief blockquote{margin:0;padding:8px 12px;border-left:3px solid var(--accent);background:var(--tint);border-radius:0 8px 8px 0;font-size:15px}
+.xdocs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 12px}.xdocs h4{margin:0 0 2px;font-size:13.5px}
+.xdocs a,.xdocs span.lock{display:block;font-size:13px;line-height:1.35;padding:3px 0;text-decoration:none}.xdocs a:hover{text-decoration:underline}
+.xdocs .pg{color:var(--muted);font-size:12px;white-space:nowrap}.xdocs span.lock{color:var(--muted)}
+@media (max-width:980px){.xbrief{grid-template-columns:1fr}}@media (max-width:520px){.xdocs{grid-template-columns:1fr}}
 .xsum{font-size:14px;margin:6px 0 0}.xnext{margin-top:14px}.xnext ol{margin:6px 0 4px;padding-left:22px}.xnext li{margin:4px 0}
 @media (max-width:980px){.xk{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.xk{grid-template-columns:1fr}}
@@ -1313,6 +1320,25 @@ function execCostChart(rows) {
   g += `<line x1="${x(CAP)}" x2="${x(CAP)}" y1="${T - 12}" y2="${T + rows.length * RH}" stroke="var(--bad)" stroke-width="2" stroke-dasharray="5 3"/><text x="${x(CAP)}" y="${T - 15}" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--bad)">Trần 75%</text>`;
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Tổng chi trên FYP của các chính sách, vạch trần 75% và đỉnh stress test">${g}</svg>`;
 }
+/* Đề bài + 9 văn bản nguồn (đọc DATA.pdfs — bản công khai tự không có 2 văn bản mật) */
+const DE_BAI = "Phân tích các chính sách thu nhập giữa các công ty, và đề xuất chính sách phù hợp tại thị trường VN, nhằm thúc đẩy gia tăng doanh số, chất lượng kinh doanh và hiệu quả về mặt chi phí (ROI).";
+const DOC_SHORT = {"AIAVAD 2604-069": "Chuyên viên tư vấn (Alpha)", "AIAVAD 2601-034": "Cấp quản lý (CQL)", "AIAVAD 2601-035": "Lãnh đạo vùng PAF+",
+  "CHH0DCEB260007V": "Đại lý", "CHH0DCEB260008V": "Phí dịch vụ cấp quản lý", "CHH0DCEB260003V": "Phí dịch vụ giám đốc vùng",
+  "0046M01_2026": "Chính sách chi trả Đại lý", "0047M01_2026": "Biểu phí dịch vụ UM+", "0048M01_2026": "Biểu phí PSM+ & hộ kinh doanh"};
+const docCo = fid => /^AIA/.test(fid) ? "AIA" : /^CHH/.test(fid) ? "Chubb Life" : /M01/.test(fid) ? "Manulife" : "Khác";
+function execBriefHtml() {
+  const pdfs = DATA.pdfs || [], cos = ["AIA", "Chubb Life", "Manulife"];
+  const item = f => f.url ? `<a href="${f.url}#page=1" title="${esc(f.name)}">${DOC}${esc(DOC_SHORT[f.file_id] || f.name)} <span class="pg">· ${f.pages} tr</span></a>`
+    : `<span class="lock" title="${esc(f.name)}">🔒 ${esc(DOC_SHORT[f.file_id] || f.name)} <span class="pg">· ${f.pages} tr · mật, chỉ lưu local</span></span>`;
+  const hidden = DATA.public_build && cos.includes("Manulife") ? '<span class="lock">🔒 2 văn bản ghi “thông tin mật” — không đưa lên bản công khai</span>' : "";
+  return `<div class="card xbrief">
+    <div><span class="lb">Đề bài</span><blockquote>“${esc(DE_BAI)}”</blockquote>
+      <p class="small muted" style="margin:8px 0 0">Đề bài không nêu ngân sách, chỉ tiêu hay quy mô — các giả định đang dùng nằm ở trang 0.</p></div>
+    <div><span class="lb">Tài liệu nguồn · ${pdfs.length} PDF, ${fmt(pdfs.reduce((a, f) => a + f.pages, 0))} trang — bấm để mở bên phải</span>
+      <div class="xdocs">${cos.map(c => `<div><h4>${c}</h4>${pdfs.filter(f => docCo(f.file_id) === c).map(item).join("")}${c === "Manulife" ? hidden : ""}</div>`).join("")}</div>
+      <div style="margin-top:8px"><button type="button" class="go" data-go="glossary">Từ điển & mục lục từng PDF</button></div></div>
+  </div>`;
+}
 function renderExec() {
   const es = DATA.exec_summary, R = DB("roi_analysis"), RB = DB("rubric_scores"), RG = DB("hybrid_regional");
   const v = (s, m, k) => { const r = R.find(x => x.scheme === s && x.metric === m && +x.k2 === k); return r ? +r.value : null; };
@@ -1331,6 +1357,7 @@ function renderExec() {
   $("p-exec").innerHTML = `
   <h2>Tổng quan điều hành</h2>
   <p class="lede">Đề xuất <b>Chính sách Lai</b> — thiết kế thu nhập đại lý cho thị trường Việt Nam: trả ngang thị trường, chi phí co giãn theo chất lượng hợp đồng. Khu vực chuẩn 45 đại lý, 1,2 tỷ FYP/tháng, giả định tỷ lệ duy trì K2 85%. Số liệu là mô phỏng <span class="tag ADAPT">MODEL_OUTPUT</span>.</p>
+  ${execBriefHtml()}
   <div class="xk">
     <div class="card"><span class="lb">Tổng chi / FYP · Mốc 4 chuẩn</span><span class="v">${pct(hy.cost_pct, 1)}</span><span class="s">≈ ${fmt(hy.month, 1)} tr/tháng · ${fmt(hy.year, 0)} tr/năm</span><span class="s">${others.map(r => `${esc(XNAME[r.scheme])} ${pct(r.cost_pct, 1)}`).join(" · ")}${cheaper.length ? ` — ${cheaper.map(r => esc(XNAME[r.scheme])).join(", ")} rẻ hơn khi chất lượng tốt` : ""}</span></div>
     <div class="card"><span class="lb">Đỉnh stress test <span class="badge ${safe ? "good" : "bad"}">${safe ? "✓ An toàn" : "✗ Vượt trần"}</span></span><span class="v">${pct(worst, 1)} <small>/ trần 75%</small></span><span class="s">Kịch bản xấu nhất, hoa hồng chuẩn 30% FYP.</span>${worst40 != null ? `<span class="s">Bán nghiêng bảo vệ thuần (hoa hồng 40%): ${pct(worst40, 1)} — trần quỹ chặn đúng mức.</span>` : ""}</div>
