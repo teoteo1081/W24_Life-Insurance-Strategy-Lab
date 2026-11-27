@@ -32,6 +32,41 @@ K2_RANGE = list(range(50, 96))
 FYC_LEVELS = [3, 5, 8, 10, 15, 20, 25, 35, 45, 55]
 OUT_HTML = REPO / "outputs/interactive/W24_Strategy_Lab.html"
 GOLDEN = REPO / "web/golden.json"
+OUT_PUBLIC = REPO / "outputs/public/W24_Strategy_Lab.html"   # bản công khai (DEC-14): --public
+# Hai văn bản ghi "thông tin mật, không được tiết lộ" — bản công khai không được chứa bất kỳ dấu vết nào.
+CONFIDENTIAL_TOKENS = ("0046M01", "0047M01", "SRC-POL-MNL-002", "SRC-POL-MNL-003")
+
+
+def _is_confidential(obj) -> bool:
+    if isinstance(obj, dict) and obj.get("confidentiality") == "restricted":
+        return True
+    txt = json.dumps(obj, ensure_ascii=False)
+    return any(t in txt for t in CONFIDENTIAL_TOKENS)
+
+
+def _scrub(obj):
+    """Bỏ mọi phần tử (dòng) trong list có nhắc tới văn bản mật hoặc nhãn restricted; đệ quy vào dict/list."""
+    if isinstance(obj, dict):
+        return {k: _scrub(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_scrub(x) for x in obj if not _is_confidential(x)]
+    return obj
+
+
+def public_snapshot(snap: dict) -> dict:
+    tables = {k: [r for r in rows if r.get("confidentiality") != "restricted"] for k, rows in snap["tables"].items()}
+    dropped = {k: len(snap["tables"][k]) - len(tables[k]) for k in tables}
+    meta = {k: v for k, v in snap["meta"].items() if k != "confidential_files"}   # tên văn bản mật cũng không công bố
+    if "weighted_scores" in meta:   # điểm Manulife tính từ dữ liệu mật → bỏ
+        meta["weighted_scores"] = {k: v for k, v in meta["weighted_scores"].items() if k != "Manulife"}
+    return {"meta": dict(meta, public_build=True, restricted_rows_removed=dropped), "tables": tables}
+
+
+def public_glossary(rows: list) -> list:
+    """Cùng ánh xạ với web/data-loader.js toGlossary — dòng public đã bỏ trích dẫn mật (scripts/sync_to_supabase.py)."""
+    return [{"abbr": r["abbr"], "english": r["english"], "vietnamese": r["vietnamese"], "company_and_memo": r["company_and_memo"],
+             "market_equivalent": r["market_equivalent"], "note": r["note"], "group": r["term_group"], "companies": r["companies"],
+             "english_status": r["english_status"], "citations": r["citations"]} for r in rows]
 
 
 def params_dict(p: ProposalParams) -> dict:
@@ -218,7 +253,8 @@ def supabase_meta() -> str:
             f'<meta name="w24-supabase-anon-key" content="{_html.escape(key)}">')
 
 
-def main() -> int:
+def main(argv=None) -> int:
+    public = "--public" in (sys.argv[1:] if argv is None else argv)
     manifest = json.loads((REPO / "infra/evidence-worker/manifest.json").read_text(encoding="utf-8"))
     plans = plan_params()
     data = {"generated": "2026-11-27", "k2_range": [K2_RANGE[0], K2_RANGE[-1]], "fyc_levels": FYC_LEVELS,
@@ -234,22 +270,34 @@ def main() -> int:
                      "url": manifest["files"].get(f["source_id"], {}).get("url"),
                      "bookmarks": [{"t": b["title"], "p": b["page"]} for b in f["bookmarks"]]} for f in bm["files"]]
     g = golden(plans)
-    GOLDEN.write_text(json.dumps(g, ensure_ascii=False) + "\n", encoding="utf-8")
+    if not public:   # bản công khai không ghi đè golden của repo
+        GOLDEN.write_text(json.dumps(g, ensure_ascii=False) + "\n", encoding="utf-8")
     tpl = (REPO / "web/template.html").read_text(encoding="utf-8")
+    snap_path = REPO / "web/data/snapshot.json"
+    snap_obj = json.loads(snap_path.read_text(encoding="utf-8")) if snap_path.exists() else None
+    if public:
+        if snap_obj is None:
+            raise SystemExit("--public cần web/data/snapshot.json (chạy scripts/sync_to_supabase.py --dry-run)")
+        snap_obj = public_snapshot(snap_obj)
+        data = _scrub(data)
+        data["glossary"] = public_glossary(snap_obj["tables"]["glossary_terms"])
+        data["public_build"] = True
+        # Chữ tĩnh trong template (không phải dữ liệu): thay TRƯỚC khi nhúng dữ liệu, để bước quét vẫn bắt được rò rỉ thật.
+        tpl = tpl.replace("0046M01/0047M01", '2 văn bản Manulife ghi "thông tin mật"')
     engine = (REPO / "web/engine.js").read_text(encoding="utf-8")
     payload = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     html = tpl.replace("/*__ENGINE_JS__*/", engine).replace("/*__DATA_JSON__*/null", payload)
     html = html.replace("/*__GOLDEN_JSON__*/null", json.dumps(g["cases"][:60], separators=(",", ":")))
     # Lớp dữ liệu tách rời (supabase/schema.sql): loader + snapshot dự phòng offline + cấu hình đọc (chỉ anon key).
     loader = (REPO / "web/data-loader.js").read_text(encoding="utf-8")
-    snap_path = REPO / "web/data/snapshot.json"
-    snap = json.dumps(json.loads(snap_path.read_text(encoding="utf-8")), ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/") \
-        if snap_path.exists() else "null"
+    snap = json.dumps(snap_obj, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/") if snap_obj is not None else "null"
     html = html.replace("/*__DATA_LOADER__*/", loader).replace("/*__LOCAL_SNAPSHOT__*/null", snap)
     html = html.replace("<!--__SUPABASE_META__-->", supabase_meta())
-    OUT_HTML.parent.mkdir(parents=True, exist_ok=True)
-    OUT_HTML.write_text(html, encoding="utf-8")
-    print(f"wrote {OUT_HTML.relative_to(REPO)} ({len(html)//1024} KB), golden cases: {len(g['cases'])}")
+    out = OUT_PUBLIC if public else OUT_HTML
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(html, encoding="utf-8")
+    extra = f", restricted rows removed: {sum(snap_obj['meta']['restricted_rows_removed'].values())}" if public else ""
+    print(f"wrote {out.relative_to(REPO)} ({len(html)//1024} KB), golden cases: {len(g['cases'])}{extra}")
     return 0
 
 

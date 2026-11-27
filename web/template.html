@@ -814,7 +814,7 @@ const BASIS = {personal_income: "thu nhập cá nhân (gồm tự bán)", net_ma
 const confTag = r => r && r.confidentiality === "restricted" ? ' <span class="tag AVOID" title="Dựa trên 0046M01/0047M01 — thông tin mật, chỉ lưu local (DEC-14)">mật</span>' : "";
 const lblTag = l => l ? ` <span class="badge">${esc(l)}</span>` : "";
 function benchCell(r) {
-  if (!r) return '<span class="muted">—</span>';
+  if (!r) return DATA.public_build ? '<span class="muted small">Đã lược ở bản công khai — dựa trên văn bản Manulife ghi "thông tin mật" (DEC-14)</span>' : '<span class="muted">—</span>';
   const v = r.income_vnd_m_month == null ? "❓" : fmt(r.income_vnd_m_month, 1);
   return `<b>${esc(r.title)}</b> · <b>${v}</b>${r.income_vnd_m_month == null ? "" : " tr/th"}${confTag(r)}<span class="basis">${esc(BASIS[r.income_basis] || "")}</span>`
     + `<span class="small">Thăng cấp ${linkifyCites(r.promotion_citation)} · Biểu phí ${linkifyCites(r.fee_citation)}</span>${r.note ? `<div class="small muted">${esc(r.note)}</div>` : ""}`;
@@ -877,7 +877,7 @@ function renderT2() {
   <h3>Rubric 5 trụ cột</h3>
   <div class="tbl-wrap"><table><thead><tr><th>Trụ cột (trọng số)</th>${SC4.map(s => `<th>${esc(SNAME[s])}</th>`).join("")}</tr></thead><tbody>
   ${pillars.map(p => { const w = (RB.find(r => r.pillar === p) || {}).weight || 0; return `<tr><th scope="row">${esc(p)} (${fmt(w * 100)}%)</th>${SC4.map(s => { const r = RB.find(x => x.scheme === s && x.pillar === p); return `<td title="${r ? esc(r.evidence) : ""}">${r ? fmt(r.score, 2) : "—"}${r && r.method === "judgement" ? ' <span class="small muted">(đánh giá)</span>' : ""}</td>`; }).join("")}</tr>`; }).join("")}
-  <tr class="hl"><th scope="row">Điểm có trọng số (1–5)</th>${SC4.map(s => `<td><b>${fmt(ws(s), 2)}</b></td>`).join("")}</tr></tbody></table></div>
+  <tr class="hl"><th scope="row">Điểm có trọng số (1–5)</th>${SC4.map(s => `<td><b>${RB.some(r => r.scheme === s) ? fmt(ws(s), 2) : "—"}</b></td>`).join("")}</tr></tbody></table></div>${DATA.public_build ? '<p class="note">Bản công khai: các số Manulife tính từ 2 văn bản ghi "thông tin mật" (Đại Lý, UM+) đã được lược bỏ (DEC-14); Manulife PSM/SM (0048M01) vẫn hiển thị ở tab 1.</p>' : ""}
   <p class="note">3 trụ cột đầu tính bằng công thức công khai (rê chuột vào điểm để xem căn cứ); "Độ đơn giản" đếm khoản phí theo mục lục văn bản; "Vận hành & Pháp lý" là đánh giá có dẫn chứng. Điểm Chính sách Lai là tự chấm của bên thiết kế — cần kiểm toán độc lập. Chi tiết: <code>outputs/interview/02_Phan_Tich_MAPA_TradeOff_Va_ROI.md</code>.</p>`;
 }
 function renderT3() {

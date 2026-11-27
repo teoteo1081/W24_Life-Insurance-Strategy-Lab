@@ -4,6 +4,13 @@
 
 ## Trạng thái hiện hành
 
+**2026-11-27 (khuya) — Bản build công khai an toàn (DEC-14) — CHƯA push, chờ TJ duyệt danh sách file.**
+- Lệnh: `python scripts/build_html.py --public` sinh `outputs/public/W24_Strategy_Lab.html`; bản đầy đủ `outputs/interactive/W24_Strategy_Lab.html` giữ nguyên để gửi trực tiếp.
+- Bản public lọc **79 dòng restricted** (không phải 54: GĐ2 thêm 24 dòng Manulife, từ điển thêm 1), bỏ mọi phần tử dữ liệu nhúng có nhắc 0046M01/0047M01 (role MNL-R06/R07, 2 PDF trong mục lục), bỏ `meta.confidential_files` và điểm Manulife. Từ điển lấy từ dòng public đã làm sạch.
+- Lỗi có sẵn được phát hiện khi quét và đã sửa: `sync_to_supabase.py` nhận diện văn bản mật theo mã gốc (trước đây cần hậu tố `_2026`, nên ghi chú "biểu phí 0047M01" của thuật ngữ UM+ nằm ở dòng PUBLIC — nếu đã sync thật thì anon đọc được). Mọi trường chữ của dòng public giờ được làm sạch.
+- `scripts/check_public_build.py`: quét dấu vết văn bản mật, secret (sb_secret_, JWT service_role, SUPABASE_SERVICE_KEY), đường dẫn cục bộ, `%PDF-`, email, dòng không public, file lạ trong thư mục phát hành → PASS. `tests/test_public_build.py` (5 test, gồm 5 kiểu rò rỉ gài vào đều bị bắt).
+- **Rủi ro chính:** repo GitHub đang **PUBLIC** (không phải Private) và Pages phục vụ từ `main`. Local `main` có 11+ commit chứa số liệu mật → **tuyệt đối không push `main`**. Phát hành bằng nhánh `public-release`, tách từ `origin/main`, có 1 commit duy nhất thay file HTML công khai.
+
 **2026-11-27 (khuya) — Đóng 1 P1 + 2 P2 của Codex trên `9dea455` — commit LOCAL, không push.**
 - P1 (V3 đạt đúng quota 20,25tr từng vượt trần: 76,2%):
   - Trợ cấp Full-time nay = 3tr × hệ số vùng (V2 2,48tr · V3 2,03tr) — **thay đổi thiết kế, cần TJ xác nhận**.

@@ -36,6 +36,16 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 SNAPSHOT = REPO / "web" / "data" / "snapshot.json"
 CONFIDENTIAL_FILES = ("0046M01_2026", "0047M01_2026")          # DEC-14: văn bản ghi "thông tin mật"
+# Nhận diện theo mã gốc (không cần hậu tố _2026) — trước đây "biểu phí 0047M01" lọt qua (phát hiện khi build --public).
+CONFIDENTIAL_TOKENS = ("0046M01", "0047M01", "SRC-POL-MNL-002", "SRC-POL-MNL-003")
+
+
+def scrub_text(text: str) -> str:
+    """Bỏ các vế (ngăn bởi ';' hoặc '. ') có nhắc tới văn bản mật; giữ phần còn lại."""
+    if not text or not any(t in text for t in CONFIDENTIAL_TOKENS):
+        return text
+    parts = [p for p in re.split(r"(?<=;)\s*|(?<=\.)\s+", text) if p.strip() and not any(t in p for t in CONFIDENTIAL_TOKENS)]
+    return " ".join(parts).strip().rstrip(";").strip()
 TABLE_KEYS = {"benchmark_results": "id", "role_benefit_matrix": "id", "glossary_terms": "abbr", "pdf_bookmarks": "id",
               "roi_analysis": "id", "rubric_scores": "id", "behavior_traps": "id", "hybrid_regional": "id"}   # v2: Giai đoạn 2
 
@@ -51,7 +61,7 @@ def _finite(x):
 
 def _conf(*texts) -> str:
     blob = " ".join(t for t in texts if t)
-    return "restricted" if any(f in blob for f in CONFIDENTIAL_FILES) else "public"
+    return "restricted" if any(t in blob for t in CONFIDENTIAL_TOKENS) else "public"
 
 
 def model_version() -> str:
@@ -143,7 +153,11 @@ def build_payload(synced_at: str | None = None) -> dict:
     for e in gl:
         conf_cites = [c for c in e["citations"] if c["file_id"] in CONFIDENTIAL_FILES]
         pub_cites = [c for c in e["citations"] if c["file_id"] not in CONFIDENTIAL_FILES]
-        restricted = (e["citations"] and not pub_cites) or _conf(e["note"], e["vietnamese"], e["market_equivalent"]) == "restricted"
+        restricted = bool(e["citations"]) and not pub_cites
+        # Bản public: làm sạch MỌI trường chữ; nếu một trường bắt buộc rỗng sau khi làm sạch → giữ cả dòng ở restricted (an toàn).
+        txt = {k: (e[k] if restricted else scrub_text(e[k])) for k in ("english", "vietnamese", "market_equivalent", "note")}
+        if not restricted and not all(v.strip() for v in txt.values()):
+            restricted, txt = True, {k: e[k] for k in txt}
         cites = e["citations"] if restricted else pub_cites
         cam = e["company_and_memo"]
         if conf_cites and not restricted:      # bản public: dựng lại từ trích dẫn KHÔNG mật (trang đầu tiên mỗi hãng)
@@ -151,8 +165,10 @@ def build_payload(synced_at: str | None = None) -> dict:
             for c in pub_cites:
                 first.setdefault(c["company"], c)
             cam = " · ".join(f"{co} [{c['file_id']} : {c['page']}]" for co, c in first.items())
-        glossary.append({"abbr": e["abbr"], "english": e["english"], "vietnamese": e["vietnamese"], "company_and_memo": cam,
-                         "market_equivalent": e["market_equivalent"], "note": e["note"], "term_group": e["group"],
+        if not restricted:
+            cam = scrub_text(cam) or "—"
+        glossary.append({"abbr": e["abbr"], "english": txt["english"], "vietnamese": txt["vietnamese"], "company_and_memo": cam,
+                         "market_equivalent": txt["market_equivalent"], "note": txt["note"], "term_group": e["group"],
                          "companies": e["companies"], "english_status": e["english_status"], "citations": cites,
                          "confidentiality": "restricted" if restricted else "public", "synced_at": synced_at})
 
