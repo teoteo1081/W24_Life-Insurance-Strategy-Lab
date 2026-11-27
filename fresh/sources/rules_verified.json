@@ -9508,32 +9508,32 @@
      ],
      [
       "≥ 45 triệu đồng",
-      "(ô gộp – vẫn 3.000.000)",
+      "3.000.000 (ô gộp từ ≥ 30 triệu)",
       "5.000.000",
       "8.000.000"
      ],
      [
       "≥ 60 triệu đồng",
-      "(ô gộp – vẫn 3.000.000)",
+      "3.000.000 (ô gộp từ ≥ 30 triệu)",
       "7.000.000",
       "10.000.000"
      ],
      [
       "≥ 80 triệu đồng",
-      "(ô gộp – vẫn 3.000.000)",
-      "(ô gộp – vẫn 7.000.000)",
+      "3.000.000 (ô gộp từ ≥ 30 triệu)",
+      "7.000.000 (ô gộp từ ≥ 60 triệu)",
       "12.000.000"
      ],
      [
       "≥ 100 triệu đồng",
-      "(ô gộp – vẫn 3.000.000)",
-      "(ô gộp – vẫn 7.000.000)",
+      "3.000.000 (ô gộp từ ≥ 30 triệu)",
+      "7.000.000 (ô gộp từ ≥ 60 triệu)",
       "16.000.000"
      ],
      [
       "≥ 120 triệu đồng (*)",
-      "(ô gộp – vẫn 3.000.000)",
-      "(ô gộp – vẫn 7.000.000)",
+      "3.000.000 (ô gộp từ ≥ 30 triệu)",
+      "7.000.000 (ô gộp từ ≥ 60 triệu)",
       "20.000.000"
      ]
     ],
@@ -9543,7 +9543,7 @@
     "page": "4-5",
     "quote": "≥ 120 triệu đồng (*) … 20.000.000; Đại Lý nhận 1 mức thưởng duy nhất và cao nhất ở mỗi danh hiệu Manulife Pro",
     "uncertain": false,
-    "note": "Ô trống trong bảng (ảnh trang 4): Bạc chỉ tới ≥ 30 triệu, Vàng tới ≥ 60 triệu; mức cao hơn với Bạc/Vàng hiểu là giữ mức cao nhất của cột (ô gộp trống) — văn bản không nói rõ. Ví dụ điều kiện MDRT trang 5 (tháng 11/2026; MDRT2026/MDRT2027; giai đoạn 2017–2026). Ví dụ thời điểm chi trả trang 5. | Bảng lấy theo bản đọc B: ô gộp Bạc 3tr từ ≥30tr, Vàng 7tr từ ≥60tr (đã xem ảnh tr.4)"
+    "note": "Ô gộp (đã đối chiếu ảnh tr.4, theo bản đọc B): cột Bạc là MỘT ô 3.000.000 kéo từ hàng ≥ 30 triệu đến hết bảng; cột Vàng là MỘT ô 7.000.000 kéo từ hàng ≥ 60 triệu đến hết bảng (không có đường kẻ ngang bên dưới). Văn bản thể hiện rõ bằng ô gộp, không cần suy diễn. Hàng ≥ 120 triệu (*) chỉ áp dụng cho Bạch Kim đạt điều kiện MDRT. Ví dụ điều kiện MDRT trang 5 (tháng 11/2026; MDRT2026/MDRT2027; giai đoạn 2017–2026). Ví dụ thời điểm chi trả trang 5."
    },
    {
     "rule_no": 8,

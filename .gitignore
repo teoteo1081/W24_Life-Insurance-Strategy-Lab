@@ -34,3 +34,6 @@ venv/
 # Local browser / cache dumps
 *.har
 cookies.txt
+
+# Kết quả trung gian của fresh/sources/compare_reads.py (sinh lại được)
+fresh/sources/diff/

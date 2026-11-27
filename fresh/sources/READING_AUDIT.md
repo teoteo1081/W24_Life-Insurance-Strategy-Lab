@@ -8,22 +8,41 @@ Ngày: 2026-11-28 · Nhánh `claude/fresh-approach` · Không sửa gì trên `m
   - **A**: đọc chữ đã tách theo trang, rồi mở ảnh từng trang có bảng để xác nhận từng ô.
   - **B**: đọc ảnh từng trang làm nguồn chính, chỉ dùng chữ để chép đúng câu chữ. Bản scan Chubb `CHH0DCEB260003V` (15 trang, không có lớp chữ) chỉ đọc bằng ảnh 200 dpi; B đọc ngược từ trang cuối.
 - Hướng dẫn chung: [READER_BRIEF.md](READER_BRIEF.md). Bản đọc gốc: [reads/](reads/).
-- So 2 bản bằng máy ([compare_reads.py](compare_reads.py), [table_order.py](table_order.py)): (1) tập hợp mọi con số theo trang và toàn văn bản; (2) thứ tự từng ô trong từng bảng. Mọi chỗ lệch được Claude mở ảnh trang gốc để chốt.
+- So 2 bản bằng máy ([compare_reads.py](compare_reads.py), [table_order.py](table_order.py)):
+  1. Tập hợp mọi con số theo trang và toàn văn bản.
+  2. Thứ tự từng ô trong từng bảng.
+  3. **Điều kiện biên** (bổ sung sau review): mỗi con số mang theo dấu đứng trước nó (≥ > ≤ <, hoặc "từ / trên / dưới / tối thiểu / tối đa / ít nhất…"; cả dạng hậu tố "55% ≤ FY"). Ghép từng quy tắc và từng bảng của A với B theo **cả hai chiều**, rồi so dấu ở mỗi vị trí cùng số (căn theo thứ tự) và tập dấu của mỗi số (không phụ thuộc hàng/cột). Hai lớp 1–2 không bắt được "≥50%" → ">50%"; lớp 3 bắt được.
+  4. **Đối chiếu với lớp chữ gốc của PDF** ([check_bounds_vs_text.py](check_bounds_vs_text.py)): mỗi cặp (dấu, số) trong bộ đã chốt phải xuất hiện với cùng dấu trên trang được trích (±1). Lớp này bắt cả trường hợp A và B **cùng** đọc sai một dấu.
+- Mọi chỗ lệch được Claude mở ảnh trang gốc để chốt.
 
 ## 2. Kết quả đọc
 
-| Văn bản | Trang | Quy tắc | A so với B | Ghi chú chốt |
+| Văn bản | Trang | Quy tắc | A so với B (số + dấu biên) | Ghi chú chốt |
 |---|---:|---:|---|---|
-| AIA 2604-069 (CVTV) | 23 | 22 | Khớp mọi số | Claude xem ảnh tr.3–4: bảng tỷ lệ chi trả theo FY |
-| AIA 2601-034 (CQL) | 21 | 18 | Khớp mọi số | — |
-| AIA 2601-035 (PAF+) | 18 | 23 | Khớp mọi số | 1.300 chỉ tiêu tháng/năm cộng khớp tổng |
-| Chubb 260007V (Đại lý) | 19 | 23 | Khớp mọi số | Ô gộp 45%/60% (tr.4) |
-| Chubb 260008V (Quản lý) | 14 | 13 | Khớp mọi số | Ô gộp 25%/35% (tr.5) |
-| Chubb 260003V (RD, **scan**) | 15 | 16 | Khớp mọi số | Không có chữ số mờ |
-| Manulife 0046M01 (Đại lý) | 11 | 21 | **Lệch 1 bảng** | Tr.4 Manulife Pro: ô gộp Bạc 3tr từ ≥30tr, Vàng 7tr từ ≥60tr — **chốt theo B** sau khi xem ảnh |
-| Manulife 0047M01 (UM+) | 8 | 11 | Khớp mọi số | — |
-| Manulife 0048M01 (PSM+) | 6 | 11 | Khớp mọi số | — |
+| AIA 2604-069 (CVTV) | 23 | 22 | Khớp | Claude xem ảnh tr.3–4: bảng tỷ lệ chi trả theo FY |
+| AIA 2601-034 (CQL) | 21 | 18 | Khớp | — |
+| AIA 2601-035 (PAF+) | 18 | 23 | Khớp | 1.300 chỉ tiêu tháng/năm cộng khớp tổng |
+| Chubb 260007V (Đại lý) | 19 | 23 | Khớp | Ô gộp 45%/60% (tr.4) |
+| Chubb 260008V (Quản lý) | 14 | 13 | Khớp | Ô gộp 25%/35% (tr.5) |
+| Chubb 260003V (RD, **scan**) | 15 | 16 | Khớp | Không có chữ số mờ |
+| Manulife 0046M01 (Đại lý) | 11 | 21 | **Lệch 1 bảng** | Tr.4 Manulife Pro: ô gộp Bạc 3tr từ ≥30tr, Vàng 7tr từ ≥60tr đến hết bảng — **chốt theo B** sau khi xem ảnh; ghi chú quy tắc đã viết lại cho khớp bảng |
+| Manulife 0047M01 (UM+) | 8 | 11 | Khớp | — |
+| Manulife 0048M01 (PSM+) | 6 | 11 | Khớp | — |
 | **Tổng** | **135** | **158** | | Bộ đã chốt: [rules_verified.json](rules_verified.json) |
+
+### Kiểm điều kiện biên (bổ sung sau review)
+
+| Lớp kiểm | Kết quả |
+|---|---|
+| A so với B, theo quy tắc và theo bảng | 8 cờ, đều vô hại: một bên ghi thêm vế bù ("TOT < 85% → không trả" cạnh "≥ 85%") hoặc hai bên chia quy tắc khác nhau. Từng cờ và lý do: [boundary_review.json](boundary_review.json). **0 chỗ cùng số khác dấu thật.** |
+| Bộ đã chốt so với lớp chữ PDF (8 văn bản có lớp chữ) | 410 cặp (dấu, số) khớp cùng dấu; 2 cặp "khác dấu" chính là 2 vế bù nêu trên (suy trực tiếp từ điều kiện ≥ của văn bản); 1 cặp trích chéo trang (tr.5 dẫn quy định thai sản tr.16). Kết quả: [bounds_vs_text.json](bounds_vs_text.json) |
+| Thử cấy lỗi trên bản đọc B thật | ≥→> 205/205 · >→≥ 13/13 · <→≤ 87/87 · ≤→< 16/16 · ≥→< 203/205 bị phát hiện |
+
+**Giới hạn còn lại:**
+- Đổi ≥ thành < trong một quy tắc vốn đã ghi cả "<X" lẫn "≥X" cho cùng số X (2/205 ca thử) không bị lớp A–B bắt. Lớp chữ PDF vẫn bắt nếu văn bản không có cụm "<X" ở trang đó.
+- Bản scan Chubb `CHH0DCEB260003V` không có lớp chữ, nên chỉ có lớp A–B (2 lượt đọc ảnh độc lập).
+- Ngưỡng không có dấu trong văn bản (ví dụ cột "FYC của quý" chỉ ghi "120 triệu đồng") được giữ nguyên là số trần và ghi chú "không ghi dấu"; công cụ không tự suy ra dấu.
+- Chưa có ai đọc lại toàn bộ 135 trang lần thứ ba. Xác nhận hiện có gồm hai lượt đọc độc lập, các lớp máy ở trên, và Claude xem ảnh tại mọi chỗ bị cờ.
 
 Bản thân các văn bản có nhiều chỗ tự mâu thuẫn (ví dụ minh họa trái quy tắc, mục dẫn chiếu không tồn tại, thuật ngữ không định nghĩa) — đã ghi trong `inconsistencies` của từng văn bản.
 
