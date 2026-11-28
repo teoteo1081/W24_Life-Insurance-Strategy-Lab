@@ -56,9 +56,10 @@ class TestTwoLens(unittest.TestCase):
             self.assertTrue(self.d["bench"][k]["source"])
 
     def test_public_view_drops_confidential(self) -> None:
-        pv = TL.public_view(self.d)
-        self.assertNotIn("Manulife", pv["schemes"])
-        self.assertNotRegex(json.dumps(pv, ensure_ascii=False), r"0046M01|0047M01")
+        self.assertIn("Manulife", TL.public_view(self.d)["schemes"])          # DEC-21: 9 PDF như nhau
+        x = json.loads(json.dumps(self.d))
+        x["schemes"]["Chubb"]["confidentiality"] = "restricted"              # cơ chế lọc vẫn hoạt động nếu sau này có tài liệu mật
+        self.assertNotIn("Chubb", TL.public_view(x)["schemes"])
 
 
 if __name__ == "__main__":

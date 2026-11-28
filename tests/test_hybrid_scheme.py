@@ -230,7 +230,7 @@ class TestPhase2Outputs(unittest.TestCase):
         for tbl in ("roi", "traps", "rubric"):
             for r in self.d[tbl]:
                 if r["scheme"] == "Manulife":
-                    self.assertEqual(r["confidentiality"], "restricted", r["id"])
+                    self.assertEqual(r["confidentiality"], "public", r["id"])          # DEC-21: 9 PDF như nhau
                 if r["scheme"] == "Hybrid":
                     self.assertEqual(r["label"], "PROPOSAL", r["id"])
         self.assertTrue(all(r["label"] == "PROPOSAL" for r in self.d["regional"]))

@@ -273,7 +273,7 @@ def write_md(d: dict) -> str:
 
 
 def public_view(d: dict) -> dict:
-    """Bản công khai: bỏ Manulife (số đại lý tính từ 0046M01 — văn bản ghi 'thông tin mật', DEC-14)."""
+    """Bản công khai: bỏ phương án gắn confidentiality='restricted' (DEC-21: hiện không có — 9 PDF như nhau)."""
     x = json.loads(json.dumps(d))
     x["schemes"] = {s: v for s, v in x["schemes"].items() if v["confidentiality"] == "public"}
     return x

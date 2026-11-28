@@ -106,6 +106,6 @@ Mọi hoạt động nghiên cứu, xây dựng mô hình và trình bày trong 
 
 **Chuẩn chấm giao diện:** `docs/UI_AUDIT_RUBRIC.md` (đậu ≥ 95 điểm và 0 lỗi P1 ở tiêu chí 1–2).
 
-**Phát hành:** bản công khai dựng bằng `scripts/build_html.py --public` (lược dòng mật), quét bằng `scripts/check_public_build.py`, chỉ đẩy qua nhánh `public-release`; `main` local chứa dữ liệu mật không push.
+**Phát hành:** bản công khai dựng bằng `scripts/build_html.py --public`, quét bằng `scripts/check_public_build.py` (secret, đường dẫn cục bộ, file lạ; danh sách văn bản mật hiện rỗng — DEC-21: TJ xác nhận 9 PDF xử lý như nhau, 2026-11-28). Phát hành vẫn qua nhánh `public-release` (`main` local tách nhánh với `origin/main`, không force-push); push cần TJ yêu cầu.
 
 **Khoảng trống còn mở:** biến thể Growth (P0-3); MAPA tính xuôi/ngược và phễu marketing (P1) chưa có trên HTML; Gói A (`outputs/interview/W24_Executive_Recommendation_Step1.md`) còn xoay quanh Balanced Hybrid — cần viết lại theo Chính sách Đề xuất 2026.

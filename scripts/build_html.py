@@ -33,8 +33,8 @@ FYC_LEVELS = [3, 5, 8, 10, 15, 20, 25, 35, 45, 55]
 OUT_HTML = REPO / "outputs/interactive/W24_Strategy_Lab.html"
 GOLDEN = REPO / "web/golden.json"
 OUT_PUBLIC = REPO / "outputs/public/W24_Strategy_Lab.html"   # bản công khai (DEC-14): --public
-# Hai văn bản ghi "thông tin mật, không được tiết lộ" — bản công khai không được chứa bất kỳ dấu vết nào.
-CONFIDENTIAL_TOKENS = ("0046M01", "0047M01", "SRC-POL-MNL-002", "SRC-POL-MNL-003")
+# Văn bản mật: bản công khai không được chứa dấu vết nào. DEC-21 (2026-11-28): rỗng — 9 PDF như nhau.
+CONFIDENTIAL_TOKENS: tuple = ()
 
 
 def _is_confidential(obj) -> bool:
@@ -57,8 +57,6 @@ def public_snapshot(snap: dict) -> dict:
     tables = {k: [r for r in rows if r.get("confidentiality") != "restricted"] for k, rows in snap["tables"].items()}
     dropped = {k: len(snap["tables"][k]) - len(tables[k]) for k in tables}
     meta = {k: v for k, v in snap["meta"].items() if k != "confidential_files"}   # tên văn bản mật cũng không công bố
-    if "weighted_scores" in meta:   # điểm Manulife tính từ dữ liệu mật → bỏ
-        meta["weighted_scores"] = {k: v for k, v in meta["weighted_scores"].items() if k != "Manulife"}
     return {"meta": dict(meta, public_build=True, restricted_rows_removed=dropped), "tables": tables}
 
 
@@ -154,7 +152,7 @@ def knowledge(manifest: dict) -> dict:
                         "confidentiality": r["Confidentiality"], "rights": r["Redistribution_Rights_Status"],
                         "verification": r["Verification_Status"],
                         "url": manifest["files"].get(sid, {}).get("url")})
-    # Mọi văn bản chính sách (PDF) — kể cả văn bản mật không có URL trên kho bằng chứng (0046M01/0047M01):
+    # Mọi văn bản chính sách (PDF) — kể cả văn bản chưa có URL trên kho bằng chứng (0046M01/0047M01 chưa tải lên R2):
     # trước đây lọc theo URL nên quy tắc MNL-AG/MG mất refs và trang Bằng chứng báo sai "chưa trích quy tắc" (AUD-08).
     pdf_ids = [s["id"] for s in sources if s["id"].startswith("SRC-POL-")]
     out_rules = []
@@ -264,7 +262,7 @@ def main(argv=None) -> int:
             "evidence_base": manifest["base_url"]}
     # Từ điển & mục lục 9 PDF — nguồn duy nhất: knowledge/sources/glossary.json, pdf-bookmarks.json
     # (sinh bởi scripts/build_glossary.py, scripts/build_benefit_matrix.py). PDF chỉ mở được nếu đã có trên kho
-    # bằng chứng (manifest); 0046M01/0047M01 là tài liệu mật, chỉ lưu local (DEC-14) nên không có url.
+    # bằng chứng (manifest); 0046M01/0047M01 chưa tải lên R2 nên chưa có url (DEC-21: không còn coi là mật).
     gl = json.loads((REPO / "knowledge/sources/glossary.json").read_text(encoding="utf-8"))
     bm = json.loads((REPO / "knowledge/sources/pdf-bookmarks.json").read_text(encoding="utf-8"))
     data["glossary"] = gl["entries"]
@@ -285,7 +283,6 @@ def main(argv=None) -> int:
         data["glossary"] = public_glossary(snap_obj["tables"]["glossary_terms"])
         data["public_build"] = True
         # Chữ tĩnh trong template (không phải dữ liệu): thay TRƯỚC khi nhúng dữ liệu, để bước quét vẫn bắt được rò rỉ thật.
-        tpl = tpl.replace("0046M01/0047M01", '2 văn bản Manulife ghi "thông tin mật"')
     # Tóm tắt nhanh 2 góc nhìn — cùng nguồn với outputs/interview/00_Executive_Summary_Keo_Thom.md; bản công khai dùng snapshot đã lọc
     if snap_obj is not None:
         import build_exec_summary as ES

@@ -12,7 +12,7 @@ Biến môi trường (đặt trong .env ở gốc repo — .env đã được .
   SUPABASE_URL=https://<project>.supabase.co
   SUPABASE_SERVICE_KEY=<service_role key — CHỈ dùng phía máy, không bao giờ đưa vào HTML>
 
-Bảo mật (DEC-14): dòng dựa trên 0046M01_2026 / 0047M01_2026 gắn confidentiality='restricted';
+Bảo mật: dòng dựa trên văn bản trong CONFIDENTIAL_FILES gắn confidentiality='restricted' (DEC-21: hiện rỗng, 9 PDF như nhau);
 RLS trong schema.sql chỉ cho người trong allowlist w24_readers đọc các dòng này.
 Chỉ dùng thư viện chuẩn (urllib) — không cài thêm gói.
 """
@@ -35,9 +35,9 @@ sys.path.insert(0, str(REPO))
 sys.path.insert(0, str(REPO / "scripts"))
 
 SNAPSHOT = REPO / "web" / "data" / "snapshot.json"
-CONFIDENTIAL_FILES = ("0046M01_2026", "0047M01_2026")          # DEC-14: văn bản ghi "thông tin mật"
+CONFIDENTIAL_FILES: tuple = ()          # DEC-21: 9 PDF như nhau (trước đây DEC-14: 0046M01_2026, 0047M01_2026)
 # Nhận diện theo mã gốc (không cần hậu tố _2026) — trước đây "biểu phí 0047M01" lọt qua (phát hiện khi build --public).
-CONFIDENTIAL_TOKENS = ("0046M01", "0047M01", "SRC-POL-MNL-002", "SRC-POL-MNL-003")
+CONFIDENTIAL_TOKENS: tuple = ()   # DEC-21: rỗng — cơ chế giữ lại cho tài liệu mật sau này
 
 
 def scrub_text(text: str) -> str:

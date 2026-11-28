@@ -20,8 +20,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 DEFAULT = REPO / "outputs/public/W24_Strategy_Lab.html"
 ALLOWED_FILES = {"W24_Strategy_Lab.html"}
-CONFIDENTIAL = ["0046M01", "0047M01", "SRC-POL-MNL-002", "SRC-POL-MNL-003",
-                "Chinh sach chi tra danh cho Dai Ly", "Bieu phi dich vu danh cho UM+"]
+CONFIDENTIAL: list = []   # DEC-21 (2026-11-28): 9 PDF như nhau — không còn văn bản mật; thêm mã vào đây nếu có
 SECRET_PATTERNS = [r"sb_secret_[A-Za-z0-9_\-]+", r"SUPABASE_SERVICE_KEY", r"service_role\s*[\"']?\s*[:=]", r"(?m)^\s*SUPABASE_[A-Z_]+=\S+"]
 LOCAL_PATTERNS = [r"[A-Za-z]:\\\\?Users\\\\", r"[A-Za-z]:/Users/", r"file:///", r"/home/\w+/", r"private/sources", r"%PDF-",
                   r"[A-Za-z0-9._%+-]+@gmail\.com"]
@@ -69,8 +68,6 @@ def scan(path: Path) -> list[str]:
             errors.append("snapshot không gắn public_build=true")
         if "confidential_files" in meta:
             errors.append("meta còn confidential_files")
-        if "Manulife" in (meta.get("weighted_scores") or {}):
-            errors.append("meta còn điểm Manulife (tính từ dữ liệu mật)")
         for t, rows in snap.get("tables", {}).items():
             bad = [r for r in rows if r.get("confidentiality") != "public"]
             if bad:

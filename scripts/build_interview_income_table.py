@@ -351,7 +351,7 @@ def build() -> str:
     w("1. Chấp nhận phạm vi 9/9 PDF; giữ đánh dấu thiếu tài liệu cho Chubb BD và các memo ngoài phạm vi. Mốc 2–4 ghi rõ là **phí quản lý thuần**.")
     w("2. Manulife: base case **không có MBA Pro / Manulife Pro**; kịch bản có danh hiệu là ghi chú độ nhạy, chạy ở Giai đoạn 2.")
     w("3. Mốc 4: so sánh chính **AIA PAF · Chubb RD · Manulife PSM/SM**; số phụ **Chubb DM · Manulife UM+**.")
-    w("4. Bảo mật: chỉ commit local, **không push** (0046M01 D.3 và 0047M01 B.4 ghi thông tin mật).")
+    w("4. Quyền công bố: TJ xác nhận 9 văn bản xử lý như nhau (DEC-21, 2026-11-28).")
     w("")
     w("## 6. Phụ lục — Kiểm tra độ phủ trích dẫn (máy tự đếm)")
     w("")

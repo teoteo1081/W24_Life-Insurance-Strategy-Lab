@@ -37,7 +37,7 @@ RECRUITS = [1, 2, 2, 2]
 # giữ nguyên tổng 45 ĐL và 1,2 tỷ FYP/tháng của Mốc 4 để chỉ đo tác động của việc bán KHÔNG đều.
 PRODUCTIVITY_MIX = [("Không hoạt động", 7, 0.0), ("Thấp", 13, 10.0), ("Nòng cốt", 15, 20.0), ("Top / MDRT", 10, 77.0)]
 MIX = [(n, f) for _, n, f in PRODUCTIVITY_MIX]
-CONF = {"Manulife"}   # số Manulife dựa trên 0046M01/0047M01 → restricted (DEC-14)
+CONF: set = set()   # DEC-21 (2026-11-28): TJ xác nhận 9 PDF như nhau, Manulife đã công khai → không còn phương án restricted. Thêm tên hãng vào đây nếu sau này có tài liệu mật
 
 
 def fin(x):

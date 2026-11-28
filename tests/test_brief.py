@@ -21,8 +21,9 @@ class TestBrief(unittest.TestCase):
         self.pub, self.full = BB.render(PUBLIC, full=False), BB.render(TABLES, full=True)
 
     def test_public_has_no_confidential_tokens(self) -> None:
-        for token in ("0046M01", "0047M01", "SRC-POL-MNL-002", "SRC-POL-MNL-003", "UM+", "MNL-AG", "MNL-MG"):
-            self.assertNotIn(token, self.pub, token)
+        # DEC-21: không còn dòng restricted nào → bản công khai = bản đủ dữ liệu
+        self.assertEqual(PUBLIC, TABLES)
+        self.assertNotIn("thông tin mật", self.pub)
 
     def test_single_proposal_and_no_stale_names(self) -> None:
         for md in (self.pub, self.full):
@@ -37,8 +38,9 @@ class TestBrief(unittest.TestCase):
             self.assertIn(BB.vn(roi[(s, m, 85)]) + "%", self.pub, (s, m))
 
     def test_full_adds_manulife(self) -> None:
+        # DEC-21: 9 PDF như nhau → bản trong repo cũng có đủ Manulife (Đại Lý, UM+)
         self.assertIn("UM+", self.full)
-        self.assertGreater(len(self.full), len(self.pub))
+        self.assertIn("UM+", self.pub)
 
     def test_repo_copy_is_full_and_has_no_secrecy_wording(self) -> None:   # DEC-16
         with tempfile.TemporaryDirectory() as d:

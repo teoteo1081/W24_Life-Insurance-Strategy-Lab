@@ -84,21 +84,12 @@ class TestPayload(unittest.TestCase):
         self.assertIsNone(bd["income_vnd_m_month"])                     # UNKNOWN không bị ép thành 0
 
     def test_dec14_confidential_rows_are_restricted(self) -> None:
+        # DEC-21 (thay DEC-14): 9 PDF như nhau → mọi dòng public, kể cả dòng trích 0046M01 / 0047M01
         t = self.payload["tables"]
-        for r in t["benchmark_results"]:
-            if r["company"] == "Manulife" and r["title"] in ("Đại Lý", "UM+"):
-                self.assertEqual(r["confidentiality"], "restricted", r["id"])
-        for r in t["pdf_bookmarks"]:
-            self.assertEqual(r["confidentiality"] == "restricted", r["file_id"] in ("0046M01_2026", "0047M01_2026"))
-            if r["confidentiality"] == "restricted":
-                self.assertIsNone(r["evidence_url"])
-        for r in t["role_benefit_matrix"]:
-            if "0047M01" in r["citation"] or "0046M01" in r["citation"]:
-                self.assertEqual(r["confidentiality"], "restricted")
-        for r in t["glossary_terms"]:
-            if r["confidentiality"] == "public":
-                self.assertFalse(any(c["file_id"] in ("0046M01_2026", "0047M01_2026") for c in r["citations"]), r["abbr"])
-                self.assertNotRegex(r["company_and_memo"], "0046M01|0047M01")
+        for name, rows in t.items():
+            for r in rows:
+                self.assertEqual(r["confidentiality"], "public", (name, r.get("id") or r.get("abbr")))
+        self.assertTrue(any(r["file_id"] in ("0046M01_2026", "0047M01_2026") for r in t["pdf_bookmarks"]))
 
     def test_benchmark_matches_interview_table(self) -> None:
         md = (REPO / "outputs/interview/01_Bang_So_Sanh_Thu_Nhap_Va_Evidence.md").read_text(encoding="utf-8")

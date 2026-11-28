@@ -36,7 +36,7 @@ class TestPublicBuild(unittest.TestCase):
             with self.subTest(table=t):
                 self.assertEqual(len(snap["tables"][t]), len(pub))
                 self.assertEqual(snap["meta"]["restricted_rows_removed"][t], len(rows) - len(pub))
-        self.assertGreater(sum(snap["meta"]["restricted_rows_removed"].values()), 54)   # GĐ1 (54) + GĐ2
+        self.assertEqual(sum(snap["meta"]["restricted_rows_removed"].values()), 0)   # DEC-21: không còn văn bản mật   # GĐ1 (54) + GĐ2
 
     def test_full_local_build_untouched(self) -> None:
         full = (REPO / "outputs/interactive/W24_Strategy_Lab.html").read_text(encoding="utf-8")
@@ -44,8 +44,11 @@ class TestPublicBuild(unittest.TestCase):
         self.assertNotEqual(B.OUT_PUBLIC, REPO / "outputs/interactive/W24_Strategy_Lab.html")
 
     def test_scanner_catches_leaks(self) -> None:
-        cases = {"conf": "biểu phí 0047M01", "secret": "sb_secret_abc123", "path": "C:" + "/Users/x/a.pdf",   # ghép chuỗi: tránh chính hygiene gate bắt nhầm file test
+        cases = {"conf": "biểu phí MAT-001", "secret": "sb_secret_abc123", "path": "C:" + "/Users/x/a.pdf",   # ghép chuỗi: tránh chính hygiene gate bắt nhầm file test
                  "restricted": None}
+        saved = C.CONFIDENTIAL[:]
+        C.CONFIDENTIAL[:] = ["MAT-001"]          # DEC-21: danh sách mật đang rỗng → thử cơ chế quét bằng một mã giả định
+        self.addCleanup(lambda: C.CONFIDENTIAL.__setitem__(slice(None), saved))
         for name, inject in cases.items():
             with self.subTest(name=name), tempfile.TemporaryDirectory() as d:
                 p = Path(d) / "W24_Strategy_Lab.html"
@@ -62,8 +65,15 @@ class TestPublicBuild(unittest.TestCase):
             self.assertTrue(any("ngoài danh sách" in e for e in C.scan(Path(d) / "W24_Strategy_Lab.html")))
 
     def test_public_glossary_text_scrubbed(self) -> None:
-        self.assertEqual(S.scrub_text("Manulife: biểu phí 0047M01, ký HĐDV QLĐL"), "")
-        self.assertEqual(S.scrub_text("AIA: tên A; Manulife: 0046M01 tr.3"), "AIA: tên A")
+        # Cơ chế lọc vẫn giữ cho tài liệu mật sau này: thử với một mã giả định
+        saved = S.CONFIDENTIAL_TOKENS
+        try:
+            S.CONFIDENTIAL_TOKENS = ("MAT-001",)
+            self.assertEqual(S.scrub_text("Hãng X: biểu phí MAT-001, ký HĐ"), "")
+            self.assertEqual(S.scrub_text("AIA: tên A; Hãng X: MAT-001 tr.3"), "AIA: tên A")
+        finally:
+            S.CONFIDENTIAL_TOKENS = saved
+        self.assertEqual(S.CONFIDENTIAL_TOKENS, ())                     # DEC-21
         payload = S.build_payload(synced_at="2026-11-27T00:00:00+00:00")
         for r in payload["tables"]["glossary_terms"]:
             if r["confidentiality"] == "public":

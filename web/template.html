@@ -368,7 +368,7 @@ window.W24_LOCAL_SNAPSHOT = /*__LOCAL_SNAPSHOT__*/null;</script>
 const DATA = /*__DATA_JSON__*/null;
 const GOLDEN = /*__GOLDEN_JSON__*/null;
 /* Mô hình 1 vùng 12 tỷ (nhóm Phân tích sâu) chỉ có Manulife tầng lãnh đạo vùng; tầng đại lý/UM+ nằm ở mô hình 45 đại lý (trang 0–2) */
-const MNL_GAP = DATA.public_build ? "không công bố ở bản công khai (văn bản ghi thông tin mật)" : "chưa đưa vào mô hình 1 vùng này — xem trang 1–2";
+const MNL_GAP = "chưa đưa vào mô hình 1 vùng này — xem trang 1–2";
 const E = window.W24Engine;
 const fmt = (x, d = 0) => (x == null || !isFinite(x)) ? "—" : x.toLocaleString("vi-VN", {minimumFractionDigits: d, maximumFractionDigits: d});
 const DOC = '<svg aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" style="vertical-align:-2px;margin-right:4px"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M4 1.75h5.5L12.5 5v9.25H4zM9.5 1.75V5h3M6 8.5h4.5M6 11h4.5"/></svg>';
@@ -1029,7 +1029,7 @@ const BASIS = {personal_income: "thu nhập cá nhân (gồm tự bán)", net_ma
 const confTag = () => "";   // DEC-16: không còn đánh dấu dòng Manulife là "mật"
 const lblTag = l => l ? ` <span class="badge">${esc(l)}</span>` : "";
 function benchCell(r) {
-  if (!r) return DATA.public_build ? '<span class="muted small">Đã lược ở bản công khai — dựa trên văn bản Manulife ghi "thông tin mật"</span>' : '<span class="muted">—</span>';
+  if (!r) return '<span class="muted">—</span>';
   const v = r.income_vnd_m_month == null ? "❓" : fmt(r.income_vnd_m_month, 1);
   return `<b>${esc(r.title)}</b> · <b>${v}</b>${r.income_vnd_m_month == null ? "" : " tr/th"}${confTag(r)}<span class="basis">${esc(BASIS[r.income_basis] || "")}</span>`
     + `<span class="small">Thăng cấp ${linkifyCites(r.promotion_citation)} · Biểu phí ${linkifyCites(r.fee_citation)}</span>${r.note ? `<div class="small muted">${esc(r.note.replace(/;?\s*(so sánh chính )?theo DEC-\d+/g, ""))}</div>` : ""}`;
@@ -1093,7 +1093,7 @@ function renderT2() {
   const ws = s => RB.filter(r => r.scheme === s).reduce((a, r) => a + r.weight * r.score, 0);
   const cls = s => s === "Hybrid" ? "me" : "";
   $("p-t2").innerHTML = `
-  <h2>2 · Phân tích Hành vi & Hiệu quả chi phí</h2>${DATA.public_build ? '<p class="callout small"><span class="badge warn">Bản công khai</span> Trang này <b>không có Manulife</b>: chi phí toàn khu vực của Manulife tính từ 2 văn bản ghi "thông tin mật" nên đã được lược. So sánh chi phí dưới đây chỉ gồm AIA, Chubb và đề xuất.</p>' : ""}
+  <h2>2 · Phân tích Hành vi & Hiệu quả chi phí</h2>
   <p class="note">Khu vực Mốc 4 dùng chung: 45 đại lý, 1,2 tỷ FYP/tháng, 1 lãnh đạo + 2 trưởng ban + 6 trưởng nhóm. <b>"ROI" ở đây là chi phí / FYP và chi phí / phí còn duy trì — không phải ROI thực tế</b> (VNB, biên lợi nhuận thật chưa có). Số Chính sách Đề xuất 2026 là đề xuất.</p>
   <div class="grid g2">
     <div class="card"><h3 style="margin-top:0">Tầng 1 — Tổng chi / FYP (K2 85%)</h3>${barRows(sc.map(s => ({name: SNAME[s], v: v(s, "cost_pct_fyp", 85), cls: cls(s)})), "%", 1)}<p class="small muted">Trần đề xuất 75% FYP, kiểm ở kịch bản xấu nhất (cột "Kịch bản xấu nhất" dưới đây — gồm trường hợp mọi đại lý đạt quota).</p></div>
@@ -1135,7 +1135,7 @@ function renderT2() {
   </ul>
   <div class="tbl-wrap"><table><thead><tr><th>Trụ cột (trọng số)</th>${SC4.map(s => `<th>${esc(SNAME[s])}</th>`).join("")}</tr></thead><tbody>
   ${pillars.map(p => { const w = (RB.find(r => r.pillar === p) || {}).weight || 0; return `<tr><th scope="row">${esc(p)} (${fmt(w * 100)}%)</th>${SC4.map(s => { const r = RB.find(x => x.scheme === s && x.pillar === p); return `<td title="${r ? esc(r.evidence) : ""}">${r ? fmt(r.score, 2) : "—"}${r && r.method === "judgement" ? ' <span class="small muted">(đánh giá)</span>' : ""}</td>`; }).join("")}</tr>`; }).join("")}
-  <tr class="hl"><th scope="row">Điểm có trọng số (1–5)</th>${SC4.map(s => `<td><b>${RB.some(r => r.scheme === s) ? fmt(ws(s), 2) : "—"}</b></td>`).join("")}</tr></tbody></table></div>${DATA.public_build ? '<p class="note">Bản công khai: các số Manulife tính từ 2 văn bản ghi "thông tin mật" (Đại Lý, UM+) đã được lược bỏ; Manulife PSM/SM (0048M01) vẫn hiển thị ở tab 1.</p>' : ""}
+  <tr class="hl"><th scope="row">Điểm có trọng số (1–5)</th>${SC4.map(s => `<td><b>${RB.some(r => r.scheme === s) ? fmt(ws(s), 2) : "—"}</b></td>`).join("")}</tr></tbody></table></div>
   <p class="note">4 trụ cột tính điểm đều bằng công thức công khai (rê chuột vào điểm để xem căn cứ); mọi mốc chấm là đề xuất của bên thiết kế, chốt trước khi tính điểm. "Vận hành & Pháp lý" là đánh giá, không cộng vào tổng. Điểm Chính sách Đề xuất 2026 là tự chấm của bên thiết kế — cần kiểm toán độc lập.</p>`;
 }
 /* ---------- Tab ★ Tổng quan điều hành: 1 màn hình kiểu Power BI. Chỉ ĐỌC DATA.exec_summary + DB (snapshot) — không tính lại công thức. ---------- */
@@ -1193,7 +1193,7 @@ function execBriefHtml() {
   const pdfs = DATA.pdfs || [], cos = ["AIA", "Chubb Life", "Manulife"];
   const item = f => f.url ? `<a href="${f.url}#page=1" title="${esc(f.name)}">${DOC}${esc(docShort(f))} <span class="pg">· ${f.pages} tr</span></a>`
     : `<span class="lock" title="${esc(f.name)}">${DOC}${esc(docShort(f))} <span class="pg">· ${f.pages} tr · chưa có bản online</span></span>`;
-  const hidden = DATA.public_build && cos.includes("Manulife") ? '<span class="lock">🔒 2 văn bản ghi “thông tin mật” — không đưa lên bản công khai</span>' : "";
+  const hidden = "";
   return `<div class="card xbrief">
     <div><span class="lb">Đề bài</span><blockquote>“${esc(DE_BAI)}”</blockquote>
       <p class="small muted" style="margin:8px 0 0">Đề bài không nêu ngân sách, chỉ tiêu hay quy mô — bài tự đặt giả định: trần tổng chi 75% FYP, khu vực 45 đại lý · 1,2 tỷ FYP/tháng, K2 85% (chuẩn) / 65% (xấu), ROI đo bằng chi phí / FYP.</p>
@@ -1247,7 +1247,7 @@ function renderLens() {
   <tr><th scope="row">Pháp lý (cổng)</th>${S.map(s => `<td class="small">${C(s).legal.map(esc).join("<br>")}</td>`).join("")}</tr>
   <tr><th scope="row">Vận hành</th>${S.map(s => `<td class="small">${linkifyCites(C(s).ops)}</td>`).join("")}</tr>
   </tbody></table></div>
-  <p class="note">ROI ở đây là chỉ số thay thế (chi phí / FYP, chi phí / phí còn duy trì). ROI thật cần biên lợi nhuận sản phẩm (VNB) — chưa có.${DATA.public_build ? " Bản công khai: bỏ cột Manulife (số đại lý tính từ văn bản ghi “thông tin mật”)." : ""}</p>`;
+  <p class="note">ROI ở đây là chỉ số thay thế (chi phí / FYP, chi phí / phí còn duy trì). ROI thật cần biên lợi nhuận sản phẩm (VNB) — chưa có.</p>`;
 }
 function renderExec() {
   const es = DATA.exec_summary, R = DB("roi_analysis"), RB = DB("rubric_scores"), RG = DB("hybrid_regional");
@@ -1279,7 +1279,7 @@ function renderExec() {
       <div class="xleg">${["AIA", "Chubb", "Manulife", "Hybrid"].map(s => `<span><i style="background:${XCOL[s]}"></i>${esc(XNAME[s])}</span>`).join("")}</div>
       ${execAgentChart(es.agent, per)}
       <p class="xsum"><b>Kèo thơm ở tầng nào:</b> Chính sách Đề xuất 2026 thơm ở ${good.join(", ") || "—"}${low.length ? `; <b>${low.join(", ")} thấp hơn cả các hãng</b> (đánh đổi có chủ đích: ít phí cố định, trả chậm)` : ""}.${notGood.length ? ` Không thơm: ${notGood.join(", ")} (quản lý thu ít hơn tự bán).` : ""}</p>
-      <p class="small muted" style="margin:4px 0 0">L1 = thu nhập cá nhân; L2–L4 = phí quản lý thuần. Rê chuột vào cột để xem chức danh.${DATA.public_build ? " Bản công khai: Manulife L1–L3 đã lược (văn bản ghi thông tin mật)." : ""}</p></div>
+      <p class="small muted" style="margin:4px 0 0">L1 = thu nhập cá nhân; L2–L4 = phí quản lý thuần. Rê chuột vào cột để xem chức danh.</p></div>
     <div class="card"><div class="hd"><h3>Góc nhìn công ty — Tổng chi / FYP</h3></div>
       <div class="xleg"><span><i style="background:var(--s-plan)"></i>Tổng chi (K2 85%)</span><span>◇ Đỉnh stress test</span><span><i style="background:var(--bad);width:3px"></i>Trần 75%</span></div>
       ${execCostChart(co)}
@@ -1574,7 +1574,7 @@ function guideHtml() {
   return `
   <h3>1 · Đề bài & mục tiêu</h3>
   <p>“${esc(DE_BAI)}”</p>
-  <p>Bài so sánh chính sách thu nhập đại lý 2026 của <b>AIA (kênh Alpha), Chubb Life và Manulife</b> trên ${nPdf} văn bản gốc${DATA.public_build ? " công khai được" : ""}, rồi đề xuất <b>Chính sách Đề xuất 2026</b> cho thị trường Việt Nam: tăng doanh số, giữ chất lượng hợp đồng, kiểm soát chi phí.</p>
+  <p>Bài so sánh chính sách thu nhập đại lý 2026 của <b>AIA (kênh Alpha), Chubb Life và Manulife</b> trên ${nPdf} văn bản gốc, rồi đề xuất <b>Chính sách Đề xuất 2026</b> cho thị trường Việt Nam: tăng doanh số, giữ chất lượng hợp đồng, kiểm soát chi phí.</p>
   <h3>2 · Kết luận chốt (3 dòng)</h3>
   <div class="tldr"><ol>
     <li><b>Các hãng:</b> Chubb Life trả cao và trả ngay nhất (tổng chi ${pct(c("Chubb"))} FYP); AIA Alpha cân bằng (${pct(c("AIA"))}) nhưng lên quản lý nhóm thu ít hơn tự bán${hasM ? `; Manulife rẻ nhất (${pct(c("Manulife"))}) nhưng quản lý cấp đầu thu rất thấp` : ""}.</li>

@@ -24,11 +24,9 @@ class TestExecSummary(unittest.TestCase):
     def test_public_has_no_restricted_rows(self) -> None:
         for part in ("agent", "company"):
             self.assertEqual([r for r in self.pub[part] if r["confidentiality"] == "restricted"], [], part)
-        self.assertEqual({r["scheme"] for r in self.pub["company"]}, {"AIA", "Chubb", "Hybrid"})
-        self.assertTrue(any(r["scheme"] == "Manulife" and r["milestone_id"] == "M4" for r in self.pub["agent"]))   # PSM/SM 0048M01 vẫn công khai
-        md = ES.to_markdown(self.pub, full=False)
-        for token in ("0046M01", "0047M01", "UM+"):
-            self.assertNotIn(token, md)
+        # DEC-21: 9 PDF như nhau → Manulife có đủ ở mọi tầng
+        self.assertEqual({r["scheme"] for r in self.pub["company"]}, {"AIA", "Chubb", "Manulife", "Hybrid"})
+        self.assertEqual({r["milestone_id"] for r in self.pub["agent"] if r["scheme"] == "Manulife"}, {"M1", "M2", "M3", "M4"})
 
     def test_full_has_four_tiers_by_four_schemes(self) -> None:
         self.assertEqual(len(self.full["agent"]), 16)
