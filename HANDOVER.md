@@ -4,7 +4,9 @@
 
 ## Trạng thái hiện hành
 
-**2026-11-28 — Sửa 3 lỗi AIA cho khớp PDF gốc (DEC-18) + gộp phần kiểm tra đọc nguồn. Commit LOCAL, KHÔNG push.**
+**2026-11-28 — ĐÃ PUSH (TJ: "push").** `origin/main` = `f393c81` (16 commit: DEC-17 → DEC-21). GitHub Pages build `f393c81`: built; trang https://teoteo1081.github.io/W24_Life-Insurance-Strategy-Lab/outputs/interactive/W24_Strategy_Lab.html trùng khít file của commit, có tab 4 "Hai góc nhìn"; PDF 2 trang trả HTTP 200. Quét trang live: không secret, không đường dẫn máy (2 cảnh báo chỉ vì web dùng bản đầy đủ, không phải bản `--public`).
+
+**2026-11-28 — Sửa 3 lỗi AIA cho khớp PDF gốc (DEC-18) + gộp phần kiểm tra đọc nguồn.** (đã push cùng đợt trên)
 
 Danh sách việc (TJ đọc mục này là đủ):
 - [x] Xem lại ảnh trang gốc: [AIAVAD 2604-069 : 3] hệ số FY; [AIAVAD 2601-035 : 4] phí tháng; [AIAVAD 2601-035 : 5] phí quý.
