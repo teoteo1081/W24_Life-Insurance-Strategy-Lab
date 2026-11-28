@@ -1,6 +1,6 @@
 # 03 — Chính sách Đề xuất 2026 & Phân vùng
 
-> `PROPOSAL` — không phải chính sách đã ban hành. Sinh bởi `scripts/build_phase2.py`; tham số ở `model/compensation/hybrid_scheme.py`. Kế thừa bộ tham số **Song Hành** đã hiệu chỉnh (không thấp nhất thị trường ở mọi tầng, K2 ~75–90%).
+> `PROPOSAL` — không phải chính sách đã ban hành. Sinh bởi `scripts/build_phase2.py`; tham số ở `model/compensation/hybrid_scheme.py`. Kế thừa bộ tham số **Song Hành** đã hiệu chỉnh (hiệu chỉnh để không tầng nào thấp nhất thị trường ở K2 82%; trong K2 75–90% có điểm thấp hơn tối đa ~2%).
 
 ## 1. Khung chính sách
 
@@ -51,7 +51,7 @@ Hai cách đọc: **cùng FYP** (cùng năng suất ở mọi vùng) và **FYP v
 |---|---:|
 | **Chính sách Đề xuất 2026** | 3,96 — PROPOSAL (hybrid_scheme.py) `PROPOSAL` |
 | Manulife | 3,37 — [0046M01_2026 : 1-8], [0047M01_2026 : 1-3], [0048M01_2026 : 1-5] `MODEL_OUTPUT` |
-| AIA Alpha | 3,15 — [AIAVAD 2601-034 : 3-6], [AIAVAD 2601-035 : 2-5], [AIAVAD 2604-069 : 3-7] `MODEL_OUTPUT` |
+| AIA Alpha | 3,13 — [AIAVAD 2601-034 : 3-6], [AIAVAD 2601-035 : 2-5], [AIAVAD 2604-069 : 3-7] `MODEL_OUTPUT` |
 | Chubb Life | 3,05 — [CHH0DCEB260007V : 4-7], [CHH0DCEB260008V : 5-10], [CHH0DCEB260003V : 5-10] `MODEL_OUTPUT` |
 
 Chi tiết trụ cột và công thức: `02_Phan_Tich_MAPA_TradeOff_Va_ROI.md` mục 3. **Lưu ý:** điểm Chính sách Đề xuất 2026 do bên thiết kế tự chấm; trụ cột Vận hành & Pháp lý là đánh giá; pháp lý `CONDITIONAL`.

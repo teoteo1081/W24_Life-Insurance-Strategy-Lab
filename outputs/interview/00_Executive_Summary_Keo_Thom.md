@@ -29,7 +29,7 @@ Tháng = thu nhập năm / 12, Quý = năm / 4 (bình quân quy đổi, **đã g
 
 | Chính sách | Tổng chi / tháng | / quý | / năm | Tổng chi / FYP | Đỉnh stress test | Chi trả giảm khi K2 85%→65% | Trả chậm | Nhận xét cho Ban Giám đốc |
 |---|---:|---:|---:|---:|---|---:|---:|---|
-| AIA Alpha | 700,3 | 2.101,0 | 8.404 | 58,4% | 88,6% — Hoa hồng 40% FYP — kịch bản chi phí cao nhất | 14,2% | 2,6% | Rẻ ở K2 tốt nhưng CHƯA gồm gói Exchange/Pro (UNKNOWN); bán nghiêng bảo vệ thuần thì vọt lên nhiều nhất. |
+| AIA Alpha | 700,3 | 2.101,0 | 8.404 | 58,4% | 88,6% — Hoa hồng 40% FYP — kịch bản chi phí cao nhất | 12,7% | 2,6% | Rẻ ở K2 tốt nhưng CHƯA gồm gói Exchange/Pro (UNKNOWN); bán nghiêng bảo vệ thuần thì vọt lên nhiều nhất. |
 | Chubb Life | 1.057,0 | 3.170,9 | 12.684 | 88,1% | 116,2% — Hoa hồng 40% FYP — kịch bản chi phí cao nhất | 21,3% | 0,0% | Đắt nhất, trả ngay gần như toàn bộ, không giữ lại trả chậm — rủi ro dòng tiền khi chất lượng xấu. |
 | Manulife | 609,7 | 1.829,2 | 7.317 | 50,8% | 75,0% — Hoa hồng 40% FYP — kịch bản chi phí cao nhất | 6,7% | 4,2% | Rẻ nhất ở K2 tốt nhưng chi phí gần như không co khi chất lượng xấu; quản lý nhận ít hơn tự bán. |
 | Chính sách Đề xuất 2026 | 733,8 | 2.201,4 | 8.806 | 61,1% | 75,0% — Hoa hồng 40% FYP — kịch bản chi phí cao nhất | 27,9% | 12,5% | Ngang thị trường ở K2 tốt, co mạnh nhất khi K2 xấu, giữ lại nhiều trả chậm nhất; đỉnh bị trần tổng chi 75% chặn. |

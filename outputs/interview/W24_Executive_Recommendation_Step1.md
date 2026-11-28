@@ -52,9 +52,9 @@ So mọi hãng ở cùng quy mô: **L1** đại lý 30 triệu FYP/tháng · **L
 
 | Mục tiêu | AIA Alpha | Chubb Life | Manulife | Chính sách Đề xuất 2026 |
 |---|---|---|---|---|
-| Chi trả giảm khi K2 85% → 65% (cao = gắn chất lượng) | 14,2% | 21,3% | 6,7% | 27,9% |
+| Chi trả giảm khi K2 85% → 65% (cao = gắn chất lượng) | 12,7% | 21,3% | 6,7% | 27,9% |
 | Chi phí / phí còn duy trì, K2 85% | 68,7% | 103,6% | 59,8% | 71,9% |
-| Chi phí / phí còn duy trì, K2 65% | 77,0% | 106,7% | 73,0% | 67,8% |
+| Chi phí / phí còn duy trì, K2 65% | 78,4% | 106,7% | 73,0% | 67,8% |
 | Tổng chi / FYP, K2 85% | 58,4% | 88,1% | 50,8% | 61,1% |
 
 - **Doanh số** `HYPOTHESIS`: thu nhập đại lý Full-time và quản lý không thấp hơn thị trường (trang 2) là điều kiện giữ và tuyển người; mức tăng FYP thật chỉ đo được bằng thí điểm (trang 7).
