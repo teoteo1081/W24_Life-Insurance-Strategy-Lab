@@ -9,7 +9,7 @@
 | Vế đề bài | Kết luận | Số chính (K2 85%, khu vực 45 đại lý) | Xem |
 |---|---|---|---|
 | Phân tích chính sách các công ty | Ở đại lý cá nhân các hãng trả gần ngang nhau; khác biệt nằm ở tầng quản lý và ở việc chi trả có co theo chất lượng hay không. | AIA Alpha 58,4% FYP · Chubb Life 88,1% FYP · Manulife 50,8% FYP | Trang 2 |
-| Đề xuất phù hợp VN | **Chính sách Đề xuất 2026** `PROPOSAL`: trả ngang thị trường, mọi khoản thưởng lớn gắn K2, giữ lại phần trả chậm, hệ số vùng theo lương tối thiểu. | Tổng chi 61,1% FYP · điểm 5 tiêu chí 3,96/5 | Trang 5 |
+| Đề xuất phù hợp VN | **Chính sách Đề xuất 2026** `PROPOSAL`: trả ngang thị trường, mọi khoản thưởng lớn gắn K2, giữ lại phần trả chậm, hệ số vùng theo lương tối thiểu. | Tổng chi 61,1% FYP · điểm 5 tiêu chí 3,77/5 (hơn Manulife 0,03 điểm — sát nút, không phải vượt trội) | Trang 5 |
 | Doanh số | Đề xuất trả cao hơn AIA Alpha, Manulife nên phải bán thêm mới hòa vốn phần phí giữ lại sau chi trả kênh đại lý; rẻ hơn Chubb Life ngay ở cùng FYP. Đây là chỉ tiêu tối thiểu của thí điểm — mức tăng thật vẫn `HYPOTHESIS`. | 4 nhóm năng suất: so với AIA Alpha: thêm đại lý +21,8% hoặc tăng năng suất +18,0% FYP; so với Manulife: thêm đại lý +35,8% hoặc tăng năng suất +29,5% FYP `PROPOSAL` | Trang 3, 7 |
 | Chất lượng | Chi trả co mạnh nhất khi K2 xấu đi. | Khi K2 85% → 65%: đề xuất −27,9%; hãng co mạnh nhất Chubb Life −21,3% | Trang 3 |
 | Chi phí / ROI | Không rẻ nhất khi chất lượng tốt (AIA Alpha 58,4%, Manulife 50,8% thấp hơn), nhưng an toàn nhất khi xấu: đỉnh stress test không vượt trần 75% FYP. ROI hiện là proxy (chi phí / FYP), chưa phải VNB. | Xấu nhất 74,2%; bán nghiêng bảo vệ thuần 75,0% | Trang 6 |
@@ -29,7 +29,7 @@
 | Chất lượng | K2 85% (chuẩn), 65% (xấu) | Giả định; K2 thật đo ở thí điểm |
 | Hoa hồng năm đầu | 30% FYP (chuẩn); độ nhạy 25% / 40% | 40% ≈ danh mục nghiêng bảo vệ thuần |
 | ROI | Chi phí / FYP và chi phí / phí còn duy trì | Proxy — cần product mix & chi phí vượt định mức từ Actuarial để ra VNB |
-| Ưu tiên khi chấm điểm | Hành vi 25% · An toàn tài chính 25% · Cạnh tranh thu nhập 20% · Đơn giản 15% · Vận hành & pháp lý 15% | Đổi trọng số thì điểm đổi, cấu trúc đề xuất không đổi |
+| Ưu tiên khi chấm điểm (DEC-19) | Cổng trước: Điều 52 ≤ 30% FYP, Đề xuất ≤ 75% FYP ở kịch bản xấu nhất. Điểm: Doanh số 30% · Chất lượng 30% · Chi phí/ROI 30% · Đơn giản 10%; Vận hành & pháp lý chỉ tham khảo | Mốc chấm là `PROPOSAL`, chốt trước khi tính điểm; đổi trọng số thì điểm đổi, cấu trúc đề xuất không đổi |
 
 ## Trang 2 — Các hãng trả thế nào: 4 mốc quy mô chuẩn
 

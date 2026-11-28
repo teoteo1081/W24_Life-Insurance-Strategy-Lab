@@ -1887,10 +1887,10 @@
   {
    "abbr": "Rubric",
    "english": "Scoring rubric",
-   "vietnamese": "Thang chấm 5 trụ cột: hành vi 25%, tài chính 25%, cạnh tranh 20%, đơn giản 15%, vận hành & pháp lý 15%",
+   "vietnamese": "Thang chấm 5 trụ cột (DEC-19): doanh số 30%, chất lượng 30%, chi phí/ROI 30%, đơn giản 10%; vận hành & pháp lý chỉ tham khảo (0%); cổng Điều 52 và trần 75% xét trước",
    "company_and_memo": "Chung toàn ngành / thuật ngữ dự án (không có trong 9 PDF)",
    "market_equivalent": "Compensation design scorecard",
-   "note": "3 trụ cột tính bằng công thức; Vận hành & Pháp lý là đánh giá; điểm Chính sách Lai là tự chấm",
+   "note": "4 trụ cột tính bằng công thức; Vận hành & Pháp lý là đánh giá, không cộng vào tổng; điểm Chính sách Đề xuất 2026 là tự chấm",
    "group": "Đề xuất W24",
    "companies": [
     "Chung"
