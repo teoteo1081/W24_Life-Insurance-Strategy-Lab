@@ -1,0 +1,226 @@
+{
+ "doc": "AIA-034",
+ "rules_A": 18,
+ "rules_B": 21,
+ "pages_read_A": 21,
+ "pages_read_B": 21,
+ "uncertain_A": [],
+ "uncertain_B": [],
+ "page_diffs": {
+  "3": {
+   "only_A": [
+    "3"
+   ],
+   "only_B": []
+  },
+  "4": {
+   "only_A": [
+    "7"
+   ],
+   "only_B": []
+  },
+  "5": {
+   "only_A": [
+    "7"
+   ],
+   "only_B": []
+  },
+  "6": {
+   "only_A": [
+    "8"
+   ],
+   "only_B": [
+    "2",
+    "3",
+    "7",
+    "9"
+   ]
+  },
+  "7": {
+   "only_A": [
+    "8"
+   ],
+   "only_B": [
+    "2",
+    "3",
+    "7",
+    "9"
+   ]
+  },
+  "10": {
+   "only_A": [
+    "11"
+   ],
+   "only_B": [
+    "2026"
+   ]
+  },
+  "11": {
+   "only_A": [
+    "11"
+   ],
+   "only_B": [
+    "2026"
+   ]
+  },
+  "13": {
+   "only_A": [],
+   "only_B": [
+    "01",
+    "15",
+    "16"
+   ]
+  },
+  "14": {
+   "only_A": [
+    "14",
+    "21"
+   ],
+   "only_B": [
+    "01",
+    "15",
+    "16",
+    "029",
+    "2401"
+   ]
+  },
+  "15": {
+   "only_A": [
+    "14",
+    "21"
+   ],
+   "only_B": []
+  },
+  "17": {
+   "only_A": [],
+   "only_B": [
+    "01",
+    "02",
+    "03",
+    "74.3",
+    "74.4",
+    "75.1",
+    "2026"
+   ]
+  },
+  "18": {
+   "only_A": [],
+   "only_B": [
+    "01",
+    "02",
+    "03",
+    "74.3",
+    "74.4",
+    "75.1",
+    "2026"
+   ]
+  },
+  "19": {
+   "only_A": [],
+   "only_B": [
+    "01",
+    "02",
+    "03",
+    "74.3",
+    "74.4",
+    "75.1",
+    "2026"
+   ]
+  },
+  "20": {
+   "only_A": [],
+   "only_B": [
+    "01",
+    "02",
+    "03",
+    "74.3",
+    "74.4",
+    "75.1",
+    "2026"
+   ]
+  },
+  "21": {
+   "only_A": [],
+   "only_B": [
+    "01",
+    "02",
+    "03",
+    "74.3",
+    "74.4",
+    "75.1",
+    "2026"
+   ]
+  }
+ },
+ "doc_only_A": [
+  "11",
+  "21"
+ ],
+ "doc_only_B": [
+  "029",
+  "74.3",
+  "74.4",
+  "75.1",
+  "2401"
+ ],
+ "boundary": {
+  "conflict": {
+   "85": {
+    "A": [
+     "<",
+     ">="
+    ],
+    "B": [
+     ">="
+    ]
+   }
+  },
+  "one_sided": {}
+ },
+ "boundary_by_rule": [
+  {
+   "A": 7,
+   "B": 8,
+   "page": "5",
+   "mismatch": [
+    [
+     "<>=85",
+     ">=85"
+    ]
+   ]
+  }
+ ],
+ "inconsistencies_A": [
+  "Trang 1: tiêu đề \"năm 2026\" nhưng thư viết \"Chính sách thu nhập, thăng tiến và điều kiện duy trì hợp đồng năm 2025 tiếp tục tập trung...\".",
+  "Định nghĩa \"Chuyên Viên Tư Vấn Mới\" mâu thuẫn: trang 9 và 10 nói CVTV khôi phục hợp đồng \"được xem là\" CVTV mới; trang 4, 6 và 14 (F.II.21) nói khôi phục/gia nhập lại \"không được xem là\" CVTV mới.",
+  "Định nghĩa CVTV hoạt động: trang 4 dùng \"tổng số hợp đồng thuần ≥ 1\" và loại trừ 3 sản phẩm; trang 14 dùng \"tổng số hợp đồng trong tháng ≥ 1\" và loại trừ thêm AIA Khoẻ An Nhiên.",
+  "Trang 4 mục III: \"tối đa 4 cấp bậc\" nhưng bảng chỉ có 3 cấp (cấp 2, 3, 4); trang 15 gọi khoản này là \"Đào tạo Nhóm Tuyển dụng gián tiếp hàng tháng\" khác tên mục III (\"Đào tạo nhóm tuyển dụng hiệu quả hàng tháng\").",
+  "Trang 4: Tổng phí A gồm \"Phí dịch vụ doanh số hoạt động JFW hàng tháng\" nhưng khoản này không được định nghĩa/không có tỷ lệ trong văn bản.",
+  "Trang 15: điều kiện chi trả tham chiếu \"Mục C\" (thăng tiến) và \"xét duyệt hàng quý\", trong khi điều kiện duy trì nằm ở Mục D và DM/SDM xét tháng 6 & 12 (trang 10).",
+  "Trang 15: \"Thời điểm tính toán chi trả ... tham khảo Phụ lục đính kèm theo Memo này\" nhưng không có phụ lục thời điểm chi trả trong 21 trang (Phụ lục 2 chỉ về tỷ lệ duy trì).",
+  "Trang 3 yêu cầu \"chấm công cá nhân 50%\"; trang 5 ghi \"tối thiểu 50%\" — khác chữ, cùng ngưỡng.",
+  "Ví dụ 70% chỉ tiêu trang 9: tỷ lệ đóng góp 18% + 72.3% + 18% = 108.3% nhưng dòng Tổng cộng ghi 100%.",
+  "Mục D có tên \"Điều kiện duy trì chức danh\" nhưng nội dung dùng \"điều kiện duy trì hợp đồng\".",
+  "Ví dụ 1 trang 7 gọi khoản đồng hành CVTV mới là \"Phí dịch vụ tuyển dụng hiệu quả\"; Ví dụ 2 ghi \"AUM A\" (lỗi gõ).",
+  "Ví dụ 3 trang 7: người giới thiệu B (SA) nhận 5% trong khi bảng trang 6 nói người giới thiệu SA nhận theo 2601-033; và SUM C nhận 0% sau khi B lên UM, điều không có trong quy tắc trang 6.",
+  "Ví dụ báo cáo đồng cấp trang 11: C bị giáng xuống UM \"chỉ còn 8 tháng\" — không khớp hiển nhiên với hạn 12 tháng cho UM (12-10=2) hay 18 tháng SUM (18-10=8); văn bản không giải thích.",
+  "Phụ lục 2 Minh họa 1 (trang 18): U3 hiệu lực 15/11/2026 và tỷ lệ tháng 12/2027 lấy mốc 1/11/2025 — mốc T-14 của 12/2027 phải là 10/2026; số liệu ví dụ không nhất quán.",
+  "Minh họa 2 (trang 19): chữ ghi AIA TOT = 0% \"Từ tháng 8/2025 đến tháng 7/2026\", hình ghi \"08/2025-08/2026\".",
+  "Thăng tiến SA lên UM: trang 9 dùng \"SA lên UM\" trong khi bảng ghi đối tượng \"CVTV\"."
+ ],
+ "inconsistencies_B": [
+  "Trang 1: thư nói “Chính sách thu nhập, thăng tiến và điều kiện duy trì hợp đồng năm 2025” trong khi tiêu đề và toàn văn bản là năm 2026.",
+  "Định nghĩa “Chuyên Viên Tư Vấn Mới” mâu thuẫn: trang 9 (C.III.1) và trang 10 (D) nói khôi phục hợp đồng “được xem là Chuyên Viên Tư Vấn mới”; trang 4, 6 và trang 14 (F.II.21) nói gia nhập lại/khôi phục “không được xem là” CVTV mới.",
+  "Ví dụ tính 70% trang 9: tỷ lệ đóng góp 18% + 72.3% + 18% = 108.3% nhưng dòng Tổng cộng ghi 100%; với FYC 100/400/100 (tổng 600) thì tỷ lệ đúng phải xấp xỉ 16.7%/66.7%/16.7%.",
+  "Trang 15 nói CQL phải giữ vị trí từ UM trở lên “được xét duyệt hàng quý quy định cụ thể tại Mục C”, nhưng điều kiện duy trì nằm ở Mục D và DM/SDM xét Tháng 6 & 12, không phải hàng quý.",
+  "Mục A.III (trang 4) ghi “tối đa 4 cấp bậc” nhưng bảng chỉ có 3 cột (Quản lý cấp 2, 3, 4); tên mục là “Đào tạo nhóm tuyển dụng hiệu quả” trong khi trang 15 gọi là “Đào tạo Nhóm Tuyển dụng gián tiếp hàng tháng”.",
+  "Mục A.I: FY “chưa có” xếp vào cột thấp (< 80%), trong khi các mục A.II, A.IV, A.V.1 và Phụ lục 2 B.6 coi FY chưa có/N/A là đạt.",
+  "Sơ đồ cấu trúc trang 12: CVTV 10 xuất hiện ở cả nhóm UM8 và nhóm SUM3.",
+  "Minh họa 1 trang 18: tỷ lệ duy trì tháng 12/2027 lại lấy mốc 1/11/2025 (T-14 của 12/2027 phải là 10/2026); U3 hiệu lực 15/11/2026 cũng không khớp mốc.",
+  "Minh họa 2 trang 19: văn bản ghi AIA TOT = 0% “từ tháng 8/2025 đến tháng 7/2026” nhưng ô tô màu ghi “08/2025-08/2026”.",
+  "Ví dụ 1 trang 7 gọi Phí dịch vụ đồng hành cùng CVTV mới là “Phí dịch vụ tuyển dụng hiệu quả” (trùng tên khoản A.I); Ví dụ 2 ghi “AUM A” thay vì “UM A”.",
+  "Mục A.III/IV dùng “Phí dịch vụ doanh số hoạt động JFW hàng tháng” làm thành phần của A nhưng văn bản không quy định khoản này.",
+  "Trang 15 nói thời điểm chi trả “tham khảo Phụ lục đính kèm theo Memo này” nhưng không có phụ lục nào về thời điểm chi trả trong 21 trang.",
+  "Ví dụ làm tròn trang 21: “74.49 sẽ được làm tròn thành 74%” thiếu ký hiệu %; quy tắc nói làm tròn dựa trên phần thập phân “lớn hơn hoặc bằng 5” (không nói rõ chữ số thập phân thứ nhất)."
+ ]
+}

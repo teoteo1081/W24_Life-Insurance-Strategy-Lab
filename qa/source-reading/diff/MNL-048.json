@@ -1,0 +1,124 @@
+{
+ "doc": "MNL-048",
+ "rules_A": 11,
+ "rules_B": 13,
+ "pages_read_A": 6,
+ "pages_read_B": 6,
+ "uncertain_A": [],
+ "uncertain_B": [],
+ "page_diffs": {
+  "1": {
+   "only_A": [],
+   "only_B": [
+    "04",
+    "2026"
+   ]
+  },
+  "3": {
+   "only_A": [
+    "6"
+   ],
+   "only_B": [
+    "9"
+   ]
+  },
+  "4": {
+   "only_A": [
+    "0003",
+    "04",
+    "11",
+    "2024",
+    "2025",
+    "2027",
+    "2028"
+   ],
+   "only_B": [
+    "9"
+   ]
+  },
+  "6": {
+   "only_A": [
+    "1",
+    "02",
+    "2026"
+   ],
+   "only_B": []
+  }
+ },
+ "doc_only_A": [],
+ "doc_only_B": [],
+ "boundary": {
+  "conflict": {
+   "90": {
+    "A": [
+     ">="
+    ],
+    "B": [
+     "<",
+     ">="
+    ]
+   }
+  },
+  "one_sided": {}
+ },
+ "boundary_by_rule": [
+  {
+   "A": 5,
+   "B": 5,
+   "page": "2-3",
+   "mismatch": [
+    [
+     ">=90",
+     "<>=90"
+    ]
+   ]
+  },
+  {
+   "A": 10,
+   "B": 10,
+   "page": "4-5",
+   "mismatch": [
+    [
+     "<70",
+     ">=70"
+    ],
+    [
+     "<>=70",
+     ">=70"
+    ]
+   ]
+  },
+  {
+   "A": 10,
+   "B": 11,
+   "page": "4-5",
+   "mismatch": [
+    [
+     "<70",
+     ">=70"
+    ],
+    [
+     "<>=70",
+     ">=70"
+    ]
+   ]
+  }
+ ],
+ "inconsistencies_A": [
+  "Mục lục nhảy từ A (Các khoản phí dịch vụ) sang C (Quy định chung) — không có mục B (tr.1-5).",
+  "C.1 dùng ký hiệu 'PSM+/HKD+' trong khi toàn văn bản chỉ dùng 'HKD' (tr.5).",
+  "A.III.1.c nói TLDTHD xác định 'tại cuối quý tính toán', ghi chú A.III.3 nói cấu trúc chốt 'tại tháng cuối quý' — diễn đạt khác nhau, có thể cùng nghĩa (tr.3).",
+  "A.IV.1 bảng điều kiện viết 'dẫn dầu' (lỗi chính tả) còn ghi chú viết 'dẫn đầu' (tr.4); trang 1 viết 'Biếu Phí dịch vụ' (lỗi chính tả).",
+  "A.IV.1 b.vi 'nhiều hơn từ 2 khu vực' — diễn đạt mâu thuẫn (nhiều hơn 2 hay từ 2) (tr.4).",
+  "A.IV.1 c: thỏa cả 2 điều kiện được 'ưu tiên ghi nhận ở Điều kiện 2' nhưng cách tính ở A.IV.2 giống nhau cho cả 2 điều kiện — văn bản không nêu khác biệt hệ quả (tr.4)."
+ ],
+ "inconsistencies_B": [
+  "Cấu trúc mục nhảy từ A (Các khoản phí dịch vụ) sang C (Quy định chung), không có mục B (trang 1-5).",
+  "C.1 viết 'PSM+/HKD+' trong khi toàn văn bản dùng 'HKD' (trang 5).",
+  "Ghi chú trần Phí dịch vụ hợp tác dài hạn dẫn chiếu 'mục A.I.1' nhưng mục A.I không có tiểu mục 1 – bảng mức phí nằm ở 'Ghi chú 1)' (trang 4 vs trang 1).",
+  "Công thức Phí dịch vụ cơ bản có hệ số x130% nhưng lại giới hạn tối đa 150% mức theo chức danh – không mâu thuẫn trực tiếp nhưng cần lưu ý thứ tự áp dụng (trang 1).",
+  "Lỗi chính tả trong văn bản: 'Biếu Phí dịch vụ' (trang 1, bản text; ảnh in 'Biểu'), 'dẫn dầu' trong bảng Điều kiện 2 (trang 4), 'nhiều hơn từ 2 khu vực' (trang 4, ghi chú b.vi).",
+  "Mục IV.3.c chỉ liệt kê khoản kỳ 4/2027 và 4/2028 của thông báo cũ; các khoản kỳ 4/2026 (Y2 của năm 2024, Y1 của năm 2025) không được nhắc tới (trang 5).",
+  "Ưu tiên ghi nhận ở Điều kiện 2 khi thỏa cả 2 điều kiện nhưng cách tính phí không phân biệt điều kiện – hệ quả của việc ưu tiên không được nêu (trang 4)."
+ ]
+}

@@ -22,7 +22,7 @@ DEFAULT = REPO / "outputs/public/W24_Strategy_Lab.html"
 ALLOWED_FILES = {"W24_Strategy_Lab.html"}
 CONFIDENTIAL: list = []   # DEC-21 (2026-11-28): 9 PDF như nhau — không còn văn bản mật; thêm mã vào đây nếu có
 SECRET_PATTERNS = [r"sb_secret_[A-Za-z0-9_\-]+", r"SUPABASE_SERVICE_KEY", r"service_role\s*[\"']?\s*[:=]", r"(?m)^\s*SUPABASE_[A-Z_]+=\S+"]
-LOCAL_PATTERNS = [r"[A-Za-z]:\\\\?Users\\\\", r"[A-Za-z]:/Users/", r"file:///", r"/home/\w+/", r"private/sources", r"%PDF-",
+LOCAL_PATTERNS = [r"[A-Za-z]:\\\\?Users\\\\", r"[A-Za-z]:/Users/", r"file:///", r"/home/\w+/", r"%PDF-",
                   r"[A-Za-z0-9._%+-]+@gmail\.com"]
 
 

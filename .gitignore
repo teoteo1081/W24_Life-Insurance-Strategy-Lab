@@ -1,9 +1,9 @@
 # Private, confidential & generated artifacts
 # NOTE: .gitignore ONLY blocks untracked files; it does NOT protect files already tracked in Git.
-# DEC-11 (2026-11-26): the 7 issuer PDFs in private/sources/ are no longer tracked. They stay on
-# TJ's machine for local analysis and are served for evidence links from Cloudflare R2 via the
-# read-only Worker in infra/evidence-worker/ (see manifest.json). Earlier Git history still contains them.
-private/
+# DEC-22 (2026-11-28): TJ chose to track the 9 source PDFs in private/sources/ in this PUBLIC repo so
+# every machine gets them with git pull (replaces DEC-11). Anything else under private/ stays untracked.
+private/*
+!private/sources/
 *.secret
 *.key
 *.pem
@@ -35,5 +35,6 @@ venv/
 *.har
 cookies.txt
 
-# Kết quả trung gian của qa/source-reading/compare_reads.py (sinh lại được)
-qa/source-reading/diff/
+
+# Ảnh trang tách từ PDF (232 MB, sinh lại y hệt bằng qa/source-reading/extract_pages.py từ 9 PDF trong repo); chữ tách theo trang VẪN commit
+qa/source-reading/work/img/

@@ -4,6 +4,14 @@
 
 ## Trạng thái hiện hành
 
+**2026-11-28 — 9 PDF + công cụ + chữ tách từ PDF lên GitHub (DEC-22, TJ chọn repo công khai).**
+
+**MÁY KHÁC LÀM TIẾP:** `git pull` rồi `py -3 scripts/setup_machine.py` (cài thư viện → tạo lại 135 ảnh trang y hệt từ 9 PDF → chạy kiểm tra). Thấy "Máy đã sẵn sàng" là làm tiếp được.
+
+- Chữ tách theo trang (`qa/source-reading/work/text/`) và kết quả so 2 lượt đọc (`qa/source-reading/diff/`) có trên GitHub; ảnh trang (232 MB) không lưu, sinh lại bằng lệnh trên.
+- R2: CHƯA tải được 0046M01/0047M01 — khóa S3 trong `kho.env` bị từ chối với bucket `tj-w24-evidence`, `CF_API_TOKEN` không có quyền R2; token `CF_W24_TOKEN` không có trên máy này. Trên máy có `CF_W24_TOKEN`: `py -3 infra/evidence-worker/deploy_evidence.py`; hoặc có khóa S3 cho bucket đó: `py -3 infra/evidence-worker/upload_missing_s3.py`. Web vẫn mở được 2 file này (link thẳng file trong repo).
+- Đọc lại PDF: `py -3 -X utf8 qa/source-reading/extract_pages.py` (ra `qa/source-reading/work/`, không commit). Cả 9 văn bản có link mở trang gốc trên web.
+
 **2026-11-28 — ĐÃ PUSH (TJ: "push").** `origin/main` = `f393c81` (16 commit: DEC-17 → DEC-21). GitHub Pages build `f393c81`: built; trang https://teoteo1081.github.io/W24_Life-Insurance-Strategy-Lab/outputs/interactive/W24_Strategy_Lab.html trùng khít file của commit, có tab 4 "Hai góc nhìn"; PDF 2 trang trả HTTP 200. Quét trang live: không secret, không đường dẫn máy (2 cảnh báo chỉ vì web dùng bản đầy đủ, không phải bản `--public`).
 
 **2026-11-28 — Sửa 3 lỗi AIA cho khớp PDF gốc (DEC-18) + gộp phần kiểm tra đọc nguồn.** (đã push cùng đợt trên)
@@ -20,7 +28,7 @@ Danh sách việc (TJ đọc mục này là đủ):
 - [x] **Trang 4 · Hai góc nhìn (DEC-20):** `scripts/build_two_lens.py` → `outputs/interview/04_Hai_Goc_Nhin_Nguoi_Ban_Va_Doanh_Nghiep.md` + tab 4 trên HTML (bản công khai tự bỏ cột Manulife). Đại lý năng suất thấp ~3 tr/tháng (dưới lương tối thiểu, cả 4 phương án); đại lý ở giữa 6,3–8,3 tr (dưới bình quân lao động 9,2 tr); thuế 0 ở cả 2 cách hiểu. Thuế và lương là `SOURCE_CLAIM` (chưa mở được văn bản gốc / trang Cục Thống kê).
 - [ ] Chờ TJ: đối chiếu toàn văn Điều 7 Luật 109/2025 và NĐ 141/2026 (khi mở được nguồn chính thức) để bỏ nhãn `SOURCE_CLAIM` phần thuế.
 - [x] **9 PDF như nhau (DEC-21, TJ 2026-11-28):** bỏ đánh dấu mật của Manulife ở mọi bước dựng; bản công khai giờ có đủ Manulife (0 dòng bị lọc); registry đồng mức với AIA/Chubb.
-- [ ] Chờ TJ xác nhận: tải 0046M01, 0047M01 lên R2 để có link mở trang gốc như 7 văn bản kia.
+- [x] Link mở trang gốc cho 0046M01, 0047M01: trỏ thẳng file trong repo (DEC-22), không cần R2.
 - [ ] CHƯA sửa (chờ TJ): Chubb thiếu phí phát triển SM, phí RD II.7/II.8, quy đổi FYC đại lý <3 tháng; AIA các mục "thiếu trong code" mức thấp (xem `fresh/sources/READING_AUDIT.md`).
 - [ ] Push: chưa. `main` local tách nhánh với `origin/main`; phát hành chỉ qua `public-release` khi TJ yêu cầu.
 

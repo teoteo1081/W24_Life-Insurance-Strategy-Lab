@@ -1,0 +1,90 @@
+{
+ "doc": "MNL-047",
+ "rules_A": 11,
+ "rules_B": 10,
+ "pages_read_A": 8,
+ "pages_read_B": 8,
+ "uncertain_A": [],
+ "uncertain_B": [],
+ "page_diffs": {
+  "1": {
+   "only_A": [
+    "02",
+    "04",
+    "80"
+   ],
+   "only_B": []
+  },
+  "2": {
+   "only_A": [
+    "02"
+   ],
+   "only_B": [
+    "7"
+   ]
+  },
+  "3": {
+   "only_A": [
+    "5",
+    "6",
+    "30",
+    "40",
+    "60",
+    "75",
+    "125"
+   ],
+   "only_B": []
+  },
+  "4": {
+   "only_A": [],
+   "only_B": [
+    "4"
+   ]
+  },
+  "5": {
+   "only_A": [],
+   "only_B": [
+    "10"
+   ]
+  },
+  "6": {
+   "only_A": [
+    "100"
+   ],
+   "only_B": [
+    "5",
+    "6"
+   ]
+  },
+  "7": {
+   "only_A": [],
+   "only_B": [
+    "10"
+   ]
+  }
+ },
+ "doc_only_A": [],
+ "doc_only_B": [],
+ "boundary": {
+  "conflict": {},
+  "one_sided": {}
+ },
+ "boundary_by_rule": [],
+ "inconsistencies_A": [
+  "Điều kiện bắt buộc điểm danh/“Đội ngũ chuyên cần” (trang 3) được đánh số 4) trong mục A.II nhưng viết là điều kiện 'để được nhận phí dịch vụ' nói chung — phạm vi áp dụng (chỉ A.II hay mọi khoản A.I–A.V) không rõ.",
+  "Mục A.I (trang 1): mô tả 'UM+ sẽ nhận % x FYC của cấp báo cáo trực tiếp và gián tiếp' nhưng tiêu đề cột tỷ lệ ghi '% x FYC trong tháng của tất cả cấp báo cáo trực tiếp'.",
+  "Mục A.V.1.c.ii (trang 5) gọi Phí dịch vụ hợp tác dài hạn là 'khoản thưởng'.",
+  "Mục B.9.c (trang 7) quy định thu hồi '100% hoa hồng' trong Biểu phí dịch vụ của UM+ (không phải hoa hồng) — thuật ngữ không khớp.",
+  "Số thông báo GTF viết '0004M04/ASBD/2024' (trang 5), khác định dạng các số thông báo khác (vd 0002M04/2024/ASBD).",
+  "Mục A.IV (trang 4): trần 30 triệu đồng/tháng nêu trước cơ chế chia 50% trả ngay/50% giữ lại — không rõ trần áp dụng cho tổng hay cho phần trả ngay."
+ ],
+ "inconsistencies_B": [
+  "Trang 3, A.II mục 4: 'Điều kiện bắt buộc để được nhận phí dịch vụ' đặt trong mục A.II nhưng viết như điều kiện chung — phạm vi áp dụng (chỉ A.II hay mọi khoản) không rõ.",
+  "Trang 7, B.9c: quy định thu hồi '100% hoa hồng' trong một biểu phí dịch vụ của UM+ (không phải hoa hồng) — thuật ngữ không khớp.",
+  "Trang 5, A.V.1c ii: gọi Phí dịch vụ hợp tác dài hạn là 'khoản thưởng cao hơn' — lẫn thuật ngữ thưởng/phí dịch vụ.",
+  "Trang 1, A.I: tiêu đề cột tỷ lệ ghi '% x FYC trong tháng của tất cả cấp báo cáo trực tiếp' nhưng bảng áp cho cả cấp 2, 3, 4 (gián tiếp).",
+  "Trang 2 và 5: bảng A.II trả 30% khi chỉ có 1 đại lý sản xuất, nhưng A.V.1b i chỉ tích lũy tháng có ≥ 2 đại lý sản xuất (không mâu thuẫn trực tiếp, nhưng cần lưu ý).",
+  "Trang 5 dẫn số 0004M04/ASBD/2024 (thứ tự ASBD/năm đảo so với các số khác dạng .../2024/ASBD) — khác định dạng.",
+  "Trang 2 vs trang 3: định nghĩa MBA Pro năm tiếp theo ghi 'tính tới tháng trước liền kề' (A.II) và 'tới tháng trước liền kề' (A.III) — khác chữ nhỏ, nghĩa như nhau."
+ ]
+}

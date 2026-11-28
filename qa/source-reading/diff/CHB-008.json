@@ -1,0 +1,121 @@
+{
+ "doc": "CHB-008",
+ "rules_A": 13,
+ "rules_B": 13,
+ "pages_read_A": 14,
+ "pages_read_B": 14,
+ "uncertain_A": [],
+ "uncertain_B": [],
+ "page_diffs": {
+  "3": {
+   "only_A": [],
+   "only_B": [
+    "1",
+    "6",
+    "7",
+    "10",
+    "12"
+   ]
+  },
+  "4": {
+   "only_A": [],
+   "only_B": [
+    "1"
+   ]
+  },
+  "5": {
+   "only_A": [
+    "3"
+   ],
+   "only_B": []
+  },
+  "8": {
+   "only_A": [
+    "4.3"
+   ],
+   "only_B": []
+  },
+  "9": {
+   "only_A": [
+    "4.3"
+   ],
+   "only_B": []
+  },
+  "11": {
+   "only_A": [
+    "8.2",
+    "10"
+   ],
+   "only_B": [
+    "12"
+   ]
+  },
+  "12": {
+   "only_A": [
+    "8.2",
+    "10"
+   ],
+   "only_B": [
+    "3",
+    "9",
+    "11"
+   ]
+  },
+  "13": {
+   "only_A": [
+    "8.2",
+    "10"
+   ],
+   "only_B": []
+  },
+  "14": {
+   "only_A": [],
+   "only_B": [
+    "3",
+    "9",
+    "11"
+   ]
+  }
+ },
+ "doc_only_A": [
+  "4.3",
+  "8.2"
+ ],
+ "doc_only_B": [
+  "11"
+ ],
+ "boundary": {
+  "conflict": {},
+  "one_sided": {
+   "9": {
+    "A": [],
+    "B": [
+     ">="
+    ]
+   }
+  }
+ },
+ "boundary_by_rule": [],
+ "inconsistencies_A": [
+  "Trang 4: điểm dừng tính Phí hỗ trợ tuyển dụng nhắc \"Người giới thiệu được thăng cấp lên AMD\" nhưng AMD không xuất hiện trong các cấp bậc của văn bản (AR, UM, SM, DM).",
+  "Trang 8 và 9: ví dụ mục 4.1/4.2 nêu \"SM1 có 4 EHC NTT\"/\"DM1 có 4 EHC NTT\" rồi áp L1 = 50%, trong khi bảng L1 (trang 7) xác định theo FYC NTT của AL xét (Từ 30 trở lên → 50%), không theo EHC; ví dụ không nêu FYC NTT.",
+  "Trang 10 (mục 5.d): \"áp dụng đối với AL ... đã có K2\" nhưng câu kế tiếp \"Trường hợp AL chưa phát sinh K2 NTT xem như đạt K2\" — hai vế trái nhau; đồng thời ngưỡng thâm niên \"13 tháng\" ở mục 5 khác với mốc \"Tháng quản lý từ 15 tháng\" ở mục 2.1 (không mâu thuẫn trực tiếp nhưng khác thước đo: \"làm việc\" vs \"Tháng quản lý\").",
+  "Trang 10: bậc 3MAA \"Từ 2 đến 4\" và \"Từ 5 trở lên\" để hở khoảng >4 đến <5 nếu 3MAA không nguyên.",
+  "Trang 2 và 11: chỉ có \"PHỤ ĐÍNH III\"; không có Phụ đính I/II trong văn bản.",
+  "Trang 12: công thức in \"Mức Phí Dịch × Hệ số điều chỉnh W1\" (thiếu chữ \"vụ\"); ví dụ in \"9.000.0000\" (thừa một số 0) thay vì 9.000.000.",
+  "Trang 12: bảng Mức phí dịch vụ chỉ có các mốc 1, 2, 4, 6 AR/AL đạt — không nêu mức cho 3, 5, trên 6; và chỉ có cột tháng thứ 1–12 và 13–24, không nêu từ tháng thứ 25.",
+  "Trang 11-12: bảng ví dụ ghi DM1 FYP Thực đạt 113,1 trong khi các dòng cá nhân là 15,1 + 30,98 + 15,2 + 15,9 + 19,97 + 16 (ví dụ, có thể làm tròn); KPI cá nhân FYP UM1 25,81% vượt mức 25% của công thức nhưng trong mức tối đa 30%, còn FNA 22/20 lại ghi 25,00% (không vượt) — cách áp mức tối đa 30%/25% chỉ suy ra từ ví dụ.",
+  "Trang 11: Yêu cầu FYP ghi \"30.000.000\" (đồng) trong khi bảng ví dụ trang 12 ghi \"30\" (đơn vị triệu, không ghi rõ)."
+ ],
+ "inconsistencies_B": [
+  "Trang 11: công thức “Tỷ lệ đạt KPI Quản lý của mỗi chỉ tiêu = [Số thực tế / (chia) số yêu cầu] × 25%” nhưng bảng ghi “Tỷ lệ đạt KPI ghi nhận tối đa” FYP 30%, CC 30%, FNA 25%, SOP 25% (tổng tối đa 110%); ví dụ trang 12 UM1 FYP 25,81% vượt 25%.",
+  "Trang 8 và 9: ví dụ Phí đào tạo nâng cao viện dẫn “có 4 EHC NTT” để áp L1 50%, nhưng bảng L1/L2/L3 (trang 7) xác định theo FYC NTT của AL xét, không theo EHC.",
+  "Trang 12: tiêu đề mục a “Mức phí dịch vụ xét dựa trên số tháng AL gia nhập Champion Hubb” nhưng bảng có trục chính là số lượng AR/AL đạt Thưởng Hiệu suất Tháng; chỉ có mức 1, 2, 4, 6 (bỏ trống 3, 5, >6) và không có mức sau tháng thứ 24.",
+  "Trang 12: ví dụ ghi “9.000.0000” (thừa một chữ số 0); công thức ghi “Mức Phí Dịch” (thiếu “vụ”). Phụ đính III dùng lẫn “thưởng” và “phí dịch vụ”.",
+  "Trang 10: bảng 3MAA NTT “Từ 2 đến 4” rồi “Từ 5 trở lên” — khoảng giữa 4 và 5 không được quy định.",
+  "Trang 9-10: Đối tượng áp dụng “AL đạt Tỷ lệ K2 nhóm trực tiếp từ 65% trở lên” và “đã có K2”, nhưng cùng mục lại “Trường hợp AL chưa phát sinh K2 NTT xem như đạt K2”.",
+  "Trang 4: “Người giới thiệu được thăng cấp lên AMD” — AMD không có trong bảng tóm tắt cấp bậc (AR/UM/SM/DM) và không được định nghĩa.",
+  "Trang 4: bảng định kỳ chi trả phần tháng 7–12 tại “Khóa sổ tháng thứ 12 của AR mới”, mục f lại nói chung “chi trả trong Kỳ chi trả thu nhập của Tháng xét”.",
+  "Trang 2 mục lục và trang 11: chỉ có “PHỤ ĐÍNH III”, không có Phụ đính I/II trong văn bản."
+ ]
+}

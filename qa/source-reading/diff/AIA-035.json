@@ -1,0 +1,226 @@
+{
+ "doc": "AIA-035",
+ "rules_A": 23,
+ "rules_B": 27,
+ "pages_read_A": 18,
+ "pages_read_B": 18,
+ "uncertain_A": [],
+ "uncertain_B": [],
+ "page_diffs": {
+  "2": {
+   "only_A": [
+    "2023",
+    "2024"
+   ],
+   "only_B": []
+  },
+  "3": {
+   "only_A": [],
+   "only_B": [
+    "4"
+   ]
+  },
+  "4": {
+   "only_A": [
+    "5",
+    "8"
+   ],
+   "only_B": [
+    "4"
+   ]
+  },
+  "5": {
+   "only_A": [
+    "8"
+   ],
+   "only_B": []
+  },
+  "7": {
+   "only_A": [
+    "2.500",
+    "3.500",
+    "4.500",
+    "5",
+    "7.000",
+    "10.000",
+    "12.000",
+    "13",
+    "15.000",
+    "20.000",
+    "30.000",
+    "35",
+    "40.000",
+    "65",
+    "90",
+    "150",
+    "180",
+    "220",
+    "420",
+    "630",
+    "950"
+   ],
+   "only_B": []
+  },
+  "8": {
+   "only_A": [
+    "4",
+    "10",
+    "13"
+   ],
+   "only_B": []
+  },
+  "9": {
+   "only_A": [
+    "0",
+    "01",
+    "02",
+    "07",
+    "08",
+    "10",
+    "13",
+    "14",
+    "55",
+    "100",
+    "115",
+    "120"
+   ],
+   "only_B": []
+  },
+  "14": {
+   "only_A": [
+    "2",
+    "2.0",
+    "2.2",
+    "3",
+    "5",
+    "74",
+    "74.3",
+    "74.49",
+    "74.50",
+    "75",
+    "89.5",
+    "90"
+   ],
+   "only_B": [
+    "4"
+   ]
+  },
+  "15": {
+   "only_A": [],
+   "only_B": [
+    "1",
+    "2",
+    "3",
+    "5",
+    "12",
+    "14",
+    "85",
+    "95"
+   ]
+  },
+  "16": {
+   "only_A": [],
+   "only_B": [
+    "1",
+    "2",
+    "3",
+    "5",
+    "12",
+    "14",
+    "85",
+    "95"
+   ]
+  },
+  "17": {
+   "only_A": [],
+   "only_B": [
+    "1",
+    "2",
+    "3",
+    "5",
+    "12",
+    "14",
+    "85",
+    "95"
+   ]
+  },
+  "18": {
+   "only_A": [
+    "0",
+    "01",
+    "02",
+    "2.0",
+    "2.2",
+    "07",
+    "08",
+    "10",
+    "74",
+    "74.3",
+    "74.49",
+    "74.50",
+    "75",
+    "89.5",
+    "90"
+   ],
+   "only_B": [
+    "12",
+    "85",
+    "95"
+   ]
+  }
+ },
+ "doc_only_A": [
+  "2.2",
+  "74.3",
+  "74.49",
+  "74.50",
+  "89.5",
+  "2023",
+  "2024"
+ ],
+ "doc_only_B": [
+  "95"
+ ],
+ "boundary": {
+  "conflict": {},
+  "one_sided": {
+   "12": {
+    "A": [
+     ">"
+    ],
+    "B": []
+   }
+  }
+ },
+ "boundary_by_rule": [],
+ "inconsistencies_A": [
+  "Tr.1: thư nói 'Chính sách thu nhập, thăng tiến và điều kiện duy trì hợp đồng năm 2025' trong khi tiêu đề và Phụ lục 1 là 2026.",
+  "Tr.2: 'Miễn xét điều kiện hỗ trợ hoạt động trong các tháng năm 2023-2024' trong memo hiệu lực 2026 (có vẻ chép từ bản cũ).",
+  "Tr.2: 'PAF không tham gia thăng tiến dành cho CQL' – dùng 'PAF' trong khi ngữ cảnh là PAF+.",
+  "Tr.8: 'Từ quý 2/202 trở đi' thiếu chữ số năm (mục D).",
+  "Tr.8: 'Khối trực tiếp mà PAF đang quản lý sẽ được gắn về cho PAF+ trực tiếp … của PAF+' – lẽ ra là 'của PAF'.",
+  "Tr.10: tiêu đề '3. Chỉ tiêu theo tháng' nhưng mục con đánh số 2.1–2.5.",
+  "Tr.12: Ví dụ 1 – tiêu đề cột 'Giai đoạn nhận chỉ tiêu năm 2: Tháng dương lịch 10-12/2025' nhưng các ô bên dưới là 10/2024–12/2024 và 01/2025–09/2025.",
+  "Tr.16: Minh họa 2 – lời văn 'nằm trong tính toán đến tháng 7/2026', 'Từ tháng 8/2025 đến tháng 7/2026 … AIA TOT = 0%' nhưng sơ đồ ghi 'Từ tháng 08/2025-08/2026: AIA TOT=0%'.",
+  "Tr.16: Minh họa 1 – tỷ lệ duy trì phí tháng 12/2027 dựa vào hợp đồng tại ngày 1/11/2025 (không khớp T-14 = 14 tháng trước tháng t); U2 hiệu lực 20/12/2025 (sau mốc 1/11/2025) vẫn được tính là hợp đồng năm đầu.",
+  "Tr.4: Ví dụ phí gián tiếp ghi tỷ lệ 6.3%, 3.1%, 1.6% (làm tròn của 6.25%, 3.125%, 1.5625%); 313 là làm tròn của 312.5.",
+  "Tr.4-5: Bảng tỷ lệ có tiêu đề góc '% FYC tín chỉ' nhưng không nói rõ % đạt chỉ tiêu nào (FYP hay 1mAA) dùng cho từng dòng.",
+  "Phạm vi: danh sách chức danh có VP, EVP, SVP, President và bảng thăng tiến có VP, nhưng bảng Phí dịch vụ cố định (E.1), chỉ tiêu năm/tháng và điều kiện duy trì chỉ đến SPVP; mục D lại liệt kê VP là Quản lý mẹ.",
+  "Tr.3: 'Mỗi vị trí PAF+ được phân bổ chỉ tiêu, trợ cấp cố định' – gọi là 'trợ cấp cố định' trong khi mục E.1 gọi là 'Phí dịch vụ cố định hàng tháng'."
+ ],
+ "inconsistencies_B": [
+  "Trang 1: tiêu đề 'Chính sách dành cho Nhà Sáng Lập Khối kênh Alpha 2026' nhưng thân thư viết 'Chính sách thu nhập, thăng tiến và điều kiện duy trì hợp đồng năm 2025'.",
+  "Trang 2: 'Miễn xét điều kiện hỗ trợ hoạt động trong các tháng năm 2023-2024' trong văn bản hiệu lực 2026.",
+  "Trang 8: 'Từ quý 2/202 trở đi' (thiếu chữ số, mục C.3 cùng trang ghi 'Từ quý 2/2026 trở đi').",
+  "Trang 8: PAF giáng cấp 'Vẫn giữ nguyên cấu trúc của Khối trực tiếp trước khi giáng cấp' nhưng ngay sau đó 'Khối trực tiếp mà PAF đang quản lý sẽ được gắn về cho PAF+ trực tiếp (Quản lý mẹ)'.",
+  "Trang 12: Ví dụ 1 tiêu đề cột 'Giai đoạn nhận chỉ tiêu năm 2: Tháng dương lịch 10-12/2025' nhưng các ô bên dưới là Tháng 10/2024-tháng 12/2024 và Tháng 01/2025-Tháng 09/2025.",
+  "Trang 12: 'Chỉ tiêu năm 02 … được chia đều cho các tháng' nhưng bảng năm 2-5 có T3-T10 khác T11-T12 và một số hàng T12 < T11 (Năm 3 SAF FYP 690/650; Năm 4 DRF FYP 1,110/1,090, DRF 1mAA 50/48, SPVP FYP 4,760/4,720; Năm 5 AF FYP 720/700, DRF FYP 1,330/1,310).",
+  "Trang 10: Chỉ tiêu 12 tháng chuẩn SPVP 1mAA T9 = 157 > T10 = T11 = 144 (không đơn điệu).",
+  "Trang 10: tiêu đề mục '3. Chỉ tiêu theo tháng' nhưng tiểu mục đánh số 2.1-2.5; mục E.4 đánh số tiếp '4'.",
+  "Trang 16: Minh họa 1 — tính tháng 12/2027 dựa vào thời điểm 1/11/2025 (không phải T-14 = 10/2026); U2 hiệu lực 20/12/2025 (sau 1/11/2025) vẫn được tính là hợp đồng năm đầu.",
+  "Trang 16: Minh họa 2 — lời văn 'Từ tháng 8/2025 đến tháng 7/2026 … AIA TOT = 0%' nhưng hộp màu ghi 'Từ tháng 08/2025-08/2026: AIA TOT=0%'.",
+  "Trang 18: Minh họa 5 — bảng ghi ngày hiệu lực HĐBH 30/11/2023 nhưng trục thời gian ghi 01/11/2023.",
+  "Trang 15: '12 tháng thu phí' được định nghĩa là khoảng thời gian 14 tháng.",
+  "Trang 5: bảng thâm niên tiêu đề 'Chỉ tiêu FY tại thời điểm tính toán' nhưng các cột là mức tỷ lệ FY đạt được, không phải chỉ tiêu."
+ ]
+}

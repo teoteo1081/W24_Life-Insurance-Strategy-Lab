@@ -53,6 +53,19 @@ def _scrub(obj):
     return obj
 
 
+def _fill_repo_pdf_urls(manifest: dict) -> None:
+    """DEC-22: 9 PDF nằm trong repo → văn bản chưa có trên R2 thì link thẳng tới file trong repo.
+    Đường dẫn tương đối từ outputs/interactive|public/ — chạy được cả khi mở file trên máy lẫn trên GitHub Pages."""
+    from urllib.parse import quote
+    with open(REPO / "knowledge/sources/source-registry.csv", encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            rel = r["Local_Relative_Path"].strip()
+            if r["Source_ID"].startswith("SRC-POL-") and rel.lower().endswith(".pdf") and (REPO / rel).is_file():
+                entry = manifest["files"].setdefault(r["Source_ID"], {})
+                if not entry.get("url"):
+                    entry["url"] = "../../" + quote(rel, safe="/")
+
+
 def public_snapshot(snap: dict) -> dict:
     tables = {k: [r for r in rows if r.get("confidentiality") != "restricted"] for k, rows in snap["tables"].items()}
     dropped = {k: len(snap["tables"][k]) - len(tables[k]) for k in tables}
@@ -256,6 +269,7 @@ def supabase_meta() -> str:
 def main(argv=None) -> int:
     public = "--public" in (sys.argv[1:] if argv is None else argv)
     manifest = json.loads((REPO / "infra/evidence-worker/manifest.json").read_text(encoding="utf-8"))
+    _fill_repo_pdf_urls(manifest)
     plans = plan_params()
     data = {"generated": "2026-11-27", "k2_range": [K2_RANGE[0], K2_RANGE[-1]], "fyc_levels": FYC_LEVELS,
             "plans": plans, "competitors": competitor_data(), "knowledge": knowledge(manifest),

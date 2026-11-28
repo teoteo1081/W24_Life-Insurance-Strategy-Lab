@@ -1,0 +1,105 @@
+{
+ "doc": "AIA-069",
+ "rules_A": 22,
+ "rules_B": 24,
+ "pages_read_A": 23,
+ "pages_read_B": 23,
+ "uncertain_A": [],
+ "uncertain_B": [],
+ "page_diffs": {
+  "4": {
+   "only_A": [],
+   "only_B": [
+    "05",
+    "07"
+   ]
+  },
+  "5": {
+   "only_A": [],
+   "only_B": [
+    "04",
+    "05",
+    "07"
+   ]
+  },
+  "10": {
+   "only_A": [
+    "2026"
+   ],
+   "only_B": []
+  },
+  "11": {
+   "only_A": [
+    "2",
+    "03",
+    "4",
+    "5"
+   ],
+   "only_B": [
+    "6",
+    "9"
+   ]
+  },
+  "12": {
+   "only_A": [],
+   "only_B": [
+    "6",
+    "9",
+    "016"
+   ]
+  },
+  "13": {
+   "only_A": [],
+   "only_B": [
+    "0",
+    "02",
+    "03",
+    "06",
+    "016",
+    "2026"
+   ]
+  }
+ },
+ "doc_only_A": [],
+ "doc_only_B": [
+  "05",
+  "07",
+  "9",
+  "016"
+ ],
+ "boundary": {
+  "conflict": {},
+  "one_sided": {}
+ },
+ "boundary_by_rule": [],
+ "inconsistencies_A": [
+  "Tên chức danh mâu thuẫn: sơ đồ trang 2 ghi UM = Trưởng Nhóm Kinh Doanh, SUM = Trưởng Nhóm Kinh Doanh Cấp Cao, DM = Trưởng Phòng Kinh Doanh, SDM = Trưởng Phòng Kinh Doanh Cấp Cao; định nghĩa trang 17 ghi UM = Trưởng Phòng Kinh Doanh, SUM = Trưởng Phòng Kinh Doanh Cấp Cao, DM = Giám Đốc Ban Kinh Doanh, SDM = Giám Đốc Ban Kinh Doanh Cấp Cao. Trang 17 còn gọi UM là \"chức danh cao thứ năm\" và nói UM quản lý nhóm gián tiếp \"trực thuộc các Quyền Trưởng Phòng Kinh Doanh\" (chức danh không có trong văn bản).",
+  "Hiệu lực: trang 2 \"có hiệu lực kể từ ngày 01/04/2026\"; trang 3 \"có hiệu lực bắt đầu từ ngày ban hành\" (03/04/2026); Phụ lục 2 \"áp dụng kể từ tháng 01/2026\"; Phụ lục 3 áp dụng cho người cấp mã từ tháng 1/2026; công thức quy đổi FYC riêng cho Quý 1/2026.",
+  "Định nghĩa Chuyên viên mới mâu thuẫn: trang 9 (Lưu ý 2, mục thăng tiến) \"Các trường hợp Chuyên Viên Tư Vấn khôi phục hợp đồng tại Công ty được xem là Chuyên Viên Tư Vấn mới\"; trang 8 và định nghĩa z trang 19: gia nhập lại/khôi phục KHÔNG được xem là Chuyên viên mới.",
+  "Trang 9 Lưu ý 5: \"Số hợp đồng thuần cá nhân: Là hợp đồng được bán bởi chính Cấp Quản lý\" trong khi điều kiện thăng tiến áp dụng cho SA.",
+  "Làm tròn AIA FY: trang 14 \"làm tròn lên\" (90.666% → 91%), nhưng Minh họa 3 trang 17: 100/120 (=83.33%) = 83% \"(làm tròn số)\" – nếu làm tròn lên sẽ là 84%.",
+  "Sơ đồ AIA FY trang 14: T = 28/02/2024 trên trục nhưng chữ ghi \"ví dụ 29/02/2024\"; T-14 ghi 01/01/2023 (cách tháng 02/2024 13 tháng, không phải 14).",
+  "Ví dụ doanh số trang 13: \"Doanh số FYP tính các khoản phí dịch vụ là: 18  12 -10 - 3 = 17\" thiếu dấu +; ví dụ trừ HĐ thay thế (-10) nhưng không trừ HĐ hủy (-5), trong khi công thức doanh số cho thưởng/phí dịch vụ trang 12 không nhắc HĐ thay thế; doanh số duy trì/thăng tiến (22) lại không trừ HĐ thay thế.",
+  "Ví dụ trang 6: Chuyên viên cấp mã ngày 16/05/2026 được tính \"Số tháng trong Quý tính từ tháng gia nhập: 2 tháng\" (tháng 5 và 6), trong khi định nghĩa tháng chuẩn trang 18-19 cho người gia nhập từ ngày 16 trở đi thì tháng thứ nhất là tháng kế tiếp (tháng 6). Ví dụ cũng dùng chữ \"Tỷ lệ phí theo FY\" thay vì \"Tỷ lệ chi trả theo FY\".",
+  "Chú thích (**) trang 10 về khóa học không có điểm tham chiếu (**) trong bảng điều kiện duy trì trang 9. Chú thích (2) dùng trong các công thức không có phần giải thích riêng ngoài tiêu đề \"Tỷ lệ chi trả theo FY (2)\".",
+  "Quy ước \"chưa có FY\": mục I và VII coi chưa có FY là đạt (100%/đạt tối thiểu), nhưng Phụ lục 2 xếp \"(hoặc chưa có)\" vào cột FY nhóm trực tiếp <80% (tỷ lệ thấp hơn).",
+  "Hai quy định thu hồi trang 13 chồng lấn: một đoạn thu hồi toàn bộ khi hủy sau thanh toán (không giới hạn thời gian), đoạn sau giới hạn \"trong vòng 6 tháng kể từ tháng phát sinh doanh số năm nhất\".",
+  "Trang 2 chữ tách có \"9 tháng\" cạnh SA trong sơ đồ lộ trình nhưng không hiển thị trên ảnh trang; bảng thăng tiến trang 8 yêu cầu 3 tháng chuẩn."
+ ],
+ "inconsistencies_B": [
+  "Tên chức danh: sơ đồ trang 2 ghi UM = 'Trưởng Nhóm Kinh Doanh', SUM = 'Trưởng Nhóm Kinh Doanh Cấp Cao', DM = 'Trưởng Phòng Kinh Doanh', SDM = 'Trưởng Phòng Kinh Doanh Cấp Cao'; định nghĩa trang 17 ghi UM = 'Trưởng Phòng Kinh Doanh', SUM = 'Trưởng Phòng Kinh Doanh Cấp Cao', DM = 'Giám Đốc Ban Kinh Doanh', SDM = 'Giám Đốc Ban Kinh Doanh Cấp Cao'.",
+  "Trang 17: UM là 'chức danh cao thứ năm', SUM 'thứ tư', DM 'thứ ba', SDM 'thứ hai' – không nêu chức danh cao nhất; UM quản lý nhóm gián tiếp 'trực thuộc các Quyền Trưởng Phòng Kinh Doanh' (chức danh không được định nghĩa).",
+  "Hiệu lực: trang 2 ghi hiệu lực từ 01/04/2026; trang 3 ghi 'có hiệu lực bắt đầu từ ngày ban hành' (03/04/2026); nhưng có quy định cho Quý 1/2026 (trang 6), Thưởng 1/72H cho người gia nhập từ 01/01/2026 (trang 4), JFW áp dụng từ 01/2026 (trang 21), Phụ lục 3 cho người cấp mã từ 1/2026.",
+  "Định nghĩa 'Chuyên viên mới': trang 8 và trang 19 (mục z) loại trừ trường hợp gia nhập lại/khôi phục hợp đồng; trang 9 (Lưu ý 2 mục thăng tiến) lại nói 'Các trường hợp Chuyên Viên Tư Vấn khôi phục hợp đồng tại Công ty được xem là Chuyên Viên Tư Vấn mới'.",
+  "Trang 9 Lưu ý 5: 'Số hợp đồng thuần cá nhân: Là hợp đồng được bán bởi chính Cấp Quản lý' – trong khi bảng thăng tiến áp dụng cho SA (chưa phải Cấp Quản lý).",
+  "Quy tắc làm tròn AIA FY: trang 14 ghi 'làm tròn lên đến 0 số thập phân', nhưng ví dụ trang 17 100/120 (=83.33%) ghi 83% (làm tròn thông thường, không phải làm tròn lên → 84%).",
+  "Trang 14: sơ đồ ghi T = 28/02/2024, nhưng chữ ngay dưới ghi ví dụ T là 29/02/2024.",
+  "Minh họa 3 trang 16-17: HĐBH hiệu lực 30/11/2022 nhưng dòng 'Phí định kỳ (kỳ 30/11/2021)' – ngày trước ngày hiệu lực.",
+  "Ví dụ trang 13: phép tính phí dịch vụ ghi '18  12 -10 - 3 = 17' (thiếu dấu +). Ngoài ra HĐ thay thế (-10) được trừ trong doanh số tính phí dịch vụ nhưng không trừ trong doanh số thuần (22), và HĐ hủy (-5) không trừ trong doanh số phí dịch vụ – công thức ở trang 12 không đề cập HĐ thay thế.",
+  "Mục III (trang 10) có chú thích '(**) Đối với các khóa học yêu cầu hoàn tất...' nhưng bảng trang 9 không có ký hiệu (**).",
+  "Phụ lục 2 (trang 21): 'chưa có' FY được xếp vào cột tỷ lệ thấp (<80%), trong khi trang 14 quy định không có HĐBH phát hành thì 'xem như đạt điều kiện tỷ lệ duy trì phí AIA FY tối thiểu'. Phụ lục 2 dành cho Cấp quản lý nằm trong thông báo dành cho Chuyên Viên Tư Vấn.",
+  "Ví dụ trang 6 dùng thuật ngữ 'Tỷ lệ phí theo FY' thay vì 'Tỷ lệ chi trả theo FY'. Công thức tiêu đề mục 4 '= FYC Tín Chỉ Quý x Tỷ lệ thưởng' khác cấu trúc bảng quy đổi (thưởng tính trên FYC thực đạt, tỷ lệ tra theo FYC quy đổi).",
+  "Gia hạn hợp đồng (trang 11): thời gian gia hạn 'từ ngày 1 - 24', danh sách gửi 'Sau ngày 25' – ngày 25 không được nêu rõ.",
+  "Chữ tách trang 2 có '9 tháng' nhưng ảnh trang 2 không hiển thị nội dung này (có thể là chữ ẩn trong sơ đồ)."
+ ]
+}

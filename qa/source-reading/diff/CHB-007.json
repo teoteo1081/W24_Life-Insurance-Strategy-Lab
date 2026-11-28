@@ -1,0 +1,223 @@
+{
+ "doc": "CHB-007",
+ "rules_A": 23,
+ "rules_B": 21,
+ "pages_read_A": 19,
+ "pages_read_B": 19,
+ "uncertain_A": [],
+ "uncertain_B": [],
+ "page_diffs": {
+  "4": {
+   "only_A": [
+    "23"
+   ],
+   "only_B": [
+    "07",
+    "14",
+    "21",
+    "2024",
+    "2025",
+    "240048"
+   ]
+  },
+  "5": {
+   "only_A": [
+    "6"
+   ],
+   "only_B": []
+  },
+  "9": {
+   "only_A": [
+    "14"
+   ],
+   "only_B": [
+    "7.2",
+    "7.4"
+   ]
+  },
+  "10": {
+   "only_A": [
+    "10",
+    "11",
+    "13",
+    "14"
+   ],
+   "only_B": [
+    "9"
+   ]
+  },
+  "11": {
+   "only_A": [
+    "14"
+   ],
+   "only_B": [
+    "0",
+    "1",
+    "4",
+    "7",
+    "7.1",
+    "7.2",
+    "7.4",
+    "10",
+    "50",
+    "65",
+    "75",
+    "80",
+    "85",
+    "90",
+    "125",
+    "1200000",
+    "2000000",
+    "2400000",
+    "3000000",
+    "5000000",
+    "7000000"
+   ]
+  },
+  "12": {
+   "only_A": [
+    "0",
+    "1",
+    "6",
+    "12",
+    "14",
+    "50",
+    "80",
+    "90"
+   ],
+   "only_B": [
+    "7.2",
+    "7.4"
+   ]
+  },
+  "13": {
+   "only_A": [],
+   "only_B": [
+    "14",
+    "21",
+    "2026"
+   ]
+  },
+  "14": {
+   "only_A": [],
+   "only_B": [
+    "01",
+    "2025"
+   ]
+  },
+  "15": {
+   "only_A": [],
+   "only_B": [
+    "01",
+    "2025"
+   ]
+  },
+  "16": {
+   "only_A": [
+    "22"
+   ],
+   "only_B": [
+    "01",
+    "2025"
+   ]
+  },
+  "17": {
+   "only_A": [],
+   "only_B": [
+    "01",
+    "2025"
+   ]
+  },
+  "18": {
+   "only_A": [],
+   "only_B": [
+    "01",
+    "2025"
+   ]
+  },
+  "19": {
+   "only_A": [],
+   "only_B": [
+    "01",
+    "2025"
+   ]
+  }
+ },
+ "doc_only_A": [
+  "22"
+ ],
+ "doc_only_B": [
+  "7.2",
+  "7.4"
+ ],
+ "boundary": {
+  "conflict": {
+   "5": {
+    "A": [
+     ">="
+    ],
+    "B": [
+     "<",
+     ">="
+    ]
+   }
+  },
+  "one_sided": {}
+ },
+ "boundary_by_rule": [
+  {
+   "A": 2,
+   "B": 2,
+   "page": "4-5",
+   "mismatch": [
+    [
+     ">=5",
+     "<>=5"
+    ]
+   ]
+  },
+  {
+   "A": 10,
+   "B": 10,
+   "page": "9-10",
+   "mismatch": [
+    [
+     ">=70",
+     "<>=70"
+    ]
+   ]
+  },
+  {
+   "A": 12,
+   "B": 11,
+   "page": "10",
+   "mismatch": [
+    [
+     ">=70",
+     "<>=70"
+    ]
+   ]
+  }
+ ],
+ "inconsistencies_A": [
+  "Trang 9: công thức “Tỷ lệ đạt KPI của mỗi chỉ tiêu = [Số thực tế / số yêu cầu] × 25%” áp chung hệ số 25%, nhưng bảng ghi “Tỷ lệ đạt KPI ghi nhận tối đa” của FYP và CC là 30% (FNA và SOP là 25%) — không rõ FYP/CC nhân 25% hay 30%.",
+  "Trang 17 vs 18: ba “SPBH Sức khỏe” (Tử vong hoặc Thương tật do Tai nạn Mở rộng; Hỗ trợ Nằm viện Mở rộng; Bệnh hiểm nghèo Mở rộng) có năm 1 = 10,0% dưới Tự Do An Lành (trang 17) nhưng 20,0% ở dòng riêng (trang 18); các năm 2–11+ giống nhau.",
+  "Trang 10: bảng Mức thưởng Champion Hubb (trang 9) chỉ có CC = 1, 2, 3, nhưng ví dụ M7 có CC = 4 và áp mức 5,00 triệu — quy tắc cho CC > 3 không được viết.",
+  "Trang 10: ví dụ cho thấy bù trừ Thưởng Hoạt động Đại lý mới với cả khoản cột (3) trả tại M12 (M7 cột (5) = 1,40 thay vì 2,40), trong khi quy tắc chỉ nói “nhận khoản thưởng lớn hơn giữa” hai khoản.",
+  "Trang 8: bảng duy trì ghi Thời gian tại vị trí 6 tháng, nhưng quy định giáng cấp AL lại xét cả AL tại vị trí từ 03 đến dưới 06 tháng (chỉ dựa trên khóa MAP).",
+  "Trang 6 vs 7: mục II.5 đối tượng “AR và AL đạt Tỷ lệ K2 cá nhân từ 65% trở lên”, nhưng mục c lại quy định “Trường hợp AR/AL chưa có phát sinh K2 xem như đạt K2”; tên khoản ở mục d là “Thưởng chất lượng duy trì HĐBH theo Quý” khác tên đề mục “Thưởng Duy trì chất lượng HĐBH theo Quý”.",
+  "Trang 6: Thưởng HQKD theo Quý, Đại lý K2 ≥ 60% được tạm ứng “vào kỳ chi trả của Quý khóa sổ xét thưởng” nhưng việc tính lại/thu hồi lại diễn ra ở “Kỳ chi trả của Tháng kế tiếp liền kề” (dùng lại câu chữ của thưởng tháng).",
+  "Trang 13: Phụ đính II áp dụng cho HĐBH phát hành từ 01/01/2025, trong khi Chính sách có hiệu lực từ 01/01/2026 và thay thế CHH0DCEB240048V (hiệu lực 01/07/2024); trang 3 loại trừ Phụ đính II.b khỏi phần bị thay thế — không rõ HĐBH phát hành từ 01/01/2025 đến 31/12/2025 trước đây theo bảng nào."
+ ],
+ "inconsistencies_B": [
+  "Trang 9: công thức “Tỷ lệ đạt KPI của mỗi chỉ tiêu = [Số thực tế / số yêu cầu] × 25%” dùng 25% cho mọi chỉ tiêu, nhưng bảng ghi “Tỷ lệ đạt KPI ghi nhận tối đa” của FYP và CC là 30% (FNA, SOP 25%) — không rõ trọng số FYP/CC là 25% (trần 30%) hay 30%.",
+  "Trang 10 ví dụ: tháng M11, M12 có Tỷ lệ tham dự SOP 85% nhưng Hệ số W1 = 50%, trong khi bảng W1 (trang 9, 10) quy định “Từ 80% đến dưới 90%” → 80%.",
+  "Trang 10 ví dụ: tháng M7 có CC = 4 nhưng bảng Mức thưởng (trang 9) chỉ có CC 1, 2, 3; ví dụ dùng mức của CC 3 (5,00).",
+  "Trang 10 ví dụ: lưu ý iii nói đại lý nhận “khoản thưởng lớn hơn giữa” Thưởng Hiệu suất Tháng và Thưởng Hoạt động Đại lý mới, nhưng ví dụ thực hiện bù trừ chênh lệch (M7: (4)=0,00 và cột (5) giảm từ 2,40 còn 1,40; M12: 2,50 − 1,50 = 1,00) thay vì chọn khoản lớn hơn.",
+  "Trang 6: Thưởng HQKD Quý với K2 ≥ 60% tạm ứng “vào kỳ chi trả của Quý khóa sổ xét thưởng” nhưng tính lại vào “Kỳ chi trả của Tháng kế tiếp liền kề” — đơn vị kỳ (Quý/Tháng) không nhất quán.",
+  "Trang 6-7: Thưởng Duy trì chất lượng HĐBH áp dụng cho AR/AL “đạt Tỷ lệ K2 cá nhân từ 65% trở lên” nhưng mục c lại cho “chưa có phát sinh K2 xem như đạt K2”; đồng thời tên khoản ở mục d là “Thưởng chất lượng duy trì HĐBH” khác tên tiêu đề.",
+  "Trang 3/13: Phụ đính II.a nói tỷ lệ áp dụng cho HĐBH phát hành từ 01/01/2025 theo Phụ đính II “đính kèm Chính sách này” (hiệu lực 01/01/2026), trong khi trang 3 nói chính sách cũ CHH0DCEB240048V được thay thế ngoại trừ Phụ đính II.b; Phụ đính II.b dẫn chiếu “Phụ lục II” của văn bản cũ (gọi tên Phụ lục thay vì Phụ đính).",
+  "Trang 4 vs trang 6: Thưởng HQKD tháng/quý áp dụng cho “AR, AL và AMD” nhưng Thưởng Hoạt động Đại lý mới và Thưởng Duy trì chỉ cho “AR và AL”; AMD không xuất hiện trong bảng thăng cấp/duy trì và không được định nghĩa.",
+  "Trang 7-8: bảng thăng cấp có hàng “Số lượng 3MAA từ đại lý mới” và “đại lý được giới thiệu đạt 3MAA” nhưng 3MAA/P13 không được định nghĩa trong văn bản (dẫn chiếu Quy định chung)."
+ ]
+}

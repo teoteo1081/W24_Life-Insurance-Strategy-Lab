@@ -2,3 +2,6 @@
 # Core compensation engine, validation quality gates, and unittest suite use Python 3.12+ standard library only.
 # openpyxl is required ONLY for building and inspecting the Excel Reference Model (scripts/build_workbook.py).
 openpyxl>=3.1.0,<4.0.0
+# pymupdf: đọc PDF nguồn (build_benefit_matrix, build_glossary, qa/source-reading/extract_pages.py); pytest: chạy test
+pymupdf>=1.24
+pytest>=8

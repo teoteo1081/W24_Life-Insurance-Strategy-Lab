@@ -1,0 +1,100 @@
+{
+ "doc": "MNL-046",
+ "rules_A": 21,
+ "rules_B": 18,
+ "pages_read_A": 11,
+ "pages_read_B": 11,
+ "uncertain_A": [],
+ "uncertain_B": [],
+ "page_diffs": {
+  "4": {
+   "only_A": [],
+   "only_B": [
+    "00",
+    "22"
+   ]
+  },
+  "6": {
+   "only_A": [
+    "50"
+   ],
+   "only_B": [
+    "0037",
+    "2024"
+   ]
+  },
+  "9": {
+   "only_A": [
+    "10",
+    "19"
+   ],
+   "only_B": [
+    "0",
+    "0001",
+    "1",
+    "03",
+    "3",
+    "04",
+    "4",
+    "6",
+    "7",
+    "8",
+    "30",
+    "50",
+    "70",
+    "100",
+    "2024",
+    "2025",
+    "2027",
+    "2028"
+   ]
+  },
+  "10": {
+   "only_A": [
+    "10"
+   ],
+   "only_B": []
+  }
+ },
+ "doc_only_A": [
+  "19"
+ ],
+ "doc_only_B": [],
+ "boundary": {
+  "conflict": {},
+  "one_sided": {}
+ },
+ "boundary_by_rule": [
+  {
+   "A": 9,
+   "B": 9,
+   "page": "6",
+   "mismatch": [
+    [
+     "<>=70",
+     ">=70"
+    ]
+   ]
+  }
+ ],
+ "inconsistencies_A": [
+  "Trang 6, B.VI.1.a ghi chú v: dẫn chiếu 'được chi trả theo quy định tại mục B.VI.3' nhưng văn bản không có mục B.VI.3; điều kiện và thời điểm chi trả nằm ở B.VI.2 (trang 7; D.2 trang 9 cũng dẫn B.VI.2).",
+  "Trang 6, bảng KDXS năm: cột 'Đối tượng áp dụng' Nhóm 1 ghi 'Tất cả Đại Lý' nhưng ghi chú i giới hạn Nhóm 1 cho Đại Lý giữ danh hiệu Manulife Pro Bạch Kim.",
+  "Trang 6: tên khoản thưởng viết không thống nhất 'Thưởng KDSX năm' và 'Thưởng Kinh doanh xuất sắc (KDXS) năm'.",
+  "Trang 11, ví dụ: '6 tháng làm việc đầu tiên' = tháng 4/2026 tới tháng 10/2026 (7 tháng lịch, M0 tính kèm) và '12 tháng làm việc đầu tiên' = tháng 4/2026 tới tháng 4/2027 (13 tháng lịch) — cách đếm tháng làm việc không được định nghĩa rõ bằng lời.",
+  "Trang 10 định nghĩa FYP 'không bao gồm Phí bảo hiểm đóng thêm' và TRỪ ĐI HĐ chưa bàn giao, nhưng B.I (trang 2) và M-star quý (trang 7) dùng FYP 'KHÔNG loại trừ' HĐ chưa bàn giao, M-star quý/năm cộng thêm 6% phí đóng thêm — là ngoại lệ có chủ ý, cần lưu ý khi tính.",
+  "Trang 9: D.4 nói chỉ thanh toán cho Đại Lý có HĐĐL còn hiệu lực tại ngày tính toán, trong khi D.2 và B.VI.2.c cho phép chi Thưởng KDXS năm cho PSM+ có HĐDV QLCC / Chủ hộ kinh doanh có HĐDV HKD (ngoại lệ không được D.4 nêu).",
+  "Trang 2-3: ghi chú về dữ liệu Đội ngũ chuyên cần dùng cụm 'tính toán Phí dịch vụ' cho khoản thưởng Đại Lý mới.",
+  "Lưu ý tách chữ (không phải lỗi văn bản): file text trang 6 ghi Hệ số nhân CLKD của Thưởng năng suất quý 'mục A.I', ảnh trang 6 ghi 'mục A.II'."
+ ],
+ "inconsistencies_B": [
+  "Trang 6, B.VI.1.a ghi chú v: khoản thưởng “được chi trả theo quy định tại mục B.VI.3” – nhưng Mục B.VI chỉ có 1) và 2); điều kiện chi trả nằm ở B.VI.2 (D.2 trang 9 dẫn đúng “Mục B.VI.2”).",
+  "Trang 6: tên viết tắt không thống nhất – tiêu đề “Thưởng kinh doanh xuất sắc năm (“Thưởng KDSX năm”)” nhưng mục a) ghi “Thưởng Kinh doanh xuất sắc (KDXS) năm”, công thức dùng “Thưởng KDSX năm”.",
+  "Trang 1 Mục A nói hệ số nhân TLDTHD và CLKD áp dụng cho “tất cả các khoản thưởng được quy định tại Mục B”, nhưng công thức Thưởng KDXS năm (trang 6) chỉ nhân Hệ số CLKD, không nhân Hệ số TLDTHD (TLDTHD ≥ 70% dùng làm điều kiện) – văn bản có câu “với cách thức áp dụng được quy định chi tiết theo từng khoản thưởng” nên có thể là chủ ý.",
+  "Trang 7, công thức Khoản điều chỉnh có dấu ngoặc vuông không cân (“… của thông báo này]” thừa dấu “]”), không rõ phạm vi của Hệ số CLKD.",
+  "Trang 9 D.4: chỉ thanh toán cho Đại Lý có HĐĐL còn hiệu lực tại ngày tính toán; nhưng B.VI.2.c (trang 7) và D.2 (trang 9) cho phép chi trả Thưởng KDXS năm khi chỉ còn HĐDV QLCC hoặc HĐDV HKD – ngoại lệ không được D.4 nêu.",
+  "Trang 2 & 3, ghi chú về “Đội ngũ chuyên cần”: “Dữ liệu … dùng để tính toán Phí dịch vụ” – dùng thuật ngữ “Phí dịch vụ” trong khi khoản này là “Thưởng”.",
+  "Trang 11 ví dụ: “6 tháng làm việc đầu tiên: Từ tháng 4/2026 tới tháng 10/2026” (7 tháng dương lịch) và “12 tháng làm việc đầu tiên: Từ tháng 4/2026 tới tháng 4/2027” (13 tháng dương lịch) – tức M0 không được đếm, nhưng định nghĩa không nói rõ; trong khi “Tháng làm việc thứ 4 (M4): Tháng 8/2026” khớp với cách đếm này.",
+  "Lưu ý nguồn (không phải mâu thuẫn trong văn bản): bản chữ tách trang 6 ghi “Hệ số nhân CLKD được quy định tại mục A.I” ở ghi chú 4 Thưởng năng suất quý, nhưng ảnh trang ghi “mục A.II” – đã lấy theo ảnh."
+ ]
+}

@@ -1,0 +1,61 @@
+{
+ "doc": "CHB-003",
+ "rules_A": 16,
+ "rules_B": 16,
+ "pages_read_A": 15,
+ "pages_read_B": 15,
+ "uncertain_A": [],
+ "uncertain_B": [],
+ "page_diffs": {
+  "6": {
+   "only_A": [
+    "07"
+   ],
+   "only_B": []
+  },
+  "7": {
+   "only_A": [
+    "15"
+   ],
+   "only_B": []
+  },
+  "13": {
+   "only_A": [],
+   "only_B": [
+    "14"
+   ]
+  },
+  "14": {
+   "only_A": [],
+   "only_B": [
+    "14"
+   ]
+  }
+ },
+ "doc_only_A": [],
+ "doc_only_B": [
+  "14"
+ ],
+ "boundary": {
+  "conflict": {},
+  "one_sided": {}
+ },
+ "boundary_by_rule": [],
+ "inconsistencies_A": [
+  "Trang 11 (Mục II.7 Lưu ý, mục d) liệt kê “Phí dịch vụ quản lý chất lượng Hoạt động Đại lý Bảo hiểm Quý” — khoản này không có trong Mục II (trang 4 bảng tóm tắt và Mục II chỉ có bản Tháng).",
+  "Trang 12: chỉ tiêu thăng cấp “Số lượng DM báo cáo trực tiếp” — chức danh DM không có trong hệ thống cấp bậc trang 3 (chỉ BD, RD); cũng không nêu cấp bậc cao hơn RD là gì.",
+  "Trang 8: Lưu ý “FYP trong Quý hiện tại dưới 360 triệu đồng và không âm trưởng thì tỷ lệ chi trả là 2,5%” — viết “âm trưởng”; cách kết hợp với bảng tăng trưởng không rõ (ghi đè toàn bộ bảng hay không).",
+  "Trang 13: bảng duy trì yêu cầu “Thời gian tại vị trí (Tháng) 6” nhưng đoạn văn áp dụng cho RD có thời gian cung cấp dịch vụ “từ 3 Tháng trở lên” và có quy tắc cho 3 đến dưới 6 Tháng.",
+  "Trang 6 (Mục II.3) dùng FYP “của Đội ngũ Trực thuộc mà RD được phân công quản lý” trong khi V.1 (trang 13) mặc định nhánh trực tiếp — phạm vi không rõ.",
+  "Trang 14 (V.12): “Tháng (T+15)” — T không được định nghĩa; khoản tạm giữ là của AMD năm 2024–2025 trong khi chính sách chỉ áp dụng cho RD.",
+  "Trang 15 (V.16.h): “xử lý vi phạm RD Công ty” — câu chữ bất thường."
+ ],
+ "inconsistencies_B": [
+  "Trang 11 (Lưu ý mục II.7): danh sách khoản tính gồm \"d. Phí dịch vụ quản lý chất lượng Hoạt động Đại lý Bảo hiểm Quý\" — khoản Quý này không tồn tại trong mục II hay bảng tóm tắt trang 4 (chỉ có bản Tháng, mục II.4).",
+  "Trang 3 vs trang 12: hệ thống cấp bậc chỉ có BD và RD (RD cao nhất), nhưng mục IV.1 quy định \"RD được xét thăng cấp lên cấp bậc cao hơn\" và mục II.8 nói \"nếu RD quản lý chưa thăng cấp lên cấp bậc cao hơn\" — không có cấp bậc cao hơn RD trong văn bản.",
+  "Trang 12: chỉ tiêu thăng cấp dùng \"Số lượng DM báo cáo trực tiếp\" nhưng DM không có trong hệ thống cấp bậc (chỉ BD, RD).",
+  "Trang 13: bảng duy trì ghi \"Thời gian tại vị trí (Tháng) 6\" nhưng đoạn văn áp dụng xét duy trì cho RD có thời gian cung cấp dịch vụ từ 3 Tháng trở lên.",
+  "Trang 8: Lưu ý \"FYP trong Quý hiện tại dưới 360 triệu đồng và không âm trưởng thì tỷ lệ chi trả là 2,5%\" chồng lấn với bảng 12 mức (có thể ghi đè mức cao hơn 2,5%) — văn bản không nói rõ thứ tự ưu tiên.",
+  "Trang 14 (V.12): áp dụng cho \"AMD\" và \"Tháng (T+15)\" — T không được định nghĩa; khoản tạm giữ 25% năm 2024/2025 không được mô tả trong văn bản này."
+ ]
+}
