@@ -4,7 +4,9 @@ Lỗi gốc (review P2): đổi '≥50%' thành '>50%' vẫn được xem là gi
 """
 import copy
 import json
+import re
 import sys
+import tempfile
 import unicodedata
 import unittest
 from pathlib import Path
@@ -14,6 +16,7 @@ sys.path.insert(0, str(SRC))
 
 import compare_reads as C  # noqa: E402
 import table_order as T  # noqa: E402
+import check_bounds_vs_text as K  # noqa: E402
 
 DOCS = ["AIA-034", "AIA-035", "AIA-069", "CHB-003", "CHB-007", "CHB-008", "MNL-046", "MNL-047", "MNL-048"]
 
@@ -34,6 +37,15 @@ class TestBoundaryParsing(unittest.TestCase):
         self.assertEqual(C.bounded("55%≤FY<65%"), [(">=", "55"), ("<", "65")])         # dạng hậu tố
         self.assertEqual(C.bounded("tối thiểu là 18 Tháng"), [(">=", "18")])
         self.assertEqual(C.bounded("1.000.000 đồng"), [("", "1000000")])
+
+    def test_suffix_decides_direction(self):
+        """Review P2 lần 2: 'từ 12 tháng trở xuống' là ≤ 12, không phải ≥ 12."""
+        self.assertEqual(C.bounded("từ 12 tháng trở xuống"), [("<=", "12")])
+        self.assertEqual(C.bounded("từ 12 tháng trở lên"), [(">=", "12")])
+        self.assertEqual(C.bounded("từ mười tám (18) Tháng trở lên"), [(">=", "18")])
+        self.assertEqual(C.bounded("từ 06 (sáu) tháng trở xuống"), [("<=", "06")])
+        self.assertEqual(C.bounded("từ hoặc dưới 6 tháng"), [("<=", "6")])        # không được thành < 6
+        self.assertEqual(C.bounded("Từ 2 đến 4"), [(">=", "2"), ("<=", "4")])
 
     def test_nfd_text_layer(self):
         nfd = unicodedata.normalize("NFD", "ít nhất 01 tháng")
@@ -75,6 +87,62 @@ class TestBoundaryDetection(unittest.TestCase):
                         total += 1
                         self.assertTrue(detected(A, B, B2), f"{did} quy tắc {r['rule_no']} ô {cell!r}")
         self.assertGreater(total, 30)
+
+
+    def test_suffix_flip_on_real_reads(self):
+        """Đảo 'trở lên' ↔ 'trở xuống' và 'từ hoặc dưới' → 'từ hoặc trên' ở mọi chỗ trong bản thật."""
+        flips = (("trở xuống", "trở lên"), ("trở lên", "trở xuống"), ("từ hoặc dưới", "từ hoặc trên"))
+        total = 0
+        for did in DOCS:
+            A, B = load(did, "A"), load(did, "B")
+            for i, r in enumerate(B["rules"]):
+                for f in ("conditions", "table"):
+                    v = r.get(f) or []
+                    if f == "conditions":
+                        slots = [(j, None) for j in range(len(v))]
+                    else:
+                        slots = [(j, k) for j, row in enumerate(v) for k in range(len(row))]
+                    for j, k in slots:
+                        s = v[j] if k is None else v[j][k]
+                        for src, dst in flips:
+                            for m in re.finditer(src, str(s)):
+                                window = s[max(0, m.start() - 40):m.end()]
+                                if not re.search(r"\d", window):
+                                    continue
+                                B2 = copy.deepcopy(B)
+                                new = s[:m.start()] + dst + s[m.end():]
+                                if k is None:
+                                    B2["rules"][i][f][j] = new
+                                else:
+                                    B2["rules"][i][f][j][k] = new
+                                total += 1
+                                self.assertTrue(detected(A, B, B2), f"{did} quy tắc {r['rule_no']}: …{window}")
+        self.assertGreater(total, 40)
+
+
+class TestTextLayerInput(unittest.TestCase):
+    """Review P2 lần 2: thư mục lớp chữ rỗng không được coi là '9 bản scan' rồi bỏ qua."""
+
+    def test_empty_dir_is_an_error(self):
+        with tempfile.TemporaryDirectory() as d:
+            with self.assertRaises(K.InputError) as cm:
+                K.check(Path(d))
+            self.assertIn("MNL-047", str(cm.exception))
+
+    def test_missing_dir_is_an_error(self):
+        with self.assertRaises(K.InputError):
+            K.check(Path(tempfile.gettempdir()) / "khong-ton-tai-w24")
+
+    def test_only_known_scan_may_be_textless(self):
+        with tempfile.TemporaryDirectory() as d:
+            for did in DOCS:
+                (Path(d) / f"{did}.txt").write_text("", encoding="utf-8")
+            with self.assertRaises(K.InputError) as cm:
+                K.check(Path(d))
+            msg = str(cm.exception)
+            self.assertNotIn("CHB-003", msg)                 # bản scan đã biết: được phép rỗng
+            for did in set(DOCS) - K.SCANNED:
+                self.assertIn(did, msg)
 
 
 class TestReviewedState(unittest.TestCase):

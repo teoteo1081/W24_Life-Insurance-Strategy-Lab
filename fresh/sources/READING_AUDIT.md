@@ -11,8 +11,8 @@ Ngày: 2026-11-28 · Nhánh `claude/fresh-approach` · Không sửa gì trên `m
 - So 2 bản bằng máy ([compare_reads.py](compare_reads.py), [table_order.py](table_order.py)):
   1. Tập hợp mọi con số theo trang và toàn văn bản.
   2. Thứ tự từng ô trong từng bảng.
-  3. **Điều kiện biên** (bổ sung sau review): mỗi con số mang theo dấu đứng trước nó (≥ > ≤ <, hoặc "từ / trên / dưới / tối thiểu / tối đa / ít nhất…"; cả dạng hậu tố "55% ≤ FY"). Ghép từng quy tắc và từng bảng của A với B theo **cả hai chiều**, rồi so dấu ở mỗi vị trí cùng số (căn theo thứ tự) và tập dấu của mỗi số (không phụ thuộc hàng/cột). Hai lớp 1–2 không bắt được "≥50%" → ">50%"; lớp 3 bắt được.
-  4. **Đối chiếu với lớp chữ gốc của PDF** ([check_bounds_vs_text.py](check_bounds_vs_text.py)): mỗi cặp (dấu, số) trong bộ đã chốt phải xuất hiện với cùng dấu trên trang được trích (±1). Lớp này bắt cả trường hợp A và B **cùng** đọc sai một dấu.
+  3. **Điều kiện biên** (bổ sung sau review): mỗi con số mang theo dấu đứng trước nó (≥ > ≤ <, hoặc "từ / trên / dưới / tối thiểu / tối đa / ít nhất…"; cả dạng hậu tố "55% ≤ FY"). **Cụm đứng sau số quyết định chiều**: "từ 12 tháng trở xuống" là ≤ 12 dù có chữ "từ"; "từ hoặc dưới 6" là ≤ 6. Ghép từng quy tắc và từng bảng của A với B theo **cả hai chiều**, rồi so dấu ở mỗi vị trí cùng số (căn theo thứ tự) và tập dấu của mỗi số (không phụ thuộc hàng/cột). Hai lớp 1–2 không bắt được "≥50%" → ">50%"; lớp 3 bắt được.
+  4. **Đối chiếu với lớp chữ gốc của PDF** ([check_bounds_vs_text.py](check_bounds_vs_text.py)): mỗi cặp (dấu, số) trong bộ đã chốt phải xuất hiện với cùng dấu trên trang được trích (±1). Lớp này bắt cả trường hợp A và B **cùng** đọc sai một dấu. Thiếu thư mục, thiếu file, hoặc lớp chữ rỗng ở văn bản không phải scan → script báo lỗi đầu vào và dừng (mã thoát 2); chỉ bản scan đã biết `CHB-003` được bỏ qua.
 - Mọi chỗ lệch được Claude mở ảnh trang gốc để chốt.
 
 ## 2. Kết quả đọc
@@ -35,8 +35,8 @@ Ngày: 2026-11-28 · Nhánh `claude/fresh-approach` · Không sửa gì trên `m
 | Lớp kiểm | Kết quả |
 |---|---|
 | A so với B, theo quy tắc và theo bảng | 8 cờ, đều vô hại: một bên ghi thêm vế bù ("TOT < 85% → không trả" cạnh "≥ 85%") hoặc hai bên chia quy tắc khác nhau. Từng cờ và lý do: [boundary_review.json](boundary_review.json). **0 chỗ cùng số khác dấu thật.** |
-| Bộ đã chốt so với lớp chữ PDF (8 văn bản có lớp chữ) | 410 cặp (dấu, số) khớp cùng dấu; 2 cặp "khác dấu" chính là 2 vế bù nêu trên (suy trực tiếp từ điều kiện ≥ của văn bản); 1 cặp trích chéo trang (tr.5 dẫn quy định thai sản tr.16). Kết quả: [bounds_vs_text.json](bounds_vs_text.json) |
-| Thử cấy lỗi trên bản đọc B thật | ≥→> 205/205 · >→≥ 13/13 · <→≤ 87/87 · ≤→< 16/16 · ≥→< 203/205 bị phát hiện |
+| Bộ đã chốt so với lớp chữ PDF (8 văn bản có lớp chữ) | 418 cặp (dấu, số) khớp cùng dấu; 2 cặp "khác dấu" chính là 2 vế bù nêu trên (suy trực tiếp từ điều kiện ≥ của văn bản); 1 cặp trích chéo trang (tr.5 dẫn quy định thai sản tr.16). Kết quả: [bounds_vs_text.json](bounds_vs_text.json) |
+| Thử cấy lỗi trên bản đọc thật | Dấu: ≥→> 205/205 · >→≥ 13/13 · <→≤ 87/87 · ≤→< 16/16 · ≥→< 203/205. Cụm chữ (cả bản A và B): "trở lên"→"trở xuống" 109/109 · "trở xuống"→"trở lên" 4/4 · "từ hoặc dưới"→"từ hoặc trên" 2/2 bị phát hiện |
 
 **Giới hạn còn lại:**
 - Đổi ≥ thành < trong một quy tắc vốn đã ghi cả "<X" lẫn "≥X" cho cùng số X (2/205 ca thử) không bị lớp A–B bắt. Lớp chữ PDF vẫn bắt nếu văn bản không có cụm "<X" ở trang đó.

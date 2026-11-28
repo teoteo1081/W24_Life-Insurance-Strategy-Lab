@@ -19,16 +19,28 @@ from pathlib import Path
 HERE = Path(__file__).parent
 NUM = re.compile(r"\d+(?:[.,]\d+)*")
 
-# Dấu/cụm từ so sánh → dạng chuẩn. Cụm dài đặt trước để khớp trước cụm ngắn.
+# Dấu/cụm từ so sánh ĐỨNG TRƯỚC số → dạng chuẩn.
 OPS = [
-    (r"lớn hơn hoặc bằng|cao hơn hoặc bằng|không thấp hơn|không dưới|tối thiểu|ít nhất|từ|>=|≥|=>", ">="),
-    (r"nhỏ hơn hoặc bằng|thấp hơn hoặc bằng|không vượt quá|không quá|tối đa|<=|≤|=<", "<="),
+    (r"lớn hơn hoặc bằng|cao hơn hoặc bằng|bằng hoặc lớn hơn|bằng hoặc cao hơn|từ hoặc trên|không thấp hơn|không dưới"
+     r"|tối thiểu|ít nhất|từ|>=|≥|=>", ">="),
+    (r"nhỏ hơn hoặc bằng|thấp hơn hoặc bằng|bằng hoặc nhỏ hơn|bằng hoặc thấp hơn|từ hoặc dưới|dưới hoặc bằng"
+     r"|không vượt quá|không quá|tối đa|đến|tới|<=|≤|=<", "<="),
     (r"lớn hơn|cao hơn|vượt|trên|>", ">"),
     (r"nhỏ hơn|thấp hơn|dưới|<", "<"),
     (r"bằng|=", "="),
 ]
-OP_ALT = "|".join(f"(?:{a})" for a, _ in OPS)
+# Mọi cụm của mọi nhóm, dài trước ngắn: "từ hoặc dưới" phải khớp trước "từ" (nếu không sẽ thành "<").
+OP_ALT = "|".join(sorted((x for a, _ in OPS for x in a.split("|")), key=len, reverse=True))
 OP_NUM = re.compile(rf"(?:(?P<op>{OP_ALT})\s*(?:là\s+)?)?(?<![\d.,])(?P<n>\d+(?:[.,]\d+)*)", re.IGNORECASE)
+
+# Cụm ĐỨNG SAU số (sau tối đa 3 chữ đơn vị như "tháng", "triệu đồng") — quyết định chiều thật của điều kiện:
+# "từ 12 tháng trở xuống" là ≤ 12, không phải ≥ 12 dù có chữ "từ" đứng trước.
+SUFFIX = re.compile(
+    r"\s*%?\)?"                                             # "(18) Tháng": số nằm trong ngoặc
+    r"(?:\s*(?:\([^\d()]{1,20}\)|[^\W\d_]+\+?)){0,3}?"         # tối đa 3 chữ đơn vị: "tháng", "(sáu)", "SUM+"
+    r"\s*(trở lên|trở xuống|hoặc (?:nhiều|cao|lớn) hơn|hoặc (?:ít|thấp|nhỏ) hơn)",
+    re.IGNORECASE)
+SUFFIX_OP = {"trở lên": ">=", "trở xuống": "<="}
 
 POST_OP = re.compile(r"\s*%?\s*(≤|<=|<|≥|>=|>)(?!\s*\d)")   # số – dấu – chữ (không phải số – dấu – số)
 FLIP = {"<=": ">=", "<": ">", ">=": "<=", ">": "<", "=": "="}
@@ -89,7 +101,11 @@ def bounded(text: str) -> list:
     out = []
     for m in OP_NUM.finditer(text):
         op = norm_op(m.group("op"))
-        if not op:   # dạng hậu tố "55% ≤ FY" nghĩa là FY ≥ 55 → đảo chiều dấu
+        suf = SUFFIX.match(text, m.end())
+        if suf:      # hậu tố thắng tiền tố: "từ 12 tháng trở xuống" → ≤ 12
+            w = suf.group(1).lower()
+            op = SUFFIX_OP.get(w) or (">=" if re.search(r"nhiều|cao|lớn", w) else "<=")
+        elif not op:   # dạng hậu tố "55% ≤ FY" nghĩa là FY ≥ 55 → đảo chiều dấu
             post = POST_OP.match(text, m.end())
             if post:
                 op = FLIP[norm_op(post.group(1))]

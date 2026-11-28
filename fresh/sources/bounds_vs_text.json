@@ -1,7 +1,7 @@
 {
  "AIA-034": {
   "tally": {
-   "SAME": 40,
+   "SAME": 41,
    "BARE": 1,
    "OTHER_OP": 1
   },
@@ -24,28 +24,28 @@
  },
  "AIA-069": {
   "tally": {
-   "SAME": 50
+   "SAME": 51
   },
   "other_op": []
  },
  "CHB-003": {
-  "skipped": "không có lớp chữ (bản scan)"
+  "skipped": "văn bản scan, không có lớp chữ (đã đọc 2 lượt bằng ảnh)"
  },
  "CHB-007": {
   "tally": {
-   "SAME": 81
+   "SAME": 84
   },
   "other_op": []
  },
  "CHB-008": {
   "tally": {
-   "SAME": 65
+   "SAME": 66
   },
   "other_op": []
  },
  "MNL-046": {
   "tally": {
-   "SAME": 47,
+   "SAME": 48,
    "OTHER_OP": 1
   },
   "other_op": [
@@ -61,7 +61,7 @@
  },
  "MNL-047": {
   "tally": {
-   "SAME": 34
+   "SAME": 35
   },
   "other_op": []
  },
