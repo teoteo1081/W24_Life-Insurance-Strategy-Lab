@@ -473,7 +473,7 @@
     "ops": "9 khoản phí tuyến quản lý (≤4 = 5, ≥14 = 1): 0047M01 A.I–A.V (5) [0047M01_2026 : 1-5]; 0048M01 A.I–A.IV (4) [0048M01_2026 : 1-3]"
    },
    "label": "MODEL_OUTPUT",
-   "confidentiality": "restricted"
+   "confidentiality": "public"
   },
   "Hybrid": {
    "name": "Chính sách Đề xuất 2026",
