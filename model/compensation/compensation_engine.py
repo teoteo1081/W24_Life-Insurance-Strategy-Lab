@@ -260,31 +260,25 @@ def apply_aia_70pct_cap(
 def aia_cvtv_fy_factor(fy_pct_raw: float, policy_year: int = 2026, rounding_mode: str = "HalfUp") -> float:
     if policy_year not in (2026, 2027):
         raise ValueError(f"Unsupported AIA CVTV policy_year: {policy_year!r} (expected 2026 or 2027)")
+    # "Tỷ lệ chi trả theo FY (2)" [AIAVAD 2604-069 : 3] — đúng 5 bậc (2026) và 4 bậc (2027), không có bậc trung gian.
+    # "Chưa có FY" → 100% (cả 2 năm); hàm nhận số FY nên người gọi tự truyền mức ≥ ngưỡng 100% cho trường hợp này.
     fy = round_aia_fy(fy_pct_raw, rounding_mode)
     if policy_year == 2026:
         if fy >= 85:
-            return 1.20
-        if fy >= 80:
-            return 1.10
+            return 1.20          # ≥85% → 120%
         if fy >= 75:
-            return 1.00
-        if fy >= 70:
-            return 0.90
+            return 1.10          # ≥75% → 110%
         if fy >= 65:
-            return 0.80
-        return fy / 100.0  # Soft floor in 2026
-    else:  # 2027 hard cliff
+            return 1.00          # ≥65% hoặc chưa có FY → 100%
+        return fy / 100.0        # >0% và <65% → %FY ; 0% → 0%
+    else:  # 2027
         if fy >= 90:
-            return 1.20
-        if fy >= 85:
-            return 1.15
+            return 1.20          # ≥90% → 120%
         if fy >= 80:
-            return 1.05
-        if fy >= 75:
-            return 1.00
+            return 1.10          # ≥80% → 110%
         if fy >= 70:
-            return 0.85
-        return 0.0  # Hard cliff <70% -> 0%
+            return 1.00          # ≥70% hoặc chưa có FY → 100%
+        return 0.0               # <70% → 0%
 
 
 def aia_cvtv_quarterly_rate(fyc_q_annualized: float) -> float:
@@ -603,8 +597,9 @@ def calc_aia_paf_12m(
         b_pct = 1.20 if ach_fyp >= 1.15 else (1.00 if ach_fyp >= 0.55 else (0.50 if ach_fyp >= 0.35 else 0.0))
         base_total += base_m * b_pct * att_mult
 
-        r_fyp = 0.06 if ach_fyp >= 1.15 else (0.045 if ach_fyp >= 0.90 else (0.03 if ach_fyp >= 0.55 else 0.0))
-        r_aa = 0.035 if ach_aa >= 1.15 else (0.025 if ach_aa >= 0.90 else (0.015 if ach_aa >= 0.55 else 0.0))
+        # Phí chuyên nghiệp tháng [AIAVAD 2601-035 : 4]: <50% · ≥50%–<100% · ≥100%–<115% · ≥115%
+        r_fyp = 0.06 if ach_fyp >= 1.15 else (0.045 if ach_fyp >= 1.00 else (0.03 if ach_fyp >= 0.50 else 0.0))
+        r_aa = 0.035 if ach_aa >= 1.15 else (0.025 if ach_aa >= 1.00 else (0.015 if ach_aa >= 0.50 else 0.0))
         prof_m_total += monthly_fyc[m] * (r_fyp * fy_fac + r_aa)
 
     prof_q_total = 0.0
@@ -617,8 +612,9 @@ def calc_aia_paf_12m(
         ach_qf = q_fyp / q_tgt_fyp if q_tgt_fyp > 0 else 0.0
         ach_qa = q_aa / q_tgt_aa if q_tgt_aa > 0 else 0.0
 
-        rq_f = 0.05 if ach_qf >= 1.30 else (0.035 if ach_qf >= 1.15 else (0.02 if ach_qf >= 1.00 else (0.005 if ach_qf >= 0.90 else 0.0)))
-        rq_a = 0.035 if ach_qa >= 1.30 else (0.025 if ach_qa >= 1.15 else (0.015 if ach_qa >= 1.00 else (0.005 if ach_qa >= 0.90 else 0.0)))
+        # Phí chuyên nghiệp quý [AIAVAD 2601-035 : 5]: <90% · ≥90%–<100% · ≥100%–<110% · ≥110%–<120% · ≥120%
+        rq_f = 0.05 if ach_qf >= 1.20 else (0.035 if ach_qf >= 1.10 else (0.02 if ach_qf >= 1.00 else (0.005 if ach_qf >= 0.90 else 0.0)))
+        rq_a = 0.035 if ach_qa >= 1.20 else (0.025 if ach_qa >= 1.10 else (0.015 if ach_qa >= 1.00 else (0.005 if ach_qa >= 0.90 else 0.0)))
         prof_q_total += q_fyc * (rq_f * fy_fac + rq_a)
 
     ann_tgt_fyp = t_map[(rank, year_no, "Annual")][0]

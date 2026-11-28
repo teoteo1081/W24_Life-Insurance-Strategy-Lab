@@ -611,7 +611,7 @@ def write_reports(d: dict) -> None:
     w("# 03 — Chính sách Đề xuất 2026 & Phân vùng")
     w("")
     w("> `PROPOSAL` — không phải chính sách đã ban hành. Sinh bởi `scripts/build_phase2.py`; tham số ở `model/compensation/hybrid_scheme.py`. "
-      "Kế thừa bộ tham số **Song Hành** đã hiệu chỉnh (không thấp nhất thị trường ở mọi tầng, K2 ~75–90%).")
+      "Kế thừa bộ tham số **Song Hành** đã hiệu chỉnh (hiệu chỉnh để không tầng nào thấp nhất thị trường ở K2 82%; trong K2 75–90% có điểm thấp hơn tối đa ~2%).")
     w("")
     w("## 1. Khung chính sách")
     w("")

@@ -1,8 +1,29 @@
 # HANDOVER.md — Điểm Bàn giao & Single Source of Truth (Trạng thái Hiện hành)
 
-**Cập nhật lần cuối** 2026-11-27 (đêm) — Giai đoạn 2 (phân tích & Chính sách Lai) + Giai đoạn 3 (web 3 tab, 8 bảng Supabase)
+**Cập nhật lần cuối** 2026-11-28 — DEC-18 sửa AIA · trước đó 2026-11-27 (đêm) — Giai đoạn 2 (phân tích & Chính sách Lai) + Giai đoạn 3 (web 3 tab, 8 bảng Supabase)
 
 ## Trạng thái hiện hành
+
+**2026-11-28 — Sửa 3 lỗi AIA cho khớp PDF gốc (DEC-18) + gộp phần kiểm tra đọc nguồn. Commit LOCAL, KHÔNG push.**
+
+Danh sách việc (TJ đọc mục này là đủ):
+- [x] Xem lại ảnh trang gốc: [AIAVAD 2604-069 : 3] hệ số FY; [AIAVAD 2601-035 : 4] phí tháng; [AIAVAD 2601-035 : 5] phí quý.
+- [x] Sửa `model/compensation/compensation_engine.py` (3 chỗ, mỗi ngưỡng ghi trang nguồn) + công thức Excel trong `scripts/build_workbook.py`.
+- [x] Test: 4 ca golden cũ tính theo bậc sai → tính tay lại; thêm test khóa đủ bậc FY và điểm gãy phí PAF+ (5 ca hỏng trên code cũ, đạt trên code mới).
+- [x] Dựng lại mọi đầu ra (01–03, tóm tắt điều hành, khuyến nghị, HTML đầy đủ + công khai, PDF 2 trang, Excel v1 tính lại bằng Excel: 24/24 golden, 12/12 khớp Python).
+- [x] Khoanh vùng nhân quả (xem bảng dưới). Sửa 2 câu chữ: bảng AIA trong `outputs/working/strategic-recommendations-and-schemes.md`; câu "Song Hành không thấp nhất ở K2 75–90%".
+- [ ] Gộp phần kiểm tra đọc nguồn từ nhánh `claude/fresh-approach` (đang làm).
+- [ ] CHƯA sửa (chờ TJ): Chubb thiếu phí phát triển SM, phí RD II.7/II.8, quy đổi FYC đại lý <3 tháng; AIA các mục "thiếu trong code" mức thấp (xem `fresh/sources/READING_AUDIT.md`).
+- [ ] Push: chưa. `main` local tách nhánh với `origin/main`; phát hành chỉ qua `public-release` khi TJ yêu cầu.
+
+Khoanh vùng nhân quả — sửa ở đâu → đổi gì:
+
+| Lỗi | Chạm tới | Số đổi | Số KHÔNG đổi (vì sao) |
+|---|---|---|---|
+| Hệ số FY 2026/2027 | Thưởng quý/ngoại hạng/năm của đại lý AIA → chi phí AIA ở mọi K2 có FY nằm giữa các bậc | AIA chi trả giảm khi K2 85→65%: 14,2% → **12,7%**; chi phí/phí duy trì K2 65%: 77,0% → **78,4%**; chi phí/FYP K2 65%: 50,1% → 51,0%; điểm hành vi AIA 2,82 → 2,75; điểm tổng AIA 3,15 → **3,13**; mô hình 1 vùng: AIA K2 72% 62,25% → 63,18% (2026), 61,79% → 63,18% (2027); AIA 2027 K2 82% 72,98% → 73,44% | Mọi số ở K2 85% (FY 85% → 120% ở cả bảng cũ và bảng đúng); Chubb, Manulife, Đề xuất 2026 (3,96), điểm hòa vốn, trần 75% |
+| Phí PAF+ tháng/quý | Thu nhập lãnh đạo AIA khi % đạt chỉ tiêu nằm ở 50–54%, 90–99%, 110–129% | Không số công bố nào đổi (các kịch bản đang dùng không rơi vào khoảng lệch); Excel sheet 09 đổi công thức | — |
+| Song Hành (hệ quả gián tiếp) | Câu "không tầng nào thấp nhất ở K2 75–90%" | Kiểm lại: câu này **đã sai một phần ngay trên code cũ** (lãnh đạo K2 75–79%, đại lý FYC 15tr K2 80–88%). Viết lại: đúng ở K2 82% (điểm hiệu chỉnh); thấp hơn tối đa ~2% ở vài điểm 75–90% | Tham số Song Hành giữ nguyên |
+
 
 **2026-11-27 — ĐÃ PHÁT HÀNH bản Public lần 2 (TJ yêu cầu "commit và push").**
 - Local `main`: `90a6195` (thay đổi dưới đây) + `cb59670` (golden.json chỉ đổi thứ tự khóa). KHÔNG push `main`.

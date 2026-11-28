@@ -68,7 +68,8 @@ class TestAIAGoldenCases(unittest.TestCase):
         r_below = calc_aia_cvtv_12m([5.33] * 12, [0.0] * 12, fy_pct=75.0, policy_year=2026)
         r_at = calc_aia_cvtv_12m([16.0 / 3.0] * 12, [0.0] * 12, fy_pct=75.0, policy_year=2026)
         assert_close(r_below["bonus_quarterly_prod"], 0.0, label="GT-01a below 16M Q threshold")
-        assert_close(r_at["bonus_quarterly_prod"], 2.56, label="GT-01b at 16M Q x 4% x 4Q = 2.56M")
+        # FY 75% (2026) → hệ số 110% [AIAVAD 2604-069 : 3]: 16 × 4% × 4 quý × 1,1 = 2,816
+        assert_close(r_at["bonus_quarterly_prod"], 2.816, label="GT-01b at 16M Q x 4% x 4Q x 1.1 = 2.816M")
 
     def test_gt02_aia_jan2026_ack_exception(self) -> None:
         self.assertTrue(aia_ack_eligible_for_3m_bonus("2026-01", 35, ack_received_on_or_before_feb28=True))
@@ -76,14 +77,21 @@ class TestAIAGoldenCases(unittest.TestCase):
         self.assertTrue(aia_ack_eligible_for_3m_bonus("2026-02", 15, ack_received_on_or_before_feb28=False))
 
     def test_gt03_aia_rounding_conflict_toggle_err_doc_02(self) -> None:
-        assert_close(aia_cvtv_fy_factor(74.49, 2027, "HalfUp"), 0.85, label="GT-03a HalfUp 74.49->74")
-        assert_close(aia_cvtv_fy_factor(74.01, 2027, "RoundUp"), 1.00, label="GT-03b RoundUp 74.01->75")
+        # Cách làm tròn chỉ đổi kết quả ở sát một ngưỡng thật. Ngưỡng 2027 thật: 70 / 80 / 90 [AIAVAD 2604-069 : 3]
+        assert_close(aia_cvtv_fy_factor(79.49, 2027, "HalfUp"), 1.00, label="GT-03a HalfUp 79.49->79 (>=70 → 100%)")
+        assert_close(aia_cvtv_fy_factor(79.01, 2027, "RoundUp"), 1.10, label="GT-03b RoundUp 79.01->80 (>=80 → 110%)")
+        # Khóa đủ bậc theo văn bản (không còn bậc 90%/80%/115%/105%/85% tự thêm)
+        for fy, f26, f27 in ((100, 1.20, 1.20), (90, 1.20, 1.20), (85, 1.20, 1.10), (84, 1.10, 1.10), (80, 1.10, 1.10),
+                             (79, 1.10, 1.00), (75, 1.10, 1.00), (74, 1.00, 1.00), (70, 1.00, 1.00), (69, 1.00, 0.0),
+                             (65, 1.00, 0.0), (64, 0.64, 0.0), (30, 0.30, 0.0), (0, 0.0, 0.0)):
+            assert_close(aia_cvtv_fy_factor(fy, 2026), f26, tol=1e-9, label=f"FY {fy}% 2026")
+            assert_close(aia_cvtv_fy_factor(fy, 2027), f27, tol=1e-9, label=f"FY {fy}% 2027")
 
     def test_gt04_aia_dual_phase_2026_vs_2027_cliff(self) -> None:
         r_26 = calc_aia_cvtv_12m([20.0] * 12, [0.0] * 12, fy_pct=65.0, policy_year=2026)
         r_27 = calc_aia_cvtv_12m([20.0] * 12, [0.0] * 12, fy_pct=65.0, policy_year=2027)
-        # Hand calc 2026: 240*(0.20+0.10+0.06)*0.80 = 69.12; 2027 cliff <70% -> 0.00
-        assert_close(r_26["total_bonuses_earned"], 69.12, label="GT-04a AIA 2026 soft FY=65%")
+        # Tính tay 2026: FY 65% → 100% [AIAVAD 2604-069 : 3]: 240*(0.20+0.10+0.06)*1.00 = 86.4; 2027: <70% → 0
+        assert_close(r_26["total_bonuses_earned"], 86.4, label="GT-04a AIA 2026 FY=65% → 100%")
         assert_close(r_27["total_bonuses_earned"], 0.00, label="GT-04b AIA 2027 hard cliff FY=65%")
 
     def test_gt05_aia_70pct_cap_cql_vs_paf(self) -> None:
@@ -97,6 +105,27 @@ class TestAIAGoldenCases(unittest.TestCase):
         paf_cap = calc_aia_paf_12m("PAF", 1, [1000.0] * 12, [300.0] * 12, [20.0] * 12, fy_pct=80.0, targets=paf_t)
         assert_close(paf_cap["seniority_fee_clawback12m"], 288.0, label="GT-13b PAF seniority capped at 12M Base")
 
+    def test_gt13c_aia_paf_professional_fee_breakpoints(self) -> None:
+        """Ngưỡng % đạt chỉ tiêu: tháng <50 / 50–<100 / 100–<115 / ≥115 [AIAVAD 2601-035 : 4];
+        quý <90 / 90–<100 / 100–<110 / 110–<120 / ≥120 [AIAVAD 2601-035 : 5]. FY 80% → hệ số chất lượng 120%."""
+        t = load_aia_paf_targets()
+        tg = [t[("PAF", 1, f"M{m:02d}")] for m in range(1, 13)]
+
+        def rates(ach):
+            fyp = [g[0] * ach for g in tg]
+            fyc = [x * 0.3 for x in fyp]
+            r = calc_aia_paf_12m("PAF", 1, fyp, fyc, [g[1] * ach for g in tg], fy_pct=80.0, targets=t)
+            return r["prof_monthly_12m"] / sum(fyc), r["prof_quarterly_12m"] / sum(fyc)
+
+        monthly = {0.49: 0.0, 0.51: 0.03 * 1.2 + 0.015, 0.99: 0.03 * 1.2 + 0.015,
+                   1.01: 0.045 * 1.2 + 0.025, 1.14: 0.045 * 1.2 + 0.025, 1.16: 0.06 * 1.2 + 0.035}
+        quarterly = {0.89: 0.0, 0.91: 0.005 * 1.2 + 0.005, 1.01: 0.02 * 1.2 + 0.015, 1.09: 0.02 * 1.2 + 0.015,
+                     1.11: 0.035 * 1.2 + 0.025, 1.19: 0.035 * 1.2 + 0.025, 1.21: 0.05 * 1.2 + 0.035}
+        for ach, want in monthly.items():
+            assert_close(rates(ach)[0], want, tol=1e-9, label=f"PAF tháng ở {ach:.0%}")
+        for ach, want in quarterly.items():
+            assert_close(rates(ach)[1], want, tol=1e-9, label=f"PAF quý ở {ach:.0%}")
+
     def test_gt14_aia_cql_deferred_vesting_and_tot_forfeiture(self) -> None:
         cql_ok = calc_aia_cql_12m([60.0] * 12, [6] * 12, fy_pct=82.0, tot_pct=85.0)
         cql_fail = calc_aia_cql_12m([60.0] * 12, [6] * 12, fy_pct=82.0, tot_pct=84.9)
@@ -105,8 +134,8 @@ class TestAIAGoldenCases(unittest.TestCase):
 
     def test_gt15_aia_disciplinary_warning_penalty(self) -> None:
         r_disc = calc_aia_cvtv_12m([20.0] * 12, [0.0] * 12, fy_pct=75.0, policy_year=2026, disciplinary_final_warning=True)
-        # Clean FY=75% (1.0): 240*(0.20+0.10+0.06)=86.4 -> -30% = 60.48
-        assert_close(r_disc["total_bonuses_earned"], 60.48, label="GT-15 Disciplinary -30%")
+        # FY 75% (2026) → 110% [AIAVAD 2604-069 : 3]: 240*(0.20+0.10+0.06)*1.1 = 95.04 → −30% = 66.528
+        assert_close(r_disc["total_bonuses_earned"], 66.528, label="GT-15 Disciplinary -30%")
 
 
 class TestChubbGoldenCases(unittest.TestCase):

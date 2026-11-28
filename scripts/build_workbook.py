@@ -538,9 +538,9 @@ def build_workbook(out_path: Path = DEFAULT_OUT_XLSX, allow_overwrite_v1: bool =
         k2_raw = f"{p}E{r7}"
         ten = f"{p}F{r7}"
 
-        # AIA FY Factor 2026 & 2027
-        fy26 = f"IF({fy_cell}>=85,1.2,IF({fy_cell}>=80,1.1,IF({fy_cell}>=75,1,IF({fy_cell}>=70,0.9,IF({fy_cell}>=65,0.8,{fy_cell}/100)))))"
-        fy27 = f"IF({fy_cell}>=90,1.2,IF({fy_cell}>=85,1.15,IF({fy_cell}>=80,1.05,IF({fy_cell}>=75,1,IF({fy_cell}>=70,0.85,0)))))"
+        # AIA FY Factor 2026 & 2027 — [AIAVAD 2604-069 : 3] (5 bậc 2026, 4 bậc 2027)
+        fy26 = f"IF({fy_cell}>=85,1.2,IF({fy_cell}>=75,1.1,IF({fy_cell}>=65,1,{fy_cell}/100)))"
+        fy27 = f"IF({fy_cell}>=90,1.2,IF({fy_cell}>=80,1.1,IF({fy_cell}>=70,1,0)))"
         aia_q_r = f"IF({fyc_q}>=150,0.4,IF({fyc_q}>=120,0.35,IF({fyc_q}>=90,0.3,IF({fyc_q}>=70,0.25,IF({fyc_q}>=50,0.2,IF({fyc_q}>=35,0.15,IF({fyc_q}>=20,0.1,IF({fyc_q}>=16,0.04,0))))))))"
         aia_p26 = f"IF(AND({fyc_q}>=70,{act_q}>=3,{fy_cell}>=75),0.15,IF(AND({fyc_q}>=35,{act_q}>=3,{fy_cell}>=65),0.1,IF(AND({fyc_q}>=20,{act_q}>=2,{fy_cell}>=65),0.05,0)))"
         aia_p27 = f"IF(AND({fyc_q}>=70,{act_q}>=3,{fy_cell}>=80),0.15,IF(AND({fyc_q}>=35,{act_q}>=3,{fy_cell}>=70),0.1,IF(AND({fyc_q}>=20,{act_q}>=2,{fy_cell}>=70),0.05,0)))"
@@ -701,8 +701,9 @@ def build_workbook(out_path: Path = DEFAULT_OUT_XLSX, allow_overwrite_v1: bool =
         # Base 50M/M x FYP tier + Monthly & Quarterly Prof + Seniority capped at 12M Base
         paf_fy = f"IF({k2}>=75,1.2,IF({k2}>=70,1.1,IF({k2}>=65,1,IF({k2}>=60,0.8,IF({k2}>=50,0.6,0)))))"
         paf_b = f"50*12*IF({ach}>=1.15,1.2,IF({ach}>=0.55,1,IF({ach}>=0.35,0.5,0)))"
-        paf_pm = f"({fyc_m}*12)*(IF({ach}>=1.15,0.06,IF({ach}>=0.9,0.045,IF({ach}>=0.55,0.03,0)))*{paf_fy}+IF({ach}>=1.15,0.035,IF({ach}>=0.9,0.025,IF({ach}>=0.55,0.015,0))))"
-        paf_pq = f"({fyc_m}*12)*(IF({ach}>=1.3,0.05,IF({ach}>=1.15,0.035,IF({ach}>=1,0.02,IF({ach}>=0.9,0.005,0))))*{paf_fy}+IF({ach}>=1.3,0.035,IF({ach}>=1.15,0.025,IF({ach}>=1,0.015,IF({ach}>=0.9,0.005,0)))))"
+        # Phí chuyên nghiệp tháng [AIAVAD 2601-035 : 4] 50/100/115%; quý [AIAVAD 2601-035 : 5] 90/100/110/120%
+        paf_pm = f"({fyc_m}*12)*(IF({ach}>=1.15,0.06,IF({ach}>=1,0.045,IF({ach}>=0.5,0.03,0)))*{paf_fy}+IF({ach}>=1.15,0.035,IF({ach}>=1,0.025,IF({ach}>=0.5,0.015,0))))"
+        paf_pq = f"({fyc_m}*12)*(IF({ach}>=1.2,0.05,IF({ach}>=1.1,0.035,IF({ach}>=1,0.02,IF({ach}>=0.9,0.005,0))))*{paf_fy}+IF({ach}>=1.2,0.035,IF({ach}>=1.1,0.025,IF({ach}>=1,0.015,IF({ach}>=0.9,0.005,0)))))"
         paf_sen = f"MIN({paf_b},MAX(0,B{r9}-'05_Lookup_PAF_5Y'!$G$3)*0.05)"
         ws9.cell(r9, 3, f"={paf_b}+{paf_pm}+{paf_pq}+{paf_sen}").number_format = "#,##0.00"
 
@@ -748,7 +749,7 @@ def build_workbook(out_path: Path = DEFAULT_OUT_XLSX, allow_overwrite_v1: bool =
         mk = f"M{m:02d}"
         ws9.cell(19, col, f'=INDEX(\'05_Lookup_PAF_5Y\'!$H$8:$H$1307,MATCH("SAF|Year_1|{mk}|1mAA_Count",\'05_Lookup_PAF_5Y\'!$A$8:$A$1307,0))').number_format = "0.0"
         ws9.cell(20, col, 20.0).fill = FILL_INPUT; ws9.cell(20, col).font = FONT_BLUE
-        ws9.cell(21, col, f"=IF({cl}20/{cl}19>=1.15,0.035,IF({cl}20/{cl}19>=0.9,0.025,IF({cl}20/{cl}19>=0.55,0.015,0)))").number_format = "0.0%"
+        ws9.cell(21, col, f"=IF({cl}20/{cl}19>=1.15,0.035,IF({cl}20/{cl}19>=1,0.025,IF({cl}20/{cl}19>=0.5,0.015,0)))").number_format = "0.0%"   # [AIAVAD 2601-035 : 4]
         ws9.cell(22, col, f"=300*{cl}21").number_format = "0.00"
         for rr in range(19, 23):
             ws9.cell(rr, col).border = BORDER
@@ -759,7 +760,7 @@ def build_workbook(out_path: Path = DEFAULT_OUT_XLSX, allow_overwrite_v1: bool =
     q_cols = [("B", "D", 2), ("E", "G", 5), ("H", "J", 8), ("K", "M", 11)]
     for q_idx, (c1, c2, dest_c) in enumerate(q_cols, 1):
         ach_q = f"(SUM({c1}20:{c2}20)/SUM({c1}19:{c2}19))"
-        ws9.cell(23, dest_c, f"=900*IF({ach_q}>=1.3,0.035,IF({ach_q}>=1.15,0.025,IF({ach_q}>=1,0.015,IF({ach_q}>=0.9,0.005,0))))").number_format = "0.00"
+        ws9.cell(23, dest_c, f"=900*IF({ach_q}>=1.2,0.035,IF({ach_q}>=1.1,0.025,IF({ach_q}>=1,0.015,IF({ach_q}>=0.9,0.005,0))))").number_format = "0.00"   # [AIAVAD 2601-035 : 5]
         ws9.cell(23, dest_c).border = BORDER
     ws9.cell(24, 1, "Total Annual 1mAA Prof Fees (M+Q)").font = FONT_BOLD; ws9.cell(24, 1).border = BORDER
     ws9.cell(24, 2, "=SUM(B22:M22)+B23+E23+H23+K23").number_format = "#,##0.00"; ws9.cell(24, 2).font = FONT_BOLD; ws9.cell(24, 2).border = BORDER
@@ -829,7 +830,8 @@ def build_workbook(out_path: Path = DEFAULT_OUT_XLSX, allow_overwrite_v1: bool =
 
         if sc in ("AIA_Alpha_2026", "AIA_Alpha_2027"):
             is26 = (sc == "AIA_Alpha_2026")
-            fy_f = f"IF({k2c}>=85,1.2,IF({k2c}>=80,1.1,IF({k2c}>=75,1,IF({k2c}>=70,0.9,IF({k2c}>=65,0.8,{k2c}/100)))))" if is26 else f"IF({k2c}>=90,1.2,IF({k2c}>=85,1.15,IF({k2c}>=80,1.05,IF({k2c}>=75,1,IF({k2c}>=70,0.85,0)))))"
+            # [AIAVAD 2604-069 : 3]
+            fy_f = f"IF({k2c}>=85,1.2,IF({k2c}>=75,1.1,IF({k2c}>=65,1,{k2c}/100)))" if is26 else f"IF({k2c}>=90,1.2,IF({k2c}>=80,1.1,IF({k2c}>=70,1,0)))"
             # Agent: 15M/M -> Q=45M (15% prod), 4S (10% if FY>=65/70), Ann=180M (6% prod)
             p_gate = 65 if is26 else 70
             ag_r = f"(0.15+IF({k2c}>={p_gate},0.10,0)+0.06)*{fy_f}"
@@ -1023,7 +1025,7 @@ def build_workbook(out_path: Path = DEFAULT_OUT_XLSX, allow_overwrite_v1: bool =
         ("XL-GT-04", "Chubb HSBH", "Tu Do An Phuc Age 30M HSBH=65 -> 27.0%", "06_Lookup_Chubb_Comm", 0.27, "='06_Lookup_Chubb_Comm'!G5"),
         ("XL-GT-05", "Chubb HSBH", "Tu Do An Phuc Age 10F HSBH=60 -> 22.0%", "06_Lookup_Chubb_Comm", 0.22, "='06_Lookup_Chubb_Comm'!G6"),
         ("XL-GT-06", "Chubb Schedule", "KHTC Cao nien 65-80t Y1 = 27.0% (non-30% UL!)", "06_Lookup_Chubb_Comm", 27.0, "='06_Lookup_Chubb_Comm'!I5"),
-        ("XL-GT-07", "AIA 2026 vs 2027", "A04 (20M/M + 2M SYC, FY=65%) AIA 2026 Bonus = 76.32M", "08_Indiv_Comp_12M", 76.32, "='08_Indiv_Comp_12M'!E7"),
+        ("XL-GT-07", "AIA 2026 vs 2027", "A04 (20M/M + 2M SYC, FY=65% -> 100% [AIAVAD 2604-069 : 3]) AIA 2026 Bonus = 93.60M", "08_Indiv_Comp_12M", 93.60, "='08_Indiv_Comp_12M'!E7"),
         ("XL-GT-08", "AIA 2027 Cliff", "A04 (20M/M, FY=65%) AIA 2027 Cliff Bonus = 0.00M", "08_Indiv_Comp_12M", 0.00, "='08_Indiv_Comp_12M'!G7"),
         ("XL-GT-09", "AIA Rounding", "A08 (FY=74.49%) HalfUp Toggle -> Rounded = 74", "08_Indiv_Comp_12M", 74.0, "='08_Indiv_Comp_12M'!D11"),
         ("XL-GT-10", "Chubb AR Peak", "A05 (60M/M, K2=85%) Chubb AR %FYC = 185.8% (incl RYC+B)", "08_Indiv_Comp_12M", 1.858, "='08_Indiv_Comp_12M'!I8/'08_Indiv_Comp_12M'!B8+1-0.15*('07_Profiles_12M_Input'!D9*12)/'08_Indiv_Comp_12M'!B8"),
