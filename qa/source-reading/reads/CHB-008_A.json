@@ -1,0 +1,373 @@
+{
+  "doc_id": "CHB-008",
+  "reader": "A",
+  "title_verbatim": "CHÍNH SÁCH VỀ PHÍ DỊCH VỤ DÀNH CHO CẤP QUẢN LÝ KINH DOANH, HỖ TRỢ KINH DOANH - KÊNH ĐẠI LÝ (CÔNG TY TNHH BẢO HIỂM NHÂN THỌ CHUBB VIỆT NAM), Số: CHH0DCEB260008V",
+  "effective": "\"Chính sách này có hiệu lực thi hành từ ngày 01 tháng 01 năm 2026 và thay thế cho “Chính sách thu nhập dành cho cấp Quản lý Kinh doanh, Hỗ trợ Kinh doanh” số CHH0DCEB240049V hiệu lực từ ngày 01/07/2024 và các Thông báo có liên quan.\" (trang 3). Phụ đính III: \"Quy định này có hiệu lực từ ngày 01 tháng 01 năm 2026 và thay thế cho “Chính sách thu nhập Champion HUBB từ tháng 4.2025” số CHH0CAOOIN250052V ngày 01/04/2025\" (trang 11). Ký: NGUYỄN TRỌNG NGHĨA, Phó Tổng Giám đốc (trang 10).",
+  "roles": [
+    {"title_verbatim": "Đại diện Kinh doanh (“ĐDKD” hay “AR”)", "abbr": "AR", "page": 3, "how_obtained": "văn bản không nêu (thuật ngữ dẫn chiếu Quy định chung số CHH0DCEB260005V và CHH0DCEB260006V)"},
+    {"title_verbatim": "Quản lý Kinh doanh (“QLKD” hay “AL”)", "abbr": "AL", "page": 3, "how_obtained": "văn bản không nêu; AL gồm UM, SM, DM (\"duy trì vị trí AL (UM, SM, DM)\", trang 4)"},
+    {"title_verbatim": "Trưởng Nhóm Kinh doanh (UM)", "abbr": "UM", "page": 8, "how_obtained": "AR \"đạt đầy đủ chỉ tiêu thăng cấp\" lên vị trí UM (chỉ tiêu thăng cấp không nêu trong văn bản này)"},
+    {"title_verbatim": "Trưởng Ban Kinh doanh (SM)", "abbr": "SM", "page": 8, "how_obtained": "UM \"đạt đầy đủ chỉ tiêu thăng cấp\" lên vị trí SM (chỉ tiêu không nêu trong văn bản này)"},
+    {"title_verbatim": "DM", "abbr": "DM", "page": 3, "how_obtained": "văn bản không nêu tên đầy đủ và cách đạt"},
+    {"title_verbatim": "AMD", "abbr": "AMD", "page": 4, "how_obtained": "văn bản không nêu (chỉ nhắc \"Người giới thiệu được thăng cấp lên AMD\")"},
+    {"title_verbatim": "AL Quản lý tham gia Champion Hubb vai trò quản lý (“AL Quản lý”)", "abbr": "CH vai trò Quản lý", "page": 11, "how_obtained": "\"Các AL đạt yêu cầu để tham gia Chương trình Champion Hubb (“CH”) theo quy định của Công ty theo từng thời điểm\"; AL (UM, SM, DM); \"AL chỉ được tham gia 1 trong 2 vai trò là Cá nhân hoặc Quản lý\""}
+  ],
+  "rules": [
+    {
+      "rule_no": 1,
+      "role": "AR và AL (Người giới thiệu)",
+      "item": "PHÍ DỊCH VỤ HỖ TRỢ TUYỂN DỤNG VÀ ĐỒNG HÀNH CÙNG ĐẠI DIỆN KINH DOANH MỚI",
+      "base": "FYC của AR mới được giới thiệu: FYC trong tháng (6 tháng đầu tiên); FYC tích lũy từ tháng thứ 7 đến tháng thứ 12",
+      "conditions": [
+        "(i) Thông tin của Người giới thiệu (AR/AL) được ghi nhận tại Đơn gia nhập làm Đại lý Bảo hiểm/Thông tin gia nhập làm Đại lý Bảo hiểm/Bản thông tin Ứng viên Đại lý Bảo hiểm của AR được giới thiệu; và",
+        "(ii) AR mới được giới thiệu được Công ty chấp thuận giao kết HĐĐL; và",
+        "(iii) AR mới được giới thiệu phải là AR lần đầu tiên được cấp Mã số đại lý tại Công ty và HĐĐL của AR mới này phải có hiệu lực tại Ngày khóa sổ của Tháng xét phí dịch vụ.",
+        "Phí dịch vụ được tính từ ngày AR mới gia nhập Công ty đến Ngày AR mới đủ 12 tháng hoặc tính đến Ngày khóa sổ Tháng trước liền kề của Tháng mà Người giới thiệu được thăng cấp lên AMD, lấy ngày nào đến trước.",
+        "Để được nhận phí dịch vụ từ tháng thứ 7 đến tháng thứ 12 thì Người giới thiệu cần thăng cấp lên UM hoặc duy trì vị trí AL (UM, SM, DM) tại khóa sổ Tháng thứ 12 của AR mới."
+      ],
+      "table": [
+        ["Tháng xét phí dịch vụ", "Phí dịch vụ", "Định kỳ chi trả"],
+        ["Trong 6 tháng đầu tiên", "10% FYC trong tháng", "Hàng tháng"],
+        ["Tháng thứ 12", "10% FYC tích lũy từ tháng thứ 7 đến tháng thứ 12", "Khóa sổ tháng thứ 12 của AR mới"]
+      ],
+      "rate_or_amount": "10%",
+      "payment_timing": "\"được chi trả trong Kỳ chi trả thu nhập của Tháng xét\"; 6 tháng đầu trả hàng tháng; phần tháng 7–12 trả gộp tại khóa sổ tháng thứ 12 của AR mới",
+      "clawback_or_forfeit": "Mất phần tháng 7–12 nếu Người giới thiệu không thăng cấp lên UM hoặc không duy trì vị trí AL (UM, SM, DM) tại khóa sổ Tháng thứ 12 của AR mới; dừng tính khi Người giới thiệu thăng cấp lên AMD. Văn bản không nêu thu hồi.",
+      "page": "4",
+      "quote": "Trong 6 tháng đầu tiên | 10% FYC trong tháng | Hàng tháng; Tháng thứ 12 | 10% FYC tích lũy từ tháng thứ 7 đến tháng thứ 12",
+      "uncertain": false,
+      "note": "Ví dụ trang 4: AR mới cấp mã 05/01/2026 → xét FYC phát sinh từ 05/01/2026 đến 04/01/2027. AMD không được định nghĩa trong văn bản. Bảng tóm tắt trang 3 đánh dấu AR, UM, SM, DM."
+    },
+    {
+      "rule_no": 2,
+      "role": "AL",
+      "item": "PHÍ DỊCH VỤ HỖ TRỢ KHAI THÁC NHÓM – 2.1 Phí dịch vụ theo tháng (“Phí dịch vụ HT KTN theo Tháng”) – Tỷ lệ phí dịch vụ",
+      "base": "FYC Nhóm trực tiếp trong tháng (triệu đồng); Phí dịch vụ = FYC Nhóm trực tiếp trong tháng * Tỷ lệ phí dịch vụ * Tỷ lệ điều chỉnh",
+      "conditions": [
+        "Tỷ lệ phí dịch vụ được xác định dựa theo số Tháng quản lý của AL đang xét, FYC và EHC Nhóm trực tiếp của AL theo cấu trúc tại khóa sổ Tháng xét",
+        "FYC, EHC và K2 của Nhóm trực tiếp không bao gồm bản thân AL đang xét phí dịch vụ.",
+        "Đối với trường hợp FYC Nhóm trực tiếp < 0, Tỷ lệ phí dịch vụ xét dựa theo trị tuyệt đối của FYC.",
+        "Nhóm AL có Tháng quản lý từ 15 tháng / dưới 15 tháng; EHC Nhóm trực tiếp Dưới 4 / Từ 4 trở lên"
+      ],
+      "table": [
+        ["FYC Nhóm trực tiếp trong tháng (triệu đồng)", "AL có Tháng quản lý từ 15 tháng – EHC Dưới 4", "AL có Tháng quản lý từ 15 tháng – EHC Từ 4 trở lên", "AL có Tháng quản lý dưới 15 tháng – EHC Dưới 4", "AL có Tháng quản lý dưới 15 tháng – EHC Từ 4 trở lên"],
+        ["Dưới 5", "0%", "0%", "0%", "0%"],
+        ["Từ 5 đến dưới 10", "10%", "20%", "10%", "20%"],
+        ["Từ 10 đến dưới 20", "20%", "30%", "20%", "30%"],
+        ["Từ 20 đến dưới 30", "30%", "40%", "25% (ô gộp 3 hàng: từ 20 trở lên)", "35% (ô gộp 3 hàng: từ 20 trở lên)"],
+        ["Từ 30 đến dưới 40", "40%", "50%", "25% (ô gộp)", "35% (ô gộp)"],
+        ["Từ 40 trở lên", "50%", "60%", "25% (ô gộp)", "35% (ô gộp)"]
+      ],
+      "rate_or_amount": "theo bảng × Tỷ lệ điều chỉnh (quy tắc 3)",
+      "payment_timing": "\"được chi trả trong Kỳ chi trả thu nhập của Tháng xét\"",
+      "clawback_or_forfeit": "văn bản không nêu",
+      "page": "5-6",
+      "quote": "Phí dịch vụ = FYC Nhóm trực tiếp trong tháng * Tỷ lệ phí dịch vụ * Tỷ lệ điều chỉnh",
+      "uncertain": false,
+      "note": "Đã xác nhận trên ảnh trang 5: với AL dưới 15 tháng, 25% và 35% là ô gộp cho 3 hàng từ 20 trở lên. Ví dụ trang 5: AL dưới 15 tháng, FYC NTT âm 50 triệu, EHC NTT = 4 → Tỷ lệ 35%. Văn bản không nêu phí dịch vụ có bị âm (khấu trừ) khi FYC NTT âm hay không. Bảng tóm tắt trang 3: UM, SM, DM."
+    },
+    {
+      "rule_no": 3,
+      "role": "AL",
+      "item": "PHÍ DỊCH VỤ HỖ TRỢ KHAI THÁC NHÓM theo tháng – Tỷ lệ điều chỉnh",
+      "base": "K2 Nhóm trực tiếp tại khóa sổ Tháng xét",
+      "conditions": [
+        "K2 Nhóm trực tiếp không bao gồm bản thân AL đang xét phí dịch vụ",
+        "Trường hợp Nhóm trực tiếp của AL chưa có phát sinh K2, sẽ áp dụng Tỷ lệ điều chỉnh là 100%."
+      ],
+      "table": [
+        ["K2 Nhóm trực tiếp", "Tỷ lệ điều chỉnh"],
+        ["Từ 80% trở lên", "120%"],
+        ["Từ 70% đến dưới 80%", "100%"],
+        ["Từ 60% đến dưới 70%", "75%"],
+        ["Từ 50% đến dưới 60%", "50%"],
+        ["Dưới 50%", "25%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "cùng Phí dịch vụ HT KTN theo Tháng: Kỳ chi trả thu nhập của Tháng xét",
+      "clawback_or_forfeit": "văn bản không nêu",
+      "page": "5",
+      "quote": "Từ 80% trở lên 120%; Từ 70% đến dưới 80% 100%; ... Dưới 50% 25%",
+      "uncertain": false,
+      "note": "Mục iii trang 5: AL đạt yêu cầu tham gia Champion Hubb vai trò Quản lý được xét thêm Phí dịch vụ tại Phụ đính III."
+    },
+    {
+      "rule_no": 4,
+      "role": "AL",
+      "item": "PHÍ DỊCH VỤ HỖ TRỢ KHAI THÁC NHÓM – 2.2 Phí dịch vụ theo quý",
+      "base": "“Phí dịch vụ HT KTN theo Tháng” nhận được trong Quý; tỷ lệ theo FYC Nhóm trực tiếp trong quý (triệu đồng)",
+      "conditions": [
+        "Phí dịch vụ = “Phí dịch vụ HT KTN theo Tháng” nhận được trong Quý * Tỷ lệ phí dịch vụ",
+        "AL có thời gian quản lý không tròn Quý (dưới 03 Tháng) tại Ngày khóa sổ Quý thì chỉ tiêu FYC NTT trong quý để xác định Tỷ lệ phí dịch vụ sẽ được tính theo “FYC NTT trong Quý quy đổi”",
+        "FYC NTT trong Quý quy đổi = FYC NTT thực tế trong Quý * 3 / số Tháng tại vị trí quản lý",
+        "Tại Ngày khóa sổ của Tháng chi trả, Công ty sẽ loại trừ FYC của những HĐBH được phát hành trong khoảng thời gian tính phí dịch vụ nhưng bị hủy bỏ vì bất cứ lý do gì (nếu có)."
+      ],
+      "table": [
+        ["FYC NTT trong quý (triệu đồng)", "Tỷ lệ phí dịch vụ"],
+        ["Từ 100 trở lên", "50%"],
+        ["Từ 75 đến dưới 100", "45%"],
+        ["Từ 50 đến dưới 75", "40%"],
+        ["Từ 35 đến dưới 50", "35%"],
+        ["Từ 15 đến dưới 35", "30%"],
+        ["Dưới 15", "0%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "\"được chi trả trong Kỳ chi trả của Tháng 1, Tháng 4, Tháng 7, Tháng 10\"",
+      "clawback_or_forfeit": "Loại trừ FYC của HĐBH bị hủy bỏ tại Ngày khóa sổ của Tháng chi trả",
+      "page": "6-7",
+      "quote": "Phí dịch vụ = “Phí dịch vụ HT KTN theo Tháng” nhận được trong Quý * Tỷ lệ phí dịch vụ; Từ 100 trở lên 50%",
+      "uncertain": false,
+      "note": "Ví dụ trang 6: DM A gia nhập 16/01/2026 → 02 Tháng tại vị trí quản lý ở khóa sổ Quý 1/2026; AR B thăng cấp UM 16/02/2026 → 2 Tháng."
+    },
+    {
+      "rule_no": 5,
+      "role": "AL (UM, SM, DM)",
+      "item": "PHÍ DỊCH VỤ QUẢN LÝ NHÓM THEO THÁNG",
+      "base": "“Phí dịch vụ HT KTN theo Tháng” của các AL nhóm trực tiếp / nhóm báo cáo cấp 1 / cấp 2; tỷ lệ L1/L2/L3 theo FYC Nhóm trực tiếp của AL xét (triệu đồng)",
+      "conditions": [
+        "UM: Phí dịch vụ = “Phí dịch vụ HT KTN theo Tháng” của các “AL nhóm trực tiếp” * L1",
+        "SM: Phí dịch vụ = “Phí dịch vụ HT KTN theo Tháng” của các “AL nhóm trực tiếp” * L1 + “Phí dịch vụ HT KTN theo Tháng” của các “AL nhóm báo cáo cấp 1” * L2",
+        "DM: Phí dịch vụ = “Phí dịch vụ HT KTN theo Tháng” của các “AL nhóm trực tiếp” * L1 + “Phí dịch vụ HT KTN theo Tháng” của các “AL nhóm báo cáo cấp 1” * L2 + “Phí dịch vụ HT KTN theo Tháng” của các “AL nhóm báo cáo cấp 2” * L3",
+        "AL Quản lý tiếp tục được xét tính Phí dịch vụ Quản lý nhóm theo Tháng trên các UM/SM đang được tính “Phí dịch vụ đào tạo nâng cao chất lượng Quản lý”.",
+        "Trong trường hợp Nhóm báo cáo chưa có AL nhưng có đội ngũ bên dưới (Team Null) thì doanh số của nhóm này vẫn được xét tính phí dịch vụ cho AL Quản lý."
+      ],
+      "table": [
+        ["Tỷ lệ Phí dịch vụ", "FYC NTT của AL xét – Dưới 15", "Từ 15 đến dưới 30", "Từ 30 trở lên"],
+        ["L1", "0%", "30%", "50%"],
+        ["L2", "0%", "15%", "25%"],
+        ["L3", "0%", "7,5%", "12,5%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "\"được chi trả trong Kỳ chi trả thu nhập của Tháng xét\"",
+      "clawback_or_forfeit": "văn bản không nêu",
+      "page": "7",
+      "quote": "L1 0% 30% 50%; L2 0% 15% 25%; L3 0% 7,5% 12,5%",
+      "uncertain": false,
+      "note": "Văn bản không nêu FYC NTT dùng để xác định L1–L3 là của tháng hay kỳ nào (ngữ cảnh: theo tháng). Cách tính \"Team Null\" (doanh số được dùng thế nào khi không có Phí HT KTN của AL) không nêu rõ."
+    },
+    {
+      "rule_no": 6,
+      "role": "AL (“AL Quản lý”)",
+      "item": "PHÍ DỊCH VỤ ĐÀO TẠO NÂNG CAO CHẤT LƯỢNG QUẢN LÝ – 4.1 AL Quản lý phát triển AR thăng cấp lên UM",
+      "base": "“Phí dịch vụ Quản lý nhóm theo Tháng” tính trên UM thăng cấp (theo tháng)",
+      "conditions": [
+        "AL (“AL Quản lý”) đào tạo và phát triển AR trong Nhóm trực tiếp đạt đầy đủ chỉ tiêu thăng cấp lần đầu tiên lên vị trí UM (“UM Thăng cấp”).",
+        "Tại Ngày khóa sổ của Tháng xét chi trả phí dịch vụ: (i) AL Quản lý đang trực tiếp quản lý UM Thăng cấp và (ii) UM Thăng cấp đang giữ cấp bậc UM.",
+        "Tối đa là 12 Tháng tính từ Tháng UM thăng cấp",
+        "Yêu cầu EHC NTT tại khóa sổ mỗi tháng (mục 4.3): DM ≥ 4; SM ≥ 3; UM ≥ 2",
+        "Chỉ áp dụng đối với UM/SM thăng cấp lần đầu tiên tính từ Ngày cấp Mã số Đại lý gần nhất tại Chubb.",
+        "AL Quản lý sẽ không được tính Phí dịch vụ đào tạo nâng cao chất lượng Quản lý trên UM khi UM đạt đầy đủ chỉ tiêu thăng cấp lên SM, khi đó tính theo quy định dành cho UM thăng cấp lên SM."
+      ],
+      "table": [
+        ["Vị trí", "EHC NTT"],
+        ["DM", "≥ 4"],
+        ["SM", "≥ 3"],
+        ["UM", "≥ 2"]
+      ],
+      "rate_or_amount": "Phí dịch vụ = 100% * “Phí dịch vụ Quản lý nhóm theo Tháng” tính trên UM thăng cấp (tối đa 15 triệu/ tháng)",
+      "payment_timing": "\"được chi trả trong Kỳ chi trả của Tháng xét\"; được chi trả thêm ngoài Phí dịch vụ Quản lý nhóm theo Tháng tính trên UM thăng cấp",
+      "clawback_or_forfeit": "Mất khi không đạt điều kiện tại Ngày khóa sổ Tháng xét (không còn trực tiếp quản lý / UM không còn giữ cấp bậc UM / không đạt EHC NTT); văn bản không nêu thu hồi",
+      "page": "8-9",
+      "quote": "Phí dịch vụ = 100% * “Phí dịch vụ Quản lý nhóm theo Tháng” tính trên UM thăng cấp (tối đa 15 triệu/ tháng)",
+      "uncertain": false,
+      "note": "Bảng EHC (mục 4.3, trang 9) áp dụng chung cho 4.1 và 4.2. Ví dụ trang 8: Phí HT KTN theo Tháng của UM1 30 triệu; Phí QLN theo Tháng của SM1 trên UM1 50% * 30 triệu (15 triệu) → 100% * 15 triệu = 15 triệu."
+    },
+    {
+      "rule_no": 7,
+      "role": "AL (“AL Quản lý”)",
+      "item": "PHÍ DỊCH VỤ ĐÀO TẠO NÂNG CAO CHẤT LƯỢNG QUẢN LÝ – 4.2 AL Quản lý phát triển UM thăng cấp lên SM",
+      "base": "“Phí dịch vụ Quản lý nhóm theo Tháng” tính trên SM thăng cấp (theo tháng)",
+      "conditions": [
+        "AL (“AL Quản lý”) đào tạo và phát triển UM trong Nhóm trực tiếp đạt đầy đủ chỉ tiêu thăng cấp lần đầu tiên lên vị trí SM (“SM Thăng cấp”).",
+        "Tại Ngày khóa sổ của Tháng xét chi trả phí dịch vụ: (i) AL Quản lý đang trực tiếp quản lý SM thăng cấp và (ii) SM thăng cấp đang giữ cấp bậc SM hoặc cấp bậc cao hơn.",
+        "Tối đa là 12 Tháng tính từ Tháng SM thăng cấp",
+        "Yêu cầu EHC NTT tại khóa sổ mỗi tháng (mục 4.3): DM ≥ 4; SM ≥ 3; UM ≥ 2",
+        "Chỉ áp dụng đối với UM/SM thăng cấp lần đầu tiên tính từ Ngày cấp Mã số Đại lý gần nhất tại Chubb."
+      ],
+      "table": [
+        ["Vị trí", "EHC NTT"],
+        ["DM", "≥ 4"],
+        ["SM", "≥ 3"],
+        ["UM", "≥ 2"]
+      ],
+      "rate_or_amount": "Phí dịch vụ = 100% * “Phí dịch vụ Quản lý nhóm theo Tháng” tính trên SM thăng cấp (tối đa 30 triệu/ tháng)",
+      "payment_timing": "\"được chi trả trong Kỳ chi trả của Tháng xét\"",
+      "clawback_or_forfeit": "Mất khi không đạt điều kiện tại Ngày khóa sổ Tháng xét; văn bản không nêu thu hồi",
+      "page": "8-9",
+      "quote": "Phí dịch vụ = 100% * “Phí dịch vụ Quản lý nhóm theo Tháng” tính trên SM thăng cấp (tối đa 30 triệu/ tháng)",
+      "uncertain": false,
+      "note": "Ví dụ trang 9: Phí HT KTN theo Tháng của SM1 60 triệu; Phí QLN của DM1 trên SM1 50% * 60 triệu (30 triệu) → 30 triệu."
+    },
+    {
+      "rule_no": 8,
+      "role": "AL đạt Tỷ lệ K2 nhóm trực tiếp từ 65% trở lên",
+      "item": "PHÍ DỊCH VỤ DUY TRÌ CHẤT LƯỢNG HỢP ĐỒNG BẢO HIỂM",
+      "base": "RYC NTT trong Quý (RYC phát sinh trong quý của các HĐBH từ năm thứ 2 đến năm thứ 5); tỷ lệ theo 3MAA NTT tại ngày khóa sổ quý",
+      "conditions": [
+        "AL đạt Tỷ lệ K2 nhóm trực tiếp từ 65% trở lên.",
+        "Phí dịch vụ áp dụng đối với AL làm việc từ 13 tháng trở lên tính đến Ngày khóa sổ Quý và đã có K2. Trường hợp AL chưa phát sinh K2 NTT xem như đạt K2.",
+        "Phí dịch vụ tính trên RYC phát sinh trong quý của các HĐBH từ năm thứ 2 đến năm thứ 5."
+      ],
+      "table": [
+        ["3MAA NTT", "Tỷ lệ phí dịch vụ"],
+        ["Dưới 2", "0%"],
+        ["Từ 2 đến 4", "10%"],
+        ["Từ 5 trở lên", "15%"]
+      ],
+      "rate_or_amount": "Phí dịch vụ = RYC NTT trong Quý * Tỷ lệ phí dịch vụ",
+      "payment_timing": "\"được chi trả trong Kỳ chi trả của Tháng 3, Tháng 6, Tháng 9 và Tháng 12\"",
+      "clawback_or_forfeit": "văn bản không nêu",
+      "page": "9-10",
+      "quote": "Phí dịch vụ = RYC NTT trong Quý * Tỷ lệ phí dịch vụ; Dưới 2 0%; Từ 2 đến 4 10%; Từ 5 trở lên 15%",
+      "uncertain": false,
+      "note": "Bậc 3MAA viết \"Từ 2 đến 4\" rồi \"Từ 5 trở lên\": nếu 3MAA không phải số nguyên thì khoảng >4 và <5 không được nêu. 3MAA không được định nghĩa trong văn bản. Kỳ chi trả tháng 3/6/9/12 trong khi điều kiện xét tại \"Ngày khóa sổ Quý\"."
+    },
+    {
+      "rule_no": 9,
+      "role": "các AL (UM, SM, DM) tham gia Champion Hubb vai trò quản lý (“AL Quản lý”)",
+      "item": "PHỤ ĐÍNH III – CHAMPION HUBB VAI TRÒ QUẢN LÝ – Chỉ tiêu và Điều kiện xét thưởng",
+      "base": "100% tổng chỉ tiêu của những AR/AL tham gia vai trò cá nhân trực thuộc AL (còn hoạt động và đang tham gia dự án Champion Hubb); xét hàng tháng",
+      "conditions": [
+        "AL chỉ được tham gia 1 trong 2 vai trò là Cá nhân hoặc Quản lý.",
+        "Định kỳ xét Phí dịch vụ: hàng tháng",
+        "Mỗi AR/AL tham gia Champion Hubb vai trò cá nhân chỉ tính chỉ tiêu cho AL tham gia Champion Hubb với vai trò Quản lý gần nhất.",
+        "Tỷ lệ đạt KPI Quản lý của mỗi chỉ tiêu = [Số thực tế / (chia) số yêu cầu] × 25%",
+        "Điều kiện xét thưởng: AL đạt Tổng tỷ lệ các chỉ tiêu từ 60% trở lên",
+        "Chỉ tiêu Số lượng HĐBH (CC) chỉ xét trên HĐBH có FYP từ 15 triệu đồng trở lên mà đội ngũ trực thuộc trực tiếp khai thác và còn hiệu lực tại Ngày khóa sổ tháng xét chi trả thưởng.",
+        "FYP không tính phí trội/phí đóng thêm của các sản phẩm có giá trị tài khoản tích lũy/giá trị tài khoản đóng thêm (ví dụ: EPUL và các sản phẩm tương tự).",
+        "Chỉ tiêu Số lần gặp khách hàng có phân tích nhu cầu và Tỷ lệ tham dự các hoạt động SOP của đội ngũ trực thuộc căn cứ trên kết quả tại Tháng xét thưởng."
+      ],
+      "table": [
+        ["Chỉ tiêu (“KPI”)", "FYP", "Số lượng HĐBH phát hành (“CC”)", "Số lần gặp Khách hàng có phân tích nhu cầu (“FNA”)", "Tỷ lệ tham dự hoạt động SOP"],
+        ["Yêu cầu", "30.000.000", "02", "20", "100%"],
+        ["Tỷ lệ đạt KPI ghi nhận tối đa", "30%", "30%", "25%", "25%"]
+      ],
+      "rate_or_amount": "Tổng tỷ lệ các chỉ tiêu từ 60% trở lên",
+      "payment_timing": "xem quy tắc 10",
+      "clawback_or_forfeit": "Bị chấm dứt các quyền lợi tại Champion Hubb khi không tuân thủ theo mô hình hoạt động của Champion Hubb tại bất cứ tháng nào mà Công ty không cần thông báo hoặc nhắc nhở trước (8.2 b, trang 13)",
+      "page": "11-13",
+      "quote": "Tỷ lệ đạt KPI Quản lý của mỗi chỉ tiêu = [Số thực tế / (chia) số yêu cầu] × 25%; Điều kiện xét thưởng: AL đạt Tổng tỷ lệ các chỉ tiêu từ 60% trở lên",
+      "uncertain": false,
+      "note": "Ví dụ trang 11-12 (sơ đồ + bảng): chỉ tiêu DM1 xác định trên AR1, UM1, AR2, AR3, AR7, AR10; DM1 Yêu cầu 180/12/120/600%, Thực đạt 113,1/8/142/600%, Tỷ lệ 15,71%/16,67%/25,00%/25,00%, Tổng KPI 82,38%. Ví dụ cho thấy KPI FYP của từng cá nhân có thể vượt 25% (UM1: 25,81%) nhưng dưới mức tối đa 30%; FNA 22/20 vẫn ghi 25,00%."
+    },
+    {
+      "rule_no": 10,
+      "role": "AL tham gia CH vai trò Quản lý",
+      "item": "Phí dịch vụ Hiệu suất Tháng (Phụ đính III mục 6) – Mức phí dịch vụ",
+      "base": "Số lượng AR/AL tham gia CH vai trò cá nhân trực thuộc đạt Thưởng Hiệu suất Tháng; số tháng AL gia nhập Champion Hubb",
+      "conditions": [
+        "Phí Dịch vụ Hiệu suất Tháng = Mức Phí Dịch × Hệ số điều chỉnh W1",
+        "Mức phí dịch vụ xét dựa trên số tháng AL gia nhập Champion Hubb",
+        "Điều kiện xét thưởng: AL đạt Tổng tỷ lệ các chỉ tiêu từ 60% trở lên",
+        "Số lượng AR/AL Cá nhân trực thuộc đạt Thưởng Hiệu suất Tháng sẽ căn cứ trên kết quả tại Tháng chi trả.",
+        "Tháng gia nhập: AL tham gia Champion Hubb từ trước tháng 01/2025: tháng hoạt động thứ nhất được tính là tháng 01/2025; từ tháng 01/2025 trở đi: tháng hoạt động thứ nhất là tháng gia nhập Champion Hubb; tạm dừng rồi quay lại: tính từ tháng AL gia nhập Champion Hubb lần đầu tiên."
+      ],
+      "table": [
+        ["Số lượng AR/AL tham gia CH vai trò cá nhân trực thuộc đạt Thưởng Hiệu suất Tháng", "Mức phí dịch vụ (đồng) – AL tham gia CH từ tháng thứ 1 đến tháng thứ 12", "Mức phí dịch vụ (đồng) – AL tham gia CH từ tháng thứ 13 đến tháng thứ 24"],
+        ["1", "3.000.000", "1.500.000"],
+        ["2", "5.000.000", "2.500.000"],
+        ["4", "7.000.000", "3.500.000"],
+        ["6", "9.000.000", "4.500.000"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "\"Phí dịch vụ Hiệu suất Tháng sẽ được chi trả trong Kỳ chi trả cuối tháng của Tháng kế tiếp liền kề sau khi đã loại trừ FYP và CC của những HĐBH được phát hành trong thời gian tính thưởng nhưng bị hủy bỏ vì bất cứ lý do gì.\"",
+      "clawback_or_forfeit": "\"Công ty sẽ xem xét tính toán và thu hồi lại Phí dịch vụ của Tháng T đã nhận nếu CC phát hành tại tháng T nhưng hủy trong thời gian cân nhắc từ tháng T + 2 trở đi (nếu có).\" Chấm dứt quyền lợi khi không tuân thủ mô hình hoạt động (8.2 b).",
+      "page": "12-13",
+      "quote": "1 | 3.000.000 | 1.500.000; 2 | 5.000.000 | 2.500.000; 4 | 7.000.000 | 3.500.000; 6 | 9.000.000 | 4.500.000",
+      "uncertain": false,
+      "note": "Bảng chỉ ghi các mốc 1, 2, 4, 6 (không ghi \"từ… trở lên\"): văn bản không nêu mức cho 3, 5 hoặc trên 6 người, cũng không nêu mức từ tháng thứ 25 trở đi. \"Thưởng Hiệu suất Tháng\" của AR/AL cá nhân không được định nghĩa trong văn bản này. Ví dụ 8.1 a (trang 13): gia nhập 03/2026, tạm dừng 06/2026, quay lại 10/2026 → tháng 10/2026 là tháng thứ 8; giáng cấp 07/2026 rồi thăng UM 11/2026 → tháng thứ 9."
+    },
+    {
+      "rule_no": 11,
+      "role": "AL tham gia CH vai trò Quản lý",
+      "item": "Phí dịch vụ Hiệu suất Tháng – Hệ số điều chỉnh W1",
+      "base": "Tỷ lệ tham dự hoạt động SOP của bản thân AL Quản lý",
+      "conditions": [
+        "Tỷ lệ tham dự được ghi nhận = Tổng số ngày ghi nhận hợp lệ / (Tổng số ngày làm việc tại tháng tính toán – Tổng số ngày nghỉ hợp lệ)"
+      ],
+      "table": [
+        ["Tỷ lệ tham dự hoạt động SOP của bản thân AL Quản lý", "Hệ số điều chỉnh W1"],
+        ["Dưới 70%", "0%"],
+        ["Từ 70% đến dưới 80%", "50%"],
+        ["Từ 80% đến dưới 90%", "80%"],
+        ["Từ 90% trở lên", "100%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "cùng Phí dịch vụ Hiệu suất Tháng",
+      "clawback_or_forfeit": "văn bản không nêu",
+      "page": "12, 14",
+      "quote": "Dưới 70% 0%; Từ 70% đến dưới 80% 50%; Từ 80% đến dưới 90% 80%; Từ 90% trở lên 100%",
+      "uncertain": false,
+      "note": "Quy định SOP (8.3, trang 14): Ngày hoạt động 3 ngày/tuần; ghi nhận có mặt từ 9 giờ đến 11 giờ sáng; nghỉ ốm cần Giấy xác nhận của bác sĩ; nghỉ lý do đặc biệt cần phê duyệt bằng văn bản (hoặc email) của DCAO và Quản lý Dự án."
+    },
+    {
+      "rule_no": 12,
+      "role": "AL tham gia CH vai trò Quản lý",
+      "item": "Phí dịch vụ Hiệu suất Tháng – Lưu ý nhận giá trị lớn hơn",
+      "base": "So sánh (i) Phí Dịch vụ Hiệu suất Tháng với (ii) Tổng của Phí Dịch vụ Hỗ trợ Xây dựng ĐVKD mới (chính sách số CHH0DCEB240051V, CHH0DCEB260009V) và Phí Dịch vụ đào tạo nâng cao chất lượng Quản lý (mục II.4)",
+      "conditions": [
+        "AL tham gia CH vai trò Quản lý sẽ nhận giá trị lớn hơn giữa: (i) Phí Dịch vụ Hiệu suất Tháng và (ii) Tổng của Phí Dịch vụ Hỗ trợ Xây dựng ĐVKD mới xét theo chính sách số CHH0DCEB240051V, CHH0DCEB260009V và Phí Dịch vụ đào tạo nâng cao chất lượng Quản lý xét theo mục II. 4 quy định tại Chính sách này."
+      ],
+      "table": [],
+      "rate_or_amount": "giá trị lớn hơn giữa (i) và (ii)",
+      "payment_timing": "văn bản không nêu riêng",
+      "clawback_or_forfeit": "văn bản không nêu",
+      "page": "12",
+      "quote": "AL tham gia CH vai trò Quản lý sẽ nhận giá trị lớn hơn giữa: (i) Phí Dịch vụ Hiệu suất Tháng và (ii) Tổng của Phí Dịch vụ Hỗ trợ Xây dựng ĐVKD mới",
+      "uncertain": false,
+      "note": "Ví dụ trang 12: SM1 tháng 01/2026: Hỗ trợ Xây dựng ĐVKD mới 4.000.000; đào tạo nâng cao chất lượng QL 2.000.000; Hiệu suất Tháng 9.000.000 → nhận thưởng thêm 3.000.000 đồng (ví dụ in \"9.000.0000\"). Ví dụ cho thấy khoản CH được trả dưới dạng phần bù chênh lệch."
+    },
+    {
+      "rule_no": 13,
+      "role": "AL tham gia CH vai trò Quản lý",
+      "item": "Chỉ tiêu duy trì thành viên dự án Champion Hubb",
+      "base": "Hàng Quý",
+      "conditions": [
+        "Số lượng Đại lý trực thuộc tham gia dự án Champion Hubb vai trò Cá nhân đạt Thưởng Hiệu suất Tháng từ 30%",
+        "Hoặc",
+        "Tỷ lệ KPI trung bình trong Quý đạt từ 30%",
+        "Lưu ý: Xét tại kỳ khóa sổ Quý thứ 2 tham gia dự án"
+      ],
+      "table": [
+        ["Định kỳ xét", "Hàng Quý"],
+        ["Yêu cầu xét", "Số lượng Đại lý trực thuộc tham gia dự án Champion Hubb vai trò Cá nhân đạt Thưởng Hiệu suất Tháng từ 30% Hoặc Tỷ lệ KPI trung bình trong Quý đạt từ 30%"],
+        ["Lưu ý", "Xét tại kỳ khóa sổ Quý thứ 2 tham gia dự án"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "không áp dụng",
+      "clawback_or_forfeit": "văn bản không nêu hậu quả cụ thể khi không đạt (ngụ ý không duy trì thành viên)",
+      "page": "13",
+      "quote": "đạt Thưởng Hiệu suất Tháng từ 30% Hoặc Tỷ lệ KPI trung bình trong Quý đạt từ 30%",
+      "uncertain": false,
+      "note": "\"từ 30%\" của số lượng Đại lý không nêu là 30% trên tổng số gì; \"Xét tại kỳ khóa sổ Quý thứ 2\" không rõ chỉ xét một lần hay từ quý thứ 2 trở đi."
+    }
+  ],
+  "definitions": [
+    {"term": "Thuật ngữ, từ viết tắt, chỉ tiêu, công thức", "definition_verbatim": "Trừ trường hợp được quy định khác đi, các thuật ngữ, các từ viết tắt, các chỉ tiêu kinh doanh và công thức tính toán được quy định tại “Quy định chung dành cho Đội ngũ Kinh doanh Kênh Đại lý, Kênh Đối tác Kinh doanh Infinity và Kênh đối tác Kinh doanh Infinity 2.0” số CHH0DCEB260005V hiệu lực từ ngày 01/01/2026 và “Quy định chung dành cho Bên cung cấp dịch vụ Quản lý Đại lý” số CHH0DCEB260006V hiệu lực từ ngày 01/01/2026.", "page": 3},
+    {"term": "FYC, EHC, K2 Nhóm trực tiếp", "definition_verbatim": "FYC, EHC và K2 của Nhóm trực tiếp không bao gồm bản thân AL đang xét phí dịch vụ.", "page": 5},
+    {"term": "Phí dịch vụ HT KTN theo Tháng", "definition_verbatim": "Phí dịch vụ hỗ trợ khai thác nhóm theo Tháng (“Phí dịch vụ HT KTN theo Tháng”)", "page": 6},
+    {"term": "FYC NTT trong Quý quy đổi", "definition_verbatim": "FYC NTT trong Quý quy đổi = FYC NTT thực tế trong Quý * 3 / số Tháng tại vị trí quản lý", "page": 6},
+    {"term": "Team Null", "definition_verbatim": "Trong trường hợp Nhóm báo cáo chưa có AL nhưng có đội ngũ bên dưới (Team Null) thì doanh số của nhóm này vẫn được xét tính phí dịch vụ cho AL Quản lý.", "page": 7},
+    {"term": "UM Thăng cấp / SM Thăng cấp", "definition_verbatim": "AL (“AL Quản lý”) đào tạo và phát triển AR trong Nhóm trực tiếp đạt đầy đủ chỉ tiêu thăng cấp lần đầu tiên lên vị trí UM (“UM Thăng cấp”). / ... UM trong Nhóm trực tiếp đạt đầy đủ chỉ tiêu thăng cấp lần đầu tiên lên vị trí SM (“SM Thăng cấp”).", "page": 8},
+    {"term": "RYC tính phí duy trì chất lượng HĐBH", "definition_verbatim": "Phí dịch vụ tính trên RYC phát sinh trong quý của các HĐBH từ năm thứ 2 đến năm thứ 5.", "page": 10},
+    {"term": "Tỷ lệ đạt KPI Quản lý", "definition_verbatim": "Tỷ lệ đạt KPI Quản lý của mỗi chỉ tiêu = [Số thực tế / (chia) số yêu cầu] × 25%", "page": 11},
+    {"term": "CC (Số lượng HĐBH phát hành)", "definition_verbatim": "Chỉ tiêu Số lượng HĐBH (CC) chỉ xét trên HĐBH có FYP từ 15 triệu đồng trở lên mà đội ngũ trực thuộc trực tiếp khai thác và còn hiệu lực tại Ngày khóa sổ tháng xét chi trả thưởng.", "page": 13},
+    {"term": "FYP (Champion Hubb)", "definition_verbatim": "FYP không tính phí trội/phí đóng thêm của các sản phẩm có giá trị tài khoản tích lũy/giá trị tài khoản đóng thêm (ví dụ: EPUL và các sản phẩm tương tự).", "page": 13},
+    {"term": "FYP, RYC, CC, EHC, K2", "definition_verbatim": "FYP, RYC, CC, EHC, K2 được tính toán theo Quy định hiện hành của Công ty.", "page": 13},
+    {"term": "Tháng gia nhập dự án Champion Hubb", "definition_verbatim": "AL tham gia Champion Hubb từ trước tháng 01/2025: tháng hoạt động thứ nhất được tính là tháng 01/2025. AL tham gia Champion Hubb từ tháng 01/2025 trở đi: tháng hoạt động thứ nhất được tính là tháng gia nhập Champion Hubb. AL tham gia Champion Hubb, sau đó tạm dừng vì bất kỳ do gì, khi quay trở lại tham gia Champion Hubb sẽ tính tháng gia nhập Champion Hubb từ tháng AL gia nhập Champion Hubb lần đầu tiên.", "page": 13},
+    {"term": "Tỷ lệ tham dự SOP", "definition_verbatim": "Tỷ lệ tham dự được ghi nhận = Tổng số ngày ghi nhận hợp lệ / (Tổng số ngày làm việc tại tháng tính toán – Tổng số ngày nghỉ hợp lệ); Ngày hoạt động tại Champion Hubb: 3 ngày/tuần, không bao gồm các ngày nghỉ được quy định của Công ty và nghỉ lễ theo lịch Nhà nước; Thời gian tính tỉ lệ tham dự SOP bắt đầu từ 9 giờ đến 11 giờ sáng các ngày sinh hoạt theo quy định", "page": 14},
+    {"term": "3MAA, EHC, K2, Tháng quản lý, AMD, DM", "definition_verbatim": "văn bản không nêu (dẫn chiếu Quy định chung)", "page": 0}
+  ],
+  "internal_inconsistencies": [
+    "Trang 4: điểm dừng tính Phí hỗ trợ tuyển dụng nhắc \"Người giới thiệu được thăng cấp lên AMD\" nhưng AMD không xuất hiện trong các cấp bậc của văn bản (AR, UM, SM, DM).",
+    "Trang 8 và 9: ví dụ mục 4.1/4.2 nêu \"SM1 có 4 EHC NTT\"/\"DM1 có 4 EHC NTT\" rồi áp L1 = 50%, trong khi bảng L1 (trang 7) xác định theo FYC NTT của AL xét (Từ 30 trở lên → 50%), không theo EHC; ví dụ không nêu FYC NTT.",
+    "Trang 10 (mục 5.d): \"áp dụng đối với AL ... đã có K2\" nhưng câu kế tiếp \"Trường hợp AL chưa phát sinh K2 NTT xem như đạt K2\" — hai vế trái nhau; đồng thời ngưỡng thâm niên \"13 tháng\" ở mục 5 khác với mốc \"Tháng quản lý từ 15 tháng\" ở mục 2.1 (không mâu thuẫn trực tiếp nhưng khác thước đo: \"làm việc\" vs \"Tháng quản lý\").",
+    "Trang 10: bậc 3MAA \"Từ 2 đến 4\" và \"Từ 5 trở lên\" để hở khoảng >4 đến <5 nếu 3MAA không nguyên.",
+    "Trang 2 và 11: chỉ có \"PHỤ ĐÍNH III\"; không có Phụ đính I/II trong văn bản.",
+    "Trang 12: công thức in \"Mức Phí Dịch × Hệ số điều chỉnh W1\" (thiếu chữ \"vụ\"); ví dụ in \"9.000.0000\" (thừa một số 0) thay vì 9.000.000.",
+    "Trang 12: bảng Mức phí dịch vụ chỉ có các mốc 1, 2, 4, 6 AR/AL đạt — không nêu mức cho 3, 5, trên 6; và chỉ có cột tháng thứ 1–12 và 13–24, không nêu từ tháng thứ 25.",
+    "Trang 11-12: bảng ví dụ ghi DM1 FYP Thực đạt 113,1 trong khi các dòng cá nhân là 15,1 + 30,98 + 15,2 + 15,9 + 19,97 + 16 (ví dụ, có thể làm tròn); KPI cá nhân FYP UM1 25,81% vượt mức 25% của công thức nhưng trong mức tối đa 30%, còn FNA 22/20 lại ghi 25,00% (không vượt) — cách áp mức tối đa 30%/25% chỉ suy ra từ ví dụ.",
+    "Trang 11: Yêu cầu FYP ghi \"30.000.000\" (đồng) trong khi bảng ví dụ trang 12 ghi \"30\" (đơn vị triệu, không ghi rõ)."
+  ],
+  "pages_read": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}

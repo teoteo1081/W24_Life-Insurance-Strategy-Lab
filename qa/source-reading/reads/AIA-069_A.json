@@ -1,0 +1,591 @@
+{
+  "doc_id": "AIA-069",
+  "reader": "A",
+  "title_verbatim": "Ref: AIAV/AD/2604-069 THÔNG BÁO — Về việc: Chính sách thu nhập năm 2026 dành cho Chuyên Viên Tư Vấn (Ngày: 03/04/2026; Kính gửi: Toàn thể Chuyên Viên & Cấp Quản Lý (bao gồm PAF+) kênh Alpha)",
+  "effective": "\"Chính sách dành cho Chuyên Viên – Năm 2026 có hiệu lực kể từ ngày 01/04/2026 và có giá trị thay thế tất cả các phụ lục/ thông báo về chính sách thu nhập, chính sách thăng tiến và điều kiện duy trì hợp đồng dành cho Chuyên Viên do Công ty phát hành trước đây.\" (trang 2). Trang 3 lại ghi: \"Tất cả hướng dẫn, quy định trong Thông báo này có hiệu lực bắt đầu từ ngày ban hành\" (ngày ban hành 03/04/2026, trang 1). Phụ lục 2 (JFW) \"áp dụng kể từ tháng 01/2026\" (trang 21).",
+  "roles": [
+    {"title_verbatim": "Chuyên viên Tư vấn (SA)", "abbr": "SA", "page": 2, "how_obtained": "ký hợp đồng đại lý bảo hiểm với Công ty (định nghĩa b, c trang 17)"},
+    {"title_verbatim": "Chuyên viên Hoạch định Tài chính", "abbr": "Exchange (CVHĐTC)", "page": 17, "how_obtained": "tham gia Chương trình Exchange (văn bản không nêu điều kiện)"},
+    {"title_verbatim": "Chuyên viên Hoạch định Tài chính Cấp cao", "abbr": "Exchange Pro (CVHĐTCCC)", "page": 17, "how_obtained": "tham gia Chương trình Exchange Pro (văn bản không nêu điều kiện)"},
+    {"title_verbatim": "Chuyên viên Tư vấn Hỗ trợ phục vụ", "abbr": "SE", "page": 10, "how_obtained": "SA/UM+ không đạt điều kiện duy trì hợp đồng mục III và đang phục vụ tối thiểu ba (03) hợp đồng có hiệu lực, tổng phí quy năm tối thiểu hai mươi (20) triệu đồng, TOT từ 50%"},
+    {"title_verbatim": "Trưởng Nhóm Kinh Doanh (trang 2) / Trưởng Phòng Kinh Doanh (trang 17)", "abbr": "UM", "page": 2, "how_obtained": "thăng cấp từ SA theo bảng điều kiện mục II (xét định kỳ hàng tháng) + Phỏng vấn & Phê duyệt của Nhà đồng sáng lập Alpha"},
+    {"title_verbatim": "Trưởng Nhóm Kinh Doanh Cấp Cao (trang 2) / Trưởng Phòng Kinh Doanh Cấp Cao (trang 17)", "abbr": "SUM", "page": 2, "how_obtained": "văn bản không nêu (chỉ có trong sơ đồ lộ trình và định nghĩa)"},
+    {"title_verbatim": "Trưởng Phòng Kinh Doanh (trang 2) / Giám Đốc Ban Kinh Doanh (trang 17)", "abbr": "DM", "page": 2, "how_obtained": "văn bản không nêu"},
+    {"title_verbatim": "Trưởng Phòng Kinh Doanh Cấp Cao (trang 2) / Giám Đốc Ban Kinh Doanh Cấp Cao (trang 17)", "abbr": "SDM", "page": 2, "how_obtained": "văn bản không nêu"},
+    {"title_verbatim": "PAF+", "abbr": "PAF+", "page": 3, "how_obtained": "văn bản không định nghĩa; được nêu là đối tượng áp dụng Mục I khi tham gia bán cá nhân"}
+  ],
+  "rules": [
+    {
+      "rule_no": 1,
+      "role": "SA, UM+ và PAF+ tham gia bán cá nhân (\"Chuyên viên\")",
+      "item": "Phân hạng Danh hiệu Chuyên viên Ngoại hạng quý",
+      "base": "FYC Tín Chỉ cá nhân Quý (triệu đồng); số tháng Chuyên viên có hoạt động trong Quý; %FY Quý",
+      "conditions": [
+        "Dựa trên kết quả hoạt động quý",
+        "Miễn xét điều kiện số tháng Chuyên viên có hoạt động trong quý đối với Chuyên viên có số tháng chuẩn nhỏ hơn hoặc bằng 2",
+        "Ô %FY của 4 Sao và 3 Sao là ô gộp chung (≥ 65% hoặc chưa có FY năm 2026; ≥ 70% hoặc chưa có FY năm 2027)"
+      ],
+      "table": [
+        ["Phân hạng Chuyên viên Ngoại Hạng Quý", "FYC Tín Chỉ cá nhân Quý (triệu đồng)", "Số tháng Chuyên viên có hoạt động trong Quý", "%FY Quý Năm 2026", "%FY Quý Năm 2027"],
+        ["5 Sao", "≥ 70", "3", "≥ 75% hoặc chưa có FY", "≥ 80% hoặc chưa có FY"],
+        ["4 Sao", "≥ 35", "3", "≥ 65% hoặc chưa có FY", "≥ 70% hoặc chưa có FY"],
+        ["3 Sao", "≥ 20", "≥ 2", "≥ 65% hoặc chưa có FY", "≥ 70% hoặc chưa có FY"]
+      ],
+      "rate_or_amount": "danh hiệu (không phải khoản tiền); dùng cho mục 5, 6, 8",
+      "payment_timing": "văn bản không nêu",
+      "clawback_or_forfeit": "văn bản không nêu riêng",
+      "page": "3",
+      "quote": "5 Sao ≥ 70 3 ≥ 75% hoặc chưa có FY ≥ 80% hoặc chưa có FY",
+      "uncertain": false,
+      "note": "\"Chuyên viên có hoạt động\" định nghĩa tại aa trang 19 (≥1 hợp đồng và tổng FYC Tín chỉ từ 4 triệu đồng trở lên)."
+    },
+    {
+      "rule_no": 2,
+      "role": "Chuyên viên (áp dụng cho các khoản thưởng có nhân Tỷ lệ chi trả theo FY)",
+      "item": "Tỷ lệ chi trả theo FY (2)",
+      "base": "Tỷ lệ FY theo Tháng/Quý/Năm (kỳ tương ứng với khoản thưởng)",
+      "conditions": ["Áp dụng đối với các khoản thưởng được nhân với Tỷ lệ chi trả theo FY"],
+      "table": [
+        ["Năm 2026 – Tỷ lệ FY theo Tháng/Quý/Năm", "Năm 2026 – Tỷ lệ chi trả theo FY", "Năm 2027 – Tỷ lệ FY theo Tháng/Quý/Năm", "Năm 2027 – Tỷ lệ chi trả theo FY"],
+        ["≥85%", "120%", "≥90%", "120%"],
+        ["≥75%", "110%", "≥80%", "110%"],
+        ["≥65% hoặc chưa có FY", "100%", "≥70% hoặc chưa có FY", "100%"],
+        [">0% và < 65%", "%FY", "<70%", "0%"],
+        ["0%", "0%", "", ""]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "văn bản không nêu",
+      "clawback_or_forfeit": "",
+      "page": "3",
+      "quote": "≥85% 120% … >0% và < 65% %FY … 0% 0% | Năm 2027 … <70% 0%",
+      "uncertain": false,
+      "note": "Bảng 2026 có 5 hàng, bảng 2027 có 4 hàng (không có bậc %FY). Ở bảng 2026, hàng >0% và <65% trả tỷ lệ chi trả bằng chính %FY."
+    },
+    {
+      "rule_no": 3,
+      "role": "Chuyên viên có ngày gia nhập từ ngày 01/01/2026",
+      "item": "Thưởng 1/72H",
+      "base": "FYC Tín chỉ nộp và Số lượng hợp đồng nộp trong vòng 4 ngày làm việc đầu tiên kể từ ngày được cấp Mã số Đại lý lần đầu tiên",
+      "conditions": [
+        "FYC Tín chỉ nộp: 04 triệu đồng",
+        "Số lượng hợp đồng nộp: 1 hợp đồng",
+        "Ngày làm việc: không bao gồm ngày Chủ nhật và ngày lễ, ngày gia nhập được tính là ngày làm việc thứ 1",
+        "Hợp đồng do 1 Chuyên viên phục vụ, có số hợp đồng nhỏ nhất đạt điều kiện thưởng",
+        "Không phải là hợp đồng do Chuyên viên đứng tên làm chủ hợp đồng hoặc người được bảo hiểm hoặc Chuyên viên bán cho Chuyên viên khác",
+        "Hợp đồng được duyệt trong vòng 30 ngày kể từ ngày hợp đồng được nộp",
+        "Loại trừ nhóm sản phẩm An Bình Ưu Việt, Gói giải pháp bảo hiểm AIA Trọn Tâm An, Gói giải pháp bảo hiểm AIA Trọn An Nhiên và/hoặc các sản phẩm khác theo thông báo của Công ty",
+        "Không áp dụng đối với Chuyên viên là CQL/PAF+ được tuyển theo Chương trình tuyển CQL/PAF+ trực tiếp",
+        "Hợp đồng đã đạt Thưởng 1/72H sẽ không sử dụng để tính các khoản hỗ trợ trong Chương trình Exchange và Exchange Pro",
+        "Chuyên viên gia nhập trước ngày 01/01/2026 tiếp tục nhận Thưởng 1/72H theo Thông báo số AIAV/AD/2506-074"
+      ],
+      "table": [
+        ["Điều kiện trong vòng 4 ngày làm việc đầu tiên", "", "Thưởng"],
+        ["FYC Tín chỉ nộp", "04 triệu đồng", "1.5 triệu đồng"],
+        ["Số lượng hợp đồng nộp", "1 hợp đồng", "1.5 triệu đồng (ô gộp)"]
+      ],
+      "rate_or_amount": "1.5 triệu đồng",
+      "payment_timing": "văn bản không nêu riêng (xem quy định chung mục VI.7)",
+      "clawback_or_forfeit": "văn bản không nêu riêng (áp dụng quy định thu hồi chung mục VI.7)",
+      "page": "4",
+      "quote": "FYC Tín chỉ nộp 04 triệu đồng … Số lượng hợp đồng nộp 1 hợp đồng … 1.5 triệu đồng",
+      "uncertain": false,
+      "note": "Văn bản không nói rõ ngưỡng 04 triệu là tối thiểu (≥) hay đúng bằng; không ghi dấu. Ví dụ trang 4: cấp mã 02/01/2026, hạn nộp hết 06/01/2026 (không tính Chủ nhật 04/01/2026)."
+    },
+    {
+      "rule_no": 4,
+      "role": "Chuyên viên (gia nhập từ 1/1/2026; không áp dụng cho PAF+)",
+      "item": "Chuyến huấn luyện đặc biệt",
+      "base": "FYC Tín chỉ thuần, Số lượng hợp đồng thuần, Huấn luyện trong vòng 3 tháng kể từ ngày được cấp Mã số Đại lý lần đầu tiên",
+      "conditions": [
+        "FYC Tín chỉ thuần: 40 triệu đồng",
+        "Số lượng hợp đồng thuần: 5 hợp đồng",
+        "Huấn luyện: Hoàn tất 03 trên 06 khóa học SB1 đến SB6 (*)",
+        "FYC tín chỉ và số lượng hợp đồng thuần dựa vào hợp đồng nộp trong vòng 3 tháng và được duyệt trong 3 tháng 5 ngày kể từ ngày Chuyên viên được cấp mã số Đại lý lần đầu tiên (ngày Chuyên viên có mã số đại lý là ngày 1)",
+        "Không áp dụng khoản thưởng này cho PAF+",
+        "Chuyên viên gia nhập trước ngày 1/1/2026 tiếp tục nhận theo Thông báo số AIAV/AD/2506-074"
+      ],
+      "table": [
+        ["Điều kiện trong vòng 3 tháng đầu tiên", "", "Quyền lợi"],
+        ["FYC Tín chỉ thuần", "40 triệu đồng", "01 vé tham dự Chuyến huấn luyện đặc biệt"],
+        ["Số lượng hợp đồng thuần", "5 hợp đồng", "(ô gộp)"],
+        ["Huấn luyện", "Hoàn tất 03 trên 06 khóa học SB1 đến SB6 (*)", "(ô gộp)"]
+      ],
+      "rate_or_amount": "01 vé tham dự Chuyến huấn luyện đặc biệt",
+      "payment_timing": "Kết quả sẽ được thông báo thành 2 đợt chốt theo hàng Quý (tạm tính và chính thức); thời gian và địa điểm tổ chức sẽ thông báo sau khi có kết quả chính thức",
+      "clawback_or_forfeit": "Không được chuyển nhượng hay quy đổi thành tiền mặt. Không áp dụng khấu trừ, thu hồi Chuyến huấn luyện đối với Chuyên viên đạt vé.",
+      "page": "4-5",
+      "quote": "FYC Tín chỉ thuần 40 triệu đồng … Số lượng hợp đồng thuần 5 hợp đồng … Hoàn tất 03 trên 06 khóa học SB1 đến SB6",
+      "uncertain": false,
+      "note": "Văn bản không ghi dấu ≥ cho ngưỡng. Ví dụ hạn nộp/duyệt trang 5: gia nhập 02/01/2026 → nộp đến hết 02/04/2026, duyệt đến hết 07/04/2026; 15/03/2026 → 15/06/2026, 20/06/2026; 30/06/2026 → 30/09/2026, 05/10/2026. Ví dụ đợt chốt Quý 1: tuyển tháng 01/2026, 02/2026, 03/2026 → tạm tính Cuối tháng 04/2026 (ô gộp); chính thức lần lượt Cuối tháng 05/2026, 06/2026, 07/2026."
+    },
+    {
+      "rule_no": 5,
+      "role": "Chuyên viên (SA, UM+, PAF+ bán cá nhân)",
+      "item": "Thưởng Doanh Số Cá Nhân Quý",
+      "base": "FYC Tín Chỉ Quý (triệu đồng); nhân Tỷ lệ chi trả theo FY Quý (2)",
+      "conditions": [
+        "Công thức: = FYC Tín Chỉ Quý x Tỷ lệ thưởng x Tỷ lệ chi trả theo FY Quý (2)",
+        "Nếu thời gian Chuyên viên gia nhập AIA chưa đủ quý, FYC Tín Chỉ thực tế được quy đổi để xét mức thưởng",
+        "Quý 1/2026: FYC Tín Chỉ quy đổi = FYC Tín Chỉ thực đạt x Tổng số ngày trong Quý / Số ngày hoạt động thực tế trong Quý",
+        "Từ Quý 2/2026: FYC Tín Chỉ quy đổi = FYC Tín Chỉ thực đạt x 3 / Tổng số tháng trong Quý tính từ tháng gia nhập",
+        "Thưởng doanh số cá nhân Quý = FYC Tín Chỉ thực đạt x Tỷ lệ thưởng tương ứng với mức FYC Tín Chỉ quy đổi x Tỷ lệ chi trả theo FY Quý (2)"
+      ],
+      "table": [
+        ["Mức", "Điều kiện FYC Tín Chỉ Quý (triệu đồng)", "Tỷ lệ thưởng"],
+        ["1", "≥ 150", "40%"],
+        ["2", "≥ 120", "35%"],
+        ["3", "≥ 90", "30%"],
+        ["4", "≥ 70", "25%"],
+        ["5", "≥ 50", "20%"],
+        ["6", "≥ 35", "15%"],
+        ["7", "≥ 20", "10%"],
+        ["8", "≥ 16", "4%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Phí dịch vụ hàng quý chốt doanh số vào các tháng 3,6,9,12 của năm 2026; căn cứ chức vụ vào tháng cuối quý; chi trả Kỳ 1 tháng/quý tiếp theo (mục VI.4, VI.7)",
+      "clawback_or_forfeit": "theo quy định chung mục VI.7",
+      "page": "5-6",
+      "quote": "1 ≥ 150 40% … 7 ≥ 20 10% 8 ≥ 16 4%",
+      "uncertain": false,
+      "note": "Ví dụ trang 6: cấp mã 16/05/2026, FYC thực đạt 16,000,000 → quy đổi x 3/2 = 24,000,000 → tỷ lệ 10%; FY chưa có → 100%; thưởng = 16,000,000 x 10% x 100% = 1,600,000 đồng (tỷ lệ áp trên FYC thực đạt, không phải quy đổi)."
+    },
+    {
+      "rule_no": 6,
+      "role": "Chuyên viên đạt Danh hiệu Ngoại hạng Quý",
+      "item": "Thưởng Chuyên Viên Ngoại Hạng Quý",
+      "base": "FYC Tín Chỉ Quý; nhân Tỷ lệ chi trả theo FY Quý (2)",
+      "conditions": ["Công thức: = FYC Tín Chỉ Quý x Tỷ lệ thưởng x Tỷ lệ chi trả theo FY Quý (2)", "Theo Danh hiệu Chuyên viên Ngoại hạng Quý hiện tại"],
+      "table": [
+        ["Danh hiệu Chuyên viên Ngoại hạng Quý hiện tại", "Tỷ lệ thưởng"],
+        ["5 Sao", "15%"],
+        ["4 Sao", "10%"],
+        ["3 Sao", "5%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "theo quy định phí dịch vụ hàng quý (mục VI.4, VI.7)",
+      "clawback_or_forfeit": "theo quy định chung mục VI.7",
+      "page": "6",
+      "quote": "5 Sao 15% 4 Sao 10% 3 Sao 5%",
+      "uncertain": false,
+      "note": ""
+    },
+    {
+      "rule_no": 7,
+      "role": "Chuyên viên đạt Danh hiệu Ngoại hạng Quý 5 Sao hoặc 4 Sao",
+      "item": "Thưởng Chất Lượng Dịch Vụ Quý",
+      "base": "SYC Quý",
+      "conditions": ["Công thức: = SYC Quý x Tỷ lệ thưởng", "Theo Danh hiệu Chuyên viên Ngoại hạng Quý hiện tại; 3 Sao không có trong bảng"],
+      "table": [
+        ["Danh hiệu Chuyên viên Ngoại hạng Quý hiện tại", "Tỷ lệ thưởng (%SYC Quý)"],
+        ["5 Sao", "50%"],
+        ["4 Sao", "30%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "theo quy định phí dịch vụ hàng quý (mục VI.4, VI.7)",
+      "clawback_or_forfeit": "theo quy định chung mục VI.7",
+      "page": "6",
+      "quote": "Công thức: = SYC Quý x Tỷ lệ thưởng … 5 Sao 50% 4 Sao 30%",
+      "uncertain": false,
+      "note": "Không nhân Tỷ lệ chi trả theo FY. SYC định nghĩa tại q trang 18."
+    },
+    {
+      "rule_no": 8,
+      "role": "Chuyên viên",
+      "item": "Thưởng Doanh Số Cá Nhân Năm",
+      "base": "FYC Tín Chỉ Năm (triệu đồng); nhân Tỷ lệ chi trả theo FY năm (2)",
+      "conditions": ["Công thức: = FYC Tín Chỉ Năm x Tỷ lệ thưởng x Tỷ lệ chi trả theo FY năm (2)"],
+      "table": [
+        ["Mức", "Điều kiện FYC Tín Chỉ Năm (triệu đồng)", "Tỷ lệ thưởng (%FYC Tín Chỉ Năm)"],
+        ["1", "≥ 1,600", "20%"],
+        ["2", "≥ 800", "14%"],
+        ["3", "≥ 300", "10%"],
+        ["4", "≥ 150", "6%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "theo quy định chung mục VI.7 (Kỳ 1 năm tiếp theo hoặc định kỳ Công ty thông báo)",
+      "clawback_or_forfeit": "theo quy định chung mục VI.7",
+      "page": "7",
+      "quote": "1 ≥ 1,600 20% 2 ≥ 800 14% 3 ≥ 300 10% 4 ≥ 150 6%",
+      "uncertain": false,
+      "note": "Văn bản không nêu quy đổi FYC cho người gia nhập giữa năm."
+    },
+    {
+      "rule_no": 9,
+      "role": "Chuyên viên",
+      "item": "Gói bảo hiểm sức khỏe",
+      "base": "Số lần đạt Danh hiệu Chuyên viên Ngoại hạng quý và FY Năm của năm liền kề trước đó",
+      "conditions": ["Yêu cầu của năm liền kề trước đó"],
+      "table": [
+        ["Số lần đạt Danh hiệu Chuyên viên Ngoại hạng", "FY Năm", "Gói bảo hiểm sức khỏe (1 năm)"],
+        ["≥ 3 lần 5 Sao", "≥ 75% hoặc chưa có FY", "Gói Cao Cấp"],
+        ["≥ 3 lần từ 4 Sao trở lên", "≥ 65% hoặc chưa có FY", "Gói Tiêu Chuẩn"]
+      ],
+      "rate_or_amount": "Gói Cao Cấp / Gói Tiêu Chuẩn (giá trị gói văn bản không nêu)",
+      "payment_timing": "Danh sách đạt được thông báo vào tháng 02 dương lịch hàng năm; gói có hiệu lực 1 năm",
+      "clawback_or_forfeit": "Không được chuyển nhượng hay quy đổi thành tiền mặt; không áp dụng khấu trừ, thu hồi; hợp đồng đại lý bị chấm dứt vì bất cứ lý do gì thì gói không còn hiệu lực. Đạt nhiều gói ở các vai trò khác nhau nhận gói giá trị cao nhất.",
+      "page": "7",
+      "quote": "≥ 3 lần 5 Sao ≥ 75% hoặc chưa có FY Gói Cao Cấp ≥ 3 lần từ 4 Sao trở lên ≥ 65% hoặc chưa có FY Gói Tiêu Chuẩn",
+      "uncertain": false,
+      "note": "Ngưỡng FY Năm không phân biệt năm 2026/2027 như mục 1."
+    },
+    {
+      "rule_no": 10,
+      "role": "Chuyên viên (Người giới thiệu – Chuyên viên đứng mã số giới thiệu (Referral code)); ngưng khi Người giới thiệu thăng tiến lên UM+",
+      "item": "Phí dịch vụ Giới thiệu Chuyên viên mới",
+      "base": "FYC Tín Chỉ của Chuyên viên mới phát sinh trong 12 tháng đầu tiên (tháng chuẩn 1-12), trả hàng tháng",
+      "conditions": [
+        "Công thức: = FYC Tín Chỉ của Chuyên viên Mới x Tỷ lệ thưởng",
+        "Chuyên viên mới: hoàn tất đầy đủ khóa huấn luyện và ký Hợp đồng Đại Lý lần đầu; gồm Chuyên viên được cấp mã số từ tháng 12/2025 trở đi, hoặc tham gia Chương trình Exchange Pro từ tháng 12/2025 trở đi",
+        "Không xem là Chuyên viên Mới: gia nhập lại, khôi phục Hợp đồng Đại Lý, UM+ tuyển theo Chương trình tuyển dụng CQL trực tiếp, PAF+",
+        "Doanh số phát sinh trong tháng chuẩn 0 được cộng dồn vào tháng chuẩn 1",
+        "Phân nhóm Chuyên viên mới dựa trên cấu trúc cuối mỗi tháng",
+        "Người giới thiệu thăng tiến lên UM+ thì ngưng nhận, chuyển sang \"Phí dịch vụ đồng hành cùng CVTV mới\" (Mục B – Thông báo AIAV/AD/2512 – 192)",
+        "Chuyên viên mới thăng tiến lên UM+ thì Người giới thiệu vẫn tiếp tục nhận"
+      ],
+      "table": [
+        ["Phân nhóm Chuyên viên mới được giới thiệu", "Tỷ lệ thưởng"],
+        ["Exchange Pro", "20%"],
+        ["Exchange", "10%"],
+        ["SA", "5%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "trả hàng tháng theo cấu trúc cuối mỗi tháng; Công ty tạm khấu trừ 10% thuế TNCN trên thu nhập hàng tháng từ khoản này; chứng từ khấu trừ cung cấp vào tháng 03 hàng năm",
+      "clawback_or_forfeit": "theo quy định chung mục VI.7",
+      "page": "7-8",
+      "quote": "Exchange Pro 20% Exchange 10% SA 5% … tạm khấu trừ 10% thuế",
+      "uncertain": false,
+      "note": "Ví dụ trang 8: A cấp mã 01/2026: 01–02/2026 SA 5%; 03–05/2026 Exchange 10%; 06/2026 đến 12/2026 Exchange Pro 20%."
+    },
+    {
+      "rule_no": 11,
+      "role": "CVTV (SA) → vị trí mục tiêu UM",
+      "item": "Chính sách thăng tiến (điều kiện thăng cấp lên UM)",
+      "base": "xét định kỳ hàng tháng; chỉ tiêu tính trên cá nhân CVTV và các CVTV giới thiệu",
+      "conditions": [
+        "Số tháng chuẩn làm việc liên tục trong vai trò hiện tại: 3",
+        "Số lượng tuyển dụng/giới thiệu trực tiếp trong 6 tháng gần nhất (có hoạt động ít nhất một lần kể từ ngày gia nhập, bao gồm CVTV đã nghỉ quay trở lại làm việc): 2",
+        "Số lượt CVTV hoạt động 03 tháng gần nhất toàn nhánh: 5",
+        "FYC tín chỉ toàn nhánh trong 6 tháng gần nhất: 50",
+        "FYC tín chỉ nhóm trực tiếp trong 6 tháng gần nhất: 50",
+        "Tỉ lệ duy trì hợp đồng toàn nhánh tại cuối tháng xét duyệt: 70%",
+        "Số hợp đồng thuần cá nhân trong 6 tháng gần nhất: 2",
+        "Hoàn thành khóa học: Theo thông báo … Ref: AIAV/AD/2601-023",
+        "Phỏng vấn & Phê duyệt thăng cấp của công ty: Nhà đồng sáng lập Alpha"
+      ],
+      "table": [
+        ["Vị trí mục tiêu", "UM"],
+        ["Số tháng chuẩn làm việc liên tục trong vai trò hiện tại", "3"],
+        ["Số lượng tuyển dụng/giới thiệu trực tiếp trong 6 tháng gần nhất (có hoạt động ít nhất một lần kể từ ngày gia nhập, bao gồm CVTV đã nghỉ quay trở lại làm việc)", "2"],
+        ["Số lượt CVTV hoạt động 03 tháng gần nhất toàn nhánh", "5"],
+        ["FYC tín chỉ toàn nhánh trong 6 tháng gần nhất", "50"],
+        ["FYC tín chỉ nhóm trực tiếp trong 6 tháng gần nhất", "50"],
+        ["Tỉ lệ duy trì hợp đồng toàn nhánh tại cuối tháng xét duyệt", "70%"],
+        ["Số hợp đồng thuần cá nhân trong 6 tháng gần nhất", "2"],
+        ["Hoàn thành khóa học", "Theo thông báo Cập nhật điều kiện huấn luyện theo chính chính thu nhập, thăng tiến, duy trì dành cho Chuyên viên tư vấn và các Cấp quản lý năm 2026 - Ref: AIAV/AD/2601-023"],
+        ["Phỏng vấn & Phê duyệt thăng cấp của công ty", "Nhà đồng sáng lập Alpha"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "",
+      "page": "8-9",
+      "quote": "Số tháng chuẩn … 3 … FYC tín chỉ toàn nhánh trong 6 tháng gần nhất 50 … Tỉ lệ duy trì hợp đồng toàn nhánh … 70%",
+      "uncertain": false,
+      "note": "Bảng không ghi đơn vị (triệu đồng) cho FYC 50, không ghi dấu ≥. \"Tỉ lệ duy trì hợp đồng toàn nhánh\" không được định nghĩa (khác FY/TOT). Chỉ có điều kiện lên UM; SUM/DM/SDM văn bản không nêu."
+    },
+    {
+      "rule_no": 12,
+      "role": "SA và UM+ trên vai trò cá nhân (không bao gồm PAF+)",
+      "item": "Điều kiện duy trì hợp đồng",
+      "base": "Kết quả hoạt động kinh doanh trong Quý; định kỳ xét duyệt hàng Quý",
+      "conditions": [
+        "Thời gian làm việc (*): Từ tháng chuẩn thứ 03 trở đi",
+        "Định kỳ xét duyệt: Hàng Quý",
+        "Kết quả hoạt động kinh doanh trong Quý: 1 hợp đồng thuần; 4 triệu FYC Tín Chỉ thuần",
+        "Hoàn tất tham dự đào tạo: theo Ref: AIAV/AD/2601-023",
+        "FY tại tháng xét duyệt: ≥ 50% hoặc chưa có",
+        "(*) Chuyên viên khôi phục hợp đồng (gia nhập lại AIA hoặc chuyển từ SE sang SA): tính theo ngày gia nhập/khôi phục gần nhất, bắt đầu xét duyệt từ tháng thứ 03; các Chuyên viên còn lại: tính theo ngày ký hợp đồng Đại Lý Bảo Hiểm lần đầu tiên",
+        "Hợp đồng thuần mới không bao gồm An Bình Ưu Việt, AIA Trọn Tâm An, AIA Trọn An Nhiên và/hoặc sản phẩm khác theo quy định"
+      ],
+      "table": [
+        ["Nội dung", "Yêu cầu"],
+        ["Thời gian làm việc (*)", "Từ tháng chuẩn thứ 03 trở đi"],
+        ["Định kỳ xét duyệt", "Hàng Quý"],
+        ["Kết quả hoạt động kinh doanh trong Quý", "1 hợp đồng thuần 4 triệu FYC Tín Chỉ thuần"],
+        ["Hoàn tất tham dự đào tạo", "Theo thông báo Cập nhật điều kiện huấn luyện theo chính sách thu nhập, thăng tiến, duy trì dành cho Chuyên viên tư vấn và các Cấp quản lý năm 2026 - Ref: AIAV/AD/2601-023"],
+        ["FY tại tháng xét duyệt", "≥ 50% hoặc chưa có"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "Không đạt: xem xét chuyển thành SE nếu đạt điều kiện chuyển đổi SE; nếu không đạt Công ty có quyền chấm dứt hợp đồng ĐLBH không cần thông báo/nhắc nhở trước. UM+ chuyển thành SE thì cấu trúc nhóm trực tiếp và gián tiếp bị xoá bỏ.",
+      "page": "9-10",
+      "quote": "Kết quả hoạt động kinh doanh trong Quý 1 hợp đồng thuần 4 triệu FYC Tín Chỉ thuần … FY tại tháng xét duyệt ≥ 50% hoặc chưa có",
+      "uncertain": false,
+      "note": "Không ghi dấu ≥ cho 1 hợp đồng / 4 triệu. Chú thích (**) trang 10 không có điểm tham chiếu trong bảng. Thai sản được miễn xét duy trì (MOC) – mục VI.2 trang 11."
+    },
+    {
+      "rule_no": 13,
+      "role": "SA/UM+ không đạt điều kiện duy trì → SE",
+      "item": "Điều kiện chuyển thành SE, khôi phục thành SA và duy trì hợp đồng SE",
+      "base": "số hợp đồng có hiệu lực đang phục vụ, tổng phí quy năm (ANP), TOT; doanh số cá nhân trong tháng",
+      "conditions": [
+        "Chuyển thành SE: đang phục vụ tối thiểu ba (03) hợp đồng có hiệu lực với tổng phí quy năm tối thiểu hai mươi (20) triệu đồng cùng tỷ lệ duy trì tổng phí AIA TOT từ 50%",
+        "Khôi phục thành SA: doanh số cá nhân trong tháng có ít nhất 1 hợp đồng thuần và tổng FYC Tín Chỉ thuần từ 4 triệu trở lên",
+        "Đợt 1: ngày cuối tháng đánh giá khôi phục (doanh số tính đến ngày trước ngày cuối tháng 1 ngày); thỏa thì khôi phục ngay trong tháng",
+        "Đợt 2: định kỳ mỗi tháng đánh giá tiêu chuẩn SE, duy trì SE, khôi phục SA; danh sách thông báo ngày 5 tháng sau kỳ đánh giá, thực hiện ngày 25 hàng tháng",
+        "Duy trì SE (xét hàng tháng): ≥ 3 Hợp đồng có hiệu lực & ANP ≥ 20 triệu đồng; TOT ≥ 50%; Tháng tại vị SE ≤ 12 tháng"
+      ],
+      "table": [
+        ["Điều kiện duy trì hợp đồng của SE", ""],
+        ["Định kỳ xét duyệt", "Hàng tháng"],
+        ["Điều kiện", "≥ 3 Hợp đồng có hiệu lực & ANP ≥ 20 triệu đồng; TOT ≥ 50%"],
+        ["Tháng tại vị SE", "≤ 12 tháng"]
+      ],
+      "rate_or_amount": "SE nhận hoa hồng từ doanh số cá nhân và phí tái tục (nếu có); SE KHÔNG nhận các khoản thưởng và phí dịch vụ thuộc Chính Sách Thu Nhập dành cho Chuyên Viên, không tham gia thi đua/câu lạc bộ/giải thưởng/thăng tiến",
+      "payment_timing": "",
+      "clawback_or_forfeit": "Tối đa 12 tháng kể từ ngày chuyển đổi sang SE mà chưa đạt điều kiện khôi phục thành SA, Công ty có quyền chấm dứt hợp đồng ĐLBH đối với SE",
+      "page": "10-11",
+      "quote": "≥ 3 Hợp đồng có hiệu lực & ANP ≥ 20 triệu đồng; TOT ≥ 50% … Tháng tại vị SE ≤ 12 tháng",
+      "uncertain": false,
+      "note": "Doanh số SE được tính vào doanh số/hoa hồng/thưởng/thăng tiến/duy trì của Cấp Quản Lý."
+    },
+    {
+      "rule_no": 14,
+      "role": "SA/UM+/SE không đạt điều kiện duy trì hợp đồng",
+      "item": "Gia hạn hợp đồng",
+      "base": "hợp đồng nộp/chờ phát hành/phát hành trong tháng kế tiếp",
+      "conditions": [
+        "Thời gian: từ ngày 1 - 24 của tháng kế tiếp tại định kỳ xét duyệt",
+        "Điều kiện: có 1 hợp đồng nộp/ chờ phát hành/ phát hành"
+      ],
+      "table": [],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "Sau ngày 25 của tháng kế tiếp, Bộ Phận Hỗ Trợ Kinh Doanh gửi danh sách không thoả điều kiện duy trì; Công ty có quyền chấm dứt hợp đồng mà không cần thông báo/nhắc nhở trước",
+      "page": "11",
+      "quote": "Thời gian: từ ngày 1 - 24 của tháng kế tiếp tại định kỳ xét duyệt. Điều kiện: có 1 hợp đồng nộp/ chờ phát hành/ phát hành.",
+      "uncertain": false,
+      "note": ""
+    },
+    {
+      "rule_no": 15,
+      "role": "Chuyên Viên",
+      "item": "Nghỉ thai sản",
+      "base": "",
+      "conditions": [
+        "Được miễn xét duy trì hợp đồng (MOC) và miễn yêu cầu chấm công, huấn luyện, đào tạo cá nhân cho các khoản phí dịch vụ và điều kiện thăng tiến",
+        "Phí dịch vụ quý: nếu trong quý có ít nhất 01 tháng nghỉ thai sản thì cũng được miễn tương ứng",
+        "Đăng ký trước ít nhất 01 tháng trước thời điểm bắt đầu nghỉ",
+        "Thời gian thai sản tính từ tháng bắt đầu nghỉ đến hết tháng nghỉ; tháng đăng ký là tháng đầu tiên"
+      ],
+      "table": [],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "",
+      "page": "11",
+      "quote": "Đối với khoản phí dịch vụ quý nếu trong quý có ít nhất 01 tháng nghỉ thai sản thì cũng sẽ được miễn tương ứng.",
+      "uncertain": false,
+      "note": "Không nêu rõ miễn những gì đối với phí dịch vụ quý (miễn chỉ tiêu nào)."
+    },
+    {
+      "rule_no": 16,
+      "role": "Chuyên viên",
+      "item": "Phí dịch vụ hàng quý; Doanh số tháng/quý/năm; cách tính doanh số",
+      "base": "năm tài chính 01/01/2026–31/12/2026; chốt doanh số tháng 3,6,9,12",
+      "conditions": [
+        "Phí dịch vụ hàng quý căn cứ vào chức vụ của đại lý vào tháng cuối quý tính toán",
+        "Doanh số tháng/quý/năm: doanh số các HĐ có phát sinh giao dịch từ ngày 1 đến ngày cuối của kỳ",
+        "Hợp đồng hủy hoàn phí: doanh số loại trừ khỏi tháng hủy để quay lại tính và thu hồi cho các tháng phát sinh trước đó",
+        "Doanh số thuần (duy trì hợp đồng và thăng tiến) = phát hành mới + tái tục năm hợp đồng đầu tiên − hợp đồng bị hủy − khoản giảm năm đầu + khoản tăng năm đầu",
+        "Doanh số cho thưởng/phí dịch vụ = phát hành mới + tái tục năm hợp đồng đầu tiên − khoản giảm năm đầu + khoản tăng năm đầu"
+      ],
+      "table": [],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "",
+      "page": "11-12",
+      "quote": "chốt doanh số vào các tháng 3,6,9,12 của năm 2026",
+      "uncertain": false,
+      "note": "Ví dụ trang 13: doanh số duy trì/thăng tiến 18 + 12 - 5 - 3 = 22; doanh số phí dịch vụ \"18  12 -10 - 3 = 17\" (thiếu dấu +; ví dụ trừ HĐ thay thế -10 nhưng không trừ HĐ hủy -5, trong khi công thức trang 12 không nhắc HĐ thay thế)."
+    },
+    {
+      "rule_no": 17,
+      "role": "Chuyên viên",
+      "item": "Quy định về xét trả và thời điểm chi trả",
+      "base": "",
+      "conditions": [
+        "Duy trì tối thiểu 01 HĐBH còn hiệu lực tại thời điểm tính toán chi trả",
+        "Tại thời điểm xét trả nếu bị chấm dứt hợp đồng Đại Lý do vi phạm kỷ luật thì khoản thưởng không được thanh toán (xét trả không áp dụng cho hoa hồng bảo hiểm)",
+        "Hợp đồng Đại lý phải còn hiệu lực và chưa có thông báo nghỉ việc tại thời điểm chi trả",
+        "Đại lý cần thỏa 3 tiêu chí chất lượng Đại lý (Ref AIAVAD 2501-017)"
+      ],
+      "table": [
+        ["Kỳ chi trả", "Ngày chi trả", "Chốt hợp đồng hủy"],
+        ["Kỳ 1", "Từ ngày 10 đến ngày 12 hàng tháng", "từ ngày 01 đến hết ngày cuối cùng của tháng thu nhập (tháng T)"],
+        ["Kỳ 2", "Từ ngày 28 đến ngày 30 hàng tháng", "từ ngày 01 đến hết ngày 21 của tháng T+1"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Tính sau khi kết thúc tháng/quý/năm, chi trả vào Kỳ 1 hàng tháng/quý/năm tiếp theo hoặc định kỳ Công ty quy định",
+      "clawback_or_forfeit": "",
+      "page": "12-13",
+      "quote": "Kỳ 1: Từ ngày 10 đến ngày 12 hàng tháng; Kỳ 2: Từ ngày 28 đến ngày 30 hàng tháng",
+      "uncertain": false,
+      "note": "Bảng ở cột trên do người đọc sắp xếp từ danh sách gạch đầu dòng (văn bản không trình bày dạng bảng)."
+    },
+    {
+      "rule_no": 18,
+      "role": "Chuyên viên / Cấp Quản Lý",
+      "item": "Quy định về thu hồi khoản thưởng",
+      "base": "",
+      "conditions": [
+        "Hợp đồng bị hủy sau khi đã thanh toán: thu hồi toàn bộ hoa hồng, phí dịch vụ đã thanh toán có liên quan, bất kể hợp đồng đại lý còn hay đã chấm dứt",
+        "Hợp đồng bị hủy trong vòng 6 tháng kể từ tháng phát sinh doanh số năm nhất: thu hồi toàn bộ hoa hồng, thưởng, phí dịch vụ, hỗ trợ kinh doanh đã thanh toán có liên quan",
+        "Gian lận: tạm giữ, thu hồi một phần hoặc toàn bộ",
+        "Nghi ngờ không tuân thủ: tạm ngưng chi trả hoặc thu hồi một phần hay toàn bộ"
+      ],
+      "table": [],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "Phần chênh lệch so với tổng thưởng đã chi trả sẽ được thu hồi (doanh số hủy trừ khỏi tháng phát hành)",
+      "page": "13",
+      "quote": "hợp đồng bị hủy trong vòng 6 tháng kể từ tháng phát sinh doanh số năm nhất",
+      "uncertain": false,
+      "note": "Ví dụ trang 13: phát hành 01/03/2026, hủy 02/06/2026 → trừ khỏi doanh số 03/2026. Hai đoạn thu hồi (không giới hạn thời gian vs trong vòng 6 tháng) chồng lấn, không rõ quan hệ."
+    },
+    {
+      "rule_no": 19,
+      "role": "Chuyên viên / Cấp Quản Lý",
+      "item": "Quy định về kỷ luật hoạt động – Hệ số chất lượng kinh doanh (HS CLKD)",
+      "base": "Quyết định kỷ luật",
+      "conditions": ["(7) \"Thưởng\" gồm các khoản Thưởng, Hỗ trợ, Chi trả phí dịch vụ và/hoặc công nhận Danh hiệu, Thăng chức, cho phép tham gia Chương trình hỗ trợ ĐL/QL (Exchange, Exchange Pro)", "(8) Chấm dứt hợp đồng ĐLBH bao gồm cả trường hợp Công ty đơn phương chấm dứt"],
+      "table": [
+        ["Quyết định kỷ luật", "Tỷ lệ nhận Thưởng (7)"],
+        ["Cảnh cáo lần cuối", "70% mức Thưởng"],
+        ["Chấm dứt hợp đồng ĐLBH (8)", "Không đạt Thưởng"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "Chấm dứt hợp đồng ĐLBH: Không đạt Thưởng",
+      "page": "13-14",
+      "quote": "Cảnh cáo lần cuối 70% mức Thưởng; Chấm dứt hợp đồng ĐLBH (8) Không đạt Thưởng",
+      "uncertain": false,
+      "note": "Không nêu kỳ áp dụng hệ số (tháng/quý của quyết định kỷ luật)."
+    },
+    {
+      "rule_no": 20,
+      "role": "Chuyên viên",
+      "item": "Tỷ lệ duy trì phí năm đầu (AIA FY)",
+      "base": "AIA FY = Phí thực thu trong 14 tháng (C) / Phí phải thu của các hợp đồng năm nhất còn hiệu lực tại thời điểm T − 14 (A)",
+      "conditions": [
+        "T: tháng báo cáo, ngày cuối của tháng T; T-14: 14 tháng trước T, tính từ ngày 1 của tháng T-14",
+        "A: phí phải thu quy năm của các hợp đồng năm nhất còn hiệu lực tại T-14; C: phí thực thu trong 14 tháng của các hợp đồng đó",
+        "AIA FY quý = (tháng 1 + tháng 2 + tháng 3) ÷ 3; AIA FY năm = (tháng 1 + … + tháng 12) ÷ 12",
+        "Kết quả làm tròn lên đến 0 số thập phân (ví dụ 90.666% → 91%)",
+        "Giảm số tiền bảo hiểm ảnh hưởng; thay đổi định kỳ đóng phí không ảnh hưởng",
+        "Top-up của An Phúc Trọn Đời Ưu Việt, sản phẩm cùng nhóm và InvestA không tính",
+        "Không có HĐBH phát hành trong giai đoạn tính: ghi nhận \"N/A\" và xem như đạt điều kiện FY tối thiểu",
+        "HĐBH do 2 đại lý cùng phục vụ: tính theo tỷ lệ phân chia; đại lý phục vụ xác định tại T-14",
+        "HĐBH chuyển giao: lần mất hiệu lực đầu tiên trong 14 tháng kể từ khi nhận chuyển giao không tính; HĐ mất hiệu lực trước chuyển giao không tính, trừ khi được khôi phục sau chuyển giao"
+      ],
+      "table": [],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "",
+      "page": "14-17",
+      "quote": "Kết quả tính AIA FY (tháng, quý, năm) được làm tròn lên đến 0 số thập phân.",
+      "uncertain": false,
+      "note": "Ví dụ trang 15-17: Minh họa 1: 20/20 = 100%; Minh họa 2: 0/20 = 0%; Minh họa 3: giảm mệnh giá 100/120 = 83% (phí phải thu giữ phí gốc ban đầu)."
+    },
+    {
+      "rule_no": 21,
+      "role": "Cấp quản lý",
+      "item": "Phí dịch vụ doanh số hoạt động JFW hàng tháng (Phụ lục 2)",
+      "base": "FYC tín chỉ nhóm trực tiếp (triệu đồng) có ghi nhận hoạt động JFW của Cấp quản lý, hàng tháng; Doanh số JFW bao gồm doanh số cá nhân Cấp Quản lý",
+      "conditions": [
+        "Áp dụng kể từ tháng 01/2026",
+        "Cấp Quản Lý trực tiếp tham gia với Đại Lý thuộc Nhóm Trực Tiếp thực hiện hoạt động tư vấn, giới thiệu, chào bán (\"Hoạt Động JFW\")",
+        "Cấp Quản lý cần khai báo đầy đủ và đảm bảo tính trung thực của hoạt động JFW"
+      ],
+      "table": [
+        ["FYC tín chỉ nhóm trực tiếp (triệu đồng)", "FY nhóm trực tiếp <80% (hoặc chưa có)", "Nhóm trực tiếp FY ≥80%"],
+        [">=50", "20%", "24%"],
+        [">=20", "15%", "18%"],
+        [">=7", "12%", "15%"],
+        ["<7", "8%", "10%"]
+      ],
+      "rate_or_amount": "Tỷ lệ phí trên FYC tín chỉ nhóm trực tiếp",
+      "payment_timing": "hàng tháng (chi tiết văn bản không nêu)",
+      "clawback_or_forfeit": "Công ty có biện pháp cụ thể đối với Cấp quản lý không thực hiện đúng yêu cầu về ghi nhận JFW",
+      "page": "21",
+      "quote": ">=50 20% 24% >=20 15% 18% >=7 12% 15% <7 8% 10%",
+      "uncertain": false,
+      "note": "\"FY nhóm trực tiếp <80% (hoặc chưa có)\" – nhóm chưa có FY rơi vào cột thấp hơn, khác quy ước \"chưa có FY\" = đạt ở mục I và VII. Bậc <7 không có ngưỡng tối thiểu (kể cả >0)."
+    },
+    {
+      "rule_no": 22,
+      "role": "Chuyên viên mới (SA) được cấp Mã số Đại lý lần đầu từ tháng 1/2026 đến hết tháng 6/2026 (không bao gồm gia nhập lại; không bao gồm AFF, PAF+, Exchange/Exchange Pro)",
+      "item": "Chính sách đồng hành cùng Chuyên viên mới 3 tháng đầu tiên (Phụ lục 3)",
+      "base": "FYC tín chỉ trong tháng và Tỷ lệ chấm công trong tháng, mỗi tháng trong 3 tháng đầu (tháng cấp mã số là tháng thứ 1)",
+      "conditions": [
+        "FYC tín chỉ trong tháng = FYC tín chỉ của các hợp đồng nộp trong thời gian thi đua và duyệt trong mỗi tháng, còn hiệu lực tại thời điểm tính thưởng, thỏa điều kiện ACK và 21 ngày cân nhắc",
+        "KHÔNG bao gồm An Bình Ưu Việt, AIA Trọn Tâm An, AIA Trọn An Nhiên VÀ KHÔNG BAO GỒM HỢP ĐỒNG ĐẠT THƯỞNG 1/72H",
+        "Tỷ lệ chấm công trong tháng ≥ 50% (ô gộp cho cả 2 mức)",
+        "ACK hợp lệ nhận trong vòng 15 ngày kể từ ngày hợp đồng được duyệt (HĐ duyệt tháng 01/2026: trước/trong ngày 28/02/2026); HĐ còn hiệu lực sau 21 ngày kể từ ngày ACK",
+        "Ngày nộp HĐ = ngày đầu tiên phí được ghi nhận trong tài khoản AIA; HĐ 2 CVTV cùng đứng tên tính cho CVTV thứ nhất",
+        "HĐ chuyển phí từ HĐ hủy trong thời gian cân nhắc không tính; phí tích lũy không tính; áp dụng điều khoản Hợp Đồng Thay Thế",
+        "Sau khi kết thúc tháng thi đua: tăng phí không tính, hủy/giảm phí thì phí giảm tính vào chương trình",
+        "Chuyên viên cấp mã trước tháng 1/2026 tiếp tục nhận \"Thưởng 3 tháng đầu tiên\" Mục A.2 theo AIAV/AD/2506-074"
+      ],
+      "table": [
+        ["FYC tín chỉ trong tháng", "Tỷ lệ chấm công trong tháng", "Thưởng (triệu đồng)"],
+        ["5", "≥ 50%", "1.5"],
+        ["10", "≥ 50%", "3"]
+      ],
+      "rate_or_amount": "1.5 / 3 triệu đồng mỗi tháng",
+      "payment_timing": "Giải thưởng chỉ trao cho Chuyên viên có hợp đồng ĐL còn hiệu lực tại thời điểm chi trả; cần thỏa memo Quy định về chi trả thu nhập; khiếu nại trong vòng 15 ngày theo lịch kể từ ngày thông báo kết quả",
+      "clawback_or_forfeit": "Công ty có quyền khấu trừ các khoản thưởng đã nhận nếu HĐBH được tính bị hủy vì bất cứ lý do gì; có toàn quyền thu hồi/không chi trả nếu vi phạm hợp đồng đại lý/quy định hoặc ảnh hưởng hình ảnh/uy tín Công ty, kể cả khi bị tạm đình chỉ hoặc đang bị điều tra",
+      "page": "22-23",
+      "quote": "5 ≥ 50% 1.5 10 ≥ 50% 3",
+      "uncertain": false,
+      "note": "Cột FYC chỉ ghi \"5\" và \"10\", không ghi dấu ≥ và không ghi đơn vị trong ô (đơn vị suy ra là triệu đồng nhưng văn bản không nói). Không nêu hai mức có cộng dồn hay không (giả định lấy 1 mức – văn bản không nêu)."
+    }
+  ],
+  "definitions": [
+    {"term": "Chuyên viên (đối tượng Mục I)", "definition_verbatim": "bao gồm SA, UM+ và PAF+ tham gia bán cá nhân (sau đây gọi chung là “Chuyên viên”)", "page": 3},
+    {"term": "Chuyên viên/Đại lý", "definition_verbatim": "“Chuyên viên”/ “Đại lý” gồm SA, Exchange, Exchange Pro là người ký hợp đồng đại lý bảo hiểm với Công ty và hợp đồng này vẫn còn hiệu lực.", "page": 17},
+    {"term": "UM+", "definition_verbatim": "“UM+” bao gồm chức danh UM, SUM, DM, SDM", "page": 17},
+    {"term": "FYP", "definition_verbatim": "Đối với các hợp đồng bảo hiểm đóng phí định kỳ, FYP là tổng số tiền mà khách hàng đóng và được Công ty duyệt để đóng phí bảo hiểm cho năm hợp đồng đầu tiên của hợp đồng bảo hiểm. Đối với hợp đồng bảo hiểm đóng phí một lần, FYP sẽ là 10% của số phí bảo hiểm một lần thu được và được Công ty duyệt.", "page": 18},
+    {"term": "SYP", "definition_verbatim": "là tổng số tiền mà khách hàng đóng cho Công ty để thanh toán phí bảo hiểm hợp đồng thứ hai của hợp đồng bảo hiểm.", "page": 18},
+    {"term": "RYP", "definition_verbatim": "là tổng số tiền mà khách hàng đóng cho Công ty để thanh toán phí bảo hiểm từ năm hợp đồng thứ hai hoặc các năm hợp đồng sau đó của hợp đồng bảo hiểm.", "page": 18},
+    {"term": "FYC Tín Chỉ", "definition_verbatim": "Định nghĩa và cách tính doanh số FYC Tín Chỉ vui lòng xem memo Quy định về cách tính doanh số, hoặc các thông báo từ Công ty tại từng thời điểm. FYC Tín chỉ sẽ được dùng để cấn trừ với các khoản phải trừ từ việc hủy hợp đồng hoặc các khoản trừ từ hợp đồng thay thế", "page": 18},
+    {"term": "RYC", "definition_verbatim": "“Tiền hoa hồng đáo niên” (hoặc viết tắt là RYC) là số tiền hoa hồng bảo hiểm mà Công ty đồng ý thanh toán cho Chuyên viên tư vấn tính theo tỷ lệ (%) trên tổng số phí bảo hiểm tái tục mà Công ty thu được từ năm thứ hai trở đi của mỗi hợp đồng bảo hiểm", "page": 18},
+    {"term": "SYC", "definition_verbatim": "“Tiền hoa hồng đáo niên năm 2” (hoặc viết tắt là SYC) là số tiền hoa hồng mà Công ty bảo hiểm đồng ý thanh toán cho Chuyên viên tư vấn tính theo tỷ lệ (%) trên tổng số phí bảo hiểm tái tục mà Công ty thu được trong năm thứ hai của mỗi hợp đồng bảo hiểm", "page": 18},
+    {"term": "Tháng", "definition_verbatim": "Thuật ngữ “Tháng” là khoảng thời gian 1 tháng dương lịch, tính bắt đầu từ ngày 1 đến ngày cuối cùng của tháng dương lịch.", "page": 18},
+    {"term": "Tháng chuẩn", "definition_verbatim": "Đối với Chuyên viên gia nhập trước 2026: ngày 1 dương lịch: tháng thứ nhất là tháng gia nhập; từ ngày 2 trở đi: tháng thứ nhất là kế tiếp liền kề. Đối với Chuyên viên gia nhập từ 01/01/2026 trở đi: từ ngày 1-15 dương lịch, tháng thứ nhất là tháng gia nhập; từ ngày 16 dương lịch trở đi, tháng thứ nhất là tháng kế tiếp liền kề với tháng gia nhập. Gia nhập từ ngày 16 trở đi, doanh số sẽ tính từ ngày gia nhập đến hết tháng kế tiếp liền kề.", "page": 18},
+    {"term": "Hợp đồng thuần", "definition_verbatim": "“Hợp đồng thuần” là hiệu số giữa số hợp đồng mới được phát hành trong tháng với số hợp đồng bị hủy trong tháng. Không bao gồm nhóm sản phẩm An Bình Ưu Việt, Gói giải pháp bảo hiểm AIA Trọn Tâm An, Gói giải pháp bảo hiểm AIA Trọn An Nhiên", "page": 19},
+    {"term": "Ngày chốt sổ tính tiền thưởng", "definition_verbatim": "là ngày cuối cùng của tháng/quý/năm tùy theo tính chất của từng loại thưởng.", "page": 19},
+    {"term": "FY", "definition_verbatim": "“Tỷ lệ duy trì phí năm đầu” (hoặc viết tắt là “FY”): là tỷ lệ giữa tổng số “Phí thu được” trong thời gian 14 tháng trên tổng số “Phí phải thu” của cá nhân Chuyên viên. “Phí phải thu” là phí quy năm của các hợp đồng năm đầu còn hiệu lực trong khoảng thời gian 14 tháng trước ngày báo cáo.", "page": 19},
+    {"term": "TOT", "definition_verbatim": "“Tỷ lệ duy trì tổng phí” (sau đây viết tắt là “TOT”): là tỷ lệ giữa “Tổng phí thu được” trong thời gian 14 tháng trên “Tổng phí phải thu” … “Tổng phí phải thu” bằng 85% phí quy năm của những hợp đồng năm đầu cộng 95% phí quy năm của những hợp đồng các năm tái tục.", "page": 19},
+    {"term": "Chuyên viên Mới", "definition_verbatim": "là Chuyên viên đã hoàn tất đầy đủ khóa huấn luyện khởi nghiệp và ký Hợp đồng Đại lý bảo hiểm lần đầu tiên với Công ty. Các trường hợp Chuyên viên gia nhập lại Công ty, khôi phục Hợp đồng Đại lý bảo hiểm không được xem là Chuyên viên mới.", "page": 19},
+    {"term": "Chuyên viên hoạt động", "definition_verbatim": "là Chuyên viên có Hợp đồng Chuyên viên tư vấn bảo hiểm còn hiệu lực vào thời điểm tính thưởng, và có ít nhất 1 hợp đồng và tổng FYC Tín chỉ từ 4 triệu đồng trở lên … (không bao gồm Chuyên Viên Tư Vấn hỗ trợ phục vụ (SE))", "page": 19},
+    {"term": "FHC", "definition_verbatim": "“Thu thập thông tin” (hoặc viết tắt là “FHC”): là thực hiện bảng phân tích sức khỏe tài chính của khách hàng.", "page": 19},
+    {"term": "Sản phẩm nhóm", "definition_verbatim": "Sản phẩm nhóm: Tất cả các chỉ tiêu được xét sẽ không bao gồm.", "page": 19},
+    {"term": "Thuế TNCN", "definition_verbatim": "Tất cả các khoản thu nhập, phí dịch vụ, các khoản phúc lợi (bảo hiểm sức khỏe...) đều được cộng vào thu nhập trước thuế để tính thuế thu nhập cá nhân.", "page": 19},
+    {"term": "Số lượt CVTV hoạt động 3 tháng gần nhất", "definition_verbatim": "là tổng số lượt CVTV có hoạt động hàng tháng trong 03 tháng qua, theo cấu trúc cuối mỗi tháng.", "page": 9},
+    {"term": "Số hợp đồng thuần cá nhân (thăng tiến)", "definition_verbatim": "Là hợp đồng được bán bởi chính Cấp Quản lý, Không bao gồm hợp đồng do CVTV/CQL đứng tên làm chủ hợp đồng, và không bao gồm sản phẩm An Bình Ưu Việt, …", "page": 9}
+  ],
+  "internal_inconsistencies": [
+    "Tên chức danh mâu thuẫn: sơ đồ trang 2 ghi UM = Trưởng Nhóm Kinh Doanh, SUM = Trưởng Nhóm Kinh Doanh Cấp Cao, DM = Trưởng Phòng Kinh Doanh, SDM = Trưởng Phòng Kinh Doanh Cấp Cao; định nghĩa trang 17 ghi UM = Trưởng Phòng Kinh Doanh, SUM = Trưởng Phòng Kinh Doanh Cấp Cao, DM = Giám Đốc Ban Kinh Doanh, SDM = Giám Đốc Ban Kinh Doanh Cấp Cao. Trang 17 còn gọi UM là \"chức danh cao thứ năm\" và nói UM quản lý nhóm gián tiếp \"trực thuộc các Quyền Trưởng Phòng Kinh Doanh\" (chức danh không có trong văn bản).",
+    "Hiệu lực: trang 2 \"có hiệu lực kể từ ngày 01/04/2026\"; trang 3 \"có hiệu lực bắt đầu từ ngày ban hành\" (03/04/2026); Phụ lục 2 \"áp dụng kể từ tháng 01/2026\"; Phụ lục 3 áp dụng cho người cấp mã từ tháng 1/2026; công thức quy đổi FYC riêng cho Quý 1/2026.",
+    "Định nghĩa Chuyên viên mới mâu thuẫn: trang 9 (Lưu ý 2, mục thăng tiến) \"Các trường hợp Chuyên Viên Tư Vấn khôi phục hợp đồng tại Công ty được xem là Chuyên Viên Tư Vấn mới\"; trang 8 và định nghĩa z trang 19: gia nhập lại/khôi phục KHÔNG được xem là Chuyên viên mới.",
+    "Trang 9 Lưu ý 5: \"Số hợp đồng thuần cá nhân: Là hợp đồng được bán bởi chính Cấp Quản lý\" trong khi điều kiện thăng tiến áp dụng cho SA.",
+    "Làm tròn AIA FY: trang 14 \"làm tròn lên\" (90.666% → 91%), nhưng Minh họa 3 trang 17: 100/120 (=83.33%) = 83% \"(làm tròn số)\" – nếu làm tròn lên sẽ là 84%.",
+    "Sơ đồ AIA FY trang 14: T = 28/02/2024 trên trục nhưng chữ ghi \"ví dụ 29/02/2024\"; T-14 ghi 01/01/2023 (cách tháng 02/2024 13 tháng, không phải 14).",
+    "Ví dụ doanh số trang 13: \"Doanh số FYP tính các khoản phí dịch vụ là: 18  12 -10 - 3 = 17\" thiếu dấu +; ví dụ trừ HĐ thay thế (-10) nhưng không trừ HĐ hủy (-5), trong khi công thức doanh số cho thưởng/phí dịch vụ trang 12 không nhắc HĐ thay thế; doanh số duy trì/thăng tiến (22) lại không trừ HĐ thay thế.",
+    "Ví dụ trang 6: Chuyên viên cấp mã ngày 16/05/2026 được tính \"Số tháng trong Quý tính từ tháng gia nhập: 2 tháng\" (tháng 5 và 6), trong khi định nghĩa tháng chuẩn trang 18-19 cho người gia nhập từ ngày 16 trở đi thì tháng thứ nhất là tháng kế tiếp (tháng 6). Ví dụ cũng dùng chữ \"Tỷ lệ phí theo FY\" thay vì \"Tỷ lệ chi trả theo FY\".",
+    "Chú thích (**) trang 10 về khóa học không có điểm tham chiếu (**) trong bảng điều kiện duy trì trang 9. Chú thích (2) dùng trong các công thức không có phần giải thích riêng ngoài tiêu đề \"Tỷ lệ chi trả theo FY (2)\".",
+    "Quy ước \"chưa có FY\": mục I và VII coi chưa có FY là đạt (100%/đạt tối thiểu), nhưng Phụ lục 2 xếp \"(hoặc chưa có)\" vào cột FY nhóm trực tiếp <80% (tỷ lệ thấp hơn).",
+    "Hai quy định thu hồi trang 13 chồng lấn: một đoạn thu hồi toàn bộ khi hủy sau thanh toán (không giới hạn thời gian), đoạn sau giới hạn \"trong vòng 6 tháng kể từ tháng phát sinh doanh số năm nhất\".",
+    "Trang 2 chữ tách có \"9 tháng\" cạnh SA trong sơ đồ lộ trình nhưng không hiển thị trên ảnh trang; bảng thăng tiến trang 8 yêu cầu 3 tháng chuẩn."
+  ],
+  "pages_read": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+}

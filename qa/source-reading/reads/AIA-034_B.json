@@ -1,0 +1,563 @@
+{
+  "doc_id": "AIA-034",
+  "reader": "B",
+  "title_verbatim": "THÔNG BÁO – Ref: AIAV/AD/2601-034 – Về việc: Chính sách dành cho Cấp Quản lý kênh Alpha – năm 2026 [Thu nhập, thăng tiến và điều kiện duy trì hợp đồng]",
+  "effective": "Ngày: 03/02/2026 (trang 1). “Tất cả hướng dẫn, quy định trong Thông báo này có hiệu lực bắt đầu từ ngày ban hành và thay thế các quy định trước đó có cùng phạm vi.” (trang 2)",
+  "roles": [
+    {"title_verbatim": "Trưởng Nhóm Kinh Doanh", "abbr": "UM", "page": 2, "how_obtained": "Thăng tiến từ CVTV theo bảng C.I (trang 8): 3 tháng chuẩn, 2 tuyển dụng/giới thiệu, 5 lượt CVTV hoạt động 3 tháng, FYC toàn nhánh 50, FYC nhóm trực tiếp 50, duy trì HĐ 70%, 2 HĐ thuần cá nhân, khóa học, phỏng vấn & phê duyệt"},
+    {"title_verbatim": "Trưởng Nhóm Kinh Doanh Cấp Cao", "abbr": "SUM", "page": 2, "how_obtained": "Thăng tiến từ UM theo bảng C.I (trang 8)"},
+    {"title_verbatim": "Trưởng Phòng Kinh Doanh", "abbr": "DM", "page": 2, "how_obtained": "Thăng tiến từ SUM theo bảng C.I (trang 8)"},
+    {"title_verbatim": "Trưởng Phòng Kinh Doanh Cấp cao", "abbr": "SDM", "page": 2, "how_obtained": "Thăng tiến từ DM theo bảng C.I (trang 8)"},
+    {"title_verbatim": "PAF (PAF+)", "abbr": "PAF", "page": 8, "how_obtained": "SDM thăng tiến lên PAF+ theo bảng C.II (trang 8); chỉ tiêu PAF theo Chính sách dành cho Nhà Sáng Lập Khối kênh Alpha (văn bản khác)"}
+  ],
+  "rules": [
+    {
+      "rule_no": 1,
+      "role": "Cấp Quản Lý (CQL) – UM/SUM/DM/SDM",
+      "item": "I. PHÍ DỊCH VỤ TUYỂN DỤNG HIỆU QUẢ HÀNG THÁNG",
+      "base": "FYC tín chỉ nhóm trực tiếp, hàng tháng, đối với doanh số không ghi nhận Join-field-work (JFW); tính theo doanh số mới",
+      "conditions": [
+        "Áp dụng cho doanh số không ghi nhận Join-field-work (JFW)",
+        "Cột tỷ lệ chọn theo FY nhóm trực tiếp: “FY nhóm trực tiếp < 80% (hoặc chưa có)” hoặc “Nhóm trực tiếp FY ≥ 80%”",
+        "Điều kiện chung trang 15: CQL phải đạt chỉ tiêu duy trì hợp đồng và giữ được vị trí từ UM trở lên"
+      ],
+      "table": [
+        ["FYC tín chỉ nhóm trực tiếp (triệu đồng)", "Tỷ lệ phí dịch vụ trên FYC tín chỉ nhóm trực tiếp – FY nhóm trực tiếp < 80% (hoặc chưa có)", "Tỷ lệ phí dịch vụ trên FYC tín chỉ nhóm trực tiếp – Nhóm trực tiếp FY ≥ 80%"],
+        ["≥ 50", "20%", "24%"],
+        ["≥ 20", "15%", "18%"],
+        ["≥ 7", "12%", "15%"],
+        ["< 7", "8%", "10%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Hàng tháng; văn bản không nêu ngày chi trả cụ thể",
+      "clawback_or_forfeit": "Theo mục F.V trang 14-15 (không trả nếu không đạt duy trì/vị trí UM+, thu hồi khi HĐ bị hủy)",
+      "page": "3",
+      "quote": "≥ 50 | 20% | 24%; ≥ 20 | 15% | 18%; ≥ 7 | 12% | 15%; < 7 | 8% | 10%",
+      "uncertain": false,
+      "note": "Văn bản không nói rõ tỷ lệ áp trên toàn bộ FYC (không lũy tiến) hay theo từng bậc – bảng chỉ ghi ngưỡng. Trường hợp “chưa có” FY được xếp vào cột thấp (< 80%), khác với các mục II, IV, V nơi “chưa có” được coi như đạt. Không có điều kiện chấm công ghi tại mục này. “Phí dịch vụ doanh số hoạt động JFW hàng tháng” (nhắc ở mục III, IV) không được định nghĩa trong văn bản này."
+    },
+    {
+      "rule_no": 2,
+      "role": "CQL",
+      "item": "II. PHÍ DỊCH VỤ TUYỂN DỤNG CHẤT LƯỢNG HÀNG THÁNG – Tỷ lệ phí",
+      "base": "Phí dịch vụ Tuyển dụng chất lượng hàng tháng = FYC tín chỉ nhóm trực tiếp x Tỷ lệ phí x Hệ số phí theo FY (hàng tháng)",
+      "conditions": [
+        "Tỷ lệ phí theo Số lượt CVTV hoạt động nhóm trực tiếp trong tháng",
+        "Cấp Quản lý cần đảm bảo chấm công cá nhân 50% ngày làm việc trong tháng để nhận phí dịch vụ. Miễn chấm công tại tháng bổ nhiệm.",
+        "Thai sản: UM+ được miễn chấm công, huấn luyện tại tháng thai sản (trang 16)"
+      ],
+      "table": [
+        ["Số lượt CVTV hoạt động nhóm trực tiếp", "Tỷ lệ phí trên FYC tín chỉ nhóm trực tiếp"],
+        ["≥ 6", "12%"],
+        ["≥ 4", "8%"],
+        ["≥ 2", "5%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Hàng tháng; văn bản không nêu ngày chi trả",
+      "clawback_or_forfeit": "Theo mục F.V trang 14-15",
+      "page": "3",
+      "quote": "Phí dịch vụ Tuyển dụng chất lượng hàng tháng = FYC tín chỉ nhóm trực tiếp x Tỷ lệ phí x Hệ số phí theo FY; ≥ 6 12%; ≥ 4 8%; ≥ 2 5%",
+      "uncertain": false,
+      "note": "Dưới 2 lượt CVTV hoạt động: văn bản không nêu (ngầm hiểu không có phí). Định nghĩa CVTV hoạt động: trang 4 & trang 14 (≥ 1 HĐ thuần, FYC tín chỉ ≥ 4 triệu/tháng)."
+    },
+    {
+      "rule_no": 3,
+      "role": "CQL",
+      "item": "II. PHÍ DỊCH VỤ TUYỂN DỤNG CHẤT LƯỢNG HÀNG THÁNG – Hệ số phí FY",
+      "base": "FY nhóm trực tiếp (tháng)",
+      "conditions": ["Hệ số nhân vào công thức ở quy tắc 2"],
+      "table": [
+        ["FY nhóm trực tiếp", "Hệ số phí theo FY"],
+        ["≥ 70% (hoặc chưa có)", "100%"],
+        ["< 70%", "Tỷ lệ thực đạt của FY"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Hàng tháng",
+      "clawback_or_forfeit": "",
+      "page": "3",
+      "quote": "≥ 70% (hoặc chưa có) 100%; < 70% Tỷ lệ thực đạt của FY",
+      "uncertain": false,
+      "note": "Không có sàn tối thiểu FY: FY < 70% thì hệ số = chính tỷ lệ FY thực đạt."
+    },
+    {
+      "rule_no": 4,
+      "role": "CQL mẹ",
+      "item": "III. PHÍ DỊCH VỤ ĐÀO TẠO NHÓM TUYỂN DỤNG HIỆU QUẢ HÀNG THÁNG",
+      "base": "Khoản phí mỗi cấp = Tổng phí A * Tỷ lệ phí B; A = “Phí dịch vụ tuyển dụng hiệu quả hàng tháng” và “Phí dịch vụ doanh số hoạt động JFW hàng tháng” của Quản lý theo cấp tương ứng (hàng tháng)",
+      "conditions": [
+        "CQL mẹ nhận phí dịch vụ theo 50% trên cấp quản lý con liền kề, tối đa 4 cấp bậc",
+        "Điều kiện chung trang 15: đạt chỉ tiêu duy trì hợp đồng, giữ vị trí từ UM trở lên"
+      ],
+      "table": [
+        ["", "Quản lý cấp 2", "Quản lý cấp 3", "Quản lý cấp 4"],
+        ["Tỷ lệ phí (B)", "50.0%", "25.0%", "12.5%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Hàng tháng",
+      "clawback_or_forfeit": "Theo mục F.V trang 14-15",
+      "page": "4",
+      "quote": "CQL mẹ nhận phí dịch vụ theo 50% trên cấp quản lý con liền kề, tối đa 4 cấp bậc. ... Quản lý cấp 2 50.0% Quản lý cấp 3 25.0% Quản lý cấp 4 12.5%",
+      "uncertain": false,
+      "note": "“Quản lý cấp 2/3/4” hiểu theo sơ đồ nhóm gián tiếp cấp 2/3/4 trang 12. Không có điều kiện FY/chấm công nêu tại mục này. Trang 15 gọi khoản này là “Đào tạo Nhóm Tuyển dụng gián tiếp hàng tháng”. Phí JFW không được định nghĩa trong văn bản."
+    },
+    {
+      "rule_no": 5,
+      "role": "CQL mẹ (của CQL mới thăng tiến lần đầu lên UM)",
+      "item": "IV. PHÍ DỊCH VỤ TUYỂN DỤNG CHUYÊN VIÊN TƯ VẤN THĂNG TIẾN",
+      "base": "Khoản phí = Tổng phí A * 150%; A = “Phí dịch vụ tuyển dụng hiệu quả hàng tháng” và “Phí dịch vụ doanh số hoạt động JFW hàng tháng” của Cấp Quản lý mới được thăng tiến (hàng tháng)",
+      "conditions": [
+        "Trong vòng 12 tháng kể từ ngày CVTV được thăng tiến lên Trưởng nhóm kinh doanh (UM) lần đầu tiên",
+        "FY nhóm trực tiếp của CQL mẹ phải đạt từ 75% trở lên (hoặc chưa có) tại tháng tính toán",
+        "Tối đa 30 triệu/tháng/01 CQL mới"
+      ],
+      "table": [],
+      "rate_or_amount": "150% x Tổng phí A; trần 30 triệu/tháng/01 CQL mới",
+      "payment_timing": "Hàng tháng, trong 12 tháng",
+      "clawback_or_forfeit": "Khoản phí này sẽ chấm dứt khi CQL mẹ hoặc CQL con bị giáng chức xuống CVTV/Đại lý phục vụ.",
+      "page": "4",
+      "quote": "Khoản phí = Tổng phí A * 150% ... FY nhóm trực tiếp của CQL mẹ phải đạt từ 75% trở lên (hoặc chưa có) ... Tối đa 30 triệu/tháng/01 CQL mới.",
+      "uncertain": false,
+      "note": "Văn bản không nói rõ CQL mẹ là mẹ trực tiếp hay mọi cấp; không nói khoản này cộng dồn hay thay thế phí ở mục III."
+    },
+    {
+      "rule_no": 6,
+      "role": "CQL",
+      "item": "V.1. DANH HIỆU CQL NGOẠI HẠNG QUÝ (điều kiện xét danh hiệu)",
+      "base": "Kết quả bán hàng và hoạt động Quý trên Nhóm trực tiếp",
+      "conditions": [
+        "Điều kiện (VÀ): tất cả các cột phải đạt",
+        "Cột Tỷ lệ duy trì phí nhóm trực tiếp trong Quý là ô gộp áp dụng chung cho cả 3 hạng: ≥ 75% hoặc Chưa có",
+        "“Số lượt CVTV có hoạt động” là CVTV (không bao gồm SE) có tổng số hợp đồng thuần lớn hơn hoặc bằng 1 và tổng FYC tín chỉ từ 4 triệu trở lên trong tháng. Không bao gồm hợp đồng An Bình Ưu Việt, Gói giải pháp bảo hiểm AIA Trọn Tâm An, Gói giải pháp bảo hiểm AIA Trọn An Nhiên và/hoặc các sản phẩm khác theo quy định của Công ty",
+        "Lượt CVTV có hoạt động trong quý bằng tổng số lượt CVTV có hoạt động từng tháng của nhóm trực tiếp trong quý, cấu trúc được xác định tại thời điểm mỗi cuối tháng",
+        "“Số lượng CVTV mới có hoạt động trong Quý” là SA/UM+/PAF+ gia nhập trong quý, đã hoàn tất đầy đủ khoá huấn luyện khởi nghiệp theo yêu cầu và ký Hợp đồng Đại lý bảo hiểm với Công ty; gia nhập lại/khôi phục không được xem là CVTV mới; CVTV mới có ít nhất 1 lượt hoạt động trong quý",
+        "Chuyên viên mới hoạt động gia nhập và tham gia chương trình Exchange Pro trong quý sẽ được tính là 2 Chuyên viên mới có hoạt động",
+        "CQL và CVTV mới có mối quan hệ tuyển dụng xác định tại thời điểm mỗi cuối quý"
+      ],
+      "table": [
+        ["Danh hiệu CQL Ngoại hạng Quý", "FYC tín chỉ nhóm trực tiếp quý", "Số lượt CVTV có hoạt động trong Quý", "Số lượng CVTV mới có hoạt động trong Quý – Q1/2026", "Số lượng CVTV mới có hoạt động trong Quý – Từ Quý 2/2026 trở đi", "Tỷ lệ duy trì phí nhóm trực tiếp trong Quý"],
+        ["5 sao", "≥ 170", "≥ 14", "≥ 1", "≥ 2", "≥ 75% hoặc Chưa có"],
+        ["4 sao", "≥ 80", "≥ 9", "≥ 1", "≥ 2", "≥ 75% hoặc Chưa có"],
+        ["3 sao", "≥ 50", "≥ 6", "≥ 1", "≥ 1", "≥ 75% hoặc Chưa có"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Hàng quý (xét danh hiệu)",
+      "clawback_or_forfeit": "",
+      "page": "4-5",
+      "quote": "5 sao ≥ 170 ≥ 14 ≥ 1 ≥ 2; 4 sao ≥ 80 ≥ 9 ≥ 1 ≥ 2; 3 sao ≥ 50 ≥ 6 ≥ 1 ≥ 1; ≥ 75% hoặc Chưa có",
+      "uncertain": false,
+      "note": "Đơn vị FYC tín chỉ nhóm trực tiếp quý không ghi trong bảng (ngầm hiểu triệu đồng). Tỷ lệ duy trì phí nhóm trực tiếp không ghi rõ là FY hay TOT. Định nghĩa CVTV mới ở đây (không tính khôi phục) khác định nghĩa trang 9-10."
+    },
+    {
+      "rule_no": 7,
+      "role": "CQL đạt Danh hiệu CQL Ngoại hạng Quý",
+      "item": "V.2. PHÍ DỊCH VỤ NÂNG CAO KỸ NĂNG NHÓM TUYỂN DỤNG TRỰC TIẾP HÀNG QUÝ",
+      "base": "Khoản phí = FYC tín chỉ nhóm trực tiếp Quý x Tỷ lệ phí",
+      "conditions": [
+        "Đạt danh hiệu theo quy tắc 6",
+        "Điều kiện chấm công cá nhân CQL 50%: Cấp Quản lý cần đảm bảo chấm công cá nhân tối thiểu 50% ngày làm việc trong tháng để nhận phí dịch vụ. Miễn chấm công tại tháng bổ nhiệm.",
+        "Thai sản: UM+ miễn chấm công, huấn luyện nếu trong quý có ít nhất 01 tháng nghỉ thai sản (trang 16)"
+      ],
+      "table": [
+        ["Danh hiệu CQL Ngoại hạng Quý", "Điều kiện chấm công cá nhân CQL", "Tỷ lệ phí (%FYC tín chỉ nhóm trực tiếp quý)"],
+        ["5 sao", "50%", "15%"],
+        ["4 sao", "50%", "8%"],
+        ["3 sao", "50%", "5%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Hàng quý; văn bản không nêu ngày chi trả",
+      "clawback_or_forfeit": "Theo mục F.V trang 14-15",
+      "page": "5",
+      "quote": "Khoản phí = FYC tín chỉ nhóm trực tiếp Quý x Tỷ lệ phí ... 5 sao 50% 15%; 4 sao 50% 8%; 3 sao 50% 5%",
+      "uncertain": false,
+      "note": "Không rõ điều kiện chấm công 50% xét cho từng tháng trong quý hay bình quân quý (văn bản ghi “trong tháng”)."
+    },
+    {
+      "rule_no": 8,
+      "role": "CQL",
+      "item": "VI. PHÍ DỊCH VỤ NÂNG CAO KỸ NĂNG NHÓM TUYỂN DỤNG TRỰC TIẾP HÀNG NĂM",
+      "base": "Khoản phí = FYC tín chỉ nhóm trực tiếp Năm x Tỷ lệ phí",
+      "conditions": [
+        "Số lần đạt danh hiệu CQL Ngoại Hạng Quý trong năm theo bảng, phân biệt CQL thăng chức/bổ nhiệm trước năm 2026 và CQL Mới thăng chức/bổ nhiệm lần đầu trong năm 2026",
+        "Tỷ lệ duy trì phí nhóm AIA FY năm ≥ 75% tại thời điểm tính toán (31/12/2026)",
+        "CQL mới bổ nhiệm lần đầu từ năm 2026 nhưng chưa có AIA FY nhóm (không xác định) sẽ được miễn xét điều kiện FY nhóm",
+        "Điều kiện 1: Vẫn là CQL tại AIA có tỷ lệ duy trì phí nhóm AIA TOT năm ≥ 85% hoặc không xác định tại thời điểm chi trả",
+        "Điều kiện 2: Trong trường hợp CQL qua đời hoặc thương tật toàn bộ vĩnh viễn khi vẫn đang là CQL của AIA, Công ty sẽ miễn xem xét điều kiện trả phí dịch vụ 1"
+      ],
+      "table": [
+        ["Danh hiệu CQL Ngoại hạng năm", "Số lần đạt danh hiệu CQL Ngoại Hạng Quý trong năm – CQL thăng chức/bổ nhiệm trước năm 2026", "Số lần đạt danh hiệu CQL Ngoại Hạng Quý trong năm – CQL Mới thăng chức/bổ nhiệm lần đầu trong năm 2026", "Tỷ lệ phí (%FYC tín chỉ Năm nhóm trực tiếp)"],
+        ["5 sao toàn năm", "≥ 3 lần CQLNH 5 sao Quý", "≥ 2 lần CQLNH 5 sao Quý", "10%"],
+        ["4 sao toàn năm", "≥ 3 lần CQLNH từ 4 Sao trở lên", "≥ 2 lần CQLNH từ 4 Sao trở lên", "5%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Xét trả theo 3 giai đoạn: Lần 1 – 01/2028 - chi trả 15% tổng mức phí dịch vụ; Lần 2 – 01/2029 - chi trả 25%; Lần 3 – 01/2030 - chi trả 60%. Mỗi lần phải thỏa Điều kiện 1 (vẫn là CQL, AIA TOT nhóm năm ≥ 85% hoặc không xác định tại thời điểm chi trả), trừ trường hợp qua đời/TTTBVV (Điều kiện 2).",
+      "clawback_or_forfeit": "Không thỏa Điều kiện 1 tại thời điểm chi trả thì không được trả đợt đó (ngầm hiểu); thêm mục F.V trang 14-15",
+      "page": "5",
+      "quote": "5 sao toàn năm ≥ 3 lần ... ≥ 2 lần ... 10%; 4 sao toàn năm ... 5%. Lần 1 – 01/2028 - 15%, Lần 2 – 01/2029 - 25%, Lần 3 – 01/2030 - 60%",
+      "uncertain": false,
+      "note": "Văn bản không nói phần không được trả do không đạt Điều kiện 1 bị mất hẳn hay dồn sang đợt sau."
+    },
+    {
+      "rule_no": 9,
+      "role": "CQL (bao gồm PAF+) tuyển dụng trực tiếp Chuyên viên Mới",
+      "item": "B. CHÍNH SÁCH ĐỒNG HÀNH CÙNG CVTV MỚI – 1. Trường hợp Chuyên viên Mới được tuyển dụng trực tiếp bởi CQL",
+      "base": "Công thức: = FYC Tín Chỉ thực đạt của Chuyên viên Mới x Tỷ lệ thưởng (hàng tháng)",
+      "conditions": [
+        "Trong vòng 12 tháng chuẩn kể từ ngày Chuyên viên Mới gia nhập AIA lần đầu tiên (tháng chuẩn 1-12)",
+        "Chuyên viên mới: hoàn tất đầy đủ các khóa huấn luyện và ký HĐĐL lần đầu tiên, gồm Chuyên viên được cấp mã số từ tháng 12/2025 trở đi, hoặc Chuyên viên tham gia Chương trình Exchange Pro từ tháng 12/2025 trở đi",
+        "Gia nhập lại, khôi phục HĐĐL, UM+ được tuyển theo Chương trình tuyển dụng CQL trực tiếp, PAF+ không được xem là Chuyên Viên Mới",
+        "Doanh số phát sinh trong tháng chuẩn 0 của Chuyên Viên Mới sẽ được cộng dồn vào tháng chuẩn 1 để xét thưởng",
+        "Phân nhóm Chuyên viên mới dựa trên cấu trúc cuối mỗi tháng",
+        "(*) Trường hợp Chuyên viên mới được thăng cấp trong 12 tháng chuẩn đầu tiên, CQL/ Người giới thiệu vẫn được tiếp tục nhận",
+        "Trường hợp người giới thiệu được thăng tiến lên vị trí UM+, khoản thưởng “Phí dịch vụ Giới thiệu Chuyên viên mới” theo Thông báo số AIAV/AD/2601-033 sẽ dừng và Người giới thiệu sẽ nhận thưởng theo bảng này; nếu sau đó hạ bậc xuống SA thì ngưng nhận ở bảng này và nhận tiếp theo 2601-033 cho những tháng còn lại",
+        "Chuyên viên mới trong năm 2025 còn lại: CQL tiếp tục nhận theo Thông báo số AIAV/AD/2501-110"
+      ],
+      "table": [
+        ["Phân nhóm Chuyên viên mới", "Tỷ lệ thưởng"],
+        ["Exchange Pro", "40%"],
+        ["Exchange", "20%"],
+        ["SA (*)", "10%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Hàng tháng trong tháng chuẩn 1-12",
+      "clawback_or_forfeit": "Trường hợp CQL mà Chuyên viên Mới trực thuộc bị hạ bậc xuống thành Chuyên Viên thì khoản phí này sẽ ngừng chi trả (Ví dụ 2 trang 7: UM A hạ bậc xuống SA → 0%)",
+      "page": "6-7",
+      "quote": "Exchange Pro 40%; Exchange 20%; SA (*) 10%",
+      "uncertain": false,
+      "note": "Ví dụ 1 và 2 trang 7 minh họa cách áp tỷ lệ theo phân nhóm từng tháng. Ví dụ 1 gọi khoản này là “Phí dịch vụ tuyển dụng hiệu quả” (trùng tên mục A.I) – nhầm tên."
+    },
+    {
+      "rule_no": 10,
+      "role": "CQL mà Chuyên viên mới trực thuộc (khi Chuyên viên Mới được giới thiệu bởi Chuyên viên khác)",
+      "item": "B. CHÍNH SÁCH ĐỒNG HÀNH CÙNG CVTV MỚI – 2. Trường hợp Chuyên viên Mới được giới thiệu bởi Chuyên viên khác",
+      "base": "= FYC Tín Chỉ thực đạt của Chuyên viên Mới x Tỷ lệ thưởng (hàng tháng)",
+      "conditions": [
+        "Trong vòng 12 tháng chuẩn kể từ ngày Chuyên viên Mới gia nhập AIA lần đầu tiên (tháng chuẩn 1-12)",
+        "Cùng định nghĩa Chuyên viên mới và các lưu ý như quy tắc 9",
+        "Người giới thiệu (SA): Nhận Phí dịch vụ giới thiệu Chuyên viên mới theo mục I.10. của thông báo (Ref AIAVAD 2601-033) - Chính sách thu nhập năm 2026 dành cho CVTV- Alpha (ô gộp cho cả 3 phân nhóm)"
+      ],
+      "table": [
+        ["Phân nhóm Chuyên viên mới", "Tỷ lệ thưởng – CQL mà Chuyên viên mới trực thuộc", "Tỷ lệ thưởng – Người giới thiệu (SA)"],
+        ["Exchange Pro", "20%", "Nhận Phí dịch vụ giới thiệu Chuyên viên mới theo mục I.10. của thông báo (Ref AIAVAD 2601-033) - Chính sách thu nhập năm 2026 dành cho CVTV- Alpha"],
+        ["Exchange", "10%", "(ô gộp – như trên)"],
+        ["SA (*)", "5%", "(ô gộp – như trên)"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "Hàng tháng trong tháng chuẩn 1-12",
+      "clawback_or_forfeit": "Trường hợp CQL mà Chuyên viên Mới trực thuộc bị hạ bậc xuống thành Chuyên Viên thì khoản phí này sẽ ngừng chi trả",
+      "page": "6-7",
+      "quote": "Exchange Pro 20%; Exchange 10%; SA (*) 5%",
+      "uncertain": false,
+      "note": "Ví dụ 3 trang 7: khi người giới thiệu B thăng tiến lên UM, B nhận tỷ lệ vai trò UM+ (20%/40%) và SUM C (CQL trực thuộc) nhận 0% – văn bản chính không nêu thành quy tắc rằng CQL trực thuộc mất phần 5–20% khi người giới thiệu lên UM+, chỉ thể hiện trong ví dụ. Ví dụ 3 cũng cho thấy người giới thiệu SA nhận 5% với phân nhóm SA (theo 2601-033)."
+    },
+    {
+      "rule_no": 11,
+      "role": "CVTV / UM / SUM / DM",
+      "item": "C.I. THĂNG TIẾN LÊN VAI TRÒ UM+",
+      "base": "Doanh số thuần; xét Hàng tháng",
+      "conditions": [
+        "Lưu ý: Đối với điều kiện thăng chức lên UM, tất cả các chỉ tiêu sẽ được tính trên cá nhân CVTV và các CVTV giới thiệu",
+        "Áp dụng quy định tính 70% chỉ tiêu cho FYC tín chỉ/FYP toàn nhánh (không áp dụng SA lên UM)",
+        "Phỏng vấn & Phê duyệt thăng cấp của công ty: Nhà đồng sáng lập Alpha"
+      ],
+      "table": [
+        ["Vị trí mục tiêu", "UM", "SUM", "DM", "SDM"],
+        ["Định kỳ", "Hàng tháng", "Hàng tháng", "Hàng tháng", "Hàng tháng"],
+        ["Đối tượng xét duyệt", "CVTV", "UM", "SUM", "DM"],
+        ["Số tháng chuẩn làm việc liên tục trong vai trò hiện tại", "3", "6", "6", "6"],
+        ["Số lượng tuyển dụng/giới thiệu trực tiếp trong 6 tháng gần nhất (có hoạt động ít nhất một lần kể từ ngày gia nhập, bao gồm CVTV đã nghỉ quay trở lại làm việc)", "2", "2", "2", "2"],
+        ["Số lượng UM+ trực tiếp còn tại vị cuối tháng xét duyệt", "0", "0", "1", "2"],
+        ["Số lượt CVTV hoạt động 03 tháng gần nhất toàn nhánh", "5", "9", "13", "17"],
+        ["FYC tín chỉ toàn nhánh trong 6 tháng gần nhất", "50", "100", "200", "400"],
+        ["FYC tín chỉ nhóm trực tiếp trong 6 tháng gần nhất", "50", "50", "50", "50"],
+        ["Tỉ lệ duy trì hợp đồng toàn nhánh tại cuối tháng xét duyệt", "70%", "70%", "70%", "70%"],
+        ["Số hợp đồng thuần cá nhân trong 6 tháng gần nhất", "2", "2", "2", "2"],
+        ["Hoàn thành khóa học", "Theo thông báo Cập nhật điều kiện huấn luyện theo chính sách thu nhập, thăng tiến, duy trì dành cho Chuyên viên tư vấn và các Cấp quản lý năm 2026. Ref: AIAV/AD/2601-023", "(ô gộp)", "(ô gộp)", "(ô gộp)"],
+        ["Phỏng vấn & Phê duyệt thăng cấp của công ty", "Nhà đồng sáng lập Alpha", "(ô gộp)", "(ô gộp)", "(ô gộp)"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "",
+      "page": "8-9",
+      "quote": "FYC tín chỉ toàn nhánh trong 6 tháng gần nhất 50 100 200 400; Số lượt CVTV hoạt động 03 tháng gần nhất toàn nhánh 5 9 13 17",
+      "uncertain": false,
+      "note": "Bảng không ghi ký hiệu ≥ và không ghi đơn vị FYC (ví dụ trang 9 dùng triệu đồng). “Tỉ lệ duy trì hợp đồng” không định nghĩa rõ là FY hay TOT. Định nghĩa trang 9 mục 1-6."
+    },
+    {
+      "rule_no": 12,
+      "role": "SDM",
+      "item": "C.II. SDM THĂNG TIẾN LÊN PAF+",
+      "base": "Doanh số thuần; xét Hàng tháng",
+      "conditions": [
+        "PAF được bổ nhiệm sẽ dừng chương trình Tinh hoa/ Exchange/ Exchange Pro/ AFF kể từ tháng được bổ nhiệm chính thức",
+        "Trong 6 tháng đầu tiên kể từ ngày thăng tiến lên vị trí PAF, PAF sẽ nhận chỉ tiêu tương ứng tháng thứ 7 đến 12 của năm 1 vị trí PAF; Từ tháng thứ 7 kể từ tháng thăng tiến PAF, PAF sẽ nhận chỉ tiêu năm 2 vị trí PAF"
+      ],
+      "table": [
+        ["Vị trí mục tiêu", "PAF"],
+        ["Định kỳ", "Hàng tháng"],
+        ["Đối tượng xét duyệt", "SDM"],
+        ["Số tháng chuẩn làm việc liên tục trong vai trò hiện tại", "6"],
+        ["Số lượng UM+ trực tiếp còn tại vị cuối tháng xét duyệt", "3"],
+        ["Số lượt CVTV hoạt động 03 tháng gần nhất toàn nhánh", "18"],
+        ["FYP toàn nhánh trong 6 tháng gần nhất", "1,200"],
+        ["Tỉ lệ duy trì hợp đồng toàn nhánh tại cuối tháng xét duyệt", "70%"],
+        ["Hoàn thành khóa học", "Theo thông báo Cập nhật điều kiện huấn luyện theo chính sách thu nhập, thăng tiến, duy trì dành cho Chuyên viên tư vấn và các Cấp quản lý năm 2026. Ref: AIAV/AD/2601-023"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "",
+      "page": "8-9",
+      "quote": "FYP toàn nhánh trong 6 tháng gần nhất 1,200; Số lượng UM+ trực tiếp ... 3; Số lượt CVTV hoạt động ... 18",
+      "uncertain": false,
+      "note": "Đơn vị FYP 1,200 không ghi (ngầm hiểu triệu đồng). Bảng PAF không có dòng tuyển dụng trực tiếp, FYC nhóm trực tiếp, HĐ thuần cá nhân, phỏng vấn."
+    },
+    {
+      "rule_no": 13,
+      "role": "UM+ (xét thăng tiến và duy trì)",
+      "item": "C.III.7. Quy định về tính 70% chỉ tiêu",
+      "base": "FYC tín chỉ/FYP toàn nhánh 6 tháng gần nhất",
+      "conditions": [
+        "Trường hợp UM+ có Nhóm trực tiếp, hoặc toàn nhánh của một UM+ báo cáo trực tiếp bất kỳ đóng góp quá 70% chỉ tiêu thăng tiến (bất kể UM+ báo cáo trực tiếp có còn giữ vị trí quản lý tại thời điểm tính toán hay không) thì doanh số của nhánh này chỉ được tính bằng 70% của yêu cầu thăng tiến",
+        "Không áp dụng cho trường hợp thăng tiến từ SA lên UM",
+        "Không áp dụng quy định tính 70% đối với UM+ không có UM+ báo cáo trực tiếp bên dưới",
+        "Áp dụng quy định tính 70% chỉ tiêu đối với điều kiện duy trì chức danh (trang 10)"
+      ],
+      "table": [
+        ["Báo cáo trực tiếp", "FYC tín chỉ", "Tỷ lệ đóng góp từng nhóm trực tiếp", "FYC tín chỉ xét thăng cấp", "Ghi chú"],
+        ["Nhóm trực tiếp của DM2", "100", "18%", "100", ""],
+        ["Toàn nhánh của SUM7", "400", "72.3%", "280", "Tối đa 70% chỉ tiêu thăng tiến"],
+        ["Toàn nhánh của UM8", "100", "18%", "100", ""],
+        ["Tổng cộng", "", "100%", "480", ""]
+      ],
+      "rate_or_amount": "Trần 70% chỉ tiêu cho mỗi nhánh",
+      "payment_timing": "",
+      "clawback_or_forfeit": "",
+      "page": "9",
+      "quote": "doanh số của nhánh này chỉ được tính bằng 70% của yêu cầu thăng tiến",
+      "uncertain": false,
+      "note": "Bảng là ví dụ (Đơn vị tính: Triệu đồng), xét DM2 lên SDM (chỉ tiêu 400 → trần 280). Tỷ lệ đóng góp trong ví dụ không khớp số học (xem internal_inconsistencies)."
+    },
+    {
+      "rule_no": 14,
+      "role": "UM / SUM / DM / SDM",
+      "item": "D. ĐIỀU KIỆN DUY TRÌ CHỨC DANH",
+      "base": "Doanh số thuần",
+      "conditions": [
+        "Định kỳ: UM, SUM Hàng quý (ô gộp); DM, SDM Tháng 6 & 12 (thực thi tháng 7 & 1) (ô gộp)",
+        "Áp dụng quy định tính 70% chỉ tiêu đối với điều kiện duy trì chức danh",
+        "Miễn tính toán điều kiện Duy trì hợp đồng cho Cấp Quản lý Tuyển dụng trực tiếp AFF kết thúc chương trình/dừng chương trình từ 02 tháng trở xuống",
+        "Miễn tính toán điều kiện Duy trì hợp đồng cho Chuyên viên Tư vấn, Cấp quản lý (UM+), các Nhà Sáng Lập khối (PAF+) trong quá trình thai sản"
+      ],
+      "table": [
+        ["Đối tượng xét duyệt", "UM", "SUM", "DM", "SDM"],
+        ["Định kỳ", "Hàng quý", "Hàng quý", "Tháng 6 & 12 (thực thi tháng 7 & 1)", "Tháng 6 & 12 (thực thi tháng 7 & 1)"],
+        ["Số tháng làm việc liên tục ở vị trí hiện tại", "≥ 6", "≥ 6", "≥ 6", "≥ 6"],
+        ["Số lượng tuyển dụng/giới thiệu trực tiếp trong 6 tháng gần nhất (có hoạt động ít nhất một lần kể từ ngày gia nhập, bao gồm CVTV đã nghỉ quay trở lại làm việc)", "1", "1", "1", "1"],
+        ["Số lượng UM+ trực tiếp còn tại vị cuối tháng xét duyệt", "0", "0", "1", "1"],
+        ["Số lượt CVTV hoạt động 03 tháng gần nhất toàn nhánh", "4", "6", "9", "12"],
+        ["FYC tín chỉ toàn nhánh trong 6 tháng gần nhất", "30", "45", "75", "105"],
+        ["Tỉ lệ duy trì hợp đồng toàn nhánh tại cuối tháng xét duyệt", "60%", "60%", "60%", "60%"],
+        ["Số hợp đồng thuần cá nhân trong 6 tháng gần nhất", "2", "2", "2", "2"],
+        ["Hoàn thành khóa học", "Theo thông báo Cập nhật điều kiện huấn luyện theo chính sách thu nhập, thăng tiến, duy trì dành cho Chuyên viên tư vấn và các Cấp quản lý năm 2026. Ref: AIAV/AD/2601-023", "(ô gộp)", "(ô gộp)", "(ô gộp)"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "Cấp Quản lý không đạt điều kiện duy trì hợp đồng sẽ bị hạ một bậc. Không đạt duy trì thì không được thanh toán các khoản phí dịch vụ mục A (trang 15).",
+      "page": "10-11",
+      "quote": "FYC tín chỉ toàn nhánh trong 6 tháng gần nhất 30 45 75 105 ... Cấp Quản lý không đạt điều kiện duy trì hợp đồng sẽ bị hạ một bậc.",
+      "uncertain": false,
+      "note": "Chỉ dòng “Số tháng làm việc liên tục” có dấu ≥; các dòng khác chỉ ghi số. Không rõ khi chưa đủ 6 tháng ở vị trí thì có được miễn xét hay không."
+    },
+    {
+      "rule_no": 15,
+      "role": "Quản lý mẹ (UM/SUM/DM/SDM)",
+      "item": "E. QUY ĐỊNH VỀ BÁO CÁO ĐỒNG CẤP",
+      "base": "Quyền lợi trên toàn bộ hệ thống của Quản lý con",
+      "conditions": [
+        "Nếu Quản lý mẹ KHÔNG đạt được chức danh quản lý cao hơn Quản lý con thì Quản lý mẹ được đảm bảo quyền lợi trên toàn bộ hệ thống của Quản lý con, tính từ tháng Quản lý mẹ KHÔNG có chức danh cao hơn Quản lý con: 12 tháng nếu Quản lý mẹ là UM; 18 tháng nếu Quản lý mẹ là SUM; 24 tháng nếu Quản lý mẹ là DM/SDM",
+        "Sau thời gian trên, nếu vẫn không có chức danh cao hơn: dừng nhận quyền lợi; hệ thống Quản lý con tách khỏi và chuyển lên báo cáo trực tiếp cho Quản lý trực tiếp của Quản lý mẹ",
+        "Trong thời gian này, nếu Quản lý mẹ thăng bậc cao hơn Quản lý con hoặc Quản lý con bị giáng cấp thấp hơn Quản lý mẹ thì xóa bỏ quan hệ đồng cấp/ vượt cấp trước đó và tính lại",
+        "Các yêu cầu 1,2,3 được miễn xét đối với SDM thỏa: Số lượng tuyển dụng trực tiếp có hoạt động trong 6 tháng gần nhất từ 2 trở lên; và Có từ 03 SUM+ trở lên tại thời điểm xét"
+      ],
+      "table": [],
+      "rate_or_amount": "12 tháng (UM) / 18 tháng (SUM) / 24 tháng (DM/SDM)",
+      "payment_timing": "",
+      "clawback_or_forfeit": "Mất quyền lợi trên hệ thống Quản lý con sau thời hạn",
+      "page": "11",
+      "quote": "12 tháng nếu Quản lý mẹ là UM; 18 tháng nếu Quản lý mẹ là SUM; 24 tháng nếu Quản lý mẹ là DM/SDM.",
+      "uncertain": false,
+      "note": "Ví dụ trang 11: Quản lý C đã có 10 tháng đồng cấp SUM với D, bị giáng xuống UM → chỉ còn 8 tháng (tính từ tháng D lên SUM)."
+    },
+    {
+      "rule_no": 16,
+      "role": "Cấp Quản Lý",
+      "item": "F.V.1. Quy định về xét trả",
+      "base": "Tất cả các khoản phí dịch vụ mục A",
+      "conditions": [
+        "Khoản phí dịch vụ có phát sinh tại thời điểm tính toán nhưng tại thời điểm xét trả, người được xét chi trả bị AIA Việt Nam chấm dứt hợp đồng Đại Lý do vi phạm kỷ luật, khi đó, khoản phí dịch vụ sẽ không được thanh toán. Xét trả không áp dụng cho hoa hồng bảo hiểm.",
+        "Cấp Quản Lý phải đạt được chỉ tiêu duy trì hợp đồng và giữ được vị trí từ UM trở lên được xét duyệt hàng quý quy định cụ thể tại Mục C của memo này",
+        "Không có bất kỳ khoản phí dịch vụ (Tuyển dụng hiệu quả hàng tháng, Tuyển dụng chất lượng hàng tháng, Đào tạo Nhóm Tuyển dụng gián tiếp hàng tháng, Tuyển dụng Chuyên viên Tư vấn thăng tiến, Nâng cao kỹ năng hàng Quý, hàng năm) được thanh toán khi Cấp Quản Lý không đạt được yêu cầu này"
+      ],
+      "table": [],
+      "rate_or_amount": "",
+      "payment_timing": "Thời điểm tính toán chi trả chính sách thu nhập tham khảo Phụ lục đính kèm theo Memo này",
+      "clawback_or_forfeit": "Công ty bảo lưu quyền tạm ngưng chi trả hoặc thu hồi một phần hay toàn bộ các khoản thanh toán ... trong trường hợp Công ty có nghi ngờ về việc Chuyên Viên Tư Vấn/Nhà Quản Lý không tuân thủ các quy định của Công ty",
+      "page": "14-15",
+      "quote": "Cấp Quản Lý phải đạt được chỉ tiêu duy trì hợp đồng và giữ được vị trí từ UM trở lên được xét duyệt hàng quý quy định cụ thể tại Mục C của memo này.",
+      "uncertain": false,
+      "note": "Phụ lục về thời điểm chi trả được nhắc nhưng không có trong 21 trang. Danh sách loại trừ không nhắc Phí đồng hành CVTV mới (mục B)."
+    },
+    {
+      "rule_no": 17,
+      "role": "CVTV/CQL",
+      "item": "F.V.2-3. Quy định về thu hồi khoản phí dịch vụ",
+      "base": "Hoa hồng, phí dịch vụ, trợ cấp liên quan đến hợp đồng bị hủy",
+      "conditions": [
+        "Trong trường hợp có hợp đồng bị hủy sau khi đã thanh toán thu nhập, AIA Việt Nam giữ quyền thu hồi toàn bộ các khoản hoa hồng, phí dịch vụ và trợ cấp đã thanh toán có liên quan",
+        "Công ty AIA giữ quyền thu hồi toàn bộ các khoản phí dịch vụ đã thanh toán có liên quan đến các hợp đồng bị hủy trong vòng 6 tháng kể từ tháng phát hành hợp đồng",
+        "Bất kể tình trạng hợp đồng Đại Lý bảo hiểm/Quản Lý Đại Lý bảo hiểm đang còn hay đã chấm dứt hiệu lực"
+      ],
+      "table": [],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "Doanh số HĐ bị hủy bị trừ khỏi doanh số tháng phát hành để tính lại; phần chênh lệch so với tổng phí đã chi trả được thu hồi",
+      "page": "15",
+      "quote": "thu hồi toàn bộ các khoản phí dịch vụ đã thanh toán có liên quan đến các hợp đồng bị hủy trong vòng 6 tháng kể từ tháng phát hành hợp đồng",
+      "uncertain": false,
+      "note": "Ví dụ trang 15: HĐ phát hành 01/02/2026 hủy 02/04/2026 → trừ khỏi doanh số 02/2026. Mục 2 (không giới hạn thời gian) và mục 3 (trong vòng 6 tháng) chồng lấn – không rõ giới hạn 6 tháng có áp dụng cho mục 2 không."
+    },
+    {
+      "rule_no": 18,
+      "role": "UM+",
+      "item": "F.VIII. NGHỈ THAI SẢN",
+      "base": "",
+      "conditions": [
+        "CVTV/CQL trong thời gian nghỉ thai sản sẽ được miễn các yêu cầu chấm công, huấn luyện",
+        "Việc nghỉ thai sản cần được đăng ký trước ít nhất 01 tháng trước thời điểm nghỉ thai sản",
+        "Tháng CVTV/CQL đăng ký nghỉ thai sản là tháng đầu tiên",
+        "Yêu cầu huấn luyện: Miễn tất cả các khóa huấn luyện cho các khoản phí dịch vụ, điều kiện thăng tiến và duy trì hợp đồng"
+      ],
+      "table": [
+        ["Đối tượng", "Chính sách", "Yêu cầu đối với Thai sản"],
+        ["UM+", "Phí dịch vụ Tuyển dụng chất lượng hàng tháng", "Miễn chấm công, huấn luyện tại tháng thai sản"],
+        ["UM+", "Phí dịch vụ Nâng cao Kỹ năng nhóm Tuyển dụng Trực tiếp hàng Quý", "Miễn chấm công, huấn luyện nếu trong quý có ít nhất 01 tháng nghỉ thai sản"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "",
+      "page": "16",
+      "quote": "Miễn chấm công, huấn luyện nếu trong quý có ít nhất 01 tháng nghỉ thai sản",
+      "uncertain": false,
+      "note": "Văn bản không nêu thời gian thai sản tối đa."
+    },
+    {
+      "rule_no": 19,
+      "role": "Tất cả",
+      "item": "F.IV. QUY ĐỊNH VỀ CÁCH TÍNH CHỈ TIÊU DOANH SỐ",
+      "base": "FYP, FYC tín chỉ, số lượng hợp đồng",
+      "conditions": [
+        "Doanh số (mới) = Doanh số của hợp đồng phát hành mới (+) cộng doanh số tái tục của năm hợp đồng đầu tiên (-) trừ đi khoản giảm doanh số năm đầu tiên cộng (+) với khoản tăng doanh số năm đầu tiên – dùng cho các khoản phí dịch vụ",
+        "Doanh số thuần = như trên (-) trừ đi doanh số của những hợp đồng bị hủy – dùng cho yêu cầu thăng tiến, duy trì hợp đồng",
+        "Áp dụng quy định hợp đồng thay thế (Ref AIAV/AD/2401-029)",
+        "Doanh số trong toàn bộ chính sách Thu nhập, Thăng tiến, và Duy trì hợp đồng sẽ KHÔNG bao gồm phí Top-up"
+      ],
+      "table": [],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "",
+      "page": "14",
+      "quote": "Các khoản phí dịch vụ: Tính theo doanh số mới; Yêu cầu thăng tiến, duy trì hợp đồng: Tính theo doanh số thuần.",
+      "uncertain": false,
+      "note": "Định nghĩa FYC tín chỉ tham chiếu Quy định của công ty (không có trong văn bản)."
+    },
+    {
+      "rule_no": 20,
+      "role": "Tất cả",
+      "item": "PHỤ LỤC 2 – Tỷ lệ duy trì phí (AIA FY & AIA TOT) và làm tròn",
+      "base": "Phí quy năm và phí thu được trong 14 tháng",
+      "conditions": [
+        "TỈ LỆ DUY TRÌ PHÍ NĂM ĐẦU (FY) = F2 / F1",
+        "TỈ LỆ DUY TRÌ TỔNG PHÍ (TOT) = (F2 + R2) / (F1 x 85% + R1 x 95%)",
+        "F1: phí qui năm của Hợp đồng năm đầu (từ tháng phát hành đến tháng (T-14) bằng hoặc dưới 12 tháng), còn hiệu lực tại tháng (T-14); R1: phí qui năm của Hợp đồng tái tục (lớn hơn 12 tháng)",
+        "F2, R2: phí thu được trong “12 tháng thu phí” = khoảng thời gian 14 tháng (bao gồm thêm 2 tháng gia hạn) tính từ (T-14) đến T",
+        "AIA FY quý = (AIA FY tháng thứ 1 + tháng thứ 2 + tháng thứ 3) ÷ 3; AIA FY năm = (tháng 1 +…+ tháng 12) ÷ 12",
+        "Không có HĐBH phát hành trong giai đoạn tính: AIA FY “N/A” và xem như đạt điều kiện tỷ lệ duy trì phí AIA FY tối thiểu",
+        "Top-up của An Phúc Trọn Đời Ưu Việt, InvestA không tính vào AIA FY",
+        "Giảm số tiền bảo hiểm ảnh hưởng tỷ lệ duy trì; thay đổi định kỳ đóng phí không ảnh hưởng",
+        "Làm tròn: tỷ lệ hàng tháng làm tròn lên số nguyên gần nhất khi phần số thập phân lớn hơn hoặc bằng 5 (74.50% → 75%; 74.49 → 74%); quý/năm/giai đoạn làm tròn cùng nguyên tắc dựa trên các kết quả đã làm tròn hàng tháng",
+        "Các quy định trên được áp dụng tương tự cho cách tính AIA TOT"
+      ],
+      "table": [
+        ["Loại chỉ tiêu", "Kết quả chưa làm tròn", "Kết quả sau khi làm tròn"],
+        ["AIA FY tháng 01/2026", "74.4%", "74%"],
+        ["AIA FY tháng 02/2026", "74.4%", "74%"],
+        ["AIA FY tháng 03/2026", "75.1%", "75%"],
+        ["AIA FY Quý 01/2026", "(74+74+75)/3=74.3(%)", "74%"]
+      ],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "",
+      "page": "17-21",
+      "quote": "TỈ LỆ DUY TRÌ TỔNG PHÍ (TOT) = F2 + R2 / F1 x 85% + R1 x 95%",
+      "uncertain": false,
+      "note": "Bảng là ví dụ làm tròn (trang 21). Minh họa 1-5 trang 18-20 cho thấy cách tính (Minh họa 5: 100/120 = 83%)."
+    },
+    {
+      "rule_no": 21,
+      "role": "CQL",
+      "item": "F.II.25. Tháng chuẩn",
+      "base": "Ngày bổ nhiệm/thăng chức chức vụ đầu tiên",
+      "conditions": [
+        "CQL có ngày bổ nhiệm/thăng chức từ 01-15 dương lịch, tháng đầu tiên là tháng bổ nhiệm/thăng chức",
+        "CQL có ngày bổ nhiệm/thăng chức từ ngày 16 dương lịch trở đi, tháng đầu tiên là tháng kế tiếp liền kề với tháng bổ nhiệm/thăng chức",
+        "CQL có ngày tháng bổ nhiệm khác với ngày tháng gia nhập Công ty, ngày hiệu lực sẽ là ngày 01 tháng bổ nhiệm",
+        "Ngày chốt sổ tính phí dịch vụ là ngày cuối cùng của tháng/quý tùy theo tính chất của từng loại phí dịch vụ"
+      ],
+      "table": [],
+      "rate_or_amount": "",
+      "payment_timing": "",
+      "clawback_or_forfeit": "",
+      "page": "13-14",
+      "quote": "CQL có ngày bổ nhiệm/thăng chức từ 01-15 dương lịch, tháng đầu tiên là tháng bổ nhiệm/thăng chức",
+      "uncertain": false,
+      "note": ""
+    }
+  ],
+  "definitions": [
+    {"term": "Cấp Quản Lý Chuyên Viên Tư Vấn (Cấp Quản Lý)", "definition_verbatim": "là Chuyên Viên Tư Vấn (i) có hợp đồng Đại Lý bảo hiểm còn hiệu lực với Công ty và (ii) đã ký “Hợp đồng Dịch vụ Cấp Quản Lý Bảo Hiểm Nhân Thọ” với Công ty, và (iii) thuộc một trong các cấp bậc sau: “Trưởng Nhóm Kinh Doanh” (UM), “Trưởng Nhóm Doanh Cấp Cao” (SUM), “Trưởng Phòng Kinh Doanh” (DM), “Trưởng Phòng Kinh Doanh Cấp Cao” (SDM).", "page": 12},
+    {"term": "Toàn nhánh", "definition_verbatim": "Bao gồm nhóm trực tiếp và nhóm gián tiếp tất cả các cấp 2, 3, 4, 5… (không giới hạn số lượng cấp) của CQL đó.", "page": 12},
+    {"term": "Nhóm trực tiếp", "definition_verbatim": "Đối với các UM/SUM/DM/SDM, Nhóm trực tiếp là nhóm bao gồm cá nhân UM/SUM/DM/SDM và toàn bộ các Chuyên Viên Tư Vấn trực thuộc.", "page": 13},
+    {"term": "FYP", "definition_verbatim": "Đối với các hợp đồng bảo hiểm đóng phí định kỳ, FYP là tổng số tiền mà khách hàng đóng và được Công ty duyệt để đóng phí bảo hiểm cho năm hợp đồng đầu tiên của hợp đồng bảo hiểm. Đối với hợp đồng bảo hiểm đóng phí một lần, FYP sẽ là 10% của số phí bảo hiểm một lần thu được và được Công ty duyệt.", "page": 13},
+    {"term": "RYP", "definition_verbatim": "là tổng số tiền mà khách hàng đóng cho Công ty để thanh toán phí bảo hiểm từ năm hợp đồng thứ hai hoặc các năm hợp đồng sau đó của hợp đồng bảo hiểm.", "page": 13},
+    {"term": "FYC tín chỉ", "definition_verbatim": "Định nghĩa và cách tính doanh số FYC tín chỉ vui lòng tham khảo Quy định về cách tính FYC tín chỉ từ công ty tại từng thời điểm.", "page": 13},
+    {"term": "RYC", "definition_verbatim": "là số tiền hoa hồng bảo hiểm mà Công ty đồng ý thanh toán cho Chuyên Viên Tư Vấn tính theo tỷ lệ (%) trên tổng số phí bảo hiểm tái tục mà Công ty thu được năm thứ hai trở đi của mỗi hợp đồng bảo hiểm", "page": 13},
+    {"term": "Tháng", "definition_verbatim": "khoảng thời gian 1 tháng dương lịch, tính bắt đầu từ ngày 1 đến ngày cuối cùng của tháng dương lịch.", "page": 13},
+    {"term": "FY (Tỷ lệ duy trì phí năm đầu)", "definition_verbatim": "là tỷ lệ giữa tổng số “Phí thu được” trong thời gian 14 tháng trên tổng số “Phí phải thu” của nhóm trực tiếp (bao gồm cá nhân CQL). “Phí phải thu” là phí quy năm của các hợp đồng năm đầu còn hiệu lực trong khoảng thời gian 14 tháng trước ngày báo cáo. “Phí thu được”: là phí bảo hiểm thu được trên thực tế (bao gồm cả phí thu trong thời gian ân hạn) của các hợp đồng được xác định trong “Phí phải thu”.", "page": 13},
+    {"term": "TOT (Tỷ lệ duy trì tổng phí)", "definition_verbatim": "là tỷ lệ giữa “Tổng phí thu được” trong thời gian 14 tháng trên “Tổng phí phải thu” (bao gồm cá nhân CQL). “Tổng phí phải thu” bằng 85% phí quy năm của những hợp đồng năm đầu cộng 95% phí quy năm của những hợp đồng các năm tái tục.", "page": 13},
+    {"term": "Chuyên Viên Tư Vấn hoạt động", "definition_verbatim": "là Chuyên Viên Tư Vấn có Hợp đồng Đại Lý bảo hiểm còn hiệu lực vào thời điểm tính toán và có tổng số hợp đồng trong tháng lớn hơn hoặc bằng 1, với tổng FYC tín chỉ ≥ 4.0 triệu đồng, không bao gồm hợp đồng An Bình Ưu Việt, Gói giải pháp bảo hiểm AIA Trọn Tâm An, AIA Khoẻ An Nhiên, Gói giải pháp bảo hiểm AIA Trọn An Nhiên và/hoặc các sản phẩm khác ... (không bao gồm Chuyên Viên Tư Vấn hỗ trợ phục vụ (SE)).", "page": 14},
+    {"term": "Chuyên Viên Tư Vấn Mới (mục F.II.21)", "definition_verbatim": "là Chuyên Viên Tư Vấn đã hoàn tất đầy đủ khóa huấn luyện khởi nghiệp và ký Hợp đồng Đại Lý bảo hiểm lần đầu tiên với Công ty. Các trường hợp Chuyên Viên Tư Vấn gia nhập lại Công ty, khôi phục Hợp đồng Đại Lý bảo hiểm không được xem là Chuyên Viên Tư Vấn mới.", "page": 14},
+    {"term": "Chuyên Viên Tư Vấn Mới (mục C.III.1 và D)", "definition_verbatim": "là Chuyên Viên Tư Vấn đã hoàn tất đầy đủ khóa huấn luyện khởi nghiệp và ký Hợp đồng Đại Lý bảo hiểm với Công ty. Các trường hợp Chuyên Viên Tư Vấn khôi phục hợp đồng tại Công ty được xem là Chuyên Viên Tư Vấn mới.", "page": 9},
+    {"term": "Chuyên Viên Tư Vấn mới có hoạt động trong vòng 6 tháng", "definition_verbatim": "là “Chuyên Viên Tư Vấn Mới” có ngày gia nhập/khôi phục trong vòng 06 tháng và có ít nhất một tháng hoạt động trong vòng 06 tháng. CVTV mới/khôi phục phải còn hợp đồng hiệu lực (từ SA trở lên) tại thời điểm xét thăng tiến. Cấu trúc được ghi nhận tại tháng xét duyệt.", "page": 9},
+    {"term": "Số lượng UM+ trực tiếp", "definition_verbatim": "là các cấp UM, SUM, DM, SDM báo cáo trực tiếp còn hiệu lực hợp đồng với AIA tại thời điểm tính toán.", "page": 9},
+    {"term": "Số hợp đồng thuần cá nhân", "definition_verbatim": "Là hợp đồng được bán bởi chính Cấp Quản lý, Không bao gồm hợp đồng do CVTV/CQL đứng tên làm chủ hợp đồng, và không bao gồm sản phẩm An Bình Ưu Việt, Gói giải pháp bảo hiểm AIA Trọn Tâm An, Gói giải pháp bảo hiểm AIA Trọn An Nhiên và/hoặc các sản phẩm khác theo quy định của Công ty có hiệu lực tại từng thời điểm.", "page": 9},
+    {"term": "Hợp đồng thuần", "definition_verbatim": "là hiệu số giữa số hợp đồng mới được phát hành trong tháng với số hợp đồng bị hủy trong tháng. Các hợp đồng An Tâm Thượng Lộ, An Bình Ưu Việt sẽ không được tính vào số lượng Hợp đồng thuần.", "page": 14},
+    {"term": "FYC tín chỉ nhóm trực tiếp quý", "definition_verbatim": "là FYC tín chỉ của nhóm trực tiếp của các tháng trong quý cộng lại.", "page": 14},
+    {"term": "Ngày thăng tiến của Cấp Quản Lý", "definition_verbatim": "sẽ căn cứ vào ngày thăng tiến lần đầu tiên lên CQL.", "page": 13},
+    {"term": "Tỷ lệ duy trì phí toàn nhánh", "definition_verbatim": "dựa trên các chỉ số tính tỷ lệ duy trì phí của bao gồm cá nhân UM/SUM/DM/SDM, nhóm trực tiếp (cấp 1) và tất cả nhóm gián tiếp.", "page": 18}
+  ],
+  "internal_inconsistencies": [
+    "Trang 1: thư nói “Chính sách thu nhập, thăng tiến và điều kiện duy trì hợp đồng năm 2025” trong khi tiêu đề và toàn văn bản là năm 2026.",
+    "Định nghĩa “Chuyên Viên Tư Vấn Mới” mâu thuẫn: trang 9 (C.III.1) và trang 10 (D) nói khôi phục hợp đồng “được xem là Chuyên Viên Tư Vấn mới”; trang 4, 6 và trang 14 (F.II.21) nói gia nhập lại/khôi phục “không được xem là” CVTV mới.",
+    "Ví dụ tính 70% trang 9: tỷ lệ đóng góp 18% + 72.3% + 18% = 108.3% nhưng dòng Tổng cộng ghi 100%; với FYC 100/400/100 (tổng 600) thì tỷ lệ đúng phải xấp xỉ 16.7%/66.7%/16.7%.",
+    "Trang 15 nói CQL phải giữ vị trí từ UM trở lên “được xét duyệt hàng quý quy định cụ thể tại Mục C”, nhưng điều kiện duy trì nằm ở Mục D và DM/SDM xét Tháng 6 & 12, không phải hàng quý.",
+    "Mục A.III (trang 4) ghi “tối đa 4 cấp bậc” nhưng bảng chỉ có 3 cột (Quản lý cấp 2, 3, 4); tên mục là “Đào tạo nhóm tuyển dụng hiệu quả” trong khi trang 15 gọi là “Đào tạo Nhóm Tuyển dụng gián tiếp hàng tháng”.",
+    "Mục A.I: FY “chưa có” xếp vào cột thấp (< 80%), trong khi các mục A.II, A.IV, A.V.1 và Phụ lục 2 B.6 coi FY chưa có/N/A là đạt.",
+    "Sơ đồ cấu trúc trang 12: CVTV 10 xuất hiện ở cả nhóm UM8 và nhóm SUM3.",
+    "Minh họa 1 trang 18: tỷ lệ duy trì tháng 12/2027 lại lấy mốc 1/11/2025 (T-14 của 12/2027 phải là 10/2026); U3 hiệu lực 15/11/2026 cũng không khớp mốc.",
+    "Minh họa 2 trang 19: văn bản ghi AIA TOT = 0% “từ tháng 8/2025 đến tháng 7/2026” nhưng ô tô màu ghi “08/2025-08/2026”.",
+    "Ví dụ 1 trang 7 gọi Phí dịch vụ đồng hành cùng CVTV mới là “Phí dịch vụ tuyển dụng hiệu quả” (trùng tên khoản A.I); Ví dụ 2 ghi “AUM A” thay vì “UM A”.",
+    "Mục A.III/IV dùng “Phí dịch vụ doanh số hoạt động JFW hàng tháng” làm thành phần của A nhưng văn bản không quy định khoản này.",
+    "Trang 15 nói thời điểm chi trả “tham khảo Phụ lục đính kèm theo Memo này” nhưng không có phụ lục nào về thời điểm chi trả trong 21 trang.",
+    "Ví dụ làm tròn trang 21: “74.49 sẽ được làm tròn thành 74%” thiếu ký hiệu %; quy tắc nói làm tròn dựa trên phần thập phân “lớn hơn hoặc bằng 5” (không nói rõ chữ số thập phân thứ nhất)."
+  ],
+  "pages_read": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+}

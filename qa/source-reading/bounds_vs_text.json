@@ -1,0 +1,74 @@
+{
+ "AIA-034": {
+  "tally": {
+   "SAME": 41,
+   "BARE": 1,
+   "OTHER_OP": 1
+  },
+  "other_op": [
+   {
+    "rule": 7,
+    "page": "5",
+    "verified": "<85",
+    "text_has": [
+     ">=85"
+    ]
+   }
+  ]
+ },
+ "AIA-035": {
+  "tally": {
+   "SAME": 48
+  },
+  "other_op": []
+ },
+ "AIA-069": {
+  "tally": {
+   "SAME": 51
+  },
+  "other_op": []
+ },
+ "CHB-003": {
+  "skipped": "văn bản scan, không có lớp chữ (đã đọc 2 lượt bằng ảnh)"
+ },
+ "CHB-007": {
+  "tally": {
+   "SAME": 84
+  },
+  "other_op": []
+ },
+ "CHB-008": {
+  "tally": {
+   "SAME": 66
+  },
+  "other_op": []
+ },
+ "MNL-046": {
+  "tally": {
+   "SAME": 48,
+   "OTHER_OP": 1
+  },
+  "other_op": [
+   {
+    "rule": 9,
+    "page": "6",
+    "verified": "<70",
+    "text_has": [
+     ">=70"
+    ]
+   }
+  ]
+ },
+ "MNL-047": {
+  "tally": {
+   "SAME": 35
+  },
+  "other_op": []
+ },
+ "MNL-048": {
+  "tally": {
+   "SAME": 45
+  },
+  "other_op": []
+ }
+}

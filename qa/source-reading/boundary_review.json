@@ -1,0 +1,125 @@
+{
+ "_mô_tả": "Mọi cờ lệch điều kiện biên giữa A và B đã được Claude rà. Test so danh sách cờ hiện tại với danh sách này: cờ mới → test hỏng → phải xem ảnh trang và ghi lý do vào đây.",
+ "flags": [
+  {
+   "doc": "AIA-034",
+   "layer": "rule",
+   "A": 7,
+   "B": 8,
+   "mismatch": [
+    [
+     "<>=85",
+     ">=85"
+    ]
+   ],
+   "verdict": "vô hại",
+   "why": "A ghi thêm vế bù 'TOT năm < 85% → không đủ điều kiện chi trả' cạnh điều kiện ≥ 85% của văn bản; B chỉ ghi ≥ 85%. Cùng nghĩa."
+  },
+  {
+   "doc": "CHB-007",
+   "layer": "rule",
+   "A": 2,
+   "B": 2,
+   "mismatch": [
+    [
+     ">=5",
+     "<>=5"
+    ]
+   ],
+   "verdict": "vô hại",
+   "why": "B ghi thêm 'FYC 03 tháng dưới 5 triệu: bảng không có hàng' cạnh hàng 'Từ 5 đến dưới 10'. Ghi chú vùng ngoài bảng, không đổi ngưỡng."
+  },
+  {
+   "doc": "CHB-007",
+   "layer": "rule",
+   "A": 10,
+   "B": 10,
+   "mismatch": [
+    [
+     ">=70",
+     "<>=70"
+    ]
+   ],
+   "verdict": "vô hại",
+   "why": "B gộp bảng W1 ('Dưới 70% → 0%') vào quy tắc 10; A tách W1 thành quy tắc 11 và có đủ dòng 'Dưới 70% → 0%'. Khác cách chia quy tắc."
+  },
+  {
+   "doc": "CHB-007",
+   "layer": "rule",
+   "A": 12,
+   "B": 11,
+   "mismatch": [
+    [
+     ">=70",
+     "<>=70"
+    ]
+   ],
+   "verdict": "vô hại",
+   "why": "Như trên: B#11 chứa dòng W1 'Dưới 70%'; A#12 chỉ có ngưỡng 'Từ 70%'. Khác cách chia quy tắc."
+  },
+  {
+   "doc": "MNL-046",
+   "layer": "rule",
+   "A": 9,
+   "B": 9,
+   "mismatch": [
+    [
+     "<>=70",
+     ">=70"
+    ]
+   ],
+   "verdict": "vô hại",
+   "why": "A ghi vế mất quyền nhận 'TLDTHD < 70% → không trả' cạnh điều kiện ≥ 70%. Cùng nghĩa."
+  },
+  {
+   "doc": "MNL-048",
+   "layer": "rule",
+   "A": 5,
+   "B": 5,
+   "mismatch": [
+    [
+     ">=90",
+     "<>=90"
+    ]
+   ],
+   "verdict": "vô hại",
+   "why": "B ghi thêm 'Tỷ lệ hoàn thành < 90%: văn bản không liệt kê bậc' dưới bậc thấp nhất ≥ 90%. Ghi chú vùng ngoài bảng."
+  },
+  {
+   "doc": "MNL-048",
+   "layer": "rule",
+   "A": 10,
+   "B": 10,
+   "mismatch": [
+    [
+     "<70",
+     ">=70"
+    ],
+    [
+     "<>=70",
+     ">=70"
+    ]
+   ],
+   "verdict": "vô hại",
+   "why": "A ghi phần không trả 'do TLDTHD < 70%' trong mục thu hồi; điều kiện trả vẫn ≥ 70%. Cùng nghĩa."
+  },
+  {
+   "doc": "MNL-048",
+   "layer": "rule",
+   "A": 10,
+   "B": 11,
+   "mismatch": [
+    [
+     "<70",
+     ">=70"
+    ],
+    [
+     "<>=70",
+     ">=70"
+    ]
+   ],
+   "verdict": "vô hại",
+   "why": "Như trên (B#11 là phần chuyển tiếp dùng cùng điều kiện ≥ 70%)."
+  }
+ ]
+}

@@ -34,3 +34,6 @@ venv/
 # Local browser / cache dumps
 *.har
 cookies.txt
+
+# Kết quả trung gian của qa/source-reading/compare_reads.py (sinh lại được)
+qa/source-reading/diff/

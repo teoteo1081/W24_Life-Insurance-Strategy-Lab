@@ -1,0 +1,57 @@
+[
+ {
+  "doc": "MNL-048",
+  "verdict": "A = B về mọi con số",
+  "items": []
+ },
+ {
+  "doc": "MNL-047",
+  "verdict": "A = B về mọi con số",
+  "items": []
+ },
+ {
+  "doc": "CHB-003",
+  "verdict": "A = B về mọi con số (bản scan, đọc bằng ảnh)",
+  "items": [
+   "Bảng đào tạo: B chép thêm cột STT — không phải số chính sách"
+  ]
+ },
+ {
+  "doc": "CHB-008",
+  "verdict": "A = B về mọi con số",
+  "items": [
+   "Tr.5 bảng 2.1: AL <15 tháng quản lý — 25% (EHC<4) và 35% (EHC≥4) là Ô GỘP áp cho mọi mức FYC nhóm ≥20tr (cả A và B xác nhận bằng ảnh + ví dụ của văn bản)"
+  ]
+ },
+ {
+  "doc": "MNL-046",
+  "verdict": "Lệch 1 bảng — chốt theo B sau khi Claude xem ảnh tr.4",
+  "items": [
+   "Tr.4 Thưởng năng suất xuất sắc tháng (Manulife Pro): cột Bạc 3.000.000 là ô gộp từ ≥30tr đến ≥120tr; cột Vàng 7.000.000 là ô gộp từ ≥60tr đến ≥120tr (không có đường kẻ ngang bên dưới). A để trống → sai; B đúng."
+  ]
+ },
+ {
+  "doc": "AIA-034",
+  "verdict": "A = B về mọi con số chính sách",
+  "items": [
+   "A gộp hệ số FY (≥70% → 100%, dưới 70% → FY thực đạt) vào bảng phí tuyển dụng chất lượng; B tách riêng — cùng nội dung",
+   "Số chỉ một người có: năm 2026 ở tiêu đề, ví dụ làm tròn 74,3/74,4/75,1, số trang — không phải tham số"
+  ]
+ },
+ {
+  "doc": "AIA-069",
+  "verdict": "A = B về mọi con số chính sách (Claude xem ảnh tr.3, tr.4 xác nhận)",
+  "items": [
+   "Tr.3 Tỷ lệ chi trả theo FY — 2026: ≥85% 120% · ≥75% 110% · ≥65% hoặc chưa có FY 100% · >0% và <65% = %FY · 0% = 0%; 2027: ≥90% 120% · ≥80% 110% · ≥70% hoặc chưa có FY 100% · <70% 0%",
+   "Tr.4 Thưởng 1/72H: FYC 04 triệu + 1 hợp đồng → 1,5 triệu (số '2' của B là chú thích (2), không phải tham số)"
+  ]
+ },
+ {
+  "doc": "CHB-007",
+  "verdict": "A = B về mọi con số (khác biệt chỉ là ghi chú ô gộp, cách chia quy tắc)",
+  "items": [
+   "Tr.4 Thưởng HQKD tháng: đại lý chưa có K2 hoặc <13 tháng — 45% (AR) / 60% (AL, AMD) là ô gộp áp cho cả 40–<60 và ≥60 triệu FYC 3 tháng (main xử lý đúng bằng biến capped)",
+   "Tr.16 Tự Do An Phúc: chỉ năm 1 khác theo mức HSBH; năm 2 trở đi là 1 ô chung"
+  ]
+ }
+]
