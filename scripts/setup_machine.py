@@ -15,6 +15,11 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
+for _s in (sys.stdout, sys.stderr):          # chạy bằng `py -3` thường trên Windows: console không phải UTF-8
+    try:
+        _s.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
 PY = [sys.executable, "-X", "utf8"]
 
 
