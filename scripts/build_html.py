@@ -290,6 +290,12 @@ def main(argv=None) -> int:
     if snap_obj is not None:
         import build_exec_summary as ES
         data["exec_summary"] = ES.build(snap_obj["tables"])
+    # Tab 4 · Hai góc nhìn (scripts/build_two_lens.py); bản công khai bỏ phương án có số liệu mật
+    tl_path = REPO / "web/data/two_lens.json"
+    if tl_path.exists():
+        import build_two_lens as TL
+        tl = json.loads(tl_path.read_text(encoding="utf-8"))
+        data["two_lens"] = TL.public_view(tl) if data.get("public_build") else tl
     engine = (REPO / "web/engine.js").read_text(encoding="utf-8")
     payload = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     html = tpl.replace("/*__ENGINE_JS__*/", engine).replace("/*__DATA_JSON__*/null", payload)

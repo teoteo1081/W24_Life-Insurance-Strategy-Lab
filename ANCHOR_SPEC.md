@@ -98,6 +98,7 @@ Mọi hoạt động nghiên cứu, xây dựng mô hình và trình bày trong 
 | Trang 1 · So sánh Thu nhập & Quyền lợi | REQ-01 | 4 mốc chuẩn L1–L4, trích dẫn `[Mã văn bản : trang]`; Tóm tắt 2 góc nhìn (đại lý / công ty) |
 | Trang 2 · Phân tích Hành vi & Hiệu quả chi phí | REQ-03…05 | Tổng chi / FYP, độ nhạy K2 và cơ cấu sản phẩm, kiểm Điều 52 & TT 96, bẫy hành vi, chấm điểm 5 tiêu chí |
 | Trang 3 · Chính sách Đề xuất 2026 & Phân vùng | REQ-02 | 2 đường ray Full-time / Part-time, K2 ≥ 80%, **4 vùng** theo lương tối thiểu NĐ 293/2025 (100/89/78/70%) |
+| Trang 4 · Hai góc nhìn: Người bán & Doanh nghiệp (DEC-20) | REQ-01…05 | Khung chuẩn cho mọi phương án: (1) 6 câu hỏi tầng đại lý có trích dẫn; (2) người bán: khoản nhận, thấp/giữa/cao, năm–quý–tháng, sau thuế, so lương tối thiểu vùng và thu nhập bình quân lao động, rủi ro; (3) doanh nghiệp: điểm DEC-19, chi phí, pháp lý, vận hành. Thuế và lương là `SOURCE_CLAIM` |
 | Phụ lục: Từ điển & Tài liệu gốc | Bằng chứng | Thuật ngữ + mục lục từng PDF |
 | Nhóm "Phân tích sâu & công cụ" (thu gọn mặc định) | Truy vết | Trả lời đề bài chi tiết + khung giả định, mô hình 1 vùng 12 tỷ, thư viện 133 quy tắc, cách tính, tự chỉnh thông số |
 

@@ -339,6 +339,7 @@ footer{color:var(--muted);font-size:13.5px;padding-block:24px 40px;border-top:1p
 <section class="panel" id="p-t1"></section>
 <section class="panel" id="p-t2"></section>
 <section class="panel" id="p-t3"></section>
+<section class="panel" id="p-lens"></section>
 <section class="panel" id="p-overview"></section>
 <section class="panel" id="p-package"></section>
 <section class="panel" id="p-tiers"></section>
@@ -546,7 +547,7 @@ function lineChart(series, opt) {
 
 /* ---------- Các tab ---------- */
 const TABS = [["exec", "Tổng quan điều hành", ["p-exec"]], ["t1", "So sánh Thu nhập & Quyền lợi", ["p-t1"]], ["t2", "Phân tích Hành vi & Hiệu quả chi phí", ["p-t2"]],
-  ["t3", "Chính sách Đề xuất 2026 & Phân vùng", ["p-t3"]], ["glossary", "Phụ lục: Từ điển & Tài liệu gốc", ["p-glossary"]],
+  ["t3", "Chính sách Đề xuất 2026 & Phân vùng", ["p-t3"]], ["lens", "Hai góc nhìn: Người bán & Doanh nghiệp", ["p-lens"]], ["glossary", "Phụ lục: Từ điển & Tài liệu gốc", ["p-glossary"]],
   ["answer", "Trả lời đề bài (chi tiết)", ["p-answer"], "ref"],
   ["overview", "Tổng quan mô hình 1 vùng", ["p-overview"], "ref"], ["package", "Gói thu nhập theo cấp", ["p-package"], "ref"],
   ["learn", "Học từ đối thủ", ["p-compare"], "ref"], ["money", "Thu nhập & chi phí", ["p-tiers", "p-cost"], "ref"],
@@ -966,7 +967,7 @@ function renderAll() {
     const t = TABS.find(x => x[0] === state.tab) || TABS[0];
     $("tabs").classList.toggle("refclosed", !state.refOpen && t[3] !== "ref");
   };
-  renderOverview(); renderPackage(); renderTiers(); renderCost(); renderRubric(); renderTune(); renderCompare(); renderMethod(); renderAssume(); renderGlossary(); renderT1(); renderT2(); renderT3(); renderAnswer(); renderExec();
+  renderOverview(); renderPackage(); renderTiers(); renderCost(); renderRubric(); renderTune(); renderCompare(); renderMethod(); renderAssume(); renderGlossary(); renderT1(); renderT2(); renderT3(); renderLens(); renderAnswer(); renderExec();
   if ($("rtb")) renderEvidence();   // đã mở trang Bằng chứng: vẽ lại khi dữ liệu (vd. Supabase) đổi số tài liệu
   showTab();
 }
@@ -1201,6 +1202,52 @@ function execBriefHtml() {
       <div class="xdocs">${cos.map(c => `<div><h4>${c}</h4>${pdfs.filter(f => docCo(f.file_id) === c).map(item).join("")}${c === "Manulife" ? hidden : ""}</div>`).join("")}</div>
       <div style="margin-top:8px"><button type="button" class="go" data-go="glossary">Từ điển & mục lục từng PDF</button></div></div>
   </div>`;
+}
+/* ---------- Tab 4 · Hai góc nhìn: cùng bộ câu hỏi cho mọi phương án (scripts/build_two_lens.py → DATA.two_lens) ---------- */
+function renderLens() {
+  const L = DATA.two_lens;
+  if (!L || !L.schemes) { $("p-lens").innerHTML = '<p class="muted">Chưa có dữ liệu (chạy scripts/build_two_lens.py).</p>'; return; }
+  const S = SC4.filter(s => L.schemes[s]), X = s => L.schemes[s];
+  const mw = L.bench.min_wage.values, ai = L.bench.avg_income.values;
+  const mwI = mw["Vùng I"], avg = ai["Bình quân lao động cả nước"];
+  const verdict = r => { const lo = r.after_tax_month[0];
+    return lo < mw["Vùng IV"] ? '<span class="badge bad">dưới lương tối thiểu</span>' : lo < mwI ? '<span class="badge warn">dưới lương tối thiểu Vùng I</span>'
+      : lo < avg ? '<span class="badge warn">dưới bình quân lao động</span>' : '<span class="badge good">trên bình quân lao động</span>'; };
+  const at = r => Math.abs(r.after_tax_month[1] - r.after_tax_month[0]) < 0.005 ? fmt(r.after_tax_month[0], 1) : `${fmt(r.after_tax_month[0], 1)}–${fmt(r.after_tax_month[1], 1)}`;
+  const C = s => X(s).company;
+  const cell = v => linkifyCites(v).replace(/`([A-Z_]+)`/g, '<span class="badge">$1</span>');   // nhãn `PROPOSAL` → huy hiệu
+  $("p-lens").innerHTML = `
+  <h2>Hai góc nhìn: Người bán nhận gì · Doanh nghiệp được gì</h2>
+  <p class="small">Mọi phương án trả lời <b>cùng một bộ câu hỏi</b> — thêm phương án thì thêm cột, không thêm dòng. Kịch bản chuẩn: K2 ${fmt(L.k2, 0)}%, năm đầu (chưa gồm tái tục), hoa hồng 30% FYP (giả định), đại lý theo 4 nhóm năng suất (giả định): ${L.groups.map(g => `${g.agents} đại lý «${esc(g.name)}» ${fmt(g.fyp_month, 0)} tr FYP/tháng`).join(" · ")}.</p>
+  <h3>Phần 1 · Chính sách nói gì — 6 câu hỏi (tầng đại lý)</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>Câu hỏi</th>${S.map(s => `<th>${esc(X(s).name)}</th>`).join("")}</tr></thead><tbody>
+  ${L.six_questions.map((q, i) => `<tr><th scope="row">${esc(q)}</th>${S.map(s => `<td class="small">${cell(X(s).six[i])}</td>`).join("")}</tr>`).join("")}
+  </tbody></table></div>
+  <p class="note">Nguồn: bộ quy tắc đọc 2 lượt độc lập và đối chiếu ảnh trang (qa/source-reading). Bấm mã [văn bản : trang] để mở trang gốc.</p>
+  <h3>Phần 2 · Người bán nhận gì</h3>
+  <p class="small"><b>Một năm nhận những khoản gì</b> (đại lý «Nòng cốt», 20 tr FYP/tháng):</p>
+  <ul class="small">${S.map(s => `<li><b>${esc(X(s).name)}</b> — ${fmt(X(s).items_total, 1)} tr/năm: ${X(s).items.map(it => `${esc(it.name)} ${fmt(it.year, 1)} tr`).join("; ")}</li>`).join("")}</ul>
+  <div class="tbl-wrap"><table class="num"><thead><tr><th>Phương án</th><th>Nhóm</th><th>FYP/tháng</th><th>Năm</th><th>Quý</th><th>Tháng</th><th>Sau thuế/tháng</th><th>So lương tối thiểu Vùng I</th><th>So bình quân lao động</th><th>Kết luận</th></tr></thead><tbody>
+  ${S.map(s => X(s).income.map(r => `<tr class="${s === "Hybrid" ? "hl" : ""}"><th scope="row">${esc(X(s).name)}</th><td>${esc(r.group)}</td><td>${fmt(r.fyp_month, 0)}</td><td>${fmt(r.year, 1)}</td><td>${fmt(r.quarter, 1)}</td><td>${fmt(r.month, 1)}</td><td><b>${at(r)}</b></td><td>${fmt(r.vs_min_wage_v1, 2)}×</td><td>${fmt(r.vs_avg_income, 2)}×</td><td>${verdict(r)}</td></tr>`).join("")).join("")}
+  </tbody></table></div>
+  <p class="small">Bình quân đại lý có hoạt động (bị nhóm Top kéo lên): ${S.map(s => `${esc(X(s).name)} ${fmt(X(s).mean_month_active, 1)} tr/tháng`).join(" · ")}. Người ở <b>giữa</b> thuộc nhóm «Nòng cốt» — đọc dòng đó để biết đa số nhận bao nhiêu.</p>
+  <p class="note"><b>Thuế</b> <span class="lbl">SOURCE_CLAIM</span>: ${linkifyCites(L.bench.tax.source)}. ${esc(L.bench.tax.open_question)}. Không nhóm nào vượt 1 tỷ/năm nên cả 2 cách đều ra thuế 0. Công ty có thể tạm khấu trừ hằng tháng rồi hoàn khi quyết toán.<br>
+  <b>Mốc so sánh</b> <span class="lbl">SOURCE_CLAIM</span>: ${esc(L.bench.min_wage.source)}: ${Object.entries(mw).map(([k, v]) => `${esc(k)} ${fmt(v, 2)}`).join(" · ")} tr/tháng. ${esc(L.bench.avg_income.source)}: ${Object.entries(ai).map(([k, v]) => `${esc(k)} ${fmt(v, 1)}`).join(" · ")} tr/tháng.<br>
+  <b>Chưa biết</b> (không tự điền): chi phí tự chi của đại lý (đi lại, điện thoại, chăm khách); bảo hiểm xã hội; tháng thấp nhất trong năm.</p>
+  <p class="small"><b>Rủi ro mất tiền:</b></p>
+  <ul class="small">${S.map(s => X(s).risks.length ? `<li><b>${esc(X(s).name)}:</b> ${X(s).risks.map(r => `${esc(r.trap)} — ${esc(r.text)}`).join("; ")}</li>` : "").join("")}</ul>
+  <h3>Phần 3 · Doanh nghiệp được gì</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>Câu hỏi</th>${S.map(s => `<th>${esc(X(s).name)}</th>`).join("")}</tr></thead><tbody>
+  <tr class="hl"><th scope="row">Điểm tổng (thang 1–5)</th>${S.map(s => `<td><b>${fmt(C(s).score, 2)}</b></td>`).join("")}</tr>
+  <tr><th scope="row">Doanh số</th>${S.map(s => `<td class="small"><b>${fmt(C(s).sales_score, 2)}</b> — ${esc(C(s).sales)}</td>`).join("")}</tr>
+  <tr><th scope="row">Chất lượng</th>${S.map(s => `<td class="small"><b>${fmt(C(s).quality_score, 2)}</b> — ${esc(C(s).quality)}</td>`).join("")}</tr>
+  <tr><th scope="row">Chi phí / ROI</th>${S.map(s => `<td class="small"><b>${fmt(C(s).cost_score, 2)}</b> — ${esc(C(s).cost)}</td>`).join("")}</tr>
+  <tr><th scope="row">Chi phí / phí còn duy trì khi K2 65%</th>${S.map(s => `<td>${fmt(C(s).cost_per_persisted_k65, 1)}%</td>`).join("")}</tr>
+  <tr><th scope="row">Tỷ trọng cố định</th>${S.map(s => `<td>${fmt(C(s).fixed_share, 1)}%</td>`).join("")}</tr>
+  <tr><th scope="row">Pháp lý (cổng)</th>${S.map(s => `<td class="small">${C(s).legal.map(esc).join("<br>")}</td>`).join("")}</tr>
+  <tr><th scope="row">Vận hành</th>${S.map(s => `<td class="small">${linkifyCites(C(s).ops)}</td>`).join("")}</tr>
+  </tbody></table></div>
+  <p class="note">ROI ở đây là chỉ số thay thế (chi phí / FYP, chi phí / phí còn duy trì). ROI thật cần biên lợi nhuận sản phẩm (VNB) — chưa có.${DATA.public_build ? " Bản công khai: bỏ cột Manulife (số đại lý tính từ văn bản ghi “thông tin mật”)." : ""}</p>`;
 }
 function renderExec() {
   const es = DATA.exec_summary, R = DB("roi_analysis"), RB = DB("rubric_scores"), RG = DB("hybrid_regional");
