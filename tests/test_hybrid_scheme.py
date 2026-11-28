@@ -193,7 +193,33 @@ class TestPhase2Outputs(unittest.TestCase):
             self.assertAlmostEqual(sum(r["weight"] for r in rows), 1.0)
             for r in rows:
                 self.assertTrue(1 <= r["score"] <= 5)
-        self.assertEqual([r["weight"] for r in self.d["rubric"] if r["scheme"] == "AIA"], [0.25, 0.25, 0.20, 0.15, 0.15])
+        # DEC-19: 30/30/30 cho 3 vế đề bài + 10 độ đơn giản; Vận hành & Pháp lý (đánh giá) hiển thị nhưng trọng số 0
+        self.assertEqual([r["weight"] for r in self.d["rubric"] if r["scheme"] == "AIA"], [0.30, 0.30, 0.30, 0.10, 0.0])
+        for r in self.d["rubric"]:
+            self.assertEqual(r["weight"] == 0.0, r["method"] == "judgement", r["id"])   # mọi đánh giá chủ quan nằm ngoài tổng
+
+    def test_dec19_roi_has_base_cost_not_deferral_and_gates(self) -> None:
+        roi = next(r for r in self.d["rubric"] if r["scheme"] == "Hybrid" and r["pillar"].startswith("Hiệu quả chi phí"))
+        self.assertIn("Chi phí chuẩn", roi["evidence"])
+        self.assertNotIn("trả chậm", roi["evidence"])
+        sales = next(r for r in self.d["rubric"] if r["scheme"] == "AIA" and r["pillar"] == "Thúc đẩy doanh số")
+        self.assertIn("3 hãng", sales["evidence"])
+        g = self.d["gates"]
+        self.assertEqual(set(g), set(self.P2.SCHEMES))
+        for s in self.P2.SCHEMES:
+            self.assertIn("art52", g[s])
+        self.assertIn("cost_cap", g["Hybrid"])                     # trần 75% là cam kết của Đề xuất, không áp lên hãng
+        self.assertNotIn("cost_cap", g["Chubb"])
+        self.assertEqual(g["Hybrid"]["cost_cap"]["pass"], self.d["org"]["Hybrid"]["worst"]["cost_pct"] <= 75.0)
+
+    def test_dec19_competitor_scores_do_not_depend_on_proposal(self) -> None:
+        """Sức hút thu nhập so với mức cao nhất của 3 hãng → đổi Đề xuất không đổi điểm của hãng."""
+        import re
+        ev = {r["scheme"]: r["evidence"] for r in self.d["rubric"] if r["pillar"] == "Thúc đẩy doanh số"}
+        ratios = {sc: {int(m): float(v.replace(".", "").replace(",", ".")) for m, v in re.findall(r"M(\d) ([\d.,]+)%", e.split("3 hãng: ")[1])}
+                  for sc, e in ev.items()}
+        for m in (1, 2, 3, 4):
+            self.assertAlmostEqual(max(ratios[sc][m] for sc in ratios if sc != "Hybrid"), 100.0, places=0)   # mốc = hãng cao nhất
 
     def test_k2_collapse_reduces_payout(self) -> None:
         for s in self.P2.SCHEMES:

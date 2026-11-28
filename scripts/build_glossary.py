@@ -165,8 +165,8 @@ E = [
      "Tầng 1 — Đại lý cá nhân", "Không phát sinh định phí cho người bán không đều"),
     ("Quota", "Sales quota", INT, "Chỉ tiêu FYP tối thiểu mỗi tháng (Vùng 1: 30tr) để nhận trợ cấp Full-time", "Đề xuất W24", ["Chung"], None, [],
      "Sales target", "Nhân hệ số vùng: Vùng 2 24,8tr; Vùng 3 20,2tr"),
-    ("Rubric", "Scoring rubric", INT, "Thang chấm 5 trụ cột: hành vi 25%, tài chính 25%, cạnh tranh 20%, đơn giản 15%, vận hành & pháp lý 15%", "Đề xuất W24", ["Chung"], None, [],
-     "Compensation design scorecard", "3 trụ cột tính bằng công thức; Vận hành & Pháp lý là đánh giá; điểm Chính sách Lai là tự chấm"),
+    ("Rubric", "Scoring rubric", INT, "Thang chấm 5 trụ cột (DEC-19): doanh số 30%, chất lượng 30%, chi phí/ROI 30%, đơn giản 10%; vận hành & pháp lý chỉ tham khảo (0%); cổng Điều 52 và trần 75% xét trước", "Đề xuất W24", ["Chung"], None, [],
+     "Compensation design scorecard", "4 trụ cột tính bằng công thức; Vận hành & Pháp lý là đánh giá, không cộng vào tổng; điểm Chính sách Đề xuất 2026 là tự chấm"),
     # ---------------- Tuyến hợp đồng ----------------
     ("HKD", "— (văn bản không ghi tiếng Anh)", INT, "Hộ Kinh Doanh (Manulife) — lãnh đạo ký hợp đồng như một đơn vị kinh doanh", "Tuyến hợp đồng", ["Manulife"], r"\bHKD\b", [],
      "Tầng 3B — Pháp nhân đối tác", "Cùng biểu phí với PSM+; tự xuất hóa đơn, tự chịu thuế [0048M01_2026 : 5-6]"),

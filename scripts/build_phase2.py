@@ -397,7 +397,17 @@ def compute() -> dict:
         inc[s] = [agent(s, m1.fyp_month, 85.0, base, with_renewal=True)["total"], manager(s, m2.fyp_per_agent, 85.0, base)["total"],
                   manager(s, m3.fyp_per_agent, 85.0, base, n_sub=2, rank="DM")["total"],
                   leader(s, ms["M4"].fyp_month, ms["M4"].agents, 85.0, base)["total"]]
-    mx = [max(inc[s][i] for s in SCHEMES) for i in range(4)]
+    # DEC-19: mốc so sánh = mức cao nhất của 3 HÃNG (không gồm Đề xuất) → điểm của hãng không phụ thuộc vào đề xuất
+    mx = [max(inc[s][i] for s in SCHEMES if s != "Hybrid") for i in range(4)]
+    # DEC-19: động lực bán thêm = thu nhập tăng bao nhiêu lần khi đại lý bán gấp 1,5; trung bình ở 0,5× / 1× / 2× Mốc 1
+    elast = {}
+    for s in SCHEMES:
+        es = []
+        for k in (0.5, 1.0, 2.0):
+            f = m1.fyp_month * k
+            i1, i2 = agent(s, f, 85.0, base)["total"], agent(s, f * 1.5, 85.0, base)["total"]
+            es.append((i2 / i1 - 1) / 0.5 if i1 > 0 else 0.0)
+        elast[s] = sum(es) / len(es)
     components = {"AIA": (11, "2601-034 mục A.I–A.VI + B (7) [AIAVAD 2601-034 : 3-6]; 2601-035 mục A.1–A.4 (4) [AIAVAD 2601-035 : 3-5]"),
                   "Chubb": (13, "0008V mục II.1–II.5 (5) [CHH0DCEB260008V : 3]; 0003V mục II.1–II.8 (8) [CHH0DCEB260003V : 4]"),
                   "Manulife": (9, "0047M01 A.I–A.V (5) [0047M01_2026 : 1-5]; 0048M01 A.I–A.IV (4) [0048M01_2026 : 1-3]"),
@@ -412,23 +422,37 @@ def compute() -> dict:
         drop = (o85["total"] - o65["total"]) / o85["total"] * 100
         p1 = round((lin(drop, 30.0, 0.0) + lin(flat[s], 1.0, 3.0) + lin(cliff[s], 5.0, 30.0)) / 3, 2)
         wc = o[s]["worst"]
-        p2 = round((lin(wc["cost_pct"], 60.0, 100.0) + lin(half["cost_pct"], 70.0, 130.0) + lin(o85["deferred_share"], 15.0, 0.0)) / 3, 2)
-        p3 = round(1 + 4 * sum(inc[s][i] / mx[i] for i in range(4)) / 4, 2)
+        # DEC-19: ROI = chi phí chuẩn + kịch bản xấu nhất + năng suất −50%. Bỏ "tỷ lệ trả chậm" (là đặc điểm thiết kế, không phải kết quả chi phí).
+        p2 = round((lin(o85["cost_pct"], 50.0, 90.0) + lin(wc["cost_pct"], 60.0, 100.0) + lin(half["cost_pct"], 70.0, 130.0)) / 3, 2)
+        comp = 1 + 4 * sum(min(1.0, inc[s][i] / mx[i]) for i in range(4)) / 4
+        p3 = round((comp + lin(elast[s], 1.5, 1.0)) / 2, 2)
         p4 = lin(components[s][0], 4, 14)
         p5 = ops[s][0]
-        rows = [("Định hướng hành vi", 0.25, p1, "computed",
+        rows = [("Thúc đẩy doanh số", 0.30, p3, "computed",
+                 f"Động lực bán thêm: bán gấp 1,5 → thu nhập ×{vn(1 + 0.5 * elast[s], 2)} (hệ số {vn(elast[s], 2)}; 1,0 = tăng đúng tỷ lệ = 1 điểm, ≥1,5 = 5 điểm) · "
+                 "Sức hút thu nhập so với hãng trả cao nhất trong 3 hãng: " + " · ".join(f"M{i + 1} {vn(inc[s][i] / mx[i] * 100, 0)}%" for i in range(4))),
+                ("Chất lượng kinh doanh (hành vi)", 0.30, p1, "computed",
                  f"Chi trả giảm {vn(drop)}% khi K2 85%→65% (≥30% = 5 điểm); tỷ lệ đội phẳng/có cấu trúc {vn(flat[s], 2)}× (≤1 = 5, ≥3 = 1); vách đá K2 80→79% {vn(cliff[s])}% (≤5% = 5, ≥30% = 1)"),
-                ("An toàn tài chính / ROI", 0.25, p2, "computed",
-                 f"Chi phí kịch bản xấu nhất ({o[s]['worst_name']}) {vn(wc['cost_pct'])}% FYP (≤60% = 5, ≥100% = 1); năng suất −50% → {vn(half['cost_pct'])}% (≤70% = 5, ≥130% = 1); trả chậm {vn(o85['deferred_share'])}% (≥15% = 5)"),
-                ("Sức cạnh tranh thu nhập", 0.20, p3, "computed",
-                 "Trung bình thu nhập 4 mốc / mức cao nhất trong 4 phương án: " + " · ".join(f"M{i + 1} {vn(inc[s][i] / mx[i] * 100, 0)}%" for i in range(4))),
-                ("Độ đơn giản & dễ tính", 0.15, p4, "computed", f"{components[s][0]} khoản phí tuyến quản lý (≤4 = 5, ≥14 = 1): {components[s][1]}"),
-                ("Vận hành & Pháp lý", 0.15, p5, "judgement", ops[s][1])]
+                ("Hiệu quả chi phí / ROI", 0.30, p2, "computed",
+                 f"Chi phí chuẩn {vn(o85['cost_pct'])}% FYP (≤50% = 5, ≥90% = 1); kịch bản xấu nhất ({o[s]['worst_name']}) {vn(wc['cost_pct'])}% (≤60% = 5, ≥100% = 1); năng suất −50% → {vn(half['cost_pct'])}% (≤70% = 5, ≥130% = 1)"),
+                ("Độ đơn giản & dễ tính", 0.10, p4, "computed", f"{components[s][0]} khoản phí tuyến quản lý (≤4 = 5, ≥14 = 1): {components[s][1]}"),
+                ("Vận hành & Pháp lý (không tính vào tổng)", 0.0, p5, "judgement", ops[s][1])]
         for pillar, wgt, sc, method, ev in rows:
             out["rubric"].append({"id": f"{s}|{pillar}", "scheme": s, "pillar": pillar, "weight": wgt, "score": sc, "method": method,
                                   "evidence": ev, "label": "PROPOSAL" if s == "Hybrid" else ("MODEL_OUTPUT" if method == "computed" else "JUDGEMENT"),
                                   "confidentiality": "restricted" if s in CONF else "public"})
     out["weighted"] = {s: round(sum(r["weight"] * r["score"] for r in out["rubric"] if r["scheme"] == s), 2) for s in SCHEMES}
+    # DEC-19: cổng đạt/trượt, xét TRƯỚC điểm — không bù trừ bằng điểm cao ở trụ cột khác
+    out["gates"] = {}
+    for s in SCHEMES:
+        a52 = o[s]["worst"]["art52_pct"]
+        g = {"art52": {"value": round(a52, 2), "limit": 30.0, "pass": a52 <= 30.0,
+                       "rule": "Điều 52 TT 67/2023: thưởng + hỗ trợ đại lý ≤ 30% FYP ở kịch bản xấu nhất (CONDITIONAL)"}}
+        if s == "Hybrid":
+            cw = o[s]["worst"]["cost_pct"]
+            g["cost_cap"] = {"value": round(cw, 2), "limit": 75.0, "pass": cw <= 75.0,
+                             "rule": "Cam kết thiết kế của Đề xuất: tổng chi trả kênh đại lý ≤ 75% FYP ở kịch bản xấu nhất (PROPOSAL)"}
+        out["gates"][s] = g
 
     # ---------- Chính sách Đề xuất 2026 theo vùng ----------
     for reg, meta in H.REGIONS.items():
@@ -553,7 +577,18 @@ def write_reports(d: dict) -> None:
     w("Đọc nhanh: (a) **tự bán vs quản lý** — ở AIA và Manulife, lên quản lý nhóm 5 người mà bỏ bán thì thu nhập giảm; (b) **đội phẳng** — tỷ lệ >1 nghĩa là giữ mọi người trực tiếp có lợi hơn phát triển quản lý con; "
       "(c) **vách đá K2** — giảm 1 điểm K2 quanh 80% làm mất một bậc hệ số; (d) **định phí** — phí cố định không co khi năng suất giảm.")
     w("")
-    w("## 3. Rubric 5 trụ cột (Compensation Designer)")
+    w("## 3. Rubric 5 trụ cột (Compensation Designer) — bản DEC-19")
+    w("")
+    w("**Cổng đạt/trượt (xét trước điểm, không bù trừ):**")
+    w("")
+    w("| Phương án | Cổng | Giá trị | Giới hạn | Kết quả |")
+    w("|---|---|---:|---:|---|")
+    for s in SCHEMES:
+        for g in d["gates"][s].values():
+            w(f"| {names[s]} | {g['rule']} | {vn(g['value'])}% | {vn(g['limit'])}% | {'ĐẠT' if g['pass'] else '**TRƯỢT — loại**'} |")
+    w("")
+    w("**Điểm (chỉ xét phương án đạt mọi cổng):** trọng số 30/30/30 cho 3 vế đề bài (doanh số · chất lượng · chi phí) + 10 cho độ đơn giản. "
+      "Mọi mốc chấm là `PROPOSAL` (chốt trước khi tính điểm, không có nguồn ngoài).")
     w("")
     w("| Trụ cột (trọng số) | " + " | ".join(names[s] for s in SCHEMES) + " |")
     w("|---|" + "---:|" * len(SCHEMES))
@@ -568,10 +603,12 @@ def write_reports(d: dict) -> None:
     for s in SCHEMES:
         w(f"- **{names[s]}:** " + "; ".join(f"*{r['pillar']}* — {r['evidence']} (`{r['label']}`)" for r in d["rubric"] if r["scheme"] == s))
     w("")
-    w("> **Lưu ý thiên lệch:** bậc đệm K2 75–80% và trần đội phẳng của Chính sách Đề xuất 2026 được thêm SAU khi đo bằng chính rubric này — thiết kế đã được hiệu chỉnh theo thước đo, nên rubric không phải phép thử khách quan cho Chính sách Đề xuất 2026. "
-      "Độ nhạy: chấm Vận hành & Pháp lý của Chính sách Đề xuất 2026 ở 2,0 (chưa đối chiếu pháp lý) thì điểm giảm 0,225.")
+    w("> **Lưu ý thiên lệch:** bậc đệm K2 75–80% và trần đội phẳng của Chính sách Đề xuất 2026 được thêm SAU khi đo bằng rubric bản trước — thiết kế đã được hiệu chỉnh theo thước đo cũ, nên rubric không phải phép thử khách quan cho Chính sách Đề xuất 2026. "
+      "DEC-19 (2026-11-28) sửa 4 điểm của bản trước: (1) ROI thêm chi phí ở kịch bản chuẩn, bỏ \"tỷ lệ trả chậm\" (đặc điểm thiết kế, không phải kết quả); "
+      "(2) thêm trụ cột Thúc đẩy doanh số = động lực bán thêm + sức hút thu nhập so với 3 hãng (không so với chính đề xuất); "
+      "(3) Vận hành & Pháp lý vẫn hiển thị nhưng không cộng vào tổng (đánh giá chủ quan, đề xuất tự chấm, pháp lý `CONDITIONAL`); (4) Điều 52 và trần 75% thành cổng đạt/trượt.")
     w("")
-    w("> 3 trụ cột đầu tính bằng công thức công khai ở trên; *Độ đơn giản* đếm khoản phí theo mục lục văn bản; *Vận hành & Pháp lý* là đánh giá có dẫn chứng (`JUDGEMENT`). "
+    w("> 4 trụ cột tính điểm đều bằng công thức công khai ở trên; *Độ đơn giản* đếm khoản phí theo mục lục văn bản; *Vận hành & Pháp lý* là đánh giá có dẫn chứng (`JUDGEMENT`), chỉ để tham khảo. "
       "Điểm Chính sách Đề xuất 2026 là **tự chấm của bên thiết kế** — cần một bên độc lập chấm lại trước khi dùng làm kết luận.")
     w("")
     w("## 4. Ghi chú độ nhạy Manulife MBA Pro (`HYPOTHESIS`)")
@@ -663,14 +700,14 @@ def write_reports(d: dict) -> None:
     w("| Trung | K2 cao, hợp đồng nhỏ, năng suất thấp hơn | Hệ số vùng 2/3 hạ quota nhưng **giữ CC và K2**; thưởng tháng theo hệ số K2 liên tục thưởng chất lượng |")
     w("| Nam | Ưu tiên dòng tiền, tự chủ; quen mô hình HKD | Part-time thuần biến phí trả hàng tháng; lãnh đạo có thể chọn hình thức hợp đồng hộ kinh doanh như Manulife (cùng biểu phí — lợi ích thuế cần Pháp chế xác nhận) |")
     w("")
-    w("## 5. Chấm điểm so với 3 hãng (cùng Rubric 5 trụ cột)")
+    w("## 5. Chấm điểm so với 3 hãng (cùng Rubric 5 trụ cột, bản DEC-19)")
     w("")
     w("| Phương án | Điểm có trọng số (1–5) |")
     w("|---|---:|")
     for s in sorted(SCHEMES, key=lambda x: -W[x]):
         w(f"| {names[s]} | {vn(W[s], 2)} — {SCHEME_SRC[s]} `{'PROPOSAL' if s == 'Hybrid' else 'MODEL_OUTPUT'}` |")
     w("")
-    w("Chi tiết trụ cột và công thức: `02_Phan_Tich_MAPA_TradeOff_Va_ROI.md` mục 3. **Lưu ý:** điểm Chính sách Đề xuất 2026 do bên thiết kế tự chấm; trụ cột Vận hành & Pháp lý là đánh giá; pháp lý `CONDITIONAL`.")
+    w("Chi tiết trụ cột và công thức: `02_Phan_Tich_MAPA_TradeOff_Va_ROI.md` mục 3. **Lưu ý:** điểm Chính sách Đề xuất 2026 do bên thiết kế tự chấm; trụ cột Vận hành & Pháp lý là đánh giá, không cộng vào tổng; pháp lý `CONDITIONAL`; cổng Điều 52 và trần 75% xét trước điểm.")
     w("")
     w("## 6. Rủi ro & việc TJ cần quyết")
     w("")

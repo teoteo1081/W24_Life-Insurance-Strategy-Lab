@@ -1124,18 +1124,18 @@ function renderT2() {
   ${TR.map(t => `<tr><td>${esc(SNAME[t.scheme])}${confTag(t)}</td><td><b>${esc(t.trap)}</b>${lblTag(t.label)}</td><td class="small">${esc(t.value_text)}</td><td class="small">${linkifyCites(t.citation)}</td></tr>`).join("")}
   </tbody></table></div>
   <h3>Bảng chấm điểm 5 tiêu chí</h3>
-  <p class="small" style="margin:0 0 6px">Mỗi phương án được chấm từ 1 đến 5 điểm (5 = tốt nhất) theo 5 tiêu chí. Con số trong ngoặc là <b>trọng số</b> — mức quan trọng của tiêu chí khi cộng thành điểm tổng ở dòng cuối.</p>
+  <p class="small" style="margin:0 0 6px">Trước khi chấm, mỗi phương án phải qua <b>cổng</b>: thưởng + hỗ trợ đại lý ≤ 30% FYP (Điều 52, ở kịch bản xấu nhất); riêng Đề xuất 2026 còn cam kết tổng chi ≤ 75% FYP. Trượt cổng là loại, không bù bằng điểm. Sau đó chấm 1–5 điểm (5 = tốt nhất); con số trong ngoặc là <b>trọng số</b>: 30% cho mỗi vế của đề bài, 10% cho độ đơn giản.</p>
   <ul class="small" style="margin:0 0 10px;padding-left:20px">
-    <li><b>Định hướng hành vi</b> — chính sách có khiến đại lý bán đúng nhu cầu, giữ hợp đồng không: chi trả có giảm khi tỷ lệ duy trì (K2) xấu đi, có “vách đá” làm thu nhập rơi đột ngột không.</li>
-    <li><b>An toàn tài chính / ROI</b> — tổng chi trên doanh thu phí, kể cả khi năng suất giảm một nửa hoặc mọi đại lý cùng đạt chỉ tiêu; bao nhiêu tiền được giữ lại trả chậm.</li>
-    <li><b>Sức cạnh tranh thu nhập</b> — đại lý và quản lý nhận bao nhiêu so với hãng trả cao nhất ở 4 mốc quy mô, tức có tuyển và giữ được người không.</li>
+    <li><b>Thúc đẩy doanh số</b> — (a) đại lý bán gấp 1,5 thì thu nhập tăng bao nhiêu (tăng mạnh hơn tỷ lệ = có động lực bán thêm); (b) đại lý và quản lý nhận bao nhiêu so với hãng trả cao nhất trong 3 hãng, tức có tuyển và giữ được người không.</li>
+    <li><b>Chất lượng kinh doanh</b> — chi trả có giảm khi tỷ lệ duy trì (K2) xấu đi, có “vách đá” làm thu nhập rơi đột ngột không, có khuyến khích để đội phẳng không.</li>
+    <li><b>Hiệu quả chi phí / ROI</b> — tổng chi trên doanh thu phí ở kịch bản chuẩn, ở kịch bản tốn nhất, và khi năng suất giảm một nửa.</li>
     <li><b>Độ đơn giản & dễ tính</b> — số khoản thưởng / phí; càng ít khoản, đại lý càng tự tính được thu nhập của mình.</li>
-    <li><b>Vận hành & Pháp lý</b> — dễ triển khai và tuân thủ quy định; đây là đánh giá có dẫn chứng, không phải công thức.</li>
+    <li><b>Vận hành & Pháp lý</b> — đánh giá có dẫn chứng, không phải công thức; <b>chỉ để tham khảo, không cộng vào điểm tổng</b> (Đề xuất 2026 tự chấm, pháp lý chưa đối chiếu).</li>
   </ul>
   <div class="tbl-wrap"><table><thead><tr><th>Trụ cột (trọng số)</th>${SC4.map(s => `<th>${esc(SNAME[s])}</th>`).join("")}</tr></thead><tbody>
   ${pillars.map(p => { const w = (RB.find(r => r.pillar === p) || {}).weight || 0; return `<tr><th scope="row">${esc(p)} (${fmt(w * 100)}%)</th>${SC4.map(s => { const r = RB.find(x => x.scheme === s && x.pillar === p); return `<td title="${r ? esc(r.evidence) : ""}">${r ? fmt(r.score, 2) : "—"}${r && r.method === "judgement" ? ' <span class="small muted">(đánh giá)</span>' : ""}</td>`; }).join("")}</tr>`; }).join("")}
   <tr class="hl"><th scope="row">Điểm có trọng số (1–5)</th>${SC4.map(s => `<td><b>${RB.some(r => r.scheme === s) ? fmt(ws(s), 2) : "—"}</b></td>`).join("")}</tr></tbody></table></div>${DATA.public_build ? '<p class="note">Bản công khai: các số Manulife tính từ 2 văn bản ghi "thông tin mật" (Đại Lý, UM+) đã được lược bỏ; Manulife PSM/SM (0048M01) vẫn hiển thị ở tab 1.</p>' : ""}
-  <p class="note">3 trụ cột đầu tính bằng công thức công khai (rê chuột vào điểm để xem căn cứ); "Độ đơn giản" đếm khoản phí theo mục lục văn bản; "Vận hành & Pháp lý" là đánh giá có dẫn chứng. Điểm Chính sách Đề xuất 2026 là tự chấm của bên thiết kế — cần kiểm toán độc lập.</p>`;
+  <p class="note">4 trụ cột tính điểm đều bằng công thức công khai (rê chuột vào điểm để xem căn cứ); mọi mốc chấm là đề xuất của bên thiết kế, chốt trước khi tính điểm. "Vận hành & Pháp lý" là đánh giá, không cộng vào tổng. Điểm Chính sách Đề xuất 2026 là tự chấm của bên thiết kế — cần kiểm toán độc lập.</p>`;
 }
 /* ---------- Tab ★ Tổng quan điều hành: 1 màn hình kiểu Power BI. Chỉ ĐỌC DATA.exec_summary + DB (snapshot) — không tính lại công thức. ---------- */
 const XCOL = {AIA: "var(--s-aia)", Chubb: "var(--s-chubb)", Manulife: "var(--s-mnl)", Hybrid: "var(--s-plan)"};
@@ -1224,7 +1224,7 @@ function renderExec() {
   <div class="xk">
     <div class="card"><span class="lb">Tổng chi / FYP · Mốc 4 chuẩn</span><span class="v">${pct(hy.cost_pct, 1)}</span><span class="s">≈ ${fmt(hy.month, 1)} tr/tháng · ${fmt(hy.year, 0)} tr/năm</span><span class="s">${others.map(r => `${esc(XNAME[r.scheme])} ${pct(r.cost_pct, 1)}`).join(" · ")}${cheaper.length ? ` — ${cheaper.map(r => esc(XNAME[r.scheme])).join(", ")} rẻ hơn khi chất lượng tốt` : ""}</span></div>
     <div class="card"><span class="lb">Đỉnh stress test <span class="badge ${safe ? "good" : "bad"}">${safe ? "✓ An toàn" : "✗ Vượt trần"}</span></span><span class="v">${pct(worst, 1)} <small>/ trần 75%</small></span><span class="s">Kịch bản xấu nhất, hoa hồng chuẩn 30% FYP.</span>${worst40 != null ? `<span class="s">Bán nghiêng bảo vệ thuần (hoa hồng 40%): ${pct(worst40, 1)} — trần chặn đúng mức.</span>` : ""}</div>
-    <div class="card"><span class="lb">Điểm chấm 5 tiêu chí ${scored[0] === "Hybrid" ? '<span class="badge good">Dẫn đầu</span>' : ""}</span><span class="v">${fmt(wsc("Hybrid"), 2)} <small>/ 5</small></span><span class="s">${scored.filter(s => s !== "Hybrid").map(s => `${esc(XNAME[s])} ${fmt(wsc(s), 2)}`).join(" · ")}</span><span class="s">Bên thiết kế tự chấm — cần kiểm định độc lập.</span></div>
+    <div class="card"><span class="lb">Điểm chấm 5 tiêu chí ${scored[0] === "Hybrid" ? (wsc("Hybrid") - wsc(scored[1]) >= 0.1 ? '<span class="badge good">Dẫn đầu</span>' : '<span class="badge">Sát nút</span>') : ""}</span><span class="v">${fmt(wsc("Hybrid"), 2)} <small>/ 5</small></span><span class="s">${scored.filter(s => s !== "Hybrid").map(s => `${esc(XNAME[s])} ${fmt(wsc(s), 2)}`).join(" · ")}</span><span class="s">Bên thiết kế tự chấm — cần kiểm định độc lập.</span></div>
     <div class="card"><span class="lb">Cơ chế cốt lõi</span><span class="mech">2 đường ray · K2 ≥ 80% · ${nReg} vùng</span><span class="s">Full-time / Part-time · trợ cấp & phần trả chậm chỉ chi khi K2 ≥ 80% · hệ số vùng theo lương tối thiểu (NĐ 293/2025).</span></div>
   </div>
   <div class="grid g2 xc">

@@ -137,7 +137,7 @@ create table if not exists public.rubric_scores (
   model_version    text not null,
   scheme           text not null check (scheme in ('AIA','Chubb','Manulife','Hybrid')),
   pillar           text not null,
-  weight           numeric not null check (weight > 0 and weight <= 1),
+  weight           numeric not null check (weight >= 0 and weight <= 1),   -- DEC-19: 0 = hiển thị, không cộng vào tổng (trụ cột đánh giá)
   score            numeric not null check (score between 1 and 5),
   method           text not null check (method in ('computed','judgement')),
   evidence         text not null,

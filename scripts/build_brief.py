@@ -53,6 +53,9 @@ def render(tables: dict, full: bool) -> str:
     schemes = [s for s in ES.CO if v(s, "cost_pct_fyp") is not None]
     comps = [s for s in schemes if s != "Hybrid"]
     ws = {s: sum(r["weight"] * r["score"] for r in RB if r["scheme"] == s) for s in schemes if any(r["scheme"] == s for r in RB)}
+    _others = sorted((s for s in ws if s != "Hybrid"), key=lambda s: -ws[s])
+    _gap = ws["Hybrid"] - ws[_others[0]] if _others else 0.0
+    rank_txt = (f"{'hơn' if _gap >= 0 else 'kém'} {NAME[_others[0]]} {vn(abs(_gap), 2)} điểm" + (" — sát nút, không phải vượt trội" if abs(_gap) < 0.10 else "")) if _others else ""
     trap = lambda s, t: next((r for r in TR if r["scheme"] == s and r["trap"] == t), None)
     es = ES.build(tables)
     co = {r["scheme"]: r for r in es["company"]}
@@ -101,7 +104,7 @@ def render(tables: dict, full: bool) -> str:
     a(f"| Phân tích chính sách các công ty | Ở đại lý cá nhân các hãng trả gần ngang nhau; khác biệt nằm ở tầng quản lý và ở việc chi trả có co theo chất lượng hay không. | "
       + " · ".join(f"{NAME[s]} {pct(v(s, 'cost_pct_fyp'))} FYP" for s in comps) + " | Trang 2 |")
     a(f"| Đề xuất phù hợp VN | **{PROPOSAL}** `PROPOSAL`: trả ngang thị trường, mọi khoản thưởng lớn gắn K2, giữ lại phần trả chậm, hệ số vùng theo lương tối thiểu. | "
-      f"Tổng chi {pct(v('Hybrid', 'cost_pct_fyp'))} FYP · điểm 5 tiêu chí {vn(ws['Hybrid'], 2)}/5 | Trang 5 |")
+      f"Tổng chi {pct(v('Hybrid', 'cost_pct_fyp'))} FYP · điểm 5 tiêu chí {vn(ws['Hybrid'], 2)}/5 ({rank_txt}) | Trang 5 |")
     a(f"| Doanh số | Đề xuất trả cao hơn {', '.join(NAME[s] for s in be_need) or 'không hãng nào'} nên phải bán thêm mới hòa vốn phần phí giữ lại sau chi trả kênh đại lý"
       f"{'; rẻ hơn ' + ', '.join(NAME[s] for s in be_ahead) + ' ngay ở cùng FYP' if be_ahead else ''}. Đây là chỉ tiêu tối thiểu của thí điểm — mức tăng thật vẫn `HYPOTHESIS`. | "
       f"4 nhóm năng suất: {be_txt or '—'} `PROPOSAL` | Trang 3, 7 |")
@@ -132,7 +135,7 @@ def render(tables: dict, full: bool) -> str:
     a("| Chất lượng | K2 85% (chuẩn), 65% (xấu) | Giả định; K2 thật đo ở thí điểm |")
     a("| Hoa hồng năm đầu | 30% FYP (chuẩn); độ nhạy 25% / 40% | 40% ≈ danh mục nghiêng bảo vệ thuần |")
     a("| ROI | Chi phí / FYP và chi phí / phí còn duy trì | Proxy — cần product mix & chi phí vượt định mức từ Actuarial để ra VNB |")
-    a("| Ưu tiên khi chấm điểm | Hành vi 25% · An toàn tài chính 25% · Cạnh tranh thu nhập 20% · Đơn giản 15% · Vận hành & pháp lý 15% | Đổi trọng số thì điểm đổi, cấu trúc đề xuất không đổi |")
+    a("| Ưu tiên khi chấm điểm (DEC-19) | Cổng trước: Điều 52 ≤ 30% FYP, Đề xuất ≤ 75% FYP ở kịch bản xấu nhất. Điểm: Doanh số 30% · Chất lượng 30% · Chi phí/ROI 30% · Đơn giản 10%; Vận hành & pháp lý chỉ tham khảo | Mốc chấm là `PROPOSAL`, chốt trước khi tính điểm; đổi trọng số thì điểm đổi, cấu trúc đề xuất không đổi |")
     a("")
 
     # ---------------- Trang 2 ----------------
